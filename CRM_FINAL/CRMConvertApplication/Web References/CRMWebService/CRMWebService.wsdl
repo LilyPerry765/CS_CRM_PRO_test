@@ -1,0 +1,1094 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SaveFailure117">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="telephoneNo" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="callingNo" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="centercode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="recordeSound" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveFailure117Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveFailure117Result" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="result" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isConfirmed" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveFailure117Kermanshah">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="telephoneNo" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="callingNo" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="recordeSound" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveFailure117KermanshahResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveFailure117KermanshahResult" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="result" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isConfirmed" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isDischarge" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isTechnicalFailed" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isUnkown" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFailureRequestState">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="telephoneNo" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFailureRequestStateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetFailureRequestStateResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="isFinished" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="resultFailure" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="color1" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="color2" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="cableType" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckCabinetAccuracy">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="cabinetNo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="postNo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="teleophoneNo" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="centercode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckCabinetAccuracyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckCabinetAccuracyResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveFailure117fromHelpDesk">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="telephoneNo" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="ticketID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveFailure117fromHelpDeskResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveFailure117fromHelpDeskResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="requestID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="telephoneNos" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMessageResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SaveADSLChangeService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="telephoneNo" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="oldServiceID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="newServiceID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveADSLChangeServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveADSLChangeServiceResult" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="result" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmADSLChangeService">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="newServiceID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="isIBSngUpdated" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmADSLChangeServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ConfirmADSLChangeServiceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveADSLSaleTraffice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="telephoneNo" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="trafficeID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveADSLSaleTrafficeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveADSLSaleTrafficeResult" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="result" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmADSLSaleTraffic">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="isIBSngUpdated" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmADSLSaleTrafficResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ConfirmADSLSaleTrafficResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveRequestPayment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="orderID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveRequestPaymentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveRequestPaymentResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PaidRequestPayment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="requestPaymentID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="bankCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="traceNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PaidRequestPaymentResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GenerateBillID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="telephoneNo" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="centerID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="subsidiaryCodeType" type="s:unsignedByte" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateBillIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenerateBillIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GeneratePaymentID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="amount" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="telephoneNo" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="billID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="subsidiaryCodeType" type="s:unsignedByte" />
+            <s:element minOccurs="1" maxOccurs="1" name="isAddCycle" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GeneratePaymentIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GeneratePaymentIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetADSLPayment">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="telephoneNo" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetADSLPaymentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetADSLPaymentResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetADSLInstalmentforBilling">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetADSLInstalmentforBillingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetADSLInstalmentforBillingResult" type="tns:ArrayOfInstalmentBillingInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInstalmentBillingInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="InstalmentBillingInfo" nillable="true" type="tns:InstalmentBillingInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="InstalmentBillingInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TelephoneNo" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="Cost" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConfirmADSLInstalmentforBilling">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConfirmADSLInstalmentforBillingResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUserInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ibsngInputInfo" type="tns:IbsngInputInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="IbsngInputInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="NormalUsername" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUserInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserInfoResult" type="tns:IBSngUserInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="IBSngUserInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NormalUsername" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NormalPassword" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InternetOnlines" type="tns:ArrayOfArrayOfAnyType" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CellPhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RealFirstLogin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstLogin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NearestExpDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RechargeDeposit" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Credit" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OnlineStatus" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="LimitMac" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RenewNextGroup" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lock" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MultiLogin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreationDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CustomFieldFreeCounter" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="IBSngGroupName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfAnyType" nillable="true" type="tns:ArrayOfAnyType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="changeDeposit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ibsngInfo" type="tns:ChangeIBSngInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ChangeIBSngInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Deposit" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAbsoluteChange" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepositType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DepositComment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomFieldFreeCounter" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RenewNextGroup" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RenewRemoveUserExpDates" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="changeDepositResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateUserAttrs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ibsngInfo" type="tns:ChangeIBSngInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateUserAttrsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetPAPInstallRequestCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fromDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="toDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PAPBillingInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PAPCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PAPName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Count24" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Count48" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Count72" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountAll" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPAPBillingInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PAPBillingInfo" nillable="true" type="tns:PAPBillingInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPAPInstallRequestCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPAPInstallRequestCountResult" type="tns:ArrayOfPAPBillingInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPAPDischargeRequestCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fromDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="toDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPAPDischargeRequestCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPAPDischargeRequestCountResult" type="tns:ArrayOfPAPBillingInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPAPExchangeRequestCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fromDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="toDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPAPExchangeRequestCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPAPExchangeRequestCountResult" type="tns:ArrayOfPAPBillingInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SaveFailure117SoapIn">
+    <wsdl:part name="parameters" element="tns:SaveFailure117" />
+  </wsdl:message>
+  <wsdl:message name="SaveFailure117SoapOut">
+    <wsdl:part name="parameters" element="tns:SaveFailure117Response" />
+  </wsdl:message>
+  <wsdl:message name="SaveFailure117KermanshahSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveFailure117Kermanshah" />
+  </wsdl:message>
+  <wsdl:message name="SaveFailure117KermanshahSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveFailure117KermanshahResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFailureRequestStateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFailureRequestState" />
+  </wsdl:message>
+  <wsdl:message name="GetFailureRequestStateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFailureRequestStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckCabinetAccuracySoapIn">
+    <wsdl:part name="parameters" element="tns:CheckCabinetAccuracy" />
+  </wsdl:message>
+  <wsdl:message name="CheckCabinetAccuracySoapOut">
+    <wsdl:part name="parameters" element="tns:CheckCabinetAccuracyResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveFailure117fromHelpDeskSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveFailure117fromHelpDesk" />
+  </wsdl:message>
+  <wsdl:message name="SaveFailure117fromHelpDeskSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveFailure117fromHelpDeskResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMessage" />
+  </wsdl:message>
+  <wsdl:message name="SendMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveADSLChangeServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveADSLChangeService" />
+  </wsdl:message>
+  <wsdl:message name="SaveADSLChangeServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveADSLChangeServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmADSLChangeServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:ConfirmADSLChangeService" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmADSLChangeServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:ConfirmADSLChangeServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveADSLSaleTrafficeSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveADSLSaleTraffice" />
+  </wsdl:message>
+  <wsdl:message name="SaveADSLSaleTrafficeSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveADSLSaleTrafficeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmADSLSaleTrafficSoapIn">
+    <wsdl:part name="parameters" element="tns:ConfirmADSLSaleTraffic" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmADSLSaleTrafficSoapOut">
+    <wsdl:part name="parameters" element="tns:ConfirmADSLSaleTrafficResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveRequestPaymentSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveRequestPayment" />
+  </wsdl:message>
+  <wsdl:message name="SaveRequestPaymentSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveRequestPaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="PaidRequestPaymentSoapIn">
+    <wsdl:part name="parameters" element="tns:PaidRequestPayment" />
+  </wsdl:message>
+  <wsdl:message name="PaidRequestPaymentSoapOut">
+    <wsdl:part name="parameters" element="tns:PaidRequestPaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenerateBillIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GenerateBillID" />
+  </wsdl:message>
+  <wsdl:message name="GenerateBillIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GenerateBillIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeneratePaymentIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GeneratePaymentID" />
+  </wsdl:message>
+  <wsdl:message name="GeneratePaymentIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GeneratePaymentIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetADSLPaymentSoapIn">
+    <wsdl:part name="parameters" element="tns:GetADSLPayment" />
+  </wsdl:message>
+  <wsdl:message name="GetADSLPaymentSoapOut">
+    <wsdl:part name="parameters" element="tns:GetADSLPaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetADSLInstalmentforBillingSoapIn">
+    <wsdl:part name="parameters" element="tns:GetADSLInstalmentforBilling" />
+  </wsdl:message>
+  <wsdl:message name="GetADSLInstalmentforBillingSoapOut">
+    <wsdl:part name="parameters" element="tns:GetADSLInstalmentforBillingResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmADSLInstalmentforBillingSoapIn">
+    <wsdl:part name="parameters" element="tns:ConfirmADSLInstalmentforBilling" />
+  </wsdl:message>
+  <wsdl:message name="ConfirmADSLInstalmentforBillingSoapOut">
+    <wsdl:part name="parameters" element="tns:ConfirmADSLInstalmentforBillingResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetUserInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="changeDepositSoapIn">
+    <wsdl:part name="parameters" element="tns:changeDeposit" />
+  </wsdl:message>
+  <wsdl:message name="changeDepositSoapOut">
+    <wsdl:part name="parameters" element="tns:changeDepositResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserAttrsSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateUserAttrs" />
+  </wsdl:message>
+  <wsdl:message name="UpdateUserAttrsSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateUserAttrsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPAPInstallRequestCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPAPInstallRequestCount" />
+  </wsdl:message>
+  <wsdl:message name="GetPAPInstallRequestCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPAPInstallRequestCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPAPDischargeRequestCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPAPDischargeRequestCount" />
+  </wsdl:message>
+  <wsdl:message name="GetPAPDischargeRequestCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPAPDischargeRequestCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPAPExchangeRequestCountSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPAPExchangeRequestCount" />
+  </wsdl:message>
+  <wsdl:message name="GetPAPExchangeRequestCountSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPAPExchangeRequestCountResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CRMWebServiceSoap">
+    <wsdl:operation name="SaveFailure117">
+      <wsdl:input message="tns:SaveFailure117SoapIn" />
+      <wsdl:output message="tns:SaveFailure117SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveFailure117Kermanshah">
+      <wsdl:input message="tns:SaveFailure117KermanshahSoapIn" />
+      <wsdl:output message="tns:SaveFailure117KermanshahSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFailureRequestState">
+      <wsdl:input message="tns:GetFailureRequestStateSoapIn" />
+      <wsdl:output message="tns:GetFailureRequestStateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckCabinetAccuracy">
+      <wsdl:input message="tns:CheckCabinetAccuracySoapIn" />
+      <wsdl:output message="tns:CheckCabinetAccuracySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveFailure117fromHelpDesk">
+      <wsdl:input message="tns:SaveFailure117fromHelpDeskSoapIn" />
+      <wsdl:output message="tns:SaveFailure117fromHelpDeskSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <wsdl:input message="tns:SendMessageSoapIn" />
+      <wsdl:output message="tns:SendMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveADSLChangeService">
+      <wsdl:input message="tns:SaveADSLChangeServiceSoapIn" />
+      <wsdl:output message="tns:SaveADSLChangeServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmADSLChangeService">
+      <wsdl:input message="tns:ConfirmADSLChangeServiceSoapIn" />
+      <wsdl:output message="tns:ConfirmADSLChangeServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveADSLSaleTraffice">
+      <wsdl:input message="tns:SaveADSLSaleTrafficeSoapIn" />
+      <wsdl:output message="tns:SaveADSLSaleTrafficeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmADSLSaleTraffic">
+      <wsdl:input message="tns:ConfirmADSLSaleTrafficSoapIn" />
+      <wsdl:output message="tns:ConfirmADSLSaleTrafficSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveRequestPayment">
+      <wsdl:input message="tns:SaveRequestPaymentSoapIn" />
+      <wsdl:output message="tns:SaveRequestPaymentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PaidRequestPayment">
+      <wsdl:input message="tns:PaidRequestPaymentSoapIn" />
+      <wsdl:output message="tns:PaidRequestPaymentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateBillID">
+      <wsdl:input message="tns:GenerateBillIDSoapIn" />
+      <wsdl:output message="tns:GenerateBillIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GeneratePaymentID">
+      <wsdl:input message="tns:GeneratePaymentIDSoapIn" />
+      <wsdl:output message="tns:GeneratePaymentIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetADSLPayment">
+      <wsdl:input message="tns:GetADSLPaymentSoapIn" />
+      <wsdl:output message="tns:GetADSLPaymentSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetADSLInstalmentforBilling">
+      <wsdl:input message="tns:GetADSLInstalmentforBillingSoapIn" />
+      <wsdl:output message="tns:GetADSLInstalmentforBillingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmADSLInstalmentforBilling">
+      <wsdl:input message="tns:ConfirmADSLInstalmentforBillingSoapIn" />
+      <wsdl:output message="tns:ConfirmADSLInstalmentforBillingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfo">
+      <wsdl:input message="tns:GetUserInfoSoapIn" />
+      <wsdl:output message="tns:GetUserInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="changeDeposit">
+      <wsdl:input message="tns:changeDepositSoapIn" />
+      <wsdl:output message="tns:changeDepositSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserAttrs">
+      <wsdl:input message="tns:UpdateUserAttrsSoapIn" />
+      <wsdl:output message="tns:UpdateUserAttrsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPAPInstallRequestCount">
+      <wsdl:input message="tns:GetPAPInstallRequestCountSoapIn" />
+      <wsdl:output message="tns:GetPAPInstallRequestCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPAPDischargeRequestCount">
+      <wsdl:input message="tns:GetPAPDischargeRequestCountSoapIn" />
+      <wsdl:output message="tns:GetPAPDischargeRequestCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPAPExchangeRequestCount">
+      <wsdl:input message="tns:GetPAPExchangeRequestCountSoapIn" />
+      <wsdl:output message="tns:GetPAPExchangeRequestCountSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CRMWebServiceSoap" type="tns:CRMWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SaveFailure117">
+      <soap:operation soapAction="http://tempuri.org/SaveFailure117" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveFailure117Kermanshah">
+      <soap:operation soapAction="http://tempuri.org/SaveFailure117Kermanshah" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFailureRequestState">
+      <soap:operation soapAction="http://tempuri.org/GetFailureRequestState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckCabinetAccuracy">
+      <soap:operation soapAction="http://tempuri.org/CheckCabinetAccuracy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveFailure117fromHelpDesk">
+      <soap:operation soapAction="http://tempuri.org/SaveFailure117fromHelpDesk" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <soap:operation soapAction="http://tempuri.org/SendMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveADSLChangeService">
+      <soap:operation soapAction="http://tempuri.org/SaveADSLChangeService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmADSLChangeService">
+      <soap:operation soapAction="http://tempuri.org/ConfirmADSLChangeService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveADSLSaleTraffice">
+      <soap:operation soapAction="http://tempuri.org/SaveADSLSaleTraffice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmADSLSaleTraffic">
+      <soap:operation soapAction="http://tempuri.org/ConfirmADSLSaleTraffic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRequestPayment">
+      <soap:operation soapAction="http://tempuri.org/SaveRequestPayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaidRequestPayment">
+      <soap:operation soapAction="http://tempuri.org/PaidRequestPayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateBillID">
+      <soap:operation soapAction="http://tempuri.org/GenerateBillID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeneratePaymentID">
+      <soap:operation soapAction="http://tempuri.org/GeneratePaymentID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetADSLPayment">
+      <soap:operation soapAction="http://tempuri.org/GetADSLPayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetADSLInstalmentforBilling">
+      <soap:operation soapAction="http://tempuri.org/GetADSLInstalmentforBilling" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmADSLInstalmentforBilling">
+      <soap:operation soapAction="http://tempuri.org/ConfirmADSLInstalmentforBilling" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfo">
+      <soap:operation soapAction="http://tempuri.org/GetUserInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="changeDeposit">
+      <soap:operation soapAction="http://tempuri.org/changeDeposit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserAttrs">
+      <soap:operation soapAction="http://tempuri.org/UpdateUserAttrs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPAPInstallRequestCount">
+      <soap:operation soapAction="http://tempuri.org/GetPAPInstallRequestCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPAPDischargeRequestCount">
+      <soap:operation soapAction="http://tempuri.org/GetPAPDischargeRequestCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPAPExchangeRequestCount">
+      <soap:operation soapAction="http://tempuri.org/GetPAPExchangeRequestCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CRMWebServiceSoap12" type="tns:CRMWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SaveFailure117">
+      <soap12:operation soapAction="http://tempuri.org/SaveFailure117" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveFailure117Kermanshah">
+      <soap12:operation soapAction="http://tempuri.org/SaveFailure117Kermanshah" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFailureRequestState">
+      <soap12:operation soapAction="http://tempuri.org/GetFailureRequestState" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckCabinetAccuracy">
+      <soap12:operation soapAction="http://tempuri.org/CheckCabinetAccuracy" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveFailure117fromHelpDesk">
+      <soap12:operation soapAction="http://tempuri.org/SaveFailure117fromHelpDesk" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMessage">
+      <soap12:operation soapAction="http://tempuri.org/SendMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveADSLChangeService">
+      <soap12:operation soapAction="http://tempuri.org/SaveADSLChangeService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmADSLChangeService">
+      <soap12:operation soapAction="http://tempuri.org/ConfirmADSLChangeService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveADSLSaleTraffice">
+      <soap12:operation soapAction="http://tempuri.org/SaveADSLSaleTraffice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmADSLSaleTraffic">
+      <soap12:operation soapAction="http://tempuri.org/ConfirmADSLSaleTraffic" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRequestPayment">
+      <soap12:operation soapAction="http://tempuri.org/SaveRequestPayment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaidRequestPayment">
+      <soap12:operation soapAction="http://tempuri.org/PaidRequestPayment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateBillID">
+      <soap12:operation soapAction="http://tempuri.org/GenerateBillID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeneratePaymentID">
+      <soap12:operation soapAction="http://tempuri.org/GeneratePaymentID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetADSLPayment">
+      <soap12:operation soapAction="http://tempuri.org/GetADSLPayment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetADSLInstalmentforBilling">
+      <soap12:operation soapAction="http://tempuri.org/GetADSLInstalmentforBilling" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmADSLInstalmentforBilling">
+      <soap12:operation soapAction="http://tempuri.org/ConfirmADSLInstalmentforBilling" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserInfo">
+      <soap12:operation soapAction="http://tempuri.org/GetUserInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="changeDeposit">
+      <soap12:operation soapAction="http://tempuri.org/changeDeposit" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateUserAttrs">
+      <soap12:operation soapAction="http://tempuri.org/UpdateUserAttrs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPAPInstallRequestCount">
+      <soap12:operation soapAction="http://tempuri.org/GetPAPInstallRequestCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPAPDischargeRequestCount">
+      <soap12:operation soapAction="http://tempuri.org/GetPAPDischargeRequestCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPAPExchangeRequestCount">
+      <soap12:operation soapAction="http://tempuri.org/GetPAPExchangeRequestCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CRMWebService">
+    <wsdl:port name="CRMWebServiceSoap" binding="tns:CRMWebServiceSoap">
+      <soap:address location="http://78.39.252.109:82/CRMWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CRMWebServiceSoap12" binding="tns:CRMWebServiceSoap12">
+      <soap12:address location="http://78.39.252.109:82/CRMWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

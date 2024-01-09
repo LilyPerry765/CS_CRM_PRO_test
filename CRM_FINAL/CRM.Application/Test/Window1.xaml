@@ -1,0 +1,27 @@
+﻿<Window x:Class="CRM.Views.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Window1" Height="300" Width="300">
+   
+        <ContentControl>
+            <ContentControl.Template>
+                <ControlTemplate>
+                    <StackPanel>
+                        <Grid x:Name="myGrid" Background="Beige" Height="100">
+                            <TextBlock Text="Content Placeholder" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+                        </Grid>
+                        <ToggleButton x:Name="toggleButton" Content="Show\Hide Panel" IsChecked="True"/>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger SourceName="toggleButton" Property="IsChecked" Value="True">
+                            <Setter TargetName="myGrid" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                        <Trigger SourceName="toggleButton" Property="IsChecked" Value="False">
+                            <Setter TargetName="myGrid" Property="Visibility" Value="Hidden" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </ContentControl.Template>
+        </ContentControl>
+    </Window>
+

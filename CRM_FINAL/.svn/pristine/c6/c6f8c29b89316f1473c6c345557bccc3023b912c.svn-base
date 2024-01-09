@@ -1,0 +1,11 @@
+﻿--13931101 - 16:30
+--گزارش جزئی در گروه پست های مرکز بر روی سرور کرمانشاه اصلاح شد حالا باید بر روی سرور 14 هم به روزرسانی شود
+--دو ستون نوع اتصالی و ای دی اس ال اضا فه شد
+--UPDATE R14
+--SET Template = RR.Template
+--FROM 
+--	ReportTemplate R14
+--INNER JOIN 
+--	[78.39.252.109].CRM.dbo.ReportTemplate RR ON R14.ID = RR.ID
+--WHERE 
+--	R14.ID = 74 AND RR.ID = 74

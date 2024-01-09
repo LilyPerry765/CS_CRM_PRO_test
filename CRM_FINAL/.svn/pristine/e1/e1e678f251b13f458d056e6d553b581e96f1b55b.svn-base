@@ -1,0 +1,67 @@
+﻿<Local:ReportBase x:Class="CRM.Application.Reports.ReportUserControls.ADSLCustomerInfoReportUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+             xmlns:Local="clr-namespace:CRM.Application.Local"
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+             mc:Ignorable="d">
+    <StackPanel FlowDirection="RightToLeft">
+        <GroupBox BorderBrush="AliceBlue" Header="انتخاب شهر و مرکز">
+            <UserControls:CityCenterUserControl Orientation="Horizontal"  x:Name="CityCenterComboBox"/>
+        </GroupBox>
+        <GroupBox BorderBrush="AliceBlue" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Content="شماره تلفن : " Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="0" Grid.Column="2" x:Name="TelephoneNoTextBox" VerticalAlignment="Center" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                <Label Content=" نام مشترک: " Grid.Row="0" Grid.Column="4" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="0" Grid.Column="6" Name="CustomerNameTextBox" VerticalAlignment="Center"/>
+
+                <Label Content="نام کاربری : " Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
+                <TextBox Grid.Row="2" Grid.Column="2" Name="UserNameTextBox"/>
+
+                <Label Content="وضعیت:" Grid.Row="2" Grid.Column="4"/>
+                <UserControls:CheckableComboBox Grid.Row="2" Grid.Column="6" x:Name="StatusComboBox"/>
+
+                <Label Content=" نوع سرویس:" Grid.Row="4" Grid.Column="0"/>
+                <UserControls:CheckableComboBox Grid.Row="4" Grid.Column="2" x:Name="ServiceComboBox"/>
+                
+                <Label Content="نوع پرداخت:" Grid.Row="6" Grid.Column="0"/>
+                <UserControls:CheckableComboBox Grid.Row="6" Grid.Column="2" x:Name="ADSLPaymentTypeComboBox"/>
+
+                <Label Content="نام گروه: "  Grid.Column="4" Grid.Row="4" />
+                <UserControls:CheckableComboBox Grid.Row="4" Grid.Column="6"  x:Name="GroupNameComboBox"  />
+
+                <Label Content="نام نمایندگی فروش: " Grid.Row="6" Grid.Column="4"/>
+                <UserControls:CheckableComboBox Grid.Column="6"  Grid.Row="6"  x:Name="SellerAgentComboBox" TabIndex="1" />
+                
+                <Label Content="توضیحات گزارش:" Grid.Row="8"/>
+                <TextBox Name="ReportExplaianationTextBox" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="6"/>
+
+            </Grid>
+        </GroupBox>
+    </StackPanel>
+</Local:ReportBase>

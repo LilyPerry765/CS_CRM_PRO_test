@@ -1,0 +1,39 @@
+﻿<Local:ReportBase x:Class="CRM.Application.Reports.ReportUserControls.PAPDischargeRequestsReportUserControl"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:Local="clr-namespace:CRM.Application.Local"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+             xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+             mc:Ignorable="d">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions >
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5"/>
+        </Grid.RowDefinitions>
+        <Label Content="شرکت های PAP:"/>
+        <ComboBox Grid.Row="0" Grid.Column="2" x:Name="PAPComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" />
+
+        <Label Content="وضعیت :" Grid.Row="0" Grid.Column="4"/>
+        <UserControls:CheckableComboBox Grid.Row="0" Grid.Column="6" x:Name="StatusComboBox"/>
+
+        <Label Content="از تاریخ :" Grid.Column="0" Grid.Row="2"/>
+        <cal:DatePicker Name="FromDate" Grid.Column="2" Grid.Row="2"/>
+
+        <Label Content="تا تاریخ :" Grid.Row="2" Grid.Column="4"/>
+        <cal:DatePicker Name="ToDate" Grid.Column="6" Grid.Row="2"/>
+
+    </Grid>
+    </Local:ReportBase>

@@ -1,0 +1,176 @@
+﻿<Local:PopupWindow Title="کابل"
+                   x:Class="CRM.Application.Views.CableForm"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib"
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls"
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   Loaded="PopupWindow_Loaded">
+    <ScrollViewer>
+        <Grid FlowDirection="RightToLeft">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="Auto" />
+
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="0" Grid.Row="0" Content="شهر : " />
+            <ComboBox  Grid.Column="1" Grid.Row="0" x:Name="CityComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="CityComboBox_SelectionChanged" />
+
+            <Label Grid.Column="2" Grid.Row="0" Content="مرکز" />
+            <ComboBox  Grid.Column="3" Grid.Row="0" x:Name="CenterComboBox" DisplayMemberPath="CenterName" SelectedValuePath="ID" SelectedValue="{Binding CenterID}"  SelectionChanged="CenterComboBox_SelectionChanged_1"/>
+
+            <Label Grid.Column="0" Grid.Row="1" Content="شماره کابل" />
+            <TextBox Grid.Column="1" Grid.Row="1" x:Name="CableNumber" Text="{Binding CableNumber}" />
+
+            <Label Grid.Column="2" Grid.Row="1" Content="نوع کابل" />
+            <ComboBox  Grid.Column="3" Grid.Row="1" x:Name="CableTypeComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding CableTypeID}" />
+
+            <Label Grid.Column="0" Grid.Row="2" Content="نوع کانال" />
+            <ComboBox  Grid.Column="1" Grid.Row="2" x:Name="CableUsedChannelComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding CableUsedChannelID}" />
+
+            <Label      Grid.Column="2"   Grid.Row="2"   Content="نوع فیزیکی"/>
+            <ComboBox   Grid.Column="3"   Grid.Row="2"   x:Name="PhysicalTypeComboBox" SelectedValue="{Binding PhysicalType}" DisplayMemberPath="Name" SelectedValuePath="ID"/>
+
+            <Label Grid.Column="0" Grid.Row="3" Content="قطر کابل" />
+            <TextBox Grid.Column="1" Grid.Row="3" x:Name="CableDiameter" Text="{Binding CableDiameter}" />
+
+            <Label     Grid.Column="2" Grid.Row="3"    Content="وضعیت"/>
+            <ComboBox  Grid.Column="3" Grid.Row="3"    x:Name="StatusComboBox" SelectedValue="{Binding Status}" DisplayMemberPath="Name" SelectedValuePath="ID"/>
+
+            <!--<Label    x:Name="FromCablePairLable"   Grid.Column="0" Grid.Row="4"   Content=" از زوج سیم"/>
+        <TextBox      Name="FromCablePairTextBox"   Grid.Column="1" Grid.Row="4" Text="{Binding FromCablePairNumber}"/>-->
+
+            <Label    x:Name="ToCablePairLable"   Grid.Column="0" Grid.Row="4"   Content="تعداد زوج سیم" />
+            <TextBox  x:Name="ToCablePairTextBox" Grid.Column="1" Grid.Row="4"  Text="{Binding ToCablePairNumber}" />
+
+            <!--<Button Grid.Row="12" Grid.Column="1" Content="انتساب به بوخت" Name="BuchtAssignSaveButton" Click="BuchtAssignSaveButtonClick"/>-->
+            <GroupBox Grid.Row="5"  Grid.ColumnSpan="4" Header="اتصال به بوخت">
+                <DataGrid  x:Name="ItemsDataGrid"
+                           BorderThickness="0 1 0 0"
+                           AutoGenerateColumns="False"
+                           CanUserAddRows="True"
+                           CanUserResizeColumns="True"
+                           CanUserResizeRows="False"
+                           CanUserDeleteRows="True"
+                           SelectionMode="Single"
+                           ItemsSource="{Binding}"
+                           LoadingRow="ItemsDataGrid_LoadingRow_1"
+                           BeginningEdit="ItemsDataGrid_BeginningEdit_1"
+                           RowEditEnding="ItemsDataGrid_RowEditEnding_1"
+                           SelectionUnit="FullRow">
+                    <DataGrid.ContextMenu>
+                        <ContextMenu FontFamily="Tahoma">
+                            <MenuItem Header="انتساب به بوخت" Click="AssignBucht">
+                                <MenuItem.Icon>
+                                    <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="آزاد سازی از بوخت" Click="LeaveFromBucht">
+                                <MenuItem.Icon>
+                                    <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="/CRM.Application;component/Images/element_16x16.png" Width="16" Height="16" HorizontalAlignment="Center"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridComboBoxColumn  Width="*" Header="از زوج" x:Name="FromCablePairNumberComboBox"  SelectedValueBinding="{Binding Path=FromCablePairNumber, UpdateSourceTrigger=PropertyChanged}"  DisplayMemberPath="Name" SelectedValuePath="Name"/>
+                        <DataGridComboBoxColumn  Width="*" Header="تا زوج" x:Name="ToCablePairNumberComboBox"    SelectedValueBinding="{Binding Path=ToCablePairNumber, UpdateSourceTrigger=PropertyChanged}"   DisplayMemberPath="Name" SelectedValuePath="Name"/>
+                        <DataGridTemplateColumn Width="*" Header="MDF">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock x:Name="MDFTextBox"   Text="{Binding Path=MDF, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <ComboBox x:Name="MDFComboBox"  ItemsSource="{Binding _MDFLists, RelativeSource={RelativeSource AncestorType=Window}}"  SelectedValue="{Binding Path=MDFID, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="MDFComboBox_SelectionChanged_1"  Loaded="MDFComboBox_Loaded_1"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="*" Header="ردیف">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock x:Name="ColumnTextBox" Text="{Binding Path=VerticalCloumnNo}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <ComboBox x:Name="ColumnComboBox"  ItemsSource="{Binding _columns, RelativeSource={RelativeSource AncestorType=Window}}" 
+                                              SelectedValue="{Binding Path=VerticalCloumnID, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" 
+                                              SelectedValuePath="ID" SelectionChanged="ColumnComboBox_SelectionChanged_1" Loaded="ColumnComboBox_Loaded_1"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Width="*" Header="طبقه" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock x:Name="RowTextBlock" Text="{Binding Path=VerticalRowNo}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <ComboBox x:Name="RowComboBox"  ItemsSource="{Binding _rows, RelativeSource={RelativeSource AncestorType=Window}}"  
+                                              SelectedValue="{Binding Path=VerticalRowID, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" 
+                                              SelectedValuePath="ID" SelectionChanged="RowComboBox_SelectionChanged_1" Loaded="RowComboBox_Loaded_1"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
+                        </DataGridTemplateColumn>
+                        <!--<DataGridComboBoxColumn Width="*" Header="MDF"          x:Name="MDFComboBox"        SelectedValueBinding="{Binding Path=MDF, UpdateSourceTrigger=PropertyChanged}"     DisplayMemberPath="Name" SelectedValuePath="Name"/>-->
+                        <!--<DataGridComboBoxColumn Width="*" Header="ردیف"        x:Name="ColumnColumn"     SelectedValueBinding="{Binding Path=VerticalCloumnNo, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" SelectedValuePath="Name"/>
+                    <DataGridComboBoxColumn Width="*" Header="طبقه"        x:Name="RowColumn"        SelectedValueBinding="{Binding Path=VerticalRowNo, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" SelectedValuePath="Name"/>-->
+                        <DataGridTemplateColumn Width="*" Header="از اتصالی" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock x:Name="FromConnectionTextBox" Text="{Binding Path=FromBuchtNo}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <ComboBox x:Name="FromConnectionComboBox"  ItemsSource="{Binding _buchtNos, RelativeSource={RelativeSource AncestorType=Window}}"  SelectedValue="{Binding Path=FromBuchtNo, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" SelectedValuePath="Name" SelectionChanged="FromConnectionComboBox_SelectionChanged_1"  Loaded="FromConnectionComboBox_Loaded_1"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Width="*" Header="تا اتصالی" >
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock x:Name="ToConnectionTextBox" Text="{Binding Path=ToBuchtNo}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <ComboBox x:Name="ToConnectionComboBox"  ItemsSource="{Binding _buchtNos, RelativeSource={RelativeSource AncestorType=Window}}"  SelectedValue="{Binding Path=ToBuchtNo, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" SelectedValuePath="Name" SelectionChanged="ToConnectionComboBox_SelectionChanged_1"  Loaded="ToConnectionComboBox_Loaded_1"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+
+            <Button Grid.Row="20" Grid.Column="0" Content="ذخیره" Name="SaveButton" Click="SaveForm" Tag="Footer" IsDefault="True" />
+
+        </Grid>
+    </ScrollViewer>
+</Local:PopupWindow>

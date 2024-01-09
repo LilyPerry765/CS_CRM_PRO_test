@@ -1,0 +1,64 @@
+﻿<Local:UserControlBase
+          xmlns:Local="clr-namespace:CRM.Application.Local"
+           x:Class="CRM.Application.UserControls.CabinetAndPost"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+             mc:Ignorable="d" Loaded="UserControl_Loaded" d:DesignWidth="820">
+
+        <Grid FlowDirection="RightToLeft">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+            <Label Content="کافو:" Grid.Row="0" Grid.Column="0" />
+        <ComboBox Grid.Row="0" Grid.Column="1" x:Name="CabinetComboBox" SelectedValuePath="ID" SelectionChanged="CabinetComboBox_SelectionChanged" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel >
+                        <TextBlock Text="{Binding Description}" Width="100" TextAlignment="Right" DockPanel.Dock="Right"/>
+                        <TextBlock Text="{Binding Name}"        Width="100" TextAlignment="Left" DockPanel.Dock="Left"/>
+                        <TextBlock/>
+                    </DockPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <Label Content="پست:" Grid.Row="0" Grid.Column="3" />
+        <ComboBox Grid.Row="0" Grid.Column="4" x:Name="PostComboBox" SelectedValuePath="ID" SelectionChanged="PostComboBox_SelectionChanged" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <TextBlock Text="{Binding Description}" Width="100" TextAlignment="Right" DockPanel.Dock="Right"/>
+                        <TextBlock Text="{Binding Name}"        Width="100" TextAlignment="Left" DockPanel.Dock="Left"/>
+                        <TextBlock/>
+                    </DockPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+            
+            
+
+        <Button Content="مشاهده پست" HorizontalAlignment="Right" x:Name="ViewPost" Click="ViewPost_Click" Grid.Column="7" Margin="0,0,10,0"/>
+
+        <Label Content="باقیمانده سهمیه رزرو:"  x:Name="RemainedQuotaReservationLabel"    Grid.Row="1" Grid.Column="0" FontSize="10" Visibility="Collapsed"/>
+        <TextBox    Grid.Row="1" Grid.Column="1"   x:Name="RemainedQuotaReservationTextBox"   Visibility="Collapsed"/>
+
+        <Label Content="پست های مجاور:"          x:Name="AdjacentPostLabel"   Grid.Row="1" Grid.Column="3" FontSize="10" Visibility="Collapsed"/>
+        <TextBox    Grid.Row="1" Grid.Column="4"   x:Name="AdjacentPostTextBox" Visibility="Collapsed"/>
+
+    </Grid>
+
+</Local:UserControlBase>

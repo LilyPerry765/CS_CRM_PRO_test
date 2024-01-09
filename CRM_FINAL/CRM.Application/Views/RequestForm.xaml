@@ -1,0 +1,543 @@
+﻿<Local:RequestFormBase 
+                    xmlns:Local="clr-namespace:CRM.Application.Local" 
+                   x:Class="CRM.Application.Views.RequestForm" 
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                   xmlns:converter="clr-namespace:CRM.Converters" 
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+                   xmlns:CustomControls="clr-namespace:CRM.Application.Codes.CustomControls"
+                   WindowStartupLocation="CenterScreen" 
+                   Loaded="Window_Loaded">
+
+    <ScrollViewer Padding="0 0 10 0" FlowDirection="RightToLeft" x:Name="MainScrollViewer" >
+        <Grid x:Name="ContainerGrid">
+            <Grid.RowDefinitions >
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <Expander Header="مشخصات تلفن" Grid.Row="0" IsExpanded="True" Name="TelephoneInfo" />
+
+            <uc:CustomerInfoSummary Grid.Row="0" x:Name="CustomerInfoUC" Visibility="Collapsed" />
+
+
+            <Expander Header="مشخصات درخواست" Grid.Row="1" IsExpanded="True" Name="RequestInfo">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Grid.Row="0" Content="شهر : " />
+                    <ComboBox  Grid.Column="1" Grid.Row="0" x:Name="CityComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="CityComboBox_SelectionChanged" />
+
+                    <Label Grid.Row="0" Grid.Column="2" Content="نام مرکز : "  />
+                    <ComboBox Grid.Row="0" Grid.Column="3" x:Name="CenterComboBox" SelectedValue="{Binding Path=CenterID, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" DisplayMemberPath="CenterName" SelectionChanged="CenterComboBox_SelectionChanged_1"/>
+
+                    <!--<Label Grid.Row="1" Grid.Column="0" Name="PaymentLabel" Content="پرداخت هزینه از طریق : " />
+                    <ListBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" x:Name="RequestPaymentTypeListBox" SelectedValue="{Binding Path=RequestPaymentTypeID}" SelectedValuePath="Tag" >
+                        <ListBoxItem Tag="0">بدون هزینه</ListBoxItem>
+                        <ListBoxItem Tag="1">نقدی</ListBoxItem>
+                        <ListBoxItem Tag="2">اقساط</ListBoxItem>
+                        <ListBoxItem Tag="3">اعمال روی فیش آبونمان</ListBoxItem>
+                    </ListBox>-->
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="نام درخواست کننده : " />
+                    <TextBox Grid.Row="2" Grid.Column="1" Name="RequesterNametextBox" IsEnabled="True" Text="{Binding RequesterName}" />
+
+                    <Label Grid.Row="2" Grid.Column="2" Content="تاریخ درخواست : " />
+                    <cal:DatePicker Grid.Row="2" Grid.Column="3" Name="ReqDate" SelectedDate="{Binding RequestDate}" />
+
+                    <Label Grid.Row="3" Grid.Column="0" Content="شماره نامه درخواست : " />
+                    <TextBox Grid.Row="3" Grid.Column="1" Name="RequestLetterNotextBox" Text="{Binding RequestLetterNo}" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                    <Label Grid.Row="3" Grid.Column="2" Content="تاریخ  نامه درخواست : " />
+                    <cal:DatePicker Grid.Row="3" Grid.Column="3" Name="ReqLetterDate" SelectedDate="{Binding RequestLetterDate}" />
+
+                    <Label Grid.Row="4" Grid.Column="0" Content="شناسه درخواست : " />
+                    <TextBox Grid.Row="4" Grid.Column="1" Name="RequestIDTextBox" Text="{Binding ID}" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                    <!--<Label Grid.Row="4" Grid.Column="0" Content="تاریخ انقضا نمایندگی : " />
+                    <cal:DatePicker Grid.Row="4" Grid.Column="1" Name="ReqRepresentitiveExpireDate" SelectedDate="{Binding RepresentitiveExpireDate}" />
+
+                    <Label Grid.Row="4" Grid.Column="2" Content="شماره نامه نمایندگی : " />
+                    <TextBox Grid.Row="4" Grid.Column="3" Name="RepresentitiveNoTextBox" Text="{Binding RepresentitiveNo}" />
+
+                    <Label Grid.Row="4" Grid.Column="4" Content="تاریخ نامه نمایندگی : " />
+                    <cal:DatePicker Grid.Row="4" Grid.Column="5" Name="ReqRepresentitiveDate" SelectedDate="{Binding RepresentitiveDate }" />-->
+
+                </Grid>
+
+            </Expander>
+
+            <Expander Header="بررسی امکانات"  Grid.Row="2" x:Name="InvestigateInfoExpander" Visibility="Collapsed"/>
+
+            <Expander Header="جزئیات درخواست" Grid.Row="3" IsExpanded="True" Name="RequestDetail" />
+
+            <Expander Name="Documents" Header="اسناد مرتبط با درخواست" IsExpanded="True" Grid.Row="4" Height="250" Margin="0,0,0,5" >
+                <TabControl>
+                    <TabItem Header="دریافت /پرداخت ها " Name="RequestPaymentTabItem">
+                        <DataGrid Name="RequestPaymentDataGrid" Visibility="Collapsed" SelectionMode="Extended" ItemsSource="{Binding}" Background="Transparent" BorderThickness="0 1 0 0" BorderBrush="#ccd9ea" HeadersVisibility="Column" AutoGenerateColumns="False" AlternatingRowBackground="#EAF6FD" CanUserAddRows="False" CanUserResizeColumns="true" CanUserResizeRows="False" CanUserDeleteRows="False"  GridLinesVisibility="None" AlternationCount="2" SelectionUnit="FullRow" IsReadOnly="True">
+                            <DataGrid.ContextMenu>
+                                <ContextMenu Name="RequestPaymentContextMenu">
+                                    <MenuItem Header="صدور فاکتور" Click="PrintFactor">
+                                        <MenuItem.Icon>
+                                            <Image Source="/CRM.Application;component/Images/Print.png" Width="16" Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem Header="پرداخت فاکتور" Click="PaidFactor">
+                                        <MenuItem.Icon>
+                                            <Image Source="/CRM.Application;component/Images/Payment_16x16.png" Width="16" Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <!--<MenuItem Header="پرداخت" Click="RequestPaymentEdit">
+                                        <MenuItem.Icon>
+                                            <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>-->
+                                    <MenuItem x:Name="OtherCostMenuItem" Header="هزینه متفرقه" Click="RequestPaymentInsert">
+                                        <MenuItem.Icon>
+                                            <Image Source="/CRM.Application;component/Images/row_add_before.png" Width="16" Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+
+                                    <MenuItem x:Name="InstallmentsMenuItem"  Header="اقساط" Click="InstallmentRequestPayment">
+                                        <MenuItem.Icon>
+                                            <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem x:Name="ConvertCashPaymentToInstallmentMenuItem" Header="تبدیل نقدی / اقساط" Click="ChangeCashInstalment" >
+                                        <MenuItem.Icon>
+                                            <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem x:Name="KickbackMenuItem" Header="بازپرداخت" Click="requestPaymentKickBack">
+                                        <MenuItem.Icon>
+                                            <Image Source="/CRM.Application;component/Images/delete2_16x16.png" Width="16" Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem x:Name="DeleteRequestPaymentMenuItem" Header="حذف پرداخت" Click="requestPaymentDelete">
+                                        <MenuItem.Icon>
+                                            <Image Source="/CRM.Application;component/Images/delete2_16x16.png" Width="16" Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem x:Name="RelatedRequestMenuItem" Header="حذف" Click="RelatedRequestItemDelete">
+                                        <MenuItem.Icon>
+                                            <Image Source="/CRM.Application;component/Images/delete2_16x16.png" Width="16" Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem x:Name="InstallmentRegistrationMenuItem" Header="ثبت اقساط هزینه اتصال تلفن" Click="InstallmentRegistrationMenuItem_Click" Visibility="Collapsed">
+                                        <MenuItem.Icon>
+                                            <Image Source="pack://application:,,,/CRM.Application;component/Images/VusuliFixTelIcon.png" Height="16" Width="16"/>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </DataGrid.ContextMenu>
+
+                            <DataGrid.Columns>
+                                <DataGridComboBoxColumn Header="عنوان " x:Name="CostTitleColumn" SelectedValueBinding="{Binding Path=BaseCostID, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" DisplayMemberPath="Name"  Width="2*"/>
+                                <DataGridComboBoxColumn Header="هزینه متفرقه " x:Name="OtherCostTitleColumn"  SelectedValueBinding="{Binding Path=OtherCostID, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" DisplayMemberPath="Name"  Width="*"/>
+                                <DataGridComboBoxColumn Header="نحوه پرداخت" SelectedValueBinding="{Binding Path=PaymentType, UpdateSourceTrigger=PropertyChanged}"  x:Name="PaymentTypeColumn" DisplayMemberPath="Name" SelectedValuePath="ID" Width="*"/>
+                                <DataGridTextColumn Header=" مبلغ "  Binding="{Binding Path=AmountSum, UpdateSourceTrigger=PropertyChanged}" Width="2*"/>
+                                <!--<DataGridTextColumn Header=" شناسه قبض "  Binding="{Binding Path=BillID, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                                <DataGridTextColumn Header=" شناسه پرداخت " Binding="{Binding Path=PaymentID, UpdateSourceTrigger=PropertyChanged}" Width="*"/>-->
+                                <DataGridTextColumn Header=" شماره فیش "  Binding="{Binding Path=FicheNunmber, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                                <DataGridCheckBoxColumn Header="پرداخت" Binding="{Binding Path=IsPaid}" Width="*">
+                                    <DataGridCheckBoxColumn.ElementStyle>
+                                        <Style TargetType="CheckBox">
+                                            <Setter Property="HorizontalAlignment" Value="Left"/>
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                        </Style>
+                                    </DataGridCheckBoxColumn.ElementStyle>
+                                </DataGridCheckBoxColumn>
+                                <DataGridCheckBoxColumn Header="بازپرداخت" Binding="{Binding Path=IsKickedBack}" Width="*">
+                                    <DataGridCheckBoxColumn.ElementStyle>
+                                        <Style TargetType="CheckBox">
+                                            <Setter Property="HorizontalAlignment" Value="Left"/>
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                        </Style>
+                                    </DataGridCheckBoxColumn.ElementStyle>
+                                </DataGridCheckBoxColumn>
+                                <DataGridTextColumn Header=" شماره فاکتور"  x:Name="FactorNumberColumn" Binding="{Binding Path=FactorNumber, UpdateSourceTrigger=PropertyChanged}" Width="*" Visibility="Collapsed"/>
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+                    </TabItem>
+
+                    <TabItem Header="ودیعه" Visibility="Collapsed" Name="DepositTabItem">
+                        <DataGrid Name="DepositDataGrid" Visibility="Collapsed" SelectionMode="Extended" ItemsSource="{Binding}" Background="Transparent" BorderThickness="0 1 0 0" BorderBrush="#ccd9ea" HeadersVisibility="Column" AutoGenerateColumns="False" AlternatingRowBackground="#EAF6FD" CanUserAddRows="False" CanUserResizeColumns="true" CanUserResizeRows="False" CanUserDeleteRows="False"  GridLinesVisibility="None" AlternationCount="2" SelectionUnit="FullRow" IsReadOnly="True">
+                            <DataGrid.ContextMenu>
+                                <ContextMenu Name="DepositContextMenu">
+                                    <MenuItem Header="باز پرداخت" Click="DepositPaymentKickBack">
+                                        <MenuItem.Icon>
+                                            <Image Source="/CRM.Application;component/Images/delete2_16x16.png" Width="16" Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </DataGrid.ContextMenu>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn     Header=" مبلغ "       x:Name="DepositAmountSumColumn"    Binding="{Binding Path=AmountSum, UpdateSourceTrigger=PropertyChanged}" Width="2*"/>
+                                <DataGridTextColumn Header="تاریخ پرداخت" Binding="{Binding PaymentDate , Converter={StaticResource PersianDateConverter}}" IsReadOnly="True" Width="*" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                    </TabItem>
+
+                    <TabItem Header="مدارک" Name="RequestDoc">
+                        <DataGrid Visibility="Collapsed" Name="RequestDocGrid" ItemsSource="{Binding}" Background="Transparent" BorderThickness="0 1 0 0" BorderBrush="#ccd9ea" HeadersVisibility="Column" AutoGenerateColumns="False" AlternatingRowBackground="#EAF6FD" CanUserAddRows="False" CanUserResizeColumns="true" CanUserResizeRows="False" CanUserDeleteRows="False" SelectionMode="Single" GridLinesVisibility="None" AlternationCount="2" SelectionUnit="FullRow">
+                            <DataGrid.ContextMenu>
+                                <ContextMenu FontFamily="Tahoma">
+                                    <MenuItem Header="افزودن" Click="DocsItemInsert">
+                                        <MenuItem.Icon>
+                                            <Image  Source="/CRM.Application;component/Images/row_add_before.png"
+                                               Width="16"
+                                               Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem Header="ویرایش" Click="DocsItemEdit">
+                                        <MenuItem.Icon>
+                                            <Image  Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem Header="حذف" Click="DocsItemDelete">
+                                        <MenuItem.Icon>
+                                            <Image Source="/CRM.Application;component/Images/delete2_16x16.png" Width="16" Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </DataGrid.ContextMenu>
+
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="عنوان مدرک" Binding="{Binding DocumentName}" IsReadOnly="True" Width="2*" />
+                                <DataGridCheckBoxColumn x:Name="DocumentStatusCheckBox"  Header="وضعیت درج برای  درخواست جاری"  IsReadOnly="True" Width="*">
+                                    <DataGridCheckBoxColumn.Binding >
+                                        <MultiBinding   Converter="{StaticResource InsertedStatusConverter}">
+                                            <Binding Path="refDocs"  RelativeSource="{RelativeSource AncestorType=Window, Mode=FindAncestor}"/>
+                                            <Binding  Path="_Request.ID" RelativeSource="{RelativeSource AncestorType=Window, Mode=FindAncestor}" />
+                                            <Binding Path="DocumentTypeID" />
+                                        </MultiBinding>
+                                    </DataGridCheckBoxColumn.Binding>
+                                </DataGridCheckBoxColumn>
+                                <DataGridCheckBoxColumn x:Name="IsForcibleCheckBoxColumn"  Header="اجباری" Binding="{Binding IsForcible}" IsReadOnly="True"/>
+                                <DataGridTemplateColumn Header="مشاهده"  IsReadOnly="True" >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image Source="/CRM.Application;component/Images/DocumentPicture16x16.png" MouseUp="Image_MouseUp" Cursor="Hand"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <!--<DataGridTextColumn Header="تاریخ درج" Width="80"  Binding="{Binding Path=InsertDate, Converter={StaticResource PersianDateConverter}}" />-->
+
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+
+                    </TabItem>
+
+                    <TabItem Header="مجوز" Name="RequestPermission">
+                        <DataGrid Visibility="Collapsed" Name="RequestPermissionGrid" ItemsSource="{Binding}" Background="Transparent" BorderThickness="0 1 0 0" BorderBrush="#ccd9ea" HeadersVisibility="Column" AutoGenerateColumns="False" AlternatingRowBackground="#EAF6FD" CanUserAddRows="False" CanUserResizeColumns="true" CanUserResizeRows="False" CanUserDeleteRows="False" SelectionMode="Single" GridLinesVisibility="None" AlternationCount="2" SelectionUnit="FullRow">
+                            <DataGrid.ContextMenu>
+                                <ContextMenu FontFamily="Tahoma">
+                                    <MenuItem Header="افزودن" Click="PermissionItemInsert">
+                                        <MenuItem.Icon>
+                                            <Image  Source="/CRM.Application;component/Images/row_add_before.png"
+                                               Width="16"
+                                               Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem Header="ویرایش" Click="PermissionItemEdit">
+                                        <MenuItem.Icon>
+                                            <Image  Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem Header="حذف" Click="PermissionItemDelete">
+                                        <MenuItem.Icon>
+                                            <Image Source="/CRM.Application;component/Images/delete2_16x16.png" Width="16" Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </DataGrid.ContextMenu>
+
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="عنوان مجوز" Binding="{Binding DocumentName}" IsReadOnly="True" Width="2*" />
+                                <DataGridCheckBoxColumn Header="وضعیت درج برای  درخواست جاری"  IsReadOnly="True" Width="*">
+                                    <DataGridCheckBoxColumn.Binding >
+                                        <MultiBinding   Converter="{StaticResource InsertedStatusConverter}">
+                                            <Binding Path="refDocs"  RelativeSource="{RelativeSource AncestorType=Window, Mode=FindAncestor}"/>
+                                            <Binding  Path="_Request.ID" RelativeSource="{RelativeSource AncestorType=Window, Mode=FindAncestor}" />
+                                            <Binding Path="DocumentTypeID" />
+                                        </MultiBinding>
+                                    </DataGridCheckBoxColumn.Binding>
+                                </DataGridCheckBoxColumn>
+                                <DataGridCheckBoxColumn  Header="اجباری" Binding="{Binding IsForcible}" IsReadOnly="True"/>
+
+                                <DataGridTextColumn Header="تاریخ درج" Width="80"  Binding="{Binding Path=InsertDate, Converter={StaticResource PersianDateConverter}}" />
+
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+
+                    </TabItem>
+
+                    <TabItem Header="قرارداد" Name="RequestContract">
+
+                        <DataGrid Visibility="Collapsed" Name="RequestContractGrid" ItemsSource="{Binding}" Background="Transparent" BorderThickness="0 1 0 0" BorderBrush="#ccd9ea" HeadersVisibility="Column" AutoGenerateColumns="False" AlternatingRowBackground="#EAF6FD" CanUserAddRows="False" CanUserResizeColumns="true" CanUserResizeRows="False" CanUserDeleteRows="False" SelectionMode="Single" GridLinesVisibility="None" AlternationCount="2" SelectionUnit="FullRow">
+                            <DataGrid.ContextMenu>
+                                <ContextMenu FontFamily="Tahoma">
+                                    <MenuItem Header="افزودن" Click="ContractItemInsert">
+                                        <MenuItem.Icon>
+                                            <Image  Source="/CRM.Application;component/Images/row_add_before.png" Width="16" Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem Header="ویرایش" Click="ContractItemEdit" >
+                                        <MenuItem.Icon>
+                                            <Image  Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem Header="حذف" Click="ContractItemDelete">
+                                        <MenuItem.Icon>
+                                            <Image Source="/CRM.Application;component/Images/delete2_16x16.png" Width="16" Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </DataGrid.ContextMenu>
+
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="عنوان قرارداد" Binding="{Binding DocumentName}" IsReadOnly="True" Width="2*" />
+                                <!--<DataGridTextColumn Header="شماره" Binding="{Binding DocumentNo}" IsReadOnly="True" Width="*" />
+                            <DataGridTextColumn Header="تاریخ" Binding="{Binding DocumentDate, Converter={StaticResource PersianDateConverter}}" IsReadOnly="True" Width="*" />-->
+                                <!--<DataGridTextColumn Header="تاریخ شروع " Binding="{Binding ContractStartDate}" IsReadOnly="True" Width="*" />
+                            <DataGridTextColumn Header="تاریخ پایان" Binding="{Binding ContractEndDate}" IsReadOnly="True" Width="*" />-->
+                                <DataGridCheckBoxColumn Header="وضعیت درج برای  درخواست جاری"  IsReadOnly="True" Width="*">
+                                    <DataGridCheckBoxColumn.Binding >
+                                        <MultiBinding   Converter="{StaticResource InsertedStatusConverter}">
+                                            <Binding Path="refDocs"  RelativeSource="{RelativeSource AncestorType=Window, Mode=FindAncestor}"/>
+                                            <Binding  Path="_Request.ID" RelativeSource="{RelativeSource AncestorType=Window, Mode=FindAncestor}" />
+                                            <Binding Path="DocumentTypeID" />
+                                        </MultiBinding>
+                                    </DataGridCheckBoxColumn.Binding>
+                                </DataGridCheckBoxColumn>
+                                <DataGridTemplateColumn Header="مشاهده"  IsReadOnly="True" >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image Source="/CRM.Application;component/Images/DocumentPicture16x16.png" MouseUp="Image_MouseUp" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridCheckBoxColumn Header="اجباری" Binding="{Binding IsForcible}" IsReadOnly="True"/>
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+                    </TabItem>
+
+                    <TabItem Header="باز پرداخت ها " Name="RequestrefundTabItem">
+                        <DataGrid Name="RequestRefunfDataGrid" Visibility="Collapsed" ItemsSource="{Binding}" Background="Transparent" BorderThickness="0 1 0 0" BorderBrush="#ccd9ea" HeadersVisibility="Column" AutoGenerateColumns="False" AlternatingRowBackground="#EAF6FD" CanUserAddRows="False" CanUserResizeColumns="true" CanUserResizeRows="False" CanUserDeleteRows="False" SelectionMode="Single" GridLinesVisibility="None" AlternationCount="2" SelectionUnit="FullRow" IsReadOnly="True">
+                            <DataGrid.ContextMenu>
+                                <ContextMenu Name="RequestRefindContextMenu">
+                                    <MenuItem Header="حذف" Click="RequestRefundItemDelete">
+                                        <MenuItem.Icon>
+                                            <Image Source="/CRM.Application;component/Images/delete2_16x16.png" Width="16" Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </DataGrid.ContextMenu>
+
+                            <DataGrid.Columns>
+                                <DataGridComboBoxColumn Header="عنوان " x:Name="RefundTitleColumn" SelectedValueBinding="{Binding Path=RefundID, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" DisplayMemberPath="Name"  Width="2*"/>
+                                <DataGridComboBoxColumn Header=" نوع پرداخت " SelectedValueBinding="{Binding Path=PaymentWay, UpdateSourceTrigger=PropertyChanged}"  x:Name="PaymentWayColumn" DisplayMemberPath="Name" SelectedValuePath="ID" Width="*"/>
+                                <DataGridTextColumn Header=" مبلغ "  Binding="{Binding Path=Cost, UpdateSourceTrigger=PropertyChanged}" Width="2*"/>
+                                <DataGridTextColumn Header=" شماره چک "  Binding="{Binding Path=ChequeNo, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                                <DataGridTextColumn Header=" تاریخ چک " Binding="{Binding Path=ChequeDate, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                                <DataGridCheckBoxColumn Header=" پرداخت شده " Binding="{Binding Path=Isrefund}" Width="*" >
+                                    <DataGridCheckBoxColumn.ElementStyle>
+                                        <Style TargetType="CheckBox">
+                                            <Setter Property="HorizontalAlignment" Value="Left"/>
+                                            <Setter Property="IsEnabled" Value="False"/>
+                                        </Style>
+                                    </DataGridCheckBoxColumn.ElementStyle>
+                                </DataGridCheckBoxColumn>
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+                    </TabItem>
+
+                    <TabItem Header="کالا و خدمات مخابرات" Name="RequestTelecomminucationServiceTabItem">
+                        <CustomControls:EditableDataGrid x:Name="RequestTelecomminucationServiceDataGrid" AutoGenerateColumns="False"                          
+                                  BorderThickness="0 1 0 0"
+                                  CanUserAddRows="True"
+                                  CanUserResizeColumns="True" BorderBrush="#ccd9ea" HeadersVisibility="Column" AlternatingRowBackground="#EAF6FD" 
+                                  CanUserResizeRows="False"  GridLinesVisibility="None" AlternationCount="2" 
+                                  CanUserDeleteRows="False"
+                                  SelectionMode="Single"
+                                  SelectionUnit="FullRow" PreviewKeyDown="RequestTelecomminucationServiceDataGrid_PreviewKeyDown" IsSynchronizedWithCurrentItem="True"
+                                  BeginningEdit="RequestTelecomminucationServiceDataGrid_BeginningEdit" 
+                                  RowEditEnding="RequestTelecomminucationServiceDataGrid_RowEditEnding">
+                            <CustomControls:EditableDataGrid.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem x:Name="DeleteTelecomminucationServicePaymentMenuItem" Header="حذف" Click="TelecomminucationServicePaymentItemDelete">
+                                        <MenuItem.Icon>
+                                            <Image Source="/CRM.Application;component/Images/delete2_16x16.png" Width="16" Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </CustomControls:EditableDataGrid.ContextMenu>
+                            <CustomControls:EditableDataGrid.Columns>
+                                <DataGridTemplateColumn Header="عنوان کالا - خدمات">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Text="{Binding TelecomminucationServiceTitle}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                    <DataGridTemplateColumn.CellEditingTemplate>
+                                        <DataTemplate>
+                                            <ComboBox x:Name="TelecomminucationServiceComboBox" ItemsSource="{Binding _TelecomminucationServiceInfos , RelativeSource={RelativeSource AncestorType={x:Type Local:RequestFormBase}}}"  
+                                                      DisplayMemberPath="Title" SelectedValuePath="ID" SelectedValue="{Binding TelecomminucationServiceID}"
+                                                      SelectionChanged="TelecomminucationServiceComboBox_SelectionChanged" Loaded="TelecomminucationServiceComboBox_Loaded"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellEditingTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Header="قیمت  واحد" Binding="{Binding UnitPrice}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="تعداد / متراژ" Binding="{Binding Quantity,UpdateSourceTrigger=PropertyChanged}"/>
+                                <DataGridTextColumn Header="مبلغ تخفیف" Binding="{Binding Discount,UpdateSourceTrigger=PropertyChanged}"/>
+                                <DataGridTextColumn Header="مبلغ مالیات و عوارض" Binding="{Binding TaxAndTollAmount,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="مبلغ کل" Binding="{Binding NetAmount,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="جمع مبلغ کل  پس از تخفیف و مالیات و عوارض" Binding="{Binding AmountSum,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                            </CustomControls:EditableDataGrid.Columns>
+                        </CustomControls:EditableDataGrid>
+                    </TabItem>
+
+                    <TabItem Header="سایر درخواستهای مرتبط" Name="RelatedRequests">
+                        <DataGrid Name="RelatedRequestsGrid" Visibility="Collapsed" ItemsSource="{Binding}" Background="Transparent" BorderThickness="0 1 0 0" BorderBrush="#ccd9ea" HeadersVisibility="Column" AutoGenerateColumns="False" AlternatingRowBackground="#EAF6FD" CanUserAddRows="False" CanUserResizeColumns="true" CanUserResizeRows="False" CanUserDeleteRows="False" SelectionMode="Single" GridLinesVisibility="None" AlternationCount="2" SelectionUnit="FullRow">
+                            <DataGrid.ContextMenu>
+                                <ContextMenu FontFamily="Tahoma">
+                                    <MenuItem Header="افزودن" Click="RelatedRequestItemInsert">
+                                        <MenuItem.Icon>
+                                            <Image  Source="/CRM.Application;component/Images/row_add_before.png" Width="16" Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem Header="ویرایش">
+                                        <MenuItem.Icon>
+                                            <Image  Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </DataGrid.ContextMenu>
+
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="عنوان درخواست" Binding="{Binding ID }" IsReadOnly="True" Width="2*" />
+                                <DataGridTextColumn Header="شماره درخواست" Binding="{Binding RequestLetterNo}" IsReadOnly="True" Width="*" />
+                                <DataGridTextColumn Header="تاریخ درخواست" Binding="{Binding RequestDate , Converter={StaticResource PersianDateConverter}}" IsReadOnly="True" Width="*" />
+
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+                    </TabItem>
+
+                    <!--  <TabItem Header="تقسیط" Name="Installment">
+                        <DataGrid Name="InstallmentsGrid" Visibility="Collapsed" ItemsSource="{Binding}" Background="Transparent" BorderThickness="0 1 0 0" BorderBrush="#ccd9ea" HeadersVisibility="Column" AutoGenerateColumns="False" AlternatingRowBackground="#EAF6FD" CanUserAddRows="False" CanUserResizeColumns="true" CanUserResizeRows="False" CanUserDeleteRows="False" SelectionMode="Single" GridLinesVisibility="None" AlternationCount="2" SelectionUnit="FullRow">
+                            <DataGrid.ContextMenu>
+                                <ContextMenu FontFamily="Tahoma">
+                                    <MenuItem Header="افزودن" Click="InstallmentsItemInsert">
+                                        <MenuItem.Icon>
+                                            <Image  Source="/CRM.Application;component/Images/row_add_before.png" Width="16" Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem Header=" ویرایش" Click="InstallmentsItemEdit">
+                                        <MenuItem.Icon>
+                                            <Image  Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem Header="حذف" Click="InstallmentsItemDelete">
+                                        <MenuItem.Icon>
+                                            <Image Source="/CRM.Application;component/Images/delete2_16x16.png" Width="16" Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+
+                                </ContextMenu>
+                            </DataGrid.ContextMenu>
+                            <DataGrid.Columns>
+
+                                <DataGridTextColumn Header="مبلغ پیش پرداخت" Binding="{Binding PrePaymentAmount}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="مبلغ قسط بندی" Binding="{Binding Amount}" IsReadOnly="True" />
+                                <DataGridTextColumn Header="تعداد اقساط" Binding="{Binding InstallmentCount}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="فاصله اقساط به روز" Binding="{Binding DayDuration}" IsReadOnly="True" />
+                                <DataGridTextColumn Header="شروع دوره" Binding="{Binding StartDate , Converter={StaticResource PersianDateConverter}}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="پایان دوره" Binding="{Binding EndDate , Converter={StaticResource PersianDateConverter}}" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="تاریخ درج" Binding="{Binding InsertDate , Converter={StaticResource PersianDateConverter}}" IsReadOnly="True"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>-->
+                    <TabItem Header="بازدید از محل" Name="VisitInfo" Visibility="Collapsed">
+                        <DataGrid  Name="VisitInfoGrid" ItemsSource="{Binding}" Background="Transparent" BorderThickness="0 1 0 0" BorderBrush="#ccd9ea" HeadersVisibility="Column" AutoGenerateColumns="False" AlternatingRowBackground="#EAF6FD" CanUserAddRows="False" CanUserResizeColumns="true" CanUserResizeRows="False" CanUserDeleteRows="False" SelectionMode="Single" GridLinesVisibility="None" AlternationCount="2" SelectionUnit="FullRow">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn     Header="تاریخ بازدید"   Binding="{Binding VisitDate, Converter={StaticResource PersianDateConverter}}" IsReadOnly="True" Width="*" />
+                                <DataGridTextColumn     Header="ساعت بازدید"   Binding="{Binding VisitHour}" IsReadOnly="True" Width="*" />
+                                <DataGridTextColumn     Header="متراژ خارج از مرز"  Binding="{Binding OutBoundMeter}"  IsReadOnly="True" Width="*" />
+                                <DataGridTextColumn     Header="تیر شش متری"  Binding="{Binding SixMeterMasts}"  IsReadOnly="True" Width="*" />
+                                <DataGridTextColumn     Header="تیر هشت متری" Binding="{Binding EightMeterMasts}"  IsReadOnly="True" Width="*" />
+                                <DataGridTextColumn     Header="عرض عبوری" Binding="{Binding ThroughWidth}" IsReadOnly="True" Width="*" />
+                                <DataGridComboBoxColumn Header="پست عبوری"  x:Name="CrossPostComboBoxColumn" SelectedValueBinding="{Binding CrossPostID}" DisplayMemberPath="Name" SelectedValuePath="ID" IsReadOnly="True" Width="*" />
+                                <DataGridTextColumn     Header="توضیحات"   Binding="{Binding CommentStatus}" IsReadOnly="True" Width="2*" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+
+                    <!--<TabItem Header="سوابق تلفن" Name="PhoneRecordsInfo" Visibility="Collapsed">
+                        <DataGrid  Name="PhoneRecordsInfoDataGrid" ItemsSource="{Binding}" Background="Transparent" BorderThickness="0 1 0 0" BorderBrush="#ccd9ea" HeadersVisibility="Column" AutoGenerateColumns="False" AlternatingRowBackground="#EAF6FD" CanUserAddRows="False" CanUserResizeColumns="true" CanUserResizeRows="False" CanUserDeleteRows="False" SelectionMode="Single" GridLinesVisibility="None" AlternationCount="2" SelectionUnit="FullRow">
+                            <DataGrid.Columns>
+                                <DataGridComboBoxColumn     Header="درخواست"   x:Name="ReqeustDataGridComboBoxColumn" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValueBinding="{Binding RequestTypeID}" IsReadOnly="True" Width="*" />
+                                <DataGridTextColumn         Header="تاریخ"     Binding="{Binding Date , Converter={StaticResource PersianDateConverter}}" IsReadOnly="True" Width="*" />
+                                <DataGridTextColumn         Header="تلفن"      Binding="{Binding TelephoneNo}"  IsReadOnly="True" Width="*" />
+                                <DataGridTextColumn         Header="به تلفن"   Binding="{Binding ToTelephoneNo}"  IsReadOnly="True" Width="*" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>-->
+
+                    <TabItem Header="فرم ها " Name="FormTabItem" Visibility="Visible">
+                        <DataGrid Name="RequestFormDataGrid" Visibility="Collapsed" ItemsSource="{Binding}" Background="Transparent" BorderThickness="0 1 0 0" BorderBrush="#ccd9ea" HeadersVisibility="Column" AutoGenerateColumns="False" AlternatingRowBackground="#EAF6FD" CanUserAddRows="False" CanUserResizeColumns="true" CanUserResizeRows="False" CanUserDeleteRows="False" SelectionMode="Single" GridLinesVisibility="None" AlternationCount="2" SelectionUnit="FullRow" IsReadOnly="True">
+                            <DataGrid.ContextMenu>
+                                <ContextMenu Name="FormContextMenu">
+                                    <MenuItem Header="چاپ" Click="FormPrint">
+                                        <MenuItem.Icon>
+                                            <Image Source="/CRM.Application;component/Images/Action_Print.png" Width="16" Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem Header="افزودن" Click="FormItemInsert">
+                                        <MenuItem.Icon>
+                                            <Image  Source="/CRM.Application;component/Images/row_add_before.png"
+                                               Width="16"
+                                               Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </DataGrid.ContextMenu>
+
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="عنوان " x:Name="FormTitleColumn" Binding="{Binding Path=Title, UpdateSourceTrigger=PropertyChanged}" Width="2*"/>
+                            </DataGrid.Columns>
+
+                        </DataGrid>
+                    </TabItem>
+
+                </TabControl>
+            </Expander>
+
+            <!--<Button x:Name="PrintCertificate" Grid.Row="4" Content="چاپ گواهی" Visibility="Collapsed" Click="PrintCertificate_Click"/>-->
+        </Grid>
+    </ScrollViewer>
+</Local:RequestFormBase>

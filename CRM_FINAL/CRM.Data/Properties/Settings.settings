@@ -1,0 +1,38 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CRM.Data.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="CRM_Application_WebReference_PhoneStatusService" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://217.218.241.74:5000/Service.svc</Value>
+    </Setting>
+    <Setting Name="CRM_Application_HelpDeskService_HelpDeskService" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://192.168.28.240:81/HelpDeskService.svc</Value>
+    </Setting>
+    <Setting Name="CRMConnectionString" GenerateDefaultValueInCode="false" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=192.168.0.14\PendarSQL;Initial Catalog=CRM;Persist Security Info=True;User ID=sa;Password=pendar@crm&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=192.168.0.14\PendarSQL;Initial Catalog=CRM;Persist Security Info=True;User ID=sa;Password=pendar@crm</Value>
+    </Setting>
+    <Setting Name="ServiceHost_Kermanshah_ConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=192.168.240.104;Initial Catalog=CRM;User ID=sa;Password=pendar@crm100&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=192.168.240.104;Initial Catalog=CRM;User ID=sa;Password=pendar@crm100</Value>
+    </Setting>
+    <Setting Name="FolderConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=192.168.240.104;Initial Catalog=CRM.Folder;User ID=sa;Password=pendar@crm100&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=192.168.240.104;Initial Catalog=CRM.Folder;User ID=sa;Password=pendar@crm100</Value>
+    </Setting>
+    <Setting Name="CRM_Data_ElkaWebSevice_web_service_Transmission" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://217.219.241.244:8081/web_service_Transmission.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

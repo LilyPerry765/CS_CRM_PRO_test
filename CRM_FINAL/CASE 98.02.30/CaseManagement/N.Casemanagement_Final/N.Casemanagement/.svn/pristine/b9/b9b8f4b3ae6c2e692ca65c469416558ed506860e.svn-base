@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="~/Scripts/flot/jquery.flot.min.js"></script>
+    <script src="~/Scripts/flot/jquery.flot.resize.min.js"></script>
+    <script src="~/Scripts/flot/jquery.flot.pie.min.js"></script>
+    <script src="~/Scripts/flot/jquery.flot.categories.min.js"></script>
+    <script src="~/Scripts/adminlte/demo.js"></script>
+    <script src="~/Scripts/chartjs/Chart.min.js"></script>
+    <script src="~/Scripts/morris/morris.min.js"></script>
+    <script src="~/Scripts/raphael/raphael-min.js"></script>
+
+    <link rel="stylesheet" href="~/Scripts/morris/morris.css">
+    <title>لیست گزارشات</title>
+</head>
+<body>
+    <div class="col-md-12">
+        <table>
+            <tr>
+                <td>
+                    <label style="width:110px; font-weight:normal; font-variant:normal;">انتخاب گزارش : </label>
+                    <select id="ReportTemplateGroup" onchange="ReportFilters()" style="width:250px; height:30px;"></select>
+                </td>
+                <td width="25"></td>
+                <td>
+                    <span class="input-group-btn">
+                        <button type="button" name="edit" id="EditBtn" class="btn btn-primary btn-default" style="font-size:13px;margin-right:10px;float:left;font-weight:bold;color:white;" onclick="EditReport();"> ویرایش گزارش<i class="fa fa-edit"></i></button>
+                    </span>
+                </td>  
+                <td width="5px"></td>
+                <td>
+                    <span class="input-group-btn">
+                        <button type="button" name="View" id="ViewBtn" class="btn btn-info btn-default" style="font-size:13px;margin-right:10px;float:left;font-weight:bold;color:white;" onclick="ViewReport();"> مشاهده گزارش <i class="fa fa-eye"></i></button>
+                    </span>
+                </td>             
+            </tr>
+
+            <tr>
+                <td height="30px" ></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label style="width:110px; font-weight:normal; font-variant:normal;">نام گزارش : </label>
+                    <input type="text" style="width:250px"  id="reportNameText" />
+                </td>
+                <td width="25"></td>
+                <td>
+                    <span class="input-group-btn">
+                        <button type="button" name="add" id="addBtn" class="btn btn-facebook  btn-default" style="font-size:13px;margin-right:10px;float:left;font-weight:bold;color:white;" onclick="addNewReport();"> ایجاد گزارش جدید <i class="fa  fa-plus"></i></button>
+                    </span>
+                </td>   
+            </tr>
+        </table>
+   </div>
+    <div  style="height:150px"></div>
+    <div id="province-bar-chart" style="height: 600px;"></div>
+      <!--   <br /><br /><br /><br /><br />
+   <div class="col-md-12" id="Filters" style="display:none;">
+        <label style="width:110px; font-weight:normal; font-variant:normal;">جریان درآمدی : </label>
+        <select id="IncomeFlow" style="width: 150px; height: 30px; font-size: 12px;"></select>
+
+        <label style="width:50px; font-weight:normal; font-variant:normal;margin-right:50px;">دوره : </label>
+        <select id="Cycle" style="width:80px; height:30px;font-size:12px;"></select>
+
+        <label style="width:70px; font-weight:normal; font-variant:normal;margin-right:50px;">کد فعالیت : </label>
+        <select id="Activity" style="width:80px; height:30px;font-size:12px;"></select>
+
+        <label style="width: 150px; font-weight: normal; font-variant: normal; margin-right: 70px;"> تاریخ شناسایی نشتی : </label>
+
+        
+        <input type="text" style="width:80px; height:30px;font-size:12px;" class="DateTimeFilter_Start" id="DateTimeFilter_Start" />
+
+        <label style="width:10px; font-weight:normal; font-variant:normal;margin-right:10px;">-</label>
+        <input type="text" style="width:80px; height:30px;font-size:12px;margin-bottom:5px;" class="DateTimeFilter_End" id="DateTimeFilter_End" />
+
+    </div>-->
+</body>
+
+</html>
+<script type="text/javascript">
+    CaseManagement.StimulReport.ProvinceLineChart.ProvinceProgram95()
+
+    $(function () {
+        $("#DateTimeFilter_Start").datepicker();
+        $("#DateTimeFilter_End").datepicker();
+    });
+
+    var url = "http://" + window.location.hostname + ":" + window.location.port + "/Services" +"/Common/Reporttemplate/list";  
+    var ReportTemplateGroupCombo = document.getElementById("ReportTemplateGroup");    
+    var FirstOption = document.createElement("option");
+    FirstOption.text = "";
+    FirstOption.value = "0";
+    ReportTemplateGroupCombo.add(FirstOption, null);
+    $.ajaxSetup({ async: false });
+    $.getJSON(url, function (data)
+    {
+        for (var i = 0; i < data.TotalCount; i++)
+        {
+            var option = document.createElement("option");
+            option.text = data.Entities[i].Title;
+            option.value = data.Entities[i].Id;
+            ReportTemplateGroupCombo.add(option, null);
+        }
+    });
+
+    function EditReport()
+    {
+        var select = document.getElementById("ReportTemplateGroup");       
+        var selectedGroup = select.options[select.selectedIndex].value; //Pass ReportID For Edit To Designer Form
+        if (selectedGroup == "0")
+            alert("لطفا یک گزارش انتخاب نمائید");
+        else
+         window.location.href = "ReportDesigner?ReportID= " + selectedGroup;
+    }
+
+    function addNewReport()
+    {
+        var reportName = reportNameText.value;
+        var x = 0;
+        if (reportName == "" || reportName == null)
+            alert("لطفا یک نام برای گزارش انتخاب نمائید");
+        else
+            window.location.href = "ReportDesigner?ReportName= " + reportName;
+    }
+
+    function ViewReport()
+    {
+        var select = document.getElementById("ReportTemplateGroup");
+        var selectedGroup = select.options[select.selectedIndex].value; 
+        if (selectedGroup == "0")
+            alert("لطفا یک گزارش انتخاب نمائید");
+        else        
+            window.location.href = "mvcreportviewer?ReportID= " + selectedGroup;
+    }
+
+    function ReportFilters()
+    {
+        var x = document.getElementById('Filters');
+        if (x.style.display === 'none') {
+            x.style.display = 'block';
+        } else
+        {
+            x.style.display = 'none';
+        }
+    }
+
+
+   // var url = "http://" + window.location.hostname + ":" + window.location.port + "/Services/Case/IncomeFlow/List";
+   // // alert("URL : " + url);
+   //
+   // var IncomeFlowCombo = document.getElementById("IncomeFlow");
+   // //FIXME
+   // var FirstOption = document.createElement("option");
+   // FirstOption.text = "";
+   // FirstOption.value = "0";
+   // IncomeFlowCombo.add(FirstOption, null);
+   //
+   // $.ajaxSetup({ async: false });
+   // $.getJSON(url, function (data) {
+   //
+   //     for (var i = 0; i < data.TotalCount; i++) {
+   //
+   //         var option = document.createElement("option");
+   //         option.text = data.Entities[i].Name;
+   //         option.value = data.Entities[i].Id;
+   //
+   //         IncomeFlowCombo.add(option, null); //Standard 
+   //
+   //     }
+   // });
+   //
+   // var url = "http://" + window.location.hostname + ":" + window.location.port + "/Services/Case/Cycle/List";
+   // // alert("URL : " + url);
+   //
+   // var CycleCombo = document.getElementById("Cycle");
+   // //FIXME
+   // var SecondOption = document.createElement("option");
+   // SecondOption.text = "";
+   // SecondOption.value = "0";
+   // CycleCombo.add(SecondOption, null);
+   //
+   // //FIXME
+   // $.ajaxSetup({ async: false });
+   // $.getJSON(url, function (data) {
+   //
+   //     for (var i = 0; i < data.TotalCount; i++) {
+   //
+   //         var option = document.createElement("option");
+   //         option.text = data.Entities[i].CycleName;
+   //         option.value = data.Entities[i].Id;
+   //
+   //         CycleCombo.add(option, null); //Standard 
+   //
+   //     }
+   // });
+   //
+   //
+   // var url = "http://" + window.location.hostname + ":" + window.location.port + "/Services/Case/Activity/List";
+   // // alert("URL : " + url);
+   //
+   // var ActivityCombo = document.getElementById("Activity");
+   // //FIXME
+   // var ActivityOption = document.createElement("option");
+   // ActivityOption.text = "";
+   // ActivityOption.value = "0";
+   // ActivityCombo.add(ActivityOption, null);
+   //
+   // //FIXME
+   // $.ajaxSetup({ async: false });
+   // $.getJSON(url, function (data) {
+   //
+   //     for (var i = 0; i < data.TotalCount; i++) {
+   //
+   //         var option = document.createElement("option");
+   //         option.text = data.Entities[i].Code;
+   //         option.value = data.Entities[i].Id;
+   //
+   //         ActivityCombo.add(option, null); //Standard 
+   //
+   //     }
+   // });
+   //
+   //
+
+
+    </script>

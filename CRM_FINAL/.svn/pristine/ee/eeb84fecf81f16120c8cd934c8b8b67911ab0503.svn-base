@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BillService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://10.10.110.239:83/Host/BillService.svc/mex?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://10.10.110.239:83/Host/BillService.svc/mex?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://10.10.110.239:83/Host/BillService.svc/mex?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Abonman.Data" />
+      <xsd:import schemaLocation="http://10.10.110.239:83/Host/BillService.svc/mex?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IBillService_GetBillByYearAndPeriod_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBillByYearAndPeriod" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetBillByYearAndPeriod_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBillByYearAndPeriodResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetBillByCycleID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBillByCycleID" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetBillByCycleID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBillByCycleIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetBillDetailsByYearAndPeriod_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBillDetailsByYearAndPeriod" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetBillDetailsByYearAndPeriod_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBillDetailsByYearAndPeriodResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetBillDetailsByCycleID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBillDetailsByCycleID" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetBillDetailsByCycleID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBillDetailsByCycleIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetSubUtilityCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubUtilityCode" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetSubUtilityCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubUtilityCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetFullNumberByRange_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFullNumberByRange" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetFullNumberByRange_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFullNumberByRangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetLastCycleID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastCycleID" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetLastCycleID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLastCycleIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetPhoneNoState_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPhoneNoState" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetPhoneNoState_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPhoneNoStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_Set1818Receipt_InputMessage">
+    <wsdl:part name="parameters" element="tns:Set1818Receipt" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_Set1818Receipt_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Set1818ReceiptResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_IsDebtor_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsDebtor" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_IsDebtor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsDebtorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetDebtInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDebtInfo" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetDebtInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDebtInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetDebtInfoByMinDebtAmount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDebtInfoByMinDebtAmount" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetDebtInfoByMinDebtAmount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDebtInfoByMinDebtAmountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetReceiptDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReceiptDetails" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetReceiptDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReceiptDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetDebtStatusList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDebtStatusList" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetDebtStatusList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDebtStatusListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_Get1818Information_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get1818Information" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_Get1818Information_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get1818InformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetAllReceiptDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllReceiptDetails" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetAllReceiptDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllReceiptDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetInactivationBarcode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInactivationBarcode" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetInactivationBarcode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInactivationBarcodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetBill1818Info_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBill1818Info" />
+  </wsdl:message>
+  <wsdl:message name="IBillService_GetBill1818Info_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBill1818InfoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IBillService">
+    <wsdl:operation name="GetBillByYearAndPeriod">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBillService/GetBillByYearAndPeriod" message="tns:IBillService_GetBillByYearAndPeriod_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBillService/GetBillByYearAndPeriodResponse" message="tns:IBillService_GetBillByYearAndPeriod_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBillByCycleID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBillService/GetBillByCycleID" message="tns:IBillService_GetBillByCycleID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBillService/GetBillByCycleIDResponse" message="tns:IBillService_GetBillByCycleID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBillDetailsByYearAndPeriod">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBillService/GetBillDetailsByYearAndPeriod" message="tns:IBillService_GetBillDetailsByYearAndPeriod_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBillService/GetBillDetailsByYearAndPeriodResponse" message="tns:IBillService_GetBillDetailsByYearAndPeriod_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBillDetailsByCycleID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBillService/GetBillDetailsByCycleID" message="tns:IBillService_GetBillDetailsByCycleID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBillService/GetBillDetailsByCycleIDResponse" message="tns:IBillService_GetBillDetailsByCycleID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSubUtilityCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBillService/GetSubUtilityCode" message="tns:IBillService_GetSubUtilityCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBillService/GetSubUtilityCodeResponse" message="tns:IBillService_GetSubUtilityCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFullNumberByRange">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBillService/GetFullNumberByRange" message="tns:IBillService_GetFullNumberByRange_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBillService/GetFullNumberByRangeResponse" message="tns:IBillService_GetFullNumberByRange_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLastCycleID">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBillService/GetLastCycleID" message="tns:IBillService_GetLastCycleID_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBillService/GetLastCycleIDResponse" message="tns:IBillService_GetLastCycleID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPhoneNoState">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBillService/GetPhoneNoState" message="tns:IBillService_GetPhoneNoState_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBillService/GetPhoneNoStateResponse" message="tns:IBillService_GetPhoneNoState_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Set1818Receipt">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBillService/Set1818Receipt" message="tns:IBillService_Set1818Receipt_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBillService/Set1818ReceiptResponse" message="tns:IBillService_Set1818Receipt_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsDebtor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBillService/IsDebtor" message="tns:IBillService_IsDebtor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBillService/IsDebtorResponse" message="tns:IBillService_IsDebtor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDebtInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBillService/GetDebtInfo" message="tns:IBillService_GetDebtInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBillService/GetDebtInfoResponse" message="tns:IBillService_GetDebtInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDebtInfoByMinDebtAmount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBillService/GetDebtInfoByMinDebtAmount" message="tns:IBillService_GetDebtInfoByMinDebtAmount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBillService/GetDebtInfoByMinDebtAmountResponse" message="tns:IBillService_GetDebtInfoByMinDebtAmount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReceiptDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBillService/GetReceiptDetails" message="tns:IBillService_GetReceiptDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBillService/GetReceiptDetailsResponse" message="tns:IBillService_GetReceiptDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDebtStatusList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBillService/GetDebtStatusList" message="tns:IBillService_GetDebtStatusList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBillService/GetDebtStatusListResponse" message="tns:IBillService_GetDebtStatusList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get1818Information">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBillService/Get1818Information" message="tns:IBillService_Get1818Information_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBillService/Get1818InformationResponse" message="tns:IBillService_Get1818Information_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllReceiptDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBillService/GetAllReceiptDetails" message="tns:IBillService_GetAllReceiptDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBillService/GetAllReceiptDetailsResponse" message="tns:IBillService_GetAllReceiptDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInactivationBarcode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBillService/GetInactivationBarcode" message="tns:IBillService_GetInactivationBarcode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBillService/GetInactivationBarcodeResponse" message="tns:IBillService_GetInactivationBarcode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBill1818Info">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBillService/GetBill1818Info" message="tns:IBillService_GetBill1818Info_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBillService/GetBill1818InfoResponse" message="tns:IBillService_GetBill1818Info_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IBillService" type="tns:IBillService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetBillByYearAndPeriod">
+      <soap:operation soapAction="http://tempuri.org/IBillService/GetBillByYearAndPeriod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBillByCycleID">
+      <soap:operation soapAction="http://tempuri.org/IBillService/GetBillByCycleID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBillDetailsByYearAndPeriod">
+      <soap:operation soapAction="http://tempuri.org/IBillService/GetBillDetailsByYearAndPeriod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBillDetailsByCycleID">
+      <soap:operation soapAction="http://tempuri.org/IBillService/GetBillDetailsByCycleID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubUtilityCode">
+      <soap:operation soapAction="http://tempuri.org/IBillService/GetSubUtilityCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFullNumberByRange">
+      <soap:operation soapAction="http://tempuri.org/IBillService/GetFullNumberByRange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLastCycleID">
+      <soap:operation soapAction="http://tempuri.org/IBillService/GetLastCycleID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPhoneNoState">
+      <soap:operation soapAction="http://tempuri.org/IBillService/GetPhoneNoState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Set1818Receipt">
+      <soap:operation soapAction="http://tempuri.org/IBillService/Set1818Receipt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsDebtor">
+      <soap:operation soapAction="http://tempuri.org/IBillService/IsDebtor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDebtInfo">
+      <soap:operation soapAction="http://tempuri.org/IBillService/GetDebtInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDebtInfoByMinDebtAmount">
+      <soap:operation soapAction="http://tempuri.org/IBillService/GetDebtInfoByMinDebtAmount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReceiptDetails">
+      <soap:operation soapAction="http://tempuri.org/IBillService/GetReceiptDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDebtStatusList">
+      <soap:operation soapAction="http://tempuri.org/IBillService/GetDebtStatusList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get1818Information">
+      <soap:operation soapAction="http://tempuri.org/IBillService/Get1818Information" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllReceiptDetails">
+      <soap:operation soapAction="http://tempuri.org/IBillService/GetAllReceiptDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInactivationBarcode">
+      <soap:operation soapAction="http://tempuri.org/IBillService/GetInactivationBarcode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBill1818Info">
+      <soap:operation soapAction="http://tempuri.org/IBillService/GetBill1818Info" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BillService">
+    <wsdl:port name="BasicHttpBinding_IBillService" binding="tns:BasicHttpBinding_IBillService">
+      <soap:address location="http://se-db-abon:83/Host/BillService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

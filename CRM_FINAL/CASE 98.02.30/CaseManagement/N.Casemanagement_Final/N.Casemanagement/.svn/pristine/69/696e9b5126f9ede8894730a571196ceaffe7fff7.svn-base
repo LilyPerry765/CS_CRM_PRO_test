@@ -1,0 +1,48 @@
+﻿ @{
+     Layout = "";
+ }
+ 
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ 
+<head>
+    <title>گزارش ساز</title>    
+    <link href="~/Content/stimulsoft.designer.office2013.darkgrayblue.css" rel="stylesheet" />    
+    
+   
+     @*@using System.Web.WebPages.Html;*@  
+     
+     @using Stimulsoft.Report.MvcMobile; 
+     @using Stimulsoft.Report.MvcDesign;      
+   
+     @Html.Stimulsoft().RenderMvcMobileDesignerScripts();
+     
+    
+   
+</head>
+
+<body>
+    <table >      
+        <tr>
+            <td style="border:1px"  >                      
+                @Html.Stimulsoft().StiMvcMobileDesigner("MvcMobileDesigner1", new StiMvcMobileDesignerOptions()
+                            {
+                              //Localization = "~/Content/Localization/fa.xml", //Localize Designer
+                              ActionGetReportTemplate = "GetReportTemplate",
+                              ActionDesignerEvent = "DesignerEvent",                             
+                              Theme = StiTheme.Office2013DarkGrayBlue,
+                              ActionSaveReportTemplate ="SaveReportTemplateAction", 
+                              InterfaceType =  StiInterfaceType.Auto,
+                              ShowAboutButton = false,
+                              ShowTooltipsHelp = false,
+                              ShowTooltips = false,
+                               ShowPropertiesGrid = true,   
+                                   
+                              //ActionGetNewReportData = "GetBlankReportTemplate"                     
+                          })
+    </tr>
+    </table>
+</body>
+</html>
+ 

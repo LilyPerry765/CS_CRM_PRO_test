@@ -1,0 +1,416 @@
+﻿<Local:TabWindow 
+        x:Class="CRM.Application.Views.ManagementDashboard"
+        xmlns:uc="clr-namespace:CRM.Application.UserControls"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Local="clr-namespace:CRM.Application.Local"
+        xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+        xmlns:c="clr-namespace:Folder;assembly=Folder.Common"
+        xmlns:mChart="clr-namespace:MetroChart;assembly=MetroChart"
+        Loaded="TabWindow_Loaded" 
+        Background="White">
+
+    <Local:TabWindow.Resources>
+        <x:ArrayExtension Type="{x:Type Brush}" x:Key="brushes">
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Color="DarkRed"  Offset="0.0" />
+                <GradientStop Color="#E6E6E6" Offset="1.0" />
+            </LinearGradientBrush>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Color="DarkBlue"  Offset="0.0" />
+                <GradientStop Color="#E6E6E6" Offset="1.0" />
+            </LinearGradientBrush>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Color="DarkOrange"  Offset="0.0" />
+                <GradientStop Color="#E6E6E6" Offset="1.0" />
+            </LinearGradientBrush>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Color="DarkGreen"  Offset="0.0" />
+                <GradientStop Color="#E6E6E6" Offset="1.0" />
+            </LinearGradientBrush>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Color="DarkKhaki" Offset="0.0" />
+                <GradientStop Color="#E6E6E6" Offset="1.0" />
+            </LinearGradientBrush>
+            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                <GradientStop Color="DarkOrchid"  Offset="0.0" />
+                <GradientStop Color="#E6E6E6" Offset="1.0" />
+            </LinearGradientBrush>
+        </x:ArrayExtension>
+        <mChart:ResourceDictionaryCollection x:Key="MetroColorPalette">
+            <ResourceDictionary>
+                <SolidColorBrush x:Key="Brush1" Color="#C90043" />
+            </ResourceDictionary>
+            <ResourceDictionary>
+                <SolidColorBrush x:Key="Brush2" Color="#8600C9" />
+            </ResourceDictionary>
+            <ResourceDictionary>
+                <SolidColorBrush x:Key="Brush3" Color="#004DC9" />
+            </ResourceDictionary>
+            <ResourceDictionary>
+                <SolidColorBrush x:Key="Brush4" Color="#00C6C9" />
+            </ResourceDictionary>
+            <ResourceDictionary>
+                <SolidColorBrush x:Key="Brush5" Color="#00C99E" />
+            </ResourceDictionary>
+            <ResourceDictionary>
+                <SolidColorBrush x:Key="Brush6" Color="#00C907" />
+            </ResourceDictionary>
+            <ResourceDictionary>
+                <SolidColorBrush x:Key="Brush7" Color="#79C900" />
+            </ResourceDictionary>
+            <ResourceDictionary>
+                <SolidColorBrush x:Key="Brush8" Color="#C9C900" />
+            </ResourceDictionary>
+            <ResourceDictionary>
+                <SolidColorBrush x:Key="Brush9" Color="#C9A500" />
+            </ResourceDictionary>
+            <ResourceDictionary>
+                <SolidColorBrush x:Key="Brush10" Color="#C90000" />
+            </ResourceDictionary>
+
+        </mChart:ResourceDictionaryCollection>
+    </Local:TabWindow.Resources>
+    <DockPanel FlowDirection="RightToLeft" >
+        <ScrollViewer >
+            <StackPanel>
+                <GroupBox Header="درخواست ها"  Margin="15"  Background="#EDEDED" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin">
+                    <Grid x:Name="ChartsGrid" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Row="0" Grid.ColumnSpan="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label    Grid.Row="0" Grid.Column="0" Content="شهر : " Padding="10 ,10 ,0,0" VerticalAlignment="Center"/>
+                            <uc:CheckableComboBox Grid.Row="0" Grid.Column="1"  x:Name="RequestCityComboBox" LostFocus="RequestCityComboBox_LostFocus" Padding="10"/>
+
+                            <Label     Grid.Row="0" Grid.Column="2"  Content="مرکز : " VerticalAlignment="Center"/>
+                            <uc:CheckableComboBox  Grid.Row="0" Grid.Column="3"  x:Name="RequestCenterComboBox"  LostFocus="RequestCenterComboBox_LostFocus" Padding="10"/>
+
+                            <Label            Grid.Row="1" Grid.Column="0"  Content="از تاریخ:"/>
+                            <cal:DatePicker   Grid.Row="1" Grid.Column="1" x:Name="RequestFromDateTextBox"/>
+
+                            <Label           Grid.Row="1" Grid.Column="2"  Content="تا تاریخ:"/>
+                            <cal:DatePicker  Grid.Row="1" Grid.Column="3" x:Name="RequestToDateTextBox"/>
+
+                            <Label     Grid.Row="1" Grid.Column="4"  Content="درخواست : " VerticalAlignment="Center" />
+                            <ComboBox   Grid.Row="1" Grid.Column="5"  x:Name="RequestRequestComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="RequestRequestComboBox_SelectionChanged"/>
+                            <Button    Grid.Row="1" Grid.Column="6"  x:Name="RequestSearch" Padding="10" Margin="5,0,30,0" Content="جستجو" Click="RequestSearch_Click"/>
+                        </Grid>
+                        <GroupBox Header="وضعیت  نموداری درخواست ها"  Grid.Row="2" Grid.Column="0" Style="{StaticResource ResourceKey=StyleHeaderGropBox}" Margin="15" >
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition  Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions >
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <!--<PieChart:PieChartLayout HorizontalAlignment="Center" Grid.Row="0" Grid.Column="0" FlowDirection="LeftToRight" x:Name="piePlotter" PlottedProperty="Value">
+                                    <PieChart:PieChartLayout.ColorSelector>
+                                        <PieChart:IndexedColourSelector Brushes="{StaticResource brushes}"/>
+                                    </PieChart:PieChartLayout.ColorSelector>
+                                </PieChart:PieChartLayout>-->
+
+                                <!--<BarChart:BarChart  Grid.Row="0" Grid.Column="1" Margin="5" x:Name="RequestBarChart" Background="#DEDEDE"  TextColor="Black" Width="350" Height="250"   HorizontalAlignment="Center" ShowHorizontalGridLine="True" EnableZooming ="True" />-->
+
+                                <mChart:PieChart  Grid.Row="0" Grid.Column="0" Margin="5" x:Name="piePlotter" Palette="{StaticResource MetroColorPalette}" ChartTitle="درخواست"  ChartSubTitle="" SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}" ChartLegendVisibility="Collapsed" >
+                                    <mChart:PieChart.Series>
+                                        <mChart:ChartSeries
+                                           SeriesTitle="درخواست"
+                                           DisplayMember="Category"
+                                           ValueMember="Number"
+                                           ItemsSource="{Binding Path=Items}" />
+                                    </mChart:PieChart.Series>
+                                </mChart:PieChart>
+
+                                <mChart:ClusteredBarChart  Grid.Row="0" Grid.Column="1" Margin="5" x:Name="RequestBarChart" Palette="{StaticResource MetroColorPalette}"  ChartTitle="در خواست در مراحل"  ChartSubTitle="" SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}" >
+                                    <mChart:ClusteredBarChart.Series>
+                                        <mChart:ChartSeries
+                                           SeriesTitle="مراحل"
+                                           DisplayMember="Category"
+                                           ValueMember="Number"
+                                           ItemsSource="{Binding Path=Items}" />
+                                    </mChart:ClusteredBarChart.Series>
+                                </mChart:ClusteredBarChart>
+
+                                <mChart:ClusteredBarChart Grid.Row="1" Grid.Column="1" Margin="5" x:Name="RejectionBarChart" Palette="{StaticResource MetroColorPalette}" ChartTitle="رد درخواست در مراحل"  ChartSubTitle="" SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}" >
+                                    <mChart:ClusteredBarChart.Series>
+                                        <mChart:ChartSeries
+                                           SeriesTitle="مراحل"
+                                           DisplayMember="Category"
+                                           ValueMember="Number"
+                                           ItemsSource="{Binding Path=Items}" />
+                                    </mChart:ClusteredBarChart.Series>
+                                </mChart:ClusteredBarChart>
+
+                                <mChart:DoughnutChart  Grid.Row="1" Grid.Column="0" Margin="5" x:Name="CancelationBarChart" Palette="{StaticResource MetroColorPalette}" ChartTitle="ابطال درخواست ها"  ChartSubTitle="" SelectedItem="{Binding Path=SelectedItem, Mode=TwoWay}" ChartLegendVisibility="Collapsed">
+                                    <mChart:PieChart.Series>
+                                        <mChart:ChartSeries
+                                           SeriesTitle="درخواست"
+                                           DisplayMember="Category"
+                                           ValueMember="Number"
+                                           ItemsSource="{Binding Path=Items}" />
+                                    </mChart:PieChart.Series>
+                                </mChart:DoughnutChart>
+
+
+
+                                <!--<mChart:ClusteredBarChart Grid.Row="0" Grid.Column="1" Margin="5" x:Name="RequestBarChart">
+                                    <mChart:ClusteredBarChart.Series>
+                                        <mChart:ChartSeries DisplayMember="Key" ValueMember="Value" SeriesTitle="تعداد درخواست ها" ItemsSource="{Binding Path=_requestBarChartChartSeries ,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" x:Name="RequestBarChartChartSeries"/>
+                                    </mChart:ClusteredBarChart.Series>
+                                </mChart:ClusteredBarChart>-->
+
+                                <!--<BarChart:BarChart  Grid.Row="1" Grid.Column="0" Margin="5" x:Name="CancelationBarChart" Background="#DEDEDE"  TextColor="Black" Width="350" Height="250"  HorizontalAlignment="Center" ShowHorizontalGridLine="True" EnableZooming ="True" />-->
+
+                                <!--<BarChart:BarChart  Grid.Row="1" Grid.Column="1" Margin="5" x:Name="RejectionBarChart" Background="#DEDEDE"  TextColor="Black" Width="350" Height="250" HorizontalAlignment="Center" ShowHorizontalGridLine="True" EnableZooming ="True" />-->
+
+                            </Grid>
+
+                        </GroupBox>
+
+                        <Grid Grid.Row="2" Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <GroupBox Grid.Row="0" x:Name="TodayRequestGroupBox" Header="درخواست های امروز" Style="{StaticResource ResourceKey=StyleHeaderGropBox}" Margin="15">
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Grid.Row="0" Grid.Column="0"  Text="ثبت شده" TextWrapping="Wrap" />
+                                    <c:SevenSegment Grid.Row="0" Grid.Column="1" BorderBrush="Gray" BorderThickness="1" DigitsCount="4" x:Name="CountersRecordedRequestToday"  OnColor="#30FF30" OffColor="#006500" Background="#005000"/>
+
+                                    <Label Grid.Row="1" Grid.Column="0" Content="تمام شده"/>
+                                    <c:SevenSegment Grid.Row="1" Grid.Column="1" BorderBrush="Gray" BorderThickness="1" DigitsCount="4" x:Name="CountersFinishedRequestToday" OnColor="#30FF30" OffColor="#006500" Background="#005000"/>
+
+                                    <Label Grid.Row="2" Grid.Column="0" Content="باز امروز"/>
+                                    <c:SevenSegment Grid.Row="2" Grid.Column="1" BorderBrush="Gray" BorderThickness="1" DigitsCount="4" x:Name="CountersOpenRequestToday" OnColor="#30FF30" OffColor="#006500" Background="#005000"/>
+
+                                    <Label Grid.Row="3" Grid.Column="0" Content="رد شده"/>
+                                    <c:SevenSegment Grid.Row="3" Grid.Column="1" BorderBrush="Gray" BorderThickness="1" DigitsCount="4" x:Name="CountersRejectedRequestToday" OnColor="#30FF30" OffColor="#006500" Background="#005000"/>
+
+                                    <Label Grid.Row="4" Grid.Column="0" Content="باطل شده"/>
+                                    <c:SevenSegment Grid.Row="4" Grid.Column="1" BorderBrush="Gray" BorderThickness="1" DigitsCount="4" x:Name="CountersCanceledRequestToday" OnColor="#30FF30" OffColor="#006500" Background="#005000"/>
+
+                                    <Label Grid.Row="5" Grid.Column="0" Content="لیست انتظار"/>
+                                    <c:SevenSegment Grid.Row="5" Grid.Column="1" BorderBrush="Gray" BorderThickness="1" DigitsCount="4" x:Name="CountersWatingListRequestToday" OnColor="#30FF30" OffColor="#006500" Background="#005000"/>
+                                </Grid>
+                            </GroupBox>
+
+                            <GroupBox Grid.Row="1" Header="همه در خواست ها" Style="{StaticResource ResourceKey=StyleHeaderGropBox}" Margin="15">
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="30"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Row="0" Grid.Column="0" Content="ثبت شده"/>
+                                    <c:SevenSegment Grid.Row="0" Grid.Column="1" BorderBrush="Gray" BorderThickness="1" DigitsCount="4" x:Name="CountersRecordedRequest" OnColor="#30FF30" OffColor="#006500" Background="#005000"/>
+
+                                    <Label Grid.Row="1" Grid.Column="0" Content="رد شده"/>
+                                    <c:SevenSegment Grid.Row="1" Grid.Column="1" BorderBrush="Gray" BorderThickness="1" DigitsCount="4" x:Name="CountersRejectedRequest" OnColor="#30FF30" OffColor="#006500" Background="#005000"/>
+
+
+                                    <Label Grid.Row="2" Grid.Column="0" Content="باطل شده"/>
+                                    <c:SevenSegment Grid.Row="2" Grid.Column="1" BorderBrush="Gray" BorderThickness="1" DigitsCount="4" x:Name="CountersCanceledRequest" OnColor="#30FF30" OffColor="#006500" Background="#005000"/>
+
+                                    <Label Grid.Row="3" Grid.Column="0" Content="در لیست انتظار"/>
+                                    <c:SevenSegment Grid.Row="3" Grid.Column="1" BorderBrush="Gray" BorderThickness="1" DigitsCount="4" x:Name="CountersWatingListRequest" OnColor="#30FF30" OffColor="#006500" Background="#005000"/>
+
+
+                                </Grid>
+                            </GroupBox>
+                        </Grid>
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Header="درخواست های در حال انجام"  Margin="15"  Background="#EDEDED" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label                  Grid.Row="0" Grid.Column="0" Content="شهر : " Padding="10" VerticalAlignment="Center"/>
+                        <uc:CheckableComboBox  Grid.Row="0" Grid.Column="1"  x:Name="RequestWaitTimeCityComboBox" LostFocus="RequestWaitTimeCityComboBox_LostFocus" Padding="10"/>
+
+                        <Label     Grid.Row="0" Grid.Column="2"  Content="مرکز : " VerticalAlignment="Center" Margin="0,8,0,9"/>
+                        <uc:CheckableComboBox  Grid.Row="0" Grid.Column="3"  x:Name="RequestWaitTimeCenterComboBox" LostFocus="RequestWaitTimeCenterComboBox_LostFocus" Padding="10"/>
+
+                        <Label     Grid.Row="0" Grid.Column="4"  Content="زمان انتظار : " VerticalAlignment="Center" Margin="0,8,0,9"  />
+                        <TextBox  Grid.Row="0" Grid.Column="5"  x:Name="RequestWaitTimeTextBox"  PreviewTextInput="RequestWaitTimeTextBox_PreviewTextInput" Height="25"/>
+                        <ComboBox  Grid.Row="0" Grid.Column="6"  x:Name="RequestWaitTimeTypeComboBox" Padding="10" Margin="5,0,30,0" DisplayMemberPath="Name" SelectedValuePath="ID" Height="25"/>
+
+                        <Label            Grid.Row="1" Grid.Column="0"  Content="از تاریخ:" Grid.ColumnSpan="2"/>
+                        <cal:DatePicker   Grid.Row="1" Grid.Column="1" x:Name="RequestWaitTimeFromDateTextBox"/>
+
+                        <Label           Grid.Row="1" Grid.Column="2"  Content="تا تاریخ:"/>
+                        <cal:DatePicker  Grid.Row="1" Grid.Column="3" x:Name="RequestWaitTimeToDateTextBox"/>
+
+                        <Label     Grid.Row="1" Grid.Column="4"  Content="درخواست : " VerticalAlignment="Center" />
+                        <ComboBox   Grid.Row="1" Grid.Column="5"  x:Name="RequestWaitTimeRequestComboBox" DisplayMemberPath="Name" SelectedValuePath="ID"/>
+                        <Button    Grid.Row="1" Grid.Column="6"  x:Name="RequestWaitTimeSearch" Padding="10" Margin="0,3,30,3" Content="جستجو" Click="RequestWaitTimeSearch_Click"/>
+
+                        <ScrollViewer Grid.Row="2" Padding="10" Grid.ColumnSpan="7">
+                            <DataGrid x:Name="RequestWaitTimeGrid" Height="300"
+                          BorderThickness="0 1 0 0"  
+                          AutoGenerateColumns="False" 
+                          CanUserAddRows="True" 
+                          CanUserResizeColumns="True"
+                          CanUserResizeRows="False"
+                          CanUserDeleteRows="False"
+                          SelectionMode="Single"
+                          SelectionUnit="FullRow" 
+                          ItemsSource="{Binding}">
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Image Source="/CRM.Application;component/Images/element_16x16.png" Width="16" Height="16" HorizontalAlignment="Center" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn Width="*" Binding="{Binding CustomerName}" Header="نام مشترک" IsReadOnly="True"/>
+                                    <DataGridTextColumn Width="*" Binding="{Binding RequestName}" Header="درخواست" IsReadOnly="True"/>
+                                    <DataGridTextColumn Width="*" Binding="{Binding NowStatus}" Header="وضعیت فعلی" IsReadOnly="True"/>
+                                    <DataGridTextColumn Width="*" Binding="{Binding CreateTime}" Header="زمان ایجاد" IsReadOnly="True"/>
+                                    <DataGridTextColumn Width="*" Binding="{Binding WaitTime}" Header="زمان انتظار" IsReadOnly="True"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </ScrollViewer>
+
+                        <Label     Grid.Row="3" Grid.Column="0"  Content="تعداد : " Padding="10"/>
+                        <TextBox   Grid.Row="3" Grid.Column="1" x:Name="NoRequestWaitTimeTextBox" Height="25" IsReadOnly="True"/>
+
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Header="متوسط زمان انجام روال ها" Margin="15" Background="#EDEDED" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label    Grid.Row="0" Grid.Column="0" Content="شهر : " Padding="10 ,10 ,0,0" VerticalAlignment="Center"/>
+                        <uc:CheckableComboBox Grid.Row="0" Grid.Column="1"  x:Name="WaitTimeCityComboBox" LostFocus="WaitTimeCityComboBox_LostFocus" Padding="10"/>
+
+                        <Label     Grid.Row="0" Grid.Column="2"  Content="مرکز : " VerticalAlignment="Center"/>
+                        <uc:CheckableComboBox  Grid.Row="0" Grid.Column="3"  x:Name="WaitTimeCenterComboBox" LostFocus="WaitTimeCenterComboBox_LostFocus" Padding="10"/>
+
+                        <Label     Grid.Row="0" Grid.Column="4"  Content="بیشترین زمان انجام : " VerticalAlignment="Center" />
+                        <TextBox  Grid.Row="0" Grid.Column="5"  x:Name="MaxTimeTextBox" PreviewTextInput="MaxTimeTextBox_PreviewTextInput" Height="25"/>
+                        <ComboBox  Grid.Row="0" Grid.Column="6"  x:Name="TimeTypeComboBox" Padding="10" Margin="5,0,30,0" DisplayMemberPath="Name" SelectedValuePath="ID" Height="25" />
+
+
+                        <Label            Grid.Row="1" Grid.Column="0"  Content="از تاریخ:"/>
+                        <cal:DatePicker   Grid.Row="1" Grid.Column="1" x:Name="WaitTimeFromDateTextBox"/>
+
+                        <Label           Grid.Row="1" Grid.Column="2"  Content="تا تاریخ:"/>
+                        <cal:DatePicker  Grid.Row="1" Grid.Column="3" x:Name="WaitTimeToDateTextBox"/>
+
+                        <Label     Grid.Row="1" Grid.Column="4"  Content="درخواست : " VerticalAlignment="Center" />
+                        <ComboBox   Grid.Row="1" Grid.Column="5"  x:Name="WaitTimeRequestComboBox" DisplayMemberPath="Name" SelectedValuePath="ID"/>
+                        <Button    Grid.Row="1" Grid.Column="6"  x:Name="WaitTimeSearch" Padding="10" Margin="5,0,30,0" Content="جستجو" Click="WaitTimeSearch_Click"/>
+
+                        <ScrollViewer Grid.Row="2" Padding="10" Grid.ColumnSpan="7">
+                            <DataGrid x:Name="RoutineGrid"  Height="300"
+                          BorderThickness="0 1 0 0"  
+                          AutoGenerateColumns="False" 
+                          CanUserAddRows="True" 
+                          CanUserResizeColumns="True"
+                          CanUserResizeRows="False"
+                          CanUserDeleteRows="False"
+                          SelectionMode="Single"
+                          SelectionUnit="FullRow" 
+                          ItemsSource="{Binding}">
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Image Source="/CRM.Application;component/Images/element_16x16.png" Width="16" Height="16" HorizontalAlignment="Center" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn Binding="{Binding RequestName}" Width="*" Header="روال" IsReadOnly="True"/>
+                                    <DataGridTextColumn Binding="{Binding MinTime}" Width="*" Header="کوتاه ترین زمان انجام"  IsReadOnly="True"/>
+                                    <DataGridTextColumn Binding="{Binding AverageTime}" Width="*" Header="متوسط زمان انجام" IsReadOnly="True"/>
+                                    <DataGridTextColumn Binding="{Binding MaxTime}" Width="*" Header="بیشترین زمان انجام" IsReadOnly="True"/>
+                                </DataGrid.Columns>
+
+                            </DataGrid>
+                        </ScrollViewer>
+
+                        <Label     Grid.Row="3" Grid.Column="0"  Content="تعداد : " Padding="10"/>
+                        <TextBox   Grid.Row="3" Grid.Column="1" x:Name="NoWaitTimeTextBox"  Height="25" IsReadOnly="True"/>
+                    </Grid>
+                </GroupBox>
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</Local:TabWindow>

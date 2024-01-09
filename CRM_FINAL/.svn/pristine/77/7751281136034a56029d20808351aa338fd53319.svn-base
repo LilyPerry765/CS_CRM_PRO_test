@@ -1,0 +1,32 @@
+﻿--13931003 - 09:17
+--Local
+--INSERT INTO ReportTemplate
+--(
+--	ID,Title,Template,IconName,Category,UserControlName
+--)
+--VALUES (255,N'تعویض شماره',null,'Report2.png',N'درخواستها','SwapTelephoneReport')
+
+
+--13931003 - 10:27
+--INSERT INTO [78.39.252.109].[CRM].dbo.ReportTemplate
+--(
+--	ID,Title,Template,IconName,Category,UserControlName,[TimeStamp]
+--)
+--select 
+--	ID,Title,Template,IconName,Category,UserControlName,[TimeStamp]
+--from	
+--	ReportTemplate 
+--WHERE 
+--	ID = 255
+
+--13931003 - 14:46
+--الگوی گزارش بر روی سرور نهایی شد پس باید بر روی لوکال هم به روز رسانی میکردم
+--UPDATE RL
+--SET Template = RR.Template,
+--	[TimeStamp] = RR.[TimeStamp]
+--from 
+--	[78.39.252.109].crm.dbo.reportTemplate RR
+--INNER JOIN 
+--	ReportTemplate RL on RR.ID = RL.ID
+--where 
+--	RR.id = 255 and RL.ID = 255

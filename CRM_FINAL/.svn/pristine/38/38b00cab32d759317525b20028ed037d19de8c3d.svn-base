@@ -1,0 +1,380 @@
+﻿body
+{
+    margin: 0px;
+    direction: rtl;
+    font-family: Tahoma;
+    font-size: 8pt;
+    background-color: #DAF3FD;
+}
+
+#Layout
+{
+    margin: 0px;
+    padding: 0px;
+    width: 1000px;
+    background-color: White;
+    border-right: #B3E7FB 1px solid;
+    border-left: #B3E7FB 1px solid;
+    border-bottom: #B3E7FB 1px solid;
+    border-top: #B3E7FB 1px solid;
+    -moz-border-radius: 0.5em;
+    -webkit-border-radius: 0.5em;
+}
+
+#Header
+{
+    width: 100%;
+    height: 110px;
+}
+
+#Footer
+{
+    width: 100%;
+    height: 50px;
+    direction:rtl;
+}
+
+#Menu
+{
+    background-color: #83C5DE;
+    height: 33px;
+    padding: 0px 20px 0px 10px;
+    vertical-align: middle;
+}
+
+#Announcement
+{
+    text-align:right;
+    padding: 10px 0px 25px 10px;
+    width: 80%;
+    height: auto;
+    background-color: #FFFFFF;
+    color:Red;
+    line-height:20px;
+}
+    
+#Main
+{
+    width: 100%;
+    height: auto;
+    background-color: #FFFFFF;
+}
+
+.WelCome
+{
+    padding-top: 10px;
+    font-weight: bold;
+    color: #003399;
+}
+
+.LoginLink
+{
+    text-decoration: none;
+    padding-top: 10px;
+    font-weight: bold;
+    color: #003399;
+}
+
+.LoginLink:hover
+{
+    text-decoration: none;
+    color: #D2E2FF;
+}
+
+.LoginContainer
+{
+    padding: 50px 10px 50px 10px;
+    width: 40%;
+}
+
+.LoginTable
+{
+    border: 1px solid #ccc;
+    padding: 5px 5px 5px 5px;
+    width: 90%;
+}
+
+.LoginMessage
+{
+    color: Red;
+    font-weight: normal;
+}
+
+.LoginError
+{
+    color: Red;
+}
+
+.Container
+{
+    padding: 40px 10px 40px 10px;
+    width: 95%;
+}
+
+.Header
+{
+    width: 87%;
+    text-align: right;
+    vertical-align: middle;
+    background-image: url(/Images/banner_bg.jpg);
+    font-family: Tahoma;
+    font-size: 9pt;
+    font-weight: bold;
+    color: #003399;
+    padding: 6px 20px 6px 0px;
+    border: #ccc 1px solid;
+    margin-bottom: 2px;
+}
+
+.Footer
+{
+    margin-top: 2px;
+    width: 90%;
+    height: 40px;
+    text-align: left;
+    vertical-align: middle;
+    background-image: url(/Images/footer_bg.jpg);
+}
+
+.RequestTabel
+{
+    border: 1px solid #ccc;
+    padding: 5px 5px 5px 5px;
+    width: 90%;
+}
+
+.RequestRow
+{
+    text-align: right;
+    line-height: 40px;
+}
+
+.RequestColumnHeader
+{
+    color: #003399;
+    vertical-align: middle;
+    padding-right: 10px;
+    width: 20%;
+}
+
+.RequestColumnValue
+{
+    direction: rtl;
+    text-align: right;
+    vertical-align: middle;
+    padding: 0px 10px 0px 10px;
+}
+
+.RequestValue
+{
+    width: 40%;
+    height: 25px;
+    font-family: Tahoma;
+    font-size: 8pt;
+}
+
+.ButtonValue
+{
+    font-family: Tahoma;
+    font-size: 8pt;
+    color: #003399;
+    vertical-align: middle;
+    margin: 5px;
+    width: 90px;
+    height: 30px;
+}
+
+.BuchtHeader
+{
+    color: #003399;
+    vertical-align: middle;
+    padding-left: 3px;
+    width: 11%;
+}
+
+.BuchtValue
+{
+    height: 25px;
+    font-family: Tahoma;
+    font-size: 8pt;
+    width: 15%;
+}
+
+.SmallListValue
+{
+    font-family: Tahoma;
+    font-size: 8pt;
+    width: 23%;
+    height: 25px;
+}
+
+.SearchRequest
+{
+    background-image: url(/Images/background_blue.jpg);
+    margin-bottom: 5px;
+}
+
+.Searchtable
+{
+    border: 1px solid #ccc;
+    padding: 5px 5px 5px 5px;
+    width: 100%;
+}
+
+.SearchRow
+{
+    text-align: right;
+    line-height: 40px;
+}
+
+.SearchColumnHeader
+{
+    color: #003399;
+    vertical-align: middle;
+}
+
+.SearchColumnValue
+{
+    direction: rtl;
+    text-align: right;
+    vertical-align: middle;
+    padding: 0px 10px 0px 10px;
+}
+
+.SearchValue
+{
+    width: 70%;
+    height: 25px;
+    font-family: Tahoma;
+    font-size: 8pt;
+}
+
+.SearchButtonValue
+{
+    font-family: Tahoma;
+    font-size: 8pt;
+    color: #003399;
+    vertical-align: middle;
+    margin: 5px;
+    width: 90px;
+    height: 30px;
+}
+
+.RequestGridHeader
+{
+    font-family: Tahoma;
+    font-size: 8pt;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+    color: #003399;
+    font-weight: bold;
+    background-image: url(/Images/banner_bg.jpg);
+}
+
+.RequestGridItems
+{
+    font-family: Tahoma;
+    font-size: 8pt;
+    text-align: center;
+}
+
+.TabContainerHeader
+{
+    height: 80px;
+    width: 200px;
+    font-size: 8pt;
+    font-weight: bold;
+    color: #003399;
+    padding: 10px 10px 10px 10px;
+}
+
+.PagerContainer
+{
+    background-image: url(/Images/background_blue.jpg);
+    direction: ltr;
+    text-align: left;
+    padding: 5px;
+    margin: 5px;
+}
+
+.PagerImage
+{
+    vertical-align: middle;
+}
+
+.PagerNumber
+{
+    font-family: B Yekan;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+.PagerCurrentNumber
+{
+    font-family: B Yekan;
+    font-weight: bold;
+    padding-left: 10px;
+    font-size: 11pt;
+}
+
+.MessageContainer
+{
+    padding: 10px 10px 0px 0px;
+}
+
+.SuccessMessage
+{
+    color: Green;
+}
+
+.SuccessMessage
+{
+    color: Green;
+    vertical-align: middle;
+}
+
+.ErrorMessage
+{
+    color: Red;
+    vertical-align: middle;
+}
+
+.Menu
+{
+    text-align: right;
+}
+
+.Menu ul
+{
+    direction: rtl;
+}
+
+.Menu ul li
+{
+    text-align: center;
+    width: 120px;
+}
+
+.Menu ul li a
+{
+    background-color: #83C5DE;
+    padding: 10px;
+    text-align: right;
+    text-decoration: none;
+    font-weight: bold;
+    color: #003399;
+}
+
+.Menu ul li a:hover
+{
+    text-decoration: none;
+    font-weight: bold;
+    text-align: right;
+    background-color: #D2E2FF;
+}
+
+.TabContainerHeader
+{
+    font-family: Tahoma;
+}

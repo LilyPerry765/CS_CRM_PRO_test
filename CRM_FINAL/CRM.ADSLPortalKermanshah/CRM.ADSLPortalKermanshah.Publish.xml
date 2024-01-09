@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="D:\PAPRequestKermanshah" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="Images/previous_16x16.png" publishTime="08/27/2014 11:07:40" />
+    <file relUrl="PAPInstallRequestForm.aspx" publishTime="10/25/2014 16:01:49" />
+    <file relUrl="bin/CRM.ADSLPortalKermanshah.dll" publishTime="09/27/2015 14:40:59" />
+    <file relUrl="Images/next_16x16.png" publishTime="08/27/2014 11:07:40" />
+    <file relUrl="Global.asax" publishTime="08/27/2014 10:09:25" />
+    <file relUrl="ChangePassword.aspx" publishTime="10/08/2014 15:06:03" />
+    <file relUrl="Styles/Site.css" publishTime="08/27/2014 10:14:43" />
+    <file relUrl="bin/Folder.Common.pdb" publishTime="09/16/2012 14:31:41" />
+    <file relUrl="PAPInstallRequestList.aspx" publishTime="12/25/2014 09:43:27" />
+    <file relUrl="Scripts/jquery-1.4.1.js" publishTime="08/27/2014 10:09:25" />
+    <file relUrl="Account/ChangePassword.aspx" publishTime="08/27/2014 10:09:25" />
+    <file relUrl="PAPDischargeRequestForm.aspx" publishTime="10/19/2014 12:47:30" />
+    <file relUrl="PAPDischargeRequestSearchList.aspx" publishTime="10/19/2014 15:10:48" />
+    <file relUrl="Default.Master" publishTime="11/02/2014 15:42:04" />
+    <file relUrl="Styles/StyleSheet.css" publishTime="10/27/2014 10:24:45" />
+    <file relUrl="bin/CRM.Data.pdb" publishTime="10/03/2015 11:09:11" />
+    <file relUrl="Images/LoginImage.png" publishTime="08/27/2014 11:07:40" />
+    <file relUrl="Account/Web.config" publishTime="08/27/2014 10:09:25" />
+    <file relUrl="Account/Register.aspx" publishTime="08/27/2014 10:09:25" />
+    <file relUrl="Images/footer_bg.jpg" publishTime="08/27/2014 11:07:40" />
+    <file relUrl="Login.aspx" publishTime="08/27/2014 10:37:45" />
+    <file relUrl="Account/Login.aspx" publishTime="08/27/2014 10:09:25" />
+    <file relUrl="bin/CookComputing.XmlRpcV2.dll" publishTime="01/18/2015 15:06:09" />
+    <file relUrl="Scripts/jquery-1.4.1.min.js" publishTime="08/27/2014 10:09:25" />
+    <file relUrl="bin/AjaxControlToolkit.dll" publishTime="09/09/2013 15:28:30" />
+    <file relUrl="PAPEquipmentList.aspx" publishTime="10/09/2014 09:25:17" />
+    <file relUrl="PAPExchangeRequestForm.aspx" publishTime="10/20/2014 09:18:37" />
+    <file relUrl="bin/Folder.Common.dll" publishTime="01/29/2012 11:39:32" />
+    <file relUrl="Account/ChangePasswordSuccess.aspx" publishTime="08/27/2014 10:09:25" />
+    <file relUrl="Images/Footer.png" publishTime="08/27/2014 11:07:40" />
+    <file relUrl="Logout.aspx" publishTime="08/27/2014 10:35:15" />
+    <file relUrl="PAPExchangeRequestList.aspx" publishTime="10/19/2014 15:13:06" />
+    <file relUrl="bin/CRM.Data.dll" publishTime="09/27/2015 14:31:11" />
+    <file relUrl="Images/warning.png" publishTime="08/27/2014 11:07:40" />
+    <file relUrl="SearchRequestList.aspx" publishTime="10/27/2014 10:25:34" />
+    <file relUrl="FeasibilityForm.aspx" publishTime="10/09/2014 11:54:06" />
+    <file relUrl="Images/first_16x16.png" publishTime="08/27/2014 11:07:40" />
+    <file relUrl="bin/CRM.ADSLPortalKermanshah.pdb" publishTime="09/27/2015 14:40:59" />
+    <file relUrl="Images/head1.jpg" publishTime="08/27/2014 11:07:40" />
+    <file relUrl="Images/last_16x16.png" publishTime="08/27/2014 11:07:40" />
+    <file relUrl="bin/Logger.pdb" publishTime="09/16/2012 14:31:41" />
+    <file relUrl="Images/swoosh.png" publishTime="08/27/2014 11:07:40" />
+    <file relUrl="Images/background_blue.jpg" publishTime="08/27/2014 11:07:40" />
+    <file relUrl="PAPDischargeRequestList.aspx" publishTime="10/19/2014 13:01:42" />
+    <file relUrl="PAPExchangeRequestSearchList.aspx" publishTime="10/19/2014 15:18:24" />
+    <file relUrl="ConfirmChangePassword.aspx" publishTime="08/27/2014 10:31:16" />
+    <file relUrl="Home.aspx" publishTime="08/27/2014 10:33:30" />
+    <file relUrl="bin/Logger.dll" publishTime="09/16/2012 14:31:41" />
+    <file relUrl="Images/banner_bg.jpg" publishTime="08/27/2014 11:07:40" />
+    <file relUrl="Images/3.jpg" publishTime="08/27/2014 11:07:40" />
+    <file relUrl="Web.config" publishTime="10/25/2014 15:33:22" />
+    <file relUrl="PAPInstallRequestSearchList.aspx" publishTime="10/19/2014 15:02:40" />
+    <file relUrl="Images/mokhaberat.jpg" publishTime="08/27/2014 11:07:40" />
+    <file relUrl="Scripts/jquery-1.4.1-vsdoc.js" publishTime="08/27/2014 10:09:25" />
+  </publishProfile>
+</publishData>

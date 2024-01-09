@@ -1,0 +1,262 @@
+﻿<Local:TabWindow x:Class="CRM.Application.Reports.Viewer.VersionTwoReportList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Local="clr-namespace:CRM.Application.Local"
+             xmlns:CustomControls="clr-namespace:CRM.Application.Codes.CustomControls"
+             mc:Ignorable="d" Loaded="TabWindow_Loaded">
+    <Local:TabWindow.Resources>
+
+        <!--Expander styles scomponents-->
+        <Style TargetType="ToggleButton">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Border Name="Border" 
+                                CornerRadius="2,0,0,0"
+                                Background="Transparent"
+                                BorderBrush="{StaticResource NormalBorderBrush}"
+                                BorderThickness="0,0,1,0" Cursor="Hand">
+                            <Path Name="Arrow"
+                                  Fill="{StaticResource GlyphBrush}"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  Data="M 0 0 L 4 4 L 8 0 Z"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="ToggleButton.IsMouseOver" Value="true">
+                                <Setter TargetName="Border" Property="Background" Value="LightSkyBlue" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter TargetName="Border" Property="Background" Value="White" />
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter TargetName="Arrow" Property="Data" Value="M 0 4 L 4 0 L 8 4 Z" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledBackgroundBrush}" />
+                                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledBorderBrush}" />
+                                <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+                                <Setter TargetName="Arrow" Property="Fill" Value="{StaticResource DisabledForegroundBrush}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Expander">
+            <Setter Property="Control.Foreground" Value="#4C4C4C"/>
+            <Setter Property="Margin" Value="0 2.5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Expander">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Name="ContentRow" Height="0"/>
+                            </Grid.RowDefinitions>
+                            <Border Name="Border" 
+                                    Grid.Row="0" MinHeight="27"
+                                    BorderBrush="{StaticResource NormalBorderBrush}"
+                                    BorderThickness="1" >
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0.5 0" EndPoint="0.5 1">
+                                        <GradientStop Color="#C3E8FE" Offset="0.25"/>
+                                        <GradientStop Color="#91D5FF" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="20" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <ToggleButton IsChecked="{Binding Path=IsExpanded,RelativeSource={RelativeSource TemplatedParent}}"
+                                                  OverridesDefaultStyle="True"                   
+                                                  Background="{StaticResource NormalBrush}" />
+                                    <ContentPresenter Grid.Column="1"
+                                                      VerticalAlignment="Center" Margin="4"
+                                                      ContentSource="Header" />
+                                </Grid>
+                            </Border>
+                            <ContentPresenter Name="Content" Grid.Row="1"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsExpanded" Value="True">
+                                <Setter TargetName="ContentRow" Property="Height" Value="{Binding ElementName=Content,Path=DesiredHeight}" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledBackgroundBrush}" />
+                                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledBorderBrush}" />
+                                <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--End-->
+        
+        <!--BlueLinearBrush-->
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1" x:Key="BlueLinearBrush">
+            <GradientStop Color="LightSkyBlue" Offset="0.10"/>
+            <GradientStop Color="DodgerBlue" Offset="0.20"/>
+            <GradientStop Color="White" Offset="0.25"/>
+            <GradientStop Color="LightSkyBlue" Offset="0.35"/>
+            <GradientStop Color="DodgerBlue" Offset="0.45"/>
+            <GradientStop Color="White" Offset="0.50"/>
+            <GradientStop Color="LightSkyBlue" Offset="0.60"/>
+            <GradientStop Color="DodgerBlue" Offset="0.70"/>
+            <GradientStop Color="White" Offset="0.80"/>
+            <GradientStop Color="LightSkyBlue" Offset="0.90"/>
+            <GradientStop Color="DodgerBlue" Offset="1"/>
+        </LinearGradientBrush>
+
+        <!--VisualBrushBackground-->
+        <VisualBrush x:Key="VisualBrushBackground">
+            <VisualBrush.Visual>
+                <StackPanel Background="{StaticResource BlueLinearBrush}" Height="1" Width="1">
+                    <StackPanel Height="1" Width="1">
+                        <StackPanel.Background>
+                            <LinearGradientBrush StartPoint="0,1" EndPoint="1,-1" Opacity="0.50">
+                                <GradientStop Color="LightSteelBlue" Offset="0.10"/>
+                                <GradientStop Color="SteelBlue" Offset="0.20"/>
+                                <GradientStop Color="White" Offset="0.40"/>
+                                <GradientStop Color="LightSteelBlue" Offset="0.50"/>
+                                <GradientStop Color="SteelBlue" Offset="0.60"/>
+                                <GradientStop Color="White" Offset="0.80"/>
+                                <GradientStop Color="LightSteelBlue" Offset="0.90"/>
+                                <GradientStop Color="SteelBlue" Offset="1"/>
+                            </LinearGradientBrush>
+                        </StackPanel.Background>
+                    </StackPanel>
+                </StackPanel>
+            </VisualBrush.Visual>
+        </VisualBrush>
+
+        <!--ListBoxItemStyle-->
+        <Style x:Key="LBIStyle" TargetType="{x:Type ListBoxItem}">
+            <Style.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="Transparent"/>
+            </Style.Resources>
+        </Style>
+        
+    </Local:TabWindow.Resources>
+
+    <Local:TabWindow.Background>
+        <RadialGradientBrush GradientOrigin="0.15,0.25" RadiusX="1" RadiusY="1">
+            <GradientStop Color="LightSkyBlue" Offset="0.10"/>
+            <GradientStop Color="White" Offset="0.50"/>
+            <GradientStop Color="LightGray" Offset="0.50"/>
+            <GradientStop Color="White" Offset="0.5055"/>
+            <GradientStop Color="LightSkyBlue" Offset="0.8"/>
+        </RadialGradientBrush>
+    </Local:TabWindow.Background>
+
+    <Grid FlowDirection="RightToLeft">
+        <!--Background-->
+        <Grid.Background>
+            <ImageBrush ImageSource="pack://application:,,,/CRM.Application;component/Images/SkyBrush.png" AlignmentX="Left" AlignmentY="Bottom" Opacity="0.50"/>
+        </Grid.Background>
+
+        <!--RowDefinitions-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="AUto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--ColumnDefinitions-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <!--SearchReportsSection-->
+        <Border Grid.Row="0" Grid.Column="0" BorderBrush="Gray" BorderThickness="4 4 4 0" MaxWidth="{Binding ElementName=ReportListBorder,Path=ActualWidth}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Image Source="pack://application:,,,/CRM.Application;component/Images/SearchMagnifier.png" Height="27" Width="27"/>
+
+                <TextBox x:Name="SearchTextBox" Grid.Column="1" MinHeight="27" TextChanged="SearchTextBox_TextChanged">
+                    <TextBox.ToolTip>
+                        <TextBlock Text="عنوان گزارش مورد نظر را وارد نمائید." FontFamily="pack://application:,,,/CRM.Application;component/Resources/Fonts/#Yekan"/>
+                    </TextBox.ToolTip>
+                </TextBox>
+
+            </Grid>
+        </Border>
+
+        <!--List of available ReportTemplates-->
+        <Border Grid.Row="1" Grid.Column="0" 
+                BorderBrush="Gray" BorderThickness="4">
+            <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <ListBox x:Name="AvailableReportsListBox" Background="Transparent" ItemContainerStyle="{StaticResource LBIStyle}"  BorderBrush="Transparent"/>
+
+                    <TextBlock x:Name="NoItemFoundTextBlock" Text="آیتمی یافت نشد." Grid.Row="0"
+                               FontFamily="pack://application:,,,/CRM.Application;component/Resources/Fonts/#Yekan" FontSize="14" Visibility="Collapsed"/>
+                </Grid>
+            </ScrollViewer>
+        </Border>
+
+        <!--The main parent of selected report-->
+        <Border Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"
+                BorderBrush="WhiteSmoke" BorderThickness="3" Margin="10 0 0 0">
+            <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Place of selected report Icon & Title-->
+                    <WrapPanel Grid.Row="0" Grid.Column="0" Margin="10" Focusable="False">
+                        <Image x:Name="ReportIcon" Height="58" Width="58"/>
+                        <TextBlock x:Name="ReportTitleTextBlock" FontSize="18" FontWeight="SemiBold" VerticalAlignment="Center"/>
+                    </WrapPanel>
+
+                    <!--WrapPanel for holding report operations -->
+                    <Grid Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" HorizontalAlignment="Right">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="60"/>
+                        </Grid.ColumnDefinitions>
+                        <CustomControls:ImageButton Grid.Column="0" x:Name="ViewReport" Click="ViewReport_Click" Height="45" Width="45" Margin="1.5 0 -1 0" ToolTip="مشاهده گزارش" Cursor="Hand" Image="/CRM.Application;component/Images/ViewReportIcon.png" ImageHeight="24" ImageWidth="24"/>
+                        <CustomControls:ImageButton Grid.Column="1" x:Name="StopReport" Click="StopReport_Click" Height="45" Width="45" Margin="1.5 0 -1 0" ToolTip="توقف نمایش گزارش" Cursor="Hand" Image="/CRM.Application;component/Images/StopReportIcon.png" ImageHeight="24" ImageWidth="24"/>
+                        <CustomControls:ImageButton Grid.Column="2" x:Name="NewReport" Click="NewReport_Click" Height="45" Width="45" Margin="1.5 0 -1 0" ToolTip="ایجادالگوی گزارش" Cursor="Hand" Image="/CRM.Application;component/Images/NewReportIcon.png" ImageHeight="24" ImageWidth="24"/>
+                        <CustomControls:ImageButton Grid.Column="3" x:Name="EditTemplate" Click="EditTemplate_Click" Height="45" Width="45" Margin="1.5 0 -1 0" ToolTip="ویرایش الگوی گزارش" Cursor="Hand" Image="/CRM.Application;component/Images/EditReportIcon.png" ImageHeight="24" ImageWidth="24"/>
+                        <CustomControls:ImageButton Grid.Column="4" x:Name="DeleteItem" Click="DeleteItem_Click" Height="45" Width="45" Margin="1.5 0 -1 0" ToolTip="حذف گزارش" Cursor="Hand" Image="/CRM.Application;component/Images/DeleteReportIcon.png" ImageHeight="24" ImageWidth="24"/>
+                        <CustomControls:ImageButton Grid.Column="5" x:Name="ResetReportMenuItem" Height="45" Width="45" Margin="1.5 0 -1 0" ToolTip="بازنشانی صفحه گزارش" Click="ResetReportMenuItem_Click" Cursor="Hand" Image="/CRM.Application;component/Images/ResetIcon.png" ImageHeight="24" ImageWidth="24"/>
+                    </Grid>
+
+                    <Border Grid.Row="1" Grid.Column="0" Grid.RowSpan="4" Grid.ColumnSpan="6"
+                            Margin="10 15" BorderBrush="White" BorderThickness="8">
+                        <Grid x:Name="SelectedReportTypeGrid" Background="WhiteSmoke"/>
+                    </Border>
+                </Grid>
+            </ScrollViewer>
+        </Border>
+
+    </Grid>
+</Local:TabWindow>

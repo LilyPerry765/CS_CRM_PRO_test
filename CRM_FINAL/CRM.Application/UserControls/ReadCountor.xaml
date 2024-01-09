@@ -1,0 +1,75 @@
+﻿<Local:UserControlBase
+    x:Class="CRM.Application.UserControls.ReadCountor" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+    xmlns:Local="clr-namespace:CRM.Application.Local"
+    xmlns:cd="clr-namespace:CRM.Data;assembly=CRM.Data" 
+    xmlns:sv="clr-namespace:CRM.Application.StaticValidation"
+    mc:Ignorable="d" Loaded="LoadData">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label      Grid.Row="0" Grid.Column="0" Content="تلفن"/>
+        <TextBox    Grid.Row="0" Grid.Column="1" x:Name="NewTelephoneTextBox" Text="{Binding TelephoneNo,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+
+        <Label      Grid.Row="0" Grid.Column="3" Content="دوره"/>
+        <ComboBox   Grid.Row="0" Grid.Column="4" x:Name="CycleComnboBox" SelectedValue="{Binding CycleID,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" DisplayMemberPath="Name" SelectedValuePath="ID" />
+
+        <Label      Grid.Row="0" Grid.Column="6" Content="شماره کنتور"/>
+        <TextBox  Grid.Row="0" Grid.Column="7" x:Name="CountorNoTextBox">
+            <TextBox.Text>
+                <Binding Path="CounterNo" ValidatesOnExceptions="True" UpdateSourceTrigger="PropertyChanged"  ValidatesOnDataErrors="True">
+                    <Binding.ValidationRules>
+                        <sv:StaticValidation ValidationType="Pattern" Pattern="^[0-9]+$"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+
+        <Label      Grid.Row="1" Grid.Column="0" Content="کارکرد شهری"/>
+        <TextBox    Grid.Row="1" Grid.Column="1" x:Name="LocalTextBox" Text="{Binding Local,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+
+        <Label      Grid.Row="1" Grid.Column="3" Content="کار کرد بین شهری"/>
+        <TextBox    Grid.Row="1" Grid.Column="4" x:Name="NonLocalTextBox" Text="{Binding NonLocal,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+
+        <Label      Grid.Row="1" Grid.Column="6" Content="کار کرد بین الملل"/>
+        <TextBox    Grid.Row="1" Grid.Column="7" x:Name="InternationalTextBox" Text="{Binding International,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+
+        <Label      Grid.Row="2" Grid.Column="0" Content="کارکرد بیستاک"/>
+        <TextBox    Grid.Row="2" Grid.Column="1" x:Name="BistTalkTextBox" Text="{Binding BistTalk,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+
+        <Label      Grid.Row="2" Grid.Column="3" Content="کار کرد بین شهری"/>
+        <TextBox    Grid.Row="2" Grid.Column="4" x:Name="IATextBox" Text="{Binding IA,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+    
+        <Label           Grid.Row="2" Grid.Column="6" Content="تاریخ کارکرد"/>
+        <cal:DatePicker  Grid.Row="2" Grid.Column="7" Name="OperatingDateDatePicker" SelectedDate="{Binding OperatingDate,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+        
+   
+        <Label           Grid.Row="4" Grid.Column="0" Content="ساعت قرائت کنتور"/>
+        <TextBox         Grid.Row="4" Grid.Column="1" x:Name="CounterReadHour" Text="{Binding CounterReadHour,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+
+        <Label           Grid.Row="4" Grid.Column="3" Content="تاریخ قرائت کنتور"/>
+        <cal:DatePicker  Grid.Row="4" Grid.Column="4" Name="CounterReadHourDatePicker" SelectedDate="{Binding CounterReadDate,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+
+    </Grid>
+</Local:UserControlBase>

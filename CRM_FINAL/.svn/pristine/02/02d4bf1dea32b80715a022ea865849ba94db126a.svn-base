@@ -1,0 +1,95 @@
+﻿<Local:RequestFormBase x:Class="CRM.Application.Views.SwitchDesigningOfficeForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Local="clr-namespace:CRM.Application.Local"
+        xmlns:userControls="clr-namespace:CRM.Application.UserControls"
+        xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+        Loaded="RequestFormBase_Loaded" Title="اداره طراحی سوئیچ">
+    <ScrollViewer FlowDirection="RightToLeft" Padding="0 0 10 0">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <userControls:CustomerInfoSummary Grid.Row="0" x:Name="CustomerInfoSummaryUC"/>
+
+            <userControls:RequestInfoSummary Grid.Row="1" x:Name="RequestInfoSummaryUC"/>
+
+            <userControls:V2SpaceAndPowerInfoSummary Grid.Row="2" x:Name="V2SpaceAndPowerInfoSummaryUC"/>
+
+            <GroupBox x:Name="SwitchDesigningOfficeDetailsGroupBox" Header="جزئیات اداره طراحی سوئیچ" Grid.Row="3">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="توضیحات اداره طراحی سوئیچ : "/>
+                    <TextBox x:Name="SwitchDesigningOfficeCommentTextBox" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"
+                         AcceptsReturn="True" AcceptsTab="True" TextWrapping="Wrap" MaxLines="3"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="فایل اداره طراحی سوئیچ : "/>
+                    <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                        <RadioButton x:Name="FromFileRadioButton" Content="فایل" Margin="5" Click="ChangeFileSelected" />
+                        <RadioButton x:Name="FromScanerRadioButton" Content="اسکنر" Margin="5" Click="ChangeFileSelected"/>
+                    </StackPanel>
+
+                    <Button x:Name="SaveButton" Grid.Row="1" Grid.Column="2" Content="ذخیره" Click="SaveButton_Click"/>
+
+                    <DataGrid x:Name="ItemsDataGrid" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4"
+                          BorderThickness="0 1 0 0" AutoGenerateColumns="False"
+                          CanUserAddRows="True" CanUserResizeColumns="True"
+                          CanUserResizeRows="False" CanUserDeleteRows="False"
+                          SelectionMode="Single" SelectionUnit="FullRow" IsReadOnly="True">
+                        <DataGrid.Columns>
+
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="pack://application:,,,/CRM.Application;component/Images/element_16x16.png" Width="16" Height="16" HorizontalAlignment="Center"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="مشاهده" IsReadOnly="True">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="pack://application:,,,/CRM.Application;component/Images/DocumentPicture16x16.png" MouseUp="Image_MouseUp" Cursor="Hand"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="حذف" IsReadOnly="True">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="pack://application:,,,/CRM.Application;component/Images/delete2_16x16.png" MouseUp="DeleteImage_MouseUp" Cursor="Hand"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Label Grid.Row="3" Grid.Column="0" Content="تاریخ : "/>
+                    <cal:DatePicker x:Name="SwitchDesigningOfficeDatePicker" Grid.Row="3" Grid.Column="1"/>
+
+                    <Label Grid.Row="3" Grid.Column="2" Content="وضعیت : "/>
+                    <ComboBox x:Name="StatusComboBox" Grid.Row="3" Grid.Column="3" DisplayMemberPath="StatusResult" SelectedValuePath="StepStatusID"/>
+
+                </Grid>
+            </GroupBox>
+
+        </Grid>
+    </ScrollViewer>
+</Local:RequestFormBase>

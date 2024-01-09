@@ -1,0 +1,74 @@
+﻿<Local:PopupWindow x:Class="CRM.Application.Views.ADSLMDFRangeForm"
+                   Title="فرم ویرایش رنج MDF" 
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib" 
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d:DesignWidth="780"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+                   Loaded="PopupWindow_Loaded" Icon="/CRM.Application;component/Images/City48x48.png" Width="500" Height="250">
+    <Grid FlowDirection="RightToLeft" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="0" Content="نام مرکز : " />
+        <TextBox Grid.Column="1" Grid.Row="0" x:Name="CenterTextBox" IsReadOnly="True" />
+        
+        <Label Grid.Column="0" Grid.Row="1" Content="MDF : " />
+        <TextBox Grid.Column="1" Grid.Row="1" x:Name="MDFTextBox" IsReadOnly="True"/>
+        
+        <Label Grid.Column="0" Grid.Row="2" Content="شروع رنج : " />
+        <TextBox Grid.Column="1" Grid.Row="2" x:Name="StartRangeTextBox" Text="{Binding StartTelephoneNo}" PreviewTextInput="RangePreviewTextInput" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+        <Label Grid.Column="0" Grid.Row="3" Content=" پایان رنج : "/>
+        <TextBox Grid.Column="1" Grid.Row="3" x:Name="EndRangeTextBox" Text="{Binding EndTelephoneNo}" PreviewTextInput="RangePreviewTextInput" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+        <Button Grid.Row ="4" Grid.Column="1" HorizontalAlignment="Right" Content="ذخیره" Name="SaveButton" Click="SaveForm" Width="100"/>
+
+        <DataGrid Grid.Row ="6" Grid.Column="0" Grid.ColumnSpan="2" DockPanel.Dock="Bottom" x:Name="ItemsDataGrid"
+                        BorderThickness="0 1 0 0"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="True"
+                      CanUserResizeColumns="True"
+                      CanUserResizeRows="False"
+                      CanUserDeleteRows="False"
+                      SelectionMode="Single"
+                      SelectionUnit="FullRow"
+                      ItemsSource="{Binding}"                                
+                      IsReadOnly="True"
+                      MouseDoubleClick="EditItem">
+            <DataGrid.ContextMenu>
+                <ContextMenu FontFamily="Tahoma">
+                    <MenuItem Header="ویرایش" Click="EditItem">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="حذف " Click="DeleteItem">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/delete2_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>                
+                <DataGridTextColumn Header=" شروع رنج " Width="*" Binding="{Binding Path=StartTelephoneNo, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header=" پایان رنج " Width="*" Binding="{Binding Path=EndTelephoneNo, UpdateSourceTrigger=PropertyChanged}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+    </Local:PopupWindow>

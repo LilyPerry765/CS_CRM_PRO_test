@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="CRM.Application.UserControls.Title118"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignWidth="820" Loaded="UserControl_Loaded">
+
+    <DockPanel FlowDirection="RightToLeft">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            
+            <GroupBox Grid.Row="0" x:Name="TitleGroupBox" Margin="0,0,0,10">
+                <GroupBox.Header>
+                    <Label Content="مشخصات تلفن" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14"/>
+                </GroupBox.Header>
+                <Grid x:Name="ADSLTelephoneInfo">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="180" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="180" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label    Grid.Row="0" Grid.Column="0"   Content="نام / عنوان"          x:Name="NameTitleAt118Label"    />
+                    <TextBox  Grid.Row="0" Grid.Column="1"  Text="{Binding NameTitleAt118}"  x:Name="NameTitleAt118TextBox"  />
+
+                    <Label    Grid.Row="0" Grid.Column="2"  Content="نام خانوادگی"          x:Name="NameAt118Label"     />
+                    <TextBox  Grid.Row="0" Grid.Column="3"   Text="{Binding LastNameAt118}"  x:Name="NameAt118TextBox"   />
+
+                    <Label    Grid.Row="5" Grid.Column="0"  Content="عنوان در 118"          x:Name="TitleAt118Label"        />
+                    <TextBox  Grid.Row="5" Grid.Column="1"  Text="{Binding TitleAt118}"      x:Name="TitleAt118TextBox"      />
+
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Grid.Row="1" Name="LastTitleGroupBox" Margin="0,0,0,10" Visibility="Collapsed">
+                <GroupBox.Header>
+                    <Label Content="آخرین مشخصات " FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14"/>
+                </GroupBox.Header>
+                <Grid x:Name="LastTitleInfo">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="180" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="180" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label    Grid.Row="0" Grid.Column="0"   Content="نام / عنوان"          x:Name="LastNameTitleAt118Label"    />
+                    <TextBox  Grid.Row="0" Grid.Column="1"  Text="{Binding NameTitleAt118}"  x:Name="LastNameTitleAt118TextBox"  />
+
+                    <Label    Grid.Row="0" Grid.Column="2"  Content="نام خانوادگی"          x:Name="LastNameAt118Label"     />
+                    <TextBox  Grid.Row="0" Grid.Column="3"   Text="{Binding LastNameAt118}"  x:Name="LastNameAt118TextBox"   />
+
+                    <Label    Grid.Row="5" Grid.Column="0"  Content="عنوان در 118"          x:Name="LastTitleAt118Label"        />
+                    <TextBox  Grid.Row="5" Grid.Column="1"  Text="{Binding TitleAt118}"      x:Name="LastTitleAt118TextBox"      />
+
+                </Grid>
+            </GroupBox>
+
+
+        </Grid>
+    </DockPanel>
+</UserControl>

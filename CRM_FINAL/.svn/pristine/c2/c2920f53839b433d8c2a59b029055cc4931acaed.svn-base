@@ -1,0 +1,168 @@
+﻿<Local:TabWindow xmlns:Local="clr-namespace:CRM.Application.Local" 
+        x:Class="CRM.Application.Views.InvestigatePossibilityFolder.InvestigatePossibilityWaitinglistForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+        xmlns:converter="clr-namespace:CRM.Converters" 
+        xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+        xmlns:customControls="clr-namespace:CRM.Application.Codes.CustomControls"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Loaded="TabWindow_Loaded">
+    <DockPanel FlowDirection="RightToLeft">
+
+        <Expander x:Name="SearchExpander"
+              DockPanel.Dock="Top"
+              ExpandDirection="Down"
+              IsExpanded="True"
+              Style="{StaticResource SearchExpander}">
+
+            <GroupBox DockPanel.Dock="Top" BorderBrush="#384a66" BorderThickness="0">
+                <DockPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label  Grid.Row="0" Grid.Column="0" Content="شهر :" />
+                        <uc:CheckableComboBox x:Name="CityComboBox" Grid.Row="0" Grid.Column="1" LostFocus="CityCheckableComboBox_LostFocus_1"/>
+
+                        <Label  Grid.Row="0" Grid.Column="3" Content="مرکز :" />
+                        <uc:CheckableComboBox x:Name="CenterComboBox" Grid.Row="0" Grid.Column="4"/>
+
+                        <Label     Grid.Row="0" Grid.Column="6" Content="کافو :" />
+                        <customControls:NumericTextBox   Grid.Row="0" Grid.Column="7" x:Name="CabinetTextBox" />
+
+                        <Label     Grid.Row="1" Grid.Column="0" Content="پست :" />
+                        <customControls:NumericTextBox   Grid.Row="1" Grid.Column="1" x:Name="PostTextBox" />
+
+                        <Label     Grid.Row="1" Grid.Column="3" Content="شناسه درخواست :" />
+                        <customControls:NumericTextBox   Grid.Row="1" Grid.Column="4" x:Name="ReqeustIDTextBox" />
+                        
+                        <Label     Grid.Row="1" Grid.Column="6" Content="تلفن :" />
+                        <customControls:NumericTextBox   Grid.Row="1" Grid.Column="7" x:Name="TelephoneTextBox" />
+
+                        <Label                 Grid.Row="2" Grid.Column="0" Content="علت ورود به لیست :" />
+                        <uc:CheckableComboBox  Grid.Row="2" Grid.Column="1" x:Name="CauseComboBox" VerticalAlignment="Center"/>
+                        
+                        <Label Grid.Row="2" Grid.Column="3" Content="تاریخ ورود به لیست انتظار - از : "/>
+                        <cal:DatePicker x:Name="FromInsertDatePicker" Grid.Row="2" Grid.Column="4"/>
+                        
+                        <Label Grid.Row="2" Grid.Column="6" Content="تاریخ ورود به لیست انتظار - تا : "/>
+                        <cal:DatePicker x:Name="ToInsertDatePicker" Grid.Row="2" Grid.Column="7"/>
+                        
+                        <Label     Grid.Row="3" Grid.Column="0" Content="یک سال در لیست :" />
+                        <CheckBox  Grid.Row="3" Grid.Column="1" x:Name="OneYearCheckBox" IsThreeState="True" IsChecked="{x:Null}" VerticalAlignment="Center"/>
+                                             
+                        <Label     Grid.Row="3" Grid.Column="3" Content="از لیست انتظار خارج شده :" />
+                        <CheckBox  Grid.Row="3" Grid.Column="4" x:Name="OutOfWaitingListCheckBox" VerticalAlignment="Center"/>
+
+                        <!-- Buttons -->
+                        <WrapPanel DockPanel.Dock="Bottom" Grid.ColumnSpan="8" Grid.Row="100" Margin="0 10 0 10" HorizontalAlignment="Right">
+                            <Button x:Name="SearchButton" Height="23" HorizontalAlignment="Left" Margin="0" Width="80" Content="جستجو" Click="Search" IsDefault="True" />
+                            <Button Height="23" HorizontalAlignment="Left" Name="ResetButton" Width="80" Click="ResetSearchForm" Content="بازنشانی" />
+                            <Button Height="23" HorizontalAlignment="Left" Name="PrintButton" Width="80" Click="PrintButton_Click"  Content="چاپ" />
+                        </WrapPanel>
+
+                    </Grid>
+                </DockPanel>
+            </GroupBox>
+        </Expander>
+
+        <Grid DockPanel.Dock="Bottom" Style="{StaticResource TabWindowFooter}">
+            <Border DockPanel.Dock="Bottom" Tag="Footer" FlowDirection="RightToLeft" BorderThickness="0 1 0 0" BorderBrush="#d5d5d5" Background="#e9f3fe" Margin="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="546*" />
+                        <ColumnDefinition Width="60*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <uc:Pager x:Name="Pager" DockPanel.Dock="Bottom" PageSize="10" PageChanged="Pager_PageChanged" HorizontalAlignment="Left" />
+                    <uc:Actions x:Name="ActionUserControl" Grid.Column="2" />
+                </Grid>
+            </Border>
+        </Grid>
+
+
+        <DataGrid DockPanel.Dock="Bottom" x:Name="ItemsDataGrid"
+                      BorderThickness="0 1 0 0"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      CanUserResizeColumns="True"
+                      CanUserResizeRows="False"
+                      CanUserDeleteRows="False"
+                      SelectionMode="Extended"
+                      SelectionUnit="FullRow"
+                      SelectionChanged="ItemsDataGrid_SelectionChanged"
+                      LoadingRow="ItemsDataGrid_LoadingRow"
+                      ItemsSource="{Binding}">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="ContentTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <CheckBox x:Name="HeaderCheckBox"  Content="{Binding}" Tag="{Binding }"  Checked="CheckBoxChanged" Unchecked="UnCheckBoxChanged"/>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <!--<DataGrid.ContextMenu>
+                <ContextMenu FontFamily="Tahoma">
+                    <MenuItem Header="افزودن" Click="AddItem">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/add_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="ویرایش" Click="EditItem">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="حذف" Click="DeleteItem">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/delete2_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>-->
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="/CRM.Application;component/Images/element_16x16.png" Width="16" Height="16" HorizontalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <!--<DataGridCheckBoxColumn Width="*" Header="انتخاب"              IsThreeState="False" Binding="{Binding IsChecked}"/>-->
+                <DataGridTextColumn Header="شهر"                Binding="{Binding CityName}"/>
+                <DataGridTextColumn Header="مرکز"                Binding="{Binding CenterName}"/>
+                <DataGridTextColumn Header="شناسه درخواست"       Binding="{Binding RequestID}"/>
+                <DataGridTextColumn Header="تلفن" Binding="{Binding TelephoneNo}"/>
+                <DataGridTextColumn Header="مشترک"               Binding="{Binding CustomerName}"/>
+                <DataGridTextColumn Header="کافو"                Binding="{Binding CabinetNumber}"/>
+                <DataGridTextColumn Header="پست"                  Binding="{Binding PostNumber}"/>
+                <DataGridTextColumn Header="درخواست"             Binding="{Binding RequestTypeName}"/>
+                <DataGridTextColumn Header="کد پستی"              Binding="{Binding PostCode}"/>
+                <DataGridTextColumn Header="آدرس"                 Binding="{Binding Adress}"/>
+                <DataGridTextColumn Header="علت"                  Binding="{Binding StatusName}"/>
+                <DataGridTextColumn Header="تاریخ ورود به لیست" Binding="{Binding InsertDate}"/>
+                <DataGridTextColumn  Header="مدت زمان انتظار" Binding="{Binding InWaitingListDuration}"/>
+                <DataGridTextColumn Header="تاریخ ثبت درخواست"  Binding="{Binding ReqeustInsertDate}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+    </DockPanel>
+</Local:TabWindow>

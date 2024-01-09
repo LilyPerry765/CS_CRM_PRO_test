@@ -1,0 +1,151 @@
+﻿<Local:ReportBase x:Class="CRM.Application.Reports.ReportUserControls.ChangeLocationReportUserControl"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"          
+             xmlns:Local="clr-namespace:CRM.Application.Local"
+             mc:Ignorable="d">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <GroupBox Grid.Row="0" Grid.Column="0" Header=" مشخصات مرکز ">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Content="شهر : " VerticalAlignment="Center" />
+                <UserControls:CheckableComboBox Grid.Row="0" Grid.Column="1" x:Name="CityComboBox" LostFocus="CityComboBox_LostFocus"/>
+
+                <Label Grid.Row="0" Grid.Column="3" Content="مرکز : " VerticalAlignment="Center" />
+                <UserControls:CheckableComboBox Grid.Row="0" Grid.Column="4" x:Name="CenterComboBox" LostFocus="CenterComboBox_LostFocus"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="2" Grid.Column="0" Header=" انتخاب تاریخ ">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="از تاریخ : " VerticalAlignment="Center" />
+                <cal:DatePicker Grid.Row="0" Grid.Column="1" x:Name="FromDate"/>
+
+                <TextBlock Grid.Row="0" Grid.Column="3" Text="تا تاریخ : " VerticalAlignment="Center" />
+                <cal:DatePicker Grid.Row="0" Grid.Column="4" x:Name="ToDate"/>
+
+            </Grid>
+        </GroupBox>
+        
+        <GroupBox Grid.Row="4" Grid.Column="0" Header=" انتخاب شماره تلفن ">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="27"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+
+
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="شماره تلفن : " VerticalAlignment="Center" />
+                <TextBox Grid.Row="0" Grid.Column="1" x:Name="TelephoneNoTextBox"/>
+
+
+            </Grid>
+        </GroupBox>
+        
+        <GroupBox Grid.Row="6" Grid.Column="0" Header="مشخصات گزارش ">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="5"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="Auto"/>
+
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="شماره درخواست : " VerticalAlignment="Center"/>
+                <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtRequestNo"/>
+
+                <TextBlock Grid.Row="0" Grid.Column="3" Text="تغییرنام : " VerticalAlignment="Center"/>
+                <CheckBox   Grid.Row="0" Grid.Column="4" x:Name="ChangeNameCheckBox" VerticalAlignment="Center" IsThreeState="True" IsChecked="{x:Null}"/>
+
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="نوع تغییر مرکز : " VerticalAlignment="Center" />
+                <UserControls:CheckableComboBox Grid.Row="2" Grid.Column="1" x:Name="ChangeCenterTypeComboBox"/>
+
+                <TextBlock Grid.Row="2" Grid.Column="3" Text="تغییر شماره:" VerticalAlignment="Center" />
+                <UserControls:CheckableComboBox Grid.Row="2" Grid.Column="4" x:Name="ChangeNumberComboBox"/>
+
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="8" Grid.Column="0" Header=" انتخاب  مشترک ">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="27"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="کد ملی مشترک : " VerticalAlignment="Center"/>
+                <TextBox Grid.Row="0" Grid.Column="1" x:Name="CustomerNationalIDTextBox"/>
+
+
+            </Grid>
+        </GroupBox>
+
+
+
+
+    </Grid>
+    </Local:ReportBase>

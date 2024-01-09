@@ -1,0 +1,33 @@
+﻿<Local:UserControlBase
+    x:Class="CRM.Application.UserControls.ChangeNoDetailUserControl" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+    xmlns:Local="clr-namespace:CRM.Application.Local"
+    mc:Ignorable="d"  Loaded="UserControlBase_Loaded">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Label Content="شماره قدیم" Grid.Row="0" Grid.Column="0"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Path=ChangeNo.OldTelephoneNo}"/>
+
+        <Label Content="ADSL" Grid.Row="0" Grid.Column="2"/>
+        <CheckBox Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" x:Name="ADSLStatusCheckBox"  IsChecked="{Binding Path=Bucht.ADSLStatus}"/>
+
+        <Label Content="درخواست تلفن رند" Grid.Row="1" Grid.Column="0"/>
+        <CheckBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" x:Name="RoundTelephoneCheckBox" IsChecked="{Binding Path=ChangeNo.NumberType}"/>
+
+    </Grid>
+</Local:UserControlBase>

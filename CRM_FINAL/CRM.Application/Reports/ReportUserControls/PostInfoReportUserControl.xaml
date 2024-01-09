@@ -1,0 +1,84 @@
+﻿<Local:ReportBase x:Class="CRM.Application.Reports.ReportUserControls.PostInfoReportUserControl"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                 mc:Ignorable="d"  d:DesignWidth="800"
+                 xmlns:Local="clr-namespace:CRM.Application.Local"
+                 xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                 xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker">
+    <Grid>
+        <DockPanel FlowDirection="RightToLeft">
+
+            <GroupBox DockPanel.Dock="Top" BorderBrush="#384a66" BorderThickness="0">
+                <DockPanel>
+                    <Grid>
+                        <Grid FlowDirection="RightToLeft">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label     Grid.Column="0" Grid.Row="0" Content="شهر : " />
+                            <ComboBox  Grid.Column="1" Grid.Row="0" x:Name="CityComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="CityComboBox_SelectionChanged" Grid.ColumnSpan="2" />
+
+                            <Label     Grid.Column="3" Grid.Row="0" Content="مرکز : " />
+                            <ComboBox  Grid.Column="4" Grid.Row="0" x:Name="CenterComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="CenterComboBox_SelectionChanged" />
+
+
+                            <Label                          Grid.Column="0" Grid.Row="1" Content="کافو : " />
+                            <UserControls:CheckableComboBox Grid.Column="1" Grid.Row="1" x:Name="CabinetComboBox" LostFocus="CabinetComboBox_LostFocus"/>
+
+                            <Label                          Grid.Column="3" Grid.Row="1" Content="پست : " />
+                            <UserControls:CheckableComboBox Grid.Column="4" Grid.Row="1" x:Name="PostNumberCheckableCombobox" />
+
+                            <Label                           Grid.Column="3" Grid.Row="2" x:Name="PostTypeLabel" Content="نوع پست : " />
+                            <UserControls:CheckableComboBox  Grid.Column="4" Grid.Row="2" x:Name="PostTypeComboBox" />
+
+                            <Label   Grid.Column="0" Grid.Row="2" Content="گروه : " x:Name="PostGroupCheckableLabel"/>
+                            <UserControls:CheckableComboBox Grid.Column="1" Grid.Row="2" x:Name="PostGroupCheckableCombobox" />
+
+                            <Label                           Grid.Column="0" Grid.Row="3" Content="نوع A/B : " x:Name="AorBLabel"/>
+                            <UserControls:CheckableComboBox  Grid.Column="1" Grid.Row="3" x:Name="AorBComboBox"  />
+
+                            <Label   Grid.Column="0" Grid.Row="4" Content="فاصله : "  x:Name="DistanceLabel"/>
+                            <TextBox Grid.Column="1" Grid.Row="4" x:Name="DistanceTextBox"  PreviewTextInput="NumberValidationTextBox"/>
+
+                            <Label    Grid.Column="3" Grid.Row="4" Content="خارج از مرز : "  x:Name="IsBorderMeterLabel" />
+                            <CheckBox Grid.Column="4" Grid.Row="4" x:Name="IsBorderMeterCheckBox" VerticalAlignment="Center"/>
+
+                            <Label   Grid.Column="3" Grid.Row="5" Content="متراژ خارج مرز : " Visibility="{Binding ElementName=IsBorderMeterCheckBox,Path=IsChecked,Converter={StaticResource BooleanToVisibilityConverter},ConverterParameter=VisibilitWithCheckBox}" x:Name="OutBorderMeterLabel"/>
+                            <TextBox Grid.Column="4" Grid.Row="5" x:Name="OutBorderMeterTextBox" Text="{Binding OutBorderMeter}"  Visibility="{Binding ElementName=IsBorderMeterCheckBox,Path=IsChecked , Converter={StaticResource BooleanToVisibilityConverter},ConverterParameter=VisibilitWithCheckBox}" />
+
+                            <Label   Grid.Column="0" Grid.Row="6" Content="کد پست : "  x:Name="PostalCodeLabel"/>
+                            <TextBox Grid.Column="1" Grid.Row="6" x:Name="PostalCodeTextBox" Text="{Binding PostalCode}" PreviewTextInput="NumberValidationTextBox" />
+
+                            <Label                          Grid.Column="3" Grid.Row="6" Content="وضعیت پست : " x:Name="StatusPostLabel"/>
+                            <UserControls:CheckableComboBox Grid.Column="4" Grid.Row="6" x:Name="StatusPostComboBox" />
+
+                            <Label   Grid.Column="0" Grid.Row="7" Content="آدرس محل نصب : " x:Name="AddressLabel" />
+                            <TextBox Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="4" x:Name="AddressTextBox"  />
+                        </Grid>
+                    </Grid>
+                </DockPanel>
+            </GroupBox>
+        </DockPanel>
+    </Grid>
+</Local:ReportBase>

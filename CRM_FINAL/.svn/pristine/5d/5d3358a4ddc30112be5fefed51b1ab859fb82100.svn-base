@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="CRM.Application.UserControls.ExchangeRequestInfo"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                 xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                 mc:Ignorable="d" d:DesignWidth="820"
+                 Loaded="UserControl_Loaded">
+
+    <Grid x:Name="RequestInfo" FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="27"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="27"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="27"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="27"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="27"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="27"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Label       Grid.Row="0" Grid.Column="0"  Content="نوع در خواست"/>
+        <ComboBox    Grid.Row="0" Grid.Column="1" SelectedValue="{Binding RequestTypeID}"  x:Name="RequestTypeComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="RequestTypeComboBox_SelectionChanged"/>
+
+        <Label       Grid.Row="2" Grid.Column="0" Content="شهر : " />
+        <ComboBox    Grid.Row="2" Grid.Column="1" x:Name="CityComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="CityComboBox_SelectionChanged" />
+
+        <Label       Grid.Row="2" Grid.Column="3" Content="نام مرکز : "  />
+        <ComboBox    Grid.Row="2" Grid.Column="4" x:Name="CenterComboBox" SelectedValue="{Binding Path=CenterID, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" DisplayMemberPath="CenterName" SelectionChanged="CenterComboBox_SelectionChanged_1"/>
+
+        <Label       Grid.Row="4" Grid.Column="0"  Content="شماره دستور برگردان:"/>
+        <TextBox     Grid.Row="4" Grid.Column="1" Text="{Binding RequestLetterNo}" x:Name="RequestLetterNoTextBox"/>
+
+        <Label           Grid.Row="4" Grid.Column="3"  Content="تاریخ دستور برگردان:"/>
+        <cal:DatePicker  Grid.Row="4" Grid.Column="4"  SelectedDate="{Binding RequestLetterDate}" x:Name="RequestLetterDate"/>
+
+        <Label           Grid.Row="6" Grid.Column="0"  Content="تاریخ ثبت :"/>
+        <cal:DatePicker  Grid.Row="6" Grid.Column="1"  SelectedDate="{Binding RequestDate}" x:Name="RequestDate"/>
+
+        <Label       Grid.Row="6" Grid.Column="3"  Content="تعداد اصلاحیه :"/>
+        <TextBox    Grid.Row="6" Grid.Column="4"  x:Name="NumberOf"/>
+
+        <Label           Grid.Row="8"  Grid.Column="0" Content="تاریخ ثبت آخرین اصلاحیه : "  />
+        <cal:DatePicker  Grid.Row="8" Grid.Column="1"  x:Name="LastAmendmentDate" Height="25" VerticalAlignment="Top" />
+
+        <Label           Grid.Row="8" Grid.Column="3"  Content="تاریخ ثبت اخرین درخواست مرتبط" />
+        <cal:DatePicker  Grid.Row="8" Grid.Column="4"  x:Name="LastRequestDate"/>
+
+        <Label            Grid.Row="10" Grid.Column="0" Content="شناسه درخواست : " />
+        <TextBox          Grid.Row="10" Grid.Column="1" Name="RequestIDTextBox" Text="{Binding ID}" IsEnabled="False"/>
+
+    </Grid>
+
+</UserControl>

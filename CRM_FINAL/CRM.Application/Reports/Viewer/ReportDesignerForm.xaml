@@ -1,0 +1,7 @@
+﻿<Window x:Class="CRM.Application.Reports.Viewer.ReportDesignerForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Stimule="clr-namespace:Stimulsoft.Report.WpfDesign;assembly=Stimulsoft.Report.WpfDesign"
+        Title="گزارش ساز">
+    <Stimule:StiWpfDesignerControl Name="ReportDesigner"/>
+</Window>

@@ -1,0 +1,21 @@
+﻿--13931022 - 16:50
+--گزارش اتصالي هاي پست بر روی سیستم خودم نهایی شد حالا باید بر روی سرور 14 هم بروزرسانی شود 
+--UPDATE R14
+--SET TEMPLATE = RM.Template
+--FROM 
+--	ReportTemplate RM
+--INNER JOIN 
+--	[192.168.0.14\PENDARSQL].CRM.DBO.REPORTtEMPLATE r14 on RM.ID = R14.ID
+--WHERE 
+--	RM.ID = 24 AND R14.ID = 24
+
+--13931022 - 16:57
+--گزارش اتصالی های پست بر روی سرور کرمانشاه هم باید بروزرسانی شود
+--UPDATE RR
+--SET Template = R14.Template
+--FROM 
+--	ReportTemplate R14 
+--INNER JOIN 
+--	[78.39.252.109].CRM.DBO.ReportTemplate RR ON R14.ID = RR.ID 
+--WHERE 
+--	RR.ID = 24 AND R14.ID = 24

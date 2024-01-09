@@ -1,0 +1,267 @@
+﻿{
+    "Connections": [
+        {
+            "Key": "Default",
+            "ConnectionString": "Server=DATABASE-SERVER\\PENDARSQL; Database=CaseManagement; User Id=sa;Password=pendar@crm;",
+            "ProviderName": "System.Data.SqlClient",
+            "Tables": [
+                {
+                    "Tablename": "dbo.ActivityGroup",
+                    "Identifier": "ActivityGroup",
+                    "Module": "Case",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.Activity",
+                    "Identifier": "ActivityHelp",
+                    "Module": "Case",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.CustomerEffect",
+                    "Identifier": "CustomerEffect",
+                    "Module": "Case",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.RiskLevel",
+                    "Identifier": "RiskLevel",
+                    "Module": "Case",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.IncomeFlow",
+                    "Identifier": "IncomeFlow",
+                    "Module": "Case",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.Cycle",
+                    "Identifier": "Cycle",
+                    "Module": "Case",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.PMOLevel",
+                    "Identifier": "PmoLevel",
+                    "Module": "Case",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.Province",
+                    "Identifier": "Province",
+                    "Module": "Case",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.ProvinceProgram",
+                    "Identifier": "ProvinceProgram",
+                    "Module": "Case",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.Year",
+                    "Identifier": "Year",
+                    "Module": "Case",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.OrganizationEffect",
+                    "Identifier": "OrganizationEffect",
+                    "Module": "Case",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.ActivityRecordComment",
+                    "Identifier": "ActivityRecordComment",
+                    "Module": "Case",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.ActivityRecord",
+                    "Identifier": "ActivityRecord",
+                    "Module": "Case",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.ActivityRecordDetail",
+                    "Identifier": "ActivityRecordDetail",
+                    "Module": "Case",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.ActivityRequest",
+                    "Identifier": "ActivityRequestReport",
+                    "Module": "Case",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.ActivityRequestComment",
+                    "Identifier": "ActivityRequestComment",
+                    "Module": "Case",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.UserProvince",
+                    "Identifier": "UserProvince",
+                    "Module": "Case",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.WorkFlowStep",
+                    "Identifier": "WorkFlowStep",
+                    "Module": "WorkFlow",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.WorkFlowStatusType",
+                    "Identifier": "WorkFlowStatusType",
+                    "Module": "WorkFlow",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.WorkFlowAction",
+                    "Identifier": "WorkFlowAction",
+                    "Module": "WorkFlow",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.WorkFlowStatus",
+                    "Identifier": "WorkFlowStatus",
+                    "Module": "WorkFlow",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.WorkFlowRule",
+                    "Identifier": "WorkFlowRule",
+                    "Module": "WorkFlow12",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.RoleStep",
+                    "Identifier": "RoleStep",
+                    "Module": "Administration",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.Log",
+                    "Identifier": "Log",
+                    "Module": "Administration",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.ActivityRequestLog",
+                    "Identifier": "ActivityRequestLog",
+                    "Module": "Case",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.CalendarEvent",
+                    "Identifier": "CalendarEvent",
+                    "Module": "Administration",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.ActivityMainReason",
+                    "Identifier": "ActivityMainReason",
+                    "Module": "Case",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.ActivityCorrectionOperation",
+                    "Identifier": "ActivityCorrectionOperation",
+                    "Module": "Case",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.ProvinceProgramLog",
+                    "Identifier": "ProvinceProgramLog",
+                    "Module": "Case",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.ActivityReport",
+                    "Identifier": "ActivityReport",
+                    "ConnectionKey": "Default"
+                },
+                {
+                    "Tablename": "dbo.UserSupportGroup",
+                    "Identifier": "UserSupportGroup",
+                    "Module": "Administration",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.Notification",
+                    "Identifier": "Notification",
+                    "Module": "Administration",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.NotificationGroup",
+                    "Identifier": "NotificationGroup",
+                    "Module": "Administration",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                },
+                {
+                    "Tablename": "dbo.Messages",
+                    "Identifier": "Messages",
+                    "Module": "Messaging",
+                    "ConnectionKey": "Default",
+                    "PermissionKey": "Administration"
+                }
+            ]
+        }
+    ],
+    "KDiff3Path": "C:\\Program Files\\KDiff3\\kdiff3.exe",
+    "TFSIntegration": false,
+    "WebProjectFile": "..\\..\\..\\CaseManagement\\CaseManagement.Web\\CaseManagement.Web.csproj",
+    "RootNamespace": "CaseManagement",
+    "BaseRowClasses": [],
+    "RemoveForeignFields": [],
+    "GenerateSSImports": false,
+    "GenerateTSTypings": true,
+    "GenerateTSCode": true,
+    "RowFieldsSurroundWithRegion": false,
+    "GenerateRow": true,
+    "GenerateColumn": true,
+    "GenerateForm": true,
+    "GenerateEndpoint": true,
+    "GenerateRepository": true,
+    "GeneratePage": true,
+    "GenerateGrid": true,
+    "GenerateDialog": true,
+    "GenerateGridEditor": false,
+    "GenerateGridEditorDialog": false
+}

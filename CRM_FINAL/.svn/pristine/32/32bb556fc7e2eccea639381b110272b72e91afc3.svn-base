@@ -1,0 +1,43 @@
+﻿<Window 
+	x:Class="CRM.Application.Views.Validation.SetValidationDetailWindow"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	Title="SetValidationDetailWindow" Height="150" 
+	Width="300" WindowStyle="None" 
+	Loaded="Window_Loaded"
+	WindowStartupLocation="CenterScreen" FlowDirection="RightToLeft">
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="اجباری"/>
+        <CheckBox Name="chkIsRequired" Grid.Column="1" IsChecked="{Binding IsRequire}"/>
+
+        <Grid Name="grdRegx" Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Text="Regx" Grid.Column="0"/>
+            <ComboBox Name="comRegx" Grid.Column="1" Height="25" VerticalAlignment="Top" DisplayMemberPath="Name" SelectedValuePath="RegularExpressinon" SelectedValue="{Binding RegularExpression}"/>
+        </Grid>
+
+        <Button Name="btnClose" Content="خروج" Grid.Row="2" Grid.Column="0" Click="btnClose_Click" Style="{x:Null}" Height="30" VerticalAlignment="Bottom"/>
+        <Button Name="btnSave" Content="ذخیره" Grid.Row="2" Grid.Column="1" Click="btnSave_Click" Style="{x:Null}" Height="30" VerticalAlignment="Bottom"/>
+    </Grid>
+</Window>

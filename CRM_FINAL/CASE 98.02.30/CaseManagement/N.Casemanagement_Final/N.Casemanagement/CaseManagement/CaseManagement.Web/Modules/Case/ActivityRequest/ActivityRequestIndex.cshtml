@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewData["Title"] = Serenity.LocalText.Get("Db.Case.ActivityRequest.EntityPlural");
+}
+
+<div id="GridDiv"></div>
+
+<script type="text/javascript">
+    jQuery(function () {
+        new CaseManagement.Case.ActivityRequestGrid($('#GridDiv'), {}).init();
+
+        Q.initFullHeightGridPage($('#GridDiv'));
+    });
+    
+</script>
+<script>
+  /*  
+    $(document).ready(function () {// this will be called when the DOM is ready
+        $("#CaseManagement_Case_ActivityRequestDialog11_CycleCost").keyup(function () {
+            
+            alert("123456");
+            // skip for arrow keys
+            if (event.which >= 37 && event.which <= 40) return;
+
+            // format number
+            $(this).val(function (index, value) {
+                return value
+                .replace(/\D/g, "")
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                ;
+            });
+            
+        });
+    });
+
+    $("#CaseManagement_Case_ActivityRequestDialog11_CycleCost").keyup(function (event) {
+       
+    });
+    
+    var inputs, index;
+
+    inputs = document.getElementsByTagName('input');
+    for (index = 0; index < inputs.length; ++index) {
+        // deal with inputs[index] element.
+        alert(index);
+    }*/
+</script>

@@ -1,0 +1,41 @@
+﻿<Local:ReportBase x:Class="CRM.Application.Reports.ReportUserControls.failureCabinetInputsReportUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:Local="clr-namespace:CRM.Application.Local"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+             xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+             mc:Ignorable="d" >
+    <Grid FlowDirection="RightToLeft">
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="15"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions >
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="انتخاب شهر و مرکز"  Grid.Column=" 0" Grid.Row="0" Grid.ColumnSpan=" 5" >
+            <UserControls:CenterCityUserControl x:Name="CityCenterUC"/>
+        </GroupBox>
+
+        <Label Grid.Row="2" Grid.Column="0" Content="تاریخ خرابی از : " VerticalAlignment="Center" Width="100"/>
+        <cal:DatePicker Grid.Row="2" Grid.Column="1" x:Name="FromDate" />
+
+        <Label Grid.Row="2" Grid.Column="3" Content="تاریخ خرابی تا : " VerticalAlignment="Center" Width="100"/>
+        <cal:DatePicker Grid.Row="2" Grid.Column="4" x:Name="ToDate"/>
+
+        <Label Content="شماره کافو:" Grid.Row="4" Grid.Column="0"/>
+        <TextBox x:Name="CabinetNumberTextBox" Grid.Row="4" Grid.Column="1"/> 
+        
+    </Grid>
+</Local:ReportBase>

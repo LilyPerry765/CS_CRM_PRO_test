@@ -1,0 +1,44 @@
+﻿<Local:UserControlBase
+    xmlns:Local="clr-namespace:CRM.Application.Local"
+    x:Class="CRM.Application.UserControls.ChangeNoUserControl" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+    Tag="تعویض شماره"
+    mc:Ignorable="d"  Loaded="UserControlBase_Loaded">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Content="شماره تلفن" Height="30"/>
+        <TextBox Grid.Row="0" Grid.Column="1" x:Name="OldTelephoneNoTextBox" Text="{Binding OldTelephoneNo}" IsReadOnly="True" Height="30"/>
+
+        <Label Grid.Row="1" Grid.Column="0"   x:Name="NewTelephoneNoLabel"   Content="شماره تلفن جدید"   Visibility="Collapsed" Height="30"/>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="NewTelephoneNoTextBox" Text="{Binding NewTelephoneNo}" Visibility="Collapsed" Height="30"/>
+
+        <Label Grid.Row="2" Grid.Column="0" Content="توضیحات" Height="30"/>
+        <TextBox Grid.Row="2" Grid.Column="1" x:Name="DescriptionTextBox" Text="{Binding Description}" Height="30"/>
+
+        <Label Grid.Row="3" Grid.Column="0" Content="توضیحات عدم درج هزینه" Height="30"/>
+        <TextBox Grid.Row="3" Grid.Column="1" x:Name="DescriptionOfExpendituresTextBox" Text="{Binding DescriptionOfExpenditures}" Height="30"/>
+
+        <Label Grid.Row="4" Grid.Column="0" Content="علت تعویض شماره" Height="30"/>
+        <ComboBox Grid.Row="4" Grid.Column="1" x:Name="CauseOfChangeNoComboBox" SelectedValue="{Binding CauseOfChangeNoID}" SelectedValuePath="ID" DisplayMemberPath="Name" Height="30"/>
+
+        <Label Grid.Row="5" Grid.Column="0" Content="درخواست تلفن رند" Height="30"/>
+        <CheckBox Grid.Row="5" Grid.Column="1" VerticalAlignment="Center"  IsChecked="{Binding NumberType}" Height="30"/>
+    </Grid>
+</Local:UserControlBase>

@@ -1,0 +1,16 @@
+﻿
+namespace CaseManagement.Case {
+    
+    @Serenity.Decorators.registerClass()
+    export class OrganizationEffectGrid extends Serenity.EntityGrid<OrganizationEffectRow, any> {
+        protected getColumnsKey() { return 'Case.OrganizationEffect'; }
+        protected getDialogType() { return OrganizationEffectDialog; }
+        protected getIdProperty() { return OrganizationEffectRow.idProperty; }
+        protected getLocalTextPrefix() { return OrganizationEffectRow.localTextPrefix; }
+        protected getService() { return OrganizationEffectService.baseUrl; }
+
+        constructor(container: JQuery) {
+            super(container);
+        }
+    }
+}

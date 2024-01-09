@@ -1,0 +1,28 @@
+D:\Develop\CRM\CRM.WebAPI.Models\bin\Debug\CRM.WebAPI.Models.dll
+D:\Develop\CRM\CRM.WebAPI.Models\bin\Debug\CRM.WebAPI.Models.pdb
+D:\Develop\CRM\CRM.WebAPI.Models\bin\Debug\Logger.dll
+D:\Develop\CRM\CRM.WebAPI.Models\bin\Debug\Newtonsoft.Json.dll
+D:\Develop\CRM\CRM.WebAPI.Models\bin\Debug\Logger.pdb
+D:\Develop\CRM\CRM.WebAPI.Models\obj\Debug\CRM.WebAPI.Models.csprojResolveAssemblyReference.cache
+D:\Develop\CRM\CRM.WebAPI.Models\obj\Debug\CRM.WebAPI.Models.dll
+D:\Develop\CRM\CRM.WebAPI.Models\obj\Debug\CRM.WebAPI.Models.pdb
+D:\Develop\CRM\CRM.WebAPI.Models\bin\Debug\Newtonsoft.Json.xml
+D:\Develop\CRM FINAL\CRM.WebAPI.Models\bin\Debug\CRM.WebAPI.Models.dll
+D:\Develop\CRM FINAL\CRM.WebAPI.Models\bin\Debug\CRM.WebAPI.Models.pdb
+D:\Develop\CRM FINAL\CRM.WebAPI.Models\bin\Debug\Logger.dll
+D:\Develop\CRM FINAL\CRM.WebAPI.Models\bin\Debug\Newtonsoft.Json.dll
+D:\Develop\CRM FINAL\CRM.WebAPI.Models\bin\Debug\Newtonsoft.Json.xml
+D:\Develop\CRM FINAL\CRM.WebAPI.Models\obj\Debug\CRM.WebAPI.Models.dll
+D:\Develop\CRM FINAL\CRM.WebAPI.Models\obj\Debug\CRM.WebAPI.Models.pdb
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.WebAPI.Models\bin\Debug\CRM.WebAPI.Models.dll
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.WebAPI.Models\bin\Debug\CRM.WebAPI.Models.pdb
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.WebAPI.Models\bin\Debug\Newtonsoft.Json.dll
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.WebAPI.Models\bin\Debug\Logger.pdb
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.WebAPI.Models\bin\Debug\Newtonsoft.Json.xml
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.WebAPI.Models\obj\Debug\CRM.WebAPI.Models.dll
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.WebAPI.Models\obj\Debug\CRM.WebAPI.Models.pdb
+E:\Folder\CRM.WebAPI.Models.dll
+E:\Folder\CRM.WebAPI.Models.pdb
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.WebAPI.Models\obj\Debug\CRM.WebAPI.Models.csproj.AssemblyReference.cache
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.WebAPI.Models\obj\Debug\CRM.WebAPI.Models.csproj.CoreCompileInputs.cache
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.WebAPI.Models\obj\Debug\CRM.WebAPI.Models.csproj.CopyComplete

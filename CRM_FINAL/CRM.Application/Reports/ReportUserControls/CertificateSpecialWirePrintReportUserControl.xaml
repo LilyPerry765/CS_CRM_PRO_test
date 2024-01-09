@@ -1,0 +1,44 @@
+﻿<local:ReportBase x:Class="CRM.Application.Reports.ReportUserControls.CertificateSpecialWirePrintReportUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CRM.Application.Local"
+             xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"          
+             mc:Ignorable="d">
+    <StackPanel FlowDirection="RightToLeft">
+
+        <GroupBox Header="انتخاب شهر و مرکز">
+            <UserControls:CityCenterUserControl x:Name="CityCenterComboBox" Orientation="Horizontal"/>
+        </GroupBox>
+
+        <Grid FlowDirection="RightToLeft">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="از تاریخ :"/>
+            <cal:DatePicker x:Name="FromDatePicker" Grid.Row="0" Grid.Column="2" />
+
+            <Label Grid.Row="0" Grid.Column="4" Content="تا تاریخ :"/>
+            <cal:DatePicker x:Name="ToDatePicker" Grid.Row="0" Grid.Column="6"/>
+
+            <Label Content="شناسه درخواست :" Grid.Row="2" Grid.Column="0"/>
+            <TextBox x:Name="RequestIdTextBox" Grid.Row="2" Grid.Column="2"/>
+                
+        </Grid>
+        
+    </StackPanel>
+</local:ReportBase>

@@ -1,0 +1,155 @@
+﻿<Local:UserControlBase x:Class="CRM.Application.UserControls.V2SpaceAndPowerInfoSummary"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Local="clr-namespace:CRM.Application.Local" Loaded="UserControlBase_Loaded">
+    <Expander x:Name="SpaceAndPowerInfoSummaryExpander" Header="مشخصات فضا و پاور" FlowDirection="RightToLeft">
+        <StackPanel>
+
+            <Grid IsEnabled="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="نوع تجهیزات : "/>
+                <ComboBox x:Name="EquipmentTypeComboBox" Grid.Row="0" Grid.Column="1" DisplayMemberPath="Name" 
+                              SelectedValue="{Binding EquipmentType,UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID"/>
+
+                <Label Grid.Row="0" Grid.Column="2" Content="وزن تجهیزات : "/>
+                <TextBox Grid.Row="0" Grid.Column="3" x:Name="EquipmentWeightTextBox" Text="{Binding EquipmentWeight}"/>
+
+                <!--بعد از اینکه جدولی جداگانه برای نگهداری پاورهای یک رکورد فضا و پاور ایجاد شد کنترل های زیر مخفی شدند-->
+                <Label Grid.Row="1" Grid.Column="0" Content="نوع پاور مصرفی : "  Visibility="Collapsed"/>
+                <ComboBox Grid.Row="1" Grid.Column="1" x:Name="PowerTypeComboBox" DisplayMemberPath="Name" SelectedValue="{Binding PowerType,UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" Visibility="Collapsed"/>
+                <TextBox Grid.Row="1" Grid.Column="1" x:Name="PowerTypesTextBox" TextWrapping="Wrap"  Visibility="Collapsed"/>
+
+                <Label Grid.Row="1" Grid.Column="2" Content="میزان پاور مصرفی : " Visibility="Collapsed"/>
+                <TextBox Grid.Row="1" Grid.Column="3" x:Name="PowerRateTextBox" Text="{Binding PowerRate}"  Visibility="Collapsed"/>
+                <!---->
+                
+                <ListView x:Name="PowerTypesListView" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4">
+                    <ListView.View>
+                        <GridView>
+                            <GridView.Columns>
+                                <GridViewColumn Header="عنوان پاور" DisplayMemberBinding="{Binding Title}"/>
+                                <GridViewColumn Header="میزان پاور مصرفی" DisplayMemberBinding="{Binding Rate}"/>
+                            </GridView.Columns>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                
+                <Label Grid.Row="2" Grid.Column="0" Content="نوع فضا : "/>
+                <ComboBox Grid.Row="2" Grid.Column="1" x:Name="SpaceTypeComboBox" DisplayMemberPath="Name"
+                              SelectedValue="{Binding SpaceType,UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID"/>
+
+                <Label Grid.Row="2" Grid.Column="2" Content="متراژ فضا (متر مربع ) : "/>
+                <TextBox Grid.Row="2" Grid.Column="3" x:Name="SpaceSizeTextBox" Text="{Binding SpaceSize}"/>
+
+                <Label Grid.Row="3" Grid.Column="0" Content="کاربری فضا : "/>
+                <TextBox Grid.Row="3" Grid.Column="1" x:Name="SpaceUsageTextBox" Text="{Binding SpaceUsage}"/>
+
+                <Label Grid.Row="3" Grid.Column="2" Content="میزان اتلاف حرارت تجهیزات : "/>
+                <TextBox Grid.Row="3" Grid.Column="3" x:Name="HeatWasteRateTextBox" Text="{Binding HeatWasteRate}"/>
+
+                <Label Grid.Row="4" Grid.Column="0" Content="مدت زمان (ماه) :"/>
+                <TextBox Grid.Row="4" Grid.Column="1" x:Name="DurationTextBox" Text="{Binding Duration}"/>
+
+                <Label Grid.Row="4" Grid.Column="2" Content="فضای روی دکل : "/>
+                <TextBox Grid.Row="4" Grid.Column="3" x:Name="RigSpaceTextBox" Text="{Binding RigSpace}"/>
+
+                <Grid x:Name="AddressGrid" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="کد پستی : "/>
+                    <TextBox x:Name="PostalCodeTextBox" Grid.Row="0" Grid.Column="1" Text="{Binding PostalCode}"/>
+
+                    <Label Grid.Row="0" Grid.Column="2" Content="آدرس : "/>
+                    <TextBox x:Name="AddressTextBox" Grid.Row="0" Grid.Column="3" Text="{Binding AddressContent}" TextWrapping="Wrap"/>
+                    
+                </Grid>
+                
+                <Label Grid.Row="6" Grid.Column="0" Content="دارای فیبر میباشد : "/>
+                <CheckBox Grid.Row="6" Grid.Column="1" x:Name="HasFibreCheckBox" IsChecked="{Binding HasFibre}" />
+
+                <Grid x:Name="AntennaInfoGrid" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="نوع آنتن : "/>
+                    <TextBox x:Name="AntennaNameTextBox" Grid.Row="0" Grid.Column="1" Text="{Binding Name}"/>
+
+                    <Label Grid.Row="0" Grid.Column="2" Content="تعداد آنتن : "/>
+                    <TextBox x:Name="AntennaCountTextBox" Grid.Row="0" Grid.Column="3" Text="{Binding Count}"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="ارتفاع آنتن : "/>
+                    <TextBox x:Name="AntennaHeightTextBox" Grid.Row="1" Grid.Column="1" Text="{Binding Height}"/>
+                </Grid>
+
+                <Label Grid.Row="8" Grid.Column="0" Content="توضیحات : "/>
+                <TextBox Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="3" x:Name="RequestDescriptionTextBox" Text="{Binding RequestDescription}" TextWrapping="Wrap"/>
+
+            </Grid>
+
+            <DataGrid x:Name="FileItemsDataGrid" Margin="5" IsEnabled="True"
+                      BorderThickness="0 1 0 0"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="True"
+                      CanUserResizeColumns="True"
+                      CanUserResizeRows="False"
+                      CanUserDeleteRows="False"
+                      SelectionMode="Single"
+                      SelectionUnit="FullRow"
+                      ItemsSource="{Binding}"
+                      IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="/CRM.Application;component/Images/element_16x16.png" Width="16" Height="16" HorizontalAlignment="Center" Cursor="Hand"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="مشاهده"  IsReadOnly="True" >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="/CRM.Application;component/Images/DocumentPicture16x16.png" MouseUp="Image_MouseUp"  Cursor="Hand"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="اداره" IsReadOnly="True" Binding="{Binding FileType}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </StackPanel>
+    </Expander>
+    
+</Local:UserControlBase>

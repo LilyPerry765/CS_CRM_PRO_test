@@ -1,0 +1,11 @@
+﻿body {
+}
+/* MainMaster 
+***********************************************************************************/
+.message_label { color: #FF3300; vertical-align: middle; margin-right: 5px; padding-top:10px;}
+.message_icon{padding-top:7px;}
+.messagestatusbar_div {direction:rtl; width: 100%; min-height:23px; text-align: right; vertical-align: bottom; bottom: 0px; position: fixed; padding-top: 10px; background-image: url('../Images/MasterFooterBackground.png'); background-repeat: repeat-x; }
+.progressdiv { width: 100%; min-height:23px; text-align: right; vertical-align: bottom; bottom: 0px; position: fixed; padding-right: 10px; padding-top: 10px; background-image: url('../Images/MasterFooterBackground.png'); background-repeat: repeat-x;color: #0033CC; }
+.progressdiv label{ margin-top:10px;  padding-top:10px; vertical-align:middle;}
+.ContentsPlaceHolderDiv { /*background-color:#A5AAB1;*/ margin: 4px; -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; -khtml-border-radius: 2px; -o-border-radius: 2px; -icab-border-radius: 2px; }
+

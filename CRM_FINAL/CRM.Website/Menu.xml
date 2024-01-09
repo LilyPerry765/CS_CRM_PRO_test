@@ -1,0 +1,49 @@
+﻿<Menu xmlns="http://tempuri.org/Menu.xsd">
+  
+  <!--مهم : هم نام بودن هدر با گروپ و تب باعث لود نشدن صحیح تب میشود-->
+  
+  
+  <!--<MenuItem Tab="" Group="تنظیمات" Header="لاگ اتمام درخواست ها" Class="RequestLogList"  />
+  <MenuItem Tab="مدیریت" Group="تنظیمات" Header="لاگ عملیات" Class="ActionLogList"  />
+  <MenuItem Tab="مدیریت" Group="دسترسی کاربران CRM" Header="نقش ها" Class="RoleList" Icon="Images/Role_32x32.png" />
+  <MenuItem Tab="مدیریت" Group="دسترسی کاربران CRM" Header="کاربران" Class="UserList" Icon="Images/User_32x32.png"/>
+  <MenuItem Tab="امکانات" Group="تنظیمات کاربر" Header="تنظیمات" Class="UserConfig" Icon="Images/UserConfig_32x32.png"/>-->
+  
+  <MenuItem Tab="مشترکین" Group="کارتابل" Header="کارتابل درخواست" Class="RequestsInbox" Icon="Images/inbox_32x32.png" />
+  <MenuItem Tab="مشترکین" Group="کارتابل" Header="داشبورد درخواست" Class="RequestDashboard" Icon="Images/Dashboard_32x32.png"/>
+  
+  <!--<MenuItem Tab="مشترکین" Group="قطع و وصل" Header="قطع" Class="CutTelephoneNoInput"  Icon="Images/TelephoneRed_32x32.png"/>
+  <MenuItem Tab="مشترکین" Group="قطع و وصل" Header="وصل" Class="EstablishTelephoneNoInput"  Icon="Images/TelephoneGreen_32x32.png"/>
+  <MenuItem Tab="مشترکین" Group="مشترکین" Header="تغییر نام" Class="ChangeNameTelephoneNoInput"  Icon="Images/ChangeName_32x32.png"/>
+  <MenuItem Tab="مشترکین" Group="مشترکین" Header="سرویس ویژه"  Class="SpecialServiceTelephoneNoInput"  Icon="Images/services_32x32.png"/>
+  <MenuItem Tab="مشترکین" Group="مشترکین" Header="انسداد صفر" Class="OpenAndCloseZeroTelephoneNoInput"  Icon="Images/telephoneBlock_32x32.png"/>
+  <MenuItem Tab="مشترکین" Group="مشترکین" Header="استرداد ودیعه تلفن ثابت" Class="RefundableDepositOfFixedPhone" Icon="Images/wallet_open.png"/>
+
+  <MenuItem Tab="تلفن ثابت" Group="دایری" Header=" دایری " Class="InstalTelephoneNoInput" Icon="Images/DayariPhone.png" />
+  <MenuItem Tab="تلفن ثابت" Group="دایری" Header="دایری مجدد" Class="Reinstall" Icon="Images/ReinstalPhone.png"/>
+  <MenuItem Tab="تلفن ثابت" Group="سایر" Header="تخلیه" Class="DischarginTelephoneNoInput"  Icon="Images/Telephone_Discharging.png"/>
+  <MenuItem Tab="تلفن ثابت" Group="سایر" Header="تعویض شماره" Class="ChangeNoNoInput" Icon="Images/PhoneSwiting32_32.png"/>
+
+  <MenuItem Tab="فضا و پاور" Group="فضا و پاور" Header=" فضا و پاور " Class="SpaceandPower" Icon="Images/Location_generic.png"/>
+  
+  <MenuItem Tab="E1" Group="مشترکین" Header="E1&#x0a;سیم" Class="E1" Icon="Images/E1_32_32.png"/>
+  <MenuItem Tab="E1" Group="مشترکین" Header="E1&#x0a;فیبر" Class="E1Fiber" Icon="Images/E1Fiber_32_32.png"/>
+  <MenuItem Tab="E1" Group="مشترکین" Header="سیم خصوصی" Class="PrivateWire" Icon="Images/PrivateWire_32x32.png"/>-->
+  
+  <MenuItem Tab="درخواست" Group="ADSL" Header="ثبت نام" Class="ADSLTelephoneNoInput"  Icon="Images/ADSLInstal_32x32.png"/>
+  <MenuItem Tab="درخواست" Group="ADSL" Header="شارژ مجدد" Class="ADSLChangeServiceTelephoneNoInput" Icon="Images/ADSLChangeTariff_32x32.png" />
+  <!--<MenuItem Tab="ADSL" Group="ADSL" Header="شارژ مجدد" Class="ADSLChangeServiceTelephoneNoInput" Icon="Images/ADSLChangeTariff_32x32.png" />-->
+  <!--<MenuItem Tab="ADSL" Group="ADSL" Header="تغییر IP استاتیک" Class="ADSLChangeIPTelephoneNoInput" Icon="Images/ADSLChangeTariff_32x32.png" />
+  <MenuItem Tab="ADSL" Group="ADSL" Header="قطع موقت" Class="ADSLTemporaryCutTelephoneNoInput" Icon="Images/ADSLCut_32x32.png"/>
+  <MenuItem Tab="ADSL" Group="ADSL" Header="تعویض بوخت" Class="BuchtSwitchingADSLTelephoneNoInput" Icon="Images/ChangePort_32x32.png"/>
+  <MenuItem Tab="ADSL" Group="ADSL" Header="دایری شرکت PAP" Class="PAPInstalTelephoneNoInput"  Icon="Images/ADSLInstal_32x32.png"/>-->
+  
+  <!--<MenuItem Tab="118" Group="عنوان" Header="ثبت عنوان در 118" Class="RecordTitleIn118TelephoneNoInput" Icon="Images/ListAdd_32x32.png" />
+  <MenuItem Tab="118" Group="عنوان" Header="حذف عنوان از 118" Class="DeleteTitleIn118TelephoneNoInput" Icon="Images/ListDelete_32x32.png" />
+  <MenuItem Tab="118" Group="عنوان" Header="تغییر عنوان در 118" Class="ChangeTitleIn118TelephoneNoInput" Icon="Images/ChangeTitle.png"/>
+  
+  <MenuItem Tab="تغییر آدرس" Group="مشترکین" Header="تغییر مکان داخل مرکز" Class="ChangeLocationInsideCenterTelephoneNoInput"  Icon="Images/ChangeLocationInsideCenter.png"/>
+  <MenuItem Tab="تغییر آدرس" Group="مشترکین" Header="تغییر مکان مرکز به مرکز" Class="ChangeLocationCenterToCenterTelephoneNoInput"  Icon="Images/ChangeLocationCenterToCenter.png"/>
+  <MenuItem Tab="تغییر آدرس" Group="مشترکین" Header="اصلاح آدرس" Class="ChangeAddress" Icon="Images/ExchangeAddress.png"/>-->
+
+</Menu>

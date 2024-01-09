@@ -1,0 +1,12 @@
+            "http://IP:Port/CRM.ServiceHost.CRMService.svc"
+              
+                IP:  
+                port:
+
+
+            string   errorMessages = string.Empty;
+            bool error = false;
+
+            ServiceReference1.CRMServiceClient Client = new ServiceReference1.CRMServiceClient();
+            List<ServiceReference1.ServiceHostCustomClassCityInfo> result = Client.CityInfo(out error, out errorMessages, "username", "pasword");
+            Client.Close();

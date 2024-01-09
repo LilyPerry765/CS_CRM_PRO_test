@@ -1,0 +1,752 @@
+@import "site.theme.less";
+@import "site.mixins.less";
+@import "site.administration.less";
+@import "site.basicsamples.less";
+@import "site.membership.less";
+@import "site.northwind.less";
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityGroupDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityDialog {
+    > .size { width: 650px; height: 550px; }
+    .caption { width: 150px; }
+}
+
+
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-RepeatTermDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-CustomerEffectDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-RiskLevelDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-IncomeFlowDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-CycleDialog {
+    > .size { width: 650px; height:250px;}
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-PmoLevelDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ProvinceDialog {
+    > .size { width: 650px; height:400px;}
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ProvinceProgramDialog {
+    > .size { width: 650px; height: 400px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-YearDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-OrganizationEffectDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityRecordDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityRecordDetailDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityRecordCommentDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityRecordDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityRecordDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityRequestDialog {
+    > .size { width: 650px; height:700px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityRequestCommentDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityRequestCommentEditDialog {
+    > .size { width: 650px; height:350px; }
+    .caption { width: 150px; }
+}
+
+
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-WorkFlow-WorkFlowStepDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-WorkFlow-WorkFlowStatusTypeDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-WorkFlow-WorkFlowActionDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-WorkFlow-WorkFlowStatusDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-WorkFlow-WorkFlowRuleDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-WorkFlow-WorkFlowStepDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-WorkFlow12-WorkFlowRuleDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Administration-RoleStepDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Administration-LogDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityRequestLogDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityRequestLogDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityRequestLogDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityRequestLogDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-SwitchDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-SwitchDslamDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-SwitchTransitDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-SwitchProvinceDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-SwitchDslamProvinceDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-SwitchTransitProvinceDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-CompanyDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-SoftwareDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ProvinceCompanySoftwareDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-CommentReasonDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityRequestCommentReasonDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityRequestDenyDialog {
+    > .size { width: 600px; height:700px;}
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityRequestConfirmDialog {
+     > .size { width: 600px; height:700px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityRequestConfirmDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityRequestConfirmDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityRequestDetailDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-StimulReport-ActivityRequestDetailDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-StimulReport-ActivityRequestReportDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-StimulReport-ActivityRequestDetailDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityRequestPenddingDialog {
+    > .size { width: 600px; height:700px;}
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityHelpDialog {
+    > .size { width: 650px; height: 550px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Administration-CalendarEventDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityMainReasonDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityCorrectionOperationDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityRequestFinancialDialog {
+    > .size { width: 600px; height:700px;}
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityRequestTechnicalDialog {
+    > .size { width: 600px; height:700px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Administration-UserSupportGroupDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Administration-UserSupportGroupDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Administration-NotificationDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-StimulReport-ActivityRequestReportDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-StimulReport-ActivityRequestReportDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Administration-NotificationGroupDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityRequestLeaderDialog {
+    > .size { width: 600px; height:700px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityRequestConfirmAdminDialog {
+    > .size { width: 650px; height:700px;}
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityRequestDeleteDialog {
+    > .size { width: 650px; height:700px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityRequestHistoryDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Case-ActivityRequestReportDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Messaging-NewMessageDialog {
+    > .size { width: 650px; height:552px; }
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Messaging-InboxDialog {
+    > .size { width: 650px; height:552px;}
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Messaging-SentDialog {
+    > .size { width: 650px; height:552px;}
+    .caption { width: 150px; }
+}
+
+/* ------------------------------------------------------------------------- */
+/* APPENDED BY CODE GENERATOR, MOVE TO CORRECT PLACE AND REMOVE THIS COMMENT */
+/* ------------------------------------------------------------------------- */
+
+
+.s-Messaging-MessagesReceiversDialog {
+    > .size { width: 650px; }
+    .caption { width: 150px; }
+}

@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <div class="box">
+        <div class="box-header">
+            <h3 class="box-title" style="font-weight:bold;">گروه های گفتمان</h3>
+        </div>
+        <div id="NotificationRoomsList" class="box-body" style="align-self:center;margin-right:7%;"> </div>
+    </div><!-- /.box -->
+
+</body>
+</html>
+<script>
+    var BoxBody = document.getElementById("NotificationRoomsList");
+
+    $.ajax({
+        type: "GET",
+        async: false,
+        url: "UserGroups",
+        success: function (data)
+        {
+            for (var i = 0; i < data.length; i++)
+            {
+                (function () {
+                    var GroupButton = document.createElement('button');
+                    GroupButton.className = 'btn bg-blue large margin';
+                    GroupButton.style.fontSize = '21px';
+                    GroupButton.style.width = '30%';
+                    GroupButton.style.borderRadius = '8px';
+                   
+                    GroupButton.id = data[i].GroupId;
+
+                    var Group = data[i].GroupId;
+
+                    GroupButton.addEventListener("click", function (event) {
+
+                       // console.log(Group);
+                        window.location.href = "Notifications?group=" + Group;
+                    });
+
+                    GroupButton.innerHTML = data[i].GroupName;
+
+                    BoxBody.appendChild(GroupButton);
+                }());
+            }
+        },
+        dataType: "json"
+    });
+
+</script>

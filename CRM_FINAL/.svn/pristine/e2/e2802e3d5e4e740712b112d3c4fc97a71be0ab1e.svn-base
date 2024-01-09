@@ -1,0 +1,72 @@
+﻿<Local:UserControlBase
+    x:Class="CRM.Application.UserControls.DischargeADSL" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+    xmlns:Local="clr-namespace:CRM.Application.Local"
+    mc:Ignorable="d"  Loaded="UserControlBase_Loaded">
+    <Grid FlowDirection="RightToLeft">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <GroupBox  Grid.Row="0" Grid.Column="0" Header="تعرفه ADSL">
+            <Grid x:Name="TariffInfo" Height="auto">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="تعرفه ADSL : " />
+                <TextBox Grid.Row="0" Grid.Column="1" IsReadOnly="True" Text="{Binding Title}" />
+
+                <Label Grid.Row="1" Grid.Column="0" Content="پهنای باند : " />
+                <TextBox Grid.Row="1" Grid.Column="1" IsReadOnly="True" Text="{Binding BandWidth}" />
+
+                <Label Grid.Row="1" Grid.Column="2" Content="حجم : " />
+                <TextBox Grid.Row="1" Grid.Column="3" IsReadOnly="True" Text="{Binding TrafficLimitation}" />
+
+                <Label Grid.Row="2" Grid.Column="0" Content="مدت استفاده : " />
+                <TextBox Grid.Row="2" Grid.Column="1" IsReadOnly="True" Text="{Binding Duration}" />
+
+                <Label Grid.Row="2" Grid.Column="2" Content="هزینه : " />
+                <TextBox Grid.Row="2" Grid.Column="3" IsReadOnly="True" Text="{Binding Price}" />
+
+                <Label Grid.Row="3" Grid.Column="0" Content="شرکت پپ : "/>
+                <TextBox Grid.Row="3" Grid.Column="1" Name="PapInfoTextBox" IsReadOnly="True"/>
+
+            </Grid>
+     
+        </GroupBox>
+      
+        <GroupBox Grid.Row="1" Grid.Column="0" Header="توضیحات">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Content="توضیحات" />
+                <TextBox Grid.Row="0" Grid.Column="1" Name="CommentTextBox"/>
+            </Grid>
+        </GroupBox>
+
+    </Grid>
+</Local:UserControlBase>

@@ -1,0 +1,24 @@
+D:\Project\New Billing\FoxProToDataSet\bin\Debug\FoxProToDataSet.dll
+D:\Project\New Billing\FoxProToDataSet\bin\Debug\FoxProToDataSet.pdb
+D:\Project\New Billing\FoxProToDataSet\obj\Debug\FoxProToDataSet.csprojResolveAssemblyReference.cache
+D:\Project\New Billing\FoxProToDataSet\obj\Debug\FoxProToDataSet.dll
+D:\Project\New Billing\FoxProToDataSet\obj\Debug\FoxProToDataSet.pdb
+D:\Project\billing\FoxProToDataSet\bin\Debug\FoxProToDataSet.dll
+D:\Project\billing\FoxProToDataSet\bin\Debug\FoxProToDataSet.pdb
+D:\Project\billing\FoxProToDataSet\obj\Debug\FoxProToDataSet.dll
+D:\Project\billing\FoxProToDataSet\obj\Debug\FoxProToDataSet.pdb
+D:\Develop\CRM\FoxProToDataSet\bin\Debug\FoxProToDataSet.dll
+D:\Develop\CRM\FoxProToDataSet\bin\Debug\FoxProToDataSet.pdb
+D:\Develop\CRM\FoxProToDataSet\obj\Debug\FoxProToDataSet.csprojResolveAssemblyReference.cache
+D:\Develop\CRM\FoxProToDataSet\obj\Debug\FoxProToDataSet.dll
+D:\Develop\CRM\FoxProToDataSet\obj\Debug\FoxProToDataSet.pdb
+D:\Develop\CRM FINAL\FoxProToDataSet\bin\Debug\FoxProToDataSet.dll
+D:\Develop\CRM FINAL\FoxProToDataSet\bin\Debug\FoxProToDataSet.pdb
+D:\Develop\CRM FINAL\FoxProToDataSet\obj\Debug\FoxProToDataSet.dll
+D:\Develop\CRM FINAL\FoxProToDataSet\obj\Debug\FoxProToDataSet.pdb
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\FoxProToDataSet\bin\Debug\FoxProToDataSet.dll
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\FoxProToDataSet\bin\Debug\FoxProToDataSet.pdb
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\FoxProToDataSet\obj\Debug\FoxProToDataSet.dll
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\FoxProToDataSet\obj\Debug\FoxProToDataSet.pdb
+E:\Folder\FoxProToDataSet.dll
+E:\Folder\FoxProToDataSet.pdb

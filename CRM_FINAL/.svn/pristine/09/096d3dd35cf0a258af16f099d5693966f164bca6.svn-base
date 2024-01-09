@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<configuration>
+
+  <configSections/>
+
+  <connectionStrings configProtectionProvider="SqlConnectionProvider">
+    <EncryptedData/>
+  </connectionStrings>
+  <configProtectedData>
+    <providers>
+      <clear/>
+      <add name="SqlConnectionProvider" type="Common.SqlConnectionProvider, Common"/>
+    </providers>
+  </configProtectedData>
+
+  <system.web>
+    <membership defaultProvider="CRMMembershipProvider">
+      <providers>
+        <clear/>
+        <add name="CRMMembershipProvider" connectionStringName="CRM.Data.Properties.Settings.CRMConnectionString" applicationName="" passwordFormat="Hashed" requiresQuestionAndAnswer="false" requiresUniqueEmail="false" type="Enterprise.Membership.PendarMembershipProvider, Enterprise.Security"/>
+      </providers>
+    </membership>
+    <roleManager defaultProvider="SecSqlRoleProvider" enabled="true">
+      <providers>
+        <clear/>
+        <add name="SecSqlRoleProvider" connectionStringName="CRM.Data.Properties.Settings.CRMConnectionString" applicationName="" type="Enterprise.Role.PendarRoleProvider,Enterprise.Security"/>
+      </providers>
+    </roleManager>
+  </system.web>
+  <startup>
+    <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0"/>
+  </startup>
+
+  <system.serviceModel>
+    <bindings>
+      <basicHttpBinding>
+        <binding name="BasicHttpBinding_ICRMService" />
+      </basicHttpBinding>
+    </bindings>
+    <client>
+      <endpoint address="http://192.168.240.102:83/CRM.ServiceHost.CRMService.svc"
+        binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_ICRMService"
+        contract="CRMServiceHost.ICRMService" name="BasicHttpBinding_ICRMService" />
+    </client>
+  </system.serviceModel>
+</configuration>

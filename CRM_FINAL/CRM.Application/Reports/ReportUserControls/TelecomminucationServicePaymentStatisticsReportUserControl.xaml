@@ -1,0 +1,39 @@
+﻿<Local:ReportBase x:Class="CRM.Application.Reports.ReportUserControls.TelecomminucationServicePaymentStatisticsReportUserControl"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                  xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                  xmlns:CustomControls="clr-namespace:CRM.Application.Codes.CustomControls"
+                  xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"  
+                  xmlns:Local="clr-namespace:CRM.Application.Local">
+    <StackPanel FlowDirection="RightToLeft">
+
+        <GroupBox Header="انتخاب مشخصات">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label  Grid.Row="0" Grid.Column="0" Content="کد ملی/شماره ثبت : " />
+                <TextBox x:Name="NationalCodeOrRecordNoTextBox" Grid.Row="0" Grid.Column="1" />
+                
+                <Label Grid.Row="0" Grid.Column="3" Content="شناسه درخواست : "/>
+                <CustomControls:NumericTextBox x:Name="RequestIDNumericTextBox" Grid.Row="0" Grid.Column="4"/>
+
+                <Label Grid.Row="2" Grid.Column="0" Content="نوع درخواست : "/>
+                <ComboBox x:Name="RequestTypeComboBox" Grid.Row="2" Grid.Column="1" DisplayMemberPath="Title" SelectedValuePath="ID"/>
+                
+            </Grid>
+        </GroupBox>
+    </StackPanel>
+</Local:ReportBase>

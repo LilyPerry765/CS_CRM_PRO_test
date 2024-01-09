@@ -1,0 +1,30 @@
+﻿<Local:PopupWindow Title="علت تعویض شماره"
+                   x:Class="CRM.Application.Views.CauseOfChangeNoForm"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib"
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls"
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   d:DesignWidth="780" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   Loaded="PopupWindow_Loaded">
+
+    <Grid FlowDirection="RightToLeft">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            
+        </Grid.RowDefinitions>
+        <Label   Grid.Column="0" Grid.Row="0" Content="علت" />
+        <TextBox Grid.Column="1" Grid.Row="0" x:Name="Name" Text="{Binding Name}" />
+
+        <Button Grid.Row="20" Grid.Column="0" Content="ذخیره" Name="SaveButton" Click="SaveForm" Tag="Footer" />
+    </Grid>
+
+
+</Local:PopupWindow>

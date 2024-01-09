@@ -1,0 +1,40 @@
+﻿<Local:PopupWindow x:Class="CRM.Application.Views.SMSServiceForm"
+                   Title="فرم ویرایش پیامک" 
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib" 
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+                   Loaded="PopupWindow_Loaded" Icon="/CRM.Application;component/Images/Province48x48.png" 
+                   Width="500" Height="230" ResizeMode="NoResize">
+
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/> 
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="0" Content="عنوان : " />
+        <TextBox Grid.Column="1" Grid.Row="0" x:Name="TitleTextbox" Text="{Binding Title}" TabIndex="1"/>
+
+        <Label Grid.Column="0" Grid.Row="1" Content="متن پیام : " />
+        <TextBox Grid.Column="1" Grid.Row="1" x:Name="MessageTextbox" Text="{Binding Message}" TabIndex="2" Height="100" TextWrapping="Wrap"/>
+
+        <Label Grid.Column="0" Grid.Row="2" Content="فعال : " />
+        <CheckBox Grid.Row="2" Grid.Column="1" Name="IsActiveCheckBox" IsChecked="{Binding IsActive}" VerticalAlignment="Center" />
+        
+        <Button Grid.Row="3" Grid.Column="0" Content="ذخیره" Name="SaveButton" Click="SaveForm" Tag="Footer" />
+
+    </Grid>
+</Local:PopupWindow>

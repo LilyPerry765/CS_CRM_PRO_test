@@ -1,0 +1,138 @@
+﻿<Local:PopupWindow x:Class="CRM.Application.Views.ADSLPAPFullView"
+                   xmlns:Local="clr-namespace:CRM.Application.Local" 
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:converter="clr-namespace:CRM.Converters" 
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                   WindowStartupLocation="CenterScreen" 
+                   Height="Auto" Width="800" >
+
+    <ScrollViewer  Padding="0 0 10 0" FlowDirection="RightToLeft">
+        <DockPanel FlowDirection="RightToLeft">
+            <Grid Name="RequestInfoGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="30" />
+                </Grid.RowDefinitions>
+
+                <GroupBox Grid.Row="0" Header="ثبت درخواست">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="180" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="155" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="نام کاربر : " />
+                        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding CreatorUser}" IsReadOnly="True"/>
+
+                        <Label Grid.Row="0" Grid.Column="2" Content=" تاریخ : " />
+                        <TextBox Grid.Row="0" Grid.Column="3" Text="{Binding InsertDate}" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="شماره تلفن : " />
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding TelephoneNo}" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="1" Grid.Column="2" Content="شماره پرونده : " />
+                        <TextBox Grid.Row="1" Grid.Column="3" Text="{Binding ID}" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="تاریخ درخواست : " />
+                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding RequestDate}" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="2" Grid.Column="2" Content="نام مرکز : " />
+                        <TextBox Grid.Row="2" Grid.Column="3" Text="{Binding Center}" IsReadOnly="True" />
+
+                        <Label Grid.Row="3" Grid.Column="0" Content="نام شرکت PAP : " />
+                        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding PAPName}" IsReadOnly="True" />
+
+                        <Label Grid.Row="3" Grid.Column="2" Content="نام مشترک : " />
+                        <TextBox Grid.Row="3" Grid.Column="3" Text="{Binding Customer}" IsReadOnly="True" />
+
+                        <Label Grid.Row="4" Grid.Column="0" Content="وضعیت مشترک : " />
+                        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding CustomerStatus}" IsReadOnly="True" />
+
+                        <Label Grid.Row="4" Grid.Column="2" Content="مهلت دایری : " />
+                        <TextBox Grid.Row="4" Grid.Column="3" Text="{Binding InstalTimeOut}" IsReadOnly="True" />
+
+                        <Label Grid.Row="5" Grid.Column="0" Content="پورت : " />
+                        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding SplitorBucht}" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <!--<Label Grid.Row="5" Grid.Column="2" Content="بوخت لاین : " />
+                        <TextBox Grid.Row="5" Grid.Column="3" Text="{Binding LineBucht}" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />-->
+
+                        <Label Grid.Row="6" Grid.Column="0" Content="توضیحات : " />
+                        <TextBox Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding CommentCustomers}" IsReadOnly="True" />
+
+                        <Label Grid.Row="7" Grid.Column="0" Content="توضیحات رد درخواست : " />
+                        <TextBox Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding CommnetReject}" IsReadOnly="True" />
+
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="1" Header="MDF">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="180" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="155" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="نام کاربر : " />
+                        <TextBox Grid.Row="0" Grid.Column="1" IsReadOnly="True" Text="{Binding MDFUser}" />
+
+                        <Label Grid.Row="0" Grid.Column="2" Content=" تاریخ دایری : " />
+                        <TextBox Grid.Row="0" Grid.Column="3" IsReadOnly="True" Text="{Binding MDFDate}" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="توضیحات : " />
+                        <TextBox Grid.Row="1" Grid.Column="1" IsReadOnly="True" Text="{Binding MDFComment}" Grid.ColumnSpan="3" />
+
+                    </Grid>
+                </GroupBox>
+
+                <!--<GroupBox Grid.Row="2" Header="ناظر امور مشترکین" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="180" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="155" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="نام کاربر : " />
+                        <TextBox Grid.Row="0" Grid.Column="1" IsReadOnly="True" Text="{Binding FinalUser}" />
+
+                        <Label Grid.Row="0" Grid.Column="2" Content=" تاریخ : " />
+                        <TextBox Grid.Row="0" Grid.Column="3" IsReadOnly="True" Text="{Binding FinalDate}" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="توضیحات : " />
+                        <TextBox Grid.Row="1" Grid.Column="1" IsReadOnly="True" Text="{Binding FinalComment}" Grid.ColumnSpan="3" />
+
+                    </Grid>
+                </GroupBox>-->
+
+            </Grid>
+        </DockPanel>
+    </ScrollViewer>
+
+</Local:PopupWindow>

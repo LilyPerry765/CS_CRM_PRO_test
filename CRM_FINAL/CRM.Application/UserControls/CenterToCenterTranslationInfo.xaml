@@ -1,0 +1,69 @@
+﻿<Local:UserControlBase     
+              x:Class="CRM.Application.UserControls.CenterToCenterTranslationInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:Local="clr-namespace:CRM.Application.Local"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" Loaded="UserControl_Loaded">
+
+    <StackPanel FlowDirection="RightToLeft">
+
+        <GroupBox Style="{x:Null}" Header="مرکز مبدا">
+            <Grid IsEnabled="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+
+                <Label    Grid.Row="0" Grid.Column="0" Content="مرکز  : " />
+                <TextBox  Grid.Row="0" Grid.Column="1" x:Name="SourceCenterTextBox"  Text="{Binding SourceCenter}" />
+
+                <Label   Grid.Row="0" Grid.Column="2" Content="کافو : " />
+                <TextBox Grid.Row="0" Grid.Column="3" Name="SourceCabinetTextBox" Text="{Binding SourceCabinet}" />
+
+                <Label    Grid.Row="1"  Grid.Column="0" Content="از ورودی : " />
+                <TextBox  Grid.Row="1"  Grid.Column="1" Name="FromSourceCabinetInputTextBox"  Text="{Binding FromSourceCabinetInput}"/>
+
+                <Label    Grid.Row="1" Grid.Column="2" Content="تاورودی : " />
+                <TextBox  Grid.Row="1" Grid.Column="3" Name="ToSourceCabinetInputTextBox"  Text="{Binding ToSourceCabinetInput}"/>
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Style="{x:Null}" Header="مرکز مقصد">
+            <Grid  IsEnabled="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+
+                <Label    Grid.Row="0" Grid.Column="0" Content="مرکز  : " />
+                <TextBox  Grid.Row="0" Grid.Column="1" x:Name="TargetCenterTextBox"  Text="{Binding TargetCenter}" />
+
+                <Label   Grid.Row="0" Grid.Column="2" Content="کافو : " />
+                <TextBox Grid.Row="0" Grid.Column="3" Name="TargetCabinetTextBox" Text="{Binding TargetCabinet}" />
+
+                <Label    Grid.Row="1"  Grid.Column="0" Content="از ورودی : " />
+                <TextBox  Grid.Row="1"  Grid.Column="1" Name="FromTargetCabinetInputTextBox"  Text="{Binding FromTargetCabinetInput}"/>
+
+                <Label    Grid.Row="1" Grid.Column="2" Content="تاورودی : " />
+                <TextBox  Grid.Row="1" Grid.Column="3" Name="ToTargetCabinetInputTextBox"  Text="{Binding ToTargetCabinetInput}"/>
+
+            </Grid>
+        </GroupBox>
+    </StackPanel>
+</Local:UserControlBase>

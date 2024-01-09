@@ -1,0 +1,37 @@
+﻿<div id="~_Tabs" class="s-DialogContent">
+    <ul>
+        <li><a href="#~_TabInfo"><span>استان</span></a></li>
+        <li><a href="#~_TabSwitchs"><span>سوییچ</span></a></li>
+        <li><a href="#~_TabSwitchDSLAMs"><span>سوییچ DSLAM</span></a></li>
+        <li><a href="#~_TabSwitchTransits"><span>سوییچ ترانزیت</span></a></li>
+        <li><a href="#~_TabSoftwares"><span>نرم افزارها</span></a></li>
+    </ul>
+    <div id="~_TabInfo" class="tab-pane s-TabInfo">
+        <div id="~_Toolbar" class="s-DialogToolbar">
+        </div>
+        <div class="s-Form">
+            <form id="~_Form" action="">
+                <div class="fieldset ui-widget ui-widget-content ui-corner-all">
+                    <div id="~_PropertyGrid"></div>
+                    <div class="clear"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="~_TabSwitchs" class="tab-pane s-TabLogs">
+        <div id="~_SwitchsGrid">
+        </div>
+    </div>
+    <div id="~_TabSwitchDSLAMs" class="tab-pane s-TabLogs">
+        <div id="~_SwitchDSLAMsGrid">
+        </div>
+    </div>
+    <div id="~_TabSwitchTransits" class="tab-pane s-TabLogs">
+        <div id="~_SwitchTransitsGrid">
+        </div>
+    </div>
+    <div id="~_TabSoftwares" class="tab-pane s-TabLogs">
+        <div id="~_SoftwaresGrid">
+        </div>
+    </div>
+</div>

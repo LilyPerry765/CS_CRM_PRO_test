@@ -1,0 +1,138 @@
+﻿<Local:PopupWindow x:Class="CRM.Application.Views.InstallmentRegistrationForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+        xmlns:Local="clr-namespace:CRM.Application.Local"
+        xmlns:customControls="clr-namespace:CRM.Application.Codes.CustomControls"
+        Title="ثبت اقساط اتصال تلفن" MinHeight="400" MinWidth="500" ResizeMode="NoResize" Loaded="PopupWindow_Loaded"
+        Icon="pack://application:,,,/CRM.Application;component/Images/VusuliFixTelIcon.png" >
+    <Grid FlowDirection="RightToLeft" TextBlock.FontFamily="pack://application:,,,/CRM.Application;component/Resources/Fonts/#Yekan">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Label Grid.Row="0" Grid.Column="0" Content="شناسه درخواست : " Visibility="Collapsed"/>
+        <customControls:NumericTextBox x:Name="RequestIdNumericTextBox" Grid.Row="0" Grid.Column="1" MinWidth="250" MaxLength="15" HorizontalAlignment="Left" Visibility="Collapsed"/>
+        
+        <Button x:Name="RequestDetailsLoadButton" Grid.Row="1" Grid.Column="1" Content="بازیابی جزئیات درخواست" Click="RequestDetailsLoadButton_Click" IsDefault="True" Visibility="Collapsed"/>
+        
+        <GroupBox x:Name="RequestInformationGroupBox" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Header="اطلاعات درخواست" IsEnabled="False">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="27"/>
+                    <RowDefinition Height="27"/>
+                    <RowDefinition Height="27"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Label Grid.Row="0" Grid.Column="0" Content="شهر : "/>
+                <TextBox x:Name="CityTextBox" Grid.Row="0" Grid.Column="1" Text="{Binding CityName}"/>
+
+                <Label Grid.Row="0" Grid.Column="2" Content="مرکز : "/>
+                <TextBox x:Name="CenterTextBox" Grid.Row="0" Grid.Column="3" Text="{Binding CenterName}"/>
+
+                <Label Grid.Row="1" Grid.Column="0" Content="شناسه درخواست : "/>
+                <customControls:NumericTextBox x:Name="RequestIdTextBox" Grid.Row="1" Grid.Column="1" Text="{Binding ID}"/>
+
+                <Label Grid.Row="1" Grid.Column="2" Content="نوع درخواست : "/>
+                <TextBox x:Name="RequestTypeTitleTextBox" Grid.Row="1" Grid.Column="3" Text="{Binding RequestTypeTitle}"/>
+
+                <Label Grid.Row="2" Grid.Column="0" Content="تاریخ ثبت درخواست : "/>
+                <cal:DatePicker x:Name="RequestInsertDatePicker" Grid.Row="2" Grid.Column="1" SelectedDate="{Binding RequestInsertDate}"/>
+                
+            </Grid>
+        </GroupBox>
+
+        <GroupBox x:Name="CustomerInformationGroupBox" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Header="اطلاعات مشترک" IsEnabled="False">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="27"/>
+                    <RowDefinition Height="27"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="نام : "/>
+                <TextBox x:Name="FirstNameOrTitleTextBox" Grid.Row="0" Grid.Column="1" Text="{Binding FirstNameOrTitle}"/>
+
+                <Label Grid.Row="0" Grid.Column="2" Content="نام خانوادگی : "/>
+                <TextBox x:Name="LastNameTextBox" Grid.Row="0" Grid.Column="3" Text="{Binding LastName}"/>
+
+                <Label Grid.Row="1" Grid.Column="0" Content="نوع شخص : "/>
+                <TextBox x:Name="PersonTypeTextBox" Grid.Row="1" Grid.Column="1" Text="{Binding PersonTypeName}"/>
+
+                <Label Grid.Row="1" Grid.Column="2" Content="کد ملی/شماره ثبت : "/>
+                <TextBox x:Name="NationalCodeOrRecordNoTextBox" Grid.Row="1" Grid.Column="3" Text="{Binding NationalCodeOrRecordNo}"/>
+
+            </Grid>
+        </GroupBox>
+        
+        <GroupBox x:Name="InstallRequestInformationGroupBox" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Header="اطلاعات دایری" IsEnabled="False">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="27"/>
+                    <RowDefinition Height="27"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="گروه محاسباتی : "/>
+                <TextBox x:Name="ChargingTypeTextBox" Grid.Row="0" Grid.Column="1" Text="{Binding ChargingTypeName}"/>
+
+                <Label Grid.Row="0" Grid.Column="2" Content="نوع مالکیت : "/>
+                <TextBox x:Name="PosessionTypeTextBox" Grid.Row="0" Grid.Column="3" Text="{Binding PosessionTypeName}"/>
+
+                <Label Grid.Row="1" Grid.Column="0" Content="نحوه پرداخت هزینه اتصال تلفن : "/>
+                <TextBox x:Name="MethodOfPaymentForTelephoneConnectionTextBox" Grid.Row="1" Grid.Column="1" Text="{Binding MethodOfPaymentForTelephoneConnectionName}" FontWeight="Bold"/>
+                
+            </Grid>
+        </GroupBox>
+        
+        <GroupBox x:Name="InstallmentsDetailsGroupBox" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Header="جزئیات اقساط">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="27"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="مبلغ پیش پرداخت : " IsEnabled="False"/>
+                <TextBox x:Name="PrePaymentAmountTextBox" Grid.Row="0" Grid.Column="1" IsEnabled="False"/>
+
+                <Label Grid.Row="0" Grid.Column="2" Content="تعداد اقساط : "/>
+                <customControls:NumericTextBox x:Name="InstallmentsCountNumericTextBox" Grid.Row="0" Grid.Column="3"  MaxLength="2"/>
+
+            </Grid>
+        </GroupBox>
+
+        <Button x:Name="SaveInstallmentsButton" Grid.Row="6" Grid.Column="1" Content="ذخیره اقساط" Tag="Footer" Click="SaveInstallmentsButton_Click"/>
+        
+    </Grid>
+</Local:PopupWindow>

@@ -1,0 +1,152 @@
+﻿<Local:TabWindow x:Class="CRM.Application.Views.ADSLSellerAgentUserList"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="800"
+                 xmlns:Local="clr-namespace:CRM.Application.Local"
+                 xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                 xmlns:code="clr-namespace:CRM.Application.Codes"
+                 xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+                 Loaded="TabWindow_Loaded">
+    <DockPanel FlowDirection="RightToLeft">
+        <Expander x:Name="SearchExpander"
+              DockPanel.Dock="Top"
+              ExpandDirection="Down"
+              IsExpanded="True"
+              Style="{StaticResource SearchExpander}">
+
+            <GroupBox DockPanel.Dock="Top" BorderBrush="#384a66" BorderThickness="0">
+                <DockPanel>
+                    <Grid>
+                        <Grid.Resources>
+                            <ResourceDictionary Source="/CRM.Application;Component/Resources/Styles/AutoComplete.Styles.xaml" />
+                        </Grid.Resources>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="نماینده فروش :" VerticalAlignment="Center"/>
+                        <UserControls:CheckableComboBox Grid.Row="0" Grid.Column="2"  x:Name="SellerAgentComboBox" />
+
+                        <TextBlock Grid.Row="0" Grid.Column="4" Text="نام کامل :" VerticalAlignment="Center"/>
+                        <TextBox  Grid.Row="0" Grid.Column="6" x:Name="FullnameTextBox"/>
+
+                        <TextBlock Grid.Row="0" Grid.Column="8" Text="نام کاربری :" VerticalAlignment="Center" />
+                        <TextBox Grid.Row="0" Grid.Column="10" x:Name="UsernameTextBox"/>
+
+                        <WrapPanel Grid.Row="3" Grid.Column="10" Grid.ColumnSpan="10" HorizontalAlignment="Right">
+                            <Button x:Name="SearchButton" Height="23" HorizontalAlignment="Left" Margin="0" Width="80" Content="جستجو" Click="Search" IsDefault="True"/>
+                            <Button Height="23" HorizontalAlignment="Left" Name="ResetButton" Width="80" Click="ResetSearchForm" Content="بازنشانی" />
+                        </WrapPanel>
+                    </Grid>
+                </DockPanel>
+            </GroupBox>
+        </Expander>
+
+
+        <Grid DockPanel.Dock="Bottom" Style="{StaticResource TabWindowFooter}">
+            <UserControls:StatusBar DockPanel.Dock="Bottom"/>
+        </Grid>
+
+        <DataGrid DockPanel.Dock="Bottom" x:Name="ItemsDataGrid"
+                      BorderThickness="0 1 0 0"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      CanUserResizeColumns="True"
+                      CanUserResizeRows="False"
+                      CanUserDeleteRows="False"
+                      SelectionMode="Single"
+                      SelectionUnit="FullRow"
+                      ItemsSource="{Binding}"
+                      IsReadOnly="True"
+                      MouseDoubleClick="EditItem">
+            <DataGrid.ContextMenu>
+                <ContextMenu FontFamily="Tahoma">
+                    <MenuItem Header="افزودن" Click="AddItem" Name="AddMenuItem" code:UIElementExtension.ResourceNameVisible="ADSLSellerAgentUserList.AddMenuItem">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/add_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="ویرایش" Click="EditItem" Name="EditMenuItem" code:UIElementExtension.ResourceNameVisible="ADSLSellerAgentUserList.EditMenuItem">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="حذف" Click="DeleteItem" Name="DeleteMenuItem" code:UIElementExtension.ResourceNameVisible="ADSLSellerAgentUserList.DeleteMenuItem">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/delete2_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="مجوز و امکانات" Click="GrantAccess">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="ریز فروش" Click="ShowSoldDetail">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="تسویه حساب" Click="ShowCredit">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="شارژ حساب" Click="RechargeCredit">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="/CRM.Application;component/Images/element_16x16.png" Width="16" Height="16" HorizontalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Width="*" Header=" نام نماینده فروش "  Binding="{Binding Path=SellerAgentTitle, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Width="*" Header=" نام کامل کاربر "  Binding="{Binding Path=Fullname, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Width="*" Header=" نام کاربری "  Binding="{Binding Path=Username, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Width="*" Header=" اعتبار کل "  Binding="{Binding Path=CreditCash, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Width="*" Header=" اعتبار مصرفی "  Binding="{Binding Path=CreditCashUse, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Width="*" Header=" اعتبار باقی مانده "  Binding="{Binding Path=CreditCashRemain, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Width="*" Header=" آدرس الکترونیکی "  Binding="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridCheckBoxColumn Header=" مدیر " Width="*" Binding="{Binding Path=IsAdmin, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" >
+                    <DataGridCheckBoxColumn.ElementStyle>
+                        <Style TargetType="CheckBox">
+                            <Setter Property="HorizontalAlignment" Value="Left"/>
+                        </Style>
+                    </DataGridCheckBoxColumn.ElementStyle>
+                </DataGridCheckBoxColumn>            
+                <DataGridCheckBoxColumn Width="*" Header=" فعال "  Binding="{Binding Path=IsEnable, UpdateSourceTrigger=PropertyChanged}" >
+                    <DataGridCheckBoxColumn.ElementStyle>
+                        <Style TargetType="CheckBox">
+                            <Setter Property="HorizontalAlignment" Value="Left"/>
+                        </Style>
+                    </DataGridCheckBoxColumn.ElementStyle>
+                </DataGridCheckBoxColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+    </Local:TabWindow>
+

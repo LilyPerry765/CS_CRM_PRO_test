@@ -1,0 +1,70 @@
+﻿<Local:PopupWindow Title=" فرم ویرایش نوع سوئیچ" 
+                   x:Class="CRM.Application.Views.SwitchTypeForm"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib" 
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls"
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" Width="500"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   Loaded="PopupWindow_Loaded" Icon="/CRM.Application;component/Images/SwitchType48x48.png">
+    <Grid FlowDirection="RightToLeft" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>            
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <Label Content="نوع سوئیچ : " VerticalAlignment="Center"/>
+        <ComboBox Grid.Column="1" x:Name="SwitchTypeComboBox"  DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding SwitchTypeValue}" />
+        
+        <Label Content="مدل سوییچ : " VerticalAlignment="Center" Grid.Column="0" Grid.Row="1" />
+        <TextBox Grid.Column="1" x:Name="CommercialNameTextBox" Text="{Binding CommercialName}" Grid.Row="1" />
+        
+        <Label Content="دیجیتال : " Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" />
+        <CheckBox x:Name="IsDigitalCheckBox" VerticalAlignment="Center" Grid.Row="2" Grid.Column="1" IsChecked="{Binding IsDigital}"  />
+
+        <Label Content="ظرفیت : " Grid.Row="3" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="3" x:Name="CapacityTextBox" Text="{Binding Capacity}" Grid.Column="1"  />
+
+        <Label Content="ظرفیت قابل بهره برداری : " Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" />
+        <TextBox Grid.Row="4" Grid.Column="1" x:Name="OperationalCapacityTextBox" Text="{Binding OperationalCapacity}"  />
+
+        <Label Content="ظرفیت منصوب : " Grid.Row="5" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="5" x:Name="InstallCapacityTextBox" Grid.Column="1" Text="{Binding InstallCapacity}"  />
+
+        <Label Content="ظرفیت سرویس ویژه : " Grid.Row="6" VerticalAlignment="Center" Grid.Column="0" />
+        <TextBox Grid.Row="6" Grid.Column="1" x:Name="SpecialServiceCapacityTextBox" Text="{Binding SpecialServiceCapacity}"  />
+
+        <Label Content="تعداد ارقام کنتور : " Grid.Row="7" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="7" x:Name="CounterDigitCountTextBox" Grid.Column="1" Text="{Binding CounterDigitCount}"  />
+
+        <Label Content="قابلیت تعریف سرشماره همگانی : " Grid.Row="8" VerticalAlignment="Center" Grid.Column="0" />
+        <CheckBox Content=""  x:Name="SupportPublicNoCheckBox" VerticalAlignment="Center"   Grid.Row="8" Grid.Column="1" IsChecked="{Binding SupportPublicNo}" />
+
+        <Label Content="ظرفیت  تعریف تلفن همگانی : " Grid.Row="9" VerticalAlignment="Center" />
+        <TextBox Grid.Row="9" x:Name="PublicCapacityTextBox" Grid.Column="1" Text="{Binding PublicCapacity}" />
+
+        <Label Content="نوع ترافیک : " Grid.Row="10" VerticalAlignment="Center" Grid.Column="0" />
+        <ComboBox  Grid.Row="10" Grid.Column="1" x:Name="TrafficTypeCodeComboBox" SelectedValue="{Binding TrafficTypeCode}" SelectedValuePath="ID" DisplayMemberPath="Name" />
+
+        <Button x:Name="SaveButton" Grid.Row="11" Content="ذخیره"  Click="SaveForm" Tag="Footer" Margin="0,5,0,3" Width="89" />
+
+    </Grid>
+</Local:PopupWindow>

@@ -1,0 +1,36 @@
+﻿<Local:UserControlBase 
+             x:Class="CRM.Application.UserControls.ThingeOfCustonerUserControl"
+             xmlns:Local="clr-namespace:CRM.Application.Local"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             Loaded="UserControlBase_Loaded">
+        <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" Content="شماره درخواست استرداد به اداره مالی" />
+        <TextBox Grid.Row="0" Grid.Column="1" x:Name="RefundLetterNoTextBox" Text="{Binding RefundLetterNo}"/>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="تاریخ درخواست استرداد به اداره مالی" />
+        <cal:DatePicker  Grid.Row="1" Grid.Column="1" x:Name="RefundLetterDateDatePicker" SelectedDate="{Binding RefundLetterDate}"/>
+
+        <Label Grid.Row="2" Grid.Column="0" Content="شماره جواب نامه درخواست استرداد به اداره مالی" />
+        <TextBox Grid.Row="2" Grid.Column="1" x:Name="RefundReplyLetterNoTextBox" Text="{Binding RefundReplyLetterNo}"/>
+
+        <Label Grid.Row="3" Grid.Column="0" Content="شماره جواب نامه درخواست استرداد به اداره مالی" />
+        <cal:DatePicker Grid.Row="3" Grid.Column="1" x:Name="RefundReplyLetterDateDatePicher" SelectedDate="{Binding RefundReplyLetterDate}"/>
+
+    </Grid>
+</Local:UserControlBase>

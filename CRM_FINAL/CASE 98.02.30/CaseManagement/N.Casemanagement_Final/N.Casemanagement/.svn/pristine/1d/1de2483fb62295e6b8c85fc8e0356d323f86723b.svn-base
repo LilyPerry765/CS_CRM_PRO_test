@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+  For more information on how to configure your ASP.NET application, please visit
+  http://go.microsoft.com/fwlink/?LinkId=169433
+  -->
+<configuration>
+  <appSettings>
+    <add key="DevelopmentSettings" value="{ IsDevelopmentMode: true }" />
+    <add key="LocalTextPackages" value="{ Site: [ 'Controls.', 'Db.', 'Dialogs.', 'Enums.', 'Forms.', 'Permission.', 'Site.', 'Validation.' ] }" />
+    <add key="Logging" value="{  File: '~\\App_Data\\Log\\App_{0}_{1}.log',  FlushTimeout: 0,  Level: 'Off' }" />
+    <add key="ScriptBundling" value="{ Enabled: false, Minimize: true, UseMinJS: true }" />
+    <add key="UploadSettings" value="{ Path: '~\\App_Data\\upload\\' }" />
+    <add key="vs:EnableBrowserLink" value="false" />
+  </appSettings>
+
+  <connectionStrings>
+      <add name="Default" connectionString="Server=DATABASE-SERVER\PENDARSQL; Database=CaseManagement; User Id=sa;Password=pendar@crm;" providerName="System.Data.SqlClient" />
+       <!--<add name="Default" connectionString="Server=LAPTOP; Database=CaseManagement; User Id=sa;Password=123;" providerName="System.Data.SqlClient" />-->
+    <!--<add name="Default" connectionString="Server=DATABASE-SERVER\PENDARSQL; Database=CaseManagement; User Id=sa;Password=pendar@crm;" providerName="System.Data.SqlClient" />-->
+    <!--<add name="Northwind" connectionString="Data Source=(LocalDb)\v11.0; Initial Catalog=CaseManagement_Northwind_v1; Integrated Security=True" providerName="System.Data.SqlClient" />-->
+  </connectionStrings>
+
+  <system.net>
+    <mailSettings>
+      <smtp deliveryMethod="SpecifiedPickupDirectory" from="no-reply@mysite.com"> 
+      </smtp>
+    </mailSettings>
+  </system.net>
+
+  <system.web>
+    <authentication mode="Forms">
+      <forms loginUrl="~/Account/Login" timeout="2880" path="/" />
+    </authentication>
+    <compilation debug="true" targetFramework="4.5">
+      <assemblies>
+        <add assembly="System.Web.Abstractions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
+        <add assembly="System.Web.Routing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
+        <add assembly="System.Web.Mvc, Version=3.0.0.1, Culture=neutral, PublicKeyToken=31BF3856AD364E35" />
+        <add assembly="Stimulsoft.Base, Version=2015.2.0.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a" />
+        <add assembly="Stimulsoft.Report, Version=2015.2.0.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a" />
+        <add assembly="Stimulsoft.Report.Mvc, Version=2015.2.0.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a" />
+        <add assembly="Stimulsoft.Report.Web, Version=2015.2.0.0, Culture=neutral, PublicKeyToken=ebe6666cba19647a" />
+      </assemblies>
+    </compilation>
+
+    <httpRuntime targetFramework="4.5" />
+    <customErrors mode="Off" />
+    <!--globalization culture="auto:en-US" uiCulture="auto:en-US" /-->
+    <globalization culture="fa-IR" uiCulture="fa-IR" />
+
+    <pages>
+      <namespaces>
+        <add namespace="System.Web.Mvc" />
+        <add namespace="System.Web.Mvc.Ajax" />
+        <add namespace="System.Web.Mvc.Html" />
+        <add namespace="System.Web.Routing" />
+        <add namespace="Stimulsoft.Report.Mvc" />
+      </namespaces>
+    </pages>
+    
+
+
+  </system.web>
+
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="FluentMigrator" publicKeyToken="aacfc7de5acabf05" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-1.6.0.0" newVersion="1.6.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" culture="neutral" />
+        <bindingRedirect oldVersion="0.0.0.0-8.0.0.0" newVersion="8.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Helpers" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.WebPages" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0" />
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35" />
+        <bindingRedirect oldVersion="0.0.0.0-5.2.3.0" newVersion="5.2.3.0" />
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+
+  <system.webServer>
+    <staticContent>
+      <remove fileExtension=".woff" />
+      <mimeMap fileExtension=".woff" mimeType="application/font-woff" />
+      <remove fileExtension=".woff2" />
+      <mimeMap fileExtension=".woff2" mimeType="application/font-woff2" />
+    </staticContent>
+
+    <handlers>
+
+      <add name="SkipStaticFileForUploadFolder" verb="GET" path="upload/*" type="System.Web.Handlers.TransferRequestHandler" />
+      <add name="DynamicScriptHandler" verb="POST,GET,HEAD" path="DynJS.axd" type="Serenity.Web.HttpHandlers.DynamicScriptHandler, Serenity.Web" />
+    </handlers>
+  </system.webServer>
+
+</configuration>

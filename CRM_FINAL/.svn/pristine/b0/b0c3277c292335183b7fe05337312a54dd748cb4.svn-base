@@ -1,0 +1,21 @@
+﻿--13931017 - 11:20 
+--گزارش کلی کافو و پست بر روی سیستک خودم نهایی شد حالا باید بر روی سرور 14 هم برزورسانی شود
+--UPDATE R14
+--SET Template = RM.Template
+--FROM 
+--	ReportTemplate RM
+--INNER JOIN 
+--	[192.168.0.14\pendarsql].CRM.dbo.ReportTemplate R14 ON Rm.ID = R14.ID
+--WHERE 
+--	RM.ID = 80 AND R14.ID = 80
+
+--13931017 - 11:31
+--گزارش کلی کافو و پست بر روی سرورر کرمانشاه هم برورسانی شد
+--UPDATE RR
+--SET Template = R14.Template
+--FROM 
+--	ReportTemplate R14
+--INNER JOIN 
+--	[78.39.252.109].CRM.dbo.ReportTemplate RR ON R14.ID = RR.ID
+--Where 
+--	R14.ID = 80 AND RR.ID = 80

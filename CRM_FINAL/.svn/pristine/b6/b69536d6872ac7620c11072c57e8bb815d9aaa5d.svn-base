@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="78f86709-fb31-4736-b35a-5745722e25b1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://10.10.110.239:83/Host/BillService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="mex.xsd" MetadataType="Schema" ID="326b4dc6-5441-4b48-9f82-d0f70bb7fe3b" SourceId="1" SourceUrl="http://10.10.110.239:83/Host/BillService.svc/mex?xsd=xsd0" />
+    <MetadataFile FileName="mex1.xsd" MetadataType="Schema" ID="1577e7bd-26cc-4416-837c-8de2c422eb4c" SourceId="1" SourceUrl="http://10.10.110.239:83/Host/BillService.svc/mex?xsd=xsd1" />
+    <MetadataFile FileName="mex2.xsd" MetadataType="Schema" ID="8c683ba6-9ea1-403b-8ed9-d6adfb177995" SourceId="1" SourceUrl="http://10.10.110.239:83/Host/BillService.svc/mex?xsd=xsd2" />
+    <MetadataFile FileName="mex3.xsd" MetadataType="Schema" ID="30c8d1af-b1ac-4869-a6af-1c390172ff16" SourceId="1" SourceUrl="http://10.10.110.239:83/Host/BillService.svc/mex?xsd=xsd3" />
+    <MetadataFile FileName="BillService.wsdl" MetadataType="Wsdl" ID="3be4c74c-125a-4286-a6d9-9b5666ead29d" SourceId="1" SourceUrl="http://10.10.110.239:83/Host/BillService.svc/mex?wsdl" />
+    <MetadataFile FileName="mex.disco" MetadataType="Disco" ID="8f18c307-49ab-4f03-a323-0d8436c2a328" SourceId="1" SourceUrl="http://10.10.110.239:83/Host/BillService.svc/mex?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

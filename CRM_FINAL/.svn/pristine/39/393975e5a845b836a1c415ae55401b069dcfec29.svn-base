@@ -1,0 +1,120 @@
+﻿<Menu xmlns="http://tempuri.org/Menu.xsd">
+
+
+  <MenuItem Tab="مدیریت" Group="تنظیمات" Header="لاگ اتمام درخواست ها" Class="CRM.Application.Views.RequestLogList"  />
+  <MenuItem Tab="مدیریت" Group="تنظیمات" Header="لاگ عملیات" Class="CRM.Application.Views.ActionLogList"  />
+  <MenuItem Tab="مدیریت" Group="کارتابل"    Header="داشبورد" Class="CRM.Application.Views.ManagementDashboard" Icon="Images/ManagementDashboard.png"/>
+  <MenuItem Tab="مدیریت" Group="دسترسی کاربران CRM" Header="نقش ها" Class="CRM.Application.Views.RoleList" Icon="Images/Role_32x32.png" />
+  <MenuItem Tab="مدیریت" Group="دسترسی کاربران CRM" Header="کاربران" Class="CRM.Application.Views.UserList" Icon="Images/User_32x32.png" />
+
+
+  <MenuItem Tab="اطلاعات پایه" Group="امور مشترکین" Header="استان ها" Class="CRM.Application.Views.ProvincesList" Icon="Images/Province32x32.png" />
+  <MenuItem Tab="اطلاعات پایه" Group="امور مشترکین" Header="شهرها" Class="CRM.Application.Views.CityList" Icon="Images/City32x32.png"/>
+  <MenuItem Tab="اطلاعات پایه" Group="امور مشترکین" Header="مناطق" Class="CRM.Application.Views.RegionList" Icon="Images/Region_32x32.png"/>
+  <MenuItem Tab="اطلاعات پایه" Group="امور مشترکین" Header="مراکز"  Class="CRM.Application.Views.CenterList" Icon="Images/Center_32x32.png"/>
+  <MenuItem Tab="اطلاعات پایه" Group="امور مشترکین" Header="دفاتر"  Class="CRM.Application.Views.OfficeList" Icon="Images/Office_32x32.png"  />
+  <MenuItem Tab="اطلاعات پایه" Group="امور مشترکین" Header="آدرس"  Class="CRM.Application.Views.CustomerAddressList" Icon="Images/address_32x32.png"  />
+  <MenuItem Tab="اطلاعات پایه" Group="امور مشترکین" Header="واحد های کاری" Class="CRM.Application.Views.WorkUnitList"  Icon="Images/Workunit32x32.png" />
+  <MenuItem Tab="اطلاعات پایه" Group="امور مشترکین" Header="سرویس های ویژه" Class="CRM.Application.Views.SpecialServiceTypeList" Icon="Images/service_32x32.png"/>
+  <MenuItem Tab="اطلاعات پایه" Group="امور مشترکین" Header="علت های ورود به لیست انتظار" Class="CRM.Application.Views.WaitingListReasonList" Icon="Images/WaitingListReson_32x32.png"/>
+  <MenuItem Tab="اطلاعات پایه" Group="امور مشترکین" Header="انواع مشترکین" Class="CRM.Application.Views.CustomerTypeList" Icon="Images/CustomerType_48x48.png"/>
+  <MenuItem Tab="اطلاعات پایه" Group="امور مشترکین" Header="گروه مشترکین" Class="CRM.Application.Views.CustomerGroupList" Icon="Images/CustomerGroup_48x48.png"/>
+  <MenuItem Tab="اطلاعات پایه" Group="امور مالی" Header="بانک ها" Class="CRM.Application.Views.BankList" Icon="Images/bankIcon32x32.png" />
+  <MenuItem Tab="اطلاعات پایه" Group="امور مالی" Header="شعب بانک ها" Class="CRM.Application.Views.BankBranchList" Icon="Images/bankBranch32x32.png" />
+  <MenuItem Tab="اطلاعات پایه" Group="امور مالی" Header="هزینه ها" Class="CRM.Application.Views.BaseCostList" Icon="Images/BaseCost32x32.png"/>
+  <MenuItem Tab="اطلاعات پایه" Group="امور مالی" Header="فیش" Class="CRM.Application.Views.FicheList" Icon="Images/fiche icon32x32.png"/>
+  <MenuItem Tab="اطلاعات پایه" Group="امور مالی" Header="سهمیه ها" Class="CRM.Application.Views.QuotaJobTitleList" Icon="Images/Quota32x32.png"/>
+  <MenuItem Tab="اطلاعات پایه" Group="امور مالی" Header="تخفیفات" Class="CRM.Application.Views.QuotaDiscountList" Icon="Images/Discount_32x32.png" />
+  <MenuItem Tab="اطلاعات پایه" Group="اسناد" Header="دوره ها"  Class="CRM.Application.Views.CycleList" Icon="Images/Cycle32x32.png" />
+  <MenuItem Tab="اطلاعات پایه" Group="اسناد" Header="مدارک پایه" Class="CRM.Application.Views.DocumentBaseList" Icon="Images/BaseDocument_32x32.png"/>
+  <MenuItem Tab="اطلاعات پایه" Group="اسناد" Header="آیین نامه ها"  Class="CRM.Application.Views.AnnounceList" Icon="Images/Announce_32x32.png"/>
+  <MenuItem Tab="اطلاعات پایه" Group="اسناد" Header="مدارک مورد نیاز درخواست"  Class="CRM.Application.Views.DocumentForRequestList" Icon="Images/RequestDocument_32x32.png"/>
+  <MenuItem Tab="اطلاعات پایه" Group="شرکت های طرف قرارداد" Header="شرکت های PAP" Class="CRM.Application.Views.PAPInfoList" Icon="Images/PAP_32x32.png"/>
+  <MenuItem Tab="اطلاعات پایه" Group="شرکت های طرف قرارداد" Header="شرکت های پیمانکار" Class="CRM.Application.Views.ContractorList" Icon="Images/Contractor_32x32.png"/>
+  <MenuItem Tab="اطلاعات پایه" Group="شرکت های طرف قرارداد" Header="متقاضیان فضا و پاور" Class="CRM.Application.Views.SpaceAndPowerCustomerList" Icon="Images/Contractor_32x32.png"/>
+  <MenuItem Tab="اطلاعات پایه" Group="تلفن رند" Header="لیست تلفنهای رند" Class="CRM.Application.Views.RoundList"  Icon="Images/RoundTel32x32.png" />
+  <MenuItem Tab="اطلاعات پایه" Group="تلفن رند" Header="مزایده تلفن رند" Class="CRM.Application.Views.RoundSaleInfoList"  Icon="Images/RoundTel32x32.png" />
+  <MenuItem Tab="اطلاعات پایه" Group="ADSL" Header="تعرفه های ADSL" Class="CRM.Application.Views.ADSLTariffList" Icon="Images/ADSLTariff_32x32.png"/>
+  <MenuItem Tab="اطلاعات پایه" Group="ADSL" Header="مودم ADSL" Class="CRM.Application.Views.ADSLModemList" Icon="Images/Modem_32x32.png"/>
+
+  <MenuItem Tab="اطلاعات فنی" Group="سوئیچ"    Header="انواع سوئیچ" Class="CRM.Application.Views.SwitchTypeList" Icon="Images/SwitchType32x32.png"/>
+  <MenuItem Tab="اطلاعات فنی" Group="سوئیچ"    Header="سوئیچ" Class="CRM.Application.Views.SwitchList" Icon="Images/Switch32x32.png"/>
+  <MenuItem Tab="اطلاعات فنی" Group="سوئیچ"    Header="پورت" Class="CRM.Application.Views.SwitchPortList" Icon="Images/Port.png"/>
+  <MenuItem Tab="اطلاعات فنی" Group="سوئیچ"    Header="انواع سرویسهای ویژه سوئیچ" Class="CRM.Application.Views.SpecialServiceTypeList"  Icon="Images/telephone_32x32.png"/>
+  <MenuItem Tab="اطلاعات فنی" Group="سوئیچ"    Header="سرویسهای ویژه سوئیچ" Class="CRM.Application.Views.SwitchSpecialServiceList"  Icon="Images/telephone_32x32.png"/>
+  <MenuItem Tab="اطلاعات فنی" Group="سوئیچ"    Header="تلفن ها" Class="CRM.Application.Views.TelephoneList"  Icon="Images/Telephone1_32x32.png"/>
+  <MenuItem Tab="اطلاعات فنی" Group="ام دی اف" Header="MDF" Class="CRM.Application.Views.MDFList" Icon="Images/MDF32x32.png"/>
+  <MenuItem Tab="اطلاعات فنی" Group="ام دی اف" Header="فریم ام دی اف" Class="CRM.Application.Views.MDFFrameList" Icon="Images/MDF32x32.png"/>
+  <MenuItem Tab="اطلاعات فنی" Group="ام دی اف" Header="ردیف ام دی اف" Class="CRM.Application.Views.VerticalMDFColumnList" Icon="Images/column32x32.png"/>
+  <MenuItem Tab="اطلاعات فنی" Group="ام دی اف" Header="طبقه ام دی اف" Class="CRM.Application.Views.VerticalMDFRowList" Icon="Images/row32x32.png"/>
+  <MenuItem Tab="اطلاعات فنی" Group="ام دی اف" Header="مشخصه اونو(کافو نوری)" Class="CRM.Application.Views.SwitchGroupList"/>
+  <MenuItem Tab="اطلاعات فنی" Group="ام دی اف" Header="نوع بوخت تلفن" Class="CRM.Application.Views.SwitchGroupRangeList"/>
+  <MenuItem Tab="اطلاعات فنی" Group="ام دی اف" Header="اطلاعات جامع فنی" Class="CRM.Application.Views.GeneralInformationList"/>
+  <MenuItem Tab="اطلاعات فنی" Group="واگذاری خطوط" Header="نوع کافو" Class="CRM.Application.Views.CabinetTypeList" Icon="Images/Kafo32x32.png" />
+  <MenuItem Tab="اطلاعات فنی" Group="واگذاری خطوط" Header="کافو" Class="CRM.Application.Views.CabinetList" Icon="Images/Kafo32x32.png"/>
+  <MenuItem Tab="اطلاعات فنی" Group="واگذاری خطوط" Header="مرکزی" Class="CRM.Application.Views.CabinetInputList" Icon="Images/CabinetInput.png"/>
+  <MenuItem Tab="اطلاعات فنی" Group="واگذاری خطوط" Header="انواع پست" Class="CRM.Application.Views.PostTypeList" Icon="Images/post32x32.png" />
+  <MenuItem Tab="اطلاعات فنی" Group="واگذاری خطوط" Header="پست" Class="CRM.Application.Views.PostList" Icon="Images/post32x32.png"/>
+  <MenuItem Tab="اطلاعات فنی" Group="واگذاری خطوط" Header="اتصال پست" Class="CRM.Application.Views.PostContactList" Icon="Images/PostContact36x17.png"/>
+  <MenuItem Tab="اطلاعات فنی" Group="واگذاری خطوط" Header="گروه پست" Class="CRM.Application.Views.PostGroupList" Icon="Images/postGroup32x32.png"/>
+  <MenuItem Tab="اطلاعات فنی" Group="واگذاری خطوط" Header="ایجاد مرکزی کافو" Class="CRM.Application.Views.CabinetCentralCableInfoForm" Icon="Images/Wait32x32.png" />
+  <MenuItem Tab="اطلاعات فنی" Group="واگذاری خطوط" Header="نوع کابل"  Class="CRM.Application.Views.CableTypeList" Icon="Images/connect_to_network.png"/>
+  <MenuItem Tab="اطلاعات فنی" Group="واگذاری خطوط" Header="انواع کانال مورد استفاده کابل"  Class="CRM.Application.Views.CableUsedChannelList"/>
+  <MenuItem Tab="اطلاعات فنی" Group="واگذاری خطوط" Header="کابل"  Class="CRM.Application.Views.CableList" Icon="Images/shout-wire-2-icon.png"/>
+  <MenuItem Tab="اطلاعات فنی" Group="واگذاری خطوط" Header="زوج سیم"  Class="CRM.Application.Views.CablePairList" Icon="Images/Ethernet-Cable-icon.png"/>
+  <MenuItem Tab="اطلاعات فنی" Group="پی سی ام" Header="انواع پی سی ام" Class="CRM.Application.Views.PCMTypeList" Icon="Images/PCM32x32.png"/>
+  <MenuItem Tab="اطلاعات فنی" Group="پی سی ام" Header="پی سی ام"  Class="CRM.Application.Views.PCMList" Icon="Images/PCM.png"/>
+  <MenuItem Tab="اطلاعات فنی" Group="ADSL"      Header="تجهیزات ADSL" Class="CRM.Application.Views.ADSLEquimentList" Icon="Images/Equipment_32x32.png"/>
+  <MenuItem Tab="اطلاعات فنی" Group="ADSL"      Header="تجهیزات شرکت های PAP" Class="CRM.Application.Views.ADSLPAPPortList" Icon="Images/Equipment_32x32.png"/>
+  <MenuItem Tab="اطلاعات فنی" Group="ADSL"      Header="استعلام شرکت های PAP" Class="CRM.Application.Views.ADSLPAPFeasibiltyList" Icon="Images/Equipment_32x32.png"/>  
+  <MenuItem Tab="اطلاعات فنی" Group="مشترکین/عمومی" Header="پست اصلی" Class="CRM.Application.Views.MainPostAssignList" Icon="Images/Cosmos Icon 107_256x256-32.png" />
+  <MenuItem Tab="اطلاعات فنی" Group="مشترکین/عمومی" Header="لیست بوخت" Class="CRM.Application.Views.BuchtList" Icon="Images/bucht32x32.png"/>
+  
+
+  <MenuItem Tab="مشترکین" Group="کارتابل" Header="داشبورد درخواست" Class="CRM.Application.Views.UserDashboard" Icon="Images/Dashboard_32x32.png"/>
+  <MenuItem Tab="مشترکین" Group="کارتابل" Header="کارتابل درخواست" Class="CRM.Application.Views.RequestsInbox" Icon="Images/inbox_32x32.png" />
+  <MenuItem Tab="مشترکین" Group="کارتابل" Header="درخواست های کاربر" Class="CRM.Application.Views.RequestInboxInquiry" Icon="Images/UserRequest_32x32.png"/>
+  <MenuItem Tab="مشترکین" Group="پیگیری" Header="جستجو درخواست" Class="CRM.Application.Views.RequestFollow" Icon="Images/FollowRequest_32x32.png"/>
+  <MenuItem Tab="مشترکین" Group="پیگیری" Header="آرشیو درخواست ها" Class="CRM.Application.Views.RequestsInboxArchived" Icon="Images/FollowRequest_32x32.png"/>
+  <MenuItem Tab="مشترکین" Group="متقاضیان / مشترکین" Header="ثبت متقاضی جدید" Class="CRM.Application.Views.CustomerForm" Icon="Images/user1_32x32.png"  />
+  <MenuItem Tab="مشترکین" Group="متقاضیان / مشترکین" Header="اطلاعات مشترکین" Class="CRM.Application.Views.CustomerList" Icon="Images/Customer32x32.png" />
+  <MenuItem Tab="مشترکین" Group="لیست ها" Header="لیست انتظار" Class="CRM.Application.Views.WaitingListList" Icon="Images/Waiting_32x32.png" />
+  <MenuItem Tab="مشترکین" Group="لیست ها" Header="لیست ابطال شده ها" Class="CRM.Application.Views.CancelationList" Icon="Images/CancelationList_32x32.png" />
+  <MenuItem Tab="مشترکین" Group="لیست ها" Header="لیست سیاه مشترکین" Class="CRM.Application.Views.BlackListCustomer" Icon="Images/BlackList_32x32.png" />
+  <MenuItem Tab="مشترکین" Group="لیست ها" Header="لیست سیاه تلفن" Class="CRM.Application.Views.BlackListTelephone" Icon="Images/BlackList_32x32.png" />
+  <MenuItem Tab="مشترکین" Group="لیست ها" Header="لیست سیاه آدرس" Class="CRM.Application.Views.BlackListAddress" Icon="Images/BlackList_32x32.png" />
+
+
+  <MenuItem Tab="درخواست" Group="مشترکین" Header="دایری" Class="CRM.Application.Views.InstalTelephoneNoInput"  Icon="Images/DayariPhone.png"/>
+  <MenuItem Tab="درخواست" Group="مشترکین" Header="تخلیه" Class="CRM.Application.Views.DischarginTelephoneNoInput"  Icon="Images/telephone_32x32.png"/>
+  <MenuItem Tab="درخواست" Group="مشترکین" Header="دایری مجدد" Class="CRM.Application.Views.Reinstall" Icon="Images/ReinstalPhone.png"/>
+  <MenuItem Tab="درخواست" Group="مشترکین" Header="تعویض شماره" Class="CRM.Application.Views.ChangeNoNoInput" Icon="Images/PhoneSwiting32_32.png"/>
+  <MenuItem Tab="درخواست" Group="مشترکین" Header="تغییر مکان داخل مرکز" Class="CRM.Application.Views.ChangeLocationInsideCenterTelephoneNoInput"  Icon="Images/ChangeLocation.png"/>
+  <MenuItem Tab="درخواست" Group="مشترکین" Header="تغییر مکان مرکز به مرکز" Class="CRM.Application.Views.ChangeLocationCenterToCenterTelephoneNoInput"  Icon="Images/ChangeLocation.png"/>
+  <MenuItem Tab="درخواست" Group="مشترکین" Header="تغییر نام" Class="CRM.Application.Views.ChangeNameTelephoneNoInput"  Icon="Images/ChangeName_32x32.png"/>
+  <MenuItem Tab="درخواست" Group="مشترکین" Header="قطع" Class="CRM.Application.Views.CutTelephoneNoInput"  Icon="Images/TelephoneRed_32x32.png"/>
+  <MenuItem Tab="درخواست" Group="مشترکین" Header="وصل" Class="CRM.Application.Views.EstablishTelephoneNoInput"  Icon="Images/TelephoneGreen_32x32.png"/>
+  <MenuItem Tab="درخواست" Group="مشترکین" Header="سرویس ویژه" Class="CRM.Application.Views.SpecialServiceTelephoneNoInput"  Icon="Images/services_32x32.png"/>
+  <MenuItem Tab="درخواست" Group="مشترکین" Header="انسداد صفر" Class="CRM.Application. Views.OpenAndCloseZeroTelephoneNoInput"  Icon="Images/telephoneBlock_32x32.png"/>
+  <MenuItem Tab="درخواست" Group="مشترکین" Header="ثبت عنوان در 118" Class="CRM.Application.Views.RecordTitleIn118TelephoneNoInput" Icon="Images/ListAdd_32x32.png" />
+  <MenuItem Tab="درخواست" Group="مشترکین" Header="حذف عنوان از 118" Class="CRM.Application.Views.DeleteTitleIn118TelephoneNoInput" Icon="Images/ListDelete_32x32.png" />
+  <MenuItem Tab="درخواست" Group="مشترکین" Header="تغییر عنوان در 118" Class="CRM.Application.Views.ChangeTitleIn118TelephoneNoInput" Icon="Images/ChangeTitle.png"/>
+  <MenuItem Tab="درخواست" Group="مشترکین" Header="استرداد ودیعه تلفن ثابت" Class="CRM.Application.Views.RefundableDepositOfFixedPhone" Icon="Images/wallet_open.png"/>
+  <MenuItem Tab="درخواست" Group="مشترکین" Header="اصلاح آدرس" Class="CRM.Application.Views.ChangeAddress" Icon="Images/ChangeAddress.png"/>
+  <MenuItem Tab="درخواست" Group="مشترکین" Header="کنترل" Class="CRM.Application.Views.ChangeAddress" />
+  <MenuItem Tab="درخواست" Group="مشترکین" Header="فضا و پاور" Class="CRM.Application.Views.SpaceandPower" />
+  <MenuItem Tab="درخواست" Group="ADSL" Header="دایری" Class="CRM.Application.Views.ADSLTelephoneNoInput"  Icon="Images/ADSLInstal_32x32.png"/>
+  <MenuItem Tab="درخواست" Group="ADSL" Header="تغییر نوع سرویس" Class="CRM.Application.Views.ADSLChangeServiceTypeTelephoneNoInput" Icon="Images/ADSLChangeService_32x32.png"/>
+  <MenuItem Tab="درخواست" Group="ADSL" Header="تغییر تعرفه" Class="CRM.Application.Views.ADSLChangeTariffTelephoneNoInput" Icon="Images/ADSLChangeTariff_32x32.png" />
+  <MenuItem Tab="درخواست" Group="ADSL" Header="قطع موقت" Class="CRM.Application.Views.ADSLTemporaryCutTelephoneNoInput" Icon="Images/ADSLCut_32x32.png"/>
+  <MenuItem Tab="درخواست" Group="ADSL" Header="تعویض بوخت" Class="CRM.Application.Views.BuchtSwitchingADSLTelephoneNoInput" Icon="Images/ChangePort_32x32.png"/>
+
+
+  <MenuItem Tab="گزارش" Group="گزارش ها " Header="لیست گزارش ها" Class="CRM.Application.Reports.Viewer.ReportList" Icon="Images/Report_64x64.png" />
+    
+    
+  <MenuItem Tab="ورک فلو" Group="چرخه کاری" Header="چرخه کاری"  Class="CRM.Application.Views.WorkFlowRulesList" Icon="Images/signpost_32x32.png" />
+  <MenuItem Tab="ورک فلو" Group="چرخه کاری" Header="وضعیت" Class="CRM.Application.Views.StatusList" Icon="Images/status32x32.png" />
+
+
+</Menu>

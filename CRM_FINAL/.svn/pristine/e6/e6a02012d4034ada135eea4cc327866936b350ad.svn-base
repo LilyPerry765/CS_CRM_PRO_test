@@ -1,0 +1,48 @@
+﻿<Local:PopupWindow x:Class="CRM.Application.Views.ChangeGSMSimCardForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+        xmlns:code="clr-namespace:CRM.Application.Codes"
+        xmlns:sv="clr-namespace:CRM.Application.StaticValidation"
+        xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+        xmlns:Local="clr-namespace:CRM.Application.Local"
+        xmlns:CustomCommands="clr-namespace:CRM.Application.Codes"
+        xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib"
+        xmlns:uc="clr-namespace:CRM.Application.UserControls"
+        Title="تعویض سیم کارت" Height="1000" Width="700" Loaded="PopupWindow_Loaded">
+  <ScrollViewer>
+    <StackPanel>
+    <GroupBox Grid.Row="0" Header="تلفن" x:Name="DetailTelephone">
+      <Grid >
+        <Grid.RowDefinitions>
+          <RowDefinition Height="30"/>
+          <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition/>
+          <ColumnDefinition/>
+          <ColumnDefinition/>
+          <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label    Grid.Row="0" Grid.Column="0" Content="تلفن" />
+        <TextBox Grid.Row="0" Grid.Column="1" Name="TelephoneTextBox" Style="{StaticResource ResourceKey=NumericTextBox}">
+          <TextBox.Text>
+            <Binding RelativeSource="{RelativeSource Self}" Path="Text" UpdateSourceTrigger="LostFocus" ValidatesOnDataErrors="True">
+              <Binding.ValidationRules>
+                <sv:StaticValidation ValidationType="Pattern" Pattern="^[0-9]+$"/>
+              </Binding.ValidationRules>
+            </Binding>
+          </TextBox.Text>
+        </TextBox>
+
+        <Label    Grid.Row="1" Grid.Column="0" Content="سریال" />
+        <TextBox  Grid.Row="1" Grid.Column="1" x:Name="GSMCodeTextBox" />
+
+        <Button   Grid.Row="1" Grid.Column="3" x:Name="TelephoneSearchButton" Content="جستجو"  HorizontalAlignment="Left"  Click="TelephoneSearchButton_Click" Margin="0,3,0,0" VerticalAlignment="Top" IsDefault="True"/>
+      </Grid>
+    </GroupBox>
+
+    <Button Grid.Row="23" Grid.Column="0" Content="ذخیره" Name="SaveButton" Click="SaveForm" Tag="Footer" />
+      </StackPanel>
+  </ScrollViewer>
+</Local:PopupWindow>

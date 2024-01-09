@@ -1,0 +1,41 @@
+﻿<Local:PopupWindow  xmlns:Local="clr-namespace:CRM.Application.Local" 
+                    x:Class="CRM.Application.Views.DocumentBaseForm"                    
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+                    Title="ثبت مدارک پایه" 
+                    Loaded="PopupWindow_Loaded" Icon="/CRM.Application;component/Images/BaseDocument_48x48.png"
+                    Width="500" Height="220">
+
+    <Grid FlowDirection="RightToLeft" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <Label Grid.Row="0" Grid.Column="0" Content="نوع : " />
+        <ListBox Grid.Row="0" Grid.Column="1" SelectedValue="{Binding Path=TypeID}" SelectedValuePath="Tag" >
+            <ListBoxItem Tag="1">مدرک</ListBoxItem>
+            <ListBoxItem Tag="2" Name="PermissionradioButton">مجوز</ListBoxItem>
+            <ListBoxItem Tag="3" Name="ContractradioButton">قرارداد</ListBoxItem>
+        </ListBox>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="نام مدرک : " />
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding DocumentName}" Name="DocumentNametextBox" />
+        
+
+        
+        <Label Grid.Row="2" Grid.Column="0" Content="به ازای هر مشترک یک بار  : "/>
+        <CheckBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" IsChecked="{Binding ExistOnce}" x:Name="ExistOncecheckBox" VerticalAlignment="Center" />
+
+        <Button Grid.Row ="5" Grid.Column="0" Content="ذخیره" Name="SaveButton" Click="SaveForm" Tag="Footer"/>
+
+    </Grid>
+</Local:PopupWindow>

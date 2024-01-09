@@ -1,0 +1,61 @@
+﻿<Local:PopupWindow x:Class="CRM.Application.Views.SwitchPortToNumber"
+                   Title="پورت به تعداد"                   
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib"
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls"
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   Width="400" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
+
+    <Grid FlowDirection="RightToLeft">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="0" Content="شهر : " />
+        <ComboBox  Grid.Column="1" Grid.Row="0" x:Name="CityComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="CityComboBox_SelectionChanged" />
+
+        <Label Grid.Column="0" Grid.Row="1" Content="مرکز" />
+        <ComboBox  Grid.Column="1" Grid.Row="1" x:Name="CenterComboBox" DisplayMemberPath="CenterName" SelectedValuePath="ID" SelectionChanged="CenterComboBox_SelectionChanged_1" />
+
+        <Label Grid.Column="0" Grid.Row="2" Content="سوییچ" />
+        <ComboBox  Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" x:Name="SwitchComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="SwitchComboBox_SelectionChanged_1"/>
+
+        <Label Grid.Column="0" Grid.Row="3" Content="پیش شماره پورت" />
+        <TextBox Grid.Column="1" Grid.Row="3" x:Name="PrePortNoTextBox" />
+        
+        <Label Grid.Column="0" Grid.Row="4" Content="از شماره پورت" />
+        <TextBox Grid.Column="1" Grid.Row="4" Name="FromPostPortNoTextBox"/>
+
+
+        <Label Grid.Column="0" Grid.Row="5" Content="تا شماره پورت" />
+        <TextBox Grid.Column="1" Grid.Row="5" x:Name="ToPostPortNoTextBox" />
+       
+
+        <Label Grid.Column="0" Grid.Row="6" Content="شناور" />
+        <CheckBox Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" x:Name="TypeCheckBox" VerticalAlignment="Center" IsChecked="True"  />
+    
+        <Label Grid.Column="0" Grid.Row="7" Content="وضعیت" />
+        <ComboBox Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="2" x:Name="Status" SelectedValuePath="ID" DisplayMemberPath="Name" />
+
+        <Button Grid.Row="20" Grid.Column="0" Content="ذخیره" Name="SaveButton" Click="SaveForm" Tag="Footer" />
+        
+    </Grid>
+    
+</Local:PopupWindow>
+    

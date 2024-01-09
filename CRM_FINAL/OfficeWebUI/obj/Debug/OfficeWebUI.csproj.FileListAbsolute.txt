@@ -1,0 +1,17 @@
+D:\Develop\CRM FINAL\OfficeWebUI\bin\Debug\OfficeWebUI.dll
+D:\Develop\CRM FINAL\OfficeWebUI\bin\Debug\OfficeWebUI.pdb
+D:\Develop\CRM FINAL\OfficeWebUI\obj\Debug\OfficeWebUI.csprojResolveAssemblyReference.cache
+D:\Develop\CRM FINAL\OfficeWebUI\obj\Debug\OfficeWebUI.AboutOfficeWebUI.resources
+D:\Develop\CRM FINAL\OfficeWebUI\obj\Debug\OfficeWebUI.Properties.Resources.resources
+D:\Develop\CRM FINAL\OfficeWebUI\obj\Debug\OfficeWebUI.csproj.GenerateResource.Cache
+D:\Develop\CRM FINAL\OfficeWebUI\obj\Debug\OfficeWebUI.dll
+D:\Develop\CRM FINAL\OfficeWebUI\obj\Debug\OfficeWebUI.pdb
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\OfficeWebUI\bin\Debug\OfficeWebUI.dll
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\OfficeWebUI\bin\Debug\OfficeWebUI.pdb
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\OfficeWebUI\obj\Debug\OfficeWebUI.AboutOfficeWebUI.resources
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\OfficeWebUI\obj\Debug\OfficeWebUI.Properties.Resources.resources
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\OfficeWebUI\obj\Debug\OfficeWebUI.csproj.GenerateResource.Cache
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\OfficeWebUI\obj\Debug\OfficeWebUI.dll
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\OfficeWebUI\obj\Debug\OfficeWebUI.pdb
+E:\Folder\OfficeWebUI.dll
+E:\Folder\OfficeWebUI.pdb

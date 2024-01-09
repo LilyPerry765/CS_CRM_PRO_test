@@ -1,0 +1,43 @@
+﻿<Local:ReportBase x:Class="CRM.Application.Reports.ReportUserControls.PostInfoReserveReportUserControl"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                 mc:Ignorable="d"  d:DesignWidth="800"
+                 xmlns:Local="clr-namespace:CRM.Application.Local"
+                 xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                 xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker">
+    <StackPanel FlowDirection="RightToLeft">
+        
+        <GroupBox Header="انتخاب شهر و مرکز">
+            <UserControls:CenterCityUserControl x:Name="UCUserControl" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" LostFocus="CenterComboBox_LostFocus"/>
+        </GroupBox>
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Label Grid.Column="0" Grid.Row="0" Content="کافو : " />
+            <UserControls:CheckableComboBox  Grid.Row="0" Grid.Column="2" x:Name="CabinetComboBox" LostFocus="CabinetComboBox_LostFocus"/>
+
+            <Label Grid.Row="0" Grid.Column="4" Content="پست : " />
+            <UserControls:CheckableComboBox  Grid.Row="0"  Grid.Column="6" x:Name="PostsCheckableCombobox" />
+
+            <Label  Grid.Row="1" Grid.Column="0" Content="نوع پست : " />
+            <UserControls:CheckableComboBox Grid.Row="1" Grid.Column="2" x:Name="PostTypeComboBox" />
+
+        </Grid>
+    </StackPanel>
+</Local:ReportBase>
+

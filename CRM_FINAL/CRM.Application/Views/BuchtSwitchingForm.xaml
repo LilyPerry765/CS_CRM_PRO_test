@@ -1,0 +1,229 @@
+﻿<Local:RequestFormBase   
+        xmlns:Local="clr-namespace:CRM.Application.Local"
+        x:Class="CRM.Application.Views.BuchtSwitchingForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:userControls="clr-namespace:CRM.Application.UserControls"
+        Title="ثبت تعویض بوخت" Loaded="RequestFormBase_Loaded">
+    <ScrollViewer FlowDirection="RightToLeft">
+        <StackPanel>
+            <GroupBox Header="درخواست" x:Name="ExchangeRequestInfoUserControl" />
+
+            <GroupBox Grid.Row="1"  Grid.Column="0" x:Name="ExchangeFromGroupBox"  Header="جستجو مشترک" FlowDirection="RightToLeft"  >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label    Grid.Row="0" Grid.Column="0" Content="تلفن" />
+                    <TextBox  Grid.Row="0" Grid.Column="1" x:Name="TelephonTextBox"/>
+
+                    <Button  Grid.Row="0" Grid.Column="4" x:Name="SearchButton" Content="جستجو" Click="SearchButton_Click"/>
+                </Grid>
+
+            </GroupBox>
+
+            <GroupBox  Grid.Row="2" Grid.Column="0" x:Name="PointsInfoGroupBox" Header="مشخصات نقاط" >
+
+                <DataGrid Grid.Row="0"   x:Name="PointsInfoDataGrid" 
+                          BorderThickness="0 1 0 0"  
+                          AutoGenerateColumns="False"                          
+                          CanUserResizeColumns="True"
+                          CanUserResizeRows="False"
+                          CanUserDeleteRows="False"
+                          SelectionMode="Single"
+                          SelectionUnit="FullRow"
+                          SelectedValuePath="BuchtID"
+                          SelectionChanged="PointsInfoDataGrid_SelectionChanged"
+                          ItemsSource="{Binding}">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="/CRM.Application;component/Images/element_16x16.png" Width="16" Height="16" HorizontalAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridComboBoxColumn Width="*" x:Name="CentersComboBoxColumn"           Header="مرکز"  SelectedValueBinding="{Binding CenterID,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"  SelectedValuePath="ID" DisplayMemberPath="CenterName"/>
+                        <DataGridTextColumn     Width="*" x:Name="CustomerNameColumn"   Header="مشترک" Binding="{Binding CustomerName,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" IsReadOnly="True"/>
+                        <DataGridTextColumn     Width="*" x:Name="PostalCodeComboBoxColumn"        Header="کد پستی" Binding="{Binding PostalCode,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                        <DataGridTextColumn     Width="2*" x:Name="AddressContentComboBoxColumn"   Header="آدرس" Binding="{Binding AddressContent,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" IsReadOnly="True"/>
+                    </DataGrid.Columns>
+
+                </DataGrid>
+
+            </GroupBox>
+
+            <GroupBox Grid.Row="3" Grid.Column="0" x:Name="TechInformationGroupBox" Header="اطلاعات فنی" FlowDirection="RightToLeft"  >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="27" />
+                        <RowDefinition Height="5"/>
+                        <RowDefinition Height="27"/>
+                        <RowDefinition Height="5"/>
+                        <RowDefinition Height="27"/>
+                        <RowDefinition Height="5"/>
+                        <RowDefinition Height="27"/>
+                        <RowDefinition Height="5"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label    Grid.Row="0" Grid.Column="0" Content="کافو" />
+                    <TextBox  Grid.Row="0" Grid.Column="1" x:Name="CabinetNumberComboBox" Text="{Binding CabinetName}" />
+
+                    <Label    Grid.Row="0" Grid.Column="2" Content="پست" />
+                    <TextBox  Grid.Row="0" Grid.Column="3" x:Name="PostComboBox" Text="{Binding PostName}"/>
+
+                    <Label    Grid.Row="2" Grid.Column="0" Content="مرکزی" />
+                    <TextBox  Grid.Row="2" Grid.Column="1" x:Name="CabinetInputComboBox"  Text="{Binding InputNumber}"/>
+
+                    <Label    Grid.Row="2" Grid.Column="2" Content="اتصالی" />
+                    <TextBox  Grid.Row="2" Grid.Column="3" x:Name="PostContactComboBox" Text="{Binding PostContact}"/>
+
+                    <Label    Grid.Row="4" Grid.Column="0" Content="ام دی اف" />
+                    <TextBox  Grid.Row="4" Grid.Column="1" x:Name="MDFTextBox" Text="{Binding MDFName}"/>
+
+                    <Label    Grid.Row="6" Grid.Column="0" Content="بوخت" />
+                    <TextBox  Grid.Row="6" Grid.Column="1" x:Name="ColumnTextBox" Text="{Binding Connection}" Grid.ColumnSpan="3"/>
+
+                    <userControls:AnouncementUserControl x:Name="PcmWarningAnouncementUserControl" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="5" Visibility="Collapsed"
+                                                         AnouncementMessageForeground="Red" 
+                                                         AnouncementMessage="این تلفن بر روی پی سی ام می باشد برای تغییر بوخت پی سی ام میتوانید از روال برگردان مرکزی پست استفاده کنید."
+                                                         AnouncementImageSource="pack://application:,,,/CRM.Application;component/Images/Warning_32x32.png"/>
+                    
+                    <!--<Grid x:Name="PcmWarningGrid"  Visibility="Collapsed" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.Column="0" Source="pack://application:,,,/CRM.Application;component/Images/Warning_32x32.png" 
+                               HorizontalAlignment="Left" VerticalAlignment="Center" Height="24" Width="24"/>
+
+                        <TextBlock Grid.Column="1" Foreground="Red" TextWrapping="Wrap" VerticalAlignment="Center" FontFamily="pack://application:,,,/CRM.Application;component/Resources/Fonts/#Yekan"
+                                   Text="این تلفن بر روی پی سی ام می باشد برای تغییر بوخت پی سی ام میتوانید از روال برگردان مرکزی پست استفاده کنید" />
+                    </Grid>-->
+
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Grid.Row="4" Grid.Column="0" x:Name="NewBuchtGroupBox" Header="بوخت جدید"  >
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="27"/>
+                        <RowDefinition Height="5"/>
+                        <RowDefinition Height="27"/>
+                        <RowDefinition Height="5"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label     Grid.Row="0" Grid.Column="0" Content="ام دی اف:"   />
+                    <ComboBox  Grid.Row="0" Grid.Column="1" x:Name="MDFComboBox"  DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="MDFComboBox_SelectionChanged" IsEditable="True" />
+
+                    <Label     Grid.Row="0" Grid.Column="2"  Content="ردیف:"  x:Name="ColumnLable"/>
+                    <ComboBox  Grid.Row="0" Grid.Column="3"  x:Name="ConnectionColumnComboBox" DisplayMemberPath="Name" SelectedValuePath="ID"  SelectionChanged="ConnectionColumnComboBox_SelectionChanged" IsEditable="True"/>
+
+                    <Label     Grid.Row="0" Grid.Column="4" Content="طبقه:"   x:Name="RowLable"/>
+                    <ComboBox  Grid.Row="0" Grid.Column="5"  x:Name="ConnectionRowComboBox"  SelectedValuePath="ID" DisplayMemberPath="Name"  SelectionChanged="ConnectionRowComboBox_SelectionChanged" IsEditable="True"/>
+
+                    <Label     Grid.Row="0" Grid.Column="6" Content="اتصالی:"   x:Name="ConnectionLable"/>
+                    <ComboBox  Grid.Row="0" Grid.Column="7"  x:Name="ConnectionBuchtComboBox"  SelectedValuePath="LongID" DisplayMemberPath="Name"  IsEditable="True" SelectionChanged="ConnectionBuchtComboBox_SelectionChanged"/>
+
+                    <Label     Grid.Row="2" Grid.Column="0" Content="پست :"   x:Name="ToPostLable"/>
+                    <ComboBox  Grid.Row="2" Grid.Column="1"  x:Name="ToPostComboBox"  SelectedValuePath="ID" DisplayMemberPath="Name"  IsEditable="True" SelectionChanged="ToPostComboBox_SelectionChanged"/>
+
+                    <Label     Grid.Row="2" Grid.Column="2" Content="اتصالی :"   x:Name="ToPostContactLable"/>
+                    <ComboBox  Grid.Row="2" Grid.Column="3"  x:Name="ToPostContactComboBox"  SelectedValuePath="LongID" DisplayMemberPath="Name"  IsEditable="True"/>
+
+                </Grid>
+
+            </GroupBox>
+            <GroupBox Header="بوخت دیگر" Grid.Row="9" Visibility="Collapsed" x:Name="OtherBuchtGroupBox">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition x:Name="SecondOtherBucht"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="نوع بوخت:" Grid.Row="0" Grid.Column="0"  />
+                    <TextBox x:Name="OtherBuchtBuchtTypeTextBox" Grid.Row="0" Grid.Column="1" IsEnabled="False" FontSize="10"/>
+                    <ComboBox  x:Name="OtherBuchtTypeComboBox" Grid.Row="0" Grid.Column="1" Visibility="Collapsed" SelectionChanged="OtherBuchtBuchtTypeComboBox_SelectionChanged"  DisplayMemberPath="Name" SelectedValuePath="ID"/>
+
+                    <Label Content="ام دی اف:" Grid.Row="0" Grid.Column="3"  />
+                    <ComboBox x:Name="OtherBuchtMDFComboBox" Grid.Row="0" Grid.Column="4" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="OtherBuchtMDFComboBox_SelectionChanged"  IsEditable="True" />
+
+                    <Label Content="ردیف:" Grid.Row="0" Grid.Column="6"  x:Name="OtherBuchtColumnLable"/>
+                    <ComboBox Grid.Column="7" Grid.Row="0" x:Name="OtherBuchtConnectionColumnComboBox" DisplayMemberPath="Name" SelectedValuePath="ID"  SelectionChanged="OtherBuchtConnectionColumnComboBox_SelectionChanged"  IsEditable="True"/>
+
+                    <Label Content="طبقه:" Grid.Row="0" Grid.Column="9"  x:Name="OtherBuchtRowLable"/>
+                    <ComboBox Grid.Column="10" Grid.Row="0" x:Name="OtherBuchtConnectionRowComboBox"  SelectedValuePath="ID" DisplayMemberPath="Name"  SelectionChanged="OtherBuchtConnectionRowComboBox_SelectionChanged"  IsEditable="True"/>
+
+                    <Label Content="اتصالی:" Grid.Row="0" Grid.Column="12"  x:Name="OtherBuchtConnectionLable"/>
+                    <ComboBox Grid.Column="13" Grid.Row="0" x:Name="OtherBuchtConnectionBuchtComboBox"  SelectedValuePath="LongID" DisplayMemberPath="Name"  IsEditable="True"/>
+
+                </Grid>
+            </GroupBox>
+            <GroupBox Grid.Row="6" Grid.Column="0" x:Name="CauseBuchtSwitchingGroupBox" Header="علت تعویض بوخت" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="علت تعویض بوخت : " Grid.Row="0" Grid.Column="0"/>
+                    <ComboBox x:Name="CauseBuchtSwitchingComboBox" Grid.Row="0" Grid.Column="1" DisplayMemberPath="Name" SelectedValuePath="ID" />
+                </Grid>
+            </GroupBox>
+            
+        </StackPanel>
+    </ScrollViewer>
+</Local:RequestFormBase>

@@ -1,0 +1,36 @@
+﻿<Local:UserControlBase 
+             x:Class="CRM.Application.UserControls.DDFUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Local="clr-namespace:CRM.Application.Local"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Loaded="UserControlBase_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Label    Grid.Row="0" Grid.Column="0"  Content="DDF :" />
+        <ComboBox Grid.Row="0" Grid.Column="1"  x:Name="DDFComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="DDFComboBox_SelectionChanged"/>
+
+        <Label    Grid.Row="0" Grid.Column="2" Content="ردیف :" />
+        <ComboBox Grid.Row="0" Grid.Column="3" x:Name="BayComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="BayComboBox_SelectionChanged"/>
+
+        <Label    Grid.Row="0" Grid.Column="4" Content="تیغه :" />
+        <ComboBox Grid.Row="0" Grid.Column="5" x:Name="PositionComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="PositionComboBox_SelectionChanged"/>
+
+        <Label    Grid.Row="0" Grid.Column="6"  Content="پی سی ام :" />
+        <ComboBox Grid.Row="0" Grid.Column="7"  x:Name="NumberComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="NumberComboBox_SelectionChanged"/>
+    </Grid>
+</Local:UserControlBase>

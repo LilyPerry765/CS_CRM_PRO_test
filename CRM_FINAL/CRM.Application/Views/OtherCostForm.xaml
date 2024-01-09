@@ -1,0 +1,56 @@
+﻿<Local:PopupWindow Title="هزینه های متفرقه"
+                   x:Class="CRM.Application.Views.OtherCostForm"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib"
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls"
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   d:DesignWidth="500" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   Loaded="PopupWindow_Loaded">
+
+    <Grid FlowDirection="RightToLeft">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition  />
+            <RowDefinition  />
+            <RowDefinition  />
+            <RowDefinition  />
+            <RowDefinition  />
+            <RowDefinition  />
+            <RowDefinition  />
+            <RowDefinition  />
+            <RowDefinition  />
+        </Grid.RowDefinitions>
+       
+        <Label Grid.Column="0" Grid.Row="1" Content="هزینه مربوط است به :  " Height="30"/>
+        <ComboBox Grid.Column="1" Grid.Row="1" x:Name="WorkUnitComboBox" SelectedValue="{Binding WorkUnit}" DisplayMemberPath="Name" SelectedValuePath="ID" Height="30"/>
+
+        <Label Grid.Column="0" Grid.Row="2" Content="فعال : " Height="30"/>
+        <ComboBox Grid.Column="1" Grid.Row="2" x:Name="IsActiveComboBox" SelectedValue="{Binding IsActive}"  DisplayMemberPath="Name" SelectedValuePath="ID" Height="30"/>
+
+        <Label Grid.Column="0" Grid.Row="3" Content="تاریخ درج : " Height="30"/>
+        <cal:DatePicker Grid.Column="1" Grid.Row="3" x:Name="InsertDateTextBox" SelectedDate="{Binding InsertDate}" Height="30"/>
+
+        <Label Grid.Column="0" Grid.Row="4" Content="درخواست : " Visibility="Collapsed" Height="30"/>
+        <TextBox Grid.Column="1" Grid.Row="4" x:Name="Request" Text="{Binding RequestID}" Visibility="Collapsed" Height="30"/>
+
+        <Label Grid.Column="0" Grid.Row="5" Content="مبلغ قیمت پایه : " Height="30"/>
+        <TextBox Grid.Column="1" Grid.Row="5" x:Name="BasePrice" Text="{Binding BasePrice}" Height="30"/>
+
+        <Label Grid.Column="0" Grid.Row="6" Content="عنوان هزینه : " Height="30"/>
+        <TextBox Grid.Column="1" Grid.Row="6" x:Name="CostTitle" Text="{Binding CostTitle}" Height="30"/>
+
+        <Label Grid.Column="0" Grid.Row="7" Content="علت : " Height="30" />
+        <TextBox Grid.Column="1" Grid.Row="7" x:Name="Reason" Text="{Binding Reason}" Height="30"/>
+
+        <Button Grid.Row="20" Grid.Column="0" Content="ذخیره" Name="SaveButton" Click="SaveForm" Tag="Footer" />
+    </Grid>
+
+
+</Local:PopupWindow>

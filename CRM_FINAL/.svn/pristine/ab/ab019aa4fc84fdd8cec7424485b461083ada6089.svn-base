@@ -1,0 +1,172 @@
+﻿<Local:TabWindow x:Class="CRM.Application.Views.ADSLCutomerInformationList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Local="clr-namespace:CRM.Application.Local" 
+             xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+            xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+            mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="800" 
+            Loaded="TabWindow_Loaded">
+    <DockPanel FlowDirection="RightToLeft">
+        <Expander x:Name="SearchExpender"
+            DockPanel.Dock="Top"
+            ExpandDirection="Down" 
+            IsExpanded="True"
+            Style="{StaticResource SearchExpander}">
+
+            <GroupBox BorderBrush="#384a66" BorderThickness="0">
+                <DockPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Content="شهر :" Grid.Row="0" Grid.Column="0" />
+                        <UserControls:CheckableComboBox x:Name="CityComboBox" Grid.Row="0" Grid.Column="2" LostFocus="CityCheckableComboBox_LostFocus_1"/>
+
+                        <Label  Grid.Row="0" Grid.Column="4" Content="مرکز :" />
+                        <UserControls:CheckableComboBox x:Name="CenterComboBox" Grid.Row="0" Grid.Column="6" />
+
+                        <TextBlock Text="شماره تلفن : " Grid.Row="0" Grid.Column="8" VerticalAlignment="Center" />
+                        <TextBox Grid.Row="0" Grid.Column="10"  Name="TelNoTextBox" TabIndex="1" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                        <TextBlock Text="نام مشترک : " Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" />
+                        <TextBox Grid.Row="1" Grid.Column="2" x:Name="CustomerNameTextBox" />
+
+                        <TextBlock Text="نام کاربری : " Grid.Row="1" Grid.Column="4" VerticalAlignment="Center" />
+                        <TextBox Grid.Row="1" Grid.Column="6" x:Name="UserNameTextBox" TabIndex="2" />
+
+                        <TextBlock Text="وضعیت : " Grid.Row="1" Grid.Column="8" VerticalAlignment="Center" />
+                        <UserControls:CheckableComboBox Grid.Row="1" Grid.Column="10" x:Name="StatusComboBox"  />                                        
+
+                        <TextBlock Text="گروه سرویس : " Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" />
+                        <UserControls:CheckableComboBox Grid.Row="2" Grid.Column="2" x:Name="ServiceGroupComboBox" LostFocus="ServiceGroupComboBox_LostFocus_1" />
+
+                        <TextBlock Text="سرویس : " Grid.Row="2" Grid.Column="4" VerticalAlignment="Center" />
+                        <UserControls:CheckableComboBox Grid.Row="2" Grid.Column="6" x:Name="serviceComboBox"  />
+
+                        <TextBlock Text="IP : " Grid.Row="2" Grid.Column="8" VerticalAlignment="Center" />
+                        <CheckBox Grid.Row="2" Grid.Column="10" x:Name="HasIPCheckBox" VerticalAlignment="Center" IsThreeState="True" IsChecked="{x:Null}" />
+
+                        <TextBlock Text="نام خانوادگی مشترک : " Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" />
+                        <TextBox Grid.Row="3" Grid.Column="2" x:Name="CustomerLastNameTextBox" />
+
+                        <TextBlock Text="نوع مشتری : " Grid.Row="3" Grid.Column="4" VerticalAlignment="Center" />
+                        <UserControls:CheckableComboBox x:Name="ADSLCustomerTypeComboBox" Grid.Row="3" Grid.Column="6"/>
+
+                        <TextBlock Text="نوع شخص : " Grid.Row="3" Grid.Column="8" VerticalAlignment="Center" />
+                        <UserControls:CheckableComboBox x:Name="PersonTypeComboBox" Grid.Row="3" Grid.Column="10" />
+
+                        <TextBlock Text="تلفن همراه : " Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" />
+                        <TextBox Grid.Row="4" Grid.Column="2" x:Name="MobileNoTextBox" TabIndex="2" />                       
+
+                        <WrapPanel DockPanel.Dock="Bottom" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="11" HorizontalAlignment="Right">
+                            <Button x:Name="SearchButton" Content="جستجو"  Width="80" Height="23" HorizontalAlignment="Left" Click="Search" IsDefault="True"/>
+                            <Button x:Name="ResetButton" Content="بازنشانی" Width="80" Height="23" HorizontalAlignment="Left" Click="ResetSearchForm" />
+                            <Button Height="23" HorizontalAlignment="Left" Name="PrintButton" Width="80" Click="PrintButton_Click"  Content="چاپ" />
+                        </WrapPanel>
+                    </Grid>
+                </DockPanel>
+            </GroupBox>
+        </Expander>
+
+        <Grid DockPanel.Dock="Bottom" Style="{StaticResource TabWindowFooter}">
+            <Border DockPanel.Dock="Bottom" Tag="Footer" FlowDirection="RightToLeft" BorderThickness="0 1 0 0" BorderBrush="#d5d5d5" Background="#e9f3fe" Margin="0" Height="35">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="546*" />
+                        <ColumnDefinition Width="60*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <UserControls:Pager x:Name="Pager" DockPanel.Dock="Bottom" PageSize="10" PageChanged="Pager_PageChanged" HorizontalAlignment="Left" />
+                </Grid>
+            </Border>
+        </Grid>
+
+        <DataGrid DockPanel.Dock="Bottom" x:Name="ItemsDataGrid"
+                        BorderThickness="0 1 0 0"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="True"
+                      CanUserResizeColumns="True"
+                      CanUserResizeRows="False"
+                      CanUserDeleteRows="False"
+                      SelectionMode="Single"
+                      SelectionUnit="FullRow"
+                      ItemsSource="{Binding}"                                
+                      IsReadOnly="True">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="ContentTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <CheckBox x:Name="HeaderCheckBox"  Content="{Binding}" Tag="{Binding }"  Checked="CheckBoxChanged" Unchecked="UnCheckBoxChanged"/>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.ContextMenu>
+                <ContextMenu FontFamily="Tahoma">
+                    <MenuItem Header="نمایش مشخصات" Click="ShowItem">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="ذخیره ستون" Click="SaveColumnItem_Click">
+                        <MenuItem.Icon>
+                            <Image Source="pack://application:,,,/CRM.Application;component/Images/Save.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="تنظیمات چاپ" Click="ReportSettingItem_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/Setting_24x24.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="/CRM.Application;component/Images/element_16x16.png" Width="16" Height="16" HorizontalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header=" شماره تلفن " Width="*" Binding="{Binding Path=TelephoneNo, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header=" نام مشترک " Width="*" Binding="{Binding Path=CustomerName, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header=" تلفن همراه " Width="*" Binding="{Binding Path=MobileNo, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header=" نوع مشتری " Width="*" Binding="{Binding Path=ADSLCustomerType, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header=" نوع شخص " Width="*" Binding="{Binding Path=PersonType, UpdateSourceTrigger=PropertyChanged}" />                
+                <DataGridTextColumn Header=" سرویس " Binding="{Binding Path=Service, UpdateSourceTrigger=PropertyChanged}" Width="2*" />
+                <DataGridTextColumn Header=" پورت " Binding="{Binding Path=Port, UpdateSourceTrigger=PropertyChanged}" Width="*" />
+                <DataGridTextColumn Header=" IP تکی " Binding="{Binding Path=IPStatic, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                <DataGridTextColumn Header=" IP گروهی " Binding="{Binding Path=GroupIPStatic, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                <DataGridTextColumn Header=" شماره سریال مودم " Binding="{Binding Path=Modem, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                <DataGridTextColumn Header=" تاریخ انقضا سرویس" Binding="{Binding Path=ExpDate, UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+                <DataGridComboBoxColumn Header=" وضعیت " x:Name="StatusColumn" SelectedValueBinding="{Binding Path=Status, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" DisplayMemberPath="Name" Width="*"/>
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</Local:TabWindow>

@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="CRM.Application.UserControls.ADSLChangePort"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+             mc:Ignorable="d" 
+             d:DesignWidth="820">
+
+    <DockPanel FlowDirection="RightToLeft">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <GroupBox  Grid.Row="0">
+                <GroupBox.Header>
+                    <Label Content="مشخصات پورت قدیم" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14"/>
+                </GroupBox.Header>
+                <Grid x:Name="TariffInfo" Height="auto">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="60" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="مشخصات MDF : " />
+                    <TextBox Grid.Row="0" Grid.Column="1" Name="MDFDescriptionTextBox" IsReadOnly="True"/>
+
+                    <Label Grid.Row="0" Grid.Column="2" Content="شماره پورت : " />
+                    <TextBox Grid.Row="0" Grid.Column="3" Name="PortNoTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                    <Label Grid.Column="0" Grid.Row="1" Content=" وضعیت پورت قدیم : "/>
+                    <ComboBox Grid.Column="1" Grid.Row="1" x:Name="StatusComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" />
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="علت تعویض پورت :"  />
+                    <ComboBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"  SelectedValuePath="ID" DisplayMemberPath="Name" Name="ADSLChangePortReasonComboBox"/>
+
+                    <Label Grid.Row="3" Grid.Column="0" Content="توضیحات :" />
+                    <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" TextWrapping="Wrap" Height="60" Name="CommentTextBox"/>
+
+                </Grid>
+
+            </GroupBox>
+        </Grid>
+
+    </DockPanel>
+
+</UserControl>

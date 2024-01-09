@@ -1,0 +1,436 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="~/scripts/persian-date-0.1.8.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Logs</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!--<link rel="stylesheet" href="~/Content/bootstrap.css">
+    <link rel="stylesheet" href="~/Content/site/site.css">-->
+</head>
+<body onload="window.print();">
+    <div class="wrapper">
+        <!-- Main content -->
+        <section class="invoice">
+            <!-- Table row -->
+            <div class="row">
+                <div class="col-xs-12 table-responsive">
+
+                    <div style="text-align:center;">
+                        <img style="margin-bottom:4px;float:right;" src="/Modules/Common/Reporting/mokhaberat_40.png" />
+
+                        <th3 style="font-size:16px;font-family:Tahoma;font-weight:bold;">لاگ سیستم</th3>
+                        <th3 style="float:left;margin-top:15px;font-size:9px;" id="date"></th3>
+                    </div>
+                    <br />
+                    <table cellspacing="0" border="1" class="table" id="Log_Table" style="font-family: Tahoma; font-size: 9px; border: 1px solid black; border-collapse: collapse; ">
+                        <thead style="background-color: #0090D9; color: #eee; font-weight: 600; ">
+                            <tr>
+                                <th style="text-align: center; border: 1px solid black;">نام موجودیت</th>
+                                <th style="text-align: center; border: 1px solid black;">نام رکورد</th>
+                                <th style="text-align: center; border: 1px solid black;">IP</th>
+                                <th style="text-align: center; border: 1px solid black;">عملیات </th>
+                                <th style="text-align: center; border: 1px solid black;">کاربر</th>
+                                <th style="text-align: center; border: 1px solid black;">استان</th>
+                                <th style="text-align: center; border: 1px solid black;">تاریخ </th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody style="text-align: center; line-height: 1; "></tbody>
+                    </table>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <!-- accepted payments column -->
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- ./wrapper -->
+    </bodyonload>
+
+</html>
+<script type="text/javascript">
+
+    var now =  persianDate();
+    /*  y = n.getFullYear();
+      m = n.getMonth() + 1;
+      d = n.getDate();*/
+    //console.log(now);
+    document.getElementById("date").innerHTML = "تاریخ : " + PersiaNumber(now.date().toString()) + "-" + PersiaNumber(now.month().toString()) + "-" + PersiaNumber(now.year().toString()) ;
+
+    function persian_to_gregorian(dateString) {
+
+        var dateArray = dateString.split("/");
+        var d = [parseInt(dateArray[0], 10), parseInt(dateArray[1], 10), parseInt(dateArray[2], 10)];
+        d[1]--;
+
+        var adjustDay = 0;
+        if (d[1] < 0) {
+            adjustDay = leap_persian(d[0] - 1) ? 30 : 29;
+            d[1]++;
+        }
+
+        var gregorian = jd_to_gregorian(persian_to_jd(d[0], d[1] + 1, d[2]) - adjustDay);
+
+        //console.log("persian_to_gregorian-> Input:" + d + "    Output:" + gregorian);
+        return gregorian;
+    }
+
+    function leap_persian(year) {
+        return ((((((year - ((year > 0) ? 474 : 473)) % 2820) + 474) + 38) * 682) % 2816) < 682;
+    }
+
+    function sqlToJsDate(sqlDate){
+
+        var sqlDateArr1 = sqlDate.split("-");
+
+        var sYear = sqlDateArr1[0];
+        var sMonth = parseInt(sqlDateArr1[1])-1;
+        var sqlDateArr2 = sqlDateArr1[2].split("T");
+
+        var sDay = sqlDateArr2[0];
+
+        var sHour = '00';
+        var sMinute = '00';
+
+        var sSecond = '00';
+        var sMillisecond = '000';
+
+
+        return new Date(sYear,sMonth,sDay,sHour,sMinute,sSecond,sMillisecond);
+    }
+
+    function getParameterByName(name, url) {
+        if (!url) {
+            url = window.location.href;
+        }
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    function reverse(s) {
+        var Numbers = s.split('-');
+
+        var CycleName_Value = Numbers[1] + '-' + Numbers[0];
+        return CycleName_Value;
+    }
+
+    function CostSeperator(value) {
+        if (value != null) {
+            var persianNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+            value = value.toString();
+            value = value.replace(/\,/g, '');
+            var objRegex = new RegExp('(-?[0-9]+)([0-9]{3})');
+            while (objRegex.test(value))
+                value = value.replace(objRegex, '$1,$2');
+
+            value = value.replace(/[0-9]/g, function (w) { return persianNumbers[+w] });
+        }
+        return value;
+    }
+
+    function PersiaNumber(value) {
+        var arabicNumbers = ['۰', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+
+        var chars = value.split('');
+
+        for (var i = 0; i < chars.length; i++) {
+            if (/\d/.test(chars[i])) {
+                chars[i] = arabicNumbers[chars[i]];
+            }
+        }
+
+        return chars.join('');
+
+    }
+
+    var today = new Date();
+    var dd = today.getDate();
+
+    var mm = today.getMonth()+1;
+    var yyyy = today.getFullYear();
+    if(dd<10)
+    {
+        dd='0'+dd;
+    }
+
+    if(mm<10)
+    {
+        mm='0'+mm;
+    }
+    today = yyyy+'-'+mm+'-'+dd;
+    //console.log( "Today is : " + today);
+
+
+    var ActionFilter = getParameterByName('Action');
+    var UserName =  getParameterByName('User');
+    var Prov = getParameterByName('Province');
+    var Logtime_Start =  getParameterByName('Logtime_Start');
+    var Logtime_End = getParameterByName('Logtime_End');
+   
+    // var EndTime_S = getParameterByName('EndTime_Start');
+    // var EndTime_E = getParameterByName('EndTime_End');
+
+    if(Logtime_Start != ''){
+        var Logtime_Start = persian_to_gregorian(Logtime_Start)[0] + '-' + persian_to_gregorian(Logtime_Start)[1] + '-' + persian_to_gregorian(Logtime_Start)[2];
+    }else {var Logtime_Start = "2006-03-21";  }
+    if(Logtime_End != ''){
+        var Logtime_End = persian_to_gregorian(Logtime_End)[0] + '-' + persian_to_gregorian(Logtime_End)[1] + '-' + persian_to_gregorian(Logtime_End)[2];
+    }else {var Logtime_End = today;  }
+
+
+
+    var url = "http://" + window.location.hostname + ":" + window.location.port + "/Services/Case/Province/List";
+    // alert("URL : " + url);
+
+    var ProvID = '';
+    var Province = new Array(30);
+
+
+    //FIXME
+    $.ajaxSetup({ async: false });
+    $.getJSON(url, function (data) {
+
+        for (var k = 0; k < data.TotalCount; k++) {
+
+            Province[data.Entities[k].Id] = data.Entities[k].Name;
+
+            if (Prov == data.Entities[k].Name) {
+                ProvID = data.Entities[k].Id;
+            }
+
+        }
+    });
+
+
+    var url = "http://" + window.location.hostname + ":" + window.location.port + "/Services/Administration/User/List";
+    // alert("URL : " + url);
+
+    var UsID = '';
+    var User = new Array(300);
+
+
+    //FIXME
+    $.ajaxSetup({ async: false });
+    $.getJSON(url, function (data) {
+
+        for (var k = 0; k < data.TotalCount; k++) {
+
+            User[data.Entities[k].UserId] = data.Entities[k].DisplayName;
+           // console.log( 'User[data.Entities[k].UserId]  : ' +   User[data.Entities[k].UserId]  + 'UserName : ' + UserName );
+            if (UserName == data.Entities[k].DisplayName) {
+                UsID = data.Entities[k].UserId;
+            }
+
+        }
+    });
+
+
+    var ActId = '';
+    var Action = ['مشاهده','ثبت','بروزرسانی','حذف','ورود به سیستم','خروج از سیستم'];//new Array(6);
+
+    switch (ActionFilter) {
+        case 'مشاهده':
+            ActId = 1;
+            break;
+        case 'ثبت':
+            ActId = 2;
+            break;
+        case 'بروزرسانی':
+            ActId = 3;
+            break;
+        case 'حذف':
+            ActId = 4;
+            break;
+        case 'ورود به سیستم':
+            ActId = 5;
+            break;
+        case 'خروج از سیستم':
+            ActId = 6;
+           
+    }
+ 
+    var LogResult = CaseManagement.Administration.LogService.List( {EqualityFilter:{ ActionID:ActId , ProvinceId: ProvID, UserId:UsID },
+        //"Criteria":[[["DiscoverLeakDate"], ">=", DiscoverTime_St], "and", [["DiscoverLeakDate"], "<", DiscoverTime_En]]
+        "Criteria":[[["InsertDate"],">=",Logtime_Start],"and",[["InsertDate"],"<",Logtime_End]]} , response => {
+
+            
+            var tableRef = document.getElementById('Log_Table').getElementsByTagName('tbody')[0];
+
+    var CycleCost_Total = 0;
+    var DelayedCost_Total = 0;
+    var TotalLeakage_Total = 0;
+    var RecoverableLeakage_Total = 0;
+    var Recovered_Total = 0;
+
+    for (var j = 0; j < response.TotalCount; j++) {
+
+        // Insert a row in the table at the last row
+        var newRow = tableRef.insertRow(tableRef.rows.length);
+
+        // Insert a cell in the row at index 0
+
+        var newCell = newRow.insertCell(0);
+        newCell.style.border = ' 1px solid black';
+        if(response.Entities[j].PersianTableName != null)
+        {
+            var newText = document.createTextNode(response.Entities[j].PersianTableName);
+        }else  var newText = document.createTextNode('');
+        newCell.appendChild(newText);
+
+
+        var newCell = newRow.insertCell(1);
+        newCell.style.border = ' 1px solid black';
+        // Append a text node to the cell
+        if(response.Entities[j].RecordName != null)
+        {
+            var newText = document.createTextNode(response.Entities[j].RecordName);
+        } else var newText = document.createTextNode(response.Entities[j].RecordName);
+        newCell.appendChild(newText);
+
+        var newCell = newRow.insertCell(2);
+        newCell.style.border = ' 1px solid black';
+        if(response.Entities[j].IP != null)
+        {
+            var newText = document.createTextNode(response.Entities[j].IP);
+        }else  var newText = document.createTextNode('');
+        // Program_Total += data.Entities[j].Program;
+        newCell.appendChild(newText);
+
+        var newCell = newRow.insertCell(3);
+        newCell.style.border = ' 1px solid black';
+        if(response.Entities[j].ActionID != null)
+        {
+            var newText = document.createTextNode(Action[response.Entities[j].ActionID-1]);
+        }else var newText = document.createTextNode('');
+        
+        newCell.appendChild(newText);
+
+        var newCell = newRow.insertCell(4);
+        newCell.style.border = ' 1px solid black';
+        if(response.Entities[j].UserId != null)
+        {
+		    //console.log("UserId : "  + User[response.Entities[j].UserId] );
+            var newText = document.createTextNode(User[response.Entities[j].UserId]);
+        }else var newText = document.createTextNode('');
+		newCell.appendChild(newText);
+
+        var newCell = newRow.insertCell(5);
+        newCell.style.border = ' 1px solid black';
+        if(response.Entities[j].ProvinceId != null)
+        {
+            var newText = document.createTextNode(Province[response.Entities[j].ProvinceId]);
+        }else var newText = document.createTextNode('');
+        newCell.appendChild(newText);
+
+
+        var newCell = newRow.insertCell(6);
+        newCell.style.border = ' 1px solid black';
+        var InsertedDate_Day = PersiaNumber((persianDate(sqlToJsDate(response.Entities[j].InsertDate)).date()).toString()).toString();
+        if(InsertedDate_Day.length < 2){ InsertedDate_Day = '۰' + InsertedDate_Day ;  }
+        InsertedDate_Day = InsertedDate_Day + '/ ';
+
+        var InsertedDate_month = PersiaNumber((persianDate(sqlToJsDate(response.Entities[j].InsertDate)).month()).toString()).toString();
+        if(InsertedDate_month.length < 2){ InsertedDate_month = '۰' + InsertedDate_month ;  }
+        InsertedDate_month = InsertedDate_month + '/ ';
+
+        var InsertedDate_year = PersiaNumber((persianDate(sqlToJsDate(response.Entities[j].InsertDate)).year()).toString()).toString();
+        var InsertedDate = InsertedDate_Day + InsertedDate_month + InsertedDate_year;
+
+        var newText = document.createTextNode(InsertedDate);
+        newCell.appendChild(newText);
+
+        
+    }
+    });
+    //var newRow = tableRef.insertRow(tableRef.rows.length);
+
+    //var newCell = newRow.insertCell(0);
+    //newCell.style.border = ' 1px solid black';
+    //newCell.style = 'font-weight: bold;font-size:9px';
+    //// Append a text node to the cell
+    //var newText = document.createTextNode('مجموع');
+    //newCell.appendChild(newText);
+
+    //var newCell = newRow.insertCell(1);
+    //newCell.style.border = ' 1px solid black';
+    //newCell.style = 'font-weight: bold;font-size:9px';
+    //var newText = document.createTextNode('_____');
+    //newCell.appendChild(newText);
+
+    //var newCell = newRow.insertCell(2);
+    //newCell.style.border = ' 1px solid black';
+    //newCell.style = 'font-weight: bold;font-size:9px';
+    //var newText = document.createTextNode('_____');
+    //newCell.appendChild(newText);
+
+    //var newCell = newRow.insertCell(3);
+    //newCell.style.border = ' 1px solid black';
+    //newCell.style = 'font-weight: bold;font-size:9px';
+    //var newText = document.createTextNode('_____');
+    //newCell.appendChild(newText);
+
+    //var newCell = newRow.insertCell(4);
+    //newCell.style.border = ' 1px solid black';
+    //newCell.style = 'font-weight: bold;font-size:9px';
+    //var newText = document.createTextNode('_____');
+    //newCell.appendChild(newText);
+
+    //var newCell = newRow.insertCell(5);
+    //newCell.style.border = ' 1px solid black';
+    //newCell.style = 'font-weight: bold;font-size:9px';
+    //var newText = document.createTextNode('_____');
+    //newCell.appendChild(newText);
+
+    //var newCell = newRow.insertCell(6);
+    //newCell.style.border = ' 1px solid black';
+    //newCell.style = 'font-weight: bold;font-size:9px';
+    //var newText = document.createTextNode('_____');
+    //newCell.appendChild(newText);
+
+    //var newCell = newRow.insertCell(7);
+    //newCell.style.border = ' 1px solid black';
+    ////newCell.style = 'font-weight: bold';
+    //var newText = document.createTextNode(CostSeperator(CycleCost_Total));
+    //newCell.appendChild(newText);
+
+    //var newCell = newRow.insertCell(8);
+    //newCell.style.border = ' 1px solid black';
+    ////newCell.style = 'font-weight: bold';
+    //var newText = document.createTextNode(CostSeperator(DelayedCost_Total));
+    //newCell.appendChild(newText);
+
+    //var newCell = newRow.insertCell(9);
+    //newCell.style.border = ' 1px solid black';
+    ////newCell.style = 'font-weight: bold';
+    //var newText = document.createTextNode(CostSeperator(TotalLeakage_Total));
+    //newCell.appendChild(newText);
+
+    //var newCell = newRow.insertCell(10);
+    //newCell.style.border = ' 1px solid black';
+    ////newCell.style = 'font-weight: bold';
+    //var newText = document.createTextNode(CostSeperator(RecoverableLeakage_Total));
+    //newCell.appendChild(newText);
+
+    //var newCell = newRow.insertCell(11);
+    //newCell.style.border = ' 1px solid black';
+    ////newCell.style = 'font-weight: bold';
+    //var newText = document.createTextNode(CostSeperator(Recovered_Total));
+    //newCell.appendChild(newText);
+    //});
+
+    //// var footer = document.getElementById("main-wrapper");
+    //// footer[0].textContent = "";
+    ////console.log(footer.length);
+
+</script>

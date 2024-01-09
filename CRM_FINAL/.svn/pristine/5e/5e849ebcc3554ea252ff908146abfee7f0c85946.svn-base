@@ -1,0 +1,579 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{541A116E-028F-4480-BE61-8311E8056569}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CRM.Data</RootNamespace>
+    <AssemblyName>CRM.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\Folder\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CookComputing.XmlRpcV2">
+      <HintPath>..\CRM.Assemblies\CookComputing.XmlRpcV2.dll</HintPath>
+    </Reference>
+    <Reference Include="Folder.Common">
+      <HintPath>..\..\..\Folder\Folder.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="IStateName">
+      <HintPath>..\CRM.Assemblies\IStateName.dll</HintPath>
+    </Reference>
+    <Reference Include="Logger, Version=5.7.2.19633, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Folder\Logger.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActionLogDB.cs" />
+    <Compile Include="AdameEmkanatDB.cs" />
+    <Compile Include="AddressDB.cs" />
+    <Compile Include="ADSLAAATypeDB.cs" />
+    <Compile Include="ADSLChangeCustomerOwnerCharacteristicsDB.cs" />
+    <Compile Include="ADSLChangeIPRequestDB.cs" />
+    <Compile Include="ADSLChangePlaceDB.cs" />
+    <Compile Include="ADSLChangePortDB.cs" />
+    <Compile Include="ADSLChangeServiceRequestDB.cs" />
+    <Compile Include="ADSLChangeTariffDB.cs" />
+    <Compile Include="ADSLCustomerGroupDB.cs" />
+    <Compile Include="ADSLCustomerTypeDB.cs" />
+    <Compile Include="ADSLCutTemporaryDB.cs" />
+    <Compile Include="ADSLDB.cs" />
+    <Compile Include="ADSLDischargeDB.cs" />
+    <Compile Include="ADSLEquipmentDB.cs" />
+    <Compile Include="ADSLHistoryDB.cs" />
+    <Compile Include="ADSLInstallCostCenterDB.cs" />
+    <Compile Include="ADSLInstallRequestDB.cs" />
+    <Compile Include="ADSLInterface.cs" />
+    <Compile Include="ADSLIPDB.cs" />
+    <Compile Include="ADSLMDFDB.cs" />
+    <Compile Include="ADSLMDFRangeDB.cs" />
+    <Compile Include="ADSLModemDB.cs" />
+    <Compile Include="ADSLModemPropertyDB.cs" />
+    <Compile Include="ADSLPAPCabinetAccuracyDB.cs" />
+    <Compile Include="ADSLPAPFeasibilityDB.cs" />
+    <Compile Include="ADSLPAPPortDB.cs" />
+    <Compile Include="ADSLPAPRequestDB.cs" />
+    <Compile Include="ADSLPortDB.cs" />
+    <Compile Include="ADSLPortTypeDB.cs" />
+    <Compile Include="ADSLRequestDB.cs" />
+    <Compile Include="ADSLSellerGroupDB.cs" />
+    <Compile Include="ADSLSellTrafficDB.cs" />
+    <Compile Include="ADSLServiceCenterDB.cs" />
+    <Compile Include="ADSLServiceGroupDB.cs" />
+    <Compile Include="ADSLServiceSellerDB.cs" />
+    <Compile Include="ADSLSetupContactInformationDB.cs" />
+    <Compile Include="AdslStatisticsDB.cs" />
+    <Compile Include="ADSLSupportCommnetDB.cs" />
+    <Compile Include="ADSLSupportRequestDB.cs" />
+    <Compile Include="ADSLTariffDB.cs" />
+    <Compile Include="ADSLTelephoneAccuracyDB.cs" />
+    <Compile Include="ADSLTelephoneHistoryDB.cs" />
+    <Compile Include="ADSLTrafficBaseCostDB.cs" />
+    <Compile Include="AgentDB.cs" />
+    <Compile Include="AnnounceDB.cs" />
+    <Compile Include="AssignmentDB.cs" />
+    <Compile Include="BankBranchDB.cs" />
+    <Compile Include="BankDB.cs" />
+    <Compile Include="BaseCostDB.cs" />
+    <Compile Include="BillingServiceDB.cs" />
+    <Compile Include="BitmapImage.cs" />
+    <Compile Include="BlackListDB.cs" />
+    <Compile Include="BuchtDB.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BuchtSwitchingDB.cs" />
+    <Compile Include="BuchtTypeDB.cs" />
+    <Compile Include="CableColorDB.cs" />
+    <Compile Include="CableDesignOfficeDB.cs" />
+    <Compile Include="CauseBuchtSwitchingDB.cs" />
+    <Compile Include="CauseOfChangeNoDB.cs" />
+    <Compile Include="CauseOfCutDB.cs" />
+    <Compile Include="CauseOfRefundDepositDB.cs" />
+    <Compile Include="CauseOfTakePossessionDB.cs" />
+    <Compile Include="CenterToCenterTranslationDB.cs" />
+    <Compile Include="ChangeAddressDB.cs" />
+    <Compile Include="ChangeLocationSpecialWireDB.cs" />
+    <Compile Include="ChangeLocationSpecialWirePointsDB.cs" />
+    <Compile Include="ChangeNoDB.cs" />
+    <Compile Include="CRMWebServiceDB.cs" />
+    <Compile Include="CustomerGroupDB.cs" />
+    <Compile Include="CustomerHost\SecurityDB.cs" />
+    <Compile Include="CustomerTypeDB.cs" />
+    <Compile Include="DataGridColumnConfigDB.cs" />
+    <Compile Include="DBHelper.cs" />
+    <Compile Include="DocumentsFileDB.cs" />
+    <Compile Include="E1BayDB.cs" />
+    <Compile Include="E1CodeTypeDB.cs" />
+    <Compile Include="E1DB.cs" />
+    <Compile Include="E1DDFDB.cs" />
+    <Compile Include="E1LinkDB.cs" />
+    <Compile Include="E1LinkTypeDB.cs" />
+    <Compile Include="E1ModemDB.cs" />
+    <Compile Include="E1NumberDB.cs" />
+    <Compile Include="E1PositionDB.cs" />
+    <Compile Include="ElkaService.cs" />
+    <Compile Include="ExchangeBrokenPCMDB.cs" />
+    <Compile Include="ExchangeCabinetInputDB.cs" />
+    <Compile Include="ExchangeConnectionDB.cs" />
+    <Compile Include="ExchangeGSMDB.cs" />
+    <Compile Include="Failue117CableTypeDB.cs" />
+    <Compile Include="Failure117CabenitAccuracyDB.cs" />
+    <Compile Include="Failure117DB.cs" />
+    <Compile Include="Failure117NetworkContractorDB.cs" />
+    <Compile Include="FormTemplateDB.cs" />
+    <Compile Include="GSMSimCardDB.cs" />
+    <Compile Include="Helpers.cs" />
+    <Compile Include="InquiryDB.cs" />
+    <Compile Include="InstallmentRequestPaymentDB.cs" />
+    <Compile Include="InstallRequestDB.cs" />
+    <Compile Include="InstalmentRequestPaymentDB.cs" />
+    <Compile Include="Interface.cs" />
+    <Compile Include="InvestigatePossibilityWaitinglistDB.cs" />
+    <Compile Include="JobGroupDB.cs" />
+    <Compile Include="LogSchemaUtility.cs" />
+    <Compile Include="Main.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Main.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="MainViewModel.cs" />
+    <Compile Include="MapFormDB.cs" />
+    <Compile Include="MDFWiringDB.cs" />
+    <Compile Include="NetworkWiringDB.cs" />
+    <Compile Include="PCMPortDB.cs" />
+    <Compile Include="MDFPersonnelDB.cs" />
+    <Compile Include="MDFWorkingHoursDB.cs" />
+    <Compile Include="PAPInfoCostDB.cs" />
+    <Compile Include="PAPInfoLimitationDB.cs" />
+    <Compile Include="PAPInfoOperatingStatusDB.cs" />
+    <Compile Include="PCMRemoveFormDB.cs" />
+    <Compile Include="PCMRockDB.cs" />
+    <Compile Include="PCMShelfDB.cs" />
+    <Compile Include="PCMTransferFormDB.cs" />
+    <Compile Include="PostContactEquipmentDB.cs" />
+    <Compile Include="PowerOfficeDB.cs" />
+    <Compile Include="PowerTypeDB.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReferenceDocumentDB.cs" />
+    <Compile Include="RefundDepositDB.cs" />
+    <Compile Include="RegularExpressionsDB.cs" />
+    <Compile Include="ReportTemplateDB.cs" />
+    <Compile Include="RequestForADSLSupport.cs" />
+    <Compile Include="RequestForChangeAddress.cs" />
+    <Compile Include="RequestForFailure117.cs" />
+    <Compile Include="RequestForWirelessDB.cs" />
+    <Compile Include="RequestListDB.cs" />
+    <Compile Include="RequestRefundDB.cs" />
+    <Compile Include="RequestRejectReasonDB.cs" />
+    <Compile Include="ReservesDayeriListDB.cs" />
+    <Compile Include="RoleDB.cs" />
+    <Compile Include="RoleWebServiceDB.cs" />
+    <Compile Include="Scanner.cs" />
+    <Compile Include="SecurityDB.cs" />
+    <Compile Include="SelectTelephoneDB.cs" />
+    <Compile Include="Service References\BillingServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceHostDB.cs" />
+    <Compile Include="ServiceHost\ServiceHostCustomClass.cs" />
+    <Compile Include="ServiceHost\ServiceHostDB.cs" />
+    <Compile Include="Services\BillingCRMService.cs" />
+    <Compile Include="Services\CRMWebService.cs" />
+    <Compile Include="Services\IBSngService.cs" />
+    <Compile Include="Services\Service1.cs" />
+    <Compile Include="Services\SOAPSendSMS.cs" />
+    <Compile Include="Service.cs" />
+    <Compile Include="ShahkarBussines\Methods\ShahkarEntityCreators.cs" />
+    <Compile Include="SMSServiceDB.cs" />
+    <Compile Include="SpecialConditionDB.cs" />
+    <Compile Include="SpecialConditionFactory.cs" />
+    <Compile Include="SpecialConditionPrioritizeDB.cs" />
+    <Compile Include="SpecialWireAddressDB.cs" />
+    <Compile Include="SpecialWireDB.cs" />
+    <Compile Include="SpecialWirePointsDB.cs" />
+    <Compile Include="SubsidiaryCodeDB.cs" />
+    <Compile Include="CabinetCentralCableInfoDB.cs" />
+    <Compile Include="CabinetDB.cs" />
+    <Compile Include="CabinetTypeDB.cs" />
+    <Compile Include="CableDB.cs" />
+    <Compile Include="CablePairDB.cs" />
+    <Compile Include="CableTypeDB.cs" />
+    <Compile Include="CableUsedChannelDB.cs" />
+    <Compile Include="CancelationListDB.cs" />
+    <Compile Include="CenterDB.cs" />
+    <Compile Include="ChangeLocationDB.cs" />
+    <Compile Include="ChangeNameDB.cs" />
+    <Compile Include="ChangePreCodeDB.cs" />
+    <Compile Include="CityDB.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="ContractDB.cs" />
+    <Compile Include="ContractorDB.cs" />
+    <Compile Include="Converter.cs" />
+    <Compile Include="CabinetInputDB.cs" />
+    <Compile Include="CounterDB.cs" />
+    <Compile Include="CurrentUser.cs" />
+    <Compile Include="CutAndEstablishDB.cs" />
+    <Compile Include="CycleDB.cs" />
+    <Compile Include="Date.cs" />
+    <Compile Include="DocumentTypeDB.cs" />
+    <Compile Include="ExchangeCenralCableCabinetDB.cs" />
+    <Compile Include="ExchangeCenralCableMDFDB.cs" />
+    <Compile Include="ExchangeDetailDB.cs" />
+    <Compile Include="ExchangePostDB.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="InstallLineDB.cs" />
+    <Compile Include="InstallmentDB.cs" />
+    <Compile Include="instLineDB.cs" />
+    <Compile Include="InvestigatePossibilityDB.cs" />
+    <Compile Include="IssueWiringDB.cs" />
+    <Compile Include="LinesmanDB.cs" />
+    <Compile Include="MDFDB.cs" />
+    <Compile Include="MDFFrameDB.cs" />
+    <Compile Include="MDFRowDB.cs" />
+    <Compile Include="OfficeDB.cs" />
+    <Compile Include="ONuLinkDB.cs" />
+    <Compile Include="OtherCostDB.cs" />
+    <Compile Include="PAPInfoDB.cs" />
+    <Compile Include="PAPInfoUserDB.cs" />
+    <Compile Include="PaymentFicheDB.cs" />
+    <Compile Include="PCMBrandDB.cs" />
+    <Compile Include="PCMDB.cs" />
+    <Compile Include="PCMDeviceDB.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PCMDeviceFormDB.cs" />
+    <Compile Include="PCMTypeDB.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PostContactDB.cs" />
+    <Compile Include="PostDB.cs" />
+    <Compile Include="PostGroupDB.cs" />
+    <Compile Include="PostTypeDB.cs" />
+    <Compile Include="ProvinceDB.cs" />
+    <Compile Include="CustomClasses.cs" />
+    <Compile Include="NamedValues.cs" />
+    <Compile Include="QuotaDiscountDB.cs" />
+    <Compile Include="QuotaJobTitleDB.cs" />
+    <Compile Include="RegionDB.cs" />
+    <Compile Include="ReportDB.cs" />
+    <Compile Include="RequestDB.cs" />
+    <Compile Include="RequestForADSL.cs" />
+    <Compile Include="RequestForChangeLocationDB.cs" />
+    <Compile Include="RequestForChangeNameDB.cs" />
+    <Compile Include="RequestForCutAndEstablishDB.cs" />
+    <Compile Include="RequestForInquiryDB.cs.cs" />
+    <Compile Include="RequestForSpaceAndPower.cs" />
+    <Compile Include="RequestForSpecialServiceDB.cs" />
+    <Compile Include="RequestForzeroStatusDB.cs" />
+    <Compile Include="RequestLogDB.cs" />
+    <Compile Include="RequestPaymentDB.cs" />
+    <Compile Include="RequestStepDB.cs" />
+    <Compile Include="RequestTypeDB.cs" />
+    <Compile Include="RoundListDB.cs" />
+    <Compile Include="RoundSaleInfoDB.cs" />
+    <Compile Include="Schema\LogSchema.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LogSchema.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\SpecialService.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SpecialService.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SettingDB.cs" />
+    <Compile Include="SpaceAndPowerCustomerDB.cs" />
+    <Compile Include="SpaceAndPowerDB.cs" />
+    <Compile Include="SpecialServiceDB.cs" />
+    <Compile Include="SpecialServiceTypeDB.cs" />
+    <Compile Include="StatusDB.cs" />
+    <Compile Include="String.cs" />
+    <Compile Include="SugesstionPossibilityDB.cs" />
+    <Compile Include="SwapPCMDB.cs" />
+    <Compile Include="SwapTelephoneDB.cs" />
+    <Compile Include="SwitchDB.cs" />
+    <Compile Include="SwitchOfficeDB.cs" />
+    <Compile Include="SwitchPortDB.cs" />
+    <Compile Include="SwitchPrecodeDB.cs" />
+    <Compile Include="SwitchSpecialServiceDB.cs" />
+    <Compile Include="SwitchTypeDB.cs" />
+    <Compile Include="SystemChangesDB.cs" />
+    <Compile Include="TakePossessionDB.cs" />
+    <Compile Include="TechnicalRequestListDB.cs" />
+    <Compile Include="TechnicalSpecificationsOfADSLDB.cs" />
+    <Compile Include="TelecomminucationServiceDB.cs" />
+    <Compile Include="TelecomminucationServicePaymentDB.cs" />
+    <Compile Include="TelephoneConnectionInstallmentDB.cs" />
+    <Compile Include="TelephoneCycleFicheDB.cs" />
+    <Compile Include="TelephoneDB.cs" />
+    <Compile Include="TelephonePBXDB.cs" />
+    <Compile Include="TelephoneSpecialServiceTypeDB.cs" />
+    <Compile Include="TelephonStatusLogDB.cs" />
+    <Compile Include="TelRoundSaleDB.cs" />
+    <Compile Include="TitleIn118DB.cs" />
+    <Compile Include="TransferDepartmentDB.cs" />
+    <Compile Include="TranslationCabinetDB.cs" />
+    <Compile Include="TranslationCentralCableMDFDB.cs" />
+    <Compile Include="TranslationOpticalCabinetToNormalConncetionDB.cs" />
+    <Compile Include="TranslationOpticalCabinetToNormalDB.cs" />
+    <Compile Include="TranslationOpticalCabinetToNormalTelephoneDB.cs" />
+    <Compile Include="TranslationPCMToNormalDB.cs" />
+    <Compile Include="TranslationPostDB.cs" />
+    <Compile Include="TranslationPostInputDB.cs" />
+    <Compile Include="UnitMeasureDB.cs" />
+    <Compile Include="UsedProductDB.cs" />
+    <Compile Include="UsedProductsDB.cs" />
+    <Compile Include="UserDB.cs" />
+    <Compile Include="VacateE1DB.cs" />
+    <Compile Include="VacateSpecialWireDB.cs" />
+    <Compile Include="VacateSpecialWirePointsDB.cs" />
+    <Compile Include="VerticalMDFColumnDB.cs" />
+    <Compile Include="VerticalMDFRowDB.cs" />
+    <Compile Include="VisitAddressDB.cs" />
+    <Compile Include="VisitPlacesCabinetAndPostDB.cs" />
+    <Compile Include="WaitingListDB.cs" />
+    <Compile Include="WaitingListReasonDB.cs" />
+    <Compile Include="WaitingPossibilityDB.cs" />
+    <Compile Include="WarningHistoryDB.cs" />
+    <Compile Include="WarningMessageDB.cs" />
+    <Compile Include="Web References\ElkaWebSevice\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="WirelessChangeServiceDB.cs" />
+    <Compile Include="WirelessRequestDB.cs" />
+    <Compile Include="WiringDB.cs" />
+    <Compile Include="WorkFlowDB.cs" />
+    <Compile Include="DocumentRequestTypeDB.cs" />
+    <Compile Include="RequestDocumnetDB.cs" />
+    <Compile Include="TypesDB.cs" />
+    <Compile Include="CustomerDB.cs" />
+    <Compile Include="DB.cs" />
+    <Compile Include="DBbase.cs" />
+    <Compile Include="Detach.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FicheDB.cs" />
+    <Compile Include="OperationStatus.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="RequestForInstallDB.cs" />
+    <Compile Include="WorkFlowRuleDB.cs" />
+    <Compile Include="WorkFlowVersionDB.cs" />
+    <Compile Include="WorkUnitDB.cs" />
+    <Compile Include="ZeroStatusDB.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Main.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Main.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="obj\Debug\CRM.Data.csproj.ResolveComReference.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\ResolveAssemblyReference.cache" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Schema\LogSchema.xsd">
+      <SubType>Designer</SubType>
+      <Generator>SchemaCodeGenerator</Generator>
+      <LastGenOutput>LogSchema.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Schema\SpecialService.xsd">
+      <SubType>Designer</SubType>
+      <Generator>SchemaCodeGenerator</Generator>
+      <LastGenOutput>SpecialService.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\BillingServiceReference\BillService.wsdl" />
+    <None Include="Service References\BillingServiceReference\CRM.Data.BillingServiceReference.Bill1818.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BillingServiceReference\CRM.Data.BillingServiceReference.BillDetailInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BillingServiceReference\CRM.Data.BillingServiceReference.BillInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BillingServiceReference\CRM.Data.BillingServiceReference.DebtInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BillingServiceReference\CRM.Data.BillingServiceReference.EnumsState.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BillingServiceReference\CRM.Data.BillingServiceReference.GetAllReceiptDetailsWithStartIDResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BillingServiceReference\CRM.Data.BillingServiceReference.GetDebtStatusListResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BillingServiceReference\CRM.Data.BillingServiceReference.Get_1818_FullInformationResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BillingServiceReference\CRM.Data.BillingServiceReference.InactivationBarcode.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BillingServiceReference\CRM.Data.BillingServiceReference.ReceiptInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\BillingServiceReference\mex.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BillingServiceReference\mex1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BillingServiceReference\mex2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\BillingServiceReference\mex3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\ElkaWebSevice\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\ElkaWebSevice\web_service_Transmission.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="WIA">
+      <Guid>{94A0E92D-43C0-494E-AC29-FD45948A5221}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="WIA">
+      <Guid>{94A0E92D-43C0-494E-AC29-FD45948A5221}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="obj\Debug\CRM.Data.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\CRM.Data.dll" />
+    <Content Include="obj\Debug\CRM.Data.pdb" />
+    <Content Include="obj\Debug\Interop.WIA.dll" />
+    <Content Include="obj\Debug\TempPE\Main.designer.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Schema.LogSchema.Designer.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Schema.SpecialService.Designer.cs.dll" />
+    <Content Include="obj\Debug\TempPE\Service References.BillingServiceReference.Reference.cs.dll" />
+    <None Include="Web References\ElkaWebSevice\web_service_Transmission.disco" />
+    <None Include="Service References\BillingServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\BillingServiceReference\configuration.svcinfo" />
+    <None Include="Service References\BillingServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\BillingServiceReference\mex.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\BillingServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Main.dbml.layout">
+      <DependentUpon>Main.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://217.219.241.244:8081/">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\ElkaWebSevice\</RelPath>
+      <UpdateFromURL>http://217.219.241.244:8081/</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>CRM_Data_ElkaWebSevice_web_service_Transmission</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CRM.WebAPI.Models\CRM.WebAPI.Models.csproj">
+      <Project>{9501eb3d-d134-4389-88fe-301c978416e3}</Project>
+      <Name>CRM.WebAPI.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

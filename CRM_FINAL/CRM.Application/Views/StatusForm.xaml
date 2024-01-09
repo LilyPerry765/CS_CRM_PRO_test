@@ -1,0 +1,43 @@
+﻿<Local:PopupWindow Title="فرم ویرایش وضعیت"
+                   x:Class="CRM.Application.Views.StatusForm"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib"
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls"
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   d:DesignWidth="500" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   Loaded="PopupWindow_Loaded" Icon="/CRM.Application;component/Images/status48x48.png">
+
+    <Grid FlowDirection="RightToLeft">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Column="0" Grid.Row="0" Content="شناسه : " />
+        <TextBox Grid.Column="1" Grid.Row="0" x:Name="IDTextBox" Text="{Binding ID}" IsReadOnly="True" />
+
+        <Label Grid.Column="0" Grid.Row="2" Content="مرحله درخواست : " />
+        <ComboBox  Grid.Column="1" Grid.Row="2" x:Name="RequestStepComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding RequestStepID}" />
+
+        <Label Grid.Column="0" Grid.Row="1" Content="عنوان علت : " />
+        <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Title}" />
+
+        <Label Grid.Column="0" Grid.Row="3" Content="وضعیت : " />
+        <ComboBox Grid.Column="1" Grid.Row="3" x:Name="RequestStatusTypeComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding StatusType}"/>
+
+        <Button Grid.Row="20" Grid.Column="0" Content="ذخیره" Name="SaveButton" Click="SaveForm" Tag="Footer" />
+    </Grid>
+
+
+</Local:PopupWindow>

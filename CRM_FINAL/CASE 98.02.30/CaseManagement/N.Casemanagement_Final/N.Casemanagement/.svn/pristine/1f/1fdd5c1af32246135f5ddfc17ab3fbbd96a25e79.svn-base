@@ -1,0 +1,24 @@
+﻿
+namespace CaseManagement.Common {
+    
+    @Serenity.Decorators.registerClass()
+    export class MessageLogGrid extends Serenity.EntityGrid<MessageLogRow, any> {
+        protected getColumnsKey() { return 'Common.MessageLog'; }
+        protected getDialogType() { return MessageLogDialog; }
+        protected getIdProperty() { return MessageLogRow.idProperty; }
+        protected getLocalTextPrefix() { return MessageLogRow.localTextPrefix; }
+        protected getService() { return MessageLogService.baseUrl; }
+
+        constructor(container: JQuery) {
+            super(container);
+        }
+        protected getButtons() {
+            var buttons = super.getButtons();
+
+            buttons.splice(Q.indexOf(buttons, x => x.cssClass == "add-button"), 1);
+
+            return buttons;
+        }
+        
+    }
+}

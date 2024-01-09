@@ -1,0 +1,108 @@
+﻿<Local:PopupWindow 
+    xmlns:Local="clr-namespace:CRM.Application.Local" 
+    x:Class="CRM.Application.Views.RequestDocumentForm" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+    xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+    Title="ثبت مدرک" 
+    Icon="/CRM.Application;component/Images/RequestDocument_48x48.png"
+    Loaded="Window_Loaded">
+
+
+    <StackPanel Orientation="Vertical" FlowDirection="RightToLeft">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="6*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="160" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Label Content="عنوان" Grid.Row="0" Grid.Column="0" />
+            <ListBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" SelectionChanged="ListBox_SelectionChanged">
+                <ListBoxItem Tag="1" IsSelected="True" Name="NewradioButton">درج مدرک جدید</ListBoxItem>
+                <ListBoxItem Tag="2" Name="CopyradioButton">کپی مدرک از آخرین درخواست</ListBoxItem>
+            </ListBox>
+        </Grid>
+        
+        <Grid Grid.Row="2" Name="mojavezGrid" Visibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="160" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+
+            <Label Grid.Column="0" Grid.Row="0" Content="شماره نامه" />
+            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding reqDoc.DocumentNo}" Name="DocumentNotextBox" />
+            
+            <Label Grid.Column="2" Grid.Row="0" Content="تاریخ نامه" />
+            <Label Grid.Column="0" Grid.Row="1" Content="مرجع صادرکننده مجوز" />
+            
+            <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding  reqDoc.IssuingOffice}" Name="IssuingOfficetextBox" />
+            <Label Grid.Column="2" Grid.Row="1" Content="سمت شغلی صادرکننده مجوز" />
+            
+            <TextBox Grid.Column="3" Grid.Row="1" Text="{Binding  reqDoc.IssuingRole}" Name="IssuingRoletextBox" />
+            <cal:DatePicker Name="DocumentDatePicker" SelectedDate="{Binding  reqDoc.DocumentDate}" Grid.ColumnSpan="4" Grid.Row="0" Grid.Column="3" />
+
+        </Grid >
+
+        <Grid Grid.Row="3" Name="CopyDocGrid" Visibility="{Binding IsSelected,ElementName=NewradioButton,  Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="160" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Name="CopyDocLabel" Content="فایل پیوست" Grid.Row="0" Grid.Column="0" />
+            <!--<TextBox x:Name="PathTextBox" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" IsEnabled="False" />-->
+
+            <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Name="CopyDocSavedValueLabel" Content="     فایل دریافت شد برای مشاهده اینجا را کلیک کنید" Style="{StaticResource ResourceKey=HyperLink}"  VerticalAlignment="Center" HorizontalAlignment="Left" MouseLeftButtonDown="SavedValueLabel_MouseLeftButtonDown" Margin="0,0,10,0" Visibility="Collapsed"/>
+            <Image Grid.Row="0" Grid.Column="1" Source="/CRM.Application;component/Images/info_16x16.png" Width="16" Height="16" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="3" Name="InsertNewDocGrid" Visibility="{Binding IsSelected,ElementName=CopyradioButton,  Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="160" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Name="textBlock4" Content="فایل پیوست" Grid.Row="0" Grid.Column="0" />
+            <!--<TextBox x:Name="PathTextBox" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" IsEnabled="False" />-->
+
+            <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Name="SavedValueLabel" Content="     فایل دریافت شد برای مشاهده اینجا را کلیک کنید" Style="{StaticResource ResourceKey=HyperLink}"  VerticalAlignment="Center" HorizontalAlignment="Left" MouseLeftButtonDown="SavedValueLabel_MouseLeftButtonDown" Margin="0,0,10,0" Visibility="Collapsed"/>
+            <Image Grid.Row="0" Grid.Column="1" Source="/CRM.Application;component/Images/info_16x16.png" Width="16" Height="16" HorizontalAlignment="Left"  VerticalAlignment="Center"/>
+            
+            <Button Content="انتخاب" Name="Selectfile" Click="Selectfile_Click" Grid.Column="4" Grid.Row="0" />
+            <Label Grid.Column="0" Grid.Row="1" Content="اعتبار تا تاریخ" />
+            
+            <cal:DatePicker Grid.Row="1" Grid.Column="1" Name="ValidToDatePicker" SelectedDate="{Binding reqDoc.ValidToDate}" />
+            <Button Content="ذخیره" Tag="Footer" Name="Savebtn" Click="Savebtn_Click" HorizontalAlignment="Right" Grid.Row="3" />
+        </Grid>
+    </StackPanel>
+
+</Local:PopupWindow>

@@ -1,0 +1,136 @@
+﻿<Local:RequestFormBase Title="برگردان کافو" 
+                   x:Class="CRM.Application.Views.ExchangeCabinetInputForm"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib" 
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d:DesignWidth="780"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+                   Loaded="PopupWindow_Loaded" >
+    <ScrollViewer FlowDirection="RightToLeft">
+        <StackPanel>
+
+            <GroupBox Grid.Row="0" Grid.Column="0" Header="درخواست" x:Name="ExchangeRequestInfoUserControl" >
+            </GroupBox>
+            <GroupBox Header="نوع برگردان">
+                <StackPanel>
+                    <RadioButton Content="انتقال همان پست ها" x:Name="TransferSamePostsRadioButton" Margin="5" Checked="TransferSamePostsRadioButton_Checked"/>
+                    <RadioButton Content="با تغییر پست" x:Name="WithChangePostRadioButton" Margin="5" Checked="WithChangePostRadioButton_Checked"/>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Header="کافو قبل از برگردان" Visibility="Collapsed" x:Name="OldCabinetGroupBox">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label    Grid.Row="0" Grid.Column="0" Content="شماره کافو" />
+                    <ComboBox Grid.Row="0" Grid.Column="1" x:Name="OldCabinetComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding OldCabinetID}" SelectionChanged="OldCabinetComboBox_SelectionChanged"/>
+
+                    <Label    Grid.Row="1" Grid.Column="0" Content="از ورودی" />
+                    <ComboBox Grid.Row="1" Grid.Column="1" x:Name="FromOldCabinetInputComboBox" DisplayMemberPath="Name" SelectedValuePath="LongID" SelectedValue="{Binding FromOldCabinetInputID}"/>
+
+                    <Label    Grid.Row="1" Grid.Column="3" Content="تا ورودی" />
+                    <ComboBox Grid.Row="1" Grid.Column="4" x:Name="ToOldCabinetInputComboBox" DisplayMemberPath="Name" SelectedValuePath="LongID" SelectedValue="{Binding ToOldCabinetInputID}" SelectionChanged="ToOldCabinetInputComboBox_SelectionChanged"/>
+
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Header="کافو بعد از برگردان" Visibility="Collapsed" x:Name="NewCabinetGroupBox">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label    Grid.Row="0" Grid.Column="0" Content="شماره کافو" />
+                    <ComboBox Grid.Row="0" Grid.Column="1" x:Name="NewCabinetComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding NewCabinetID}" SelectionChanged="NewCabinetComboBox_SelectionChanged"/>
+
+                    <Label    Grid.Row="1" Grid.Column="0" Content="از ورودی" />
+                    <ComboBox Grid.Row="1" Grid.Column="1" x:Name="FromNewCabinetInputComboBox" DisplayMemberPath="Name" SelectedValuePath="LongID" SelectedValue="{Binding FromNewCabinetInputID}"/>
+
+                    <Label    Grid.Row="1" Grid.Column="3" Content="تا ورودی" />
+                    <ComboBox Grid.Row="1" Grid.Column="4" x:Name="ToNewCabinetInputComboBox" DisplayMemberPath="Name" SelectedValuePath="LongID" SelectedValue="{Binding ToNewCabinetInputID}" SelectionChanged="ToNewCabinetInputComboBox_SelectionChanged"/>
+
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Header="پست بعد از برگردان" x:Name="FromNewPostGroupBox" Visibility="Collapsed">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Content="شماره اولین پست"/>
+                    <ComboBox Grid.Row="0" Grid.Column="1" x:Name="FirstPostComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding FromNewPostID}"/>
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Header="اطلاعات انجام برگردان" FlowDirection="RightToLeft" Grid.Row="3" Grid.Column="0" x:Name="AccomplishmentGroupBox">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    
+
+                    <Label            Grid.Row="0" Grid.Column="0" x:Name="AccomplishmentDateLabel" Content="تاریخ خاتمه" Visibility="Collapsed"/>
+                    <cal:DatePicker   Grid.Row="0" Grid.Column="1" x:Name="AccomplishmentDate" SelectedDate="{Binding AccomplishmentDate}"  Visibility="Collapsed"/>
+
+                    <Label            Grid.Row="0" Grid.Column="3" x:Name="AccomplishmentTimeLabel" Content="زمان انجام" Visibility="Collapsed"/>
+                    <TextBox          Grid.Row="0" Grid.Column="4" x:Name="AccomplishmentTime" Text="{Binding AccomplishmentTime}" Visibility="Collapsed"/>
+                    
+                    <Label            Grid.Row="1" Grid.Column="0" x:Name="StatusComboBoxLabel" Content="وضعیت" />
+                    <ComboBox         Grid.Row="1" Grid.Column="1" x:Name="StatusComboBox" DisplayMemberPath="StatusResult" SelectedValuePath="StepStatusID" />
+                    
+                    <Button           Grid.Row="1" Grid.Column="4" Content="صدور فرم سیم بندی" Name="wiringButtom" Click="wiringButtom_Click" />
+
+
+                </Grid>
+            </GroupBox>
+            
+        </StackPanel>
+    </ScrollViewer>
+</Local:RequestFormBase>

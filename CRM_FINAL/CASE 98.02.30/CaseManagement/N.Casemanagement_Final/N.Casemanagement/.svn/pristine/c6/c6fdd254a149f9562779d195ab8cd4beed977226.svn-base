@@ -1,0 +1,356 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="~/scripts/persian-date-0.1.8.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ActivityRequestPending</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    
+</head>
+<body onload="window.print();">
+    <div class="wrapper">
+        <!-- Main content -->
+        <section class="invoice">
+            <!-- Table row -->
+            <div class="row">
+                <div class="col-xs-12 table-responsive">
+
+                    <div style="text-align:center;">
+                        <img style="margin-bottom:4px;float:right;" src="/Modules/Common/Reporting/mokhaberat_40.png" />
+
+                        <th3 style="font-size:16px;font-family:Tahoma;font-weight:bold;">فعالیت جاری استان</th3>
+                        <th3 style="float:left;margin-top:15px;font-size:9px;" id="date"></th3>
+                    </div>
+                    <br /> <br />
+                    <table cellspacing="1" border="1" class="table" id="Activity_Request_Technical_Info_province_Table" style=" font-family: Tahoma; font-size:12px; border: 1px solid black; border-collapse: collapse; overflow-x: auto;">
+                        
+                         <thead>
+                        <th style="text-align: center;">استان</th>
+                        <th style="text-align: center;">شناسه</th>
+                        <th style="text-align: center;">فعالیت</th>
+                       </thead>
+                         <tbody style="text-align: center; line-height: 1; ">
+                            <tr>
+                                <td id="province"></td>
+                                <td id="ID"></td>
+                                <td id="Activity"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table cellspacing="0" border="1" class="table" id="Activity_Request_Technical_Info_General_Table" style="font-family: Tahoma; font-size: 12px; border: 1px solid black; border-collapse: collapse; overflow-x: auto;">
+                        <caption style="text-align:right">عمومی :</caption>
+                        <thead>
+                        <th style="text-align: center;">دوره</th>
+                        <th style="text-align: center;">جریان درآمدی</th>
+                        <th style="text-align: center;">تاریخ شناسایی نشتی</th>
+                        </thead>
+                        <tbody style="text-align: center; line-height: 1; ">
+                            <tr>
+                                <td id="cycle"></td>
+                                <td id="IncomeFlow"></td>
+                                <td id="Discover_Date"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table cellspacing="0" border="1" class="table" id="Activity_Request_Technical_Info_input_numbers_Table" style="font-family: Tahoma; font-size: 12px; border: 1px solid black; border-collapse: collapse; overflow-x: auto;">
+                        <caption style="text-align:right">مبالغ ورودی :</caption>
+                        <thead>
+                        <th style="text-align: center;">تعداد</th>
+                        <th style="text-align: center;">مبلغ سیکل</th>
+                        <th style="text-align: center;">مبلغ معوق</th>
+                        <th style="text-align: center;">مبلغ  قابل وصول معوق </th>
+                        <th style="text-align: center;">مبلغ  غیرقابل وصول معوق</th>
+
+                        </thead>
+                        <tbody style="text-align: center; line-height: 1; ">
+                            <tr>
+                                <td id="Count"></td>
+                                <td id="CycleCost"></td>
+                                <td id="DelayedCost"></td>
+                                <td id="AccessableCost"></td>
+                                <td id="InaccessableCost"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table cellspacing="0" border="1" class="table" id="Activity_Request_Technical_Info_result_numbers_Table" style="font-family: Tahoma; font-size: 12px; border: 1px solid black; border-collapse: collapse; overflow-x: auto;">
+                        <caption style="text-align:right">مبالغ نتیجه :</caption>
+                        <thead>
+                        <th style="text-align: center;">نشتی شناسایی شده کل  </th>
+                        <th style="text-align: center;">نشتی شناسایی شده قابل وصول  </th>
+                        <th style="text-align: center;">مبلغ مصوب</th>
+
+                        </thead>
+                        <tbody style="text-align: center; line-height: 1; ">
+                            <tr>
+                               
+                                <td id="TotalLeakage"></td>
+                                <td id="RecoverableLeakage"></td>
+                                <td id="Recovered"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table cellspacing="0" border="1" class="table" id="Activity_Request_Technical_Info_Comments_Table" style="font-family: Tahoma; font-size: 12px; border: 1px solid black; border-collapse: collapse; overflow-x: auto;">
+                        <caption style="text-align:right">توضیحات :</caption>
+                        <thead>
+                        <th style="text-align: center;">تعداد دفعات بازگشت  </th>
+                        <th style="text-align: center;">شرح رویداد  </th>
+                        <th style="text-align: center;">تحلیل علت اصلی</th>
+
+                        </thead>
+                        <tbody style="text-align: center; line-height: 1; ">
+                            <tr>
+
+                                <td id="RejectCount"></td>
+                                <td id="Event"></td>
+                                <td id="MainReason"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <!-- accepted payments column -->
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- ./wrapper -->
+    </bodyonload>
+
+</html>
+<script type="text/javascript">
+    var now = persianDate();
+    /*  y = n.getFullYear();
+      m = n.getMonth() + 1;
+      d = n.getDate();*/
+    //console.log(now);
+    document.getElementById("date").innerHTML = "تاریخ : " + PersiaNumber(now.date().toString()) + "-" + PersiaNumber(now.month().toString()) + "-" + PersiaNumber(now.year().toString());
+
+    function persian_to_gregorian(dateString) {
+
+        var dateArray = dateString.split("/");
+        var d = [parseInt(dateArray[0], 10), parseInt(dateArray[1], 10), parseInt(dateArray[2], 10)];
+        d[1]--;
+
+        var adjustDay = 0;
+        if (d[1] < 0) {
+            adjustDay = leap_persian(d[0] - 1) ? 30 : 29;
+            d[1]++;
+        }
+
+        var gregorian = jd_to_gregorian(persian_to_jd(d[0], d[1] + 1, d[2]) - adjustDay);
+
+        //console.log("persian_to_gregorian-> Input:" + d + "    Output:" + gregorian);
+        return gregorian;
+    }
+
+    function leap_persian(year) {
+        return ((((((year - ((year > 0) ? 474 : 473)) % 2820) + 474) + 38) * 682) % 2816) < 682;
+    }
+
+    function sqlToJsDate(sqlDate) {
+
+        var sqlDateArr1 = sqlDate.split("-");
+
+        var sYear = sqlDateArr1[0];
+        var sMonth = parseInt(sqlDateArr1[1]) - 1;
+        var sqlDateArr2 = sqlDateArr1[2].split("T");
+
+        var sDay = sqlDateArr2[0];
+
+        var sHour = '00';
+        var sMinute = '00';
+
+        var sSecond = '00';
+        var sMillisecond = '000';
+
+
+        return new Date(sYear, sMonth, sDay, sHour, sMinute, sSecond, sMillisecond);
+    }
+
+    function getParameterByName(name, url) {
+        if (!url) {
+            url = window.location.href;
+        }
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    function reverse(s) {
+        var Numbers = s.split('-');
+
+        var CycleName_Value = Numbers[1] + '-' + Numbers[0];
+        return CycleName_Value;
+    }
+
+    function CostSeperator(value) {
+        if (value != null) {
+            var persianNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+            value = value.toString();
+            value = value.replace(/\,/g, '');
+            var objRegex = new RegExp('(-?[0-9]+)([0-9]{3})');
+            while (objRegex.test(value))
+                value = value.replace(objRegex, '$1,$2');
+
+            value = value.replace(/[0-9]/g, function (w) { return persianNumbers[+w] });
+        }
+        return value;
+    }
+
+    function PersiaNumber(value) {
+        var arabicNumbers = ['۰', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+
+        var chars = value.split('');
+
+        for (var i = 0; i < chars.length; i++) {
+            if (/\d/.test(chars[i])) {
+                chars[i] = arabicNumbers[chars[i]];
+            }
+        }
+
+        return chars.join('');
+
+    }
+
+    var today = new Date();
+    var dd = today.getDate();
+
+    var mm = today.getMonth() + 1;
+    var yyyy = today.getFullYear();
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+    today = yyyy + '-' + mm + '-' + dd;
+    //console.log( "Today is : " + today);
+
+    $.ajaxSetup({ async: false });
+    var ActivityId = getParameterByName('ActivityId');
+
+    function CostSeperator(value) {
+        if (value != null) {
+            
+            var persianNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+            value = value.toString();
+            value = value.replace(/\,/g, '');
+            var objRegex = new RegExp('(-?[0-9]+)([0-9]{3})');
+            while (objRegex.test(value))
+                value = value.replace(objRegex, '$1,$2');
+
+            value = value.replace(/[0-9]/g, function (w) {
+                 return persianNumbers[+w] 
+            });
+        }
+        return value;
+    }
+
+
+    var ActivityRequestTechnicalInfoResult = CaseManagement.Case.ActivityRequestDetailsInfoService.List( {EqualityFilter:{Id:ActivityId }} , response => {
+
+        var arabicNumbers = ['۰', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+        var ActCycle = response.Entities[0].CycleName.split('-');
+
+        var chars = ActCycle[0].split('');
+
+        for (var i = 0; i < chars.length; i++) {
+            if (/\d/.test(chars[i])) {
+                chars[i] = arabicNumbers[chars[i]];
+            }
+        }
+        FirstValue =  chars.join('');
+        //console.log("Cycle Name");
+        //return '9999';
+        var chars1 = ActCycle[1].split('');
+
+        for (var i = 0; i < chars1.length; i++) {
+            if (/\d/.test(chars1[i])) {
+                chars1[i] = arabicNumbers[chars1[i]];
+            }
+        }
+        SecondValue = chars1.join('');
+
+        var CycleName_Value = SecondValue + '-' + FirstValue;
+    
+
+        var DiscoverLeakDate_Day = PersiaNumber((persianDate(sqlToJsDate(response.Entities[0].DiscoverLeakDate)).date()).toString()).toString();
+     if(DiscoverLeakDate_Day.length < 2){ DiscoverLeakDate_Day = '۰' + DiscoverLeakDate_Day ;  }
+     DiscoverLeakDate_Day = DiscoverLeakDate_Day + '/ ';
+
+     var DiscoverLeakDate_month = PersiaNumber((persianDate(sqlToJsDate(response.Entities[0].DiscoverLeakDate)).month()).toString()).toString();
+      if(DiscoverLeakDate_month.length < 2){ DiscoverLeakDate_month = '۰' + DiscoverLeakDate_month ;  }
+       DiscoverLeakDate_month = DiscoverLeakDate_month + '/ ';
+
+       var DiscoverLeakDate_year = PersiaNumber((persianDate(sqlToJsDate(response.Entities[0].DiscoverLeakDate)).year()).toString()).toString();
+      var DiscoverLeakDate = DiscoverLeakDate_Day + DiscoverLeakDate_month + DiscoverLeakDate_year;
+            
+
+
+        document.getElementById("province").innerHTML = response.Entities[0].Expr1 ;
+        document.getElementById("ID").innerHTML = PersiaNumber(ActivityId.toString()) ;
+        document.getElementById("Activity").innerHTML = response.Entities[0].CodeName ;
+        document.getElementById("cycle").innerHTML = CycleName_Value ;
+        document.getElementById("IncomeFlow").innerHTML = response.Entities[0].Name ;
+        document.getElementById("Discover_Date").innerHTML = DiscoverLeakDate ;
+		if(response.Entities[0].Count != null){
+        document.getElementById("Count").innerHTML =  PersiaNumber(response.Entities[0].Count.toString());
+		}else {document.getElementById("Count").innerHTML = '۰';} ;
+		
+		if(response.Entities[0].CycleCost != null){
+        document.getElementById("CycleCost").innerHTML = CostSeperator(response.Entities[0].CycleCost) ;
+		}else {document.getElementById("CycleCost").innerHTML = '۰';}
+		
+		if(response.Entities[0].DelayedCost != null){
+        document.getElementById("DelayedCost").innerHTML =  CostSeperator(response.Entities[0].DelayedCost);
+		}else {document.getElementById("DelayedCost").innerHTML = ' ';}
+		
+		if(response.Entities[0].AccessibleCost != null){
+        document.getElementById("AccessableCost").innerHTML =  CostSeperator(response.Entities[0].AccessibleCost) ;
+		} else {document.getElementById("AccessableCost").innerHTML = ' ';}
+		
+		if(response.Entities[0].InaccessibleCost != null){
+        document.getElementById("InaccessableCost").innerHTML =  CostSeperator(response.Entities[0].InaccessibleCost) ;
+		} else {document.getElementById("InaccessableCost").innerHTML = ' ';}
+		
+		if(response.Entities[0].TotalLeakage != null){
+        document.getElementById("TotalLeakage").innerHTML =  CostSeperator(response.Entities[0].TotalLeakage) ;
+		} else {document.getElementById("TotalLeakage").innerHTML = ' ';}
+		
+		if(response.Entities[0].RecoverableLeakage != null){
+        document.getElementById("RecoverableLeakage").innerHTML =  CostSeperator(response.Entities[0].RecoverableLeakage) ;
+		} else {document.getElementById("RecoverableLeakage").innerHTML = ' ';}
+		
+		if(response.Entities[0].Recovered != null){
+        document.getElementById("Recovered").innerHTML =  CostSeperator(response.Entities[0].Recovered) ;
+		}else {document.getElementById("Recovered").innerHTML = ' ';}
+		
+        document.getElementById("RejectCount").innerHTML =  CostSeperator(response.Entities[0].RejectCount) ;
+        
+		if(response.Entities[0].EventDescription != null){
+		document.getElementById("Event").innerHTML =  response.Entities[0].EventDescription ;
+		}else {document.getElementById("Event").innerHTML = ' ';}
+		
+		if(response.Entities[0].MainReason != null){
+        document.getElementById("MainReason").innerHTML =  response.Entities[0].MainReason 
+		} else {document.getElementById("MainReason").innerHTML = ' ';}
+        
+       // DelayedCost,AccessableCost,InaccessableCost
+        // alert("ID : " + response.Entities[0].Id + " ActivityCode : " + response.Entities[0].ActivityCode );
+    });
+
+
+</script>

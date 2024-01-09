@@ -1,0 +1,60 @@
+﻿<Local:ReportBase x:Class="CRM.Application.Reports.ReportUserControls.FailureTimeTableReportUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Local="clr-namespace:CRM.Application.Local"
+             xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5"/>
+            
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <GroupBox Grid.Row="2" Grid.Column="0" Header=" مشخصات خرابی ">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="5"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+
+                </Grid.ColumnDefinitions>
+
+                <UserControls:CenterCityUserControl x:Name="CityCenterUC" Grid.Column=" 0" Grid.Row="0" Grid.ColumnSpan=" 5"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="دوره : " VerticalAlignment="Center" Width="100"/>
+                <ComboBox Grid.Row="2" Grid.Column="1" x:Name="DurationCombobox" SelectedValuePath="ID" DisplayMemberPath="Name" Height="26" VerticalAlignment="Bottom"/>
+
+                <TextBlock Grid.Row="2" Grid.Column="3" Text=" مرحله درخواست خرابی : " VerticalAlignment="Center"/>
+                <ComboBox Grid.Row="2" Grid.Column="4" SelectedValuePath="ID" DisplayMemberPath="Name" x:Name="FailureStatusCombobox"/>
+
+                <Label Content="از تاریخ:" Grid.Row="4" Grid.Column="0"/>
+                <cal:DatePicker x:Name="fromDate" Grid.Row="4" Grid.Column="1"/>
+
+                <Label Content="تا تاریخ :" Grid.Row="4" Grid.Column="3"/>
+                <cal:DatePicker x:Name="toDate" Grid.Column="4" Grid.Row="4"/>
+            </Grid>
+        </GroupBox>
+
+
+    </Grid>
+</Local:ReportBase>

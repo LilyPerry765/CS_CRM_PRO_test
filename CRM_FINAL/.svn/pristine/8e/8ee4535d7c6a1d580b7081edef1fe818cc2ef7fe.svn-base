@@ -1,0 +1,4 @@
+SELECT * 
+FROM dbo.City AS Ci
+JOIN [ORACLECRM]..[SCOTT].[CITY]  AS C ON Ci.Code = C.[CI_CODE]
+WHERE Ci.Name <> C.CI_NAME COLLATE Arabic_CI_AI AND OnElka = 1 AND ci.PreCode <> [CI_PISH_CODE]

@@ -1,0 +1,12 @@
+﻿<Local:PopupWindow x:Class="CRM.Application.Views.DocumentViewForm"
+         xmlns:Local="clr-namespace:CRM.Application.Local" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+         Loaded="PopupWindow_Loaded"  
+        Title="مشاهده فایل" x:Name="DocumentView">
+    <Grid FlowDirection="RightToLeft" Width="{Binding ElementName=DocumentView, Path=WindowWidth, Mode=TwoWay}">
+    <ScrollViewer Grid.Row="0" Grid.Column="0">
+            <Image x:Name="ViewImage" Stretch="None" />
+    </ScrollViewer>
+    </Grid>
+</Local:PopupWindow>

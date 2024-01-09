@@ -1,0 +1,37 @@
+﻿<Local:TabWindow 
+        x:Class="CRM.Application.Views.Charts"
+        xmlns:uc="clr-namespace:CRM.Application.UserControls"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Local="clr-namespace:CRM.Application.Local"
+        xmlns:chartingToolkit="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+        xmlns:datavis="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+        xmlns:chartingprimitives="clr-namespace:System.Windows.Controls.DataVisualization.Charting.Primitives;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+        Loaded="TabWindow_Loaded" Background="White">
+    <StackPanel  >
+        <Border DockPanel.Dock="Top" Height="80" Margin="0 0 0 40" BorderBrush="Gray" BorderThickness="0">
+            <Border.Background>
+                <ImageBrush ImageSource="/CRM.Application;component/Images/banner_bg.jpg"/>
+            </Border.Background>
+            <TextBlock Text="" FontFamily="Titr" FontSize="26" Foreground="#355E92" Margin="20 0 0 0" VerticalAlignment="Center">
+                <TextBlock.Effect>
+                    <DropShadowEffect ShadowDepth="1" Direction="230" Color="Navy" Opacity="0.2" BlurRadius=".8" />
+                </TextBlock.Effect>
+            </TextBlock>
+        </Border>
+
+        <Grid FlowDirection="RightToLeft" DockPanel.Dock="Top" Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5*"/>
+        </Grid.ColumnDefinitions>
+        <ListView  Grid.Column="0" x:Name="ChartListBox" SelectionChanged="ChartListBox_SelectionChanged"  SelectionMode="Single" DisplayMemberPath="Name" SelectedValuePath="ID"/>
+        <chartingToolkit:ColumnSeries  Grid.Column="1"
+                                     x:Name="ChartColumnSeries"
+                                     ItemsSource="{Binding}"
+                                     DependentValuePath="Value"
+                                     IndependentValuePath="Key">
+            </chartingToolkit:ColumnSeries>
+        </Grid>
+    </StackPanel>
+</Local:TabWindow>

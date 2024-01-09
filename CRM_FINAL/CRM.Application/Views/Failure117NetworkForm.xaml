@@ -1,0 +1,619 @@
+﻿<Local:RequestFormBase x:Class="CRM.Application.Views.Failure117NetworkForm"
+                       xmlns:Local="clr-namespace:CRM.Application.Local" 
+                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                       xmlns:converter="clr-namespace:CRM.Converters" 
+                       xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                       WindowStartupLocation="CenterScreen" 
+                       Title="فرم خرابی 117 در شبکه هوایی" Height="1270.2" Width="910">
+
+    <ScrollViewer  Padding="0 0 10 0" FlowDirection="RightToLeft">
+        <DockPanel FlowDirection="RightToLeft">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="30" />
+                </Grid.RowDefinitions>
+
+                <GroupBox Grid.Row="0" Header="مشخصات تلفن">
+                    <Grid Name="RequestInfo">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="110" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="110" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="110" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="شماره تلفن : " />
+                        <TextBox Grid.Row="0" Grid.Column="1" Name="TelephoneNoTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" FontWeight="Bold" />
+
+                        <Label Grid.Row="0" Grid.Column="2" Content="شماره درخواست : " />
+                        <TextBox Grid.Row="0" Grid.Column="3" Name="RequestNoTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="0" Grid.Column="4" Content="ردیف : " />
+                        <TextBox Grid.Row="0" Grid.Column="5" Name="RowTextBox" IsReadOnly="True" Text="{Binding Path=RowNo}" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="نام مشترک : " />
+                        <TextBox Grid.Row="1" Grid.Column="1" Name="CustomerNameTextBox" IsReadOnly="True" />
+
+                        <Label Grid.Row="1" Grid.Column="2" Content="شماره موبایل : " />
+                        <TextBox Grid.Row="1" Grid.Column="3" Name="MobileNoTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="1" Grid.Column="4" Content="شماره تماس گیرنده : " />
+                        <TextBox Grid.Row="1" Grid.Column="5" Name="CallingNoTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="نام مرکز : " />
+                        <TextBox Grid.Row="2" Grid.Column="1" Name="CenterTextBox" IsReadOnly="True" />
+
+                        <Label Grid.Row="2" Grid.Column="2" Content="کد پستی : " />
+                        <TextBox Grid.Row="2" Grid.Column="3" Name="PostalCodeTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                        <Label Grid.Row="3" Grid.Column="0" Content="آدرس : " />
+                        <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5" Name="AddressTextBox" TextWrapping="Wrap" IsReadOnly="True" />
+
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="1" Header="مشخصات فنی">
+                    <StackPanel Orientation="Vertical">
+
+                        <Grid Name="TechnicalInfo">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Content="فنی : " />
+
+                            <Label Grid.Row="0" Grid.Column="1" Content="شماره کافو : " />
+                            <TextBox Grid.Row="0" Grid.Column="2" Name="CabinetNoTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                            <Label Grid.Row="0" Grid.Column="3" Content="شماره ورودی کافو : " />
+                            <TextBox Grid.Row="0" Grid.Column="4" Name="CabinetinputNoTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                            <Label Grid.Row="1" Grid.Column="1" Content="شماره پست : " />
+                            <TextBox Grid.Row="1" Grid.Column="2" Name="PostNoTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                            <Label Grid.Row="1" Grid.Column="3" Content="شماره اتصالی پست : " />
+                            <TextBox Grid.Row="1" Grid.Column="4" Name="PostEtesaliNoTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                            <Label Grid.Row="2" Grid.Column="1" Content="PCM : " />
+                            <CheckBox Grid.Row="2" Grid.Column="2" Name="PCMCheckBox" VerticalAlignment="Center" IsEnabled="False" />
+
+                            <!--<Label Grid.Row="2" Grid.Column="3" Content="ADSL : " />
+                            <CheckBox Grid.Row="2" Grid.Column="4" Name="ADSLCheckBox" VerticalAlignment="Center" IsEnabled="False" />-->
+
+                            <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="150" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Row="0" Grid.Column="0" Content="بوخت مشترک : " />
+
+                                    <Label Grid.Row="0" Grid.Column="1" Content="ردیف : " />
+                                    <TextBox Grid.Row="0" Grid.Column="2" Name="RadifBuchtTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                                    <Label Grid.Row="0" Grid.Column="3" Content="طبقه : " />
+                                    <TextBox Grid.Row="0" Grid.Column="4" Name="TabagheBuchtTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                                    <Label Grid.Row="0" Grid.Column="5" Content="اتصالی : " />
+                                    <TextBox Grid.Row="0" Grid.Column="6" Name="EtesaliBuchtTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+                                </Grid>
+                            </StackPanel>
+
+                        </Grid>
+
+                        <Grid Name="PCMTechnicalInfo">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" Content="بوخت ورودی PCM : " />
+
+                            <Label Grid.Row="0" Grid.Column="1" Content="ردیف : " />
+                            <TextBox Grid.Row="0" Grid.Column="2" Name="RadifInputBuchtTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                            <Label Grid.Row="0" Grid.Column="3" Content="طبقه : " />
+                            <TextBox Grid.Row="0" Grid.Column="4" Name="TabagheInputBuchtTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                            <Label Grid.Row="0" Grid.Column="5" Content="اتصالی : " />
+                            <TextBox Grid.Row="0" Grid.Column="6" Name="EtesaliInputBuchtTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                            <Label Grid.Row="1" Grid.Column="0" Content="بوخت خروجی PCM : " />
+
+                            <Label Grid.Row="1" Grid.Column="1" Content="ردیف : " />
+                            <TextBox Grid.Row="1" Grid.Column="2" Name="RadifOutputBuchtTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                            <Label Grid.Row="1" Grid.Column="3" Content="طبقه : " />
+                            <TextBox Grid.Row="1" Grid.Column="4" Name="TabagheOutputBuchtTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                            <Label Grid.Row="1" Grid.Column="5" Content="اتصالی : " />
+                            <TextBox Grid.Row="1" Grid.Column="6" Name="EtesaliOutputBuchtTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+                            
+                            <Label Grid.Row="2" Grid.Column="0" Grid.RowSpan="2" Content="مشخصه PCM : " />
+
+                            <Label Grid.Row="2" Grid.Column="1" Content="راک : " />
+                            <TextBox Grid.Row="2" Grid.Column="2" Name="RockPCMTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                            <Label Grid.Row="2" Grid.Column="3" Content="شلف : " />
+                            <TextBox Grid.Row="2" Grid.Column="4" Name="ShelfPCMTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                            <Label Grid.Row="2" Grid.Column="5" Content="کارت : " />
+                            <TextBox Grid.Row="2" Grid.Column="6" Name="CardPCMTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                            <Label Grid.Row="3" Grid.Column="1" Content="پورت : " />
+                            <TextBox Grid.Row="3" Grid.Column="2" Name="PortPCMTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"  />
+
+                            <Label Grid.Row="3" Grid.Column="3" Content="مدل : " />
+                            <TextBox Grid.Row="3" Grid.Column="4" Name="ModelPCMTextBox" IsReadOnly="True" />
+
+                            <Label Grid.Row="3" Grid.Column="5" Content="نوع : " />
+                            <TextBox Grid.Row="3" Grid.Column="6" Name="TypePCMTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                            
+
+                        </Grid>
+
+                        <Grid Name="ADSLTechnicalInfo" Visibility="Collapsed">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Content="مشخصه ADSL : " />
+
+                            <Label Grid.Row="0" Grid.Column="1" Content="ردیف : " />
+                            <TextBox Grid.Row="0" Grid.Column="2" Name="RadifADSLTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"  />
+
+                            <Label Grid.Row="0" Grid.Column="3" Content="طبقه : " />
+                            <TextBox Grid.Row="0" Grid.Column="4" Name="TabagheADSLTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                            <Label Grid.Row="0" Grid.Column="5" Content="اتصالی : " />
+                            <TextBox Grid.Row="0" Grid.Column="6" Name="EtesaliADSLTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        </Grid>
+
+                        <Grid Name="SpecialWireTechnicalInfo" Visibility="Collapsed">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Content="مشخصه سیم خصوصی : " />
+
+                            <Label Grid.Row="0" Grid.Column="1" Content="ردیف : " />
+                            <TextBox Grid.Row="0" Grid.Column="2" Name="RadifSpecialTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"  />
+
+                            <Label Grid.Row="0" Grid.Column="3" Content="طبقه : " />
+                            <TextBox Grid.Row="0" Grid.Column="4" Name="TabagheSpecialTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                            <Label Grid.Row="0" Grid.Column="5" Content="اتصالی : " />
+                            <TextBox Grid.Row="0" Grid.Column="6" Name="EtesaliSpecialTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        </Grid>
+
+                        <Grid Name="E1TechnicalInfo" Visibility="Collapsed">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Content="مشخصه E1 : " />
+
+                            <Label Grid.Row="0" Grid.Column="1" Content="ردیف : " />
+                            <TextBox Grid.Row="0" Grid.Column="2" Name="RadifE1TextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"  />
+
+                            <Label Grid.Row="0" Grid.Column="3" Content="طبقه : " />
+                            <TextBox Grid.Row="0" Grid.Column="4" Name="TabagheE1TextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                            <Label Grid.Row="0" Grid.Column="5" Content="اتصالی : " />
+                            <TextBox Grid.Row="0" Grid.Column="6" Name="EtesaliE1TextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        </Grid>
+
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Grid.Row="2" Header="مشخصات خط">
+                    <Grid Name="LineStatusInfo">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="50" />
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="نوع : " />
+                        <TextBox Grid.Row="0" Grid.Column="1" Name="LineStatusTypeTextBox" IsReadOnly="True" />
+
+                        <Label Grid.Row="0" Grid.Column="2" Content="وضعیت : " />
+                        <TextBox Grid.Row="0" Grid.Column="3" Name="LineStatusTextBox" IsReadOnly="True" />
+
+                        <Label Grid.Row="0" Grid.Column="4" Content="کاربر آزمایش کننده : " />
+                        <TextBox Grid.Row="0" Grid.Column="5" Name="MDFUserTextBox" IsReadOnly="True" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="تاریخ ثبت درخواست : " />
+                        <TextBox Grid.Row="1" Grid.Column="1" Name="RequestDate1TextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="1" Grid.Column="2" Content="تاریخ آزمایش : " />
+                        <TextBox Grid.Row="1" Grid.Column="3" Name="MDFDateTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="1" Grid.Column="4" Content="عملکرد MDF : " />
+                        <TextBox Grid.Row="1" Grid.Column="5" Name="MDFSpeedMinTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="شماره تلفن همجوار : " />
+                        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                            <TextBox Name="AdjacentTelephoneNoTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+                            <Image Source="/CRM.Application;component/Images/info_16x16.png" Width="16" Height="16" MouseLeftButtonDown="AdjacentTelephoneNo_MouseLeftButtonDown" HorizontalAlignment="Right" Cursor="Hand"/>
+                        </StackPanel>
+
+                        <Label Grid.Row="2" Grid.Column="2" Name="HearingTelephoneNoLabel" Content="شماره تلفن همشنوایی : " Visibility="Collapsed"/>
+                        <StackPanel Grid.Row="2" Grid.Column="3" Name="HearingTelephoneNoPanel" Orientation="Horizontal" Visibility="Collapsed">
+                            <TextBox Name="HearingTelephoneNoTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+                            <Image Source="/CRM.Application;component/Images/info_16x16.png" Width="16" Height="16" MouseLeftButtonDown="HearingTelephoneNo_MouseLeftButtonDown" HorizontalAlignment="Right" Cursor="Hand"/>
+                        </StackPanel>
+
+                        <Label Grid.Row="3" Grid.Column="0" Content="توضیحات MDF : " />
+                        <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5" Name="MDFCommnetTextBox" TextWrapping="Wrap" Height="50" IsReadOnly="True"/>
+
+                        <Label Grid.Row="4" Grid.Column="0" Content="پیغام مشترک : " />
+                        <StackPanel Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="5" Orientation="Horizontal">
+                            <Image Source="/CRM.Application;component/Images/Play_24x24.png" Width="24" Height="24" MouseLeftButtonDown="PlaySound_MouseLeftButtonDown" HorizontalAlignment="Left" Cursor="Hand"/>
+                            <Label Name="SoundMessageLabel" Content="برای این درخواست پیغامی ثبت نشده است !" Style="{StaticResource ResourceKey=ErrorLabel}" Visibility="Collapsed" />
+                        </StackPanel>
+
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="3" Header="سابقه خرابی">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+
+                        <DataGrid Grid.Row="0" DockPanel.Dock="Bottom" Name="ItemsDataGrid"
+                                      BorderThickness="0 1 0 0"
+                                      AutoGenerateColumns="False"
+                                      CanUserAddRows="True"
+                                      CanUserResizeColumns="True"
+                                      CanUserResizeRows="False"
+                                      CanUserDeleteRows="False"
+                                      SelectionMode="Single"
+                                      SelectionUnit="FullRow"
+                                      IsReadOnly="True"
+                                      ItemsSource="{Binding}">
+
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image Source="/CRM.Application;component/Images/element_16x16.png" Width="16" Height="16" HorizontalAlignment="Center" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Header=" شماره درخواست " Width="*" Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged}" />
+                                <DataGridTextColumn Header=" شماره ردیف " Width="*" Binding="{Binding Path=RowNo, UpdateSourceTrigger=PropertyChanged}" />
+                                <DataGridTextColumn Header=" وضعیت خط " Width="*" Binding="{Binding Path=LineStatus, UpdateSourceTrigger=PropertyChanged}" />
+                                <DataGridTextColumn Header=" وضعیت خرابی " Width="*" Binding="{Binding Path=FailureStatus, UpdateSourceTrigger=PropertyChanged}" />
+                                <DataGridTextColumn Header=" تاریخ درخواست " Width="*" Binding="{Binding Path=InsertDate, UpdateSourceTrigger=PropertyChanged}" />
+                                <DataGridTextColumn Header=" تاریخ رفع شبکه " x:Name="GetNetworkFormDateColumn" Width="*" Binding="{Binding Path=GetNetworkFormDate, UpdateSourceTrigger=PropertyChanged}" Visibility="Collapsed" />
+                                <DataGridTextColumn Header=" تاریخ تایید نهایی " Width="*" Binding="{Binding Path=EndMDFDate, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <Label Grid.Row="1" Content="       برای این شماره تلفن سابقه خرابی ثبت نشده است. " Name="HistoryMessageLable" Height="30" />
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="4" Header="شبکه هوایی">
+                    <Grid Name="NetworkInfo">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="30" />                            
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Content="مشترک : " />
+                        <RadioButton Grid.Row="0" Grid.Column="1" GroupName="FailureStatus" Name="CheckBox1" Content="سیم کشی داخلی" VerticalAlignment="Center" Tag="31" FontSize="11"/>
+                        <RadioButton Grid.Row="0" Grid.Column="2" GroupName="FailureStatus" Name="CheckBox2" Content="اصلاح توسط مشترک" VerticalAlignment="Center" Tag="39" />
+                        <RadioButton Grid.Row="0" Grid.Column="3" GroupName="FailureStatus" Name="CheckBox3" Content="دستگاه تلفن" VerticalAlignment="Center" Tag="30" />
+                        <RadioButton Grid.Row="0" Grid.Column="4" GroupName="FailureStatus" Name="CheckBox4" Content="سالم پس از مراجعه" VerticalAlignment="Center" Tag="40" />
+                        <RadioButton Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" GroupName="FailureStatus" Name="CheckBox5" Content="عدم حضور مشترک، فرم تذکر داده شد" VerticalAlignment="Center" Tag="41" FontSize="11"/>
+
+                        <Label Grid.Row="2" Grid.Column="0" Grid.RowSpan="3" Content="شبکه هوایی : " />
+                        <RadioButton Grid.Row="2" Grid.Column="1" GroupName="FailureStatus" Name="CheckBox6" Content="عدم تطبیق خط" VerticalAlignment="Center" Tag="42" />
+                        <RadioButton Grid.Row="2" Grid.Column="2" GroupName="FailureStatus" Name="CheckBox7" Content="کابل و سیم هوایی" VerticalAlignment="Center" Tag="18" />
+                        <RadioButton Grid.Row="2" Grid.Column="3" GroupName="FailureStatus" Name="CheckBox8" Content="قلاب ها و پست ها" VerticalAlignment="Center" Tag="13"/>
+                        <RadioButton Grid.Row="2" Grid.Column="4" GroupName="FailureStatus" Name="CheckBox9" Content="جعبه تقسیم" VerticalAlignment="Center" Tag="11" />
+                        <RadioButton Grid.Row="2" Grid.Column="5" GroupName="FailureStatus" Name="CheckBox10" Content="PCM" VerticalAlignment="Center" Tag="29"/>
+                        <RadioButton Grid.Row="2" Grid.Column="6" GroupName="FailureStatus" Name="CheckBox11" Content="سرداخله" VerticalAlignment="Center" Tag="15" />
+                        <RadioButton Grid.Row="3" Grid.Column="1" GroupName="FailureStatus" Name="CheckBox12" Content="رانژه کافو" VerticalAlignment="Center" Tag="14" />
+                        <RadioButton Grid.Row="3" Grid.Column="2" GroupName="FailureStatus" Name="CheckBox13" Content="سیم کشی غیرمجاز" VerticalAlignment="Center" Tag="16" />
+                        <RadioButton Grid.Row="3" Grid.Column="3" GroupName="FailureStatus" Name="CheckBox14" Content="بهینه سازی" VerticalAlignment="Center" Tag="35" />
+                        <RadioButton Grid.Row="3" Grid.Column="4" GroupName="FailureStatus" Name="CheckBox28" Content="شناخته نشد" VerticalAlignment="Center" Tag="61" Visibility="Collapsed" />
+
+                        <Label Grid.Row="5" Grid.Column="0" Grid.RowSpan="3" Content="کابل : " />
+                        <RadioButton Grid.Row="5" Grid.Column="1" GroupName="FailureStatus" Name="CheckBox15" Content="کابل آبونه" VerticalAlignment="Center" Tag="21"/>
+                        <RadioButton Grid.Row="5" Grid.Column="2" GroupName="FailureStatus" Name="CheckBox16" Content="کابل مرکزی" VerticalAlignment="Center" Tag="24" />
+                        <RadioButton Grid.Row="5" Grid.Column="3" GroupName="FailureStatus" Name="CheckBox17" Content="کابل ارتباط" VerticalAlignment="Center" Tag="23" />
+                        <RadioButton Grid.Row="5" Grid.Column="4" GroupName="FailureStatus" Name="CheckBox18" Content="کابل اختصاصی" VerticalAlignment="Center" Tag="22"/>
+                        <RadioButton Grid.Row="5" Grid.Column="5" GroupName="FailureStatus" Name="CheckBox19" Content="مفاصل هوایی" VerticalAlignment="Center" Tag="20" />
+                        <RadioButton Grid.Row="5" Grid.Column="6" GroupName="FailureStatus" Name="CheckBox20" Content="پست و سرکابل" VerticalAlignment="Center" Tag="19"/>
+                        <RadioButton Grid.Row="6" Grid.Column="1" GroupName="FailureStatus" Name="CheckBox21" Content="خسارت" VerticalAlignment="Center" Tag="34"/>
+                        <RadioButton Grid.Row="6" Grid.Column="2" GroupName="FailureStatus" Name="CheckBox22" Content="برگردان" VerticalAlignment="Center" Tag="36" />
+                        <RadioButton Grid.Row="6" Grid.Column="3" GroupName="FailureStatus" Name="CheckBox23" Content="تعویض بوخت" VerticalAlignment="Center" Tag="47" />
+                        <RadioButton Grid.Row="6" Grid.Column="4" GroupName="FailureStatus" Name="CheckBox24" Content="تعویض پست" VerticalAlignment="Center" Tag="48" />
+                        <RadioButton Grid.Row="6" Grid.Column="5" GroupName="FailureStatus" Name="CheckBox25" Content="تعویض اتصالی" VerticalAlignment="Center" Tag="46" />
+
+                        <Label Grid.Row="8" Grid.Column="0" Name="NooriWLLLabel" Content="کافو نوری : " />
+                        <RadioButton Grid.Row="8" Grid.Column="1" GroupName="FailureStatus" Name="CheckBox26" Content="کافو نوری" VerticalAlignment="Center" Tag="51" />
+                        <RadioButton Grid.Row="8" Grid.Column="2" GroupName="FailureStatus" Name="CheckBox27" Content="WLL" VerticalAlignment="Center" Tag="60" Visibility="Collapsed" />
+                        <RadioButton Grid.Row="8" Grid.Column="3" GroupName="FailureStatus" Name="CheckBox29" Content="داخلی MDF" VerticalAlignment="Center" Tag="60" Visibility="Collapsed" />
+                        
+                        <Label Grid.Row="10" Grid.Column="0" >
+                            <Label.Content>
+                                <StackPanel Orientation="Horizontal" Height="30">
+                                    <Label Content="نام مامور : " />
+                                    <Label Content="*" Foreground="Red"/>
+                                </StackPanel>
+                            </Label.Content>
+                        </Label>
+                        <ComboBox Grid.Row="10" Grid.Column="1" Name="NetworkOfficerComboBox"  Text="{Binding NetworkOfficer}" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding Path=NetworkOfficerID}" IsEditable="False"/>
+
+                        <Label Grid.Row="11" Grid.Column="3" >
+                            <Label.Content>
+                                <StackPanel Orientation="Horizontal" Height="30">
+                                    <Label Content="نوع کابل : " />
+                                    <Label Content="*" Foreground="Red"/>
+                                </StackPanel>
+                            </Label.Content>
+                        </Label>
+                        <ComboBox Grid.Row="11" Grid.Column="4" Name="CableTypeComboBox" DisplayMemberPath="Type" SelectedValuePath="ID" SelectedValue="{Binding Path=CableTypeID}" IsEditable="False" />
+
+                        <Label Grid.Row="11" Grid.Column="0" >
+                            <Label.Content>
+                                <StackPanel Orientation="Horizontal" Height="30">
+                                    <Label Content="رنگ کابل سمت مشترک : " />
+                                    <Label Content="*" Foreground="Red"/>
+                                </StackPanel>
+                            </Label.Content>
+                        </Label>
+                        <ComboBox Grid.Row="11" Grid.Column="1" Name="Color1ComboBox" DisplayMemberPath="Color" SelectedValuePath="ID" SelectedValue="{Binding Path=CableColorID1}" IsEditable="False" />
+                        <ComboBox Grid.Row="11" Grid.Column="2" Name="Color2ComboBox" DisplayMemberPath="Color" SelectedValuePath="ID" SelectedValue="{Binding Path=CableColorID2}" IsEditable="False" />
+
+
+                        <Label Grid.Row="13" Grid.Column="0" Grid.RowSpan="3" Content="عملکرد اصلاح در شبکه : " />
+
+
+                        <Label Grid.Row="13" Grid.Column="1" >
+                            <Label.Content>
+                                <StackPanel Orientation="Horizontal" Height="30">
+                                    <Label Content="تاریخ تحویل فرم : " />
+                                    <Label Content="*" Foreground="Red"/>
+
+                                </StackPanel>
+                            </Label.Content>
+                        </Label>
+                        <Grid Grid.Row="13" Grid.Column="2" Grid.ColumnSpan="2" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Name="GiveNetworkFormDateImage" Source="/CRM.Application;component/Images/star_16x16.png"  Width="16" Height="16" HorizontalAlignment="Right" MouseLeftButtonDown="MouseLeftButtonDownImage" ToolTip="تاریخ کنونی" />
+                            <cal:DatePicker Grid.Column="1" Name="GiveNetworkFormDate" SelectedDate="{Binding GiveNetworkFormDate}" />
+                        </Grid>
+
+                        <Label Grid.Row="13" Grid.Column="4" >
+                            <Label.Content>
+                                <StackPanel Orientation="Horizontal" Height="30">
+                                    <Label Content="ساعت تحویل فرم : " />
+                                    <Label Content="*" Foreground="Red"/>
+
+                                </StackPanel>
+                            </Label.Content>
+                        </Label>
+                        <Grid Grid.Row="13" Grid.Column="5" Grid.ColumnSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Name="GiveNetworkFormTimeImage" Source="/CRM.Application;component/Images/star_16x16.png"  Width="16" Height="16" HorizontalAlignment="Right" MouseLeftButtonDown="MouseLeftButtonDownImage" ToolTip="ساعت کنونی"/>
+                            <TextBox Grid.Column="1" Name="GiveNetworkFormTimeTextBox" Text="{Binding GiveNetworkFormTime}" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+                        </Grid>
+
+
+                        <Label Grid.Row="14" Grid.Column="1" >
+                            <Label.Content>
+                                <StackPanel Orientation="Horizontal" Height="30">
+                                    <Label Content="تاریخ بازگشت فرم : " />
+                                    <Label Content="*" Foreground="Red"/>
+                                </StackPanel>
+                            </Label.Content>
+                        </Label>
+                        <Grid Grid.Row="14" Grid.Column="2" Grid.ColumnSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Name="GetNetworkFormDateImage" Source="/CRM.Application;component/Images/star_16x16.png"  Width="16" Height="16" HorizontalAlignment="Right" MouseLeftButtonDown="MouseLeftButtonDownImage" ToolTip="تاریخ کنونی" />
+                            <cal:DatePicker Grid.Column="1" Name="GetNetworkFormDate" SelectedDate="{Binding GetNetworkFormDate}" />
+                        </Grid>
+
+                        <Label Grid.Row="14" Grid.Column="4" >
+                            <Label.Content>
+                                <StackPanel Orientation="Horizontal" Height="30">
+                                    <Label Content="ساعت بازگشت فرم : " />
+                                    <Label Content="*" Foreground="Red"/>
+
+                                </StackPanel>
+                            </Label.Content>                        
+                        </Label>
+                        <Grid Grid.Row="14" Grid.Column="5" Grid.ColumnSpan="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Name="GetNetworkFormTimeImage" Source="/CRM.Application;component/Images/star_16x16.png"  Width="16" Height="16" HorizontalAlignment="Right" MouseLeftButtonDown="MouseLeftButtonDownImage" ToolTip="ساعت کنونی" />
+                            <TextBox Grid.Column="1" Name="GetNetworkFormTimeTextBox" Text="{Binding GetNetworkFormTime}" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+                        </Grid>
+
+                        <Label Grid.Row="16" Grid.Column="0" Grid.RowSpan="2" Content="کابل : " />
+                        <Label Grid.Row="16" Grid.Column="1" Content="ارجاع به کابل : "/>
+
+                        <Grid Grid.Row="16" Grid.Column="2" Grid.ColumnSpan="2" Name="SendToCabelDateGrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Name="SendToCabelDateImage" Source="/CRM.Application;component/Images/star_16x16.png"  Width="16" Height="16" HorizontalAlignment="Right" MouseLeftButtonDown="MouseLeftButtonDownImage" ToolTip="تاریخ کنونی" />
+                            <cal:DatePicker Grid.Column="1" Name="SendToCabelDate" SelectedDate="{Binding SendToCabelDate}" />
+                        </Grid>
+
+                        <Label Grid.Row="16" Grid.Column="4" Content="ساعت ارجاع به کابل : " />
+                        <Grid Grid.Row="16" Grid.Column="5" Grid.ColumnSpan="2" Name="SendToCabelTimeGrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Name="SendToCabelTimeImage" Source="/CRM.Application;component/Images/star_16x16.png"  Width="16" Height="16" HorizontalAlignment="Right" MouseLeftButtonDown="MouseLeftButtonDownImage" ToolTip="ساعت کنونی"/>
+                            <TextBox Grid.Column="1" Name="SendToCabelTimeTextBox" Text="{Binding SendToCabelTime}" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+                        </Grid>
+
+                        <Label Grid.Row="17" Grid.Column="1" Content="اصلاح در کابل : "/>
+
+                        <Grid Grid.Row="17" Grid.Column="2" Grid.ColumnSpan="2" Name="CabelDateGrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Name="CabelDateImage" Source="/CRM.Application;component/Images/star_16x16.png"  Width="16" Height="16" HorizontalAlignment="Right" MouseLeftButtonDown="MouseLeftButtonDownImage" ToolTip="تاریخ کنونی" />
+                            <cal:DatePicker Grid.Column="1" Name="CabelDate" SelectedDate="{Binding CabelDate}" />
+                        </Grid>
+
+                        <Label Grid.Row="17" Grid.Column="4" Content="ساعت اصلاح در کابل : " />
+                        <Grid Grid.Row="17" Grid.Column="5" Grid.ColumnSpan="2" Name="CabelTimeGrid">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Name="CabelTimeImage" Source="/CRM.Application;component/Images/star_16x16.png"  Width="16" Height="16" HorizontalAlignment="Right" MouseLeftButtonDown="MouseLeftButtonDownImage" ToolTip="ساعت کنونی"/>
+                            <TextBox Grid.Column="1" Name="CabelTimeTextBox" Text="{Binding CabelTime}" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+                        </Grid>
+
+                        <Label Grid.Row="18" Grid.Column="0" Content="توضیحات : " />
+                        <TextBox Grid.Row="18" Grid.Column="1" Grid.ColumnSpan="6" Name="NetworkCommentTextBox" Text="{Binding Description}" TextWrapping="Wrap"/>
+
+                        <Label Grid.Row="19" Grid.Column="0" Content="المثنی : " />
+                        <CheckBox Grid.Row="19" Grid.Column="1" Name="RepeatCheckBox" VerticalAlignment="Center"  />
+                    </Grid>
+                </GroupBox>
+
+            </Grid>
+        </DockPanel>
+    </ScrollViewer>
+
+</Local:RequestFormBase>

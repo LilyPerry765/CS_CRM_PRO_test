@@ -1,0 +1,156 @@
+﻿<Local:RequestFormBase Title="ام دی اف تعویض پی سی ام"
+                   x:Class="CRM.Application.Views.SwapPCMMDFFrom"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib" 
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+                   xmlns:sv="clr-namespace:CRM.Application.StaticValidation"
+                   xmlns:code="clr-namespace:CRM.Application.Codes"
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"      
+                   Loaded="PopupWindow_Loaded">
+    <ScrollViewer FlowDirection="RightToLeft">
+        <StackPanel>
+
+            <GroupBox FlowDirection="RightToLeft"  x:Name="FromExchangeFromGroupBox" Header="جستجو مشترک">
+
+                <StackPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label    Grid.Row="0" Grid.Column="0" Content="تلفن پی سی ام" />
+                        <TextBox  Grid.Row="0" Grid.Column="1" x:Name="FromTelephonTextBox" IsReadOnly="True"/>
+                    </Grid>
+                    
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label    Grid.Row="0" Grid.Column="0" Content="کافو" />
+                        <TextBox  Grid.Row="0" Grid.Column="1" x:Name="FromCabinetNumberComboBox" Text="{Binding CabinetName}" IsReadOnly="True" />
+
+                        <Label    Grid.Row="0" Grid.Column="2" Content="پست" />
+                        <TextBox  Grid.Row="0" Grid.Column="3" x:Name="FromPostComboBox" Text="{Binding PostName}" IsReadOnly="True"/>
+
+                        <Label    Grid.Row="1" Grid.Column="0" Content="مرکزی" />
+                        <TextBox  Grid.Row="1" Grid.Column="1" x:Name="FromCabinetInputComboBox"  Text="{Binding InputNumber}" IsReadOnly="True"/>
+
+                        <Label    Grid.Row="1" Grid.Column="2" Content="اتصالی" />
+                        <TextBox  Grid.Row="1" Grid.Column="3" x:Name="FromPostContactComboBox" Text="{Binding PostContact}" IsReadOnly="True"/>
+
+                        <Label    Grid.Row="2" Grid.Column="0" x:Name="FromPCMInfoLabel" Content="مشخصه پی سی ام" />
+                        <TextBox  Grid.Row="2" Grid.Column="1" x:Name="FromPCMInfoTextBox" Text="{Binding MUID}" IsReadOnly="True"/>
+
+                        <Label    Grid.Row="3" Grid.Column="0" Content="بوخت" />
+                        <TextBox  Grid.Row="3" Grid.Column="1" x:Name="FromConnectionTextBox" IsReadOnly="True" Text="{Binding Connection}" Grid.ColumnSpan="3" />
+
+
+                        <Label    Grid.Row="4" Grid.Column="0" Content="نام" />
+                        <TextBox  Grid.Row="4" Grid.Column="1" x:Name="FromCustomerTextBox" Text="{Binding CustomerName}" IsReadOnly="True"/>
+
+                        <Label    Grid.Row="5" Grid.Column="0" Content="آدرس نصب" />
+                        <TextBox  Grid.Row="5" Grid.Column="1" x:Name="FromInstallAddressTextBox"  Text="{Binding InstallAddress.AddressContent}" Grid.ColumnSpan="3" IsReadOnly="True"/>
+
+                        <Label    Grid.Row="6" Grid.Column="0" Content="آدرس مکاتبه ای" />
+                        <TextBox  Grid.Row="6" Grid.Column="1" x:Name="FromCorrespondenceAddressTextBox" Text="{Binding CorrespondenceAddress.AddressContent}" Grid.ColumnSpan="3" IsReadOnly="True"/>
+
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox  FlowDirection="RightToLeft"  x:Name="ToExchangeFromGroupBox" Header="جستجو مشترک" >
+                <StackPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Label    Grid.Row="0" Grid.Column="0" Content="تلفن معمولی" />
+                        <TextBox  Grid.Row="0" Grid.Column="1" x:Name="ToTelephonTextBox" IsReadOnly="True"/>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label    Grid.Row="0" Grid.Column="0" Content="کافو" />
+                        <TextBox  Grid.Row="0" Grid.Column="1" x:Name="ToCabinetNumberComboBox" Text="{Binding CabinetName}" IsReadOnly="True"/>
+
+
+                        <Label    Grid.Row="0" Grid.Column="2" Content="پست" />
+                        <TextBox  Grid.Row="0" Grid.Column="3" x:Name="ToPostComboBox" Text="{Binding PostName}" IsReadOnly="True"/>
+
+                        <Label    Grid.Row="1" Grid.Column="0" Content="مرکزی" />
+                        <TextBox  Grid.Row="1" Grid.Column="1" x:Name="ToCabinetInputComboBox"  Text="{Binding InputNumber}" IsReadOnly="True"/>
+
+                        <Label    Grid.Row="1" Grid.Column="2" Content="اتصالی" />
+                        <TextBox  Grid.Row="1" Grid.Column="3" x:Name="ToPostContactComboBox" Text="{Binding PostContact}" IsReadOnly="True"/>
+
+                        <Label    Grid.Row="3" Grid.Column="0" Content="بوخت" />
+                        <TextBox  Grid.Row="3" Grid.Column="1" x:Name="ToConnectionTextBox" IsReadOnly="True" Text="{Binding Connection}" Grid.ColumnSpan="3"/>
+
+                        <Label    Grid.Row="4" Grid.Column="0" Content="بوخت ADSL" />
+                        <TextBox  Grid.Row="4" Grid.Column="1" x:Name="ToADSLConnectionTextBox" IsReadOnly="True" Text="{Binding ADSLBucht}" Grid.ColumnSpan="3"/>
+
+                        <Label    Grid.Row="5" Grid.Column="0" Content="نام" />
+                        <TextBox  Grid.Row="5" Grid.Column="1" x:Name="ToCustomerTextBox" Text="{Binding CustomerName}" IsReadOnly="True"/>
+
+                        <Label    Grid.Row="6" Grid.Column="0" Content="آدرس نصب" />
+                        <TextBox  Grid.Row="6" Grid.Column="1" x:Name="ToInstallAddressTextBox"  Text="{Binding InstallAddress.AddressContent}" Grid.ColumnSpan="3" IsReadOnly="True"/>
+
+                        <Label    Grid.Row="7" Grid.Column="0" Content="آدرس مکاتبه ای" />
+                        <TextBox  Grid.Row="7" Grid.Column="1" x:Name="ToCorrespondenceAddressTextBox" Text="{Binding CorrespondenceAddress.AddressContent}" Grid.ColumnSpan="3" IsReadOnly="True"/>
+                    </Grid>
+                </StackPanel>
+            </GroupBox>
+            
+        </StackPanel>
+    </ScrollViewer>
+</Local:RequestFormBase>
+
+

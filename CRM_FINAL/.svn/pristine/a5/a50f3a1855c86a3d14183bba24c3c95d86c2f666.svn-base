@@ -1,0 +1,136 @@
+﻿<UserControl x:Class="CRM.Application.UserControls.SpecialService"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="800" Loaded="UserControl_Loaded">
+    <DockPanel FlowDirection="RightToLeft">
+        <StackPanel Orientation="Vertical">
+
+            <GroupBox Name="SpecialServiceGroupBox" Margin="0,0,0,10" Visibility="Collapsed">
+                
+                <GroupBox.Header>
+                    <Label Content="نام سرویس های ویژه" FontWeight="Bold" Foreground="#355E92"/>
+                </GroupBox.Header>
+                
+                <ListView Name="SpecialServiceListView" ItemsSource="{Binding}">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="2" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.View>
+                        <GridView>
+                            <GridView.ColumnHeaderContainerStyle>
+                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                </Style>
+                            </GridView.ColumnHeaderContainerStyle>
+                            <GridViewColumn>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <CheckBox  x:Name="SpecialServiceListViewCheckBox" Content="{Binding Path=Name}" IsChecked="{Binding IsChecked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Loaded="SpecialServiceListViewCheckBox_Loaded"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                
+            </GroupBox>
+
+            <GroupBox x:Name="SpecialServiceDetailsGroupBox"  Visibility="Collapsed">
+
+                <GroupBox.Header>
+                    <Label Content="جزئیات ثبت سرویس های ویژه" FontWeight="Bold" Foreground="#355E92"/>
+                </GroupBox.Header>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="5"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="15"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Label Grid.Row="0" Grid.Column="0" Content="شماره نامه : "/>
+                    <TextBox x:Name="LetterNoTextBox" Grid.Row="0" Grid.Column="1" />
+
+                    <Label Grid.Row="0" Grid.Column="3" Content="مرجع درخواست کننده : "/>
+                    <TextBox x:Name="SpecialServiceRequestReferenceTextBox" Grid.Row="0" Grid.Column="4" />
+                    
+                    <Label Grid.Row="2" Grid.Column="0" Content="تاریخ پایان سرویس : "/>
+                    <cal:DatePicker x:Name="SpecialServiceUninstallDatePicker" Grid.Row="2" Grid.Column="1"/>
+                    
+                </Grid>
+                
+            </GroupBox>
+            <!--<Grid Name="FinalResultSpecialServiceGrid" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <GroupBox Grid.Row="0" Margin="0,0,0,10">
+                    <GroupBox.Header>
+                        <Label Content="سرویس های ایجاد شده" FontWeight="Bold" Foreground="#355E92"/>
+                    </GroupBox.Header>
+                    <ListView Name="SpecialServiceListViewAdd" ItemsSource="{Binding}">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.ColumnHeaderContainerStyle>
+                                    <Style TargetType="{x:Type GridViewColumnHeader}">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </Style>
+                                </GridView.ColumnHeaderContainerStyle>
+                                <GridViewColumn>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Label Content="{Binding Path=Title}"  />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </GroupBox>
+
+                <GroupBox Grid.Row="1" Margin="0,0,0,10">
+                    <GroupBox.Header>
+                        <Label Content="سرویس های حذف شده" FontWeight="Bold" Foreground="#355E92"/>
+                    </GroupBox.Header>
+                    <ListView Name="SpecialServiceListViewDel" ItemsSource="{Binding}">
+                        <ListView.View>
+                            <GridView>
+                                <GridView.ColumnHeaderContainerStyle>
+                                    <Style TargetType="{x:Type GridViewColumnHeader}">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </Style>
+                                </GridView.ColumnHeaderContainerStyle>
+                                <GridViewColumn>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Label Content="{Binding Path=Title}" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </GroupBox>
+
+            </Grid>-->
+            
+        </StackPanel>
+    </DockPanel>
+</UserControl>

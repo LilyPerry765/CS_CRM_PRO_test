@@ -1,0 +1,185 @@
+﻿
+
+<Local:RequestFormBase Title="پی سی ام و معمولی"
+                   x:Class="CRM.Application.Views.TranslationPCMToNormalForm"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib" 
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+                
+                   Loaded="PopupWindow_Loaded">
+
+    <ScrollViewer FlowDirection="RightToLeft">
+        <StackPanel>
+
+            <GroupBox Grid.Row="0" Grid.Column="0" Header="درخواست" x:Name="ExchangeRequestInfoUserControl" >
+            </GroupBox>
+
+            <GroupBox Header="نوع برگردان" x:Name="TranslationTypeDetailGroupBox">
+                <StackPanel>
+                    <RadioButton Content="پی سی ام به معمولی"  x:Name="PCMToNormalRadioButton" Margin="5" Checked="PCMToNormalRadioButton_Checked"/>
+                    <RadioButton Content="معمولی به پی سی ام"  x:Name="NormalToPCMRadioButton"  Margin="5" Checked="NormalToPCMRadioButton_Checked"/>
+                    <RadioButton Content="پی سی ام به پی سی ام"  x:Name="PCMToPCMRadioButton"  Margin="5" Checked="PCMToPCMRadioButton_Checked"/>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Grid.Row="2" Grid.Column="0" Header="برگردان از" FlowDirection="RightToLeft"  x:Name="ExchangeFromGroupBox" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label    Grid.Row="0" Grid.Column="0" Content="کافو" />
+                    <ComboBox Grid.Row="0" Grid.Column="1" x:Name="BeforCabinetNumberComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding OldCabinetID}"  SelectionChanged="BeforCabinetNumberComboBox_SelectionChanged" />
+
+                    <Label    Grid.Row="0" Grid.Column="3" Content="پست" />
+                    <ComboBox Grid.Row="0" Grid.Column="4" x:Name="BeforPostComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding OldPostID}" SelectionChanged="BeforPostComboBox_SelectionChanged" />
+
+                   
+                    <ScrollViewer Grid.Row="1" Grid.ColumnSpan="8" MaxHeight="100">
+                        <DataGrid  DockPanel.Dock="Bottom" x:Name="ConnectionDataGrid" Visibility="Collapsed" 
+                              BorderThickness="0 1 0 0"
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="True"
+                              CanUserResizeColumns="True"
+                              CanUserResizeRows="False"
+                              CanUserDeleteRows="False"
+                              SelectionMode="Single"
+                              SelectionUnit="FullRow"
+                              SelectedValuePath="PostContactID"
+                              RowStyle="{StaticResource ResourceKey=ColorDataGrid}"
+                            ItemsSource="{Binding}">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image Source="{Binding Path=PostContactType, Converter={StaticResource PostContactImageConverter}}"  Width="16" Height="16" HorizontalAlignment="Center" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Width="*"    Header="اتصالی"  x:Name="PostContactColumn"  Binding="{Binding Path=PostContact, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                                <DataGridTextColumn Width="*"    Header="ورودی"  Binding="{Binding Path=InputNumber, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                                <DataGridTextColumn Width="*"    Header="پی سی ام" x:Name="MUIDColumn" Binding="{Binding Path=MUID, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                                <DataGridTextColumn Width="*"    Header="تلفن"  x:Name="TelePhoneNoColumn" Binding="{Binding Path=TelePhoneNo, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" />
+                                <DataGridTextColumn Width="*"    Header="نام"  x:Name="CustomerNameColumn"  Binding="{Binding Path=CustomerName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                                <DataGridCheckBoxColumn Width="*" Header="ADSL" x:Name="ADSL" IsThreeState="False" Binding="{Binding IsADSL}"/>
+                                <DataGridTextColumn Width="*"    Header="نوع بوخت"  x:Name="BuchtTypeColumn"  Binding="{Binding Path=BuchtTypeName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" />
+                                <DataGridTextColumn Width="*"    Header="بوخت دیگر"  x:Name="OtherBuchtTypeColumn"  Binding="{Binding Path=OtherBuchtTypeName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" />
+                                <DataGridTextColumn Width="*" Header="وضعیت"  x:Name="StatusColumn" Binding="{Binding Path=PostContactStatusName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </ScrollViewer>
+                    <!--<Label    Grid.Row="1" Grid.Column="0" Content="تعداد اتصالی پر" />
+                <TextBox  Grid.Row="1" Grid.Column="1" x:Name="HighNumberOfConnectionsTextBox"/>-->
+                </Grid>
+
+            </GroupBox>
+
+            <GroupBox Grid.Row="3" Grid.Column="0" Header="برگردان به" FlowDirection="RightToLeft"  x:Name="ExchangeToGroupBox">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label    Grid.Row="0" Grid.Column="0" Content="کافو" />
+                    <ComboBox Grid.Row="0" Grid.Column="1" x:Name="AfterCabinetNumberComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding NewCabinetID}"  SelectionChanged="AfterCabinetNumberComboBox_SelectionChanged" />
+
+                    
+                    <Label    Grid.Row="0" Grid.Column="3" Content="پست" />
+                    <ComboBox Grid.Row="0" Grid.Column="4" x:Name="AfterPostComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding NewPostID}" SelectionChanged="AfterPostComboBox_SelectionChanged" />
+
+
+                    <ScrollViewer Grid.Row="1" Grid.ColumnSpan="8" MaxHeight="100">
+                        <DataGrid  DockPanel.Dock="Bottom" x:Name="NewConnectionDataGrid" Visibility="Collapsed" 
+                              BorderThickness="0 1 0 0"
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="True"
+                              CanUserResizeColumns="True"
+                              CanUserResizeRows="False"
+                              CanUserDeleteRows="False"
+                              SelectionMode="Single"
+                              SelectionUnit="FullRow"
+                              SelectedValuePath="PostContactID"
+                              RowStyle="{StaticResource ResourceKey=ColorDataGrid}"
+                            ItemsSource="{Binding}">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image Source="{Binding Path=PostContactType, Converter={StaticResource PostContactImageConverter}}"  Width="16" Height="16" HorizontalAlignment="Center" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn     Width="*"  Header="اتصالی"  x:Name="NewPostContactColumn"  Binding="{Binding Path=PostContact, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                                <DataGridTextColumn     Width="*"  Header="ورودی"  Binding="{Binding Path=InputNumber, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                                <DataGridTextColumn     Width="*"   Header="پی سی ام" x:Name="NewMUIDColumn" Binding="{Binding Path=MUID, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                                <DataGridTextColumn     Width="*"  Header="تلفن"  x:Name="NewTelePhoneNoColumn" Binding="{Binding Path=TelePhoneNo, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" />
+                                <DataGridTextColumn     Width="*"  Header="نام"  x:Name="NewCustomerNameColumn"  Binding="{Binding Path=CustomerName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                                <DataGridCheckBoxColumn Width="*" Header="ADSL" x:Name="NewADSL" IsThreeState="False" Binding="{Binding IsADSL}"/>
+                                <DataGridTextColumn     Width="*" Header="نوع بوخت"  x:Name="NewBuchtTypeColumn"  Binding="{Binding Path=BuchtTypeName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" />
+                                <DataGridTextColumn     Width="*" Header="بوخت دیگر"  x:Name="NewOtherBuchtTypeColumn"  Binding="{Binding Path=OtherBuchtTypeName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" />
+                                <DataGridTextColumn     Width="*"    Header="وضعیت"  x:Name="NewStatusColumn" Binding="{Binding Path=PostContactStatusName, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </ScrollViewer>
+
+                    <!--<Label    Grid.Row="1" Grid.Column="0" Content="تعداد اتصالی خالی" />
+                <TextBox  Grid.Row="1" Grid.Column="1" x:Name="AfterNumberVacantBinding"  />-->
+
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Grid.Row="4" Grid.Column="0" Header="جزئیات انتقال" FlowDirection="RightToLeft"  x:Name="ExchangeDetailGroupBox">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                     <Label    Grid.Row="0" Grid.Column="0" Content="مرکزی" />
+                    <ComboBox Grid.Row="0" Grid.Column="1" x:Name="CabinetInput" DisplayMemberPath="Name" SelectedValuePath="LongID" SelectedValue="{Binding CabinetInputID}"/>
+
+                </Grid>
+
+            </GroupBox>
+
+        </StackPanel>
+    </ScrollViewer>
+
+</Local:RequestFormBase>
+

@@ -1,0 +1,75 @@
+﻿<Local:ReportBase x:Class="CRM.Application.Reports.ReportUserControls.RegisterReportUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+              xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"          
+             xmlns:Local="clr-namespace:CRM.Application.Local" 
+             mc:Ignorable="d">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="شهر : " VerticalAlignment="Center" />
+        <UserControls:CheckableComboBox Grid.Row="0" Grid.Column="2" x:Name="CityComboBox" LostFocus="CityComboBox_LostFocus"/>
+
+        <Label Grid.Row="0" Grid.Column="4" Content="مرکز : " VerticalAlignment="Center" />
+        <UserControls:CheckableComboBox Grid.Row="0" Grid.Column="6" x:Name="CenterComboBox"/>
+
+        <Label Grid.Row="2" Content="از تاریخ :"/>
+        <cal:DatePicker Grid.Row="2" Name="FromDate" Grid.Column="2"/>
+
+        <Label Grid.Row="2" Content="تا تاریخ :" Grid.Column="4"/>
+        <cal:DatePicker Grid.Row="2" Name="ToDate" Grid.Column="6"/>
+
+        <Label Content="از شماره :" Grid.Row="4"/>
+        <TextBox Name="FromTelNoTextBox" Grid.Row="4" Grid.Column="2"/>
+
+        <Label Content="تا شماره :" Grid.Column="4" Grid.Row="4"/>
+        <TextBox Name="ToTelNoTextBox" Grid.Column="6" Grid.Row="4"/>
+
+        <Label Grid.Row="6" Grid.Column="0" Content="گروه محاسباتی" />
+        <ComboBox Grid.Row="6" Grid.Column="2" Name="ChargingTypecomboBox" DisplayMemberPath="Name" SelectedValuePath="ID" />
+
+        <Label     Grid.Row="6" Grid.Column="4" Content="نوع تلفن" />
+        <ComboBox  Grid.Row="6" Grid.Column="6" Name="TelephoneTypeComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" />
+
+        <Label     Grid.Row="8" Grid.Column="0" Content="گروه تلفن" />
+        <ComboBox  Grid.Row="8" Grid.Column="2" Name="TelephoneTypeGroupComboBox" DisplayMemberPath="Name" SelectedValuePath="ID"/>
+
+
+        <Label    Grid.Row="8" Grid.Column="4" Content="نوع مالکیت" />
+        <ComboBox Grid.Row="8" Grid.Column="6" DisplayMemberPath="Name"  SelectedValuePath="ID" Name="PosessionTypecomboBox" />
+
+        <Label     Grid.Row="10" Grid.Column="0" Content="اولویت واگذاری" />
+        <ComboBox  Grid.Row="10" Grid.Column="2" DisplayMemberPath="Name" SelectedValuePath="ID" Name="OrderTypecomboBox" />
+
+        <Label Content="نوع گزارش :" Grid.Row="10" Grid.Column="4"/>
+        <ComboBox Name="ReportTypeComboBox" Grid.Row="10" Grid.Column="6" SelectedValuePath="ID" DisplayMemberPath="Name"/>
+
+        <DataGrid x:Name="ff" AutoGenerateColumns="True" Grid.Row="11" Grid.ColumnSpan="15"/>
+    </Grid>
+</Local:ReportBase>
+    

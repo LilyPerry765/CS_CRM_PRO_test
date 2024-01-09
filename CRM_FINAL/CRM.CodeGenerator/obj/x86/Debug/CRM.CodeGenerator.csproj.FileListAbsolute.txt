@@ -1,0 +1,44 @@
+D:\Develop\CRM FINAL\CRM.CodeGenerator\bin\Debug\Templates\Form.xaml.Template
+D:\Develop\CRM FINAL\CRM.CodeGenerator\bin\Debug\Templates\Form.cs.Template
+D:\Develop\CRM FINAL\CRM.CodeGenerator\bin\Debug\Templates\DB.cs.Template
+D:\Develop\CRM FINAL\CRM.CodeGenerator\bin\Debug\Templates\List.cs.Template
+D:\Develop\CRM FINAL\CRM.CodeGenerator\bin\Debug\Templates\List.xaml.Template
+D:\Develop\CRM FINAL\CRM.CodeGenerator\bin\Debug\CRM.CodeGenerator.exe.config
+D:\Develop\CRM FINAL\CRM.CodeGenerator\bin\Debug\CRM.CodeGenerator.exe
+D:\Develop\CRM FINAL\CRM.CodeGenerator\bin\Debug\CRM.CodeGenerator.pdb
+D:\Develop\CRM FINAL\CRM.CodeGenerator\obj\x86\Debug\MainWindow.baml
+D:\Develop\CRM FINAL\CRM.CodeGenerator\obj\x86\Debug\MainWindow.g.cs
+D:\Develop\CRM FINAL\CRM.CodeGenerator\obj\x86\Debug\App.g.cs
+D:\Develop\CRM FINAL\CRM.CodeGenerator\obj\x86\Debug\CRM.CodeGenerator_Content.g.cs
+D:\Develop\CRM FINAL\CRM.CodeGenerator\obj\x86\Debug\CRM.CodeGenerator_MarkupCompile.cache
+D:\Develop\CRM FINAL\CRM.CodeGenerator\obj\x86\Debug\CRM.CodeGenerator.g.resources
+D:\Develop\CRM FINAL\CRM.CodeGenerator\obj\x86\Debug\CRM.CodeGenerator.Properties.Resources.resources
+D:\Develop\CRM FINAL\CRM.CodeGenerator\obj\x86\Debug\CRM.CodeGenerator.csproj.GenerateResource.Cache
+D:\Develop\CRM FINAL\CRM.CodeGenerator\obj\x86\Debug\CRM.CodeGenerator.exe
+D:\Develop\CRM FINAL\CRM.CodeGenerator\obj\x86\Debug\CRM.CodeGenerator.pdb
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.CodeGenerator\bin\Debug\CRM.CodeGenerator.exe.config
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.CodeGenerator\obj\x86\Debug\CRM.CodeGenerator.exe
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.CodeGenerator\obj\x86\Debug\CRM.CodeGenerator.pdb
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.CodeGenerator\bin\Debug\Templates\Form.xaml.Template
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.CodeGenerator\bin\Debug\Templates\Form.cs.Template
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.CodeGenerator\bin\Debug\Templates\DB.cs.Template
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.CodeGenerator\bin\Debug\Templates\List.cs.Template
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.CodeGenerator\bin\Debug\Templates\List.xaml.Template
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.CodeGenerator\bin\Debug\CRM.CodeGenerator.exe
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.CodeGenerator\bin\Debug\CRM.CodeGenerator.pdb
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.CodeGenerator\obj\x86\Debug\MainWindow.baml
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.CodeGenerator\obj\x86\Debug\MainWindow.g.cs
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.CodeGenerator\obj\x86\Debug\App.g.cs
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.CodeGenerator\obj\x86\Debug\CRM.CodeGenerator_Content.g.cs
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.CodeGenerator\obj\x86\Debug\CRM.CodeGenerator_MarkupCompile.cache
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.CodeGenerator\obj\x86\Debug\CRM.CodeGenerator.g.resources
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.CodeGenerator\obj\x86\Debug\CRM.CodeGenerator.Properties.Resources.resources
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.CodeGenerator\obj\x86\Debug\CRM.CodeGenerator.csproj.GenerateResource.Cache
+E:\Folder\CRM.CodeGenerator.exe.config
+E:\Folder\Templates\Form.xaml.Template
+E:\Folder\Templates\Form.cs.Template
+E:\Folder\Templates\DB.cs.Template
+E:\Folder\Templates\List.cs.Template
+E:\Folder\Templates\List.xaml.Template
+E:\Folder\CRM.CodeGenerator.exe
+E:\Folder\CRM.CodeGenerator.pdb

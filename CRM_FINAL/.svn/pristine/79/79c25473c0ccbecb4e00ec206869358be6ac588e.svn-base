@@ -1,0 +1,156 @@
+﻿<Local:PopupWindow x:Class="CRM.Application.Views.TelephoneInfoForm"
+        xmlns:Local="clr-namespace:CRM.Application.Local" 
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:converter="clr-namespace:CRM.Converters" 
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                   WindowStartupLocation="CenterScreen" 
+                   Title="اطلاعات تلفن" Height="Auto" Width="800" >
+
+    <ScrollViewer  Padding="0 0 10 0" FlowDirection="RightToLeft">
+        <DockPanel FlowDirection="RightToLeft">
+
+            <StackPanel Orientation="Vertical">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="20" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="20" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="180" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="155" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="شماره تلفن : " />
+                    <TextBox Grid.Row="0" Grid.Column="1" Name="TelephoneNoTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                    <Label Grid.Row="0" Grid.Column="2" Content=" نام مرکز : " />
+                    <TextBox Grid.Row="0" Grid.Column="3" Name="CenterNameTextBox" IsReadOnly="True"  />
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="نام مشترک : " />
+                    <TextBox Grid.Row="1" Grid.Column="1" Name="CustomerNameTextBox" IsReadOnly="True" />
+
+                    <Label Grid.Row="1" Grid.Column="2" Content="کد پستی : " />
+                    <TextBox Grid.Row="1" Grid.Column="3" Name="PostalCodeTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="آدرس : " />
+                    <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Name="AddressTextBox" IsReadOnly="True" />
+
+                    <Label Grid.Row="4" Grid.Column="0" Content="شماره کافو : " />
+                    <TextBox Grid.Row="4" Grid.Column="1" Name="CabinetNoTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                    <Label Grid.Row="4" Grid.Column="2" Content="شماره ورودی کافو : " />
+                    <TextBox Grid.Row="4" Grid.Column="3" Name="CabinetinputNoTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                    <Label Grid.Row="5" Grid.Column="0" Content="شماره پست : " />
+                    <TextBox Grid.Row="5" Grid.Column="1" Name="PostNoTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                    <Label Grid.Row="5" Grid.Column="2" Content="شماره اتصالی پست : " />
+                    <TextBox Grid.Row="5" Grid.Column="3" Name="PostEtesaliNoTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                    <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="6">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="0" Grid.Column="0" Content="بوخت مشترک : " />
+
+                            <Label Grid.Row="0" Grid.Column="1" Content="ردیف : " />
+                            <TextBox Grid.Row="0" Grid.Column="2" Name="RadifBuchtTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                            <Label Grid.Row="0" Grid.Column="3" Content="طبقه : " />
+                            <TextBox Grid.Row="0" Grid.Column="4" Name="TabagheBuchtTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                            <Label Grid.Row="0" Grid.Column="5" Content="اتصالی : " />
+                            <TextBox Grid.Row="0" Grid.Column="6" Name="EtesaliBuchtTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+                        </Grid>
+                    </StackPanel>
+
+                    <Label Grid.Row="7" Grid.Column="0" Content="PCM : " />
+                    <CheckBox Grid.Row="7" Grid.Column="1" Name="PCMCheckBox" VerticalAlignment="Center" IsEnabled="False" />
+
+                </Grid>
+                <Grid Name="PCMTechnicalInfo">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Content="مشخصه PCM : " />
+
+                    <Label Grid.Row="0" Grid.Column="1" Content="راک : " />
+                    <TextBox Grid.Row="0" Grid.Column="2" Name="RockPCMTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                    <Label Grid.Row="0" Grid.Column="3" Content="شلف : " />
+                    <TextBox Grid.Row="0" Grid.Column="4" Name="ShelfPCMTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                    <Label Grid.Row="0" Grid.Column="5" Content="کارت : " />
+                    <TextBox Grid.Row="0" Grid.Column="6" Name="CardPCMTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                    <Label Grid.Row="1" Grid.Column="1" Content="پورت : " />
+                    <TextBox Grid.Row="1" Grid.Column="2" Name="PortPCMTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"  />
+
+                    <Label Grid.Row="1" Grid.Column="3" Content="مدل : " />
+                    <TextBox Grid.Row="1" Grid.Column="4" Name="ModelPCMTextBox" IsReadOnly="True" />
+
+                    <Label Grid.Row="1" Grid.Column="5" Content="نوع : " />
+                    <TextBox Grid.Row="1" Grid.Column="6" Name="TypePCMTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="بوخت ورودی PCM : " />
+
+                    <Label Grid.Row="2" Grid.Column="1" Content="ردیف : " />
+                    <TextBox Grid.Row="2" Grid.Column="2" Name="RadifInputBuchtTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                    <Label Grid.Row="2" Grid.Column="3" Content="طبقه : " />
+                    <TextBox Grid.Row="2" Grid.Column="4" Name="TabagheInputBuchtTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                    <Label Grid.Row="2" Grid.Column="5" Content="اتصالی : " />
+                    <TextBox Grid.Row="2" Grid.Column="6" Name="EtesaliInputBuchtTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                    <Label Grid.Row="3" Grid.Column="0" Content="بوخت خروجی PCM : " />
+
+                    <Label Grid.Row="3" Grid.Column="1" Content="ردیف : " />
+                    <TextBox Grid.Row="3" Grid.Column="2" Name="RadifOutputBuchtTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                    <Label Grid.Row="3" Grid.Column="3" Content="طبقه : " />
+                    <TextBox Grid.Row="3" Grid.Column="4" Name="TabagheOutputBuchtTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                    <Label Grid.Row="3" Grid.Column="5" Content="اتصالی : " />
+                    <TextBox Grid.Row="3" Grid.Column="6" Name="EtesaliOutputBuchtTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                </Grid>
+            </StackPanel>
+        </DockPanel>
+    </ScrollViewer>
+
+</Local:PopupWindow>

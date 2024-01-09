@@ -1,0 +1,75 @@
+﻿@{
+    ViewData["Title"] = "گزارش";
+}
+
+@section Head {
+    <script src="~/Scripts/flot/jquery.flot.min.js"></script>
+    <script src="~/Scripts/flot/jquery.flot.resize.min.js"></script>
+    <script src="~/Scripts/flot/jquery.flot.pie.min.js"></script>
+    <script src="~/Scripts/flot/jquery.flot.categories.min.js"></script>
+    <script src="~/Scripts/adminlte/demo.js"></script>
+    <script src="~/Scripts/chartjs/Chart.min.js"></script>
+    <script src="~/Scripts/morris/morris.min.js"></script>
+    <script src="~/Scripts/raphael/raphael-min.js"></script>
+
+    <link rel="stylesheet" href="~/Scripts/morris/morris.css">
+}
+
+@section ContentHeader {
+    <h1>@ViewData["Title"]<small></small></h1>
+}
+
+
+<div class="row">
+    <section class="col-lg-4 connectedSortable">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <i class="fa fa-bar-chart-o"></i>
+                <h3 class="box-title">نمودار مبلغ نشتی نسبت به برنامه هدف</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div id="LeakProgramChart" style="height: 300px;"></div>
+            </div><!-- /.box-body-->
+        </div>
+    </section>   
+
+    <section class="col-lg-4 connectedSortable">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <i class="fa fa-bar-chart-o"></i>
+                <h3 class="box-title">نمودار مبلغ مصوب نسبت به برنامه هدف</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div id="ConfirmProgramChart" style="height: 300px;"></div>
+            </div><!-- /.box-body-->
+        </div>
+    </section> 
+
+    <section class="col-lg-4 connectedSortable">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <i class="fa fa-bar-chart-o"></i>
+                <h3 class="box-title">نمودار مبلغ مصوب نسبت به مبلغ نشتی</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div id="LeakConfirmChart" style="height: 300px;"></div>
+            </div><!-- /.box-body-->
+        </div>
+    </section> 
+</div>
+
+<script >
+    CaseManagement.StimulReport.Charts.LeakConfirm();
+</script>

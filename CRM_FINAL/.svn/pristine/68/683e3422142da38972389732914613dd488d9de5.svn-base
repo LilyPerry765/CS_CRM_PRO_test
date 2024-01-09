@@ -1,0 +1,192 @@
+﻿<Local:UserControlBase x:Class="CRM.Application.ExtendedSpaceAndPower.V3SpaceAndPowerUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" FlowDirection="RightToLeft"
+             xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+             xmlns:Local="clr-namespace:CRM.Application.Local"
+             xmlns:sv="clr-namespace:CRM.Application.StaticValidation">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <GroupBox x:Name="CustomerGroupBox" Grid.Row="0" Margin="0 0 0 10">
+            <GroupBox.Header>
+                <TextBlock Text="مشخصات متقاضی" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14"/>
+            </GroupBox.Header>
+
+            <Grid x:Name="CustomerInfoGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="کد ملی مشترک / شماره ثبت : "/>
+                <TextBox Grid.Row="0" Grid.Column="1" Name="NationalCodeTextBox" Style="{StaticResource NumericTextBox}">
+                    <TextBox.Text>
+                        <Binding RelativeSource="{RelativeSource Self}" Path="Text" UpdateSourceTrigger="LostFocus" ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <sv:StaticValidation ValidationType="Pattern" Pattern="^[0-9]+$"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <Button Grid.Row="0" Grid.Column="2" Name="SearchCustomerButton" Content="جستجو" Click="SearchCustomerButton_Click"/>
+
+                <Label Grid.Row="0" Grid.Column="3" Content="نام مشترک : "/>
+                <TextBox Grid.Row="0" Grid.Column="4" Name="CustomerNameTextBox" IsReadOnly="True"/>
+
+                <Button Grid.Row="0" Grid.Column="5" Content="ویرایش" x:Name="EditCustomerButton" Click="EditCustomerButton_Click" IsEnabled="False"/>
+
+            </Grid>
+
+        </GroupBox>
+
+        <GroupBox x:Name="SpaceAndPowerGroupBox" Grid.Row="1" Margin="0 0 0 10">
+            <GroupBox.Header>
+                <TextBlock Text="مشخصات فضاپاور(ها)" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14"/>
+            </GroupBox.Header>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="100"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <DataGrid x:Name="SpaceAndPowersDataGrid" AutoGenerateColumns="False" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                          CanUserAddRows="False" CanUserDeleteRows="False"
+                          CanUserResizeColumns="True" CanUserResizeRows="False"
+                          SelectionMode="Single" SelectionUnit="FullRow" IsReadOnly="True">
+                    <DataGrid.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem x:Name="AddSpaceAndPowerMenuItem" Header="افزودن" Click="AddSpaceAndPowerMenuItem_Click">
+                                <MenuItem.Icon>
+                                    <Image Source="pack://application:,,,/CRM.Application;component/Images/add_16x16.png" Width="16" Height="16"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem x:Name="EditSpaceAndPowerMenuItem" Header="ویرایش" Click="EditSpaceAndPowerMenuItem_Click">
+                                <MenuItem.Icon>
+                                    <Image Source="pack://application:,,,/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem x:Name="DeleteSpaceAndPowerMenuItem" Header="حذف" Click="DeleteSpaceAndPowerMenuItem_Click">
+                                <MenuItem.Icon>
+                                    <Image Source="pack://application:,,,/CRM.Application;component/Images/delete2_16x16.png" Width="16" Height="16"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Ellipse Fill="LightSkyBlue" Height="6" Width="6"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="گروه امکانات" Binding="{Binding GroupTitle}"/>
+                        <DataGridTextColumn Header="عنوان امکانات" Binding="{Binding Title}"/>
+                        <DataGridTextColumn Header="نام ارائه کننده خدمت" Binding="{Binding ProviderName}"/>
+                        <DataGridTextColumn Header="قیمت واحد" Binding="{Binding UnitPrice}"/>
+                        <DataGridTextColumn Header="مدت استفاده" Binding="{Binding Duration}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Label Grid.Row="1" Grid.Column="0" Content="توضیحات : "/>
+                <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" x:Name="RequestDescriptionTextBox" Text="{Binding RequestDescription}" TextWrapping="Wrap"/>
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox x:Name="AddressGroupBox" Grid.Row="2" Margin="0,0,0,10">
+            <GroupBox.Header>
+                <TextBlock Text="مشخصات آدرس" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14"/>
+            </GroupBox.Header>
+            <Grid x:Name="AddressInfo">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="کد پستی : "/>
+                <TextBox Grid.Row="0" Grid.Column="1" Name="PostalCodeTextBox" />
+
+                <Button x:Name="SearchAddressButton" Grid.Row="0" Grid.Column="2" Click="SearchAddressButton_Click" Content="جستجو"/>
+
+                <Label Grid.Row="0" Grid.Column="3" Content="آدرس : "/>
+                <TextBox Grid.Row="0" Grid.Column="4"  x:Name="AddressContentTextBox" IsReadOnly="True"/>
+
+                <Button x:Name="EditAddressButton"  Grid.Row="0" Grid.Column="5" Click="EditAddressButton_Click" Content="ویرایش" IsEnabled="False"/>
+
+            </Grid>
+        </GroupBox>
+
+        <CheckBox x:Name="ExtendCheckBox" Grid.Row="3"  Content="توسعه درخواستهای قبلی" 
+                  VerticalAlignment="Center" HorizontalAlignment="Left" 
+                  IsEnabled="False" FlowDirection="LeftToRight" FontSize="13.5"
+                  Checked="ExtendCheckBox_Checked" Unchecked="ExtendCheckBox_Unchecked" />
+
+        <DataGrid x:Name="PreviousSpaceAndPowerRequestsDataGrid" Grid.Row="4" Visibility="Collapsed"
+                  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" 
+                  CanUserResizeColumns="True" CanUserResizeRows="False"
+                  SelectionMode="Single" SelectionUnit="FullRow" IsReadOnly="True" BorderThickness="0 1 0 0"
+                  SelectionChanged="PreviousSpaceAndPowerRequestsDataGrid_SelectionChanged"
+                  LoadingRowDetails="PreviousSpaceAndPowerRequestsDataGrid_LoadingRowDetails">
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <DataGrid x:Name="PowerTypesDataGrid"  IsEnabled="False"
+                              AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False"
+                              CanUserResizeColumns="True" CanUserResizeRows="False" Margin="-5 0 0 0"
+                              SelectionMode="Single" SelectionUnit="FullRow" IsReadOnly="True" BorderThickness="1.5" BorderBrush="DimGray">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Ellipse Fill="LightSkyBlue" Height="6" Width="6"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="عنوان پاور مصرفی" Binding="{Binding Title}"/>
+                            <DataGridTextColumn Header="میزان پاور مصرفی" Binding="{Binding Rate}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="شهر" Binding="{Binding CityName}"/>
+                <DataGridTextColumn Header="مرکز" Binding="{Binding CenterName}"/>
+                <DataGridTextColumn Header="شناسه درخواست" Binding="{Binding RequestID}"/>
+                <DataGridTextColumn Header="تاریخ درخواست" Binding="{Binding RequestDate}"/>
+                <DataGridTextColumn Header="نوع فضا" Binding="{Binding SpaceType}"/>
+                <DataGridTextColumn Header="متراژ فضا - متر مربع" Binding="{Binding SpaceSize}"/>
+                <DataGridTextColumn Header="آنتن" Binding="{Binding HasAntenna}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Local:UserControlBase>

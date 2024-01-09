@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="CRM.Application.UserControls.OpenAndCloseZero"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+             mc:Ignorable="d" 
+             Loaded="UserControl_Loaded">
+    <DockPanel FlowDirection="RightToLeft">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="27"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width=".5*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Content="باز و بستن صفر: " Grid.Row="0" Grid.Column="0" />
+            <ComboBox x:Name="ZeroBlockComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" 
+                      SelectedValue="{Binding ClassTelephone}" Grid.Column="1" SelectionChanged="ZeroBlockComboBox_SelectionChanged" />
+
+            <Label x:Name="SecondZeroBlockingWithCostLabel" Grid.Row="0" Grid.Column="2" Content="بستن صفر دوم همراه با هزینه باشد : " Visibility="Collapsed"/>
+            <CheckBox x:Name="SecondZeroBlockingWithCostCheckBox" Grid.Row="0" Grid.Column="3" 
+                      VerticalAlignment="Center" HorizontalAlignment="Left" IsChecked="{Binding HasSecondZeroBlockCost}" Visibility="Collapsed"/>
+            
+            <!--<Label     Grid.Row="0" Grid.Column="0" Content="انسداد صفر " />
+            <ComboBox  Grid.Row="0" Grid.Column="1" x:Name="ZeroBlockComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding LocalTelephone}" />
+
+
+            <Label     Grid.Row="0" Grid.Column="2" Content="انسداد صفر دوم" />
+
+            <CheckBox  Grid.Row="0" Grid.Column="3" IsChecked="{Binding SecondZeroBlock}" IsThreeState="False"  x:Name="SecondZeroBlockCheckBox" VerticalAlignment="Center" />
+
+
+            <GroupBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Name="CloseZeroGroup" Visibility="Collapsed">
+                <GroupBox.Header>
+                    <Label Content="انسداد صفر" FontWeight="Bold" Foreground="#355E92"/>
+                </GroupBox.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="300"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="تاریخ انسداد : " />
+                    <cal:DatePicker Grid.Row="0" Grid.Column="1" Name="ActionDueOpenZeroDate" SelectedDate="{Binding ActionDueOpenZeroDate}" />                   
+
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" Name="OpenZeroGroup" Visibility="Collapsed">
+                <GroupBox.Header>
+                    <Label Content="رفع انسداد صفر" FontWeight="Bold" Foreground="#355E92"/>
+                </GroupBox.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition Width="300"></ColumnDefinition>
+                        <ColumnDefinition Width="auto"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="تاریخ رفع انسداد : " />
+                    <cal:DatePicker Grid.Row="0" Grid.Column="1" Name="ActionDueCloseZeroDate" SelectedDate="{Binding ActionDueCloseZeroDate}" />
+                </Grid>
+            </GroupBox>-->
+
+        </Grid>
+    </DockPanel>
+</UserControl>

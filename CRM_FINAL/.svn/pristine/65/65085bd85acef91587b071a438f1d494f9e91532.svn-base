@@ -1,0 +1,147 @@
+﻿
+    <Local:RequestFormBase Title="شبکه هوایی"
+                   x:Class="CRM.Application.Views.TranslationPCMToNormalNetworkForm"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib" 
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+                   xmlns:sv="clr-namespace:CRM.Application.StaticValidation"
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+                
+                   Loaded ="RequestFormBase_Loaded">
+
+
+    <ScrollViewer FlowDirection="RightToLeft">
+        <StackPanel>
+            <GroupBox Header="جزئیات برگردان">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label     Grid.Row="0" Grid.Column="0" x:Name="TelephoneLabel" Content="تلفن" />
+                    <TextBox   Grid.Row="0" Grid.Column="1" x:Name="TelephoneTextBox" />
+
+                    <Label     Grid.Row="0" Grid.Column="3" x:Name="TypeLabel" Content="نوع برگردان" />
+                    <TextBox   Grid.Row="0" Grid.Column="4" x:Name="TypeTextBox" />
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="برگردان از">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label     Grid.Row="0" Grid.Column="0" x:Name="BeforCabinetLabel" Content="کافو" />
+                    <TextBox   Grid.Row="0" Grid.Column="1" x:Name="BeforCabinetTextBox" />
+
+                    <Label     Grid.Row="0" Grid.Column="3" x:Name="BeforCabinetInputLabel" Content="مرکزی" />
+                    <TextBox   Grid.Row="0" Grid.Column="4" x:Name="BeforCabinetInputTextBox" />
+
+                    <Label     Grid.Row="1" Grid.Column="0" x:Name="BeforPostLabel" Content="پست" />
+                    <TextBox   Grid.Row="1" Grid.Column="1" x:Name="BeforPostTextBox" />
+
+                    <Label     Grid.Row="1" Grid.Column="3" x:Name="BeforPostContactLabel" Content="اتصالی" />
+                    <TextBox   Grid.Row="1" Grid.Column="4" x:Name="BeforPostContactTextBox" />
+
+
+                    <Label     Grid.Row="2" Grid.Column="0" x:Name="BeforMUIDLabel" Content="مشخصه پی سی ام" />
+                    <TextBox   Grid.Row="2" Grid.Column="1" x:Name="BeforMUIDTextBox" Grid.ColumnSpan="4"/> 
+
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="برگردان به">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Label     Grid.Row="0" Grid.Column="0" x:Name="AfterCabinetLabel" Content="کافو" />
+                    <TextBox   Grid.Row="0" Grid.Column="1" x:Name="AfterCabinetTextBox" />
+
+                    <Label     Grid.Row="0" Grid.Column="3" x:Name="AfterCabinetInputLabel" Content="مرکزی" />
+                    <TextBox   Grid.Row="0" Grid.Column="4" x:Name="AfterCabinetInputTextBox" />
+
+                    <Label     Grid.Row="1" Grid.Column="0" x:Name="AfterPostLabel" Content="پست" />
+                    <TextBox   Grid.Row="1" Grid.Column="1" x:Name="AfterPostTextBox" />
+
+                    <Label     Grid.Row="1" Grid.Column="3" x:Name="AfterPostContactLabel" Content="اتصالی" />
+                    <TextBox   Grid.Row="1" Grid.Column="4" x:Name="AfterPostContactTextBox" />
+
+                    <Label     Grid.Row="2" Grid.Column="0" x:Name="AfterMUIDLabel" Content="مشخصه پی سی ام" />
+                    <TextBox   Grid.Row="2" Grid.Column="1" x:Name="AfterMUIDTextBox" Grid.ColumnSpan="4"/>
+
+                </Grid>
+
+            </GroupBox>
+
+            <GroupBox Grid.Row="5" Grid.Column="0" Header="اطلاعات انجام برگردان"  x:Name="AccomplishmentGroupBox">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Label          Grid.Row="0" Grid.Column="0" x:Name="AccomplishmentDateLabel" Content="تاریخ خاتمه" />
+                    <cal:DatePicker Grid.Row="0" Grid.Column="1" x:Name="AccomplishmentDate"      SelectedDate="{Binding NetworkAccomplishmentDate}" />
+
+                    <Label          Grid.Row="0" Grid.Column="3" x:Name="AccomplishmentTimeLabel" Content="زمان انجام" />
+                    <TextBox        Grid.Row="0" Grid.Column="4" x:Name="AccomplishmentTime">
+                        <TextBox.Text>
+                            <Binding Path="NetworkAccomplishmentTime" UpdateSourceTrigger="LostFocus" ValidatesOnDataErrors="True">
+                                <Binding.ValidationRules>
+                                    <sv:StaticValidation ValidationType="Pattern" Pattern="\d{2}:\d{2}:\d{2}"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+
+                    <Label          Grid.Row="1" Grid.Column="0" Name="StatusComboBoxLabel" Content="وضعیت"/>
+                    <ComboBox       Grid.Row="1" Grid.Column="1" Name="StatusComboBox" DisplayMemberPath="StatusResult" SelectedValuePath="StepStatusID" />
+
+                </Grid>
+            </GroupBox>
+
+        </StackPanel>
+    </ScrollViewer>
+
+</Local:RequestFormBase>

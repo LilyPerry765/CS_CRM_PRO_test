@@ -1,0 +1,5 @@
+D:\Develop\CRM FINAL\CRM.Website\obj\Debug\CRM.Website.csprojResolveAssemblyReference.cache
+D:\Develop\CRM FINAL\CRM.Website\obj\Debug\CRM.Website.g.resources
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.Website\obj\Debug\CRM.Website.csprojResolveAssemblyReference.cache
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.Website\obj\Debug\CRM.Website.g.resources
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.Website\obj\Debug\CRM.Website.dll.licenses

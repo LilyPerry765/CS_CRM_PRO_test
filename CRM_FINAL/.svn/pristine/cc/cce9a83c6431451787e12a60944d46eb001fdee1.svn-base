@@ -1,0 +1,155 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="CRM.Website.Main" %>
+
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<%@ Register Src="~/UserControl/RequestsInbox.ascx" TagName="RequestsInboxUserControl" TagPrefix="uc" %>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/Contents/Screen.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/Contents/HandHeld.css" media="handheld" />
+    <asp:ContentPlaceHolder ID="HeadPlaceHolder" runat="server" />
+    <script src="../Scripts/jquery-1.7.min.js" type="text/javascript"></script>
+
+    <script src="../Scripts/calendar/calendar.js" type="text/javascript"></script>
+    <script src="../Scripts/calendar/calendar2.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        function PopItUp() {
+            $('.dialogwindow').css('top', Math.max(0, (($(window).height() - $('.dialogwindow').outerHeight()) / 2) + $(window).scrollTop()) + 'px');
+            $('.dialogwindow').css('left', Math.max(0, (($(window).width() - $('.dialogwindow').outerWidth()) / 2) + $(window).scrollLeft()) + 'px');
+
+            //$('.dialogwindow').css('position', 'fixed');
+            $('.dialogwindow').css('z-index', '1000');
+            $('.dialogwindow').css('display', 'block');
+            $('.dialogwindow').focus();
+        }
+
+        $(document).ready(function () {
+            $("#FormCancelButton").click(function () {
+                $("#DialogWindow").css('display', 'none');
+                document.getElementById("PhoneNoTextBox").value = "";
+            });
+        });
+
+        window.onresize = function () {
+            $('.dialogwindow').css('top', Math.max(0, (($(window).height() - $('.dialogwindow').outerHeight()) / 2) + $(window).scrollTop()) + 'px');
+            $('.dialogwindow').css('left', Math.max(0, (($(window).width() - $('.dialogwindow').outerWidth()) / 2) + $(window).scrollLeft()) + 'px');
+        }
+
+        function RibbonItemOnClick() {
+                __doPostBack('ctl00$DummyLink', '')
+         }
+
+    </script>
+
+   
+    <script src="../Scripts/filebrowser.js"></script>
+</head>
+<body>
+
+    <form id="mainform" runat="server">
+        
+        <%-- <asp:ScriptManager ID="MainScriptmanager" runat="server" EnablePartialRendering="true" />--%>
+        <div id="DialogWindow" runat="server" class="dialogwindow">
+            <div class="header">
+                <img id="FormCancelButton" runat="server" clientidmode="Static" src="~/Images/FormCloseButton.png" />
+                <asp:Image ID="HeaderIconImage" runat="server" ImageUrl="~/Images/folder_network_16x16x32.png" />
+                <label>فرم ورود شماره تلفن</label>
+            </div>
+
+            <div class="dialogcontent">
+                <div class="insidecontent">
+                    <div class="insidecontentheader">
+                        <label>فرم ورود شماره تلفن</label>
+                    </div>
+                    <div class="insidecontentcenter">
+                        <label>شماره تلفن</label>
+                        <asp:TextBox ID="PhoneNoTextBox" runat="server" ClientIDMode="Static" TabIndex="1" />
+                    </div>
+                    <div class="insidecontentfooter">
+                        <asp:Button ID="ShowRequestButton" runat="server" Text="نمایش درخواست" OnClick="ShowRequestButton_Click" ClientIDMode="Static" TabIndex="2" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <telerik:RadScriptManager ID="MasterRadScriptManager" runat="server" EnablePageMethods="true" />
+
+        <telerik:RadCodeBlock ID="MasterRadCodeBlock" runat="server">
+            <script type="text/javascript">
+                function onClientTabSelecting(sender, args) {
+                    var tab = args.get_tab();
+                    if (tab.get_pageView()) {
+                        tab.set_postBack(false);
+                    }
+                }
+            </script>
+        </telerik:RadCodeBlock>
+        <telerik:RadAjaxLoadingPanel ID="MasterRadAjaxLoadingPanel" runat="server" Skin="Default" />
+
+ <%--   <telerik:RadAjaxManager ID="MasterRadAjaxManager" runat="server">
+            <AjaxSettings>
+                <telerik:AjaxSetting AjaxControlID="MasterRadMultiPage">
+                    <UpdatedControls>
+                        <telerik:AjaxUpdatedControl ControlID="MasterRadTabStrip" />
+                        <telerik:AjaxUpdatedControl ControlID="MasterRadMultiPage" LoadingPanelID="MasterRadAjaxLoadingPanel" />
+                    </UpdatedControls>
+                </telerik:AjaxSetting>
+            </AjaxSettings>
+        </telerik:RadAjaxManager>--%>
+
+        <div class="RibbonDiv">
+            <OfficeWebUI:Manager ID="RibbonManager" runat="server" UITheme="Office2010Silver" IncludeJQuery="true" ChromeUI="true" />
+            <OfficeWebUI:OfficeRibbon ID="OfficeRibbon" runat="server" ApplicationMenuType="None">
+                <Contexts>
+                    <OfficeWebUI:RibbonContext ID="RibbonContext" runat="server" ContextColor="transparent" Text="">
+                        <Tabs>
+                        </Tabs>
+                    </OfficeWebUI:RibbonContext>
+                </Contexts>
+            </OfficeWebUI:OfficeRibbon>
+            <asp:ContentPlaceHolder ID="HeaderPlaceHolder" runat="server" />
+        </div>
+        <asp:UpdatePanel ID="MasterContentUpdatePanel" runat="server" UpdateMode="conditional">
+            <ContentTemplate>
+                <div class="contentplaceholderdiv">
+                    <asp:ContentPlaceHolder ID="ContentsPlaceHolder" runat="server" ClientIDMode="Static" />
+                </div>
+                <div class="footerdiv">
+                    <div class="messagestatusbar_div">
+                        <telerik:RadTabStrip runat="server" ID="MasterRadTabStrip" CssClass="RadTabStrip footertabs" Orientation="HorizontalBottom" MultiPageID="MasterRadMultiPage" Skin="Office2010Silver" OnClientTabSelecting="onClientTabSelecting" SelectedIndex="0" />
+                        <asp:UpdateProgress ID="progress1" runat="server" DisplayAfter="1" DynamicLayout="true" AssociatedUpdatePanelID="MasterContentUpdatePanel">
+                            <ProgressTemplate>
+                                <span class="progressspanleft">
+                                    <img src="../Images/ajax-loader.gif" alt="" />
+                                    <label>
+                                        لطفا منتظر بمانید . . .
+                                    </label>
+                                </span>
+                            </ProgressTemplate>
+                        </asp:UpdateProgress>
+
+                        <asp:Image ID="MessageImage" runat="server" Visible="false" CssClass="message_icon" />
+                        <asp:Label ID="Messagelabel" runat="server" Visible="false" CssClass="message_label" />
+                        <asp:ContentPlaceHolder ID="FooterPlaceHolder" runat="server" />
+                    </div>
+                </div>
+                <div class="maindiv">
+                    <telerik:RadMultiPage ID="MasterRadMultiPage" runat="server" CssClass="masterradmultipage" SelectedIndex="0">
+                    </telerik:RadMultiPage>
+                </div>
+               <%-- <asp:SqlDataSource ID="MasterSqlDataSource" runat="server" />--%>
+                <asp:HiddenField runat="server" ID="RibbonItemTextDummyHidden" Value='' />
+                <asp:HiddenField runat="server" ID="RibbonItemIDDummyHidden" Value='' />
+                <asp:HiddenField runat="server" ID="RequestStepIDDummyHidden" Value='' />
+                <asp:LinkButton ID="DummyLink" runat="server" OnClick="DummyLink_Click" Style="display: none;" />
+            </ContentTemplate>
+        </asp:UpdatePanel>
+    </form>
+</body>
+
+</html>

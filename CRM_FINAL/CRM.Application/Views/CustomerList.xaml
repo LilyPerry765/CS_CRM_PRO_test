@@ -1,0 +1,230 @@
+﻿<Local:ExtendedTabWindowBase x:Class="CRM.Application.Views.CustomerList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:Local="clr-namespace:CRM.Application.Local" 
+        xmlns:code="clr-namespace:CRM.Application.Codes"
+        xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+        xmlns:CustomControls="clr-namespace:CRM.Application.Codes.CustomControls"
+        xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+        mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="800" 
+        Loaded="TabWindow_Loaded">
+    <DockPanel FlowDirection="RightToLeft">
+        <Expander x:Name="SearchExpander"
+                  DockPanel.Dock="Top"
+                  ExpandDirection="Down"
+                  IsExpanded="True"
+                  Style="{StaticResource SearchExpander}">
+
+            <GroupBox DockPanel.Dock="Top" BorderBrush="#384a66" BorderThickness="0">
+                <DockPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="27" />
+                            <RowDefinition Height="27" />
+                            <RowDefinition Height="27" />
+                            <RowDefinition Height="27" />
+                            <RowDefinition Height="27" />
+                            <RowDefinition Height="27" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0"   Content="شهر :" />
+                        <UserControls:CheckableComboBox    Grid.Row="0" Grid.Column="1"   x:Name="CitiesComboBox"  LostFocus="CitiesComboBox_LostFocus"/>
+
+                        <Label Grid.Row="0" Grid.Column="3"   Content="مرکز :" />
+                        <UserControls:CheckableComboBox    Grid.Row="0" Grid.Column="4"   x:Name="CentersComboBox" />
+
+                        <Label Grid.Row="0" Grid.Column="6"  Content="نوع مشترک :" />
+                        <UserControls:CheckableComboBox Grid.Row="0" Grid.Column="7" x:Name="PersonTypeComboBox"/>
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="کد ملی / شماره ثبت : " />
+                        <TextBox Grid.Row="1" Grid.Column="1" x:Name="NationalCodeOrRecordNoTextBox"/>
+
+                        <Label Grid.Row="1" Grid.Column="3" Content="جنسیت : " />
+                        <UserControls:CheckableComboBox Grid.Row="1" Grid.Column="4" x:Name="GenderComboBox"/>
+
+                        <Label Grid.Row="1" Grid.Column="6" Content="نام / عنوان : " />
+                        <TextBox Grid.Row="1" Grid.Column="7" x:Name="FirstNameOrTitleTextBox"/>
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="نام خانوادگی : " />
+                        <TextBox Grid.Row="2" Grid.Column="1" x:Name="LastNameTextBox"/>
+
+                        <Label Grid.Row="2" Grid.Column="3" Content="نام پدر : " />
+                        <TextBox Grid.Row="2" Grid.Column="4" x:Name="FatherNameTextBox" />
+
+                        <Label Grid.Row="2" Grid.Column="6" Content="شماره شناسنامه" />
+                        <TextBox Grid.Row="2" Grid.Column="7" x:Name="BirthCertificateIDTextBox"/>
+
+                        <Label Grid.Row="3" Grid.Column="0" Content="محل صدور : " />
+                        <TextBox Grid.Row="3" Grid.Column="1" x:Name="IssuePlaceTextBox"/>
+
+                        <Label Grid.Row="3" Grid.Column="3" Content="تاریخ تولد / ثبت : " />
+                        <cal:DatePicker Grid.Row="3" Grid.Column="4" x:Name="BirthDateOrRecordDate"/>
+
+                        <Label Grid.Row="3" Grid.Column="6" Content="شماره تماس : " />
+                        <TextBox Grid.Row="3" Grid.Column="7" x:Name="UrgentTelNoTextBox"/>
+
+                        <Label Grid.Row="4" Grid.Column="0" Content="تلفن همراه : " />
+                        <TextBox Grid.Row="4" Grid.Column="1" x:Name="MobileNoTextBox"/>
+
+                        <Label Grid.Row="4" Grid.Column="3" Content="ایمیل : " />
+                        <TextBox Grid.Row="4" Grid.Column="4" x:Name="EmailTextBox"/>
+
+                        <Label   Grid.Row="4" Grid.Column="6" Content="تلفن : " />
+                        <CustomControls:NumericTextBox Grid.Row="4" Grid.Column="7" x:Name="TelephoneTextBox"/>
+
+                        <Label Grid.Row="5" Grid.Column="0"   Content="کدپستی : " />
+                        <TextBox Grid.Row="5" Grid.Column="1" x:Name="postalCodeTextBox"/>
+
+                        <Label Grid.Row="5" Grid.Column="3" Content="وضعیت احراز هویت : "/>
+                        <ComboBox x:Name="ShahkarAuthenticationStatusComboBox" Grid.Row="5"  Grid.Column="4" DisplayMemberPath="Name" SelectedValuePath="ID"/>
+                        
+                        <!--<Label Grid.Row="4" Grid.Column="6" Content="شناسه مشترک : "/>
+                        <TextBox x:Name="CustomerIdTextBox" Grid.Row="4" Grid.Column="7"/>-->
+
+                        <WrapPanel DockPanel.Dock="Bottom" Grid.ColumnSpan="8" Grid.Row="6" Margin="0 10 0 10" HorizontalAlignment="Right">
+                            <Button x:Name="SearchButton" Height="23" HorizontalAlignment="Left" Margin="0" Width="80" Content="جستجو" Click="Search" IsDefault="True" />
+                            <Button Height="23" HorizontalAlignment="Left" Name="ResetButton" Width="80" Click="ResetSearchForm" Content="بازنشانی" />
+                            <Button Height="23" HorizontalAlignment="Left" Name="PrintButton" Width="80" Click="PrintButton_Click" Content="چاپ" />
+                        </WrapPanel>
+                    </Grid>
+                </DockPanel>
+            </GroupBox>
+        </Expander>
+
+        <Grid DockPanel.Dock="Bottom" Style="{StaticResource TabWindowFooter}">
+            <Border DockPanel.Dock="Bottom" Tag="Footer" FlowDirection="RightToLeft" BorderThickness="0 1 0 0" BorderBrush="#d5d5d5" Background="#e9f3fe" Margin="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="546*" />
+                        <ColumnDefinition Width="60*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <UserControls:Pager x:Name="Pager" DockPanel.Dock="Bottom" PageSize="10" PageChanged="Pager_PageChanged" HorizontalAlignment="Left" />
+                </Grid>
+            </Border>
+        </Grid>
+        
+        <Grid DockPanel.Dock="Bottom" Style="{StaticResource TabWindowFooter}">
+            <UserControls:ExtendedStatusBar x:Name="MainExtendedStatusBar"  DockPanel.Dock="Bottom"/>
+        </Grid>
+        
+        <ScrollViewer>
+            <DataGrid x:Name="ItemsDataGrid"
+                      BorderThickness="0 1 0 0"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="True"
+                      CanUserResizeColumns="True"
+                      CanUserResizeRows="False"
+                      CanUserDeleteRows="False"
+                      SelectionMode="Single"
+                      SelectionUnit="FullRow"
+                      IsReadOnly="True"
+                      MouseDoubleClick="EditItem"
+                      ItemsSource="{Binding}">
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="ContentTemplate">
+                            <Setter.Value>
+                                <DataTemplate>
+                                    <CheckBox x:Name="HeaderCheckBox"  Content="{Binding}" Tag="{Binding}"  Checked="CheckBoxChanged" Unchecked="UnCheckBoxChanged"/>
+                                </DataTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+                <DataGrid.ContextMenu>
+                    <ContextMenu FontFamily="Tahoma">
+                        <MenuItem Header="افزودن" Click="AddItem" code:UIElementExtension.ResourceNameVisible="CustomerList.AddItem">
+                            <MenuItem.Icon>
+                                <Image Source="/CRM.Application;component/Images/add_16x16.png" Width="16" Height="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="ویرایش" Click="EditItem" code:UIElementExtension.ResourceNameVisible="CustomerList.EditItem">
+                            <MenuItem.Icon>
+                                <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="حذف" Click="DeleteItem" code:UIElementExtension.ResourceNameVisible="CustomerList.DeleteItem">
+                            <MenuItem.Icon>
+                                <Image Source="/CRM.Application;component/Images/delete2_16x16.png" Width="16" Height="16" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="ذخیره ستون" Click="SaveColumnItem_Click">
+                            <MenuItem.Icon>
+                                <Image Source="/CRM.Application;component/Images/Save.png" Width="16" Height="16" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="تنظیمات چاپ" Click="ReportSettingItem_Click" >
+                            <MenuItem.Icon>
+                                <Image Source="/CRM.Application;component/Images/Setting_24x24.png" Width="16" Height="16" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem x:Name="ReceivePersonAuthenticationMenuItem" Header="دریافت احراز هویت - مشترک حقیقی" Click="ReceivePersonAuthenticationMenuItem_Click">
+                            <MenuItem.Icon>
+                                <Image Source="pack://application:,,,/CRM.Application;component/Images/AuthenticationYellow_32x32.png" Height="16" Width="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem x:Name="AddAgentMenuItem" Header="ایجاد نماینده برای مشترک حقوقی" Click="AddAgentMenuItem_Click" Visibility="Collapsed">
+                            <MenuItem.Icon>
+                                <Image Source="pack://application:,,,/CRM.Application;component/Images/Agent.png" Height="16" Width="16"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="/CRM.Application;component/Images/element_16x16.png" Width="16" Height="16" HorizontalAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--<DataGridTextColumn Header="شناسه مشترک" Binding="{Binding Path=CustomerID, UpdateSourceTrigger=PropertyChanged}" />-->
+                    <DataGridTemplateColumn >
+                        <DataGridTemplateColumn.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="وضعیت احراز هویت"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.HeaderTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding IsAuthenticated,Converter={StaticResource AuthenticationConverter}}" Width="16" Height="16"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="شهر" Binding="{Binding CityName}"/>
+                    <DataGridTextColumn Header="مرکز" Binding="{Binding CenterName}" />
+                    <DataGridTextColumn Header="نوع" x:Name="PersonTypeColumn" Binding="{Binding Path=PersonType, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="کد ملی/شماره ثبت"  Binding="{Binding Path=NationalCodeOrRecordNo, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="نام/عنوان" Binding="{Binding Path=FirstNameOrTitle, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="نام خانوادگی" Binding="{Binding Path=LastName, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="نام پدر" Binding="{Binding Path=FatherName, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="جنسیت" x:Name="GenderColumn" Binding="{Binding Path=Gender, UpdateSourceTrigger=PropertyChanged}" />
+                    <DataGridTextColumn Header="شماره شناسنامه" Binding="{Binding Path=BirthCertificateID, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="تاریخ تولد/تاریخ ثبت" Binding="{Binding Path=BirthDateOrRecordDate, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="محل صدور" Binding="{Binding Path=IssuePlace, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="شماره تماس" Binding="{Binding Path=UrgentTelNo, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="تلفن همراه" Binding="{Binding Path=MobileNo, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="ایمیل" Binding="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="نمایندگی" Binding="{Binding Path=Agency, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="شماره نمایندگی" Binding="{Binding Path=AgencyNumber, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="تلفن" Binding="{Binding Path=TelephoneNo, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="کدپستی" Binding="{Binding Path=PostalCode, UpdateSourceTrigger=PropertyChanged}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+    </DockPanel>
+</Local:ExtendedTabWindowBase>

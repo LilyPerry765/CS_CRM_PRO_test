@@ -1,0 +1,20 @@
+﻿--13931213 - 1252
+--گواهی تغییر مکان سیم خصوصی بر روی سیستم خودم نهایی شد حالا باید بر روی سرور 14 هم بروزرسانی شود
+--UPDATE R14
+--SET Template = RM.Template
+--FROM 
+--	ReportTemplate RM
+--INNER JOIN 
+--	[192.168.0.14\PENDARSQL].CRM.DBO.REPORTTEMPLATE R14 ON RM.ID = R14.ID 
+--WHERE 
+--	RM.ID = 263  AND R14.ID = 263
+
+--13931213 1301
+--UPDATE RR
+--SET Template = R14.Template
+--FROM 
+--	ReportTemplate R14
+--INNER JOIN 
+--	[78.39.252.109].CRM.DBO.ReportTemplate RR ON RR.ID = R14.ID
+--WHERE 
+--	RR.ID = 263 AND R14.ID = 263

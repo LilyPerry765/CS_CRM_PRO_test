@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://pendarpajouh.com/Services" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://pendarpajouh.com/Services" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://pendarpajouh.com/Services/Imports">
+      <xsd:import namespace="http://pendarpajouh.com/Services" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/CRM.Data.ServiceHost" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ICRMService_PCMInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:PCMInfo" />
+  </wsdl:message>
+  <wsdl:message name="ICRMService_PCMInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PCMInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICRMService_ChangeTelephoneInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeTelephoneInfo" />
+  </wsdl:message>
+  <wsdl:message name="ICRMService_ChangeTelephoneInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeTelephoneInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICRMService_CityInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:CityInfo" />
+  </wsdl:message>
+  <wsdl:message name="ICRMService_CityInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CityInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICRMService_CenterInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:CenterInfo" />
+  </wsdl:message>
+  <wsdl:message name="ICRMService_CenterInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CenterInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICRMService_RequestTypeInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:RequestTypeInfo" />
+  </wsdl:message>
+  <wsdl:message name="ICRMService_RequestTypeInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RequestTypeInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICRMService_TelephoneType_InputMessage">
+    <wsdl:part name="parameters" element="tns:TelephoneType" />
+  </wsdl:message>
+  <wsdl:message name="ICRMService_TelephoneType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TelephoneTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICRMService_TelephoneGroupType_InputMessage">
+    <wsdl:part name="parameters" element="tns:TelephoneGroupType" />
+  </wsdl:message>
+  <wsdl:message name="ICRMService_TelephoneGroupType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TelephoneGroupTypeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICRMService_CauseOfCut_InputMessage">
+    <wsdl:part name="parameters" element="tns:CauseOfCut" />
+  </wsdl:message>
+  <wsdl:message name="ICRMService_CauseOfCut_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CauseOfCutResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICRMService_GetPAPInstallRequestCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPAPInstallRequestCount" />
+  </wsdl:message>
+  <wsdl:message name="ICRMService_GetPAPInstallRequestCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPAPInstallRequestCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICRMService_GetPAPDischargeRequestCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPAPDischargeRequestCount" />
+  </wsdl:message>
+  <wsdl:message name="ICRMService_GetPAPDischargeRequestCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPAPDischargeRequestCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICRMService_GetPAPExchangeRequestCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPAPExchangeRequestCount" />
+  </wsdl:message>
+  <wsdl:message name="ICRMService_GetPAPExchangeRequestCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPAPExchangeRequestCountResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ICRMService">
+    <wsdl:operation name="PCMInfo">
+      <wsdl:input wsaw:Action="http://pendarpajouh.com/Services/ICRMService/PCMInfo" message="tns:ICRMService_PCMInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://pendarpajouh.com/Services/ICRMService/PCMInfoResponse" message="tns:ICRMService_PCMInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeTelephoneInfo">
+      <wsdl:input wsaw:Action="http://pendarpajouh.com/Services/ICRMService/ChangeTelephoneInfo" message="tns:ICRMService_ChangeTelephoneInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://pendarpajouh.com/Services/ICRMService/ChangeTelephoneInfoResponse" message="tns:ICRMService_ChangeTelephoneInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CityInfo">
+      <wsdl:input wsaw:Action="http://pendarpajouh.com/Services/ICRMService/CityInfo" message="tns:ICRMService_CityInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://pendarpajouh.com/Services/ICRMService/CityInfoResponse" message="tns:ICRMService_CityInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CenterInfo">
+      <wsdl:input wsaw:Action="http://pendarpajouh.com/Services/ICRMService/CenterInfo" message="tns:ICRMService_CenterInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://pendarpajouh.com/Services/ICRMService/CenterInfoResponse" message="tns:ICRMService_CenterInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RequestTypeInfo">
+      <wsdl:input wsaw:Action="http://pendarpajouh.com/Services/ICRMService/RequestTypeInfo" message="tns:ICRMService_RequestTypeInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://pendarpajouh.com/Services/ICRMService/RequestTypeInfoResponse" message="tns:ICRMService_RequestTypeInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TelephoneType">
+      <wsdl:input wsaw:Action="http://pendarpajouh.com/Services/ICRMService/TelephoneType" message="tns:ICRMService_TelephoneType_InputMessage" />
+      <wsdl:output wsaw:Action="http://pendarpajouh.com/Services/ICRMService/TelephoneTypeResponse" message="tns:ICRMService_TelephoneType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TelephoneGroupType">
+      <wsdl:input wsaw:Action="http://pendarpajouh.com/Services/ICRMService/TelephoneGroupType" message="tns:ICRMService_TelephoneGroupType_InputMessage" />
+      <wsdl:output wsaw:Action="http://pendarpajouh.com/Services/ICRMService/TelephoneGroupTypeResponse" message="tns:ICRMService_TelephoneGroupType_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CauseOfCut">
+      <wsdl:input wsaw:Action="http://pendarpajouh.com/Services/ICRMService/CauseOfCut" message="tns:ICRMService_CauseOfCut_InputMessage" />
+      <wsdl:output wsaw:Action="http://pendarpajouh.com/Services/ICRMService/CauseOfCutResponse" message="tns:ICRMService_CauseOfCut_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPAPInstallRequestCount">
+      <wsdl:input wsaw:Action="http://pendarpajouh.com/Services/ICRMService/GetPAPInstallRequestCount" message="tns:ICRMService_GetPAPInstallRequestCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://pendarpajouh.com/Services/ICRMService/GetPAPInstallRequestCountResponse" message="tns:ICRMService_GetPAPInstallRequestCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPAPDischargeRequestCount">
+      <wsdl:input wsaw:Action="http://pendarpajouh.com/Services/ICRMService/GetPAPDischargeRequestCount" message="tns:ICRMService_GetPAPDischargeRequestCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://pendarpajouh.com/Services/ICRMService/GetPAPDischargeRequestCountResponse" message="tns:ICRMService_GetPAPDischargeRequestCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPAPExchangeRequestCount">
+      <wsdl:input wsaw:Action="http://pendarpajouh.com/Services/ICRMService/GetPAPExchangeRequestCount" message="tns:ICRMService_GetPAPExchangeRequestCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://pendarpajouh.com/Services/ICRMService/GetPAPExchangeRequestCountResponse" message="tns:ICRMService_GetPAPExchangeRequestCount_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

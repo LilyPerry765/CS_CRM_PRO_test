@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "نمودار میله ای استان ها";
+}
+
+@section Head {
+    <script src="~/Scripts/flot/jquery.flot.min.js"></script>
+    <script src="~/Scripts/flot/jquery.flot.resize.min.js"></script>
+    <script src="~/Scripts/flot/jquery.flot.pie.min.js"></script>
+    <script src="~/Scripts/flot/jquery.flot.categories.min.js"></script>
+    <script src="~/Scripts/adminlte/demo.js"></script>
+    <script src="~/Scripts/chartjs/Chart.min.js"></script>
+    <script src="~/Scripts/morris/morris.min.js"></script>
+    <script src="~/Scripts/raphael/raphael-min.js"></script>
+
+    <link rel="stylesheet" href="~/Scripts/morris/morris.css">
+
+}
+
+@section ContentHeader {
+    <h1>@ViewData["Title"]<small></small></h1>
+}
+
+<div class="row">
+    <section class="col-lg-12 connectedSortable">
+
+        @*<div class="box-header">
+                <h3 class="box-title">گزارش استان ها</h3>
+            </div>*@
+      
+        <label style="width:100px; font-weight:normal; font-variant:normal;">سال : </label>
+        <select id="year" onchange="ChangeCombo()" style="width:150px; height:30px;">
+            <option value="7">1396</option>
+            <option value="6">1395</option>
+            <option value="5">1394</option>
+            <option value="4">1393</option>
+            <option value="3">1392</option>
+        </select>
+
+        <div id="province-bar-chart" style="height: 700px;"></div>
+
+    </section>
+
+</div>
+
+
+<script type="text/javascript">
+
+    function ChangeCombo() {
+        debugger;
+        var yearCobmo = document.getElementById('year');
+        var year = yearCobmo.value;
+
+        if (year == "3") {
+            CaseManagement.StimulReport.ProvinceLineChart.ProvinceProgram92();
+            document.getElementById("province-bar-chart").innerHTML = "";
+        }
+        if (year == "4") {
+            CaseManagement.StimulReport.ProvinceLineChart.ProvinceProgram93();
+            document.getElementById("province-bar-chart").innerHTML = "";
+        }
+        if (year == "5") {
+            CaseManagement.StimulReport.ProvinceLineChart.ProvinceProgram94();
+            document.getElementById("province-bar-chart").innerHTML = "";
+        }
+        if (year == "6") {
+            CaseManagement.StimulReport.ProvinceLineChart.ProvinceProgram95();
+            document.getElementById("province-bar-chart").innerHTML = "";
+        }
+        if (year == "7") {
+            CaseManagement.StimulReport.ProvinceLineChart.ProvinceProgram96();
+            document.getElementById("province-bar-chart").innerHTML = "";
+        }
+  }
+
+   CaseManagement.StimulReport.ProvinceLineChart.ProvinceProgram96();
+</script>

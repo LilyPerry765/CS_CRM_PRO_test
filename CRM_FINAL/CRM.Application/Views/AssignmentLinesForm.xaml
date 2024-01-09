@@ -1,0 +1,16 @@
+﻿<Local:RequestFormBase x:Class="CRM.Application.Views.AssignmentLinesForm"
+                       xmlns:Local="clr-namespace:CRM.Application.Local"
+                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                       xmlns:UC="clr-namespace:CRM.Application.UserControls"               
+                       Title="واگذاری خطوط" Loaded="RequestFormBase_Loaded">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+    
+        <Label Grid.Row="0" x:Name="ChangeAddressLable"/>
+    
+    </Grid>
+</Local:RequestFormBase>

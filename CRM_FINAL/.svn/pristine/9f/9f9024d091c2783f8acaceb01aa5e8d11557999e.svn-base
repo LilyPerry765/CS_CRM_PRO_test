@@ -1,0 +1,22 @@
+﻿--13931204 - 1008
+--به الگوی گزارش توقیف در بخش امور مشترکین  نام مشترک ، شماره نامه بازداشت ، مرجع بازاشت کننده و تاریخ نامه بازداشت اضافه شد
+--حالا باید بر روی سرور 14 هم بروزرسانی شود
+--UPDATE R14 
+--SET TEMPLATE = RM.Template
+--FROM 
+--	ReportTemplate RM
+--INNER JOIN 
+--	[192.168.0.14\PENDARSQL].CRM.DBO.REPORTTEMPLATE R14 ON RM.ID = R14.ID 
+--WHERE 
+--	RM.ID = 239 AND R14.ID =239
+
+--13931204 - 1014
+--بر روی سرور کرمانشاه هم بروزرسانی شد
+--UPDATE RR
+--SET Template = R14.Template
+--FROM 
+--	ReportTemplate R14
+--INNER JOIN 
+--	[78.39.252.109].CRM.DBO.REPORTTEMPLATE RR ON R14.ID = RR.ID
+--WHERE 
+--	R14.ID = 239 AND RR.ID = 239

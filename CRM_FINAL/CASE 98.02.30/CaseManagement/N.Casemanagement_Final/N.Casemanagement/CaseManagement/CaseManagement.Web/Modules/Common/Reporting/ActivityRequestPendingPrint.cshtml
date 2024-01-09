@@ -1,0 +1,451 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="~/scripts/persian-date-0.1.8.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ActivityRequestConfirm</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!--<link rel="stylesheet" href="~/Content/bootstrap.css">
+    <link rel="stylesheet" href="~/Content/site/site.css">-->
+</head>
+<body onload="window.print();">
+    <div class="wrapper">
+        <!-- Main content -->
+        <section class="invoice">
+            <!-- Table row -->
+            <div class="row">
+                <div class="col-xs-12 table-responsive">
+
+                    <div style="text-align:center;">
+                        <img style="margin-bottom:4px;float:right;" src="/Modules/Common/Reporting/mokhaberat_40.png" />
+
+                        <th3 style="font-size:16px;font-family:Tahoma;font-weight:bold;">فعالیت های جاری استان</th3>
+                        <th3 style="float:left;margin-top:15px;font-size:9px;" id="date"></th3>
+                    </div>
+                    <br />
+                    <table cellspacing="0" border="1" class="table" id="Activity_Request_Pending_Table" style="font-family: Tahoma; font-size: 9px; border: 1px solid black; border-collapse: collapse; ">
+                        <thead style="background-color: #0090D9; color: #eee; font-weight: 600; ">
+                            <tr>
+                                <th style="text-align: center; border: 1px solid black;">کد فعالیت</th>
+                                <th style="text-align: center; border: 1px solid black;">استان</th>
+                                <th style="text-align: center; border: 1px solid black;">دوره</th>
+                                <th style="text-align: center; border: 1px solid black;">جریان درآمدی</th>
+                                <th style="text-align: center; border: 1px solid black;"> نشتی شناسایی شده کل</th>
+                                <th style="text-align: center; border: 1px solid black;">تاریخ شناسایی نشتی</th>
+                                <th style="text-align: center; border: 1px solid black;">کاربر ایجاد کننده</th>
+                                <th style="text-align: center; border: 1px solid black;">کاربر ارسال کننده</th>
+                                <th style="text-align: center; border: 1px solid black;">تاریخ ارسال</th>
+                                <!--  <th style="text-align: center; border: 1px solid black;"> وضعیت</th>-->
+
+                            </tr>
+                        </thead>
+                        <tbody style="text-align: center; line-height: 1; "></tbody>
+                    </table>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <!-- accepted payments column -->
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- ./wrapper -->
+    </bodyonload>
+
+</html>
+
+<script type="text/javascript">
+    var now =  persianDate();
+    /*  y = n.getFullYear();
+      m = n.getMonth() + 1;
+      d = n.getDate();*/
+    //console.log(now);
+    //document.getElementById("date").innerHTML = PersiaNumber(now.hour().toString()) + ":" + PersiaNumber(now.minute().toString()) +":" + PersiaNumber(now.second().toString()) + "  " +
+    document.getElementById("date").innerHTML = "تاریخ : " + PersiaNumber(now.date().toString()) + "-" + PersiaNumber(now.month().toString()) + "-" + PersiaNumber(now.year().toString()) ;
+
+    function persian_to_gregorian(dateString) {
+
+        var dateArray = dateString.split("/");
+        var d = [parseInt(dateArray[0], 10), parseInt(dateArray[1], 10), parseInt(dateArray[2], 10)];
+        d[1]--;
+
+        var adjustDay = 0;
+        if (d[1] < 0) {
+            adjustDay = leap_persian(d[0] - 1) ? 30 : 29;
+            d[1]++;
+        }
+
+        var gregorian = jd_to_gregorian(persian_to_jd(d[0], d[1] + 1, d[2]) - adjustDay);
+
+        //console.log("persian_to_gregorian-> Input:" + d + "    Output:" + gregorian);
+        return gregorian;
+    }
+
+    function leap_persian(year) {
+        return ((((((year - ((year > 0) ? 474 : 473)) % 2820) + 474) + 38) * 682) % 2816) < 682;
+    }
+
+    function sqlToJsDate(sqlDate) {
+
+        var sqlDateArr1 = sqlDate.split("-");
+
+        var sYear = sqlDateArr1[0];
+        var sMonth = parseInt(sqlDateArr1[1]) - 1;
+        var sqlDateArr2 = sqlDateArr1[2].split("T");
+
+        var sDay = sqlDateArr2[0];
+
+        var sHour = '00';
+        var sMinute = '00';
+
+        var sSecond = '00';
+        var sMillisecond = '000';
+
+
+        return new Date(sYear, sMonth, sDay, sHour, sMinute, sSecond, sMillisecond);
+    }
+
+    function getParameterByName(name, url) {
+        if (!url) {
+            url = window.location.href;
+        }
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+
+    function reverse(s) {
+        var Numbers = s.split('-');
+
+        var CycleName_Value = Numbers[1] + '-' + Numbers[0];
+        return CycleName_Value;
+    }
+
+    function CostSeperator(value) {
+        if (value != null) {
+            var persianNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+            value = value.toString();
+            value = value.replace(/\,/g, '');
+            var objRegex = new RegExp('(-?[0-9]+)([0-9]{3})');
+            while (objRegex.test(value))
+                value = value.replace(objRegex, '$1,$2');
+
+            value = value.replace(/[0-9]/g, function (w) { return persianNumbers[+w] });
+        }
+        return value;
+    }
+
+    function PersiaNumber(value) {
+        var arabicNumbers = ['۰', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+
+        var chars = value.split('');
+
+        for (var i = 0; i < chars.length; i++) {
+            if (/\d/.test(chars[i])) {
+                chars[i] = arabicNumbers[chars[i]];
+            }
+        }
+
+        return chars.join('');
+
+    }
+
+    var today = new Date();
+    var dd = today.getDate() + 1;
+
+    var mm = today.getMonth() + 1;
+    var yyyy = today.getFullYear();
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+    today = yyyy + '-' + mm + '-' + dd;
+
+
+    var ActCode = getParameterByName('ActivityCode');
+    var Prov = getParameterByName('Province');
+    var Cycl = getParameterByName('Cycle');
+    var IncomeFlw = getParameterByName('IncomeFlow');
+    var DiscoverTime_S = getParameterByName('DiscoverTime_Start');
+    var DiscoverTime_E = getParameterByName('DiscoverTime_End');
+
+    if (DiscoverTime_S != '') {
+        var DiscoverTime_St = persian_to_gregorian(DiscoverTime_S)[0] + '-' + persian_to_gregorian(DiscoverTime_S)[1] + '-' + persian_to_gregorian(DiscoverTime_S)[2];
+    } else { var DiscoverTime_St = "2006-03-21"; }
+    if (DiscoverTime_E != '') {
+        var DiscoverTime_En = persian_to_gregorian(DiscoverTime_E)[0] + '-' + persian_to_gregorian(DiscoverTime_E)[1] + '-' + persian_to_gregorian(DiscoverTime_E)[2];
+    } else { var DiscoverTime_En = today; }
+
+
+    var url = "http://" + window.location.hostname + ":" + window.location.port + "/Services/Case/IncomeFlow/List";
+    // alert("URL : " + url);
+
+    var IncomeFlowID = '';
+    var IncomeFlow = new Array(100);
+
+
+    //FIXME
+    $.ajaxSetup({ async: false });
+    $.getJSON(url, function (data) {
+
+        for (var i = 0; i < data.TotalCount; i++) {
+
+            IncomeFlow[data.Entities[i].Id] = data.Entities[i].Name;
+
+            if (IncomeFlw == data.Entities[i].Name) {
+                IncomeFlowID = data.Entities[i].Id;
+            }
+
+        }
+    });
+
+    var ProvID = '';
+    var Province = new Array(30);
+
+    var url = "http://" + window.location.hostname + ":" + window.location.port + "/Services/Case/Province/List";
+
+    //FIXME
+    $.ajaxSetup({ async: false });
+    $.getJSON(url, function (data) {
+
+        for (var k = 0; k < data.TotalCount; k++) {
+
+            Province[data.Entities[k].Id] = data.Entities[k].Name;
+
+            if (Prov == data.Entities[k].Name) {
+                ProvID = data.Entities[k].Id;
+            }
+
+        }
+    });
+
+    var url = "http://" + window.location.hostname + ":" + window.location.port + "/Services/Case/Cycle/List";
+    // alert("URL : " + url);
+
+    var CycleID = '';
+    var Cycle = new Array(100);
+
+
+    //FIXME
+    $.ajaxSetup({ async: false });
+    $.getJSON(url, function (data) {
+
+        for (var i = 0; i < data.TotalCount; i++) {
+
+            Cycle[data.Entities[i].Id] = data.Entities[i].CycleName;
+
+            if (Cycl == data.Entities[i].CycleName) {
+                CycleID = data.Entities[i].Id;
+            }
+
+        }
+    });
+
+    var url = "http://" + window.location.hostname + ":" + window.location.port + "/Services/Administration/User/List";
+    // alert("URL : " + url);
+
+    var User = new Array(400);
+
+
+    //FIXME
+    $.ajaxSetup({ async: false });
+    $.getJSON(url, function (data) {
+
+        for (var i = 0; i < data.TotalCount; i++) {
+
+            User[data.Entities[i].UserId] = data.Entities[i].DisplayName;
+
+        }
+    });
+
+    //console.log(DiscoverTime_St + " ---- " + DiscoverTime_En  );
+    var ActivityRequestConfirmResult = CaseManagement.Case.ActivityRequestPenddingService.List( {EqualityFilter:{ActivityCode:ActCode , ProvinceId: ProvID, CycleId:CycleID, IncomeFlowId:IncomeFlowID },
+        "Criteria":[[["DiscoverLeakDate"], ">=", DiscoverTime_St], "and", [["DiscoverLeakDate"], "<=", DiscoverTime_En]]} , response => {
+
+            var tableRef = document.getElementById('Activity_Request_Pending_Table').getElementsByTagName('tbody')[0];
+
+    var TotalLeakage_Total = 0;
+
+    for (var j = 0; j < response.TotalCount; j++) {
+
+        // Insert a row in the table at the last row
+        var newRow = tableRef.insertRow(tableRef.rows.length);
+
+        // Insert a cell in the row at index 0
+
+        var newCell = newRow.insertCell(0);
+        newCell.style.border = ' 1px solid black';
+        var newText = document.createTextNode(PersiaNumber(response.Entities[j].ActivityCode));
+        newCell.appendChild(newText);
+
+
+        var newCell = newRow.insertCell(1);
+        newCell.style.border = ' 1px solid black';
+        // Append a text node to the cell
+        var newText = document.createTextNode(Province[response.Entities[j].ProvinceId]);
+        newCell.appendChild(newText);
+
+        var newCell = newRow.insertCell(2);
+        newCell.style.border = ' 1px solid black';
+        var newText = document.createTextNode(reverse(PersiaNumber(Cycle[response.Entities[j].CycleId])));
+        // Program_Total += data.Entities[j].Program;
+        newCell.appendChild(newText);
+
+        var newCell = newRow.insertCell(3);
+        newCell.style.border = ' 1px solid black';
+        var newText = document.createTextNode(IncomeFlow[response.Entities[j].IncomeFlowId]);
+        // Program_Total += data.Entities[j].Program;
+        newCell.appendChild(newText);
+
+
+        var newCell = newRow.insertCell(4);
+        newCell.style.border = ' 1px solid black';
+
+        if(response.Entities[j].TotalLeakage)
+        {
+            var newText = document.createTextNode(CostSeperator(response.Entities[j].TotalLeakage));
+            TotalLeakage_Total += response.Entities[j].TotalLeakage;
+        }else
+        {
+            var newText = document.createTextNode('۰');
+            TotalLeakage_Total += 0;
+        }
+        newCell.appendChild(newText);
+
+
+
+        var newCell = newRow.insertCell(5);
+        newCell.style.border = ' 1px solid black';
+        var DiscoverLeakDate_Day = PersiaNumber((persianDate(sqlToJsDate(response.Entities[j].DiscoverLeakDate)).date()).toString()).toString();
+        if(DiscoverLeakDate_Day.length < 2){ DiscoverLeakDate_Day = '۰' + DiscoverLeakDate_Day ;  }
+        DiscoverLeakDate_Day = DiscoverLeakDate_Day + '/ ';
+
+        var DiscoverLeakDate_month = PersiaNumber((persianDate(sqlToJsDate(response.Entities[j].DiscoverLeakDate)).month()).toString()).toString();
+        if(DiscoverLeakDate_month.length < 2){ DiscoverLeakDate_month = '۰' + DiscoverLeakDate_month ;  }
+        DiscoverLeakDate_month = DiscoverLeakDate_month + '/ ';
+
+        var DiscoverLeakDate_year = PersiaNumber((persianDate(sqlToJsDate(response.Entities[j].DiscoverLeakDate)).year()).toString()).toString();
+        var DiscoverLeakDate = DiscoverLeakDate_Day + DiscoverLeakDate_month + DiscoverLeakDate_year;
+
+        var newText = document.createTextNode(DiscoverLeakDate);
+        newCell.appendChild(newText);
+
+        var newCell = newRow.insertCell(6);
+        newCell.style.border = ' 1px solid black';
+       // console.log(response.Entities[j].CreatedUserId);
+        var newText = document.createTextNode(User[response.Entities[j].CreatedUserId]);
+       // console.log(User[response.Entities[j].CreatedUserId]);
+        newCell.appendChild(newText);
+
+        var newCell = newRow.insertCell(7);
+        newCell.style.border = ' 1px solid black';
+        if(response.Entities[j].SendUserId !=null)
+        {
+            var newText = document.createTextNode(User[response.Entities[j].SendUserId]);
+        }else {var newText = document.createTextNode('');}
+        newCell.appendChild(newText);
+
+        var newCell = newRow.insertCell(8);
+        newCell.style.border = ' 1px solid black';
+        if(response.Entities[j].SendDate != null)
+        {
+            var SendDate_Day = PersiaNumber((persianDate(sqlToJsDate(response.Entities[j].SendDate)).date()).toString()).toString();
+            if(SendDate_Day.length < 2){ SendDate_Day = '۰' + SendDate_Day ;  }
+            SendDate_Day = SendDate_Day + '/ ';
+
+            var SendDate_month = PersiaNumber((persianDate(sqlToJsDate(response.Entities[j].SendDate)).month()).toString()).toString();
+            if(SendDate_month.length < 2){ SendDate_month = '۰' + SendDate_month ;  }
+            SendDate_month = SendDate_month + '/ ';
+
+            var SendDate_year = PersiaNumber((persianDate(sqlToJsDate(response.Entities[j].SendDate)).year()).toString()).toString();
+            var SendDate = SendDate_Day + SendDate_month + SendDate_year;
+        }else {var SendDate = '';}
+
+        var newText = document.createTextNode(SendDate);
+        newCell.appendChild(newText);
+        /*
+            var newCell = newRow.insertCell(9);
+            newCell.style.border = ' 1px solid black';
+            var newText = document.createTextNode(response.Entities[j].StatusName);
+            newCell.appendChild(newText);*/
+
+    }
+    var newRow = tableRef.insertRow(tableRef.rows.length);
+
+    var newCell = newRow.insertCell(0);
+    newCell.style.border = ' 1px solid black';
+    newCell.style = 'font-weight: bold;font-size:9px';
+    // Append a text node to the cell
+    var newText = document.createTextNode('مجموع');
+    newCell.appendChild(newText);
+
+    var newCell = newRow.insertCell(1);
+    newCell.style.border = ' 1px solid black';
+    newCell.style = 'font-weight: bold;font-size:9px';
+    var newText = document.createTextNode('_____');
+    newCell.appendChild(newText);
+
+    var newCell = newRow.insertCell(2);
+    newCell.style.border = ' 1px solid black';
+    newCell.style = 'font-weight: bold;font-size:9px';
+    var newText = document.createTextNode('_____');
+    newCell.appendChild(newText);
+
+    var newCell = newRow.insertCell(3);
+    newCell.style.border = ' 1px solid black';
+    newCell.style = 'font-weight: bold;font-size:9px';
+    var newText = document.createTextNode('_____');
+    newCell.appendChild(newText);
+
+    var newCell = newRow.insertCell(4);
+    newCell.style.border = ' 1px solid black';
+    newCell.style = 'font-weight: bold;font-size:9px';
+    var newText = document.createTextNode(CostSeperator(TotalLeakage_Total));
+    newCell.appendChild(newText);
+
+    var newCell = newRow.insertCell(5);
+    newCell.style.border = ' 1px solid black';
+    newCell.style = 'font-weight: bold;font-size:9px';
+    var newText = document.createTextNode('_____');
+    newCell.appendChild(newText);
+
+    var newCell = newRow.insertCell(6);
+    newCell.style.border = ' 1px solid black';
+    //newCell.style = 'font-weight: bold';
+    var newText = document.createTextNode('_____');
+    newCell.appendChild(newText);
+
+    var newCell = newRow.insertCell(7);
+    newCell.style.border = ' 1px solid black';
+    //newCell.style = 'font-weight: bold';
+    var newText = document.createTextNode('_____');
+    newCell.appendChild(newText);
+
+    var newCell = newRow.insertCell(8);
+    newCell.style.border = ' 1px solid black';
+    //newCell.style = 'font-weight: bold';
+    var newText = document.createTextNode('_____');
+    newCell.appendChild(newText);
+
+    //var newCell = newRow.insertCell(9);
+    // newCell.style.border = ' 1px solid black';
+    //newCell.style = 'font-weight: bold';
+    // var newText = document.createTextNode('_____');
+    // newCell.appendChild(newText);
+
+
+    });
+
+</script>

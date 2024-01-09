@@ -1,0 +1,9 @@
+--update rl
+--set rl.Template = rr.Template,
+--	rl.[TimeStamp] = rr.[TimeStamp]
+--from 
+--	ReportTemplate rl
+--inner join 
+--	[78.39.252.109].[CRM].[dbo].ReportTemplate rr on rl.ID = rr.ID
+--where 
+--	rl.ID = 252 and rr.id= 252

@@ -1,0 +1,39 @@
+
+IF OBJECT_ID('usp_CollectiveProviance','P') IS NOT NULL
+	DROP PROCEDURE usp_CollectiveProviance
+GO
+
+CREATE PROCEDURE usp_CollectiveProviance	 
+AS
+BEGIN
+
+;With TechnicalCte  AS  
+ ( 
+	SELECT COUNT(*) TechnicalCount, ar.ProvinceID  --تعداد تائيد فني
+	FROM 
+    	ActivityRequest ar
+	WHERE ar.IsDeleted = 0
+		 AND ar.EndDate IS  NULL 
+		 AND  ar.ConfirmTypeID = 2
+	GROUP BY ar.ProvinceID 
+ )
+
+	SELECT  
+		ISNULL(MIN (TechnicalCount),0) TechnicalCount,
+		COUNT(CASE WHEN ar.ConfirmTypeID = 2 AND ar.EndDate IS NOT NULL THEN 1 ELSE NULL END ) ConfirmedCount, --تعداد پايان يافته
+		p.Name ProvinceName,
+		SUM(ar.CycleCost)  SumCycleCost,
+		SUM(ar.DelayedCost) DelayedCost,
+		SUM(ar.TotalLeakage) SumTotalLeakage,
+		SUM(ar.RecoverableLeakage) SumRecoverableLeakage,
+		SUM(ar.Recovered) SumRecovered
+	From 
+	ActivityRequest ar
+	LEFT JOIN 
+	Province p ON  ar.ProvinceID = p.ID
+	LEFT JOIN
+		TechnicalCte tc ON tc.ProvinceID = p.ID			
+	WHERE ar.IsDeleted = 0 AND ar.EndDate IS NOT NULL		  
+	GROUP BY p.Name
+
+ END 

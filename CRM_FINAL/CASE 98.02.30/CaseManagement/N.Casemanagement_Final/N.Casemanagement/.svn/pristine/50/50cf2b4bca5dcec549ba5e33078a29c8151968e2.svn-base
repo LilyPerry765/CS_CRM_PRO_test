@@ -1,0 +1,35 @@
+﻿
+namespace CaseManagement.Common.Columns
+{
+    using Serenity;
+    using Serenity.ComponentModel;
+    using Serenity.Data;
+    using System;
+    using System.ComponentModel;
+    using System.Collections.Generic;
+    using System.IO;
+
+    [ColumnsScript("Common.MessageLog")]
+    [BasedOnRow(typeof(Entities.MessageLogRow))]
+    public class MessageLogColumns
+    {
+        [ Width(80), DisplayName("شناسه"), AlignRight, MinuteFormatter]
+        public Int32 Id { get; set; }
+
+        [Width(180), AlignRight]
+        public DateTime InsertDate { get; set; }
+
+        [Width(180), AlignRight, MinuteFormatter]
+        public Int64 ActivityRequestId { get; set; }
+     
+        [Width(120), QuickFilter]
+        public string ReceiverProvinceName { get; set; }
+     
+        [Width(180), AlignRight]
+        public String ReceiverUserName { get; set; }
+
+         [Width(180),  AlignRight, MinuteFormatter]
+        public String MobileNumber { get; set; }
+     
+    }
+}

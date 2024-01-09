@@ -1,0 +1,17 @@
+﻿<input type="text" id="test" />
+<select id="combo">
+    <option title="jsdahjh"/>
+    <option title="jsdahjh" />
+    <option title="jsdahjh" />
+    <option title="jsdahjh" />
+</select>
+<input type="submit" id="butten" name="Search" onclick="Click()"/>
+
+@Html.Stimulsoft().StiMvcViewer(new Stimulsoft.Report.Mvc.StiMvcViewerOptions()
+                {
+                    Actions =
+                    {
+                        GetReportSnapshot = "GetReportSnapshot",
+                        ViewerEvent = "ViewerEvent"
+                    }
+                })

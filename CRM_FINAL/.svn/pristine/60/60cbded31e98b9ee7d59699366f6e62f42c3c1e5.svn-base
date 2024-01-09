@@ -1,0 +1,46 @@
+﻿<Local:PopupWindow Title="فرم ویرایش تلفن های مشکل دار" 
+                   x:Class="CRM.Application.Views.ADSLTelephoneAccuracyForm"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib" 
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d:DesignWidth="780"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+                   Loaded="PopupWindow_Loaded" Icon="/CRM.Application;component/Images/telephone_48x48.png" Width="500" Height="250">
+    <Grid FlowDirection="RightToLeft" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30" Name="TelephoneNoRow"/>
+            <RowDefinition Height="30" Name="FromTelephoneNoRow"/>
+            <RowDefinition Height="30" Name="ToTelephoneNoRow"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="0" Content="شهر : " />
+        <ComboBox  Grid.Column="1" Grid.Row="0" x:Name="CityComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="CityComboBox_SelectionChanged" IsEditable="False" />
+
+        <Label Grid.Row="1" Grid.Column="0" Content="مرکز : " VerticalAlignment="Center" />
+        <ComboBox Grid.Row="1" Grid.Column="1" DisplayMemberPath="CenterName" SelectedValuePath="ID" SelectedValue="{Binding Path=CenterID}" x:Name="CenterComboBox" IsEditable="False"  />
+
+        <Label Grid.Row="2" Grid.Column="0" Name="TelephoneNoLabel" Content="شماره تلفن : " VerticalAlignment="Center" />
+        <TextBox Grid.Row="2" Grid.Column="1" Name="TelephoneNoTextBox" Text="{Binding Path=TelephoneNo}" Style="{StaticResource ResourceKey=NumericTextBox}" PreviewTextInput="TelephoneNo_PreviewTextInput" />
+
+        <Label Grid.Row="3" Grid.Column="0" Name="FromTelephoneNoLabel" Content="از شماره تلفن : " VerticalAlignment="Center" />
+        <TextBox Grid.Row="3" Grid.Column="1" Name="FromTelephoneNoTextBox" Style="{StaticResource ResourceKey=NumericTextBox}" PreviewTextInput="TelephoneNo_PreviewTextInput" />
+
+        <Label Grid.Row="4" Grid.Column="0" Name="ToTelephoneNoLabel" Content="تا شماره تلفن : " VerticalAlignment="Center" />
+        <TextBox Grid.Row="4" Grid.Column="1" Name="ToTelephoneNoTextBox" Style="{StaticResource ResourceKey=NumericTextBox}" PreviewTextInput="TelephoneNo_PreviewTextInput" />
+
+        <Button Grid.Row ="6" Grid.Column="0" Content="ذخیره" Name="SaveButton" Click="SaveForm" Tag="Footer"/>
+
+    </Grid>
+    </Local:PopupWindow>

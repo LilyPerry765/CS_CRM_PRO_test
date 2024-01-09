@@ -1,0 +1,41 @@
+﻿<Local:PopupWindow Title=" فرم ویرایش گروه پست" 
+                   x:Class="CRM.Application.Views.PostGroupForm"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib" 
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d:DesignWidth="850"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+                   Loaded="PopupWindow_Loaded" Icon="/CRM.Application;component/Images/postGroup48x48.png" Width="500">
+    <Grid FlowDirection="RightToLeft" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="0" Grid.Row="0" Content="شهر : " />
+        <ComboBox  Grid.Column="1" Grid.Row="0" x:Name="CityComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="CityComboBox_SelectionChanged" />
+
+        <Label Grid.Column="0" Grid.Row="1" Content="مرکز : " />
+        <ComboBox  Grid.Column="1" Grid.Row="1" x:Name="CenterComboBox" DisplayMemberPath="CenterName" SelectedValuePath="ID" SelectedValue="{Binding CenterID}" />
+        
+        <Label  Grid.Row="2" Grid.Column="0" Content="شماره گروه : " />
+        <TextBox    Grid.Row="2" Grid.Column="1" x:Name="GroupNoTextBox" Text="{Binding GroupNo}"/>
+
+        <Label  Grid.Row="3" Grid.Column="0" Content="توضیحات:"/>
+        <TextBox  Grid.Row="3" Grid.Column="1" x:Name="Discreption" Text="{Binding Description}" />
+        
+        <Button Grid.Row="5" Grid.Column="0" Content="ذخیره" Name="SaveButton" Click="SaveForm" Tag="Footer" />
+    </Grid>
+
+</Local:PopupWindow>
+
+

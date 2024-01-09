@@ -1,0 +1,45 @@
+﻿<Local:PopupWindow x:Class="CRM.Application.Views.BankBranchForm"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+              xmlns:Local="clr-namespace:CRM.Application.Local"
+              xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+              mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d:DesignWidth="780"
+              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+              Loaded="PopupWindow_Loaded" Icon="/CRM.Application;component/Images/bankBranch48x48.png" Title="فرم ویرایش شعبه بانک"  
+              Width="500" Height="300" ResizeMode="NoResize">
+    
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="نام شعبه : " Grid.Row="0" Grid.Column="0"/>
+        <TextBox x:Name="BranchNameTextbox" Grid.Row="0" Grid.Column="1" Text="{Binding BranchName}" TabIndex="1"/>
+
+        <Label Content="کد شعبه : " Grid.Row="1" Grid.Column="0"/>
+        <TextBox x:Name="BranchCodeTextbox" Grid.Row="1" Grid.Column="1" Text="{Binding BrachCode}" TabIndex="2"/>
+
+        <Label Content="فعال : " Grid.Row="3" Grid.Column="0"/>
+        <CheckBox x:Name="StatusTextbox" Grid.Row="3" Grid.Column="1" TabIndex="4" VerticalAlignment="Center" IsChecked="{x:Null}"/>
+
+        <Label Content="نام بانک : " Grid.Row="2" Grid.Column="0"/>
+        <ComboBox x:Name="BankComboBox" Grid.Row="2" Grid.Column="1" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding BankID}" TabIndex="3" />
+
+        <Label Content="شماره حساب : " Grid.Row="4" Grid.Column="0"/>
+        <TextBox x:Name="AccountNoTextbox" Grid.Row="4" Grid.Column="1" Text="{Binding AccountNo}" TabIndex="5"/>
+
+        <Button Content="ذخیره" Name="SaveButton" Grid.Row="6" Grid.Column="0" Click="SaveBankBrnachForm" Tag="Footer" TabIndex="6"/>
+        
+    </Grid>
+</Local:PopupWindow>

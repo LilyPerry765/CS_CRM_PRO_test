@@ -1,0 +1,84 @@
+﻿<Local:PopupWindow x:Class="CRM.Application.Views.AgentForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Local="clr-namespace:CRM.Application.Local"
+        xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+        xmlns:CustomControls="clr-namespace:CRM.Application.Codes.CustomControls"
+        Icon="pack://application:,,,/CRM.Application;component/Images/Agent.png" Loaded="PopupWindow_Loaded"
+        Title="نماینده مشترک حقوقی" Height="400" Width="500" WindowStartupLocation="CenterScreen"
+        >
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <GroupBox x:Name="CustomerGroupBox" Header="اطلاعات مشترک" Grid.Row="0" IsEnabled="False">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="شناسه ملی " />
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding NationalID}" />
+
+                <Label Grid.Row="0" Grid.Column="2" Content="شماره ثبت" />
+                <TextBox Grid.Row="0" Grid.Column="3" Text="{Binding NationalCodeOrRecordNo}"/>
+
+                <Label Grid.Row="1" Grid.Column="0" Content="نام"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding FirstNameOrTitle}"/>
+                
+            </Grid>
+            
+        </GroupBox>
+        
+        <GroupBox Header="اطلاعات نماینده" Grid.Row="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="نام"/>
+                <TextBox x:Name="FirstNameTextBox" Grid.Row="0" Grid.Column="1" MaxLength="100" Text="{Binding FirstName}"/>
+
+                <Label Grid.Row="0" Grid.Column="2" Content="نام خانوادگی"/>
+                <TextBox x:Name="LastNameTextBox" Grid.Row="0" Grid.Column="3" MaxLength="100" Text="{Binding LastName}"/>
+
+                <Label Grid.Row="1" Grid.Column="0" Content="نام پدر"/>
+                <TextBox x:Name="FatherNameTextBox" Grid.Row="1" Grid.Column="1" MaxLength="100" Text="{Binding Father}"/>
+
+                <Label Grid.Row="1" Grid.Column="2" Content="تاریخ تولد"/>
+                <cal:DatePicker x:Name="BirthdateDatePicker" Grid.Row="1" Grid.Column="3" SelectedDate="{Binding Birthdate}"/>
+
+                <Label Grid.Row="2" Grid.Column="0" Content="کد ملی"/>
+                <CustomControls:NumericTextBox x:Name="NationalCodeNumericTextBox" Grid.Row="2" Grid.Column="1" MaxLength="10" Text="{Binding NationalCode}"/>
+
+                <Label Grid.Row="2" Grid.Column="2" Content="شماره شناسنامه"/>
+                <CustomControls:NumericTextBox x:Name="CertificateNoNumericTextBox" Grid.Row="2" Grid.Column="3" MaxLength="10" Text="{Binding BirthCertificateId}"/>
+
+                <Label Grid.Row="3" Grid.Column="0" Content="موبایل"/>
+                <CustomControls:NumericTextBox x:Name="MobileNoNumericTextBox" Grid.Row="3" Grid.Column="1" MaxLength="10" Text="{Binding MobileNo}"/>
+
+                <Button Content="ذخیره" x:Name="SaveButton" Click="SaveForm" Tag="Footer" />
+
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Local:PopupWindow>

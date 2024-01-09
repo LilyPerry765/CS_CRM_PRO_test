@@ -1,0 +1,35 @@
+﻿--13931205 - 1019
+--سیستم خودم
+--UPDATE ReportTemplate
+--SET UserControlName = 'ChangeLocationAndNameCenterInsideCertificateReport',
+--	Title = N'گواهی تغییر مکان و نام داخل مرکز',
+--	Category = N'گواهی'
+--WHERE ID = 140
+
+--13931205 - 1317
+--گزارش گواهی تغییر مکان و نام داخل مرکز بر روی سیستم خودم نهایی شد حالا باید بر روی سرور 14 هم بروزرسانی شود
+--UPDATE R14
+--SET  Template = rm.Template,
+--	 Title=rm.Title,
+--	 Category=rm.Category,
+--	 UserControlName=rm.UserControlName
+--FROM 
+--	ReportTemplate RM
+--INNER JOIN 
+--	[192.168.0.14\pendarsql].CRM.DBO.ReportTemplate R14 on RM.ID = r14.ID
+--WHERE 
+--	RM.ID = 140 AND R14.ID = 140
+
+--13931205 - 1331
+--بر روی کرمانشاه هم بروزرسانی شد
+--UPDATE RR
+--SET Template = R14.Template,
+--	Title = R14.Title,
+--	UserControlName = R14.UserControlName,
+--	Category = R14.Category
+--FROM 
+--	ReportTemplate R14 
+--INNER JOIN 
+--	[78.39.252.109].CRM.DBO.REPORTTEMPLATE RR ON R14.ID =RR.ID
+--WHERE 
+--	R14.ID = 140 AND RR.ID = 140

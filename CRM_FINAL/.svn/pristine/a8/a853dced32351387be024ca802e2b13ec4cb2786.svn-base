@@ -1,0 +1,1 @@
+alter table Telephone add InitialInstallationDate smalldatetime

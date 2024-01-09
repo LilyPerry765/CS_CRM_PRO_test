@@ -1,0 +1,67 @@
+﻿ @{
+     Layout = "";
+ }
+ 
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ 
+<head>
+    <title>گزارش ساز</title>    
+  
+    
+   
+     
+     
+  
+     
+    @using Stimulsoft.Report.Mvc;
+    
+    
+   
+     @*@Html.Stimulsoft().RenderMvcMobileDesignerScripts();*@
+     
+    
+   
+</head>
+
+<body>
+    <table >      
+        <tr>
+            <td style="border:1px"  >                  
+                
+                @Html.Stimulsoft().StiMvcDesigner("MvcDesigner1",
+                    new StiMvcDesignerOptions()
+                    {
+
+                        Actions =
+
+                        {
+                            GetReport = "GetReportTemplate",
+                            DesignerEvent = "DesignerEvent",
+                            SaveReport = "SaveReportTemplateAction"
+
+                        }
+
+})
+   
+                @*@Html.Stimulsoft().StiMvcMobileDesigner("MvcMobileDesigner1", new StiMvcMobileDesignerOptions()
+                            {
+                              //Localization = "~/Content/Localization/fa.xml", //Localize Designer
+                              ActionGetReportTemplate = "GetReportTemplate",
+                              ActionDesignerEvent = "DesignerEvent",                             
+                             
+                              ActionSaveReportTemplate ="SaveReportTemplateAction", 
+                            
+                              ShowAboutButton = false,
+                              ShowTooltipsHelp = false,
+                              ShowTooltips = false,
+                               ShowPropertiesGrid = true,   
+                                   
+                              //ActionGetNewReportData = "GetBlankReportTemplate"                     
+                          })*@
+    </tr>
+    </table>
+</body>
+</html>
+ 

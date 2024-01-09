@@ -1,0 +1,56 @@
+﻿<Local:PopupWindow Title=" فرم ویرایش شماره رند" 
+                   x:Class="CRM.Application.Views.RoundForm"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+                   Loaded="PopupWindow_Loaded" d:DesignHeight="330"
+                   Width="500" Icon="/CRM.Application;component/Images/RoundTel48x48.png">
+    
+    <Grid FlowDirection="RightToLeft">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="شماره تلفن : " Grid.Row="0" Grid.Column="0"/>
+        <TextBox x:Name="TelephonenoTextBox" Text="{Binding TelephoneNo}" Grid.Row="0" Grid.Column="1"/>
+
+        <Label Content="تاریخ ورود به لیست رند : " Grid.Row="1" Grid.Column="0"/>
+        <cal:DatePicker x:Name="entryDateDatePicker" Grid.Row="1" Grid.Column="1" SelectedDate="{Binding EntryDate}"/>
+
+        <Label Content="تاریخ شروع به واگذاری شماره : " Grid.Row="2" Grid.Column="0"/>
+        <cal:DatePicker x:Name="startDateDatePicker" Grid.Row="2" Grid.Column="1" SelectedDate="{Binding StartDate}"/>
+        
+        <Label Content="تاریخ اتمام واگذاری شماره : " Grid.Row="3" Grid.Column="0"/>
+        <cal:DatePicker x:Name="endDateDatePicker" Grid.Row="3" Grid.Column="1" SelectedDate="{Binding EndDate}"/>
+
+        <Label Content="وضعیت واگذاری : " Grid.Row="4" Grid.Column="0"/>
+        <TextBox x:Name="SatusTextBox" Grid.Row="4" Grid.Column="1" Text="{Binding Status}"/>
+        
+        <Label Content="فابل انتخاب : " Grid.Row="5" Grid.Column="0"/>
+        <CheckBox Grid.Row="5" Grid.Column="1" IsChecked="{Binding IsSelectable}" x:Name="isSelectableCheckBox" VerticalAlignment="Center"/>        
+
+        <Label Content="شناسه کاربر ثبت کننده شماره رند : " Grid.Row="6" Grid.Column="0"/>
+        <TextBox x:Name="InsertUserIdTextbox" Grid.Row="6" Grid.Column="1" Text="{Binding InsertUserID}"/>
+
+        <Button x:Name="SaveButton" Click="SaveButton_Click" Grid.Row="8" Grid.Column="0"  Tag="Footer" Width="80" Height="23" Content="ذخیره"/>
+        
+    </Grid>
+
+</Local:PopupWindow>

@@ -1,0 +1,274 @@
+﻿<Local:UserControlBase
+                xmlns:Local="clr-namespace:CRM.Application.Local"
+            x:Class="CRM.Application.UserControls.ChangeLocationMDFWirigUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+     Tag="مشخات بوخت"
+             d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControl_Loaded">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Grid.Row="0" Grid.Column="0"  x:Name="OldTelephoneGroupBox" Style="{x:Null}">
+            <GroupBox.Header>
+                <Label Content="مشخصات تلفن قدیم" x:Name="OldTelephoneLabel" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14"/>
+            </GroupBox.Header>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label    Grid.Row="0" Grid.Column="0" Content="تلفن " x:Name="OldTelLable"/>
+                <TextBox  Grid.Row="0" Grid.Column="1" x:Name="OldTelTextBox" IsReadOnly="True"/>
+
+                <Label    Grid.Row="0" Grid.Column="2" Content="ام دی اف"  x:Name="OldMDFONUInfoLable"/>
+                <TextBox  Grid.Row="0" Grid.Column="3" x:Name="OldMDFONUInfoTextBox" IsReadOnly="True"/>
+
+
+
+                <Label    Grid.Row="1" Grid.Column="0"  Content="ردیف" x:Name="OldColumnLable"/>
+                <TextBox  Grid.Row="1" Grid.Column="1" x:Name="OldColumnTextBox" IsReadOnly="True" />
+
+                <Label    Grid.Row="1" Grid.Column="2" Content="طبقه"   x:Name="OldRowLable"/>
+                <TextBox  Grid.Row="1" Grid.Column="3"  x:Name="OldRowTextBox" IsReadOnly="True" />
+
+                <Label    Grid.Row="1" Grid.Column="4" Content="اتصالی"  x:Name="OldBuchtLable"/>
+                <TextBox  Grid.Row="1" Grid.Column="5" x:Name="OldBuchtTextBox" IsReadOnly="True"/>
+
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="1" Grid.Column="0"  x:Name="NewTelephoneGroupBox" Style="{x:Null}">
+            <GroupBox.Header>
+                <Label Content="مشخصات تلفن جدید"  x:Name="NewTelephoneLabel" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14"/>
+            </GroupBox.Header>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="تلفن " x:Name="NewTelLable" Grid.Row="0" Grid.Column="0"/>
+                <TextBox x:Name="NewTelTextBox" Grid.Row="0" Grid.Column="1" IsReadOnly="True"/>
+
+                <Label    Grid.Row="0" Grid.Column="2" Content="ام دی اف"  x:Name="NewMDFONUInfoLable"/>
+                <TextBox  Grid.Row="0" Grid.Column="3" x:Name="NewMDFONUInfoTextBox" IsEnabled="False" />
+                
+                <Label    Grid.Row="0" Grid.Column="4" Content="علت قطع"  x:Name="CauseOfCutLable" Visibility="Collapsed"/>
+                <TextBox  Grid.Row="0" Grid.Column="5" x:Name="CauseOfCutTextBox" IsReadOnly="True" Visibility="Collapsed"/>
+
+                <Label    Grid.Row="1" Grid.Column="0"  Content="ردیف" x:Name="NewColumnLable"/>
+                <TextBox  Grid.Row="1" Grid.Column="1" x:Name="NewColumnTextBox" IsEnabled="False" />
+                
+                <Label    Grid.Row="1" Grid.Column="2" Content="طبقه"   x:Name="NewRowLable"/>
+                <TextBox  Grid.Row="1" Grid.Column="3" x:Name="NewRowTextBox" IsEnabled="False" />
+
+                <Label    Grid.Row="1" Grid.Column="4" Content="اتصالی"  x:Name="NewBuchtLable"/>
+                <TextBox  Grid.Row="1" Grid.Column="5" x:Name="NewBuchtTextBox" IsEnabled="False" />
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="2" Grid.Column="0"  x:Name="OtherBuchtGroupBox" Style="{x:Null}" Visibility="Collapsed">
+            <GroupBox.Header>
+                <Label Content="مشخصات بوخت دیگر"  x:Name="OtherBuchtLabel" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14"/>
+            </GroupBox.Header>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label    Grid.Row="0" Grid.Column="0" Content="ام دی اف"  x:Name="OtherBuchtMDFONUInfoLable"/>
+                <TextBox  Grid.Row="0" Grid.Column="1" x:Name="OtherBuchtMDFONUInfoTextBox" IsEnabled="False" />
+
+                <Label    Grid.Row="1" Grid.Column="0"  Content="ردیف"  x:Name="OtherBuchtColumnLable"/>
+                <TextBox  Grid.Row="1" Grid.Column="1"  x:Name="OtherBuchtColumnTextBox" IsEnabled="False" />
+
+                <Label    Grid.Row="1" Grid.Column="2" Content="طبقه"  x:Name="OtherBuchtRowLable"/>
+                <TextBox  Grid.Row="1" Grid.Column="3" x:Name="OtherBuchtRowTextBox" IsEnabled="False" />
+
+                <Label    Grid.Row="1" Grid.Column="4" Content="اتصالی"  x:Name="OtherBuchtLable"/>
+                <TextBox  Grid.Row="1" Grid.Column="5" x:Name="OtherBuchtTextBox" IsEnabled="False" />
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="3" Grid.Column="0"  x:Name="AcessBuchtGroupBox" Style="{x:Null}" Visibility="Collapsed">
+            <GroupBox.Header>
+                <Label Content="مشخصات بوخت Acess"  x:Name="AcessBuchtLabel" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14"/>
+            </GroupBox.Header>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label    Grid.Row="0" Grid.Column="0" Content="ام دی اف"  x:Name="AcessBuchtMDFONUInfoLable"/>
+                <TextBox  Grid.Row="0" Grid.Column="1" x:Name="AcessBuchtMDFONUInfoTextBox" IsEnabled="False" />
+
+                <Label    Grid.Row="1" Grid.Column="0" Content="ردیف"  x:Name="AcessBuchtColumnLable"/>
+                <TextBox  Grid.Row="1" Grid.Column="1" x:Name="AcessBuchtColumnTextBox" IsEnabled="False" />
+
+                <Label    Grid.Row="1" Grid.Column="2" Content="طبقه"   x:Name="AcessBuchtRowLable"/>
+                <TextBox  Grid.Row="1" Grid.Column="3" x:Name="AcessBuchtRowTextBox" IsEnabled="False" />
+
+                <Label    Grid.Row="1" Grid.Column="4" Content="اتصالی"  x:Name="AcessBuchtLable"/>
+                <TextBox  Grid.Row="1" Grid.Column="5" x:Name="AcessBuchtTextBox" IsEnabled="False" />
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="4" Grid.Column="0"  x:Name="PostInfo" IsEnabled="False" Style="{x:Null}">
+            <GroupBox.Header>
+                <Label Content="مشخصات پست" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14"/>
+            </GroupBox.Header>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label    Grid.Row="0" Grid.Column="0" Content="کافو جدید" x:Name="NewCabinetLable" IsEnabled="False"/>
+                <TextBox  Grid.Row="0" Grid.Column="1"  Text="{Binding Path=NewConnection.CabinetNumber}" x:Name="NewCabinetComboBox" IsEnabled="False"/>
+
+
+                <Label    Grid.Row="0" Grid.Column="3" Content="ورودی جدید" x:Name="NewCabinetInputLable" IsEnabled="False"/>
+                <TextBox  Grid.Row="0" Grid.Column="4"  Text="{Binding Path=NewConnection.CabinetInputNumber}" x:Name="NewCabinetInputComboBox" IsEnabled="False"/>
+
+                <Label    Grid.Row="0" Grid.Column="6" Content="پست جدید" x:Name="NewPostLable" IsEnabled="False"/>
+                <TextBox  Grid.Row="0" Grid.Column="7"  Text="{Binding Path=NewConnection.PostNumber}" x:Name="NewPostComboBox" IsEnabled="False" />
+
+                <Label    Grid.Row="0" Grid.Column="9"  Content="اتصالی جدید" x:Name="NewConnectionLable" IsEnabled="False"/>
+                <TextBox  Grid.Row="0" Grid.Column="10" IsEnabled="False" Text="{Binding Path=NewConnection.ConnectionNo}" x:Name="NewConnectionTextBox"/>
+                <Button   x:Name="NewPostContactEquipmentButton" Content="تجهیزات مصرفی" Click="PostContactEquipmentButton_Click" Grid.Row="0" Grid.Column="11" Tag="{Binding Path=NewConnection.PostContactID}"  Visibility="Collapsed"  IsEnabled="True"/>
+
+                <Label    Grid.Row="1" Grid.Column="0" Content="کافو قدیم" x:Name="OldCabinetLable" IsEnabled="False"/>
+                <TextBox  Grid.Row="1" Grid.Column="1"  Text="{Binding Path=OldConnection.CabinetNumber}" x:Name="OldCabinetComboBox" IsEnabled="False"/>
+
+                <Label    Grid.Row="1" Grid.Column="3"  Content="ورودی قدیم" x:Name="OldCabinetInputLable" IsEnabled="False"/>
+                <TextBox  Grid.Row="1" Grid.Column="4" Text="{Binding Path=OldConnection.CabinetInputNumber}" x:Name="OldCabinetInputComboBox" IsEnabled="False"/>
+
+                <Label    Grid.Row="1" Grid.Column="6" Content="پست قدیم" x:Name="OldPostLable" IsEnabled="False"/>
+                <TextBox  Grid.Row="1" Grid.Column="7"  Text="{Binding Path=OldConnection.PostNumber}" x:Name="OldPostComboBox" IsEnabled="False"/>
+
+                <Label    Grid.Row="1" Grid.Column="9"    Content="اتصالی قدیم" x:Name="OldConnectionLable" IsEnabled="False"/>
+                <TextBox  Grid.Row="1" Grid.Column="10"   IsEnabled="False" Text="{Binding Path=OldConnection.ConnectionNo}" x:Name="OldConnectionTextBox"/>
+                
+                <Button   x:Name="OldPostContactEquipmentButton"    Content="تجهیزات مصرفی" Click="PostContactEquipmentButton_Click" Grid.Row="1" Grid.Column="11" Tag="{Binding Path=OldConnection.PostContactID}"  Visibility="Collapsed"/>
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="5" Grid.Column="0" x:Name="PCMGroupBox" Visibility="Collapsed" Style="{x:Null}">
+            <GroupBox.Header>
+                <Label Content="مشخصات PCM" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14"/>
+            </GroupBox.Header>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <DataGrid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" x:Name="PCMDataGrid" IsEnabled="False" 
+                              BorderThickness="0 1 0 0"
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="True"
+                              CanUserResizeColumns="True"
+                              CanUserResizeRows="False"
+                              CanUserDeleteRows="False"
+                              SelectionMode="Single"
+                              SelectionUnit="FullRow"
+                              SelectedValuePath="PostContactID"
+                              Visibility="Collapsed"
+                              ItemsSource="{Binding}"
+                             RowStyle="{StaticResource ResourceKey=ColorDataGrid}">
+
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding Path=PostContactType, Converter={StaticResource PostContactImageConverter}}"  Width="16" Height="16" HorizontalAlignment="Center" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="ورودی" Width="Auto" Binding="{Binding Path=InputNumber, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="اتصالی بوخت" Width="Auto" Binding="{Binding Path=Connection, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="اتصالی ورودی" Width="Auto" Binding="{Binding Path=ConnectionInput, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="اتصالی پست" Width="Auto" x:Name="PostContactColumn"  Binding="{Binding Path=PostContact, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                        <DataGridComboBoxColumn Header="نوع بوخت" Width="Auto"  x:Name="BuchtTypeColumn" SelectedValueBinding="{Binding Path=BuchtType, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" SelectedValuePath="ID" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="مشخصه پی سی ام" Width="Auto" x:Name="MUIDColumn" Binding="{Binding Path=MUID, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="کد سوئیچ" Width="Auto"  x:Name="SwitchCodeColumn"  Binding="{Binding Path=SwitchCode, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" />
+                        <DataGridTextColumn Header="تلفن" Width="Auto" x:Name="TelePhoneNoColumn" Binding="{Binding Path=TelePhoneNo, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" />
+                        <DataGridComboBoxColumn Header="وضعیت" Width="Auto" x:Name="StatusColumn" SelectedValueBinding="{Binding Path=PostContactStatus, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" SelectedValuePath="ID" IsReadOnly="True" />
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <Label    Grid.Row="1" Grid.Column="0" Content="شناسه بوخت مرکزی" x:Name="BuchtNoInputLable"/>
+                <TextBox  Grid.Row="1" Grid.Column="1" x:Name="BuchtNoInputTextBox" IsEnabled="False" />
+
+                <Label    Grid.Row="1" Grid.Column="2" Content="شناسه بوخت خروجی PCM" x:Name="BuchtNoPCMInputLable"/>
+                <TextBox  Grid.Row="1" Grid.Column="3" x:Name="BuchtNoInputPCMTextBox" IsEnabled="False" />
+            </Grid>
+        </GroupBox>
+
+    </Grid>
+</Local:UserControlBase>

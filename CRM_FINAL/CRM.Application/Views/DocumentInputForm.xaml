@@ -1,0 +1,34 @@
+﻿<Local:PopupWindow 
+    xmlns:Local="clr-namespace:CRM.Application.Local" 
+    x:Class="CRM.Application.Views.DocumentInputForm" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+    xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+        Title="فایل پیوست" >
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="نحوه دریافت فایل را مشخص کنید." VerticalAlignment="Center"/>
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="FromFile" Grid.Row="0" Grid.Column="0" Content="از فایل" VerticalAlignment="Center" HorizontalAlignment="Center" Click="FromFile_Click" />
+            <Button x:Name="FromScanner" Grid.Row="0" Grid.Column="1" Content="از اسکنر" VerticalAlignment="Center" HorizontalAlignment="Center" Click="FromScanner_Click"/>
+            
+
+
+        </Grid>
+        <Button x:Name="SaveButton" Grid.Row="2" Grid.Column="1" Content="ذخیره" VerticalAlignment="Center"  HorizontalAlignment="Center" Click="Save_Click" Visibility="Collapsed"/>
+    </Grid>
+</Local:PopupWindow>

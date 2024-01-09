@@ -1,0 +1,106 @@
+﻿<Local:RequestFormBase Title="فرم ورود به لیست سیاه" 
+                   x:Class="CRM.Application.Views.BlackListForm"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib" 
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d:DesignWidth="780"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+                   Loaded="PopupWindow_Loaded" Icon="/CRM.Application;component/Images/City48x48.png" Width="500" Height="300" WindowStyle="SingleBorderWindow">
+
+    <Grid FlowDirection="RightToLeft" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="نوع ورودی : " />
+        <ComboBox Grid.Row="0" Grid.Column="1" x:Name="TypeComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding TypeMember}" SelectionChanged="TypeComboBox_SelectionChanged"  />
+
+        <Label Grid.Row="1" Grid.Column="0" Content=" دلیل ورود : "/>
+        <ComboBox Grid.Row="1" Grid.Column="1" x:Name="ReasonComboBox" DisplayMemberPath="ReasonContent" SelectedValuePath="ID" SelectedValue="{Binding ReasonID}" />
+        
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Name="TelephonePanel" Visibility="Collapsed">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="شماره تلفن : " />
+                <TextBox Grid.Row="0" Grid.Column="1" Name="TelephoneNoTextBox" Text="{Binding TelephoneNo}"/>
+
+                <Label Grid.Row="1" Grid.Column="0" Content="افزودن مالک به لیست سیاه : " />
+                <CheckBox Grid.Row="1" Grid.Column="1" Name="CustomerCheckBox" VerticalAlignment="Center"/>
+
+                <Label Grid.Row="2" Grid.Column="0" Content="افزودن آدرس به لیست سیاه : " />
+                <CheckBox Grid.Row="2" Grid.Column="1" Name="AddressCheckBox" VerticalAlignment="Center"/>
+                
+            </Grid>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Name="CustomerPanel" Visibility="Collapsed" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="کد ملی / شماره ثبت : " />
+                <TextBox Grid.Row="0" Grid.Column="1" Name="CustomerTextBox" Text="{Binding CustomerNationalCode}" />
+
+            </Grid>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Name="AddressPanel" Visibility="Collapsed" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="کد پستی : " />
+                <TextBox Grid.Row="0" Grid.Column="1" Name="AddressTextBox" Text="{Binding AddressPostalCode}" />
+
+            </Grid>
+        </StackPanel>
+
+
+        <Label    Grid.Row="5" Grid.Column="0" Content="مرجع بازداشت کننده"/>
+        <TextBox  Grid.Row="5" Grid.Column="1" x:Name="ArrestReferenceTextBox" Text="{Binding ArrestReference}"/>
+
+        <Label    Grid.Row="6" Grid.Column="0" Content="شماره نامه بازداشت کننده"/>
+        <TextBox  Grid.Row="6" Grid.Column="1" x:Name="ArrestLetterNoTextBox" Text="{Binding ArrestLetterNo}"/>
+
+        <Label           Grid.Row="7" Grid.Column="0" Content="تاریخ نامه دستور بازداشت"/>
+        <cal:DatePicker  Grid.Row="7" Grid.Column="1" x:Name="ArrestLetterNoDatePicker" SelectedDate="{Binding ArrestLetterNoDate}"/>
+
+        <!--<Button Grid.Row ="5" Grid.Column="0" Content="ذخیره" Name="SaveButton" Click="SaveForm" Tag="Footer"/>-->
+
+    </Grid>
+</Local:RequestFormBase>

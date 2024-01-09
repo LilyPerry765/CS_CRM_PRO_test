@@ -1,0 +1,54 @@
+﻿<Local:RequestFormBase x:Class="CRM.Application.Views.DeviceHallForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Local="clr-namespace:CRM.Application.Local"
+        xmlns:uc="clr-namespace:CRM.Application.UserControls"
+        xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+        Title="سالن دستگاه" Loaded="RequestFormBase_Loaded">
+    <ScrollViewer Margin="0 0 10 0" FlowDirection="RightToLeft">
+        <Grid>
+            <Grid.Resources>
+                <ResourceDictionary Source="/CRM.Application;component/Resources/Styles/AutoComplete.Styles.xaml"/>
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <uc:CustomerInfoSummary Grid.Row="0" x:Name="CustomerInfoSummaryUC"/>
+
+            <uc:RequestInfoSummary Grid.Row="1" x:Name="RequestInfoSummaryUC"/>
+
+            <uc:V2SpaceAndPowerInfoSummary Grid.Row="2" x:Name="V2SpaceAndPowerInfoSummaryUC"/>
+
+            <GroupBox Grid.Row="3" Header="جزئیات سالن دستگاه">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="توضیحات : "/>
+                    <TextBox x:Name="DescriptionTextBox" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" TextWrapping="Wrap"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="تاریخ : "/>
+                    <cal:DatePicker Grid.Row="1" Grid.Column="1" x:Name="DeviceHallDatePicker"/>
+
+                    <Label Grid.Row="1" Grid.Column="2" Content="وضعیت : "/>
+                    <ComboBox Grid.Row="1" Grid.Column="3" x:Name="StatusComboBox" DisplayMemberPath="StatusResult" SelectedValuePath="StepStatusID" Height="25"/>
+
+                </Grid>
+
+
+            </GroupBox>
+        </Grid>
+    </ScrollViewer>
+</Local:RequestFormBase>

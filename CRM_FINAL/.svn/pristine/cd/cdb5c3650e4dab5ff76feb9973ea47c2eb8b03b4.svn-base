@@ -1,0 +1,36 @@
+﻿<Local:PopupWindow x:Class="CRM.Application.Views.FormulaEditorForm"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Local="clr-namespace:CRM.Application.Local"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib"
+        xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+        xmlns:uc="clr-namespace:CRM.Application.UserControls"
+                   Closing="PopupWindow_Closing"
+        Loaded="PopupWindow_Loaded"
+        Title="ویرایشگر فرمول">
+    <DockPanel FlowDirection="LeftToRight" LastChildFill="True">
+        <StackPanel DockPanel.Dock="Right" Margin="5">
+            <Button Content="نتیجه"           Width="100" x:Name="ResultButton"   Click="ResultButton_Click"/>
+            <Button Content="شرط"             Width="100" x:Name="IfButton"       Click="IfButton_Click"/>
+            <Button Content="خارج از مرز"    Width="100" x:Name="OutBoundButton" Click="OutBoundButton_Click"/>
+            <Button Content="متراژ سیم"      Width="100" x:Name="CableMeterButton" Click="CableMeterButton_Click"/>
+            <Button Content="بستن صفر"       Width="100" x:Name="ZeroBlockButton" Click="ZeroBlockButton_Click"/>
+            <Button Content="بستن صفراول"    Width="100" x:Name="FirstZeroBlockButton" Click="FirstZeroBlockButton_Click"/>
+            <Button Content="بستن صفردوم"    Width="100" x:Name="SecondZeroBlockButton" Click="SecondZeroBlockButton_Click"/>
+            <Button Content="بدون محدودیت"   Width="100" x:Name="LimitLessButton" Click="LimitLessButton_Click"/>
+            <!--<Button Content="رند"          Width="90" x:Name="RoundButton"    Click="RoundButton_Click"/>-->
+
+        </StackPanel>
+
+
+        <WrapPanel DockPanel.Dock="Bottom" Margin="5">
+            <Button Content="اشکال زدایی" x:Name="DebugButton" Width="90" Click="DebugButton_Click"/>
+            <Button Content="حذف"          x:Name="DeleteButton" Width="90" Click="DeleteButton_Click"/>
+        </WrapPanel>
+        <Grid Margin="5">
+            <TextBox Text="{Binding Path=DataContext.Formula,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" x:Name="FormulaTextBox" AcceptsReturn="True" MinHeight="300" FontSize="17">
+            </TextBox>
+        </Grid>
+        <Button Grid.Row="20" Grid.Column="0" Content="اعمال تغییرات" Name="SaveButton" Click="SaveButton_Click" Tag="Footer" />
+    </DockPanel>
+</Local:PopupWindow>

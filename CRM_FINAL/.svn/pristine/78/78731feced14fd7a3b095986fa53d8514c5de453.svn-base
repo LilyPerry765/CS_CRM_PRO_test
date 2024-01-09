@@ -1,0 +1,455 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Local="clr-namespace:CRM.Application.Local" xmlns:Customcontrols="clr-namespace:CRM.Application.Codes.CustomControls;assembly=CRM.Application"  xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" xmlns:UserControls="clr-namespace:CRM.Application.UserControls">
+    
+    <Style TargetType="{x:Type Customcontrols:ImageButton}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Customcontrols:ImageButton}">
+                    <Button Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Margin="{TemplateBinding Margin}">
+                        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft">
+                            <Image Source="{TemplateBinding Image}" Width="{TemplateBinding ImageWidth}"
+                                   Height="{TemplateBinding ImageHeight}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="{x:Type Customcontrols:ExtendedMenuItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Customcontrols:ExtendedMenuItem}">
+                    <Grid FlowDirection="RightToLeft" Margin="{TemplateBinding Margin}" Background="{TemplateBinding Background}" Cursor="Hand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="{TemplateBinding Image}" Height="{TemplateBinding ImageHeight}" Width="{TemplateBinding ImageWidth}" VerticalAlignment="Center"/>
+
+                        <TextBlock Text="{TemplateBinding Text}" Grid.Column="1" TextWrapping="Wrap" Margin="2.5"
+                                   FontFamily="{TemplateBinding FontFamily}" FontSize="{TemplateBinding FontSize}"/>
+
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="PagerNormalBlueBorder" TargetType="{x:Type Border}">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="#AAD3E6" />
+        <Setter Property="DockPanel.Dock" Value="Top" />
+        <Setter Property="Background" Value="Red" />
+        <Setter Property="CornerRadius" Value="5" />
+    </Style>
+    
+    <Style TargetType="{x:Type cal:DatePicker}">
+        <Setter Property="FontFamily" Value="pack://application:,,,/CRM.Application;Component/Resources/Fonts/#Yekan" />
+        <Setter Property="BorderBrush" Value="#DBDBDB" />
+        <Setter Property="BorderThickness" Value="0.5" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="SelectedDateFormat" Value="Long"/>
+    </Style>
+
+    <Style TargetType="{x:Type ComboBox}">
+        <Setter Property="FontFamily" Value="Tahoma" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Foreground" Value="#033B78" />
+        <Setter Property="BorderBrush" Value="#DBDBDB" />
+        <Setter Property="BorderThickness" Value="0.5" />
+        <!--<Setter Property="IsEditable" Value="True"/>-->
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}">
+        <Setter Property="FontFamily" Value="Tahoma" />
+        <Setter Property="Foreground" Value="#033B78" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border BorderBrush="#dbdbdb" BorderThickness="0.5" Background="White">
+                        <ScrollViewer x:Name="PART_ContentHost" Margin="5 4 5 4" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" Value="{StaticResource DisabledBackgroundBrush}" />
+                            <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsReadOnly" Value="true">
+                            <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush2}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+
+    <Style x:Key="NumericTextBox" TargetType="{x:Type TextBox}">
+        <Setter Property="FontFamily" Value="/CRM.Application;component/Resources/Fonts/#Yekan" />
+        <Setter Property="Foreground" Value="#033B78" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border BorderBrush="#dbdbdb" BorderThickness="0.5" Background="White">
+                        <ScrollViewer x:Name="PART_ContentHost" Margin="5 4 5 4" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" Value="{StaticResource DisabledBackgroundBrush}" />
+                            <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsReadOnly" Value="true">
+                            <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush2}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type StatusBarItem}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Margin" Value="0 0 10 0" />
+    </Style>
+
+    <!--<Style TargetType="{x:Type GroupBox}" x:Key="StyleHeaderGropBox">
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Border 
+                     CornerRadius="5,5,0,0"  >
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                <GradientStop Color="#C4E9FE" Offset="0.0" />
+                                <GradientStop Color="#8AD3FF" Offset="1.0" />
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Label Content="{Binding}"/>
+                    </Border>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>-->
+
+    <Style TargetType="{x:Type GroupBox}" x:Key="StyleHeaderGropBox">
+        <!--<Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect ShadowDepth="0.5"/>
+            </Setter.Value>
+        </Setter>-->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="GroupBox">
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Row="0" 
+                              BorderThickness="1"
+                                CornerRadius="5,5,0,0"
+                             BorderBrush="#25A0DA">
+                               <Border.Background>
+                                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                            <!--<GradientStop Color="#C4E9FE" Offset="0.0" />
+                                            <GradientStop Color="#8AD3FF" Offset="1.0" />-->
+                                    <GradientStop  Color="#F2F2F2"  Offset="0.0" />
+                                    <GradientStop Color="#E6E6E6"  Offset="1.0" />
+                                </LinearGradientBrush>
+                                   
+                            </Border.Background>
+                            
+                            <Label Foreground="Black">
+                                <ContentPresenter Margin="4"
+                          ContentSource="Header"
+                          RecognizesAccessKey="True" />
+                            </Label>
+                        </Border>
+
+                        <Border Grid.Row="1"
+               BorderThickness="0.5,0,0.5,0.5"
+                BorderBrush="#25A0DA">
+                            <ContentPresenter Margin="4" />
+                        </Border>
+
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="SearchExpander" TargetType="{x:Type Expander}">
+        <Setter Property="BorderBrush" Value="{StaticResource SkyTopDowonGradientBrush}" />
+        <Setter Property="Background" Value="{StaticResource CalmBlueGradientBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="Header" Value="جستجو" />
+        <Setter Property="Margin" Value="0 0 0 5" />
+        <Setter Property="DockPanel.Dock" Value="Top" />
+        <Setter Property="ExpandDirection" Value="Down" />
+        <Setter Property="IsExpanded" Value="False" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/CRM.Application;component/Images/swoosh.png" Stretch="Fill" AlignmentX="Center" AlignmentY="Top" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+   
+
+    <Style TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="23" />
+        <Setter Property="FontFamily" Value="Tahoma" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="ButtonBorder" CornerRadius="12,12,12,12" BorderThickness="1,1,1,1" Background="#DEDEDE" BorderBrush="#000000" RenderTransformOrigin="0.5,0.5">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="1.7*" />
+                            </Grid.RowDefinitions>
+                            <Border x:Name="Border" Grid.Row="0" Grid.RowSpan="2" CornerRadius="12,12,12,12">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                        <GradientStop Color="White" Offset="0.0" />
+                                        <GradientStop Color="#DEDEDE" Offset="0.5" />
+                                        <GradientStop Color="White" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                            </Border>
+                            <ContentPresenter x:Name="ButtonContentPresenter" VerticalAlignment="Center" Grid.RowSpan="2" HorizontalAlignment="Center" Margin="10 0 10 0"/>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="Border">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                        <GradientStop Color="White" Offset="0.0" />
+                                        <GradientStop Color="#76CCFC" Offset="0.5" />
+                                        <GradientStop Color="White" Offset="1.0" />
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="RenderTransform" TargetName="ButtonBorder">
+                                <Setter.Value>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="0.97" ScaleY="0.95" />
+                                    </TransformGroup>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter TargetName="ButtonBorder" Property="Background" Value="#fff4f4f4"/>
+                            <Setter Property="Foreground" Value="#ff838383" />
+                            <Setter Property="BorderBrush" TargetName="ButtonBorder" Value="#ffadb2b5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    
+    <Style TargetType="{x:Type GroupBox}" x:Key="HeaderGroupBox">
+        <Setter Property="Background" Value="LightBlue" />
+    </Style>
+
+    <Style TargetType="{x:Type GroupBox}" x:Key="BlueGroupBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type GroupBox}">
+                    <DockPanel DockPanel.Dock="Top" Margin="0 20 0 0">
+                        <Border DockPanel.Dock="Top" Margin="20 0 0 -1" Padding="20 1 20 4" HorizontalAlignment="Left" BorderThickness="1 1 1 0" BorderBrush="#7FCEFE" Opacity="1" Height="25">
+                            <Border.Background>
+                                <ImageBrush ImageSource="/CRM.Application;Component/Images/legend-bg.png" TileMode="FlipX" />
+                            </Border.Background>
+                            <TextBlock FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontWeight="Bold" FontSize="14" Foreground="#355E92" VerticalAlignment="Center" Padding="5 0 5 0" Text="{TemplateBinding Header}">
+                                <TextBlock.Effect>
+                                    <DropShadowEffect ShadowDepth="1" Direction="230" Color="Navy" Opacity="0.1" BlurRadius="1" />
+                                </TextBlock.Effect>
+                            </TextBlock>
+                        </Border>
+                        <Border BorderThickness="0 3 0 0" BorderBrush="#7FCEFE">
+                            <Border BorderThickness="1 0 1 1" BorderBrush="#a6ddff" Background="White">
+                                <ContentPresenter />
+                            </Border>
+                        </Border>
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--<Style x:Key="Vertical" TargetType="{x:Type UserControls:ImageButton}" BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel>
+                        <Image Source="{Binding Path=(Source), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControls:ImageButton}}}" Width="32" Height="32" />
+                        <TextBlock Text="{TemplateBinding Content}" HorizontalAlignment="Center" FontFamily="Tahoma" FontSize="10" />
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style x:Key="Horizontal" TargetType="{x:Type UserControls:ImageButton}" BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="ContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Grid FlowDirection="RightToLeft" Margin="2,2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Source="{Binding Path=(Source), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControls:ImageButton}}}" Width="16" Height="16" Margin="2,0" />
+                        <TextBlock Grid.Column="1" Margin="7,0,15,3" Text="{TemplateBinding Content}" HorizontalAlignment="Center" />
+                    </Grid>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
+
+    <Style TargetType="{x:Type DataGrid}">
+        <Setter Property="BorderThickness" Value="0 1 0 0" />
+        <Setter Property="BorderBrush" Value="#ccd9ea" />
+        <Setter Property="HeadersVisibility" Value=" Column" />
+        <Setter Property="AlternatingRowBackground" Value="#EAF6FD" />
+        <Setter Property="SelectionMode" Value=" Single" />
+        <Setter Property="GridLinesVisibility" Value="None" />
+        <Setter Property="AlternationCount" Value=" 2" />
+        <Setter Property="SelectionUnit" Value="FullRow" />
+        <Setter Property="FontFamily" Value="pack://application:,,,/CRM.Application;Component/Resources/Fonts/#Yekan" />
+        <Setter Property="FontSize" Value=" 12" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Background" Value="White" />
+    </Style>
+    
+    <Style TargetType="{x:Type Customcontrols:EditableDataGrid}">
+        <Setter Property="BorderThickness" Value="0 1 0 0" />
+        <Setter Property="BorderBrush" Value="#ccd9ea" />
+        <Setter Property="HeadersVisibility" Value=" Column" />
+        <Setter Property="AlternatingRowBackground" Value="#EAF6FD" />
+        <Setter Property="SelectionMode" Value=" Single" />
+        <Setter Property="GridLinesVisibility" Value="None" />
+        <Setter Property="AlternationCount" Value=" 2" />
+        <Setter Property="SelectionUnit" Value="FullRow" />
+        <Setter Property="FontFamily" Value="pack://application:,,,/CRM.Application;Component/Resources/Fonts/#Yekan" />
+        <Setter Property="FontSize" Value=" 12" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Background" Value="White" />
+    </Style>
+    
+    <!--<Style TargetType="{x:Type DataGridRow}">
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="Fales">
+                <Setter Property="Background" Value="#cccccc" />
+                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="BorderThickness" Value="0" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>-->
+
+    <Style TargetType="{x:Type DataGridCell}">
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#4D90FE" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="BorderThickness" Value="0" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style TargetType="{x:Type Grid}" x:Key="TabWindowFooter">
+        <Setter Property="Height" Value="50" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <ImageBrush ImageSource="/CRM.Application;Component/Images/footer_bg.jpg" AlignmentY="Bottom" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ColorDataGrid" TargetType="{x:Type DataGridRow}">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Path=PostContactStatus, Converter={StaticResource PostContactColorConverter}}" Value="PCMAllocation">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Color="#DEFEC4" Offset="0.0" />
+                            <GradientStop Color="#C5FF8A" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=PostContactStatus, Converter={ StaticResource PostContactColorConverter}}" Value="Free">
+                <Setter Property="BorderBrush" Value="#9CDAFF" />
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Color="#DEFEC4" Offset="0.0" />
+                            <GradientStop Color="#C5FF8A" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=PostContactStatus, Converter={ StaticResource PostContactColorConverter}}" Value="FullBooking">
+                <Setter Property="BorderBrush" Value="#9CDAFF" />
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Color="#FEC4E6" Offset="0.0" />
+                            <GradientStop Color="#FF8ACE" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=PostContactStatus, Converter={ StaticResource PostContactColorConverter}}" Value="NoCableConnection">
+                <Setter Property="BorderBrush" Value="#9CDAFF" />
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Color="#FEFAC4" Offset="0.0" />
+                            <GradientStop Color="#FFF78A" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=PostContactStatus, Converter={ StaticResource PostContactColorConverter}}" Value="CableConnection">
+                <Setter Property="BorderBrush" Value="#9CDAFF" />
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Color="#C4E9FE" Offset="0.0" />
+                            <GradientStop Color="#8AD3FF" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+
+            <DataTrigger Binding="{Binding Path=PostContactStatus, Converter={ StaticResource PostContactColorConverter}}" Value="NULL">
+                <Setter Property="BorderBrush" Value="#9CDAFF" />
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                            <GradientStop Color="#E6E8FA" Offset="0.0" />
+                            <GradientStop Color="#D4D8FA" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

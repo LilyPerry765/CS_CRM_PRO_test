@@ -1,0 +1,52 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Collections;
+using System.Data.Linq;
+
+namespace CRM.Data
+{
+    public static class [TableName]DB
+    {
+        public static List<[TableName]> Search[TableName]([SearchParameters])
+        {
+            using (MainDataContext context = new MainDataContext())
+            {
+                return context.[TableName]s
+                    .Where(t => 
+							[SearchWhereClause]
+						  )
+                    //.OrderBy(t => t.Name)
+                    .ToList();
+            }
+        }
+
+        public static [TableName] Get[TableName]ByID(int id)
+        {
+            using (MainDataContext context = new MainDataContext())
+            {
+                return context.[TableName]s
+                    .Where(t => t.ID == id)
+                    .SingleOrDefault();
+            }
+        }
+
+        public static List<CheckableItem> Get[TableName]Checkable()
+        {
+
+            using (MainDataContext context = new MainDataContext())
+            {
+                return context.[TableName]s
+                    .Select(t => new CheckableItem
+                            {
+                                ID = t.ID,
+                                Name = t.Name,
+                                IsChecked = false
+                            }
+                        )
+                    .ToList();
+            }
+        }
+    }
+}

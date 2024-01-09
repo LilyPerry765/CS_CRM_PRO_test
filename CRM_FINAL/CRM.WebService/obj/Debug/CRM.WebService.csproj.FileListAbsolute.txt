@@ -1,0 +1,21 @@
+D:\Develop\CRM FINAL\CRM.WebService\bin\CRM.WebService.dll
+D:\Develop\CRM FINAL\CRM.WebService\bin\CRM.WebService.pdb
+D:\Develop\CRM FINAL\CRM.WebService\bin\CookComputing.XmlRpcV2.dll
+D:\Develop\CRM FINAL\CRM.WebService\bin\CRM.Data.dll
+D:\Develop\CRM FINAL\CRM.WebService\bin\Logger.dll
+D:\Develop\CRM FINAL\CRM.WebService\bin\Folder.Common.dll
+D:\Develop\CRM FINAL\CRM.WebService\bin\CRM.WebAPI.Models.dll
+D:\Develop\CRM FINAL\CRM.WebService\bin\CRM.Data.pdb
+D:\Develop\CRM FINAL\CRM.WebService\bin\CRM.Data.dll.config
+D:\Develop\CRM FINAL\CRM.WebService\bin\Folder.Common.pdb
+D:\Develop\CRM FINAL\CRM.WebService\bin\Folder.Common.dll.config
+D:\Develop\CRM FINAL\CRM.WebService\bin\CRM.WebAPI.Models.pdb
+D:\Develop\CRM FINAL\CRM.WebService\obj\Debug\CRM.WebService.csprojResolveAssemblyReference.cache
+D:\Develop\CRM FINAL\CRM.WebService\obj\Debug\CRM.WebService.dll
+D:\Develop\CRM FINAL\CRM.WebService\obj\Debug\CRM.WebService.pdb
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.WebService\obj\Debug\CRM.WebService.csprojResolveAssemblyReference.cache
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.WebService\obj\Debug\CRM.WebService.dll
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.WebService\obj\Debug\CRM.WebService.pdb
+E:\Folder\CRM.WebService.dll.config
+E:\Folder\CRM.WebService.dll
+E:\Folder\CRM.WebService.pdb

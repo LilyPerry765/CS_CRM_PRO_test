@@ -1,0 +1,60 @@
+﻿<Local:ReportBase x:Class="CRM.Application.Reports.ReportUserControls.CenterCabinetSubsetReportUserControl"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                 mc:Ignorable="d"  d:DesignWidth="800"
+                 xmlns:Local="clr-namespace:CRM.Application.Local"
+                 xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                 xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker">
+    <StackPanel FlowDirection="RightToLeft">
+
+        <GroupBox Grid.Row="0" Grid.Column="0" Header="انتخاب شهر و مرکز">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Content="شهر : " VerticalAlignment="Center" />
+                <UserControls:CheckableComboBox Grid.Row="0" Grid.Column="1" x:Name="CityComboBox" LostFocus="CityComboBox_LostFocus"/>
+
+                <Label Grid.Row="0" Grid.Column="3" Content="مرکز : " VerticalAlignment="Center" />
+                <UserControls:CheckableComboBox Grid.Row="0" Grid.Column="4" x:Name="CenterComboBox" LostFocus="CenterComboBox_LostFocus"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="1" Grid.Column="0" Header=" مشخصات گزارش ">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="شماره کافو:"  />
+                <UserControls:CheckableComboBox Grid.Row="0" Grid.Column="1" x:Name="CabinetComboBox"/>
+
+                <Label Grid.Row="0" Grid.Column="3" Content="تعداد اتصالی آزاد: "/>
+                <TextBox x:Name="FreePostContactTextBox" Grid.Row="0" Grid.Column="4"/>
+
+                <Label Grid.Row="1" Grid.Column="0" Content="مرتب سازی بر اساس: "/>
+                <ComboBox x:Name="ReportSortingTypeComboBox" Grid.Row="1" Grid.Column="1" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedIndex="0" />
+
+            </Grid>
+        </GroupBox>
+    </StackPanel>
+    </Local:ReportBase>
+
+

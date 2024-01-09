@@ -1,0 +1,27 @@
+﻿<Local:PopupWindow x:Class="CRM.Application.Views.InstallmentRequestPaymentChequeForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Local="clr-namespace:CRM.Application.Local"
+        xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+        xmlns:uc="clr-namespace:CRM.Application.UserControls"
+                   Loaded="PopupWindow_Loaded"
+        Title="چک اقساط">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Label Grid.Row="0" Grid.Column="0" Content="تاریخ سر رسید"/>
+        <cal:DatePicker Grid.Row="0"  Grid.Column="1" x:Name="EndDateDatePicker" SelectedDate="{Binding EndDate}"/>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="شماره چک"/>
+        <TextBox Grid.Row="1"  Grid.Column="1" x:Name="EndDateTextBox" Text="{Binding ChequeNumber}"  />
+        
+        <Button Grid.Row="20" Grid.Column="0" Content="ذخیره" Name="SaveButton" Click="SaveForm" Tag="Footer" IsDefault="True" />
+    </Grid>
+</Local:PopupWindow>

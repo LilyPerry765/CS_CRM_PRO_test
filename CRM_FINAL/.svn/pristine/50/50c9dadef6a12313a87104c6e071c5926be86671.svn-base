@@ -1,0 +1,24 @@
+﻿--13931006 - 14:24
+--به خاطر لیستی شدن گزارش باید دیتا باند اضافه میکردم که در لوکال این کار انجام شد  و باید بر روی سرور هم به روزرسانی میشد
+--update RR
+--set Template = RL.Template,
+--	[TimeStamp] = rl.[TimeStamp]
+--from 
+--	[78.39.252.109].CRM.dbo.ReportTemplate RR 
+--INNER JOIN
+--	ReportTemplate RL ON RR.ID = RL.ID
+--where 
+--	RL.ID = 255 and RR.ID = 255
+
+--13931006 - 18:00
+--update rl
+--set Template = rr.Template,
+--	Category=rr.Category,
+--	[TimeStamp]=rr.[TimeStamp]
+--from 
+--	[78.39.252.109].CRM.dbo.ReportTemplate RR 
+--INNER JOIN	
+--	ReportTemplate rl on rr.ID = rl.ID
+--where 
+--	rl.ID = 255 and rr.id = 255
+

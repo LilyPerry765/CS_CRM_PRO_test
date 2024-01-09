@@ -1,0 +1,30 @@
+﻿<Window x:Class="CRMConvertApplication.MainWindow" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="400" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        
+        <TextBox Grid.Row="0" Name="TelephoneNoTextBox" Width="200" PreviewTextInput="TelephoneNoTextBox_PreviewTextInput"/>
+        
+        <Button Grid.Row="1" Name="Click" Content="جستجو مرکز" Click="Click_Click" Width="100" IsDefault="True" Height="25" />
+        
+        <Label Grid.Row="2" Name="CenterCodeLabel" />
+        <Label Grid.Row="3" Name="CenterIDLabel" />
+        <Label Grid.Row="4" Name="CenterNameLabel" />
+        <Label Grid.Row="5" Name="ErrorLabel" VerticalAlignment="Top" Height="50"/>
+        <Button Grid.Row="6" Name="Save" Content="ذخیره" Click="Save_Click" Width="100"  Height="25" />
+        <Label Grid.Row="7" Name="SuccessLabel" VerticalAlignment="Top" Height="50"/>
+        <Button Grid.Row="8" Name="CheckCenterButton" Content="بررسی مرکز" Click="CheckCenterButton_Click" Width="100"  Height="25" />
+    </Grid>
+</Window>

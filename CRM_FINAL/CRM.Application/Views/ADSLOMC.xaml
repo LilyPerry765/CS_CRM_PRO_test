@@ -1,0 +1,153 @@
+﻿<Local:RequestFormBase x:Class="CRM.Application.Views.ADSLOMC"
+        xmlns:Local="clr-namespace:CRM.Application.Local" 
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:converter="clr-namespace:CRM.Converters" 
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                   WindowStartupLocation="CenterScreen" 
+                   Title="OMC در ADSL" Height="Auto" Width="800">
+    <ScrollViewer  Padding="0 0 10 0" FlowDirection="RightToLeft">
+        <DockPanel FlowDirection="RightToLeft">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <GroupBox Grid.Row="0" Header="مشخصات فنی">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="180" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="155" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="شماره تلفن : "/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Name="TelephoneTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="نام تجهیزات : "/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Name="EquipmentNameTextBox" IsReadOnly="True" />
+
+                        <Label Grid.Row="1" Grid.Column="2" Content="شماره پورت : "/>
+                        <TextBox Grid.Row="1" Grid.Column="3" Name="PortNoTextBox" IsReadOnly="True" />
+
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="1" Name="TechnicalInfoGroupBox" Header="مشخصات سرویس ADSL" Margin="0,0,0,10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="180" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="155" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="نوع سرویس : " />
+                        <TextBox Grid.Row="0" Grid.Column="1" Name="ServiceTypeTetxBox" IsReadOnly="True" />
+
+                        <Label Grid.Row="0" Grid.Column="2" Content="نحوه پرداخت هزینه سرویس : " />
+                        <TextBox Grid.Row="0" Grid.Column="3" Name="ServiceCostTextBox" IsReadOnly="True" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="اولویت مشترک : " />
+                        <TextBox Grid.Row="1" Grid.Column="1" Name="CustomerPriorityTextBox" IsReadOnly="True" />
+
+                        <Label Grid.Row="1" Grid.Column="2" Content="نوع پروژه ثبت نام : " />
+                        <TextBox Grid.Row="1" Grid.Column="3" Name="RegisterProjectTypeTextBox" IsReadOnly="True" />
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="نصب و راه اندازی توسط مخابرات : " />
+                        <CheckBox Grid.Row="2" Grid.Column="1" Name="RequiredInstalationCheckBox" VerticalAlignment="Center" IsEnabled="False" />
+
+                        <Label Grid.Row="2" Grid.Column="2" Content="درخواست مودم : " />
+                        <CheckBox Grid.Row="2" Grid.Column="3" Name="NeedModemCheckBox" VerticalAlignment="Center" IsEnabled="False" />
+
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="2" Name="ADSLTariffGroupBox" Header="تعرفه ADSL" Margin="0,0,0,10">
+                    <Grid x:Name="TariffInfo">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="180" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="155" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="تعرفه ADSL : " />
+                        <TextBox Grid.Row="0" Grid.Column="1" IsReadOnly="True" Text="{Binding Title}" />
+
+                        <Label Grid.Row="0" Grid.Column="2" Content="مدت استفاده : " />
+                        <TextBox Grid.Row="0" Grid.Column="3" IsReadOnly="True" Text="{Binding Duration}" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="پهنای باند : " />
+                        <TextBox Grid.Row="1" Grid.Column="1" IsReadOnly="True" Text="{Binding BandWidth}" />
+
+                        <Label Grid.Row="1" Grid.Column="2" Content="حجم : " />
+                        <TextBox Grid.Row="1" Grid.Column="3" IsReadOnly="True" Text="{Binding Traffic}" />
+
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="3" Header="مولفه های اتصال">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="180" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="155" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="18" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="نام کاربری : " />
+                        <TextBox Grid.Row="0" Grid.Column="1" Name="UserNameTextBox" />
+
+                        <Label Grid.Row="0" Grid.Column="2" Content="رمز عبور : " />
+                        <TextBox Grid.Row="0" Grid.Column="3" Name="PasswordTextBox" />
+
+                        <Image Grid.Row="0" Grid.Column="4" Source="/CRM.Application;component/Images/info_16x16.png" Width="16" Height="16" VerticalAlignment="Center" Cursor="Hand" ToolTip="تولید خودکار" MouseLeftButtonDown="Image_MouseLeftButtonDown" />
+
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="4" Header="توضیحات">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="180" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="توضیحات : " />
+                        <TextBox Grid.Row="0" Grid.Column="1" Name="CommentTextBox" />
+                        
+                    </Grid>
+                    
+                </GroupBox>
+            </Grid>
+        </DockPanel>
+    </ScrollViewer>
+
+</Local:RequestFormBase>

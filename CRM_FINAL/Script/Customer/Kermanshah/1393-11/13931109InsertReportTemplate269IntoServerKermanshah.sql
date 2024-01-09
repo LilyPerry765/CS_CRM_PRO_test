@@ -1,0 +1,21 @@
+﻿--13931109 - 1053
+--گزارش درخواست های خارج از مرکز بر روی سیستم خودم نهایی شد حالا باید بر روی سرور 14 هم بروزرسانی شود
+--UPDATE R14
+--SET TEMPLATE = RM.Template
+--FROM 
+--	ReportTemplate RM
+--INNER JOIN 
+--	[192.168.0.14\PENDARSQL].CRM.DBO.ReportTemplate R14 ON RM.ID = R14.ID
+--WHERE 
+--	RM.ID = 269 AND R14.ID = 269
+
+--13931109 - 1309
+--گزارش درخواست های خارج از مرز را در سرور کرمانشاه وارد کردم
+--INSERT INTO [78.39.252.109].CRM.DBO.ReportTemplate 
+--(ID,Title,Category,IconName,Template,UserControlName)
+--SELECT 
+--	R14.ID,R14.Title,R14.Category,R14.IconName,R14.Template,R14.UserControlName
+--FROM 
+--	ReportTemplate R14
+--WHERE 
+--	R14.ID = 269

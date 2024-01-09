@@ -1,0 +1,27 @@
+﻿<Local:RequestFormBase Title="واگذاری خطوط برگردان مرکزی پست"
+                   x:Class="CRM.Application.Views.TranslationPostInputInvestigateForm"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib" 
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+                
+                   Loaded="PopupWindow_Loaded">
+
+    <ScrollViewer FlowDirection="RightToLeft">
+        <StackPanel>
+
+            <GroupBox Header="جزئیات برگردان" Name="TranslationInfo">
+
+            </GroupBox>
+        </StackPanel>
+    </ScrollViewer>
+
+</Local:RequestFormBase>
+
+
+

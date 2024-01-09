@@ -1,0 +1,160 @@
+﻿<Local:RequestFormBase xmlns:Local="clr-namespace:CRM.Application.Local" 
+                       x:Class="CRM.Application.Views.WiringNetworkGroupedForm" 
+                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                       Title="شبکه هوایی" 
+                       xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                       xmlns:converter="clr-namespace:CRM.Converters" 
+                       xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+                       xmlns:sv="clr-namespace:CRM.Application.StaticValidation"
+                       WindowStartupLocation="CenterScreen" 
+                       Loaded="Window_Loaded">
+    <ScrollViewer FlowDirection="RightToLeft">
+        <StackPanel>
+            <GroupBox Header="اطلاعات فنی"  x:Name="TechnicalDetails">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label   Grid.Column="0" Grid.Row="0" Content="فیلتر تلفن : " />
+                    <TextBox Grid.Column="1" Grid.Row="0" x:Name="FilterTelephonNoTextBox" TextChanged="FilterTelephonNoTextBox_TextChanged"/>
+
+                    <DataGrid Margin="5 5 5 5" Grid.Row="1" Grid.ColumnSpan="4"  x:Name="TelItemsDataGrid" MaxHeight="400" 
+                          BorderThickness="0 1 0 0"  
+                          AutoGenerateColumns="False"                          
+                          CanUserResizeColumns="True"
+                          CanUserResizeRows="False"
+                          CanUserDeleteRows="False"
+                          CanUserAddRows="False"
+                          SelectionMode="Single"
+                          SelectionUnit="FullRow"
+                          HorizontalScrollBarVisibility="Visible"
+                          VerticalScrollBarVisibility="Visible"
+                          ItemsSource="{Binding}">
+                        <DataGrid.ColumnHeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="ContentTemplate">
+                                    <Setter.Value>
+                                        <DataTemplate>
+                                            <CheckBox x:Name="HeaderCheckBox"  Content="{Binding}" Tag="{Binding }"  Checked="CheckBoxChanged" Unchecked="UnCheckBoxChanged" Style="{x:Null}"/>
+                                        </DataTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DataGrid.ColumnHeaderStyle>
+                        <DataGrid.ContextMenu>
+                            <ContextMenu FontFamily="Tahoma">
+                                <MenuItem Header="چاپ" Click="PrintItem_Click">
+                                    <MenuItem.Icon>
+                                        <Image Source="/CRM.Application;component/Images/Print.png" Width="16" Height="16" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Header="ذخیره ستون" Click="SaveColumnItem_Click">
+                                    <MenuItem.Icon>
+                                        <Image Source="/CRM.Application;component/Images/Save.png" Width="16" Height="16" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Header="تنظیمات چاپ" Click="ReportSettingItem_Click">
+                                    <MenuItem.Icon>
+                                        <Image Source="/CRM.Application;component/Images/Setting_24x24.png" Width="16" Height="16" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="/CRM.Application;component/Images/element_16x16.png" Width="16" Height="16" HorizontalAlignment="Center" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTextColumn    Header="تلفن" Binding="{Binding Path=TelephonNo, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" IsReadOnly="True" />
+                            <DataGridTextColumn    Header="مشترک" Binding="{Binding Path=Customer, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" IsReadOnly="True" />
+
+                            <DataGridTextColumn   Header="کافو" Binding="{Binding Path=Cabinet, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" IsReadOnly="True" />
+                            <DataGridTextColumn   Header="مرکزی" Binding="{Binding Path=CabinetInput, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" IsReadOnly="True" />
+                            <DataGridTextColumn   Header="پست" Binding="{Binding Path=Post, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" IsReadOnly="True" />
+                            <DataGridTextColumn   Header="اتصالی" Binding="{Binding Path=PostContact, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" IsReadOnly="True" />
+
+                            <DataGridTextColumn Width="*"   Header="آدرس" Binding="{Binding Path=Address, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" IsReadOnly="True" />
+
+                           <DataGridTextColumn   Header="ام دی اف" Binding="{Binding Path=MDF, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" IsReadOnly="True" />
+                                <DataGridTextColumn   Header="ردیف" Binding="{Binding  Path=Column, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" IsReadOnly="True" />
+                                <DataGridTextColumn   Header="طبقه" Binding="{Binding Path=Row, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" IsReadOnly="True" />
+                                <DataGridTextColumn   Header="اتصالی" Binding="{Binding Path=Bucht, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" IsReadOnly="True" />
+
+                            <!--<DataGridTextColumn   Header="PCM ام دی اف" Binding="{Binding Path=PCMMDF, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" IsReadOnly="True" />
+                                <DataGridTextColumn   Header="PCM ردیف" Binding="{Binding Path=PCMColumn, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" IsReadOnly="True" />
+                                <DataGridTextColumn   Header="PCM طبقه" Binding="{Binding Path=PCMRow, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" IsReadOnly="True" />
+                                <DataGridTextColumn  Header="PCM اتصالی" Binding="{Binding Path=PCMBucht, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" IsReadOnly="True" />
+
+
+                                <DataGridTextColumn   Header="ADSL ام دی اف" Binding="{Binding Path=ADSLMDF, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" IsReadOnly="True" />
+                                <DataGridTextColumn   Header="ADSL ردیف" Binding="{Binding Path=ADSLColumn, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" IsReadOnly="True" />
+                                <DataGridTextColumn   Header="ADSL طبقه" Binding="{Binding Path=ADSLRow, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" IsReadOnly="True" />
+                                <DataGridTextColumn   Header="ADSL اتصالی" Binding="{Binding Path=ADSLBucht, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" IsReadOnly="True" />-->
+
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="جزئیات سیم بندی"  x:Name="NetworkWiringInfoGroupBox">
+                <Grid Name="MDFWiringInfo" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition  />
+                        <ColumnDefinition  />
+                    </Grid.ColumnDefinitions>
+
+                    <Label          Grid.Row="0" Grid.Column="0" Content="تاریخ انجام" />
+                    <cal:DatePicker Grid.Row="0" Grid.Column="1"  Name="NetworkWiringDatePicker" SelectedDate="{Binding Path=NetworkWiringDate}"  />
+
+                    <Label          Grid.Row="0" Grid.Column="2"  Content="ساعت انجام:"/>
+                    <TextBox        Grid.Row="0" Grid.Column="3" x:Name="NetworkWiringHourTextBox">
+                        <TextBox.Text>
+                            <Binding Path="NetworkWiringHour" UpdateSourceTrigger="LostFocus" ValidatesOnDataErrors="True">
+                                <Binding.ValidationRules>
+                                    <sv:StaticValidation ValidationType="Pattern" Pattern="\d{2}:\d{2}:\d{2}"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+
+
+                    <Label        Grid.Row="1" Grid.Column="0"  Content="توضیحات شبکه هوایی"/>
+                    <TextBox       Grid.Row="1" Grid.Column="1" x:Name="NetworkCommentTextBox" Grid.ColumnSpan="3" Text="{Binding Path=NetworkComment}"/>
+
+
+                    <Label          Grid.Row="2"  Grid.Column="0" Content="وضعیت :" Height="25" />
+                    <ComboBox       Grid.Row="2" Grid.Column="1" Name="StatusComboBox" DisplayMemberPath="StatusResult" SelectedValuePath="StepStatusID"  Grid.ColumnSpan="2" Height="25"   />
+                    
+                    <Button       Grid.Row="2" Grid.Column="3" Content="گواهی سیم کشی"  Click="Button_Click" />
+                </Grid>
+            </GroupBox>
+
+        </StackPanel>
+    </ScrollViewer>
+</Local:RequestFormBase>
+

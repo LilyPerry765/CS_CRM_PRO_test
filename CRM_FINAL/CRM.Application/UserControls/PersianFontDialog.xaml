@@ -1,0 +1,24 @@
+﻿<Window x:Class="CRM.Application.UserControls.PersianFontDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Title="تعیین مشخصات فونت" Width="700"  Height="400"
+             xmlns:local="clr-namespace:CRM.Application.UserControls" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" ResizeMode="NoResize"
+             Background="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"
+            Loaded="Window_Loaded" Icon="pack://application:,,,/CRM.Application;component/Images/fonts.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <local:FontChooser x:Name="MainFontChooser" Grid.Row="0" d:LayoutOverrides="Width,Height" BorderBrush="DimGray" BorderThickness="0 0 0 2.5" />
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" TextElement.FontFamily="Yekan">
+            <Button x:Name="OkButton" Width="80" Height="23" Margin="4.5" Content="تایید انتخاب" Click="OkButton_Click" />
+            <Button x:Name="CancelButon" Width="80" Height="23" Content="انصراف" IsCancel="True"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

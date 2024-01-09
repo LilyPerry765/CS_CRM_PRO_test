@@ -1,0 +1,46 @@
+﻿<Local:UserControlBase x:Class="CRM.Application.UserControls.CustomerAddressUserControl" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                        xmlns:Local="clr-namespace:CRM.Application.Local"
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+             Tag="آدرس مشترک"
+             mc:Ignorable="d" d:DesignWidth="820"             
+             Loaded="LoadData">
+
+    <Expander  FlowDirection="RightToLeft" x:Name="AddressInfoExpander">
+        <Grid x:Name="AddressInfo">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <Label Grid.Row="0" Grid.Column="0" Content="آدرس قدیم " x:Name="OldAddressLable"/>
+            <TextBox Grid.Row="0" Grid.Column="1"  x:Name="OldAddressTextBox"  IsReadOnly="True"/>
+
+            <Label Grid.Row="0" Grid.Column="2" Content="کد پستی قدیم" x:Name="OldPostalCodeInstallLable" />
+            <TextBox Grid.Row="0" Grid.Column="3" x:Name="OldPostalCodeTextBox" IsReadOnly="True"/>
+
+            <Label Grid.Row="1" Grid.Column="0" Content="آدرس جدید" x:Name="NewAddressLable" />
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="NewAddressTextBox" IsReadOnly="True"/>
+
+            <Label Grid.Row="1" Grid.Column="2" Content="کد پستی جدید"  x:Name="NewPostalCodeInstallLable"/>
+            <TextBox Grid.Row="1" Grid.Column="3" x:Name="NewPostalCodeTextBox" IsReadOnly="True"/>
+
+            <Label Grid.Row="2" Grid.Column="0" Content="آدرس کار کن در محل"  x:Name="NearestAddressLable"/>
+            <TextBox Grid.Row="2" Grid.Column="1"  x:Name="NearestAddressTextBox" IsReadOnly="True"/>
+
+            <Label Grid.Row="2" Grid.Column="2" Content="کد پستی کارکن در محل"  x:Name="NearestPostalCodeInstallLable"/>
+            <TextBox Grid.Row="2" Grid.Column="3" x:Name="NearestPostalCodeTextBox" IsReadOnly="True"/>
+            
+        </Grid>
+    </Expander>
+</Local:UserControlBase>

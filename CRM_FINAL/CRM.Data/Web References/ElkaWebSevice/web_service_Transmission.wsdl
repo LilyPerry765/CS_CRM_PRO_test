@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://localhost/Web_Service_Tranamission" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://localhost/Web_Service_Tranamission" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://localhost/Web_Service_Tranamission">
+      <s:element name="dataBasIsActive">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Os_Code" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="dataBasIsActiveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="dataBasIsActiveResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="handshake">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Priority" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="S_Time" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="E_Time" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Os_Code" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="handshakeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="handshakeResult" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Priority" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="S_Time" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="E_Time" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="transfer_Data">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="C_F_ID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="transfer_DataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="transfer_DataResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="C_F_ID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="transfer_Data_Json">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JsonString" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="C_F_ID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="transfer_Data_JsonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="transfer_Data_JsonResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="C_F_ID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sync_Base_Data">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sync_Base_DataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Sync_Base_DataResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sync_Base_Data_JSON">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JsonString" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sync_Base_Data_JSONResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Sync_Base_Data_JSONResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sync_KafuSwap_Info">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="osCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="insertedIDs" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sync_KafuSwap_InfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Sync_KafuSwap_InfoResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="insertedIDs" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sync_KafuSwap_Info_Json">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="osCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="JsonString" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="insertedIDs" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sync_KafuSwap_Info_JsonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Sync_KafuSwap_Info_JsonResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="insertedIDs" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="int" type="s:int" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="dataBasIsActiveSoapIn">
+    <wsdl:part name="parameters" element="tns:dataBasIsActive" />
+  </wsdl:message>
+  <wsdl:message name="dataBasIsActiveSoapOut">
+    <wsdl:part name="parameters" element="tns:dataBasIsActiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="handshakeSoapIn">
+    <wsdl:part name="parameters" element="tns:handshake" />
+  </wsdl:message>
+  <wsdl:message name="handshakeSoapOut">
+    <wsdl:part name="parameters" element="tns:handshakeResponse" />
+  </wsdl:message>
+  <wsdl:message name="transfer_DataSoapIn">
+    <wsdl:part name="parameters" element="tns:transfer_Data" />
+  </wsdl:message>
+  <wsdl:message name="transfer_DataSoapOut">
+    <wsdl:part name="parameters" element="tns:transfer_DataResponse" />
+  </wsdl:message>
+  <wsdl:message name="transfer_Data_JsonSoapIn">
+    <wsdl:part name="parameters" element="tns:transfer_Data_Json" />
+  </wsdl:message>
+  <wsdl:message name="transfer_Data_JsonSoapOut">
+    <wsdl:part name="parameters" element="tns:transfer_Data_JsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="Sync_Base_DataSoapIn">
+    <wsdl:part name="parameters" element="tns:Sync_Base_Data" />
+  </wsdl:message>
+  <wsdl:message name="Sync_Base_DataSoapOut">
+    <wsdl:part name="parameters" element="tns:Sync_Base_DataResponse" />
+  </wsdl:message>
+  <wsdl:message name="Sync_Base_Data_JSONSoapIn">
+    <wsdl:part name="parameters" element="tns:Sync_Base_Data_JSON" />
+  </wsdl:message>
+  <wsdl:message name="Sync_Base_Data_JSONSoapOut">
+    <wsdl:part name="parameters" element="tns:Sync_Base_Data_JSONResponse" />
+  </wsdl:message>
+  <wsdl:message name="Sync_KafuSwap_InfoSoapIn">
+    <wsdl:part name="parameters" element="tns:Sync_KafuSwap_Info" />
+  </wsdl:message>
+  <wsdl:message name="Sync_KafuSwap_InfoSoapOut">
+    <wsdl:part name="parameters" element="tns:Sync_KafuSwap_InfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Sync_KafuSwap_Info_JsonSoapIn">
+    <wsdl:part name="parameters" element="tns:Sync_KafuSwap_Info_Json" />
+  </wsdl:message>
+  <wsdl:message name="Sync_KafuSwap_Info_JsonSoapOut">
+    <wsdl:part name="parameters" element="tns:Sync_KafuSwap_Info_JsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="dataBasIsActiveHttpGetIn">
+    <wsdl:part name="Code" type="s:string" />
+    <wsdl:part name="Os_Code" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="dataBasIsActiveHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="Sync_Base_Data_JSONHttpGetIn">
+    <wsdl:part name="JsonString" type="s:string" />
+    <wsdl:part name="code" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Sync_Base_Data_JSONHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="dataBasIsActiveHttpPostIn">
+    <wsdl:part name="Code" type="s:string" />
+    <wsdl:part name="Os_Code" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="dataBasIsActiveHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="Sync_Base_Data_JSONHttpPostIn">
+    <wsdl:part name="JsonString" type="s:string" />
+    <wsdl:part name="code" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Sync_Base_Data_JSONHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:portType name="web_service_TransmissionSoap">
+    <wsdl:operation name="dataBasIsActive">
+      <wsdl:input message="tns:dataBasIsActiveSoapIn" />
+      <wsdl:output message="tns:dataBasIsActiveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="handshake">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;font face='tahoma'&gt; &lt;div dir='rtl'&gt; این متد به منظور ایجاد هماهنگی بین مبدا و مقصد نوشته شده است. اطلاعات رانژه استان باید به صورت پریودیک به وب سرویس فرستاده شود. تنظیمات مربوط به زمان شروع و پایان و بازه زمانی انتقال توسط شرکت مخابرات ایران انجام می گیرد و استانها موظف به پیروی از این زمان ها می باشند. تنظیمات ذکر شده توسط متد handshake برگردانده می شود. &lt;br&gt; در واقع بایستی قبل از هر ارسال این متد به منظور هماهنگی فراخوانی شده و تنظیمات لازم صورت پذیرد. &lt;br&gt;&lt;br&gt;پارامترهای ورودی تابع: &lt;br&gt;&lt;br&gt; &lt;table cellspacing='0' cellpadding='4' bordercolor='#dcdcdc' style='border-collapse: collapse;' rules='none' frame='box'  dir='rtl'&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class='frmHeader' background='#dcdcdc' style='border-right: 2px solid white;'&gt;&lt;font face='tahoma'&gt;نام لاتین پارامتر&lt;/font&gt;&lt;/td&gt;&lt;td class='frmHeader' background='#dcdcdc'&gt;&lt;font face='tahoma'&gt;نوع پارامتر&lt;/font&gt;&lt;/td&gt;&lt;td class='frmHeader' background='#dcdcdc'&gt;&lt;font face='tahoma'&gt;توضیحات&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;Priority&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;خروجی(Integer)&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;بازه ارسال&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;S_Time&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;خروجی(String)&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;ساعت شروع ارسال&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;Code&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;ورودی(String)&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;کد شناسائی – برای دریافت کد با پشتیبانی شسکام تماس بگیرید.&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;E_Time&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;خروجی(String)&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;ساعت پایان ارسال&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;Os_Code&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;ورودی(Integer)&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;کد استان &lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;table/&gt;&lt;br&gt;&lt;br&gt; خروجی متد: &lt;br&gt;&lt;br&gt;&lt;table cellspacing='0' cellpadding='4' bordercolor='#dcdcdc' style='border-collapse: collapse;' rules='none' frame='box'  dir='rtl'&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class='frmHeader' background='#dcdcdc' style='border-right: 2px solid white;'&gt;&lt;font face='tahoma'&gt;کد خروجی &lt;/font&gt;&lt;/td&gt;&lt;td class='frmHeader' background='#dcdcdc'&gt;&lt;font face='tahoma'&gt;مفهوم خروجی&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;0&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;موفق&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;1&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;کد شناسائی نامعتبر میباشد.&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;2&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;خطا در عملیات ذخیره اطلاعات  login&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;3&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;عملیات دریافت زمانبندی با خطا انجام گرفت.&lt;/font&gt;&lt;/td&gt; &lt;/tr&gt;&lt;table/&gt;&lt;/font&gt;&lt;/div&gt;&lt;br&gt;&lt;br&gt; </wsdl:documentation>
+      <wsdl:input message="tns:handshakeSoapIn" />
+      <wsdl:output message="tns:handshakeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="transfer_Data">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;font face='tahoma'&gt;&lt;div dir='rtl'&gt; متد transfer_Data متد اصلی برای انتقال اطلاعات رانژه است. ورودی این متد شامل اطلاعات دایری، تخلیه، تعویض PCM و تعویض بوخت ADSL می باشد. &lt;br&gt;•	نکته مهم : تعداد رکورد های ارسالی در هر بار کمتر از 101 رکورد  باید باشد. &lt;br&gt;&lt;br&gt;پارامترهای ورودی تابع: &lt;br&gt;&lt;br&gt; &lt;table cellspacing='0' cellpadding='4' bordercolor='#dcdcdc' style='border-collapse: collapse;' rules='none' frame='box'  dir='rtl'&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class='frmHeader' background='#dcdcdc' style='border-right: 2px solid white;'&gt;&lt;font face='tahoma'&gt;نام لاتین پارامتر&lt;/font&gt;&lt;/td&gt;&lt;td class='frmHeader' background='#dcdcdc'&gt;&lt;font face='tahoma'&gt;نوع پارامتر&lt;/font&gt;&lt;/td&gt;&lt;td class='frmHeader' background='#dcdcdc'&gt;&lt;font face='tahoma'&gt;توضیحات&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;Ds&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;ورودی(DataSet)&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt; این دیتاست شامل یک datatable  می باشد که توضیح آن در ادامه آمده است.&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;Code&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;ورودی(String)&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;کد شناسائی – برای دریافت کد با پشتیبانی شسکام تماس بگیرید.&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;C_F_ID&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;خروجی(String)&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;لیست C_P_ID  های ثبت شده سمت server  - C_P_ID ها با علامت , تفکیک می شوند&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br&gt;&lt;br&gt; خروجی متد: &lt;br&gt;&lt;br&gt;&lt;table cellspacing='0' cellpadding='4' bordercolor='#dcdcdc' style='border-collapse: collapse;' rules='none' frame='box'  dir='rtl'&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class='frmHeader' background='#dcdcdc' style='border-right: 2px solid white;'&gt;&lt;font face='tahoma'&gt;کد خروجی &lt;/font&gt;&lt;/td&gt;&lt;td class='frmHeader' background='#dcdcdc'&gt;&lt;font face='tahoma'&gt;معنی خروجی&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;-1001&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;وجود مغایرت در کد استان های ارسال شده&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;-2002&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;عدم تطابق داده های ارسالی با کد استان&lt;/font&gt;&lt;/td&gt; &lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;-2&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;ارتباط با پایگاه داده قطع می باشد.&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;1&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;کد شناسائی یا آی پی نامعتبر می باشد&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;2&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;کد استان نامعتبر می باشد&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;10&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;خطای اجرا&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;12&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;کد شهر نامعتبر است&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;13&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;کد مرکز نامعتبر است&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;14&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;کد شرکت مادر نامعتبر است&lt;/font&gt;&lt;/td&gt; &lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;15&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;کد شرکت نامعتبر است&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;16&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;کد عملیات نامعتبر است&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;17&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;وضعیت عملیات نامعتبر است&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;112&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;زمان درخواست نامعتبر است&lt;/font&gt;&lt;/td&gt; &lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;113&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;زمان تایید mdf نامعتبر است&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;114&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;زمان تایید pap نامعتبر است&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;table/&gt;&lt;/font&gt;&lt;br&gt;&lt;br&gt; مشخصات DataTable ارسالی: &lt;br&gt;&lt;br&gt;&lt;table cellspacing='0' cellpadding='4' bordercolor='#dcdcdc' style='border-collapse: collapse;' rules='none' frame='box'  dir='rtl'&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class='frmHeader' background='#dcdcdc' style='border-right: 2px solid white;'&gt;&lt;font face='tahoma'&gt;نام فیلد&lt;/font&gt;&lt;/td&gt;&lt;td class='frmHeader' background='#dcdcdc'&gt;&lt;font face='tahoma'&gt;نوع فیلد&lt;/font&gt;&lt;/td&gt;&lt;td class='frmHeader' background='#dcdcdc'&gt;&lt;font face='tahoma'&gt;توضیحات&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;C_P_ID&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;Number&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;یکتا- برای یکتا بودن این فیلد، کد استان در ابتدای عدد اضافه شود. برای مثال اگر عدد یکتای تولید شده در استان شما 43256 است و کد استان شما 25 می باشد، عدد ارسالی باید 2543256 باشد.&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;Os_Code&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;Number&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;کد استان&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;Ci_Code&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;Number&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;کد شهر&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;Cen_Code&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;Number&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;کد مرکز&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;Pap_Code&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;Number&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;کد شرکت&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;Tel_Num&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;Number&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;شماره تلفن&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;S_Date&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;String&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;تاریخ درخواست&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;S_Time&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;String&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;زمان درخواست&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;E_Date&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;String&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;تاریخ تایید یا عدم تایید mdf یا شبکه  ( تاریخ اتمام عملیات رانژه در مخابرات)&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;E_Time&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;String&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;زمان تایید یا عدم تایید mdf یا شبکه کد شرکت&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;Kind_Code&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;Number&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;کد عملیات &lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;Fi_Code&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;Number&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;شماره پرونده&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;Work_Status&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;Number&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;وضعیت عملیات&lt;br&gt; 0: در حد درخواست است. &lt;br&gt; 1 : درخواست فوق انجام شده است. &lt;br&gt; 2: درخواست فوق عدم تایید گردیده است.&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;Ci_Pish_Code&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;Number&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;پیش کد شهر&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;Project_Id&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;Number&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;برابر 1&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;Company_Base_Id&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;Number&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;کد شرکت مادر &lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;Mdf_Comment&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;String&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;توضیحات mdf یا شبکه در زمان تایید یا عدم تایید انجام عملیات&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;Confirm_Date&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;String&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;تاریخ تایید توسط شرکت pap&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;Confirm_Time&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;String&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;زمان تایید توسط شرکت pap&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br&gt;&lt;br&gt;جدول کد و نام عملیات &lt;br&gt;&lt;br&gt;&lt;table cellspacing='0' cellpadding='4' bordercolor='#dcdcdc' style='border-collapse: collapse;' rules='none' frame='box'  dir='rtl'&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class='frmHeader' background='#dcdcdc' style='border-right: 2px solid white;'&gt;&lt;font face='tahoma'&gt;کد عملیات &lt;/font&gt;&lt;/td&gt;&lt;td class='frmHeader' background='#dcdcdc'&gt;&lt;font face='tahoma'&gt;نام عملیات&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;30027&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;درخواست تعویض PCM&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;821&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;دایری&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;820&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;تخلیه&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;30030&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;تعویض بوخت&lt;/font&gt;&lt;/td&gt; &lt;/tr&gt;&lt;/table&gt;&lt;br&gt;&lt;br&gt;جدول کد و نام شرکت های مادر &lt;br&gt;&lt;br&gt;&lt;table cellspacing='0' cellpadding='4' bordercolor='#dcdcdc' style='border-collapse: collapse;' rules='none' frame='box'  dir='rtl'&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class='frmHeader' background='#dcdcdc' style='border-right: 2px solid white;'&gt;&lt;font face='tahoma'&gt;کد شرکت مادر &lt;/font&gt;&lt;/td&gt;&lt;td class='frmHeader' background='#dcdcdc'&gt;&lt;font face='tahoma'&gt;نام شرکت مادر&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;1&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;آریا رسانه تدبیر&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;2&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;عصر انتقال داده ها&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;3&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;داده پردازی فن آوا&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;4&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;انتقال داده های رهام داتک&lt;/font&gt;&lt;/td&gt; &lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;5&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;پارسان لین ارتباطات&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;6&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;شركت لایزر&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;7&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;انتقال داده های آسیاتک&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;8&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;داده گستر عصر نوین&lt;/font&gt;&lt;/td&gt; &lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;9&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;كارا امین ارتباط&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;10&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;پیشگامان توسعه ارتباطات&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;11&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;انتقال داده های ندا گستر صبا&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;12&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;شرکت مخابرات&lt;/font&gt;&lt;/td&gt; &lt;/tr&gt;&lt;table/&gt;&lt;/font&gt; &lt;/div&gt;&lt;br&gt;&lt;br&gt;</wsdl:documentation>
+      <wsdl:input message="tns:transfer_DataSoapIn" />
+      <wsdl:output message="tns:transfer_DataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="transfer_Data">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;font face='tahoma'&gt;  &lt;div dir='rtl'&gt;  &lt;br /&gt; &lt;br /&gt;     برای توضیحات کامل به متد transfer_Data مراجعه شود. تنها تفاوت با متد قبلی ورودی         JSon به جای DataSet می باشد. ورودی رشته ای Json به شکل زیر خواهد بود:         &lt;br /&gt;    &lt;br /&gt;  &lt;/div&gt;     &lt;div dir='ltr'&gt;          {  '&lt;font face='tahoma'&gt;DetailsTable&lt;/font&gt;': [ {   'C_P_ID': 265364,       'Os_Code': 26, 'Ci_Code':  1,       'Cen_Code': 1 , &amp;#39;Pap_Code': 28,   'Tel_Num': 2133365214, 'S_Date':   &amp;#39;1394/05/06&amp;#39;,   'S_Time&amp;#39;: &amp;#39;10:54:23&amp;#39;, &lt;font face='tahoma'&gt;  &amp;#39;E_Date':   &amp;#39;1394/05/06&amp;#39;,   'E_Time&amp;#39;: &amp;#39;15:27:39&amp;#39; ,&amp;#39;Kind_Code': 821,     'Fi_Code': 10065329, 'Work_Status':  1,   'Ci_Pish_Code': 21 , &amp;#39;Project_Id&amp;#39;: 1, &amp;#39;Company_Base_Id&amp;#39;: 11 , &amp;#39;Mdf_Comment&amp;#39;:          &amp;#39; &amp;#39;, &amp;#39;Confirm_Date&amp;#39;: &amp;#39;1394/05/07 &amp;#39; ,&amp;#39;Confirm_Time&amp;#39;: &amp;#39; 9:06:45&amp;#39;}&lt;/font&gt;] }           &lt;br /&gt; &lt;br /&gt;  &lt;/div&gt;   &lt;/font&gt;</wsdl:documentation>
+      <wsdl:input name="transfer_Data_Json" message="tns:transfer_Data_JsonSoapIn" />
+      <wsdl:output name="transfer_Data_Json" message="tns:transfer_Data_JsonSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sync_Base_Data">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;font face='tahoma'&gt;&lt;div dir='rtl'&gt; قبل از ارسال اطلاعات رانژه متد Sync_Base_Data برای به روز رسانی اطلاعات پایه فراخوانی شود. اطلاعات پایه شامل اطلاعات شهرها، مراکز و شرکت ها می باشد، که هر کدام در یک DataTable فرستاده می شود. &lt;br&gt;پارامترهای ورودی تابع: &lt;br&gt;&lt;br&gt;&lt;table cellspacing='0' cellpadding='4' bordercolor='#dcdcdc' style='border-collapse: collapse;' rules='none' frame='box'  dir='rtl'&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class='frmHeader' background='#dcdcdc' style='border-right: 2px solid white;'&gt;&lt;font face='tahoma'&gt;نام لاتین پارامتر&lt;/font&gt;&lt;/td&gt;&lt;td class='frmHeader' background='#dcdcdc'&gt;&lt;font face='tahoma'&gt;نوع پارامتر&lt;/font&gt;&lt;/td&gt;&lt;td class='frmHeader' background='#dcdcdc'&gt;&lt;font face='tahoma'&gt;توضیحات&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;Ds&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;ورودی(DataSet)&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt; شامل اطلاعات پایه (سه DataTable که در ادامه معرفی شده اند)&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;Code&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;ورودی(String)&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;کد شناسائی – برای دریافت کد با پشتیبانی شسکام تماس بگیرید.&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;br&gt;&lt;br&gt; خروجی متد: &lt;br&gt;&lt;br&gt;&lt;table cellspacing='0' cellpadding='4' bordercolor='#dcdcdc' style='border-collapse: collapse;' rules='none' frame='box'  dir='rtl'&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class='frmHeader' background='#dcdcdc' style='border-right: 2px solid white;'&gt;&lt;font face='tahoma'&gt;کد خروجی &lt;/font&gt;&lt;/td&gt;&lt;td class='frmHeader' background='#dcdcdc'&gt;&lt;font face='tahoma'&gt;مفهوم خروجی&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;0&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;موفق&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;1&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;کد شناسائی نامعتبر میباشد.&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt; 3, 4&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;عملیات انتقال با خطا مواجه شد.&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;table/&gt;&lt;/font&gt;&lt;br&gt;&lt;br&gt; DataTable هایی که باید در Dataset ورودی فرستاده شوند: &lt;br&gt;&lt;br&gt;&lt;table cellspacing='0' cellpadding='4' bordercolor='#dcdcdc' style='border-collapse: collapse;' rules='none' frame='box'  dir='rtl'&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class='frmHeader' background='#dcdcdc' style='border-right: 2px solid white;'&gt;&lt;font face='tahoma'&gt;نام DataTable&lt;/font&gt;&lt;/td&gt;&lt;td class='frmHeader' background='#dcdcdc'&gt;&lt;font face='tahoma'&gt;مشخصات &lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;City&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;&lt;table cellspacing='0' cellpadding='4' bordercolor='#dcdcdc' style='border-collapse: collapse;' rules='none' frame='box'  dir='rtl' width ='700'&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class='frmHeader' background='#dcdcdc' style='border-right: 2px solid white;'&gt;&lt;font face='tahoma'&gt;نام فیلد&lt;/font&gt;&lt;/td&gt;&lt;td class='frmHeader' background='#dcdcdc'&gt;&lt;font face='tahoma'&gt;نوع فیلد &lt;/font&gt;&lt;/td&gt;&lt;td class='frmHeader' background='#dcdcdc' width ='500'&gt;&lt;font face='tahoma'&gt;توضیحات&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;ci_code&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;Number&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt; کد شهر&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;ci_name&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;String&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;نام شهر&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;os_code&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;Number&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;کد استان&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;ci_pish_code&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;String&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;پیش کد شهر&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;Center&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;&lt;table cellspacing='0' cellpadding='4' bordercolor='#dcdcdc' style='border-collapse: collapse;' rules='none' frame='box'  dir='rtl' width ='700'&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class='frmHeader' background='#dcdcdc' style='border-right: 2px solid white;'&gt;&lt;font face='tahoma'&gt;نام فیلد&lt;/font&gt;&lt;/td&gt;&lt;td class='frmHeader' background='#dcdcdc'&gt;&lt;font face='tahoma'&gt;نوع فیلد &lt;/font&gt;&lt;/td&gt;&lt;td class='frmHeader' background='#dcdcdc' width ='500'&gt;&lt;font face='tahoma'&gt;توضیحات&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;cen_code&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;Number&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt; کد مرکز&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;cen_name&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;String&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;نام مرکز&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;ci_code&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;Number&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;کد شهر&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt; Company&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;&lt;table cellspacing='0' cellpadding='4' bordercolor='#dcdcdc' style='border-collapse: collapse;' rules='none' frame='box'  dir='rtl' width ='700'&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class='frmHeader' background='#dcdcdc' style='border-right: 2px solid white;'&gt;&lt;font face='tahoma'&gt;نام فیلد&lt;/font&gt;&lt;/td&gt;&lt;td class='frmHeader' background='#dcdcdc'&gt;&lt;font face='tahoma'&gt;نوع فیلد &lt;/font&gt;&lt;/td&gt;&lt;td class='frmHeader' background='#dcdcdc' width ='500'&gt;&lt;font face='tahoma'&gt;توضیحات&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;company_id&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;Number&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt; کد شرکت&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;name&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;String&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;نام شرکت&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;kind&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;Number&lt;/font&gt;&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;نوع شرکت : (اگر شرکت یک شرکت مخابراتی باشد مقداری این فیلد 1 در غیر این صورت 0 خواهد بود)&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/font&gt;  &lt;/div&gt; &lt;br&gt;&lt;br&gt;</wsdl:documentation>
+      <wsdl:input message="tns:Sync_Base_DataSoapIn" />
+      <wsdl:output message="tns:Sync_Base_DataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sync_Base_Data">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"> &lt;div dir='rtl'&gt; &lt;font face='tahoma'&gt;         برای توضیحات کامل به متد Sync_Base_Data مراجعه شود. تنها تفاوت با متد قبلی ورودی         JSon به جای DataSet می باشد. ورودی رشته ای Json به شکل زیر خواهد بود:        &lt;br /&gt; &lt;br /&gt;   &lt;/font&gt; &lt;/div&gt;      &lt;div dir='ltr'&gt;   &lt;font face='tahoma'&gt;           {  'City': [ {    '&lt;font face='tahoma'&gt;ci_code&lt;/font&gt;': 1,    '&lt;font face='tahoma'&gt;ci_name&lt;/font&gt;': 'تهران&amp;#39;, '&lt;font face='tahoma'&gt;os_code&lt;/font&gt;':  26,    '&lt;font face='tahoma'&gt;ci_pish_code&lt;/font&gt;': '21'    }, { &amp;#39;&lt;font face='tahoma'&gt;ci_code&lt;/font&gt;': 2,    '&lt;font face='tahoma'&gt;ci_name&lt;/font&gt;': 'اسلام آباد&amp;#39;, '&lt;font face='tahoma'&gt;os_code&lt;/font&gt;':   26,    '&lt;font face='tahoma'&gt;ci_pish_code&lt;/font&gt;': '21&amp;#39; }],          &lt;br /&gt; &amp;#39;Center': [     {'&lt;font face='tahoma'&gt;cen_code&lt;/font&gt;': 4,    '&lt;font face='tahoma'&gt;cen_name&lt;/font&gt;&amp;#39;: &amp;#39;مرکز ۱&amp;#39; ,&amp;nbsp;    '&lt;font face='tahoma'&gt;ci_code&lt;/font&gt;': 1}],          &lt;br /&gt; &amp;#39;Company': [     { '&lt;font face='tahoma'&gt;company_id&lt;/font&gt;': 6,    '&lt;font face='tahoma'&gt;name&lt;/font&gt;&amp;#39;: &amp;#39;شرکت ۱&amp;#39; ,&amp;nbsp;    '&lt;font face='tahoma'&gt;kind&lt;/font&gt;': 1} ]&amp;nbsp; }    &lt;/font&gt;  &lt;/div&gt;   </wsdl:documentation>
+      <wsdl:input name="Sync_Base_Data_JSON" message="tns:Sync_Base_Data_JSONSoapIn" />
+      <wsdl:output name="Sync_Base_Data_JSON" message="tns:Sync_Base_Data_JSONSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sync_KafuSwap_Info">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;font face='tahoma'&gt;   &lt;div dir='rtl'&gt; متد Sync_KafuSwap_Info به منظور ارسال اطلاعات&amp;nbsp; مربوط به برگردان        ها استفاده می شود. اطلاعات هر برگردانی در استان که منجر به&amp;nbsp; تغییرات در adsl        مشترکین شود باید توسط این متد ارسال شود. فقط در صورتی که کافوی مقصد نوری است و در نتیجه ADSL مشترکین حذف می شود یا به مخابرات انتقال می یابد، اطلاعات را ارسال کنید.&lt;br&gt; &lt;br&gt;    &lt;br&gt;پارامترهای ورودی تابع: &lt;br&gt;&lt;br&gt;     &lt;table cellspacing='0' cellpadding='4' bordercolor='#dcdcdc' style='border-collapse: collapse;' rules='none' frame='box'  dir='rtl'&gt;&lt;tbody&gt;               &lt;tr&gt;&lt;td class='frmHeader' background='#dcdcdc' style='border-right: 2px solid white;'&gt;&lt;font face='tahoma'&gt;               نام لاتین پارامتر&lt;/font&gt;&lt;/td&gt;&lt;td class='frmHeader' background='#dcdcdc'&gt;&lt;font face='tahoma'&gt;نوع پارامتر&lt;/font&gt;&lt;/td&gt;               &lt;td class='frmHeader' background='#dcdcdc'&gt;&lt;font face='tahoma'&gt;توضیحات&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;                           &lt;tr&gt;&lt;td class='style1' style='color: #000000; font-weight: normal;'&gt;                               osCode&lt;/td&gt;&lt;td class='style1' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;ورودی(Number)&lt;/font&gt;&lt;/td&gt;               &lt;td class='style1' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;کد                   استان&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;                           &lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;               Code&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;ورودی(String)&lt;/font&gt;&lt;/td&gt;               &lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;کد شناسائی – برای دریافت کد با پشتیبانی شسکام تماس بگیرید.&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;               &lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;               Ds&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;ورودی(DataSet)&lt;/font&gt;&lt;/td&gt;               &lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt; این دیتاست شامل دو datatable  می باشد که توضیح آن در ادامه آمده است.&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;                &lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;                    insertedIDs&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;خروجی(String)&lt;/font&gt;&lt;/td&gt;               &lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;لیست                    KS_ADSLCO_IDهای ثبت شده -                  KS_ADSLCO_IDها با علامت , تفکیک می شوند&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;    &lt;/table&gt;   &lt;br&gt;&lt;br&gt; DataTable هایی که باید در Dataset ورودی فرستاده شوند: &lt;br&gt;&lt;br&gt;                 &lt;table cellspacing='0' cellpadding='4' bordercolor='#dcdcdc' style='border-collapse: collapse;' rules='none' frame='box'  dir='rtl'&gt;&lt;tbody&gt;               &lt;tr&gt;&lt;td class='frmHeader' background='#dcdcdc' style='border-right: 2px solid white;'&gt;&lt;font face='tahoma'&gt;               نام DataTable&lt;/font&gt;&lt;/td&gt;&lt;td class='frmHeader' background='#dcdcdc'&gt;&lt;font face='tahoma'&gt;مشخصات &lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;               &lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;                   KAFU_SWAP_BASE_INFO&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;    &lt;table cellspacing='0' cellpadding='4' bordercolor='#dcdcdc' style='border-collapse: collapse;' rules='none' frame='box'  dir='rtl' width ='700'&gt;&lt;tbody&gt;                &lt;tr&gt;&lt;td class='frmHeader' background='#dcdcdc' style='border-right: 2px solid white;'&gt;&lt;font face='tahoma'&gt;               نام فیلد&lt;/font&gt;&lt;/td&gt;&lt;td class='frmHeader' background='#dcdcdc'&gt;&lt;font face='tahoma'&gt;نوع فیلد &lt;/font&gt;&lt;/td&gt;               &lt;td class='frmHeader' background='#dcdcdc' width ='500'&gt;&lt;font face='tahoma'&gt;توضیحات&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;               &lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;                   KS_ADSLCO_ID&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;Number&lt;/font&gt;&lt;/td&gt;               &lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;                   کد یکتای برگردان&lt;/td&gt;&lt;/tr&gt;               &lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;                   CI_CODE&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;Number&lt;/font&gt;&lt;/td&gt;               &lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;کد&lt;font face='tahoma'&gt;شهر&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;                &lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;                    CEN_CODE&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;Number&lt;/font&gt;&lt;/td&gt;               &lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;کد                   مرکز&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;               &lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;                   USER_ID&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;Number&lt;/font&gt;&lt;/td&gt;               &lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;                  &lt;font face='tahoma'&gt;کد                   کاربر ثبت کننده&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;              &lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;                   USER_NAME&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;String&lt;/font&gt;&lt;/td&gt;               &lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;نام و نام خانوادگی                   کاربر ثبت کننده&lt;/td&gt;&lt;/tr&gt;               &lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;                   INSERT_DATE&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;String&lt;/font&gt;&lt;/td&gt;               &lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;تاریخ انجام برگردان&lt;/td&gt;&lt;/tr&gt;                &lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;                    SWAP_LETTER&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;String&lt;/font&gt;&lt;/td&gt;               &lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;شماره نامه&lt;/td&gt;&lt;/tr&gt;               &lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;                   KAFU_ID&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;Number&lt;/font&gt;&lt;/td&gt;               &lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;کد یکتای کافو&lt;/td&gt;&lt;/tr&gt;    &lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;                   KAFU_NUM&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;String&lt;/font&gt;&lt;/td&gt;               &lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;نام کافو&lt;/td&gt;&lt;/tr&gt;    &lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;               &lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;                   KAFU_SWAP_DETAILS&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;       &lt;table cellspacing='0' cellpadding='4' bordercolor='#dcdcdc' style='border-collapse: collapse;' rules='none' frame='box'  dir='rtl' width ='700'&gt;&lt;tbody&gt;               &lt;tr&gt;&lt;td class='frmHeader' background='#dcdcdc' style='border-right: 2px solid white;'&gt;&lt;font face='tahoma'&gt;               نام فیلد&lt;/font&gt;&lt;/td&gt;&lt;td class='frmHeader' background='#dcdcdc'&gt;&lt;font face='tahoma'&gt;نوع فیلد &lt;/font&gt;&lt;/td&gt;               &lt;td class='frmHeader' background='#dcdcdc' width ='500'&gt;&lt;font face='tahoma'&gt;توضیحات&lt;/font&gt;&lt;/td&gt;&lt;/tr&gt;               &lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;                   KS_ADSLCO_ID&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;Number&lt;/font&gt;&lt;/td&gt;               &lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;کد یکتای برگردان-                   همان کد جدول                   KAFU_SWAP_BASE_INFO&lt;/td&gt;&lt;/tr&gt;               &lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;                   COMPANY_ID&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;Number&lt;/font&gt;&lt;/td&gt;               &lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;کد شرکت مادر - یکی                   از 12 شرکت اشاره شده در متد transfer_data&lt;/td&gt;&lt;/tr&gt;                &lt;tr&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;                    BEFORE_VALUE&lt;/td&gt;&lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;&lt;font face='tahoma'&gt;Number&lt;/font&gt;&lt;/td&gt;               &lt;td class='frmText' style='color: #000000; font-weight: normal;'&gt;تعداد مشترک شرکت در روی کافو قبل از                   برگردان&lt;/td&gt;&lt;/tr&gt;               &lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;                &lt;/table&gt;     &lt;/font&gt; &lt;/div&gt;&lt;br&gt;&lt;br&gt;</wsdl:documentation>
+      <wsdl:input message="tns:Sync_KafuSwap_InfoSoapIn" />
+      <wsdl:output message="tns:Sync_KafuSwap_InfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sync_KafuSwap_Info">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;font face='tahoma'&gt;  &lt;div dir='rtl'&gt;  &lt;br /&gt; &lt;br /&gt;     برای توضیحات کامل به متد Sync_KafuSwap_Info مراجعه شود. تنها تفاوت با متد قبلی ورودی         JSon به جای DataSet می باشد. ورودی رشته ای Json به شکل زیر خواهد بود:         &lt;br /&gt;    &lt;br /&gt;  &lt;/div&gt;     &lt;font face='tahoma'&gt; &lt;div dir='ltr'&gt;        { 'KAFU_SWAP_BASE_INFO': [ { 'KS_ADSLCO_ID': 261, 'Ci_Code': 1, 'Cen_Code': 1 , 'USER_ID': 28125, 'USER_NAME': 'محمد علیپور', 'INSERT_DATE': '1394/05/06', 'SWAP_LETTER': '21563493', 'KAFU_ID': 105 ,'KAFU_NUM': 'Kafu04'}], &lt;br /&gt;      'KAFU_SWAP_DETAILS': [ { 'KS_ADSLCO_ID': 261, 'COMPANY_ID': 1 ,  'BEFORE_VALUE': 12}, { 'KS_ADSLCO_ID': 261, 'COMPANY_ID': 2 ,  'BEFORE_VALUE': 23} , { 'KS_ADSLCO_ID': 261, 'COMPANY_ID': 10 ,  'BEFORE_VALUE': 15}  ]  }             &lt;br /&gt; &lt;br /&gt;  &lt;/div&gt;   &lt;/font&gt;</wsdl:documentation>
+      <wsdl:input name="Sync_KafuSwap_Info_Json" message="tns:Sync_KafuSwap_Info_JsonSoapIn" />
+      <wsdl:output name="Sync_KafuSwap_Info_Json" message="tns:Sync_KafuSwap_Info_JsonSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="web_service_TransmissionHttpGet">
+    <wsdl:operation name="dataBasIsActive">
+      <wsdl:input message="tns:dataBasIsActiveHttpGetIn" />
+      <wsdl:output message="tns:dataBasIsActiveHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sync_Base_Data">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"> &lt;div dir='rtl'&gt; &lt;font face='tahoma'&gt;         برای توضیحات کامل به متد Sync_Base_Data مراجعه شود. تنها تفاوت با متد قبلی ورودی         JSon به جای DataSet می باشد. ورودی رشته ای Json به شکل زیر خواهد بود:        &lt;br /&gt; &lt;br /&gt;   &lt;/font&gt; &lt;/div&gt;      &lt;div dir='ltr'&gt;   &lt;font face='tahoma'&gt;           {  'City': [ {    '&lt;font face='tahoma'&gt;ci_code&lt;/font&gt;': 1,    '&lt;font face='tahoma'&gt;ci_name&lt;/font&gt;': 'تهران&amp;#39;, '&lt;font face='tahoma'&gt;os_code&lt;/font&gt;':  26,    '&lt;font face='tahoma'&gt;ci_pish_code&lt;/font&gt;': '21'    }, { &amp;#39;&lt;font face='tahoma'&gt;ci_code&lt;/font&gt;': 2,    '&lt;font face='tahoma'&gt;ci_name&lt;/font&gt;': 'اسلام آباد&amp;#39;, '&lt;font face='tahoma'&gt;os_code&lt;/font&gt;':   26,    '&lt;font face='tahoma'&gt;ci_pish_code&lt;/font&gt;': '21&amp;#39; }],          &lt;br /&gt; &amp;#39;Center': [     {'&lt;font face='tahoma'&gt;cen_code&lt;/font&gt;': 4,    '&lt;font face='tahoma'&gt;cen_name&lt;/font&gt;&amp;#39;: &amp;#39;مرکز ۱&amp;#39; ,&amp;nbsp;    '&lt;font face='tahoma'&gt;ci_code&lt;/font&gt;': 1}],          &lt;br /&gt; &amp;#39;Company': [     { '&lt;font face='tahoma'&gt;company_id&lt;/font&gt;': 6,    '&lt;font face='tahoma'&gt;name&lt;/font&gt;&amp;#39;: &amp;#39;شرکت ۱&amp;#39; ,&amp;nbsp;    '&lt;font face='tahoma'&gt;kind&lt;/font&gt;': 1} ]&amp;nbsp; }    &lt;/font&gt;  &lt;/div&gt;   </wsdl:documentation>
+      <wsdl:input name="Sync_Base_Data_JSON" message="tns:Sync_Base_Data_JSONHttpGetIn" />
+      <wsdl:output name="Sync_Base_Data_JSON" message="tns:Sync_Base_Data_JSONHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="web_service_TransmissionHttpPost">
+    <wsdl:operation name="dataBasIsActive">
+      <wsdl:input message="tns:dataBasIsActiveHttpPostIn" />
+      <wsdl:output message="tns:dataBasIsActiveHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sync_Base_Data">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"> &lt;div dir='rtl'&gt; &lt;font face='tahoma'&gt;         برای توضیحات کامل به متد Sync_Base_Data مراجعه شود. تنها تفاوت با متد قبلی ورودی         JSon به جای DataSet می باشد. ورودی رشته ای Json به شکل زیر خواهد بود:        &lt;br /&gt; &lt;br /&gt;   &lt;/font&gt; &lt;/div&gt;      &lt;div dir='ltr'&gt;   &lt;font face='tahoma'&gt;           {  'City': [ {    '&lt;font face='tahoma'&gt;ci_code&lt;/font&gt;': 1,    '&lt;font face='tahoma'&gt;ci_name&lt;/font&gt;': 'تهران&amp;#39;, '&lt;font face='tahoma'&gt;os_code&lt;/font&gt;':  26,    '&lt;font face='tahoma'&gt;ci_pish_code&lt;/font&gt;': '21'    }, { &amp;#39;&lt;font face='tahoma'&gt;ci_code&lt;/font&gt;': 2,    '&lt;font face='tahoma'&gt;ci_name&lt;/font&gt;': 'اسلام آباد&amp;#39;, '&lt;font face='tahoma'&gt;os_code&lt;/font&gt;':   26,    '&lt;font face='tahoma'&gt;ci_pish_code&lt;/font&gt;': '21&amp;#39; }],          &lt;br /&gt; &amp;#39;Center': [     {'&lt;font face='tahoma'&gt;cen_code&lt;/font&gt;': 4,    '&lt;font face='tahoma'&gt;cen_name&lt;/font&gt;&amp;#39;: &amp;#39;مرکز ۱&amp;#39; ,&amp;nbsp;    '&lt;font face='tahoma'&gt;ci_code&lt;/font&gt;': 1}],          &lt;br /&gt; &amp;#39;Company': [     { '&lt;font face='tahoma'&gt;company_id&lt;/font&gt;': 6,    '&lt;font face='tahoma'&gt;name&lt;/font&gt;&amp;#39;: &amp;#39;شرکت ۱&amp;#39; ,&amp;nbsp;    '&lt;font face='tahoma'&gt;kind&lt;/font&gt;': 1} ]&amp;nbsp; }    &lt;/font&gt;  &lt;/div&gt;   </wsdl:documentation>
+      <wsdl:input name="Sync_Base_Data_JSON" message="tns:Sync_Base_Data_JSONHttpPostIn" />
+      <wsdl:output name="Sync_Base_Data_JSON" message="tns:Sync_Base_Data_JSONHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="web_service_TransmissionSoap" type="tns:web_service_TransmissionSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="dataBasIsActive">
+      <soap:operation soapAction="http://localhost/Web_Service_Tranamission/dataBasIsActive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="handshake">
+      <soap:operation soapAction="http://localhost/Web_Service_Tranamission/handshake" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="transfer_Data">
+      <soap:operation soapAction="http://localhost/Web_Service_Tranamission/transfer_Data" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="transfer_Data">
+      <soap:operation soapAction="http://localhost/Web_Service_Tranamission/transfer_Data_Json" style="document" />
+      <wsdl:input name="transfer_Data_Json">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="transfer_Data_Json">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sync_Base_Data">
+      <soap:operation soapAction="http://localhost/Web_Service_Tranamission/Sync_Base_Data" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sync_Base_Data">
+      <soap:operation soapAction="http://localhost/Web_Service_Tranamission/Sync_Base_Data_JSON" style="document" />
+      <wsdl:input name="Sync_Base_Data_JSON">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="Sync_Base_Data_JSON">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sync_KafuSwap_Info">
+      <soap:operation soapAction="http://localhost/Web_Service_Tranamission/Sync_KafuSwap_Info" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sync_KafuSwap_Info">
+      <soap:operation soapAction="http://localhost/Web_Service_Tranamission/Sync_KafuSwap_Info_Json" style="document" />
+      <wsdl:input name="Sync_KafuSwap_Info_Json">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="Sync_KafuSwap_Info_Json">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="web_service_TransmissionSoap12" type="tns:web_service_TransmissionSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="dataBasIsActive">
+      <soap12:operation soapAction="http://localhost/Web_Service_Tranamission/dataBasIsActive" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="handshake">
+      <soap12:operation soapAction="http://localhost/Web_Service_Tranamission/handshake" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="transfer_Data">
+      <soap12:operation soapAction="http://localhost/Web_Service_Tranamission/transfer_Data" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="transfer_Data">
+      <soap12:operation soapAction="http://localhost/Web_Service_Tranamission/transfer_Data_Json" style="document" />
+      <wsdl:input name="transfer_Data_Json">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="transfer_Data_Json">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sync_Base_Data">
+      <soap12:operation soapAction="http://localhost/Web_Service_Tranamission/Sync_Base_Data" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sync_Base_Data">
+      <soap12:operation soapAction="http://localhost/Web_Service_Tranamission/Sync_Base_Data_JSON" style="document" />
+      <wsdl:input name="Sync_Base_Data_JSON">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="Sync_Base_Data_JSON">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sync_KafuSwap_Info">
+      <soap12:operation soapAction="http://localhost/Web_Service_Tranamission/Sync_KafuSwap_Info" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sync_KafuSwap_Info">
+      <soap12:operation soapAction="http://localhost/Web_Service_Tranamission/Sync_KafuSwap_Info_Json" style="document" />
+      <wsdl:input name="Sync_KafuSwap_Info_Json">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="Sync_KafuSwap_Info_Json">
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="web_service_TransmissionHttpGet" type="tns:web_service_TransmissionHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="dataBasIsActive">
+      <http:operation location="/dataBasIsActive" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sync_Base_Data">
+      <http:operation location="/Sync_Base_Data_JSON" />
+      <wsdl:input name="Sync_Base_Data_JSON">
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output name="Sync_Base_Data_JSON">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="web_service_TransmissionHttpPost" type="tns:web_service_TransmissionHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="dataBasIsActive">
+      <http:operation location="/dataBasIsActive" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sync_Base_Data">
+      <http:operation location="/Sync_Base_Data_JSON" />
+      <wsdl:input name="Sync_Base_Data_JSON">
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output name="Sync_Base_Data_JSON">
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="web_service_Transmission">
+    <wsdl:port name="web_service_TransmissionSoap" binding="tns:web_service_TransmissionSoap">
+      <soap:address location="http://217.219.241.244:8081/web_service_Transmission.asmx" />
+    </wsdl:port>
+    <wsdl:port name="web_service_TransmissionSoap12" binding="tns:web_service_TransmissionSoap12">
+      <soap12:address location="http://217.219.241.244:8081/web_service_Transmission.asmx" />
+    </wsdl:port>
+    <wsdl:port name="web_service_TransmissionHttpGet" binding="tns:web_service_TransmissionHttpGet">
+      <http:address location="http://217.219.241.244:8081/web_service_Transmission.asmx" />
+    </wsdl:port>
+    <wsdl:port name="web_service_TransmissionHttpPost" binding="tns:web_service_TransmissionHttpPost">
+      <http:address location="http://217.219.241.244:8081/web_service_Transmission.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

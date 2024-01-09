@@ -1,0 +1,129 @@
+﻿<Local:TabWindow x:Class="CRM.Application.Views.QuotaDiscountList"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="800"
+                 xmlns:Local="clr-namespace:CRM.Application.Local"
+                 xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                 xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+                 Loaded="TabWindow_Loaded">
+
+    <DockPanel FlowDirection="RightToLeft">
+        <Expander x:Name="SearchExpander"
+              DockPanel.Dock="Top"
+              ExpandDirection="Down"
+              IsExpanded="True"
+              Style="{StaticResource SearchExpander}">
+
+            <GroupBox DockPanel.Dock="Top" BorderBrush="#384a66" BorderThickness="0">
+                <DockPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="عنوان سهمیه شغلی :" VerticalAlignment="Center"/>
+                        <UserControls:CheckableComboBox Grid.Row="0" Grid.Column="2" x:Name="JobTitleComboBox"/>
+
+                        <TextBlock Grid.Row="0" Grid.Column="4" Text="نوع درخواست :" VerticalAlignment="Center"/>
+                        <UserControls:CheckableComboBox Grid.Row="0" Grid.Column="6" x:Name="RequestTypeComboBox"/>
+
+                        <TextBlock Grid.Row="0" Grid.Column="8" Text="اطلاعیه :" VerticalAlignment="Center" />
+                        <UserControls:CheckableComboBox Grid.Row="0" Grid.Column="10" x:Name="AnnounceComboBox"/>
+
+                        <TextBlock Text="از تاریخ شروع : " Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" />
+                        <cal:DatePicker Name="FromStartDate" Grid.Row="1" Grid.Column="2"  />
+
+                        <TextBlock Text="تا تاریخ شروع : " Grid.Row="1" Grid.Column="4" VerticalAlignment="Center" />
+                        <cal:DatePicker Name="ToStartDate" Grid.Row="1" Grid.Column="6"  />
+
+                        <TextBlock Grid.Row="1" Grid.Column="8" Text="میزان تخفیف :" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="1" Grid.Column="10" x:Name="DiscountAmountTextBox" />
+
+                        <TextBlock Text="از تاریخ پایان : " Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" />
+                        <cal:DatePicker Name="FromEndDate" Grid.Row="2" Grid.Column="2"  />
+
+                        <TextBlock Text="تا تاریخ پایان : " Grid.Row="2" Grid.Column="4" VerticalAlignment="Center" />
+                        <cal:DatePicker Name="ToEndDate" Grid.Row="2" Grid.Column="6"  />
+
+                        <WrapPanel DockPanel.Dock="Bottom" Grid.Column="10" Grid.ColumnSpan="10" Grid.Row="4" HorizontalAlignment="Right">
+                            <Button x:Name="SearchButton" Height="23" HorizontalAlignment="Left" Margin="0" Width="80" Content="جستجو" Click="Search" IsDefault="True" />
+                            <Button Height="23" HorizontalAlignment="Left" Name="ResetButton" Width="80" Click="ResetSearchForm" Content="بازنشانی" />
+                        </WrapPanel>
+
+                    </Grid>
+                </DockPanel>
+            </GroupBox>
+        </Expander>
+
+        <Grid DockPanel.Dock="Bottom" Style="{StaticResource TabWindowFooter}">
+            <UserControls:StatusBar DockPanel.Dock="Bottom"/>
+        </Grid>
+        <DataGrid DockPanel.Dock="Bottom" x:Name="ItemsDataGrid"
+                      BorderThickness="0 1 0 0"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="True"
+                      CanUserResizeColumns="True"
+                      CanUserResizeRows="False"
+                      CanUserDeleteRows="False"
+                      SelectionMode="Single"
+                      SelectionUnit="FullRow"
+                      ItemsSource="{Binding}"
+                      IsReadOnly="True"
+                      MouseDoubleClick="EditItem">
+            
+            <DataGrid.ContextMenu>
+                <ContextMenu FontFamily="Tahoma">
+                    <MenuItem Header="افزودن" Click="AddItem">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/add_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="ویرایش" Click="EditItem">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="حذف" Click="DeleteItem">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/delete2_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="/CRM.Application;component/Images/element_16x16.png" Width="16" Height="16" HorizontalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridComboBoxColumn Header=" عنوان شغلی سهمیه " Width="2*" x:Name="QuotaJobTitleColumn" SelectedValueBinding="{Binding Path=JobTitleID, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" DisplayMemberPath="Name" />
+                <DataGridComboBoxColumn Header=" نوع درخواست " Width="*" x:Name="RequestTypeColumn" SelectedValueBinding="{Binding Path=RequestTypeID, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" DisplayMemberPath="Name" />
+                <DataGridComboBoxColumn Header=" اطلاعیه " Width="*" x:Name="AnnounceColumn" SelectedValueBinding="{Binding Path=AnnounceID, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" DisplayMemberPath="Name" />
+                <DataGridTextColumn Header=" میزان تخفیف " Width="*"  Binding="{Binding Path=DiscountAmount, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header=" تاریخ شروع " Width="*"  Binding="{Binding Path=StartDate, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn Header=" تاریخ پایان " Width="*"  Binding="{Binding Path=EndDate, UpdateSourceTrigger=PropertyChanged}" />
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</Local:TabWindow>

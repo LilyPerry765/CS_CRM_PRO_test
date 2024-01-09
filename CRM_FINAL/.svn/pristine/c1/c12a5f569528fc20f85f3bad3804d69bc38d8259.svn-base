@@ -1,0 +1,72 @@
+﻿<Local:PopupWindow Title="فرم ویرایش کاربران" 
+                   x:Class="CRM.Application.Views.UserForm"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib" 
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d:DesignWidth="780"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+                   Loaded="PopupWindow_Loaded" Width="640" Height="500">
+    <Grid FlowDirection="RightToLeft" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Label Grid.Column="0" Grid.Row="0" Content="نام"/>
+        <TextBox Grid.Column="1" Grid.Row="0" x:Name="FirstNameTextBox" Text="{Binding FirstName}" />
+
+        <Label Grid.Column="0" Grid.Row="1" Content="نام خانوادگی : " />
+        <TextBox Grid.Column="1" Grid.Row="1" x:Name="LastNameTextBox" Text="{Binding LastName}" />
+
+        <Label Grid.Column="0" Grid.Row="2" Content=" نام کاربری : "/>
+        <TextBox Grid.Column="1" Grid.Row="2" x:Name="UserNameTextBox" Text="{Binding UserName}" />
+
+        <Label Grid.Column="0" Grid.Row="3" Content=" رمز عبور : "/>
+        <PasswordBox Grid.Column="1" Grid.Row="3" x:Name="PasswordTextBox" />
+        
+        <Label Grid.Column="0" Grid.Row="4" Content="نقش : " />
+        <ComboBox Grid.Column="1" Grid.Row="4" x:Name="RoleComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding RoleID}" />
+
+        <Label Grid.Column="0" Grid.Row="5" Content="تلفن : " />
+        <TextBox Grid.Column="1" Grid.Row="5" x:Name="Phone" Text="{Binding Phone}" />
+
+        <Label Grid.Column="0" Grid.Row="6" Content="ایمیل : " />
+        <TextBox Grid.Column="1" Grid.Row="6" x:Name="Email" Text="{Binding Email}" />
+
+        <Label Grid.Column="0" Grid.Row="7" Content="مراکز دسترسی :" />
+        <Grid Grid.Row="7" Grid.Column="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" Source="/CRM.Application;component/Images/Search_32x32.png" Width="30" Height="30" />
+            <TextBox Grid.Column="1" x:Name="CenterTextBox" TextChanged="CenterTextBox_TextChanged" />
+        </Grid>
+        <ListView x:Name="CenterListBox" BorderThickness="0" Grid.Column="1" Grid.Row="8" PreviewKeyDown="ListBox_PreviewKeyDown">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <CheckBox IsChecked="{Binding IsChecked,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Content="{Binding Name}" MinWidth="190" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListView>
+
+        <Button Grid.Row ="9" Grid.Column="0" Content="ذخیره" Name="SaveButton" Click="SaveForm" Tag="Footer"/>
+    </Grid>
+</Local:PopupWindow>

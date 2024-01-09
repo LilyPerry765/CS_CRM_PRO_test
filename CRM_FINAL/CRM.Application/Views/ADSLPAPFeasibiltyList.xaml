@@ -1,0 +1,111 @@
+﻿<Local:TabWindow x:Class="CRM.Application.Views.ADSLPAPFeasibiltyList"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:Local="clr-namespace:CRM.Application.Local" 
+                 xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                 xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                 mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="800" 
+                 Loaded="TabWindow_Loaded">
+
+    <DockPanel FlowDirection="RightToLeft">
+        <Expander x:Name="SearchExpander"
+                  DockPanel.Dock="Top"
+                  ExpandDirection="Down"
+                  IsExpanded="True"
+                  Style="{StaticResource SearchExpander}">
+
+            <GroupBox DockPanel.Dock="Top" BorderBrush="#384a66" BorderThickness="0" >
+                <DockPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="25"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="15"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="15"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="شرکت PAP : " Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
+                        <UserControls:CheckableComboBox Grid.Row="0" Grid.Column="2" x:Name="PAPInfoComboBox" VerticalAlignment="Center"/>
+
+                        <TextBlock Text="نام شهر : " Grid.Row="0" Grid.Column="4" VerticalAlignment="Center"/>
+                        <UserControls:CheckableComboBox Grid.Row="0" Grid.Column="6" x:Name="CityComboBox" VerticalAlignment="Center"/>
+
+                        <TextBlock Text="شماره تلفن : " Grid.Row="0" Grid.Column="8" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="0" Grid.Column="10" x:Name="TelephoneNoTextBox" VerticalAlignment="Center" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <TextBlock Text="تاریخ : " Grid.Row="1" Grid.Column="4" VerticalAlignment="Center"/>
+                        <cal:DatePicker Grid.Row="1" Grid.Column="6" Name="Date" />
+
+                        <TextBlock Text="وضعیت : " Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
+                        <UserControls:CheckableComboBox Grid.Row="1" Grid.Column="2" x:Name="StatusComboBox"/>
+
+                        <WrapPanel Grid.Row="2" Grid.Column="10" Grid.RowSpan="10" HorizontalAlignment="Right">
+                            <Button x:Name="SearchButton" Content="جستجو" Width="80" Height="23" HorizontalAlignment="Left" Click="Search" IsDefault="True"/>
+                            <Button x:Name="ResetButton" Content="بازنشانی" Width="80" Height="23" HorizontalAlignment="Left" Click="ResetSearchForm"/>
+                        </WrapPanel>
+                    </Grid>
+                </DockPanel>
+            </GroupBox>
+        </Expander>
+
+        <Grid DockPanel.Dock="Bottom" Style="{StaticResource TabWindowFooter}">
+            <Border DockPanel.Dock="Bottom" Tag="Footer" FlowDirection="RightToLeft" BorderThickness="0 1 0 0" BorderBrush="#d5d5d5" Background="#e9f3fe" Margin="0" Height="35">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="546*" />
+                        <ColumnDefinition Width="60*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <UserControls:Pager x:Name="Pager" DockPanel.Dock="Bottom" PageSize="10" PageChanged="Pager_PageChanged" HorizontalAlignment="Left" />
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Grid DockPanel.Dock="Bottom" Style="{StaticResource TabWindowFooter}">
+            <UserControls:StatusBar DockPanel.Dock="Bottom"/>
+        </Grid>
+
+        <DataGrid DockPanel.Dock="Bottom" x:Name="ItemsDataGrid"
+                  BorderThickness="0 1 0 0"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  CanUserResizeColumns="True"
+                  CanUserResizeRows="False"
+                  CanUserDeleteRows="False"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  ItemsSource="{Binding}"
+                  IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="/CRM.Application;component/Images/element_16x16.png" Width="16" Height="16"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header=" نام شرکت PAP " Width="*" Binding="{Binding Path=PAPInfo,UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header=" شهر " Width="*" Binding="{Binding Path=CityName,UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header=" شماره تلفن " Width="*" Binding="{Binding Path=TelephoneNo,UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header=" تاریخ " Width="*" Binding="{Binding Path=Date,UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header=" وضعیت " Width="4*" Binding="{Binding Path=Status,UpdateSourceTrigger=PropertyChanged}"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</Local:TabWindow>

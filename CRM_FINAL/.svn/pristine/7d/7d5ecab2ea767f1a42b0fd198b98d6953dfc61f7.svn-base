@@ -1,0 +1,21 @@
+﻿--13931210 - 1334
+--به گزارش اطلاعات جامه ، بوخت مرکزی پی سی ام اضافه شد
+--UPDATE R14
+--SET TEMPLATE = RM.Template
+--FROM 
+--	ReportTemplate RM
+--INNER JOIN 
+--	[192.168.0.14\PENDARSQL].CRM.DBO.ReportTemplate R14 ON RM.ID = R14.ID 
+--WHERE 
+--	RM.ID = 254 AND R14.ID = 254
+
+--13931210 - 1344
+--بر روی سرور کرمانشاه هم بروزرسانی شد
+--UPDATE RR
+--SET Template = R14.Template
+--FROM 
+--	ReportTemplate R14
+--INNER JOIN 
+--	[78.39.252.109].CRM.DBO.REPORTTEMPLATE RR ON R14.ID = RR.ID
+--WHERE 
+--	R14.ID = 254 AND RR.ID = 254

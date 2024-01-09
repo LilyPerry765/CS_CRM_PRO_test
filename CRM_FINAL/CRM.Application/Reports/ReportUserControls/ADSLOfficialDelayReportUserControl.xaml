@@ -1,0 +1,106 @@
+﻿<Local:ReportBase x:Class="CRM.Application.Reports.ReportUserControls.ADSLOfficialDelayReportUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+             xmlns:Local="clr-namespace:CRM.Application.Local"
+             xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+             mc:Ignorable="d" >
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <GroupBox Grid.Row="0" Grid.Column="0" Header=" انتخاب تاریخ درخواست ">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="از تاریخ : " VerticalAlignment="Center" Width="100"/>
+                <cal:DatePicker Grid.Row="0" Grid.Column="1" x:Name="FromDate"/>
+
+                <TextBlock Grid.Row="0" Grid.Column="3" Text="تا تاریخ : " VerticalAlignment="Center" Width="100"/>
+                <cal:DatePicker Grid.Row="0" Grid.Column="4" x:Name="ToDate"/>
+                
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="2" Grid.Column="0" Header=" انتخاب شماره تلفن ">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="شماره : " VerticalAlignment="Center" Width="100"/>
+                <TextBox Grid.Row="0" Grid.Column="1" x:Name="PhoneNoTextBox"/>
+                
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="4" Grid.Column="0" Header=" مشخصات گزارش ">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="نوع درخواست : " VerticalAlignment="Center" Width="100"/>
+                <ComboBox Grid.Row="0" Grid.Column="1" x:Name="RequestTypeComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedIndex="0" SelectionChanged="RequestTypeComboBox_SelectionChanged"/>
+
+                <TextBlock Grid.Row="0" Grid.Column="3" Text="وضعیت تاخیر : " VerticalAlignment="Center" Width="100"/>
+                <ComboBox Grid.Row="0" Grid.Column="4" x:Name="DelayStatusComboBox" DisplayMemberPath="StepTitle" SelectedValuePath="ID" SelectedIndex="0"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="6" Grid.Column="0" Header=" انتخاب مرکز ">
+            <UserControls:RegionCenterUserControl x:Name="regionCenterUserControl"/>
+        </GroupBox>
+        <GroupBox Grid.Row="8" Grid.Column="0" Header=" مشخصات مشترک">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="کد ملی مشترک : " VerticalAlignment="Center" Width="100"/>
+                <TextBox Grid.Row="0"  Grid.Column="1" x:Name="NationalIDTextBox"/>
+                
+            </Grid>
+        </GroupBox>
+        
+    </Grid>
+</Local:ReportBase>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+  <appSettings>
+    <add key="ShahkarWebApiIP" value="172.16.11.3"/>
+    <add key="ShahkarWebApiPort" value="8083"/>
+    <add key="ShahkarUsername" value="TCI_Kermanshah"/>
+    <add key="ShakarPassword" value="T30!-Ke$m301an$$"/>
+  </appSettings>
+
+</configuration>

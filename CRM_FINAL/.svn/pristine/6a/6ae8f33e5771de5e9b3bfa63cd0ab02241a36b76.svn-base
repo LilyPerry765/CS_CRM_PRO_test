@@ -1,0 +1,63 @@
+﻿<Local:PopupWindow Title="فرم ویرایش ام دی اف"
+                   x:Class="CRM.Application.Views.MDFForm"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib"
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls"
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   Width="500" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   Loaded="PopupWindow_Loaded" Icon="/CRM.Application;component/Images/MDF48x48.png">
+
+    <Grid FlowDirection="RightToLeft">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="0" Content="شهر : " />
+        <ComboBox  Grid.Column="1" Grid.Row="0" x:Name="CityComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="CityComboBox_SelectionChanged" />
+
+        <Label Grid.Column="0" Grid.Row="1" Content="مرکز : " />
+        <ComboBox  Grid.Column="1" Grid.Row="1" x:Name="CenterComboBox" DisplayMemberPath="CenterName" SelectedValuePath="ID" SelectedValue="{Binding CenterID}" SelectionChanged="CenterComboBox_SelectionChanged_1" />
+
+        <Label Grid.Column="0" Grid.Row="2" Content="شماره :  " />
+        <TextBox Grid.Column="1" Grid.Row="2" x:Name="Number" Text="{Binding Number}" />
+        
+
+
+        <Label Grid.Column="0" Grid.Row="3" Content="نوع : " />
+        <ComboBox DisplayMemberPath="Name" SelectedValuePath="ID" Grid.Column="1" Grid.Row="3" x:Name="TypeComboBox" SelectedValue="{Binding Type}" SelectionChanged="TypeComboBox_SelectionChanged" />
+
+        <Label Grid.Column="0" Grid.Row="4" Content="استفاده برای : " />
+        <ComboBox DisplayMemberPath="Name" SelectedValuePath="ID" Grid.Column="1" Grid.Row="4" x:Name="UsesComboBox" SelectedValue="{Binding Uses}" />
+
+        <Label Grid.Column="0" Grid.Row="5" Content="شماره آخرین فریم عمودی : " />
+        <TextBox Grid.Column="1" Grid.Row="5" x:Name="LastNoVerticalFramesTextBox" Text="{Binding LastNoVerticalFrames}" />
+
+        <Label Grid.Column="0" Grid.Row="6" Content="شماره آخرین فریم افقی : " />
+        <TextBox Grid.Column="1" Grid.Row="6" x:Name="LastNoHorizontalFramesTextBox" Text="{Binding LastNoHorizontalFrames}" />
+
+     
+
+        <Label Grid.Column="0" Grid.Row="7" Content="توضیحات :  " />
+        <TextBox Grid.Column="1" Grid.Row="7" x:Name="Description" Text="{Binding Description}" Height="60" />
+
+        <Button Grid.Row="20" Grid.Column="0" Content="ذخیره" Name="SaveButton" Click="SaveForm" Tag="Footer" />
+
+    </Grid>
+
+</Local:PopupWindow>

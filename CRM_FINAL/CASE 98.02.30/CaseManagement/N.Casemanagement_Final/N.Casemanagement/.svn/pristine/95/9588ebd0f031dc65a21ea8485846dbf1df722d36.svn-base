@@ -1,0 +1,15 @@
+﻿
+namespace CaseManagement.Case {
+    
+    @Serenity.Decorators.registerClass()
+    @Serenity.Decorators.responsive()
+    export class OrganizationEffectDialog extends Serenity.EntityDialog<OrganizationEffectRow, any> {
+        protected getFormKey() { return OrganizationEffectForm.formKey; }
+        protected getIdProperty() { return OrganizationEffectRow.idProperty; }
+        protected getLocalTextPrefix() { return OrganizationEffectRow.localTextPrefix; }
+        protected getNameProperty() { return OrganizationEffectRow.nameProperty; }
+        protected getService() { return OrganizationEffectService.baseUrl; }
+
+        protected form = new OrganizationEffectForm(this.idPrefix);
+    }
+}

@@ -1,0 +1,56 @@
+﻿<Local:UserControlBase
+    xmlns:Local="clr-namespace:CRM.Application.Local"
+     x:Class="CRM.Application.UserControls.CustomerInfoSummary" 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+    Tag="مشخصات مشترک"
+    mc:Ignorable="d" d:DesignWidth="820"
+             
+             Loaded="LoadData">
+
+    <Expander Name="CustomerInfoExpander"  FlowDirection="RightToLeft" Header="مشخصات مشترک">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Content="نام مشترک" />
+            <TextBox Grid.Row="0" Grid.Column="1" Name="CustomerNametextBox" Text="{Binding Path=CustomerName, Mode=OneWay}"  IsEnabled="False"/>
+
+            <Label x:Name="PersonTypeLable" Content="نوع شخص" Grid.Row="0" Grid.Column="3"/>
+            <ListBox x:Name="PersonTypeListBox" Grid.Row="0" Grid.Column="4" SelectedValue="{Binding Path=Customer.PersonType}" SelectedValuePath="Tag" IsEnabled="False">
+                <ListBoxItem Tag="0" Name="PersonradioButton" IsSelected="True">حقیقی</ListBoxItem>
+                <ListBoxItem Tag="1" Name="CompanyradioButton">حقوقی</ListBoxItem>
+            </ListBox>
+
+            <Label x:Name="NationalCodeLabel" Content="کد ملی/شماره ثبت شرکت" Grid.Row="0" Grid.Column="6"/>
+            <TextBox Name="NationalCodetextBox"  Text="{Binding Path=Customer.NationalCodeOrRecordNo}" Grid.Row="0" Grid.Column="7" IsEnabled="False"/>
+
+            <Label x:Name="GenderLabel" Content="جنسیت" Grid.Row="1" Grid.Column="0" />
+
+            <ListBox x:Name="GenderListBox" Grid.Row="1" Grid.Column="1" SelectedValue="{Binding Path=Customer.Gender,TargetNullValue=null}" SelectedValuePath="Tag" IsEnabled="False">
+                <ListBoxItem Tag="0" >مرد</ListBoxItem>
+                <ListBoxItem Tag="1" >زن</ListBoxItem>
+            </ListBox>
+
+            <Label  Name="TeleLabel" Content="تلفن تماس" Grid.Row="1" Grid.Column="3"/>
+            <TextBox Name="TeletextBox" Text="{Binding Path=Customer.UrgentTelNo}" Grid.Row="1" Grid.Column="4" IsEnabled="False"/>
+
+
+
+        </Grid>
+    </Expander>
+</Local:UserControlBase>

@@ -1,0 +1,106 @@
+﻿<Local:TabWindow    x:Class="CRM.Application.Views.WorkUnitList"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:Local="clr-namespace:CRM.Application.Local"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                    xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                    Loaded="TabWindow_Loaded" mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="800">
+    <DockPanel FlowDirection="RightToLeft">
+        
+        <Expander x:Name="SearchExpander"
+                  DockPanel.Dock="Top"
+                  ExpandDirection="Down"
+                  IsExpanded="True"
+                  Style="{StaticResource SearchExpander}" >
+            
+            <GroupBox BorderBrush="#384a66" BorderThickness="0">
+                <DockPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="auto"/>
+
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="15"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <TextBlock Text="نام واحد مسئول : " Grid.Row="0" Grid.Column="0"/>
+                        <TextBox Grid.Row="0" Grid.Column="2" x:Name="WorkUnitNameTextBox" TabIndex="1"/>
+                        
+                        <WrapPanel Grid.Row="2" Grid.Column="10" Grid.ColumnSpan="10" HorizontalAlignment="Right">
+                            <Button x:Name="SearchButton" Click="Search" Content="جستجو" Width="80" Height="23" IsDefault="True"/>
+                            <Button x:Name="ResetButton" Click="ResetSearchList" Content="بازنشانی" Width="80" Height="23"/>                            
+                        </WrapPanel>
+
+                    </Grid>
+                </DockPanel>
+            </GroupBox>
+        </Expander>
+        
+        <Grid DockPanel.Dock="Bottom" Style="{StaticResource TabWindowFooter}">
+            <UserControls:StatusBar/>
+        </Grid>
+        <DataGrid DockPanel.Dock="Bottom" x:Name="ItemsDataGrid"
+                  BorderThickness="0 1 0 0"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  CanUserReorderColumns="True"
+                  CanUserResizeRows="True"
+                  CanUserDeleteRows="False"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  ItemsSource="{Binding}"
+                  IsReadOnly="True"
+                  MouseDoubleClick="EditItem">
+            <DataGrid.ContextMenu>
+                <ContextMenu FontFamily="Tahoma">
+                    <MenuItem Header="افزودن" Click="AddItem">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/add_16x16.png" Width="16" Height="16"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="ویرایش" Click="EditItem">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="حذف" Click="DeleteItem">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/delete2_16x16.png" Width="16" Height='16'/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="/CRM.Application;component/Images/element_16x16.png" Width="16" Height="16" HorizontalAlignment="Center"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header=" نام واحد مسئول " Width="*" Binding="{Binding Path=WorkUnitName,UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header=" توضیحات " Width="4*" Binding="{Binding Path=Description,UpdateSourceTrigger=PropertyChanged}"/>
+                
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</Local:TabWindow>
+
+
+    

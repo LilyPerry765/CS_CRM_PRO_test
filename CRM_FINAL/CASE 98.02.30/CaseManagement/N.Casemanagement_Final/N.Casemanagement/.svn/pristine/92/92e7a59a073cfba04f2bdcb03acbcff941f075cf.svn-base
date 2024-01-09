@@ -1,0 +1,44 @@
+﻿namespace CaseManagement.Common {
+    export interface MessageLogRow {
+        Id?: number;
+        InsertDate?: string;
+        ActivityRequestId?: number;
+        MessageId?: number;
+        SenderUserId?: number;
+        SenderUserName?: string;
+        ReceiverProvinceId?: number;
+        ReceiverUserId?: number;
+        ReceiverUserName?: string;
+        MobileNumber?: string;
+        TextSent?: string;
+        IsSent?: boolean;
+        IsDelivered?: boolean;
+        ReceiverProvinceName?: string;
+    }
+
+    export namespace MessageLogRow {
+        export const idProperty = 'Id';
+        export const nameProperty = 'SenderUserName';
+        export const localTextPrefix = 'Common.MessageLog';
+
+        export namespace Fields {
+            export declare const Id: string;
+            export declare const InsertDate: string;
+            export declare const ActivityRequestId: string;
+            export declare const MessageId: string;
+            export declare const SenderUserId: string;
+            export declare const SenderUserName: string;
+            export declare const ReceiverProvinceId: string;
+            export declare const ReceiverUserId: string;
+            export declare const ReceiverUserName: string;
+            export declare const MobileNumber: string;
+            export declare const TextSent: string;
+            export declare const IsSent: string;
+            export declare const IsDelivered: string;
+            export declare const ReceiverProvinceName: string;
+        }
+
+        ['Id', 'InsertDate', 'ActivityRequestId', 'MessageId', 'SenderUserId', 'SenderUserName', 'ReceiverProvinceId', 'ReceiverUserId', 'ReceiverUserName', 'MobileNumber', 'TextSent', 'IsSent', 'IsDelivered', 'ReceiverProvinceName'].forEach(x => (<any>Fields)[x] = x);
+    }
+}
+

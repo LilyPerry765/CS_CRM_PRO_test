@@ -1,0 +1,38 @@
+﻿<Local:ReportBase x:Class="CRM.Application.Reports.ReportUserControls.ADSLSellerAgentReportUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+             xmlns:Local="clr-namespace:CRM.Application.Local"
+             mc:Ignorable="d">
+    <DockPanel FlowDirection="RightToLeft">
+        <GroupBox BorderBrush="#384a66" BorderThickness="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="نماینده فروش : " Grid.Row="0" Grid.Column="4" VerticalAlignment="Center"/>
+                <UserControls:CheckableComboBox Grid.Row="0" Grid.Column="6" x:Name="ADSLSellerAgentComboBox" VerticalAlignment="Center"/>
+
+                    <TextBlock Text="نام شهر : " Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
+                    <UserControls:CheckableComboBox Grid.Row="0" Grid.Column="2" x:Name="CityComboBox" VerticalAlignment="Center"/>
+
+                    <!--<TextBlock Text="گروه فروش : " Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
+                    <UserControls:CheckableComboBox Grid.Row="2" Grid.Column="2" x:Name="GroupComboBox"/>-->
+                </Grid>
+        </GroupBox>
+    </DockPanel>
+</Local:ReportBase>

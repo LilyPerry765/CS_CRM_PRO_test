@@ -1,0 +1,60 @@
+﻿<Local:PopupWindow Title=" فرم ویرایش فریم ام دی اف"
+                   x:Class="CRM.Application.Views.MDFFrameForm"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib"
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls"
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   d:DesignWidth="780" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   Loaded="PopupWindow_Loaded" Icon="/CRM.Application;component/Images/MDF48x48.png">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label         Grid.Row="0" Grid.Column="0"            Content="شهر : " Height="30" />
+        <ComboBox      Grid.Row="0" Grid.Column="1"            x:Name="CityComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="CityComboBox_SelectionChanged" Height="30"/>
+
+        <Label         Grid.Row="1" Grid.Column="0"             Content="مرکز" Height="30"/>
+        <ComboBox      Grid.Row="1" Grid.Column="1"             x:Name="CenterComboBox" DisplayMemberPath="CenterName" SelectedValuePath="ID" SelectionChanged="CenterComboBox_SelectionChanged_1" SelectedIndex="0" Height="30"/>
+
+        <Label         Grid.Row="2" Grid.Column="0" Content="ام دی اف / اونو"  Height="30"/>
+        <ComboBox      Grid.Row="2" Grid.Column="1"  x:Name="MDFComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding MDFID}" SelectionChanged="MDFComboBox_SelectionChanged" Height="30"/>
+
+        <Label        Grid.Row="3" Grid.Column="0"  x:Name="FrameNoLable" Content="شماره فریم" Height="30"/>
+        <TextBox      Grid.Row="3" Grid.Column="1" x:Name="FrameNoTextBox" Text="{Binding FrameNo}"  HorizontalAlignment="Left" Width="500" Height="30"/>
+        <Button       Grid.Row="3" Grid.Column="1" Content="بازیابی اطلاعات فریم" x:Name="DataFrameRecovery"  Width="auto" HorizontalAlignment="Right" Click="Button_Click" Height="30"/>
+
+        <Label        Grid.Row="4" Grid.Column="0" x:Name="CountFramesLabel" Content="تعداد فریم ها" Height="30"/>
+        <TextBox      Grid.Row="4" Grid.Column="1" x:Name="CountFramesTextBox" Height="30"/>
+
+        <Label        Grid.Row="5" Grid.Column="0" Content="تعداد طبقه های " Height="30" />
+        <TextBox      Grid.Row="5" Grid.Column="1" x:Name="VerticalRowsCount" Text="{Binding VerticalRowsCount}" Height="30"/>
+
+        <Label        Grid.Row="6" Grid.Column="0" Content="ظرفیت هر طبقه " Height="30"/>
+        <TextBox      Grid.Row="6" Grid.Column="1" x:Name="VerticalRowCapacity" Text="{Binding VerticalRowCapacity}" Height="30"/>
+
+        <Label        Grid.Row="7" Grid.Column="0" Content="از شماره ردیف عمودی" VerticalAlignment="Top" Height="30"/>
+        <TextBox      Grid.Row="7" Grid.Column="1"  x:Name="VerticalFirstColumn" Text="{Binding VerticalFirstColumn}" Height="30"/>
+
+        <Label        Grid.Row="8" Grid.Column="0" Content="تا شماره ردیف عمودی" Height="30"/>
+        <TextBox      Grid.Row="8" Grid.Column="1"  x:Name="VerticalLastColumn" Text="{Binding VerticalLastColumn}" Height="30"/>
+        
+        <Button       Grid.Row="20" Grid.Column="0" Content="ذخیره" Name="SaveButton" Click="SaveForm" Tag="Footer" />
+    </Grid>
+</Local:PopupWindow>

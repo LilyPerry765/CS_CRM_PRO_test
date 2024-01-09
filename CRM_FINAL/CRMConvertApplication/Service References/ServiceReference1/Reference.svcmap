@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d5ef385a-7cf0-4342-b486-8e47b4f60291" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://78.39.252.109:83/CRM.ServiceHost.CRMService.svc/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Services.wsdl" MetadataType="Wsdl" ID="2222d172-8dc3-4abd-b3b5-41e6e340cb69" SourceId="1" SourceUrl="http://78.39.252.109:83/CRM.ServiceHost.CRMService.svc/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="4de7bc11-3847-4a7b-b05c-956627be5047" SourceId="1" SourceUrl="http://78.39.252.109:83/CRM.ServiceHost.CRMService.svc/mex" />
+    <MetadataFile FileName="Services.xsd" MetadataType="Schema" ID="a5bcb3e2-d8b4-4356-b20f-d10b5866695a" SourceId="1" SourceUrl="http://78.39.252.109:83/CRM.ServiceHost.CRMService.svc/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="71445d65-921f-4d3e-9796-5dc90116392f" SourceId="1" SourceUrl="http://78.39.252.109:83/CRM.ServiceHost.CRMService.svc/mex" />
+    <MetadataFile FileName="CRM.Data.ServiceHost.xsd" MetadataType="Schema" ID="0d3f1669-4ede-48ef-a900-8aeb59ffa0c9" SourceId="1" SourceUrl="http://78.39.252.109:83/CRM.ServiceHost.CRMService.svc/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="bff56954-654f-48f2-a493-79d094ef791b" SourceId="1" SourceUrl="http://78.39.252.109:83/CRM.ServiceHost.CRMService.svc/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

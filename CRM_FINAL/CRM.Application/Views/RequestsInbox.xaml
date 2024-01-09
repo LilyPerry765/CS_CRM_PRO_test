@@ -1,0 +1,300 @@
+﻿<Local:ExtendedTabWindowBase x:Class="CRM.Application.Views.RequestsInbox" 
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:Local="clr-namespace:CRM.Application.Local" 
+                 xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                 xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                 mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="800" 
+                 Loaded="TabWindow_Loaded">
+
+    <DockPanel FlowDirection="RightToLeft" LastChildFill="True">
+        <Expander x:Name="SearchExpander" 
+                  DockPanel.Dock="Top"
+                  ExpandDirection="Down"
+                  IsExpanded="True"
+                  Style="{StaticResource SearchExpander}">
+            <GroupBox DockPanel.Dock="Top" BorderBrush="#384a66" BorderThickness="0">
+                <DockPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label  Grid.Row="0" Grid.Column="0"  Content="شناسه : " VerticalAlignment="Center"/>
+                        <TextBox    Grid.Row="0" Grid.Column="2" x:Name="IDTextBox" Style="{StaticResource ResourceKey=NumericTextBox}" PreviewTextInput="NumberTextBox_PreviewTextInput" />
+
+                        <Label  Grid.Row="0" Grid.Column="4" Content="شماره تلفن : " VerticalAlignment="Center"/>
+                        <TextBox    Grid.Row="0" Grid.Column="6" x:Name="TelephoneNoTextBox" Style="{StaticResource ResourceKey=NumericTextBox}" PreviewTextInput="NumberTextBox_PreviewTextInput" />
+
+                        <Label Grid.Row="0" Grid.Column="8" Content="علت رد : " VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="0" Grid.Column="10" x:Name="RequestRejectReasonDescriptionTextBox" TextWrapping="Wrap"/>
+
+                        <Label Content="از تاریخ درخواست : " Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" />
+                        <cal:DatePicker x:Name="RequestStartDate" Grid.Row="1" Grid.Column="2" />
+
+                        <Label  Grid.Row="1" Grid.Column="4" Content="نوع درخواست : " VerticalAlignment="Center"/>
+                        <UserControls:CheckableComboBox Grid.Row="1" Grid.Column="6" x:Name="RequestTypesComboBox" LostFocus="RequestTypesComboBox_LostFocus"/>
+
+                        <Label Grid.Row="1" Grid.Column="8" Content="وضعیت : " VerticalAlignment="Center" />
+                        <UserControls:CheckableComboBox Grid.Row="1" Grid.Column="10" x:Name="StepsComboBox" />
+
+                        <Label Content="تا تاریخ درخواست : " Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" />
+                        <cal:DatePicker Name="RequestEndDate" Grid.Row="2" Grid.Column="2"  />
+
+                        <TextBlock  Grid.Row="2" Grid.Column="4" Text="مرکز : " VerticalAlignment="Center" />
+                        <UserControls:CheckableComboBox  Grid.Row="2" Grid.Column="6" x:Name="CentersComboBox" />
+
+                        <Label  Grid.Row="2" Grid.Column="8" Content="مشترک : " VerticalAlignment="Center"/>
+                        <TextBox    Grid.Row="2" Grid.Column="10" x:Name="CustomerNameTextBox" />
+
+                        <Label Content="از تاریخ درج : " Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" />
+                        <cal:DatePicker Name="ModifyStartDate" Grid.Row="3" Grid.Column="2"  />
+
+                        <Label  Grid.Row="3" Grid.Column="4" Content="درخواست کننده : " VerticalAlignment="Center" />
+                        <TextBox    Grid.Row="3" Grid.Column="6" x:Name="RequesterNameTextBox" />
+
+                        <Label Grid.Row="3" Grid.Column="8" Content="نحوه پرداخت : " VerticalAlignment="Center" />
+                        <UserControls:CheckableComboBox Grid.Row="3" Grid.Column="10" x:Name="PaymentTypesComboBox" />
+
+                        <Label Content="تا تاریخ درج : " Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" />
+                        <cal:DatePicker Name="ModifyEndDate" Grid.Row="4" Grid.Column="2" />
+
+                        <Label  Grid.Row="4" Grid.Column="4" Content="شماره نامه : " VerticalAlignment="Center" />
+                        <TextBox    Grid.Row="4" Grid.Column="6" x:Name="RequestLetterNoTextBox" />
+
+                        <Label Grid.Row="4" Grid.Column="8" Content="تاریخ نامه : " VerticalAlignment="Center" />
+                        <cal:DatePicker Grid.Row="4" Grid.Column="10" Name="LetterDate" />
+
+                        <StackPanel Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Name="InquiryPanel">
+                            <TextBlock Text="پیگیری : " Width="115" VerticalAlignment="Center" />
+                            <CheckBox Name="InquiryModeCheckBox" VerticalAlignment="Center" IsChecked="True" IsEnabled="False" />
+                        </StackPanel>
+
+                        <WrapPanel DockPanel.Dock="Bottom" Grid.Column="10" Grid.Row="5" Grid.ColumnSpan="10" Margin="0 10 0 10" HorizontalAlignment="Right">
+                            <Button x:Name="SearchButton" Height="23" HorizontalAlignment="Left" Margin="0" Width="80" Content="جستجو" Click="Search" IsDefault="True" />
+                            <Button Height="23" HorizontalAlignment="Left" Name="ResetButton" Width="80" Click="ResetSearchForm" Content="بازنشانی" />
+                            <Button Height="23" HorizontalAlignment="Left" Name="PrintButton" Width="80" Click="PrintButton_Click"  Content="چاپ" />
+                        </WrapPanel>
+                    </Grid>
+                </DockPanel>
+            </GroupBox>
+        </Expander>
+
+        <Grid DockPanel.Dock="Bottom" Style="{StaticResource TabWindowFooter}">
+            <Border DockPanel.Dock="Bottom" Tag="Footer" FlowDirection="RightToLeft" BorderThickness="0 1 0 0" BorderBrush="#d5d5d5" Background="#e9f3fe" Margin="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="546*" />
+                        <ColumnDefinition Width="60*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <UserControls:Pager x:Name="Pager" DockPanel.Dock="Bottom" PageChanged="Pager_PageChanged" HorizontalAlignment="Left" />
+                    <UserControls:Actions x:Name="ActionUserControl" Grid.Column="2" />
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.Background>
+                <ImageBrush ImageSource="/CRM.Application;Component/Images/footer_bg.jpg" AlignmentY="Bottom" />
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <UserControls:ExtendedStatusBar x:Name="FooterStatusBar" Grid.Row="0" />
+            <UserControls:StatusLine x:Name="FooterStatusLine" Grid.Row="1"/>
+        </Grid> 
+
+        <DataGrid x:Name="ItemsDataGrid"
+                          BorderThickness="0 1 0 0"  
+                          AutoGenerateColumns="False" 
+                          CanUserAddRows="True" 
+                          CanUserResizeColumns="True"
+                          CanUserResizeRows="False"
+                          CanUserDeleteRows="False"
+                          SelectionMode="Extended"
+                          SelectionUnit="FullRow"
+                          ClipboardCopyMode="ExcludeHeader"
+                          ItemsSource="{Binding}" 
+                          IsReadOnly="True"                         
+                          MouseDoubleClick="ItemEdit"
+                          PreviewKeyDown="ItemsDataGrid_PreviewKeyDown"
+                          SelectionChanged="ItemsDataGrid_SelectionChanged"
+                          LoadingRow="ItemsDataGrid_LoadingRow">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="ContentTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <CheckBox x:Name="HeaderCheckBox"  Content="{Binding}" Tag="{Binding}"  Checked="CheckBoxChanged" Unchecked="UnCheckBoxChanged"/>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Setter Property="ToolTip">
+                        <Setter.Value>
+                            <StackPanel Visibility="{Binding Path = RequesRejectReason,Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=VisibilityNonNULLByVisibilityProperty}" >
+                                <TextBlock  Text="{Binding  Path = RequesRejectReason.Reason}" FontSize="14" FontWeight="Bold" />
+                                <TextBlock Text="{Binding Path = RequesRejectReason.Description}" FontSize="14" FontWeight="Bold" />
+                            </StackPanel>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.RowStyle>
+            <!--<DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <DataGrid x:Name="SubItemsDataGrid" HeadersVisibility="None" BorderThickness="0 1 0 0" AutoGenerateColumns="False" CanUserAddRows="False" CanUserResizeColumns="True" CanUserResizeRows="False" CanUserDeleteRows="False" SelectionMode="Single" SelectionUnit="FullRow" ItemsSource="{Binding Children}" Width="{Binding ElementName=ItemsDataGrid, Path=ActualWidth}" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="/CRM.Application;component/Images/element_red_16x16.png" Width="16" Height="16" HorizontalAlignment="Center" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="شناسه" Width="50" Binding="{Binding Path=ID}" />
+                            <DataGridTextColumn Header="مرحله فعلی" Width="*" Binding="{Binding Path=StatusName}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>-->
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                        <DataGrid x:Name="SubE1ItemsDataGrid" HeadersVisibility="None" BorderThickness="0 1 0 0" AutoGenerateColumns="False" CanUserAddRows="False" CanUserResizeColumns="True" CanUserResizeRows="False" CanUserDeleteRows="False" SelectionMode="Single" SelectionUnit="FullRow" ItemsSource="{Binding E1Links}" Width="{Binding ElementName=ItemsDataGrid, Path=ActualWidth}" IsReadOnly="True" Loaded="SubE1ItemsDataGrid_Loaded">
+                            <DataGrid.ContextMenu>
+                                <ContextMenu FontFamily="Tahoma">
+                                    <MenuItem Header="ویرایش" Click="SubItemEdit">
+                                        <MenuItem.Icon>
+                                            <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </DataGrid.ContextMenu>
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image Source="/CRM.Application;component/Images/element_red_16x16.png" Width="16" Height="16" HorizontalAlignment="Center" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Header="شماره لینک" Width="50" Binding="{Binding Path=LinkNumber}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+            <DataGrid.ContextMenu>
+                <ContextMenu FontFamily="Tahoma">
+                    <MenuItem Header="ویرایش" Click="ItemEdit">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="ارجاع گروهی" Name="GroupItemsEditMenu" Click="GroupItemsEdit">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="نمایش اطلاعات درخواست" Click="ShowRequestInfo">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <!--<MenuItem Header="ارجاع گروهی" Click="GroupingForwardEdit">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>-->
+                    <MenuItem Header="وضعیت روال" Click="RequestStatusClick">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="PrintMenuItem" Header="چاپ" Click="PrintClick" Visibility="Collapsed">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/Action_Print.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="چاپ فرم خرابی" Name="FailurePrintMenu" Click="FailurePrintClick" Visibility="Collapsed">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/Action_Print.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>                    
+                    <MenuItem Header="آدرس" x:Name="AddressContextMenu" Click="AddressContextMenu_Click" Visibility="Collapsed">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/Action_Print.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="ذخیره ستون" Click="SaveColumnItem_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/Save.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="تنظیمات چاپ" Click="ReportSettingItem_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/Setting_24x24.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <!--<MenuItem Header="سابقه عملیات" Click="ShowFlowchart">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16"  />
+                        </MenuItem.Icon>
+                    </MenuItem>-->
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding PreviousAction, Converter={StaticResource LastActionNameToImageSourceConverter}}" Width="16" Height="16" HorizontalAlignment="Center" Tag="{Binding ID}" MouseLeftButtonDown="ImageView_MouseLeftButtonDown" ToolTip="{Binding RequesRejectDescription}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="شناسه" 				    Width="100"    Binding="{Binding Path=ID}" IsReadOnly="False" />
+                <DataGridTextColumn Header="تلفن" 				    Width="*"      Binding="{Binding Path=TelephoneNo}" IsReadOnly="False"/>
+                <DataGridTextColumn Header="نوع" 				    Width="*"      Binding="{Binding Path=RequestTypeName}" />
+                <DataGridTextColumn Header="مرکز" 				    Width="*"      Binding="{Binding Path=CenterName}" />
+                <DataGridTextColumn Header="شناسه مرکز"            Width="*"     Binding="{Binding Path=CenterID}" Visibility="Hidden"/>
+                <DataGridTextColumn Header="مشترک" 				    Width="*"     Binding="{Binding Path=CustomerName}" />
+                <DataGridTextColumn Header="درخواست کننده" 	    Width="*"     Binding="{Binding Path=RequesterName}" />
+                <!--<DataGridTextColumn Header="تاریخ درخواست"    Width="*"    Binding="{Binding Path=RequestDate, Converter={StaticResource PersianDateConverter}}" />
+                <DataGridTextColumn Header="شماره نامه" 		    Width="*"    Binding="{Binding Path=RequestLetterNo}" />
+                <DataGridTextColumn Header="تاریخ نامه" 		    Width="*"    Binding="{Binding Path=RequestLetterDate, Converter={StaticResource PersianDateConverter}}" />-->
+                <!--<DataGridComboBoxColumn Header="نحوه پرداخت"  Width="*"   SelectedValueBinding="{Binding Path=RequestPaymentTypeID}" SelectedValuePath="Value" DisplayMemberPath="Name" x:Name="PaymentTypeColumn" />-->
+                <DataGridTextColumn Header="تاریخ درج" 		    Width="*"    Binding="{Binding Path=RequestInsertDate}" />
+                <DataGridTextColumn Header="کاربر درج کننده" 	    Width="*"   Binding="{Binding Path=CreatorUser}" />
+                <DataGridTextColumn Header="تاریخ آخرین ویرایش" 	Width="*"    Binding="{Binding Path=RequestModifyDate}" />
+                <DataGridTextColumn Header="کاربر ویرایش کننده"   Width="*"   Binding="{Binding Path=ModifyUser}" />
+                <!--<DataGridTextColumn Header="مرحله فعلی" 	    Width="*"  Binding="{Binding Path=CurrentStep}" />-->
+                <DataGridTextColumn Header="وضعیت" 			    	Width="*"     Binding="{Binding Path=StatusName}" />
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </DockPanel>
+</Local:ExtendedTabWindowBase>

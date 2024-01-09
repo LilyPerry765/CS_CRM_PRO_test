@@ -1,0 +1,127 @@
+﻿<Local:PopupWindow x:Class="CRM.Application.Views.VisitPlaceByTelephoneForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Local="clr-namespace:CRM.Application.Local"
+        xmlns:uc="clr-namespace:CRM.Application.UserControls"
+        xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+        xmlns:customControls="clr-namespace:CRM.Application.Codes.CustomControls"
+        xmlns:codes="clr-namespace:CRM.Application.Codes"
+        Title="بازدید از محل بر اساس تلفن" ResizeMode="NoResize" FocusManager.FocusedElement="{Binding ElementName=TelephoneNoTextBox}">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <GroupBox Grid.Row="0" Header="مشخصات تلفن">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width=".5*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Label Grid.Row="0" Grid.Column="0" Content="شماره تلفن"/>
+                <customControls:NumericTextBox x:Name="TelephoneNoTextBox" Grid.Row="0" Grid.Column="1"/>
+                
+                <Button x:Name="SearchButton" Content="جستجو" Grid.Row="0" Grid.Column="3" Height="23" Width="80" 
+                        HorizontalAlignment="Right" Click="SearchTelephone" codes:UIElementExtension.ResourceNameVisible="VisitPlaceByTelephoneForm.SearchTelephone"/>
+            </Grid>
+        </GroupBox>
+        
+        <GroupBox Grid.Row="1" Header="مشخصات آدرس تلفن">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width=".5*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label           Grid.Row="0" Grid.Column="0" Name="PostCodeLabel" Content="کد پستی"  />
+                <TextBox         Grid.Row="0" Grid.Column="1"  Name="PostCodeTextbox" Grid.ColumnSpan="3"/>
+
+                <Label           Grid.Row="1" Grid.Column="0" Name="AddressLabel" Content="آدرس"  />
+                <TextBox         Grid.Row="1" Grid.Column="1"  Name="AddressTextbox" Grid.ColumnSpan="3"/>
+
+            </Grid>
+        </GroupBox>
+        
+        <GroupBox Grid.Row="2" x:Name="VisitPlacesDetails" Header="جزییات بازدید از محل">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                
+                <Label           Grid.Row="0" Grid.Column="0" Name="VisitDateLabel" Content="تاریخ بازدید"  />
+                <cal:DatePicker  Grid.Row="0" Grid.Column="1" Name="VisitDatePicker" SelectedDate="{Binding VisitDate}"  />
+
+                <Label           Grid.Row="0" Grid.Column="2" Name="VisitHourLabel" Content="ساعت بازدید"  />
+                <TextBox         Grid.Row="0" Grid.Column="3"  Name="VisitHourTextbox" Text="{Binding VisitHour}" />
+
+                <Label           Grid.Row="1" Grid.Column="0" Name="AirCableMeterLabel" Content="متراژ سیم هوایی"  />
+                <TextBox         Grid.Row="1" Grid.Column="1"  Name="AirCableMeterTextbox" Text="{Binding AirCableMeter}" />
+
+                <Label           Grid.Row="1" Grid.Column="2"  Content="تاریخ بازدید قبلی"  />
+                <ComboBox        Grid.Row="1" Grid.Column="3" x:Name="VisitDateComboBox" SelectedValuePath="ID" DisplayMemberPath="Name" SelectedValue="{Binding RelatedVisitID}"/>
+
+                <Label           Grid.Row="2" Grid.Column="0" Name="CableMeterLabel" Content="متراژ سیم"  />
+                <TextBox         Grid.Row="2" Grid.Column="1"  Name="CableMeterTextbox" Text="{Binding CableMeter}" />
+
+                <Label           Grid.Row="3" Grid.Column="0"   Name="CommentStatusLabel" Content="توضیحات"  />
+                <TextBox         Grid.Row="3" Grid.Column="1"  Grid.ColumnSpan="3"  Name="CommentStatustextBox"  Text="{Binding CommentStatus}" />
+
+                <Label           Grid.Row="4" Grid.Column="0"   Name="OutBoundLabel" Content="خارج از مرز"  />
+                <CheckBox        Grid.Row="4" Grid.Column="1"    Name="OutBoundCheckBox" IsThreeState="False" IsChecked="{Binding IsOutBound}" Checked="OutBoundCheckBox_Checked" Unchecked="OutBoundCheckBox_Unchecked" VerticalAlignment="Center"/>
+
+                <Label           Grid.Row="4" Grid.Column="2"  Name="OutBoundMeterLabel" Content="متراژ خارج از مرز" Visibility="Collapsed"  />
+                <TextBox         Grid.Row="4" Grid.Column="3"   Name="OutBoundMetertextBox" Text="{Binding OutBoundMeter}"  Visibility="Collapsed" />
+
+                <Label           Grid.Row="5" Grid.Column="0"  Name="OutBoundEstablishDateLabel" Content="تاریخ برقراری خارج مرز"  Visibility="Collapsed" />
+                <cal:DatePicker  Grid.Row="5" Grid.Column="1"  Name="OutBoundEstablishDatePicker" SelectedDate="{Binding OutBoundEstablishDate}"  Visibility="Collapsed" />
+
+                <Label           Grid.Row="5" Grid.Column="2"   Name="SixMeterMastsLabel" Content="تیر شش متری" Visibility="Collapsed"  />
+                <TextBox         Grid.Row="5" Grid.Column="3"   Name="SixMeterMastsTextBox" Text="{Binding SixMeterMasts}"  Visibility="Collapsed" />
+
+                <Label           Grid.Row="6" Grid.Column="0"   Name="EightMeterMastsLabel" Content="تیر هشت متری" Visibility="Collapsed"  />
+                <TextBox         Grid.Row="6" Grid.Column="1"   Name="EightMeterMastsTextBox" Text="{Binding EightMeterMasts}"  Visibility="Collapsed" />
+
+                <Label           Grid.Row="6" Grid.Column="2"   Name="ThroughWidthLabel" Content="عرض عبوری" Visibility="Collapsed"  />
+                <TextBox         Grid.Row="6" Grid.Column="3"   Name="ThroughWidthTextBox" Text="{Binding ThroughWidth}"  Visibility="Collapsed" />
+
+                <Label           Grid.Row="7" Grid.Column="0"   Name="CrossCabinetLabel" Content="کافو عبوری" Visibility="Collapsed" Height="30"  />
+                <ComboBox        Grid.Row="7" Grid.Column="1"   Name="CrossCabinetComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" Visibility="Collapsed" Height="30" SelectionChanged="CrossCabinetComboBox_SelectionChanged" />
+
+                <Label           Grid.Row="7" Grid.Column="2"   Name="CrossPostMeterLabel" Content="پست عبوری" Visibility="Collapsed"  Height="30" />
+                <ComboBox        Grid.Row="7" Grid.Column="3"   Name="CrossPostComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding CrossPostID}"  Visibility="Collapsed" Height="30"  />
+
+                <Button Name="SaveButton" Content="ذخیره"  Click="SaveButton_Click" IsDefault="True" 
+                        Grid.Column="3" Width="90" Tag="Footer" HorizontalAlignment="Right"  codes:UIElementExtension.ResourceNameVisible="VisitPlaceByTelephoneForm.SearchTelephone"/>
+
+            </Grid >
+        </GroupBox>
+
+    </Grid>
+</Local:PopupWindow>

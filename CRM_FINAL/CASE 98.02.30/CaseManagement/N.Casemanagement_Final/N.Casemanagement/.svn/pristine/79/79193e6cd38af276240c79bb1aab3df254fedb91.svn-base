@@ -1,0 +1,14 @@
+﻿<meta charset="UTF-8">
+
+@{
+    ViewData["Title"] = Serenity.LocalText.Get("Db.Case.ProvinceProgram.EntityPlural");
+}
+<div id="GridDiv"></div>
+
+<script type="text/javascript">
+    jQuery(function () {
+        new CaseManagement.Case.ProvinceProgramGrid($('#GridDiv'), {}).init();
+
+        Q.initFullHeightGridPage($('#GridDiv'));
+    });
+</script>

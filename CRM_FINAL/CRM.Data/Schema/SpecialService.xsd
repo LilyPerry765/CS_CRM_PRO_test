@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SpecialService"
+    targetNamespace="http://tempuri.org/SpecialService.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/SpecialService.xsd"
+    xmlns:mstns="http://tempuri.org/SpecialService.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  
+  <xs:element name="SpecialServices">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="FirstZeroStatus" type="xs:byte" />
+        <xs:element name="SecondZeroStatus" type="xs:byte" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+</xs:schema>

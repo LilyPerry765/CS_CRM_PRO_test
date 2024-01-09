@@ -1,0 +1,27 @@
+﻿--13931203 - 1325
+--الگوی گزارش گواهی تخلیه در بخش گواهی بر روی سیستم خودم نهایی شد حالا باید بر سرور 14 هم بروزرسانی شود
+--UPDATE R14
+--SET Template = rm.Template,
+--	UserControlName = rm.UserControlName,
+--	Title=RM.Title,
+--	Category=RM.Category
+--FROM 
+--	ReportTemplate RM
+--INNER JOIN 
+--	[192.168.0.14\pendarsql].CRM.dbo.ReportTemplate R14 ON RM.ID = R14.ID
+--WHERE 
+--	RM.ID = 189 AND R14.ID = 189
+
+--13931203 - 1353
+--بر روی سرور کرمانشاه هم بروزرسانی شد
+--UPDATE RR
+--SET Title = R14.Title,
+--	Template = R14.Template,
+--	Category=R14.Category,
+--	UserControlName=R14.UserControlName
+--FROM 
+--	ReportTemplate R14
+--INNER JOIN 
+--	[78.39.252.109].CRM.DBO.REPORTTEMPLATE RR ON R14.ID =RR.ID
+--WHERE 
+--	RR.ID = 189 AND R14.ID = 189

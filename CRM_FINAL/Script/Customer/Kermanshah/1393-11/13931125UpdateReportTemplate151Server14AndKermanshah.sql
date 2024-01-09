@@ -1,0 +1,21 @@
+﻿--13931125 - 1148
+--گزارش تعویض شماره بر روی سیستم خودم نهایی شد حالا باید بر روی سرور 14 هم بروزرسانی شود
+--UPDATE R14
+--SET TEMPLATE = RM.Template
+--FROM 
+--	ReportTemplate RM
+--INNER JOIN 
+--	[192.168.0.14\PendarSql].CRM.dbo.ReportTemplate R14 ON RM.ID = r14.ID
+--WHERE 
+--	RM.ID = 151 AND R14.id = 151
+
+--13931125 - 1157
+--گزارش تعویض شماره بر روس سرور کرمانشاه هم بروزرسانی شد
+--UPDATE RR
+--SET Template = R14.Template
+--FROM 
+--	ReportTemplate R14
+--INNER JOIN 
+--	[78.39.252.109].CRM.DBO.ReportTemplate RR ON R14.ID = RR.ID
+--WHERE 
+--	R14.ID = 151 AND RR.ID =  151

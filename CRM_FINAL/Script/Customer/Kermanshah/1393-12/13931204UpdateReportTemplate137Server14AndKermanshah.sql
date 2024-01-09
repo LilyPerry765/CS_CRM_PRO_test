@@ -1,0 +1,35 @@
+﻿--13931204 - 1728
+--به علت بخش گواهی باید از قانون نام گذاری جدید پیروی شود
+--UPDATE ReportTemplate
+--SET UserControlName = 'ChangeLocationCenterInsideCertificateReport',
+--	Title = N'گواهی تغییر مکان داخل مرکز',
+--	Category = N'گواهی'
+--WHERE ID = 137
+
+--13931204 - 2136
+--گزارش گواهی تغییر مکان داخل مرکز بر روی سرور 14 هم باید بروزرسانی شود
+--UPDATE R14
+--SET TEMPLATE = RM.Template,
+--	TITLE = RM.Title,
+--	CATEGORY = RM.Category,
+--	USERCONTROLNAME = RM.UserControlName
+--FROM 
+--	ReportTemplate RM
+--INNER JOIN 
+--	[192.168.0.14\PENDARSQL].CRM.DBO.ReportTemplate R14 ON R14.ID =RM.ID
+--WHERE 
+--	RM.ID = 137 AND R14.ID = 137
+
+--13931204 - 2144
+--بر روی سرور کرمانشاه هم باید بروزرسانی شود
+--UPDATE RR
+--SET Template = R14.Template,
+--	Title = R14.Title,
+--	UserControlName=R14.UserControlName,
+--	Category=R14.Category
+--FROM 
+--	ReportTemplate R14 
+--INNER JOIN 
+--	[78.39.252.109].CRM.DBO.REPORTTEMPLATE RR ON R14.ID =RR.ID
+--WHERE 
+--	R14.ID = 137 AND RR.ID = 137

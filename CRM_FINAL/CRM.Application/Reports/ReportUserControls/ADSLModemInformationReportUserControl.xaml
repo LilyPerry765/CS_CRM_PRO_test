@@ -1,0 +1,69 @@
+﻿<Local:ReportBase x:Class="CRM.Application.Reports.ReportUserControls.ADSLModemInformationReportUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+             xmlns:Local="clr-namespace:CRM.Application.Local"
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+             mc:Ignorable="d">
+    <StackPanel FlowDirection="RightToLeft">
+        <GroupBox BorderBrush="AliceBlue" Header="انتخاب شهر و مرکز" >
+            <UserControls:CityCenterUserControl Orientation="Horizontal"  x:Name="CityCenterComboBox"/>
+        </GroupBox>
+        <Grid FlowDirection="RightToLeft">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Label Content="گروه سرویس:"/>
+            <UserControls:CheckableComboBox x:Name="ServiceGroupComboBox" Grid.Column="2"/>
+            
+            <Label Content="مدل:" Grid.Column="4"/>
+            <UserControls:CheckableComboBox x:Name="ModelComboBox" Grid.Column="6"/>
+            
+            <Label Content="شماره تلفن:" Grid.Row="2"/>
+            <TextBox Name="TelNoTextBox" Grid.Row="2" Grid.Column="2"/>
+            
+            <Label Content="شماره سریال :" Grid.Row="2" Grid.Column="4"/>
+            <TextBox Name="SerialNoText" Grid.Row="2" Grid.Column="6"/>
+            
+            <Label Content="آدرس فیزیکی :" Grid.Row="4"/>
+            <TextBox Name="PhysicalAddressTextBox" Grid.Row="4" Grid.Column="2"/>
+            
+            <Label Content="وضعیت مودم:" Grid.Column="4" Grid.Row="4"/>
+            <UserControls:CheckableComboBox x:Name="ModemStatusComboBox" Grid.Column="6" Grid.Row="4"/>
+            
+            <Label Content="از تاریخ فروش:" Grid.Row="6"/>
+            <cal:DatePicker x:Name="FromDate" Grid.Row="6" Grid.Column="2"/>
+            
+            <Label Content="تا تاریخ فروش :" Grid.Row="6" Grid.Column="4"/>
+            <cal:DatePicker x:Name="ToDate" Grid.Row="6" Grid.Column="6"/>
+            
+            <Label Content="از تاریخ پرداخت:" Grid.Row="8"/>
+            <cal:DatePicker x:Name="FromPaymentDate" Grid.Row="8" Grid.Column="2"/>
+            
+            <Label Content="تا تاریخ پرداخت :" Grid.Row="8" Grid.Column="4"/>
+            <cal:DatePicker x:Name="ToPaymentDate" Grid.Row="8" Grid.Column="6"/>
+        </Grid>
+    </StackPanel>
+</Local:ReportBase>

@@ -1,0 +1,46 @@
+﻿<Local:PopupWindow
+        x:Class="CRM.Application.Views.AssignCablePairToBuchtForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Local="clr-namespace:CRM.Application.Local"
+        xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+        Title="انتساب به بوخت">
+    <Grid FlowDirection="RightToLeft">
+        
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" Header="زوج سیم">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Label Grid.Row="0" Grid.Column="0" Content="از زوج سیم"/>
+                <ComboBox Grid.Row="0" Grid.Column="1" x:Name="FromCablePair" DisplayMemberPath="Name" SelectedValuePath="LongID" IsEditable="True"/>
+
+                <Label Grid.Row="1" Grid.Column="0" Content="تا زوج سیم"/>
+                <ComboBox Grid.Row="1" Grid.Column="1" x:Name="ToCablePair" DisplayMemberPath="Name" SelectedValuePath="LongID" IsEditable="True"/>
+                          
+            </Grid>
+           
+        </GroupBox>
+
+        <GroupBox Grid.Row="1" Header="بوخت" x:Name="GroupBoxBucht" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <UserControls:ColumnRowFromConnectionToConnection  Grid.Row="0" x:Name="Connection"/>
+            </Grid>
+        </GroupBox>
+        <Button Grid.Row="23" Grid.Column="0" Content="ذخیره" Name="SaveButton" Click="SaveForm" Tag="Footer" />
+    </Grid>
+</Local:PopupWindow>

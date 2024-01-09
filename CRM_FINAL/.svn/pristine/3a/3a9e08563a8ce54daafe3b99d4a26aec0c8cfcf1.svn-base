@@ -1,0 +1,171 @@
+﻿<Local:ReportBase x:Class="CRM.Application.Reports.ReportUserControls.ADSLDayeriRequestReportUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Local="clr-namespace:CRM.Application.Local"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+              xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+             mc:Ignorable="d" >
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <GroupBox Grid.Row="0" Grid.Column="0" Header=" انتخاب تاریخ ">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="تاریخ درخواست از : " VerticalAlignment="Center" Width="100"/>
+                <cal:DatePicker Grid.Row="0" Grid.Column="1" x:Name="RequestFromDate"/>
+
+                <TextBlock Grid.Row="0" Grid.Column="3" Text="تاریخ در خواست تا : " VerticalAlignment="Center" Width="100"/>
+                <cal:DatePicker Grid.Row="0" Grid.Column="4" x:Name="RequestToDate"/>
+
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="تاریخ رانژه از : " VerticalAlignment="Center" Width="100"/>
+                <cal:DatePicker Grid.Row="2" Grid.Column="1" x:Name="RanjeFromDate"/>
+
+                <TextBlock Grid.Row="2" Grid.Column="3" Text="تاریخ رانژه تا : " VerticalAlignment="Center" Width="100"/>
+                <cal:DatePicker Grid.Row="2" Grid.Column="4" x:Name="RanjeToDate"/>
+
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="تاریخ دایری از : " VerticalAlignment="Center" Width="100"/>
+                <cal:DatePicker Grid.Row="4" Grid.Column="1" x:Name="DayeriFromDate"/>
+
+                <TextBlock Grid.Row="4" Grid.Column="3" Text="تاریخ دایری تا : "  VerticalAlignment="Center" Width="100"/>
+                <cal:DatePicker Grid.Row="4" Grid.Column="4" x:Name="DayeriToDate"/>
+            </Grid>                                  
+        </GroupBox>
+        
+        <GroupBox Grid.Row="2" Grid.Column="0" Header=" انتخاب تلفن ADSL همراه با کد شهرستان ">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="شماره : " VerticalAlignment="Center" Width="100"/>
+                <TextBox Grid.Row="0" Grid.Column="1" x:Name="PhoneNoTextBox"/>
+            </Grid>
+        </GroupBox>
+        
+        <GroupBox Grid.Row="4" Grid.Column="0" Header=" مشخصات گزارش ">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="نوع سرویس : " VerticalAlignment="Center" Width="100"/>
+                <ComboBox Grid.Row="0" Grid.Column="1" x:Name="ServiceTypeComboBox" DisplayMemberPath="Name" SelectedValuePath="ID"/>
+
+                <TextBlock Grid.Row="0" Grid.Column="3" Text="نوع  تعرفه : " VerticalAlignment="Center" Width="100"/>
+                <ComboBox Grid.Row="0" Grid.Column="4" x:Name="TariffTypeComboBox" DisplayMemberPath="Title" SelectedValuePath="ID"/>
+
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="مرحله فعلی : " VerticalAlignment="Center" Width="100"/>
+                <UserControls:CheckableComboBox Grid.Row="2" Grid.Column="1" x:Name="CurrentStepComboBox"/>
+                
+            </Grid>
+        </GroupBox>
+        
+        <GroupBox Grid.Row="6" Grid.Column="0" Header=" انتخاب مرکز ">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="شهر : " VerticalAlignment="Center" Width="100"/>
+                <ComboBox Grid.Row="0" Grid.Column="1" x:Name="RegionIdComboBox" DisplayMemberPath="Title" SelectedValuePath="ID" SelectionChanged="RegionIdComboBox_SelectionChanged"/>
+
+                <TextBlock Grid.Row="0" Grid.Column="3" Text="مرکز : " VerticalAlignment="Center" Width="100"/>
+                <ComboBox Grid.Row="0" Grid.Column="4" x:Name="CenterIdComboBox" DisplayMemberPath="CenterName" SelectedValuePath="ID"/>
+                
+            </Grid>
+        </GroupBox>
+        
+        <GroupBox Grid.Row="8" Grid.Column="0" Header=" مشخصات مشترک ">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="کد ملی مشترک : " VerticalAlignment="Center" Width="100"/>
+                <TextBox Grid.Row="0" Grid.Column="1" x:Name="NationalIdTextBox"/>
+                
+                <TextBlock Grid.Row="0" Grid.Column="3" Text="نوع مالکیت : " VerticalAlignment="Center" Width="100"/>
+                <ComboBox Grid.Row="0" Grid.Column="4" x:Name="CustomerOwnerStatusComboBox" DisplayMemberPath="Name" SelectedValuePath ="ID"/>
+            </Grid>
+        </GroupBox>
+        
+        <GroupBox Grid.Row="9">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    
+                </Grid.ColumnDefinitions>
+                
+                <Label Content="توضیحات گزارش:"  />
+                <TextBox Name="ReportExplainationTextBox" Grid.Row="0" Grid.ColumnSpan="6" Grid.Column="1"/>
+               </Grid>
+        </GroupBox>
+    </Grid>
+</Local:ReportBase>

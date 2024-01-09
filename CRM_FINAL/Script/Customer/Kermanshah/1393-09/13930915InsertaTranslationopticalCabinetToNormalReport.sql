@@ -1,0 +1,73 @@
+﻿--13930914 - 10:48
+--INSERT INTO ReportTemplate
+--(
+--	ID,Title,Template,IconName,Category,UserControlName
+--)
+--VALUES (249,N'گزارش چاپ گواهی برای برگردان کافو نوری به کافو معمولی',null,'Report2.png',N'درخواستها','TranslationOpticalCabinetToNormalReport')
+
+--UPDATE ReportTemplate 
+--SET Title = N'چاپ گواهی برای برگردان کافو نوری به کافو معمولی'
+--WHERE ID = 249 
+
+--13930914 - 11:05
+--IF OBJECT_ID('uspReportTrasnlationOpticalCabinetToNormal') IS NOT NULL
+--	DROP PROCEDURE uspReportTrasnlationopticalToNormal
+--GO
+--CREATE PROC uspReportTrasnlationOpticalCabinetToNormal
+--(
+--	@requestsId varchar(max) = null
+--)
+--AS
+--BEGIN
+--		BEGIN TRY
+
+--			SELECT 
+--				TC.ToTelephoneNo,
+--				TC.FromTelephoneNo,
+--				ISNULL(C.FirstNameOrTitle,'') FirstNameOrTitle,
+--				ISNULL(C.LastName,'') LastName,
+--				ISNULL(A.AddressContent,'') InstallAddress,
+--				ISNULL(A.PostalCode,'') InstallPostalCode,
+--				ISNULL(AA.AddressContent,'') CorrespondenceAddress,
+--				ISNULL(AA.PostalCode,'') CorrespondencePostalCode
+--			FROM 
+--				Request R
+--			INNER JOIN 
+--				TranslationOpticalCabinetToNormal TN ON TN.ID = R.ID
+--			INNER JOIN 
+--				TranslationOpticalCabinetToNormalConncetions TC ON TN.ID = TC.RequestID
+--			LEFT JOIN
+--				[Address] A ON A.ID = TC.InstallAddressID
+--			LEFT JOIN
+--				[Address] AA ON AA.ID = TC.CorrespondenceAddressID
+--			LEFT JOIN 
+--				Customer C ON C.ID = TC.CustomerID
+--			WHERE 
+--				TN.[Type] = 2 --برگردان جزئی
+--				AND
+--				(@requestsId IS NULL OR LEN(@requestsId) = 0 OR R.ID IN (SELECT * FROM DBO.ufnSplitList(@requestsId)))
+
+--		END TRY
+--		BEGIN CATCH
+--			THROW;
+--		END CATCH
+--END
+
+--INSERT INTO [78.39.252.109].[CRM].[dbo].reportTemplate
+--(ID,Category,Title,IconName,Template,[TimeStamp],UserControlName)
+--SELECT 
+--	R.ID,
+--	R.Category,
+--	R.Title,
+--	R.IconName,
+--	R.Template,
+--	R.[TimeStamp],
+--	R.UserControlName
+--FROM 
+--	ReportTemplate R
+--WHERE 
+--	R.ID = 249
+
+--UPDATE ReportTemplate 
+--SET Title = N'چاپ گواهی برای برگردان کافو نوری به کافو معمولی'
+--WHERE ID = 249 

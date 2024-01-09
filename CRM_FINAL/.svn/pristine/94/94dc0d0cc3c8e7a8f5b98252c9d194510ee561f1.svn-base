@@ -1,0 +1,27 @@
+﻿<Local:TabWindow x:Class="CRM.Application.Views.MapForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Local="clr-namespace:CRM.Application.Local"
+        xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        Loaded="TabWindow_Loaded">
+    <Grid >
+        <telerik:RadMap Grid.Row="1" x:Name="RadMap"
+                        NavigationVisibility="Hidden" ZoomBarVisibility="Hidden" CommandBarVisibility="Hidden" 
+                        ZoomLevel="11" MouseClickMode="None" MouseDoubleClickMode="None" MapMouseClick="RadMap_MapMouseClick" MapMouseDoubleClick="RadMap_MapMouseDoubleClick"
+            ContextMenuOpening="RadMapContextMenuOpening">
+            <telerik:RadMap.Provider>
+                <telerik:OpenStreetMapProvider />
+            </telerik:RadMap.Provider>
+            <telerik:RadMap.ContextMenu>
+                <ContextMenu Name="contextMenu" FlowDirection="RightToLeft" >
+                </ContextMenu>
+            </telerik:RadMap.ContextMenu>
+            <telerik:RadMap.Providers>
+                <telerik:OpenStreetMapProvider IsTileCachingEnabled="True"  />
+                <telerik:BingMapTrafficProvider />
+            </telerik:RadMap.Providers>
+            <telerik:InformationLayer x:Name="InformationLayer"/>
+        </telerik:RadMap>
+    </Grid>
+</Local:TabWindow>

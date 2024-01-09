@@ -1,0 +1,5 @@
+﻿<Menu xmlns="http://tempuri.org/Menu.xsd">
+  <MenuItem Tab="خرابی 17" Group="خرابی 17" Header="درخواست های 17" Class="CRM.Application.Views.Failure117RequestList" Icon="Images/UserRequest_32x32.png" />
+  <MenuItem Tab="مدیریت" Group="دسترسی کاربران CRM" Header="نقش ها" Class="CRM.Application.Views.RoleList" Icon="Images/Role_32x32.png" />
+  <MenuItem Tab="مدیریت" Group="دسترسی کاربران CRM" Header="کاربران" Class="CRM.Application.Views.UserList" Icon="Images/User_32x32.png"/>
+</Menu>

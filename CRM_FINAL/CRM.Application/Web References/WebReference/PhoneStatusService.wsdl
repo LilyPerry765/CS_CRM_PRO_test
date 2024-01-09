@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="PhoneStatusService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://217.218.241.74:5000/Service.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://217.218.241.74:5000/Service.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://217.218.241.74:5000/Service.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://217.218.241.74:5000/Service.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Abonman.Data" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IPhoneStatusService_IsDebtor_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsDebtor" />
+  </wsdl:message>
+  <wsdl:message name="IPhoneStatusService_IsDebtor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsDebtorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPhoneStatusService_IsDebtorByRange_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsDebtorByRange" />
+  </wsdl:message>
+  <wsdl:message name="IPhoneStatusService_IsDebtorByRange_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsDebtorByRangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPhoneStatusService_GetDebtStatusList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDebtStatusList" />
+  </wsdl:message>
+  <wsdl:message name="IPhoneStatusService_GetDebtStatusList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDebtStatusListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPhoneStatusService_GetDebtStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDebtStatus" />
+  </wsdl:message>
+  <wsdl:message name="IPhoneStatusService_GetDebtStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDebtStatusResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IPhoneStatusService">
+    <wsdl:operation name="IsDebtor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPhoneStatusService/IsDebtor" message="tns:IPhoneStatusService_IsDebtor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPhoneStatusService/IsDebtorResponse" message="tns:IPhoneStatusService_IsDebtor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsDebtorByRange">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPhoneStatusService/IsDebtorByRange" message="tns:IPhoneStatusService_IsDebtorByRange_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPhoneStatusService/IsDebtorByRangeResponse" message="tns:IPhoneStatusService_IsDebtorByRange_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDebtStatusList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPhoneStatusService/GetDebtStatusList" message="tns:IPhoneStatusService_GetDebtStatusList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPhoneStatusService/GetDebtStatusListResponse" message="tns:IPhoneStatusService_GetDebtStatusList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDebtStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPhoneStatusService/GetDebtStatus" message="tns:IPhoneStatusService_GetDebtStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPhoneStatusService/GetDebtStatusResponse" message="tns:IPhoneStatusService_GetDebtStatus_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IPhoneStatusService" type="tns:IPhoneStatusService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="IsDebtor">
+      <soap:operation soapAction="http://tempuri.org/IPhoneStatusService/IsDebtor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsDebtorByRange">
+      <soap:operation soapAction="http://tempuri.org/IPhoneStatusService/IsDebtorByRange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDebtStatusList">
+      <soap:operation soapAction="http://tempuri.org/IPhoneStatusService/GetDebtStatusList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDebtStatus">
+      <soap:operation soapAction="http://tempuri.org/IPhoneStatusService/GetDebtStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PhoneStatusService">
+    <wsdl:port name="BasicHttpBinding_IPhoneStatusService" binding="tns:BasicHttpBinding_IPhoneStatusService">
+      <soap:address location="http://217.218.241.74:5000/Service.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

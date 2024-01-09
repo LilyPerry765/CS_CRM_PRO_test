@@ -1,0 +1,24 @@
+﻿namespace CaseManagement.Common {
+    export class MessageLogForm extends Serenity.PrefixedContext {
+        static formKey = 'Common.MessageLog';
+
+    }
+
+    export interface MessageLogForm {
+        InsertDate: Serenity.DateEditor;
+        ActivityRequestId: Serenity.StringEditor;
+        MessageId: Serenity.IntegerEditor;
+        SenderUserId: Serenity.IntegerEditor;
+        SenderUserName: Serenity.StringEditor;
+        ReceiverProvinceId: Serenity.LookupEditor;
+        ReceiverUserId: Serenity.IntegerEditor;
+        ReceiverUserName: Serenity.StringEditor;
+        MobileNumber: Serenity.StringEditor;
+        TextSent: Serenity.StringEditor;
+        IsSent: Serenity.BooleanEditor;
+        IsDelivered: Serenity.BooleanEditor;
+    }
+
+    [['InsertDate', () => Serenity.DateEditor], ['ActivityRequestId', () => Serenity.StringEditor], ['MessageId', () => Serenity.IntegerEditor], ['SenderUserId', () => Serenity.IntegerEditor], ['SenderUserName', () => Serenity.StringEditor], ['ReceiverProvinceId', () => Serenity.LookupEditor], ['ReceiverUserId', () => Serenity.IntegerEditor], ['ReceiverUserName', () => Serenity.StringEditor], ['MobileNumber', () => Serenity.StringEditor], ['TextSent', () => Serenity.StringEditor], ['IsSent', () => Serenity.BooleanEditor], ['IsDelivered', () => Serenity.BooleanEditor]].forEach(x => Object.defineProperty(MessageLogForm.prototype, <string>x[0], { get: function () { return this.w(x[0], (x[1] as any)()); }, enumerable: true, configurable: true }));
+}
+

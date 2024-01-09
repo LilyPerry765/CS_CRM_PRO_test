@@ -1,0 +1,33 @@
+﻿<?xml version="1.0"?>
+<configuration>
+    <configSections>
+        <sectionGroup name="applicationSettings" type="System.Configuration.ApplicationSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" >
+            <section name="CRMConvertApplication.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+        </sectionGroup>
+    </configSections>
+<connectionStrings>
+    <add name="CRMConvertApplication.Properties.Settings.CRMConnectionString"
+        connectionString="Data Source=217.218.241.74;Initial Catalog=CRM;Persist Security Info=True;User ID=sa;Password=pendar@abon" />
+</connectionStrings>
+<startup><supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.0"/></startup>
+    <applicationSettings>
+        <CRMConvertApplication.Properties.Settings>
+            <setting name="CRMConvertApplication_CRMWebService_CRMWebService"
+                serializeAs="String">
+                <value>http://78.39.252.109:82/CRMWebService.asmx</value>
+            </setting>
+        </CRMConvertApplication.Properties.Settings>
+    </applicationSettings>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="BasicHttpBinding_ICRMService" />
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://192.168.240.102:83/CRM.ServiceHost.CRMService.svc"
+                binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_ICRMService"
+                contract="ServiceReference1.ICRMService" name="BasicHttpBinding_ICRMService" />
+        </client>
+    </system.serviceModel>
+</configuration>

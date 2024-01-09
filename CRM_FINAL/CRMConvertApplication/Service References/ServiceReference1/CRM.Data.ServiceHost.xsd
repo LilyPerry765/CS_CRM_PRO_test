@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/CRM.Data.ServiceHost" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/CRM.Data.ServiceHost" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ServiceHostCustomClass.TelephoneInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IsInstalition" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPCM" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceHostCustomClass.TelephoneInfo" nillable="true" type="tns:ServiceHostCustomClass.TelephoneInfo" />
+  <xs:complexType name="ArrayOfServiceHostCustomClass.ChangeTelephone">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ServiceHostCustomClass.ChangeTelephone" nillable="true" type="tns:ServiceHostCustomClass.ChangeTelephone" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfServiceHostCustomClass.ChangeTelephone" nillable="true" type="tns:ArrayOfServiceHostCustomClass.ChangeTelephone" />
+  <xs:complexType name="ServiceHostCustomClass.ChangeTelephone">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CauseOfCut" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="CenterName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CorrespondenceAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CorrespondenceAddressPostalCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FirstNameOrTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InsertDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="InstallAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InstallAddressPostalCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NationalCodeOrRecordNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NewCorrespondenceAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NewCorrespondenceAddressPostalCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NewFirstNameOrTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NewInstallAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NewInstallAddressPostalCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NewLastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NewNationalCodeOrRecordNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NewPersonType" nillable="true" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="NewTelephoneNo" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="PersonType" nillable="true" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="RequestCost" nillable="true" type="tns:ArrayOfServiceHostCustomClass.RequestCost" />
+      <xs:element minOccurs="0" name="RequestID" type="xs:long" />
+      <xs:element minOccurs="0" name="RequestType" type="xs:int" />
+      <xs:element minOccurs="0" name="RequestTypeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TelephoneNo" type="xs:long" />
+      <xs:element minOccurs="0" name="TelephoneType" type="xs:int" />
+      <xs:element minOccurs="0" name="TelephoneTypeGroup" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceHostCustomClass.ChangeTelephone" nillable="true" type="tns:ServiceHostCustomClass.ChangeTelephone" />
+  <xs:complexType name="ArrayOfServiceHostCustomClass.RequestCost">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ServiceHostCustomClass.RequestCost" nillable="true" type="tns:ServiceHostCustomClass.RequestCost" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfServiceHostCustomClass.RequestCost" nillable="true" type="tns:ArrayOfServiceHostCustomClass.RequestCost" />
+  <xs:complexType name="ServiceHostCustomClass.RequestCost">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AmountSum" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="BaseCostTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cost" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="FicheDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FicheNunmber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsKickedBack" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsPaid" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="OtherCostTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RequestID" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceHostCustomClass.RequestCost" nillable="true" type="tns:ServiceHostCustomClass.RequestCost" />
+  <xs:complexType name="ArrayOfServiceHostCustomClass.CityInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ServiceHostCustomClass.CityInfo" nillable="true" type="tns:ServiceHostCustomClass.CityInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfServiceHostCustomClass.CityInfo" nillable="true" type="tns:ArrayOfServiceHostCustomClass.CityInfo" />
+  <xs:complexType name="ServiceHostCustomClass.CityInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceHostCustomClass.CityInfo" nillable="true" type="tns:ServiceHostCustomClass.CityInfo" />
+  <xs:complexType name="ArrayOfServiceHostCustomClass.CenterInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ServiceHostCustomClass.CenterInfo" nillable="true" type="tns:ServiceHostCustomClass.CenterInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfServiceHostCustomClass.CenterInfo" nillable="true" type="tns:ArrayOfServiceHostCustomClass.CenterInfo" />
+  <xs:complexType name="ServiceHostCustomClass.CenterInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CityCode" type="xs:int" />
+      <xs:element minOccurs="0" name="Code" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceHostCustomClass.CenterInfo" nillable="true" type="tns:ServiceHostCustomClass.CenterInfo" />
+  <xs:complexType name="ArrayOfServiceHostCustomClass.RequestType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ServiceHostCustomClass.RequestType" nillable="true" type="tns:ServiceHostCustomClass.RequestType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfServiceHostCustomClass.RequestType" nillable="true" type="tns:ArrayOfServiceHostCustomClass.RequestType" />
+  <xs:complexType name="ServiceHostCustomClass.RequestType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceHostCustomClass.RequestType" nillable="true" type="tns:ServiceHostCustomClass.RequestType" />
+  <xs:complexType name="ArrayOfServiceHostCustomClass.TelephoneType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ServiceHostCustomClass.TelephoneType" nillable="true" type="tns:ServiceHostCustomClass.TelephoneType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfServiceHostCustomClass.TelephoneType" nillable="true" type="tns:ArrayOfServiceHostCustomClass.TelephoneType" />
+  <xs:complexType name="ServiceHostCustomClass.TelephoneType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceHostCustomClass.TelephoneType" nillable="true" type="tns:ServiceHostCustomClass.TelephoneType" />
+  <xs:complexType name="ArrayOfServiceHostCustomClass.TelephoneGroupType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ServiceHostCustomClass.TelephoneGroupType" nillable="true" type="tns:ServiceHostCustomClass.TelephoneGroupType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfServiceHostCustomClass.TelephoneGroupType" nillable="true" type="tns:ArrayOfServiceHostCustomClass.TelephoneGroupType" />
+  <xs:complexType name="ServiceHostCustomClass.TelephoneGroupType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" type="xs:int" />
+      <xs:element minOccurs="0" name="TelephoneType" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceHostCustomClass.TelephoneGroupType" nillable="true" type="tns:ServiceHostCustomClass.TelephoneGroupType" />
+  <xs:complexType name="ArrayOfServiceHostCustomClass.CauseOfCutInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ServiceHostCustomClass.CauseOfCutInfo" nillable="true" type="tns:ServiceHostCustomClass.CauseOfCutInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfServiceHostCustomClass.CauseOfCutInfo" nillable="true" type="tns:ArrayOfServiceHostCustomClass.CauseOfCutInfo" />
+  <xs:complexType name="ServiceHostCustomClass.CauseOfCutInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceHostCustomClass.CauseOfCutInfo" nillable="true" type="tns:ServiceHostCustomClass.CauseOfCutInfo" />
+  <xs:complexType name="ArrayOfServiceHostCustomClass.PAPBillingInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ServiceHostCustomClass.PAPBillingInfo" nillable="true" type="tns:ServiceHostCustomClass.PAPBillingInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfServiceHostCustomClass.PAPBillingInfo" nillable="true" type="tns:ArrayOfServiceHostCustomClass.PAPBillingInfo" />
+  <xs:complexType name="ServiceHostCustomClass.PAPBillingInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Count24" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Count48" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Count72" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountAll" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PAPCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PAPName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceHostCustomClass.PAPBillingInfo" nillable="true" type="tns:ServiceHostCustomClass.PAPBillingInfo" />
+</xs:schema>

@@ -1,0 +1,68 @@
+﻿<Local:PopupWindow x:Class="CRM.Application.Views.ADSLSellerAgentUserRechargeList"
+                   Title="فرم شارژ حساب کاربر فروش" 
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib" 
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d:DesignWidth="780"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+                   Loaded="PopupWindow_Loaded" Icon="/CRM.Application;component/Images/City48x48.png" Width="700" Height="300">
+    <ScrollViewer Padding="0 0 10 0" FlowDirection="RightToLeft" x:Name="MainScrollViewer" >
+        <Grid FlowDirection="RightToLeft" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label Content="از تاریخ :" Grid.Row="0"/>
+            <cal:DatePicker Name="FromPaymentDate" Grid.Row="0" Grid.Column="1"/>
+
+            <Label Content="تا تاریخ :" Grid.Row="0" Grid.Column="2"/>
+            <cal:DatePicker Name="ToPaymentDate" Grid.Row="0" Grid.Column="3"/>
+
+            <Button Grid.Row ="1" Grid.Column="3" Content="جستجو" Name="SearchButton" Click="SearchButton_Click" Width="100" HorizontalAlignment="Right"/>
+
+            <DataGrid DockPanel.Dock="Bottom" x:Name="ItemsDataGrid" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4"
+                      BorderThickness="0 1 0 0"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      CanUserResizeColumns="True"
+                      CanUserResizeRows="False"
+                      CanUserDeleteRows="False"
+                      SelectionMode="Single"
+                      SelectionUnit="FullRow"
+                      ItemsSource="{Binding}"
+                      IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="/CRM.Application;component/Images/element_16x16.png" Width="16" Height="16" HorizontalAlignment="Center" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTextColumn Width="*" Header=" کاربر شارژ کننده "  Binding="{Binding Path=User, UpdateSourceTrigger=PropertyChanged}" />
+                    <DataGridTextColumn Width="*" Header=" مبلغ (ریال) "  Binding="{Binding Path=Cost, UpdateSourceTrigger=PropertyChanged}" />
+                    <DataGridTextColumn Width="*" Header=" تاریخ "  Binding="{Binding Path=Date, UpdateSourceTrigger=PropertyChanged}" />
+
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Button Grid.Row ="5" Grid.Column="0" Content="چاپ" Name="PrintButton" Click="PrintButton_Click" Tag="Footer"/>
+        </Grid>
+    </ScrollViewer>
+    </Local:PopupWindow>
+

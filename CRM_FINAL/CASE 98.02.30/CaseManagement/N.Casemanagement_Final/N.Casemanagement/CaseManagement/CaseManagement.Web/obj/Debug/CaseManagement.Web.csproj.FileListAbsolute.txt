@@ -1,0 +1,118 @@
+D:\Case\CaseManagement\CaseManagement.Web\obj\Debug\CaseManagement.Web.csprojResolveAssemblyReference.cache
+D:\Case\CaseManagement\CaseManagement.Web\obj\Debug\CaseManagement.Web.dll
+D:\Case\CaseManagement\CaseManagement.Web\obj\Debug\CaseManagement.Web.pdb
+D:\Case\CaseManagement\CaseManagement.Web\bin\CaseManagement.Web.dll.config
+D:\Case\CaseManagement\CaseManagement.Web\bin\CaseManagement.Web.dll
+D:\Case\CaseManagement\CaseManagement.Web\bin\CaseManagement.Web.pdb
+D:\Case\CaseManagement\CaseManagement.Web\bin\EPPlus.dll
+D:\Case\CaseManagement\CaseManagement.Web\bin\FluentMigrator.dll
+D:\Case\CaseManagement\CaseManagement.Web\bin\FluentMigrator.Runner.dll
+D:\Case\CaseManagement\CaseManagement.Web\bin\Microsoft.Web.Infrastructure.dll
+D:\Case\CaseManagement\CaseManagement.Web\bin\MsieJavaScriptEngine.dll
+D:\Case\CaseManagement\CaseManagement.Web\bin\Newtonsoft.Json.dll
+D:\Case\CaseManagement\CaseManagement.Web\bin\Serenity.Core.dll
+D:\Case\CaseManagement\CaseManagement.Web\bin\Serenity.Data.dll
+D:\Case\CaseManagement\CaseManagement.Web\bin\Serenity.Data.Entity.dll
+D:\Case\CaseManagement\CaseManagement.Web\bin\Serenity.Services.dll
+D:\Case\CaseManagement\CaseManagement.Web\bin\Serenity.Web.dll
+D:\Case\CaseManagement\CaseManagement.Web\bin\Stimulsoft.Base.dll
+D:\Case\CaseManagement\CaseManagement.Web\bin\Stimulsoft.Report.dll
+D:\Case\CaseManagement\CaseManagement.Web\bin\Stimulsoft.Report.Helper.dll
+D:\Case\CaseManagement\CaseManagement.Web\bin\Stimulsoft.Report.Mvc.dll
+D:\Case\CaseManagement\CaseManagement.Web\bin\Stimulsoft.Report.MvcMobile.dll
+D:\Case\CaseManagement\CaseManagement.Web\bin\Stimulsoft.Report.Web.dll
+D:\Case\CaseManagement\CaseManagement.Web\bin\System.Web.Helpers.dll
+D:\Case\CaseManagement\CaseManagement.Web\bin\System.Web.Mvc.dll
+D:\Case\CaseManagement\CaseManagement.Web\bin\System.Web.Razor.dll
+D:\Case\CaseManagement\CaseManagement.Web\bin\System.Web.WebPages.Deployment.dll
+D:\Case\CaseManagement\CaseManagement.Web\bin\System.Web.WebPages.dll
+D:\Case\CaseManagement\CaseManagement.Web\bin\System.Web.WebPages.Razor.dll
+D:\Case\CaseManagement\CaseManagement.Web\bin\EPPlus.xml
+D:\Case\CaseManagement\CaseManagement.Web\bin\FluentMigrator.pdb
+D:\Case\CaseManagement\CaseManagement.Web\bin\FluentMigrator.xml
+D:\Case\CaseManagement\CaseManagement.Web\bin\FluentMigrator.Runner.pdb
+D:\Case\CaseManagement\CaseManagement.Web\bin\Newtonsoft.Json.xml
+D:\Case\CaseManagement\CaseManagement.Web\bin\Serenity.Core.pdb
+D:\Case\CaseManagement\CaseManagement.Web\bin\Serenity.Data.pdb
+D:\Case\CaseManagement\CaseManagement.Web\bin\Serenity.Data.Entity.pdb
+D:\Case\CaseManagement\CaseManagement.Web\bin\Serenity.Services.pdb
+D:\Case\CaseManagement\CaseManagement.Web\bin\Serenity.Web.pdb
+D:\Case\CaseManagement\CaseManagement.Web\bin\System.Web.Helpers.xml
+D:\Case\CaseManagement\CaseManagement.Web\bin\System.Web.Mvc.xml
+D:\Case\CaseManagement\CaseManagement.Web\bin\System.Web.Razor.xml
+D:\Case\CaseManagement\CaseManagement.Web\bin\System.Web.WebPages.xml
+D:\Case\CaseManagement\CaseManagement.Web\bin\System.Web.WebPages.Deployment.xml
+D:\Case\CaseManagement\CaseManagement.Web\bin\System.Web.WebPages.Razor.xml
+D:\Develop\CaseManagement_95-09-06-1\CaseManagement\CaseManagement.Web\bin\CaseManagement.Web.dll.config
+D:\Develop\CaseManagement_95-09-06-1\CaseManagement\CaseManagement.Web\bin\CaseManagement.Web.dll
+D:\Develop\CaseManagement_95-09-06-1\CaseManagement\CaseManagement.Web\bin\CaseManagement.Web.pdb
+D:\Develop\CaseManagement_95-09-06-1\CaseManagement\CaseManagement.Web\bin\EPPlus.xml
+D:\Develop\CaseManagement_95-09-06-1\CaseManagement\CaseManagement.Web\bin\FluentMigrator.pdb
+D:\Develop\CaseManagement_95-09-06-1\CaseManagement\CaseManagement.Web\bin\FluentMigrator.xml
+D:\Develop\CaseManagement_95-09-06-1\CaseManagement\CaseManagement.Web\bin\FluentMigrator.Runner.pdb
+D:\Develop\CaseManagement_95-09-06-1\CaseManagement\CaseManagement.Web\bin\Newtonsoft.Json.xml
+D:\Develop\CaseManagement_95-09-06-1\CaseManagement\CaseManagement.Web\bin\Serenity.Core.pdb
+D:\Develop\CaseManagement_95-09-06-1\CaseManagement\CaseManagement.Web\bin\Serenity.Data.pdb
+D:\Develop\CaseManagement_95-09-06-1\CaseManagement\CaseManagement.Web\bin\Serenity.Data.Entity.pdb
+D:\Develop\CaseManagement_95-09-06-1\CaseManagement\CaseManagement.Web\bin\Serenity.Services.pdb
+D:\Develop\CaseManagement_95-09-06-1\CaseManagement\CaseManagement.Web\bin\Serenity.Web.pdb
+D:\Develop\CaseManagement_95-09-06-1\CaseManagement\CaseManagement.Web\bin\System.Web.Helpers.xml
+D:\Develop\CaseManagement_95-09-06-1\CaseManagement\CaseManagement.Web\bin\System.Web.Mvc.xml
+D:\Develop\CaseManagement_95-09-06-1\CaseManagement\CaseManagement.Web\bin\System.Web.Razor.xml
+D:\Develop\CaseManagement_95-09-06-1\CaseManagement\CaseManagement.Web\bin\System.Web.WebPages.xml
+D:\Develop\CaseManagement_95-09-06-1\CaseManagement\CaseManagement.Web\bin\System.Web.WebPages.Deployment.xml
+D:\Develop\CaseManagement_95-09-06-1\CaseManagement\CaseManagement.Web\bin\System.Web.WebPages.Razor.xml
+D:\Develop\CaseManagement_95-09-06-1\CaseManagement\CaseManagement.Web\obj\Debug\CaseManagement.Web.csprojResolveAssemblyReference.cache
+D:\Develop\CaseManagement_95-09-06-1\CaseManagement\CaseManagement.Web\obj\Debug\CaseManagement.Web.dll
+D:\Develop\CaseManagement_95-09-06-1\CaseManagement\CaseManagement.Web\obj\Debug\CaseManagement.Web.pdb
+D:\Develop\CaseManagement\CaseManagement\CaseManagement.Web\bin\CaseManagement.Web.dll.config
+D:\Develop\CaseManagement\CaseManagement\CaseManagement.Web\bin\CaseManagement.Web.dll
+D:\Develop\CaseManagement\CaseManagement\CaseManagement.Web\bin\CaseManagement.Web.pdb
+D:\Develop\CaseManagement\CaseManagement\CaseManagement.Web\obj\Debug\CaseManagement.Web.dll
+D:\Develop\CaseManagement\CaseManagement\CaseManagement.Web\obj\Debug\CaseManagement.Web.pdb
+D:\Develop\CaseManagement\CaseManagement\CaseManagement.Web\obj\Debug\CaseManagement.Web.csprojResolveAssemblyReference.cache
+D:\Develop\CaseManagement\CaseManagement\CaseManagement.Web\bin\Microsoft.AspNet.SignalR.Core.dll
+D:\Develop\CaseManagement\CaseManagement\CaseManagement.Web\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+D:\Develop\CaseManagement\CaseManagement\CaseManagement.Web\bin\Microsoft.Owin.dll
+D:\Develop\CaseManagement\CaseManagement\CaseManagement.Web\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Develop\CaseManagement\CaseManagement\CaseManagement.Web\bin\Microsoft.Owin.Security.dll
+D:\Develop\CaseManagement\CaseManagement\CaseManagement.Web\bin\Owin.dll
+D:\Develop\CaseManagement\CaseManagement\CaseManagement.Web\bin\Microsoft.AspNet.SignalR.Core.xml
+D:\Develop\CaseManagement\CaseManagement\CaseManagement.Web\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+D:\Develop\CaseManagement\CaseManagement\CaseManagement.Web\bin\Microsoft.Owin.xml
+D:\Develop\CaseManagement\CaseManagement\CaseManagement.Web\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Develop\CaseManagement\CaseManagement\CaseManagement.Web\bin\Microsoft.Owin.Security.xml
+D:\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\CaseManagement.Web.dll.config
+D:\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\CaseManagement.Web.dll
+D:\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\CaseManagement.Web.pdb
+D:\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\Microsoft.AspNet.SignalR.Core.dll
+D:\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+D:\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\Microsoft.Owin.dll
+D:\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\Microsoft.Owin.Security.dll
+D:\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\Owin.dll
+D:\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\Microsoft.AspNet.SignalR.Core.xml
+D:\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+D:\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\Microsoft.Owin.xml
+D:\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\Microsoft.Owin.Security.xml
+D:\N.Casemanagement\CaseManagement\CaseManagement.Web\obj\Debug\CaseManagement.Web.csprojResolveAssemblyReference.cache
+D:\N.Casemanagement\CaseManagement\CaseManagement.Web\obj\Debug\CaseManagement.Web.dll
+D:\N.Casemanagement\CaseManagement\CaseManagement.Web\obj\Debug\CaseManagement.Web.pdb
+D:\Develop\CASE 98.02.30\CaseManagement\N.Casemanagement_Final\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\CaseManagement.Web.dll.config
+D:\Develop\CASE 98.02.30\CaseManagement\N.Casemanagement_Final\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\CaseManagement.Web.dll
+D:\Develop\CASE 98.02.30\CaseManagement\N.Casemanagement_Final\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\CaseManagement.Web.pdb
+D:\Develop\CASE 98.02.30\CaseManagement\N.Casemanagement_Final\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\Microsoft.AspNet.SignalR.Core.dll
+D:\Develop\CASE 98.02.30\CaseManagement\N.Casemanagement_Final\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+D:\Develop\CASE 98.02.30\CaseManagement\N.Casemanagement_Final\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\Microsoft.Owin.dll
+D:\Develop\CASE 98.02.30\CaseManagement\N.Casemanagement_Final\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Develop\CASE 98.02.30\CaseManagement\N.Casemanagement_Final\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\Microsoft.Owin.Security.dll
+D:\Develop\CASE 98.02.30\CaseManagement\N.Casemanagement_Final\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\Owin.dll
+D:\Develop\CASE 98.02.30\CaseManagement\N.Casemanagement_Final\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\Microsoft.AspNet.SignalR.Core.xml
+D:\Develop\CASE 98.02.30\CaseManagement\N.Casemanagement_Final\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+D:\Develop\CASE 98.02.30\CaseManagement\N.Casemanagement_Final\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\Microsoft.Owin.xml
+D:\Develop\CASE 98.02.30\CaseManagement\N.Casemanagement_Final\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Develop\CASE 98.02.30\CaseManagement\N.Casemanagement_Final\N.Casemanagement\CaseManagement\CaseManagement.Web\bin\Microsoft.Owin.Security.xml
+D:\Develop\CASE 98.02.30\CaseManagement\N.Casemanagement_Final\N.Casemanagement\CaseManagement\CaseManagement.Web\obj\Debug\CaseManagement.Web.csprojResolveAssemblyReference.cache
+D:\Develop\CASE 98.02.30\CaseManagement\N.Casemanagement_Final\N.Casemanagement\CaseManagement\CaseManagement.Web\obj\Debug\CaseManagement.Web.dll
+D:\Develop\CASE 98.02.30\CaseManagement\N.Casemanagement_Final\N.Casemanagement\CaseManagement\CaseManagement.Web\obj\Debug\CaseManagement.Web.pdb

@@ -1,0 +1,136 @@
+﻿<UserControl x:Class="CRM.Application.UserControls.SpaceandPower"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:sv="clr-namespace:CRM.Application.StaticValidation"
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+             mc:Ignorable="d" 
+             d:DesignWidth="820">
+
+    <StackPanel FlowDirection="RightToLeft">
+        <GroupBox Grid.Row="0" x:Name="CustomeGroupBox" Margin="0,0,0,10">
+            <GroupBox.Header>
+                <Label Content="مشخصات متقاضی" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14"/>
+            </GroupBox.Header>
+
+            <Grid x:Name="ADSLCustomerInfo">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="180" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Name="CustomerNameRow" Width="100" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="کدملی مشترک / شماره ثبت : " />
+                <TextBox Grid.Row="0" Grid.Column="1" Name="NationalCodeTextBox" Style="{StaticResource ResourceKey=NumericTextBox}">
+                    <TextBox.Text>
+                        <Binding RelativeSource="{RelativeSource Self}" Path="Text" UpdateSourceTrigger="LostFocus" ValidatesOnDataErrors="True">
+                            <Binding.ValidationRules>
+                                <sv:StaticValidation ValidationType="Pattern" Pattern="^[0-9]+$"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+
+                <Button Grid.Row="0" Grid.Column="2" Name="SearchCustomer" Content="جستجو" Click="SearchCustomer_Click" />
+
+                <Label Grid.Row="0" Grid.Column="3" Content="نام مشترک : " />
+                <TextBox Grid.Row="0" Grid.Column="4" Name="CustomerNameTextBox" IsReadOnly="True" />
+
+                <Button Grid.Row="0" Grid.Column="5" Content="ویرایش"  x:Name="EditSearchCustomer" Click="EditSearchCustomer_Click" />
+                
+            </Grid>
+
+        </GroupBox>
+        
+        <Grid Name="SpaceAnfPowerInfo">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+    
+            <Label Grid.Row="0" Grid.Column="0" Content="نوع تجهیزات : " />
+            <ComboBox Grid.Row="0" Grid.Column="1" Name="EquipmentTypeComboBox" SelectedValue="{Binding Path=EquipmentType, UpdateSourceTrigger=PropertyChanged}"   DisplayMemberPath="Name" SelectedValuePath="ID" />
+
+            <Label Grid.Row="0" Grid.Column="2" Content="وزن تجهیزات : " />
+            <TextBox Grid.Row="0" Grid.Column="3" Name="EquipmentWeightTextBox" Text="{Binding EquipmentWeight}" />
+
+            <Label Grid.Row="1" Grid.Column="0" Content="نوع پاور مصرفی : " />
+            <ComboBox Grid.Row="1" Grid.Column="1" Name="PowerTypeComboBox" SelectedValue="{Binding Path=PowerType, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" SelectedValuePath="ID" />
+
+            <Label Grid.Row="1" Grid.Column="2" Content="میزان پاور مصرفی : " />
+            <TextBox Grid.Row="1" Grid.Column="3" Name="PowerRateTextBox" Text="{Binding PowerRate}" />
+
+            <Label Grid.Row="2" Grid.Column="0" Content="نوع فضا : " />
+            <ComboBox Grid.Row="2" Grid.Column="1" Name="SpaceTypeComboBox" SelectedValue="{Binding Path=SpaceType, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" SelectedValuePath="ID" />
+
+            <Label Grid.Row="2" Grid.Column="2" Content="متراژ فضا (مترمربع) : " />
+            <TextBox Grid.Row="2" Grid.Column="3" Name="SpaceSizeTextBox" Text="{Binding SpaceSize}" />
+
+            <Label Grid.Row="3" Grid.Column="0" Content="کاربری فضا : " />
+            <TextBox Grid.Row="3" Grid.Column="1" Name="SpaceUsageTextBox" Text="{Binding SpaceUsage}" />
+
+            <Label Grid.Row="3" Grid.Column="2" Content="میزان اتلاف حرارت تجهیزات : " />
+            <TextBox Grid.Row="3" Grid.Column="3" Name="HeatWasteRateTextBox" Text="{Binding HeatWasteRate}" />
+
+            <Label Grid.Row="4" Grid.Column="0" Content="مدت زمان (ماه) : " />
+            <TextBox Grid.Row="4" Grid.Column="1" Name="DurationTextBox" Text="{Binding Duration}" />
+
+            <Label Grid.Row="4" Grid.Column="2" Content="فضای روی دکل : "/>
+            <TextBox x:Name="RigSpaceTextBox" Grid.Row="4" Grid.Column="3" Text="{Binding RigSpace}"/>
+
+            <Label Grid.Row="5" Grid.Column="0" Content="آنتن : "/>
+            <CheckBox x:Name="AntennaCheckBox" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" Checked="AntennaCheckBox_Checked" Unchecked="AntennaCheckBox_Unchecked"/>
+
+            <Grid x:Name="AntennaInfoGrid" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4" Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="نوع آنتن : "/>
+                <TextBox x:Name="AntennaNameTextBox" Grid.Row="0" Grid.Column="1" Text="{Binding Name}"/>
+
+                <Label Grid.Row="0" Grid.Column="2" Content="تعداد آنتن : "/>
+                <TextBox x:Name="AntennaCountTextBox" Grid.Row="0" Grid.Column="3" Text="{Binding Count}"/>
+
+                <Label Grid.Row="1" Grid.Column="0" Content="ارتفاع آنتن : "/>
+                <TextBox x:Name="AntennaHeightTextBox" Grid.Row="1" Grid.Column="1" Text="{Binding Height}"/>
+            </Grid>
+            
+            <Label Grid.Row="7" Grid.Column="0" Content="دارای فیبر میباشد : "/>
+            <CheckBox x:Name="HasFibreCheckBox" Grid.Row="7" Grid.Column="1" IsChecked="{Binding HasFibre}" VerticalAlignment="Center" Checked="HasFibreCheckBox_Checked" Unchecked="HasFibreCheckBox_Unchecked"/>
+            
+            <Label Grid.Row="8" Grid.Column="0" Content="توضیحات درخواست : " />
+            <TextBox Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="3" Name="RequestDescriptionTextBox" Text="{Binding RequestDescription}" />
+
+        </Grid>
+
+    </StackPanel>
+
+</UserControl>

@@ -1,0 +1,226 @@
+﻿<Local:PopupWindow x:Class="CRM.Application.Views.ADSlTariffForm"
+                   Title="فرم ویرایش تعرفه ADSL" 
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib" 
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+                   Loaded="PopupWindow_Loaded" Icon="/CRM.Application;component/Images/ADSLService_48x48.png" 
+                   Width="800" Height="700" ResizeMode="NoResize" >
+    <ScrollViewer Padding="0 0 10 0" FlowDirection="RightToLeft" x:Name="MainScrollViewer" >
+        <Grid FlowDirection="RightToLeft">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <GroupBox Grid.Row="0" Header="مشخصات سرویس">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="155"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="155"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="عنوان سرویس : "/>
+                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="TitleTextBox" Text="{Binding Title}"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="نام گروه در IBSng : "/>
+                    <ComboBox Grid.Row="1" Grid.Column="1" Name="IBSngGroupName" SelectedValue="{Binding IBSngGroupName}"/>
+                    
+                    <Label Grid.Row="1" Grid.Column="2" Content="کد سرویس : "/>
+                    <TextBox x:Name="ServiceCodeTextBox" Grid.Row="1" Grid.Column="3" Text="{Binding ServiceCode}" />
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="گروه مشتری : " />
+                    <ComboBox Grid.Row="2" Grid.Column="1" x:Name="CustomerGroupComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="CustomerGroupComboBox_SelectionChanged"/>
+
+                    <Label Grid.Row="2" Grid.Column="2" Content="گروه سرویس : " />
+                    <ComboBox Grid.Row="2" Grid.Column="3" x:Name="GroupComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding GroupID}"/>
+
+                    <Label Grid.Row="3" Grid.Column="0" Content="نوع شبکه : " />
+                    <ComboBox Grid.Row="3" Grid.Column="1" x:Name="NetworkComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding NetworkID}" />
+
+                    <Label Grid.Row="3" Grid.Column="2" Content="نوع خرید : " />
+                    <ComboBox Grid.Row="3" Grid.Column="3" x:Name="TypeComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding TypeID}" />
+
+                    <Label Grid.Row="4" Grid.Column="0"  Content="پهنای باند : "/>
+                    <ComboBox Grid.Row="4" Grid.Column="1" x:Name="BandWidthComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding BandWidthID}"/>
+
+                    <Label Grid.Row="4" Grid.Column="2"  Content="حجم : "/>
+                    <ComboBox Grid.Row="4" Grid.Column="3" x:Name="TrafficComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding TrafficID}"/>
+
+                    <Label Grid.Row="5" Grid.Column="0" Content="مدت استفاده : "/>
+                    <ComboBox Grid.Row="5" Grid.Column="1" x:Name="DurationComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding DurationID}" />
+
+                    <Label Grid.Row="5" Grid.Column="2" Content="پروفایل هدیه : "/>
+                    <ComboBox Grid.Row="5" Grid.Column="3" x:Name="GiftProfileComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding GiftProfileID}"/>
+
+                    <Label Grid.Row="6" Grid.Column="0" Content="اعتبار رزرو (مگا بایت) : "/>
+                    <TextBox Grid.Row="6" Grid.Column="1" x:Name="OverNightCreditTextBox" Text="{Binding ReserveCridit}" Style="{StaticResource ResourceKey=NumericTextBox}" PreviewTextInput="TextBox_PreviewTextInput"/>
+
+                    <Label Grid.Row="6" Grid.Column="2" Content="اعتبار شبانه رایگان (مگا بایت) : "/>
+                    <TextBox Grid.Row="6" Grid.Column="3" x:Name="ReserveCriditTextBox" Text="{Binding OverNightCredit}"  Style="{StaticResource ResourceKey=NumericTextBox}" PreviewTextInput="TextBox_PreviewTextInput"/>
+
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Grid.Row="1" Header="نحوه پرداخت">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="155"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="155"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--<Label Grid.Row="7" Grid.Column="0" Name="PaymentLabel" Content="نوع سرویس : " />
+                <ListBox Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="3" x:Name="PaymentTypeListBox" SelectedValue="{Binding Path=PaymentTypeID}" SelectedValuePath="Tag" >
+                    <ListBoxItem Tag="0">رایگان</ListBoxItem>
+                    <ListBoxItem Tag="1">پیش پرداخت (PrePaid)</ListBoxItem>
+                    <ListBoxItem Tag="4">پس پرداخت (PostPaid)</ListBoxItem>
+                    <ListBoxItem Tag="3">اقساط</ListBoxItem>
+                </ListBox>-->
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="رایگان : " />
+                    <CheckBox Grid.Row="0" Grid.Column="1" x:Name="FreeCheckBox" IsChecked="{Binding IsFree}" VerticalAlignment="Center" Checked="FreeCheckBox_Checked" Unchecked="FreeCheckBox_Unchecked" />
+
+                    <Label Grid.Row="1" Grid.Column="0" Name="PaymentLabel" Content="نوع سرویس : " />
+                    <ListBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" x:Name="PaymentTypeListBox" SelectedValue="{Binding Path=PaymentTypeID}" SelectedValuePath="Tag" >
+                        <ListBoxItem Tag="1">پیش پرداخت (PrePaid)</ListBoxItem>
+                        <ListBoxItem Tag="3">پس پرداخت (PostPaid)</ListBoxItem>
+                    </ListBox>
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="اقساط : " Name="InstalmentLabel"/>
+                    <CheckBox Grid.Row="2" Grid.Column="1" x:Name="InstalmentCheckBox" IsChecked="{Binding IsInstalment}" VerticalAlignment="Center" Checked="InstalmentCheckBox_Checked" Unchecked="InstalmentCheckBox_Unchecked" />
+
+                    <Label Grid.Row="2" Grid.Column="2" Content="حداکثر تعداد اقساط : " Name="MAXInstallmentCountLabel" />
+                    <TextBox Grid.Row="2" Grid.Column="3" x:Name="MAXInstallmentCountTextBox" Text="{Binding MAXInstallmentCount}" Style="{StaticResource ResourceKey=NumericTextBox}" PreviewTextInput="TextBox_PreviewTextInput" />
+
+                    <Label Grid.Row="3" Grid.Column="0" Content="هزینه (ریا ل) : " Name="PriceLabel"/>
+                    <TextBox Grid.Row="3" Grid.Column="1" x:Name="PriceTextBox" Text="{Binding Price}" Style="{StaticResource ResourceKey=NumericTextBox}" PreviewTextInput="TextBox_PreviewTextInput"/>
+
+                    <Label Grid.Row="3" Grid.Column="2" Content="مالیات (درصد) : " Name="TaxLabel"/>
+                    <TextBox Grid.Row="3" Grid.Column="3" x:Name="TaxTextBox" Text="{Binding Tax}" Style="{StaticResource ResourceKey=NumericTextBox}" PreviewTextInput="TextBox_PreviewTextInput"/>
+
+                    <Label Grid.Row="4" Grid.Column="0" Content="آبونمان (ریا ل) : " Name="AbonmanLabel"/>
+                    <TextBox Grid.Row="4" Grid.Column="1" x:Name="AbonmanTextBox" Text="{Binding Abonman}" Style="{StaticResource ResourceKey=NumericTextBox}" PreviewTextInput="TextBox_PreviewTextInput"/>
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Grid.Row="2" Header="دسترسی ها">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="155"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="155"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="کانال های فروش : "/>
+                    <UserControls:CheckableComboBox Grid.Row="0" Grid.Column="1"  x:Name="SellChanellComboBox" />
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="تاریخ شروع نمایش : "/>
+                    <cal:DatePicker Grid.Row="1" Grid.Column="1" x:Name="StartDate" SelectedDate="{Binding StartDtae}" />
+
+                    <Label Grid.Row="1" Grid.Column="2" Content="تاریخ پایان نمایش : "/>
+                    <cal:DatePicker Grid.Row="1" Grid.Column="3" x:Name="EndDate" SelectedDate="{Binding EndDate}" />
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="نیاز به مجوز : "/>
+                    <CheckBox Grid.Row="2" Grid.Column="1" x:Name="IsRequiredLicenseCheckBox" IsChecked="{Binding IsRequiredLicense}" VerticalAlignment="Center"/>
+
+                    <Label Grid.Row="2" Grid.Column="2" Content="مشاهده در ثبت نام آنلاین : "/>
+                    <CheckBox Grid.Row="2" Grid.Column="3" VerticalAlignment="Center" IsChecked="{Binding IsOnlineRegister}" />
+
+                    <Label Grid.Row="3" Grid.Column="0" Content="ویژه : "/>
+                    <CheckBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" IsChecked="{Binding IsSpecial}" />
+
+                    <Label Grid.Row="3" Grid.Column="2" Content="فعال : "/>
+                    <CheckBox Grid.Row="3" Grid.Column="3" VerticalAlignment="Center" IsChecked="{Binding IsActive}" />
+
+
+                    <Label    Grid.Row="4" Grid.Column="0" Content="استفاده در Wireless : "/>
+                    <CheckBox Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" IsChecked="{Binding ForWireless}" />
+
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Grid.Row="3" Header="مودم">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="155"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="155"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="خرید مودم اجباری : " />
+                    <CheckBox Grid.Row="0" Grid.Column="1" x:Name="ModemMandatoryCheckBox" IsChecked="{Binding IsModemMandatory}" VerticalAlignment="Center" />
+
+                    <Label Grid.Row="0" Grid.Column="2" Content="امکان خرید مودم اقساطی : " />
+                    <CheckBox Grid.Row="0" Grid.Column="3" x:Name="ModemInstallmentCheckBox" IsChecked="{Binding IsModemInstallment}" VerticalAlignment="Center" />
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="درصد تخفیف مودم (درصد) : " />
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="ModemDiscountTextBox" Text="{Binding ModemDiscount}"  Style="{StaticResource ResourceKey=NumericTextBox}" PreviewTextInput="TextBox_PreviewTextInput"/>
+
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Grid.Row="4" Header="IP استاتیک">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="155"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="155"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="درصد تخفیف IP استاتیک (درصد) : " />
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="IPDiscountTextBox" Text="{Binding IPDiscount}"  Style="{StaticResource ResourceKey=NumericTextBox}" PreviewTextInput="TextBox_PreviewTextInput"/>
+
+                </Grid>
+            </GroupBox>
+            
+            <Button Width="80" Height="23" Grid.Row ="5"  Content="ذخیره" Name="SaveButton" Click="SaveForm" Tag="Footer"/>
+
+        </Grid>
+    </ScrollViewer>
+</Local:PopupWindow>

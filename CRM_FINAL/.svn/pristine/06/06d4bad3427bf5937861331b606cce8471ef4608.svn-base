@@ -1,0 +1,23 @@
+﻿--13931128 - 1051
+--باید ستون جدیدی که در سرویس ویژه تعریف کردم با استفاده از تاریخ پایان درخواست ها پر میکردم
+--سرور 14
+--UPDATE S
+--SET InsertDate = R.EndDate
+--FROM 
+--	Request R 
+--INNER JOIN 
+--	SpecialService S ON R.ID = S.ID 
+--WHERE 
+--	R.EndDate IS NOT NULL
+
+--13931128 - 1147
+--باید ستون جدیدی که در سرویس ویژه تعریف کردم با استفاده از تاریخ پایان درخواست ها پر میکردم
+--سرور کرمانشاه
+--UPDATE S
+--SET InsertDate = R.EndDate
+--FROM 
+--	Request R 
+--INNER JOIN 
+--	SpecialService S ON R.ID = S.ID 
+--WHERE 
+--	R.EndDate IS NOT NULL

@@ -1,0 +1,201 @@
+﻿<Local:TabWindow x:Class="CRM.Application.Reports.Viewer.VersionOneReportList" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+        xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+        xmlns:Local="clr-namespace:CRM.Application.Local"
+        xmlns:CustomControls="clr-namespace:CRM.Application.Codes.CustomControls"
+        mc:Ignorable="d" MinWidth="800" MinHeight="600">
+    <Local:TabWindow.Resources>
+
+        <!--This DataTemplate is defined so that visual structure of ReportType MenuItems-->
+        <DataTemplate x:Key="MenuItemHeaderTemplate">
+            <TextBlock  VerticalAlignment="Center" Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type MenuItem}},Path=Header}" TextWrapping="Wrap" Margin="0 0 -60 0" Padding="0" FontFamily="pack://application:,,,/CRM.Application;component/Resources/Fonts/#Tahoma" FontSize="12.5"/>
+        </DataTemplate>
+
+        <!--This Style  defined for MenuItem.HeaderTemplate value setting-->
+        <Style x:Key="MenuItemHeaderStyle" TargetType="{x:Type MenuItem}">
+            <Setter Property="HeaderTemplate" Value="{StaticResource MenuItemHeaderTemplate}" />
+        </Style>
+
+        <!--This style defined for menuItems. When menuItem.IsEnabled=False-->
+        <Style TargetType="{x:Type MenuItem}" x:Key="menuItemStyle">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <BlurEffect Radius="5" KernelType="Gaussian" RenderingBias="Quality"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <DataTemplate x:Key="ExpanderHeaderTemplate">
+            <Border Width="200" BorderBrush="DimGray" BorderThickness="2" Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}},Path=Height}" CornerRadius="10" Padding="15 5 15 5">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Color="SkyBlue" Offset="0.1" />
+                        <GradientStop Color="WhiteSmoke" Offset="0.9" />
+                    </LinearGradientBrush>
+                </Border.Background>
+                <TextBlock Foreground="Black" FontSize="13" FontFamily="pack://application:,,,/CRM.Application;component/Resources/Fonts/#Tahoma" FontWeight="SemiBold" VerticalAlignment="Center" HorizontalAlignment="Left" Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}},Path=Height}" Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Expander}}, Path=Header}" />
+            </Border>
+        </DataTemplate>
+
+        <Style x:Key="ExpanderStyle" TargetType="{x:Type Expander}">
+            <Setter Property="HeaderTemplate" Value="{StaticResource ExpanderHeaderTemplate}" />
+            <Setter Property="Padding" Value="3" />
+            <Setter Property="FontSize" Value="12.5" />
+        </Style>
+
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1" x:Key="GrayLinearBrush">
+            <GradientStop Color="DimGray" Offset="0.10"/>
+            <GradientStop Color="White" Offset="0.20"/>
+            <GradientStop Color="DarkGray" Offset="0.30"/>
+            <GradientStop Color="White" Offset="0.40"/>
+            <GradientStop Color="LightGray" Offset="0.50"/>
+            <GradientStop Color="White" Offset="0.60"/>
+            <GradientStop Color="LightGray" Offset="0.70"/>
+            <GradientStop Color="White" Offset="0.80"/>
+        </LinearGradientBrush>
+
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1" x:Key="BlueLinearBrush">
+            <GradientStop Color="LightSkyBlue" Offset="0.10"/>
+            <GradientStop Color="DodgerBlue" Offset="0.20"/>
+            <GradientStop Color="White" Offset="0.25"/>
+            <GradientStop Color="LightSkyBlue" Offset="0.35"/>
+            <GradientStop Color="DodgerBlue" Offset="0.45"/>
+            <GradientStop Color="White" Offset="0.50"/>
+            <GradientStop Color="LightSkyBlue" Offset="0.60"/>
+            <GradientStop Color="DodgerBlue" Offset="0.70"/>
+            <GradientStop Color="White" Offset="0.80"/>
+            <GradientStop Color="LightSkyBlue" Offset="0.90"/>
+            <GradientStop Color="DodgerBlue" Offset="1"/>
+        </LinearGradientBrush>
+
+        <VisualBrush x:Key="VisualBrushBackground">
+            <VisualBrush.Visual>
+                <StackPanel Background="{StaticResource BlueLinearBrush}" Height="1" Width="1">
+                    <StackPanel Height="1" Width="1">
+                        <StackPanel.Background>
+                            <LinearGradientBrush StartPoint="0,1" EndPoint="1,-1" Opacity="0.50">
+                                <GradientStop Color="LightSteelBlue" Offset="0.10"/>
+                                <GradientStop Color="SteelBlue" Offset="0.20"/>
+                                <GradientStop Color="White" Offset="0.40"/>
+                                <GradientStop Color="LightSteelBlue" Offset="0.50"/>
+                                <GradientStop Color="SteelBlue" Offset="0.60"/>
+                                <GradientStop Color="White" Offset="0.80"/>
+                                <GradientStop Color="LightSteelBlue" Offset="0.90"/>
+                                <GradientStop Color="SteelBlue" Offset="1"/>
+                            </LinearGradientBrush>
+                        </StackPanel.Background>
+                    </StackPanel>
+                </StackPanel>
+            </VisualBrush.Visual>
+        </VisualBrush>
+    </Local:TabWindow.Resources>
+    <Local:TabWindow.Background>
+        <RadialGradientBrush GradientOrigin="0.15,0.25" RadiusX="1" RadiusY="1">
+            <GradientStop Color="LightSkyBlue" Offset="0.10"/>
+            <GradientStop Color="White" Offset="0.50"/>
+            <GradientStop Color="LightGray" Offset="0.50"/>
+            <GradientStop Color="White" Offset="0.5055"/>
+            <GradientStop Color="LightSkyBlue" Offset="0.8"/>
+        </RadialGradientBrush>
+    </Local:TabWindow.Background>
+    <Grid x:Name="ReportsGrid" FlowDirection="RightToLeft" >
+        <Grid.Background>
+            <ImageBrush ImageSource="/CRM.Application;component/Images/SkyBrush.png" AlignmentX="Left" AlignmentY="Bottom" Opacity="0.50"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="275"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <GridSplitter Grid.Row="0" Grid.Column="1" Background="MidnightBlue" Width="2.5" ResizeDirection="Columns" ResizeBehavior="CurrentAndNext" Panel.ZIndex="1" Margin=" 1 15 0 15" Opacity="0.15"/>
+        
+        <!--List Of Different Report Type-->
+        <Border x:Name="ReportListBorder" BorderBrush="Gray" BorderThickness="4" Padding="2"   Grid.Row="0" Grid.Column="1" Visibility="Visible">
+            <ScrollViewer>
+                <Border BorderBrush="White" BorderThickness="5.5" CornerRadius="0">
+                    <Border.Background>
+                        <SolidColorBrush Color="DimGray" Opacity="0.25"/>
+                    </Border.Background>
+                    <StackPanel x:Name="ReportStackPanel" />
+                </Border>
+            </ScrollViewer>
+        </Border>
+        
+        <!--Define a border as main parent for showing seleted report type-->
+        <Border x:Name="SelectedReportTypeBorder" Visibility="Visible" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" CornerRadius="0" BorderBrush="WhiteSmoke" BorderThickness="3" Margin="10 0 0 0">
+            <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <!--Create wrapPanel for holding reporrt and its icon-->
+                    <WrapPanel Grid.Row="0" Grid.Column="0" Margin="10">
+                        <Image x:Name="ReportHeaderImage" Height="58" Width="58" />
+                        <TextBlock x:Name="ReportHeaderTextBlock" FontSize="18" FontWeight="DemiBold" FontFamily="/CRM.Application;component/Resources/Fonts/#Tahoma" VerticalAlignment="Center" />
+                    </WrapPanel>
+
+                    <!--Create wrapPanel for holding report actions menuItems-->
+                    <Grid x:Name="ReportOperationsWrapPanel" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" HorizontalAlignment="Right">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="60"/>
+                            <ColumnDefinition Width="60"/>
+                        </Grid.ColumnDefinitions>
+                        <CustomControls:ImageButton Grid.Column="0" x:Name="ViewReport" Click="ViewReport_Click" Height="45" Width="45" Margin="1.5 0 -1 0" ToolTip="مشاهده گزارش" Cursor="Hand" Image="/CRM.Application;component/Images/ViewReportIcon.png" ImageHeight="24" ImageWidth="24"/>
+                        <CustomControls:ImageButton Grid.Column="1" x:Name="StopReport" Click="StopReport_Click" Height="45" Width="45" Margin="1.5 0 -1 0" ToolTip="توقف نمایش گزارش" Cursor="Hand" Image="/CRM.Application;component/Images/StopReportIcon.png" ImageHeight="24" ImageWidth="24"/>
+                        <CustomControls:ImageButton Grid.Column="2" x:Name="NewReport" Click="NewReport_Click" Height="45" Width="45" Margin="1.5 0 -1 0" ToolTip="ایجادالگوی گزارش" Cursor="Hand" Image="/CRM.Application;component/Images/NewReportIcon.png" ImageHeight="24" ImageWidth="24"/>
+                        <CustomControls:ImageButton Grid.Column="3" x:Name="EditTemplate" Click="EditTemplate_Click" Height="45" Width="45" Margin="1.5 0 -1 0" ToolTip="ویرایش الگوی گزارش" Cursor="Hand" Image="/CRM.Application;component/Images/EditReportIcon.png" ImageHeight="24" ImageWidth="24"/>
+                        <CustomControls:ImageButton Grid.Column="4" x:Name="DeleteItem" Click="DeleteItem_Click" Height="45" Width="45" Margin="1.5 0 -1 0" ToolTip="حذف گزارش" Cursor="Hand" Image="/CRM.Application;component/Images/DeleteReportIcon.png" ImageHeight="24" ImageWidth="24"/>
+                        <CustomControls:ImageButton Grid.Column="5" x:Name="ResetReportMenuItem" Height="45" Width="45" Margin="1.5 0 -1 0" ToolTip="بازنشانی صفحه گزارش" Click="ResetReportMenuItem_Click" Cursor="Hand" Image="/CRM.Application;component/Images/ResetIcon.png" ImageHeight="24" ImageWidth="24"/>
+                    </Grid>
+                    
+                    <Border x:Name="StackPanelBorder" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6"  Grid.RowSpan="4" Margin="10 15" BorderBrush="White" BorderThickness="8">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            
+                            <StackPanel x:Name="SelectedReportTypeStackPanel" Height="Auto" Background="WhiteSmoke"/>
+                            
+                            <!--زمانی از این کنترل استفاده شود که از بگ گراند ورکر در ایجاد گزارش و متد جستجو استفاده شود-->
+                            <Grid x:Name="ReportGeneratingInfoLabel" TextElement.FontFamily="Yekan" Grid.Row="1" Background="WhiteSmoke" Visibility="Collapsed" TextElement.FontSize="5" Tag="ReportGeneratingInfoLabel">
+                                <TextBlock  Text="در حال ایجاد گزارش، لطفاً منتظر بمانید..." Margin="35 0 0 0" VerticalAlignment="Center"/>
+                                <Image Source="pack://application:,,,/CRM.Application;component/Images/info.png" Height="30" Width="30" HorizontalAlignment="Left"/>
+                            </Grid>
+                            
+                        </Grid>
+                    </Border>
+
+                </Grid>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</Local:TabWindow>

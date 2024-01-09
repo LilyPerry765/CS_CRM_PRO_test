@@ -1,0 +1,512 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="~/scripts/persian-date-0.1.8.js"></script>
+    <script src="~/scripts/persian-datepicker-0.4.5.js"></script>
+    <link href="~/content/persian-datepicker.css" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>IncomeFlowReport</title>
+
+</head>
+
+
+<body>
+  
+       <div class="col-md-12">
+        <label style="width:100px; font-weight:normal; font-variant:normal;margin-right:5px;">استان : </label>
+        <select id="Province" style="width: 150px; height: 30px; font-size: 12px;"></select>
+
+        <label style="width:50px; font-weight:normal; font-variant:normal;margin-right:30px;">دوره : </label>
+        <select id="Cycle" style="width:80px; height:30px;font-size:12px;"></select>
+
+        <label style="width:70px; font-weight:normal; font-variant:normal;margin-right:30px;">کد فعالیت : </label>
+        <select id="Activity" style="width:80px; height:30px;font-size:12px;"></select>
+
+        <label style="width: 150px; font-weight: normal; font-variant: normal; margin-right: 10px;"> تاریخ شناسایی نشتی : </label>
+
+        <!--<label style="width:50px; font-weight:normal; font-variant:normal;margin-right:30px;">از  : </label>-->
+        <input type="text" style="width:80px; height:30px;font-size:12px;" class="DateTimeFilter_Start" id="DateTimeFilter_Start" />
+
+        <label style="width:10px; font-weight:normal; font-variant:normal;margin-right:10px;">-</label>
+        <input type="text" style="width:80px; height:30px;font-size:12px;margin-bottom:5px;" class="DateTimeFilter_End" id="DateTimeFilter_End" />
+      
+       
+    </div>
+    <br /><br />
+
+    
+     
+    <div class="col-md-12">
+
+        <button type="button" id="search" class="btn btn-info btn-default" style="font-size:13px;margin-right:10px;float:left;font-weight:bold;color:white;">مشاهده گزارش</button>
+
+        <!--<div class="tool-button print-preview-button"><div class="button-outer"><span class="button-inner">چاپ</span></div></div>-->
+        <button type="button" id="print" class="btn btn-switch btn-default" style="font-size: 13px; margin-right: 10px; float: left; font-weight: bold;"><i class="fa fa-print" aria-hidden="true"></i> چاپ  </button>
+
+
+        <!--   <div style="float:left;">-->
+        <!-- <span class="input-group-btn">-->
+        <!--</span>-->
+        <!--  </div>-->
+
+    </div>
+
+   
+
+    <div class="row">
+        <div class="loader"></div>
+        <div class="col-xs-12 table-responsive">
+
+            <br />
+            <table cellspacing="0" border="1" class="table table-striped" id="Province_Program_Table" style="font-family: Tahoma; font-size: 13px; border: 1px solid black; border-collapse: collapse;margin-bottom:0px; ">
+                <thead style="background-color: #0090D9; color: #eee; font-weight: 600;">
+                    <tr>
+                        <th style="text-align: center; border: 1px solid black;">جریان درآمدی</th>
+                        <th style="text-align: center; border: 1px solid black;">تعداد فعالیت</th>
+                        <th style="text-align: center; border: 1px solid black;">مبلغ سیکل</th>
+                        <th style="text-align: center; border: 1px solid black;">مبلغ معوق</th>
+                        <th style="text-align: center; border: 1px solid black;">نشتی شناسایی شده کل</th>
+                        <th style="text-align: center; border: 1px solid black;">نشتی قابل وصول</th>
+                        <th style="text-align: center; border: 1px solid black;">مبلغ مصوب</th>
+
+                    </tr>
+                </thead>
+                <tbody style="text-align: center; line-height: 1; "></tbody>
+            </table>
+        </div>
+        <!-- /.col -->
+    </div>
+
+</body>
+</html>
+<script type="text/javascript">
+    //  document.getElementById("Province_Program_Table").style.display = 'none';
+    $(function () {
+        $("#DateTimeFilter_Start").datepicker();
+        $("#DateTimeFilter_End").datepicker();
+    });
+
+    /*
+    $(document).ready(function () {
+        $(".DateTimeFilter_Start").pDatepicker({
+            format: "YYYY/MM/DD",
+            autoClose: true,
+            navigator: {
+                enabled: true,
+                text: {
+                    btnNextText: ">",
+                    btnPrevText: "<"
+                }
+            }
+
+        });
+        $(".DateTimeFilter_End").pDatepicker({
+            format: "YYYY/MM/DD",
+            autoClose: true,
+            navigator: {
+                enabled: true,
+                text: {
+                    btnNextText: ">",
+                    btnPrevText: "<"
+                }
+            }
+        });
+
+    });
+
+    */
+
+    var url = "http://" + window.location.hostname + ":" + window.location.port + "/Services/Case/IncomeFlow/List";
+    // alert("URL : " + url);
+    //var ProvID = '';
+    var IncomeFlow = new Array(9);
+  
+    $.ajaxSetup({ async: false });
+    $.getJSON(url, function (data) {
+
+        for (var i = 0; i < data.TotalCount; i++) {
+            IncomeFlow[data.Entities[i].Id] = data.Entities[i].Name;
+            //console.log(data.Entities[i].Name);
+        }
+    });
+    console.log(IncomeFlow.length);
+    var url = "http://" + window.location.hostname + ":" + window.location.port + "/Services/Case/Cycle/List";
+    // alert("URL : " + url);
+
+    var CycleCombo = document.getElementById("Cycle");
+    //FIXME
+    var SecondOption = document.createElement("option");
+    SecondOption.text = "";
+    SecondOption.value = "0";
+    CycleCombo.add(SecondOption, null);
+
+    //FIXME
+    $.ajaxSetup({ async: false });
+    $.getJSON(url, function (data) {
+
+        for (var i = 0; i < data.TotalCount; i++) {
+
+            var option = document.createElement("option");
+            option.text = data.Entities[i].CycleName;
+            option.value = data.Entities[i].Id;
+
+            CycleCombo.add(option, null); //Standard
+
+        }
+    });
+
+
+    var url = "http://" + window.location.hostname + ":" + window.location.port + "/Services/Case/Activity/List";
+    // alert("URL : " + url);
+
+    var ActivityCombo = document.getElementById("Activity");
+    //FIXME
+    var ActivityOption = document.createElement("option");
+    ActivityOption.text = "";
+    ActivityOption.value = "0";
+    ActivityCombo.add(ActivityOption, null);
+
+    //FIXME
+    $.ajaxSetup({ async: false });
+    $.getJSON(url, function (data) {
+
+        for (var i = 0; i < data.TotalCount; i++) {
+
+            var option = document.createElement("option");
+            option.text = data.Entities[i].Code;
+            option.value = data.Entities[i].Id;
+
+            ActivityCombo.add(option, null); //Standard
+
+        }
+    });
+
+    //  console.log(document.getElementById("DateTimeFilter_Start").value);
+    //   console.log(document.getElementById("DateTimeFilter_End").value);
+
+   
+    var url = "http://" + window.location.hostname + ":" + window.location.port + "/Services/Case/Province/List";
+    var ProvinceCombo = document.getElementById("Province");
+    //FIXME
+    var ProvinceOption = document.createElement("option");
+    ProvinceOption.text = "";
+    ProvinceOption.value = "0";
+    ProvinceCombo.add(ProvinceOption, null);
+
+    //FIXME
+    $.ajaxSetup({ async: false });
+    $.getJSON(url, function (data) {
+
+        for (var i = 0; i < data.TotalCount; i++) {
+
+            var option = document.createElement("option");
+            option.text = data.Entities[i].Name;
+            option.value = data.Entities[i].Id;
+
+            ProvinceCombo.add(option, null); //Standard
+
+        }
+    });
+
+    function CostSeperator(value) {
+        if (value != null) {
+            var persianNumbers = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+            value = value.toString();
+            value = value.replace(/\,/g, '');
+            var objRegex = new RegExp('(-?[0-9]+)([0-9]{3})');
+            while (objRegex.test(value))
+                value = value.replace(objRegex, '$1,$2');
+
+            value = value.replace(/[0-9]/g, function (w) { return persianNumbers[+w] });
+        }
+        return value;
+    }
+
+    function PersiaNumber(value) {
+        var arabicNumbers = ['۰', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+
+        var chars = value.split('');
+
+        for (var i = 0; i < chars.length; i++) {
+            if (/\d/.test(chars[i])) {
+                chars[i] = arabicNumbers[chars[i]];
+            }
+        }
+
+        return chars.join('');
+
+    }
+    // onclick = "ProvinceReport();"
+    /* $('#search').click(function () {
+         $.blockUI({ message: '<h1>Please Wait...</h1>' });
+     });*/
+    //  document.getElementById('DateTimeFilter_Start').value = ' ';
+    // $(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
+    //  function ProvinceReport()
+    //  {
+    $('#print').click(function () {
+
+
+        var select = document.getElementById("Province");
+
+        var selectedProvince = select.options[select.selectedIndex].value;
+
+        var select1 = document.getElementById("Cycle");
+
+        var selectedCycle = select1.options[select1.selectedIndex].value;
+
+        var select2 = document.getElementById("Activity");
+
+        var selectedActivity = select2.options[select2.selectedIndex].value;
+       
+        window.location.href = "../StimulReport4/IncomFlowReportPrint?activityID=" + selectedActivity + "&cycleID=" + selectedCycle +
+            "&ProvinceID=" + selectedProvince + "&fromDate=" + document.getElementById("DateTimeFilter_Start").value + "&toDate=" + document.getElementById("DateTimeFilter_End").value;
+
+    });
+
+    $('#search').click(function () {
+
+
+        var select = document.getElementById("Province");
+
+        var selectedProvince = select.options[select.selectedIndex].value;
+
+        var select1 = document.getElementById("Cycle");
+
+        var selectedCycle = select1.options[select1.selectedIndex].value;
+
+        var select2 = document.getElementById("Activity");
+
+        var selectedActivity = select2.options[select2.selectedIndex].value;
+
+
+        var tableRef = document.getElementById('Province_Program_Table').getElementsByTagName('tbody')[0];
+        tableRef.innerHTML = " ";
+
+        
+        var url1 = "GetIncomeFlowReportInfo?activityID=" + selectedActivity + "&cycleID=" + selectedCycle + "&ProvinceID=" + selectedProvince + "&fromDate=" + document.getElementById("DateTimeFilter_Start").value + "&toDate=" + document.getElementById("DateTimeFilter_End").value;
+
+        $(document)
+         .ajaxStart(function () {
+             $.blockUI({
+                 message: '<b> در حال گزارشگیری ...</b>',
+                 css: {
+                     border: 'none',
+                     padding: '15px',
+                     backgroundColor: '#000',
+                     '-webkit-border-radius': '10px',
+                     '-moz-border-radius': '10px',
+                     opacity: .5,
+                     color: '#fff',
+                     width: '200px'
+                 }
+             });
+         })
+         .ajaxStop(function () {
+             $.unblockUI();
+         });
+        $.ajax({
+            type: "GET",
+            async: true,
+            // data: obj,
+            url: url1,
+            success: function (data) {
+
+                var Total_ActivityCount = 0;
+                var Total_CycleCost = 0;
+                var Total_DelayedCost = 0;
+                var Total_TotalLeakage = 0;
+                var Total_RecoverableLeakage = 0;
+                var Total_Recovered = 0;
+
+                for (var IncomeFlowCount = 1 ; IncomeFlowCount < IncomeFlow.length ; IncomeFlowCount++) {
+                    var flag = false;
+                    var ArrayIndex = -1;
+
+                    for (var counter = 0; counter < data.length; counter++) {
+                        if (data[counter].IncomeFlowID == IncomeFlowCount) {
+                            flag = true;
+                            ArrayIndex = counter;
+                        }
+                   
+                    }
+
+                    var newRow = tableRef.insertRow(tableRef.rows.length);
+
+                    // Insert a cell in the row at index 0
+                    if (flag) {
+                        //console.log("true");
+                        var newCell = newRow.insertCell(0);
+                        newCell.style.border = ' 1px solid black';
+                        var newText = document.createTextNode(IncomeFlow[IncomeFlowCount]);
+                        newCell.appendChild(newText);
+
+
+                        var newCell = newRow.insertCell(1);
+                        newCell.style.border = ' 1px solid black';
+                        if (data[ArrayIndex].ActivityCount) {
+                            var newText = document.createTextNode(PersiaNumber(data[ArrayIndex].ActivityCount.toString()));
+                            newCell.appendChild(newText);
+                            Total_ActivityCount += data[ArrayIndex].ActivityCount;
+                        } else {
+                            var newText = document.createTextNode("۰");
+                            newCell.appendChild(newText);
+                        }
+
+                        var newCell = newRow.insertCell(2);
+                        newCell.style.border = ' 1px solid black';
+                        if (data[ArrayIndex].SumCycleCost) {
+                            var newText = document.createTextNode(CostSeperator(data[ArrayIndex].SumCycleCost));
+                            newCell.appendChild(newText);
+                            Total_CycleCost += data[ArrayIndex].SumCycleCost;
+                        } else {
+                            var newText = document.createTextNode("۰");
+                            newCell.appendChild(newText);
+                        }
+
+
+                        var newCell = newRow.insertCell(3);
+                        newCell.style.border = ' 1px solid black';
+                        if (data[ArrayIndex].SumDelayedCost) {
+                            var newText = document.createTextNode(CostSeperator(data[ArrayIndex].SumDelayedCost));
+                            newCell.appendChild(newText);
+                            Total_DelayedCost += data[ArrayIndex].SumDelayedCost;
+                        } else {
+                            var newText = document.createTextNode("۰");
+                            newCell.appendChild(newText);
+                        }
+
+
+                        var newCell = newRow.insertCell(4);
+                        newCell.style.border = ' 1px solid black';
+                        if (data[ArrayIndex].SumTotalLeakage) {
+                            var newText = document.createTextNode(CostSeperator(data[ArrayIndex].SumTotalLeakage));
+                            newCell.appendChild(newText);
+                            Total_TotalLeakage += data[ArrayIndex].SumTotalLeakage;
+                        } else {
+                            var newText = document.createTextNode("۰");
+                            newCell.appendChild(newText);
+                        }
+
+
+                        var newCell = newRow.insertCell(5);
+                        newCell.style.border = ' 1px solid black';
+                        if (data[ArrayIndex].SumRecoverableLeakage) {
+                            var newText = document.createTextNode(CostSeperator(data[ArrayIndex].SumRecoverableLeakage));
+                            newCell.appendChild(newText);
+                            Total_RecoverableLeakage += data[ArrayIndex].SumRecoverableLeakage;
+                        } else {
+                            var newText = document.createTextNode("۰");
+                            newCell.appendChild(newText);
+                        }
+
+
+                        var newCell = newRow.insertCell(6);
+                        newCell.style.border = ' 1px solid black';
+                        if (data[ArrayIndex].SumRecovered) {
+                            var newText = document.createTextNode(CostSeperator(data[ArrayIndex].SumRecovered));
+                            newCell.appendChild(newText);
+                            Total_Recovered += data[ArrayIndex].SumRecovered;
+                        } else {
+                            var newText = document.createTextNode("۰");
+                            newCell.appendChild(newText);
+                        }
+
+                    } else {
+                        // console.log("false");
+
+                        var newCell = newRow.insertCell(0);
+                        newCell.style.border = ' 1px solid black';
+                        var newText = document.createTextNode(IncomeFlow[IncomeFlowCount]);
+                        newCell.appendChild(newText);
+
+
+                        var newCell = newRow.insertCell(1);
+                        newCell.style.border = ' 1px solid black';
+                        var newText = document.createTextNode("");
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(2);
+                        newCell.style.border = ' 1px solid black';
+                        var newText = document.createTextNode("");
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(3);
+                        newCell.style.border = ' 1px solid black';
+                        var newText = document.createTextNode("");
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(4);
+                        newCell.style.border = ' 1px solid black';
+                        var newText = document.createTextNode("");
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(5);
+                        newCell.style.border = ' 1px solid black';
+                        var newText = document.createTextNode("");
+                        newCell.appendChild(newText);
+
+                        var newCell = newRow.insertCell(6);
+                        newCell.style.border = ' 1px solid black';
+                        var newText = document.createTextNode("");
+                        newCell.appendChild(newText);
+
+
+                    }
+                }
+                var newRow = tableRef.insertRow(tableRef.rows.length);
+
+                var newCell = newRow.insertCell(0);
+                newCell.style.border = ' 1px solid black';
+                newCell.style = 'font-weight: bold;font-size:14px';
+                // Append a text node to the cell
+                var newText = document.createTextNode('مجموع');
+                newCell.appendChild(newText);
+
+                var newCell = newRow.insertCell(1);
+                newCell.style.border = ' 1px solid black';
+                newCell.style = 'font-weight: bold;font-size:14px';
+                var newText = document.createTextNode(PersiaNumber(Total_ActivityCount.toString()));
+                newCell.appendChild(newText);
+
+                var newCell = newRow.insertCell(2);
+                newCell.style.border = ' 1px solid black';
+                newCell.style = 'font-weight: bold;font-size:14px';
+                var newText = document.createTextNode(CostSeperator(Total_CycleCost));
+                newCell.appendChild(newText);
+
+                var newCell = newRow.insertCell(3);
+                newCell.style.border = ' 1px solid black';
+                newCell.style = 'font-weight: bold;font-size:14px';
+                var newText = document.createTextNode(CostSeperator(Total_DelayedCost));
+                newCell.appendChild(newText);
+
+                var newCell = newRow.insertCell(4);
+                newCell.style.border = ' 1px solid black';
+                newCell.style = 'font-weight: bold;font-size:14px';
+                var newText = document.createTextNode(CostSeperator(Total_TotalLeakage));
+                newCell.appendChild(newText);
+
+                var newCell = newRow.insertCell(5);
+                newCell.style.border = ' 1px solid black';
+                newCell.style = 'font-weight: bold;font-size:14px';
+                var newText = document.createTextNode(CostSeperator(Total_RecoverableLeakage));
+                newCell.appendChild(newText);
+
+                var newCell = newRow.insertCell(6);
+                newCell.style.border = ' 1px solid black';
+                newCell.style = 'font-weight: bold;font-size:14px';
+                var newText = document.createTextNode(CostSeperator(Total_Recovered));
+                newCell.appendChild(newText);
+
+
+
+            }
+
+        });
+
+    });
+
+
+</script>

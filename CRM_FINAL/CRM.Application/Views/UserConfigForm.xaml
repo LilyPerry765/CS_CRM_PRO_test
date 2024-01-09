@@ -1,0 +1,240 @@
+﻿<Local:PopupWindow x:Class="CRM.Application.Views.UserConfigForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Local="clr-namespace:CRM.Application.Local"
+        WindowStartupLocation="CenterScreen"
+        Icon="pack://application:,,,/CRM.Application;component/Images/UserConfig_32x32.png"
+        Title="پنجره تنظیمات" MinHeight="600" MinWidth="600" ResizeMode="NoResize"
+        TextElement.FontFamily="pack://application:,,,/CRM.Application;component/Resources/Fonts/#Yekan" 
+        Loaded="PopupWindow_Loaded">
+    <Local:PopupWindow.Resources>
+        <Style x:Key="DefaultTabControlStyle" TargetType="{x:Type TabControl}">
+            <Setter Property="Tag" Value="0"/>
+        </Style>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="1.5"/>
+        </Style>
+        <Style TargetType="{x:Type Expander}">
+            <Setter Property="Margin" Value="3.5"/>
+        </Style>
+        <Style TargetType="{x:Type CheckBox}">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="FontFamily" Value="pack://application:,,,/CRM.Application;component/Resources/Fonts/#Yekan"/>
+        </Style>
+    </Local:PopupWindow.Resources>
+    <Grid>
+        <TabControl TabStripPlacement="Left" Margin="0 0 0 30" Style="{StaticResource DefaultTabControlStyle}">
+            <TabControl.ItemContainerStyle>
+                <Style TargetType="{x:Type TabItem}">
+                    <Setter Property="Height" Value="30"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="true">
+                            <Setter Property="FontWeight" Value="Normal"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TabControl.ItemContainerStyle>
+            <TabControl.Items>
+                <TabItem Header="مراکز"  Visibility="Collapsed"/>
+                <TabItem Header="عملیات" Visibility="Collapsed">
+                    <StackPanel Orientation="Horizontal"></StackPanel>
+                </TabItem>
+                <TabItem Header="تنظیمات کاربری">
+                    <Grid FlowDirection="RightToLeft" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="27"/>
+                            <RowDefinition  Height="27"/>
+                            <RowDefinition  Height="27"/>
+                            <RowDefinition  Height="27"/>
+                            <RowDefinition  Height="27"/>
+                            <RowDefinition  Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock  Grid.Row="0" Grid.Column="0" Text="بروزرسانی خودکار داشبورد : " VerticalAlignment="Center"/>
+                        <CheckBox Grid.Row="0" Grid.Column="1" IsThreeState="False"  VerticalAlignment="Center" x:Name="DashboardAutoUpdateCheckBox" HorizontalAlignment="Left"
+                                  IsChecked="{Binding DashboardAutoUpdate}" Unchecked="DashboardAutoUpdateCheckBox_Unchecked" Checked="DashboardAutoUpdateCheckBox_Checked"/>
+
+                        <TextBlock  Grid.Row="1" Grid.Column="0" Text="زمان بروزرسانی داشبورد : " x:Name="DashboardUpdateTimeLabel"    Visibility="Collapsed" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="1" Grid.Column="1"   VerticalAlignment="Center" x:Name="DashboardUpdateTimeTextBox" Text="{Binding DashboardUpdateTime}" Visibility="Collapsed"/>
+
+                        <TextBlock  Grid.Row="1" Grid.Column="0" Text="مشاهده پنچره درخواست جدید : " x:Name="PupupNotificationLabel"  Visibility="Collapsed" VerticalAlignment="Center"/>
+                        <CheckBox Grid.Row="1" Grid.Column="1" IsThreeState="False" x:Name="PupupNotificationCheckBox" VerticalAlignment="Center" IsChecked="{Binding PupupNotification}" Visibility="Collapsed" HorizontalAlignment="Left"/>
+
+                        <TextBlock  Grid.Row="2" Grid.Column="0" Text="تعداد رکوردهای هر صفحه : " VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Name="PagerSizeTextBox" PreviewTextInput="TextBox_PreviewTextInput" Text="{Binding PageSize}"/>
+
+                        <TextBlock    Grid.Row="3" Grid.Column="0" Text="بستن کادر جستجو: " VerticalAlignment="Center"/>
+                        <CheckBox Grid.Row="3" Grid.Column="1" IsThreeState="False"  VerticalAlignment="Center" IsChecked="{Binding CloseSearchExpander}" HorizontalAlignment="Left"/>
+
+                        <Button x:Name="SaveButton" Grid.Row="4" Grid.Column="1" Content="ذخیره" 
+                                Click="SaveButton_Click" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="2.5" Width="80" Height="23"/>
+
+                    </Grid>
+                </TabItem>
+                <TabItem Header="گزارش">
+                    <StackPanel FlowDirection="RightToLeft">
+                        <Expander>
+                            <Expander.Header>
+                                <TextBlock Text="تنظیمات صفحه" FontSize="14" FontWeight="Bold"/>
+                            </Expander.Header>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="27"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="چیدمان صفحه: " Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
+                                <ComboBox Grid.Row="0" Grid.Column="1" x:Name="PageOrientationsComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="PageOrientationsComboBox_SelectionChanged"/>
+
+                            </Grid>
+                        </Expander>
+
+                        <Separator Height="2.5"/>
+                        <Separator Height="2.5" Margin="0 -3 0 0"/>
+
+                        <Expander>
+                            <Expander.Header>
+                                <TextBlock Text="تنظیمات Header" FontSize="14" FontWeight="Bold"/>
+                            </Expander.Header>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="27"/>
+                                    <RowDefinition Height="27"/>
+                                    <RowDefinition Height="27"/>
+                                    <RowDefinition Height="27"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button x:Name="HeaderFontButton" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Click="SetFont_Click" Content="تعیین فونت Header"/>
+
+                                <Button x:Name="HeaderForegroundButton" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Content="تعیین رنگ فونت Header" Click="SetBrush_Click" />
+
+                                <Button x:Name="HeaderBackgroundButton" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="تعیین رنگ زمینه Header" Click="SetBrush_Click"/>
+
+                                <TextBlock Text="انتقال متن به خط بعد:" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center"/>
+                                <CheckBox x:Name="HeaderHasWorWrapCheckBox" Grid.Row="1" Grid.Column="3" IsChecked="True"  Checked="HasWrodWarpCheckBox_Checked" Unchecked="HasWrodWarpCheckBox_Unchecked"/>
+
+                                <TextBlock Text="تنظیم حاشیه :" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
+                                <CheckBox x:Name="HeaderHasBorderCheckBox" Grid.Row="2" Grid.Column="1" Checked="HasBorder_Checked" Unchecked="HasBorder_UnChecked"/>
+
+                                <Button x:Name="HeaderBorderBrushButton" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="تعیین رنگ حاشیه" Click="SetBrush_Click" Tag="HeaderBorder" Visibility="Collapsed"/>
+
+                                <TextBlock Text="ضخامت حاشیه: " Grid.Row="3" Grid.Column="2"  Tag="HeaderBorder" Visibility="Collapsed" VerticalAlignment="Center"/>
+                                <ComboBox x:Name="HeaderBorderThicknessComboBox" Grid.Row="3" Grid.Column="3" SelectionChanged="ComboBox_SelectionChanged"  Tag="HeaderBorder" Visibility="Collapsed"/>
+
+                            </Grid>
+                        </Expander>
+
+                        <Separator Height="2.5"/>
+                        <Separator Height="2.5" Margin="0 -2 0 0"/>
+
+                        <Expander>
+                            <Expander.Header>
+                                <TextBlock Text="تنظیمات متن" FontSize="14" FontWeight="Bold"/>
+                            </Expander.Header>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="27"/>
+                                    <RowDefinition Height="27"/>
+                                    <RowDefinition Height="27"/>
+                                    <RowDefinition Height="27"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Button x:Name="TextFontButton" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="تعیین فونت متن" Click="SetFont_Click" />
+
+                                <Button x:Name="TextForegroundButton" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Content="تعیین رنگ فونت متن" Click="SetBrush_Click" />
+
+                                <Button x:Name="TextBackgroundButton" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="تعیین رنگ زمینه متن" Click="SetBrush_Click" />
+
+                                <TextBlock Text="انتقال متن به خط بعد: " Grid.Row="1" Grid.Column="2" VerticalAlignment="Center"/>
+                                <CheckBox x:Name="TextHasWrodWarpCheckBox" Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" IsChecked="True"  HorizontalAlignment="Center" Checked="HasWrodWarpCheckBox_Checked" Unchecked="HasWrodWarpCheckBox_Unchecked"/>
+
+                                <TextBlock Text="تنظیم حاشیه: " Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
+                                <CheckBox x:Name="TextHasBorderCheckBox" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="HasBorder_Checked" Unchecked="HasBorder_UnChecked"/>
+
+                                <Button x:Name="TextBorderBrushButton" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="تعیین رنگ حاشیه" Click="SetBrush_Click"  Tag="TextBorder" Visibility="Collapsed"/>
+
+                                <TextBlock Text="ضخامت حاشیه: " Grid.Row="3" Grid.Column="2" Tag="TextBorder" Visibility="Collapsed" VerticalAlignment="Center"/>
+                                <ComboBox x:Name="TextBorderThicknessComboBox" Grid.Row="3" Grid.Column="3" Tag="TextBorder" Visibility="Collapsed" SelectionChanged="ComboBox_SelectionChanged"/>
+
+                            </Grid>
+                        </Expander>
+
+                        <Separator Height="2.5"/>
+                        <Separator Height="2.5" Margin="0 -3 0 0"/>
+
+                        <Expander>
+                            <Expander.Header>
+                                <TextBlock Text="تنظیمات کلی" FontSize="14" FontWeight="Bold"/>
+                            </Expander.Header>
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="27"/>
+                                    <RowDefinition Height="27"/>
+                                    <RowDefinition Height="27"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="چاپ گزارش همراه با پیش نمایش باشد:" VerticalAlignment="Center"/>
+                                <CheckBox x:Name="PrintWithPreviewCheckBox" IsChecked="True" Grid.Row="0" Grid.Column="1" Checked="PrintWithPreviewCheckBox_Checked" Unchecked="PrintWithPreviewCheckBox_Unchecked"/>
+
+                                <TextBlock Grid.Row="0" Grid.Column="2" Text="گزارش دارای فوتر باشد:" VerticalAlignment="Center"/>
+                                <CheckBox x:Name="ReportHasPageFooterCheckBox" IsChecked="True" Grid.Row="0" Grid.Column="3" Checked="ReportHasPageFooterCheckBox_Checked" Unchecked="ReportHasPageFooterCheckBox_Unchecked"/>
+
+                                <TextBlock Grid.Row="1" Grid.Column="0" Text="گزارش دارای عنوان باشد:" VerticalAlignment="Center"/>
+                                <CheckBox x:Name="ReportHasTitleCheckBox" IsChecked="True" Grid.Row="1" Grid.Column="1" Checked="ReportHasTitleCheckBox_Checked" Unchecked="ReportHasTitleCheckBox_Unchecked"/>
+                                
+                                <TextBlock Grid.Row="1" Grid.Column="2" Text="گزارش دارای لوگوی مخابرات باشد: " VerticalAlignment="Center"/>
+                                <CheckBox x:Name="ReportHasLogoCheckBox" Grid.Row="1" Grid.Column="3" IsChecked="True" Checked="ReportHasLogoCheckBox_Checked" Unchecked="ReportHasLogoCheckBox_Unchecked"/>
+                                
+                                <TextBlock Grid.Row="2" Grid.Column="0" Text="گزارش دارای تاریخ باشد: " VerticalAlignment="Center"/>
+                                <CheckBox x:Name="ReportHasDateCheckBox" IsChecked="True" Grid.Row="2" Grid.Column="1" Checked="ReportHasDateCheckBox_Checked" Unchecked="ReportHasDateCheckBox_Unchecked"/>
+                                
+                                <TextBlock Grid.Row="2" Grid.Column="2" Text="گزارش دارای زمان باشد: " VerticalAlignment="Center"/>
+                                <CheckBox x:Name="ReportHasTimeCheckBox" IsChecked="True" Grid.Row="2" Grid.Column="3" Checked="ReportHasTimeCheckBox_Checked" Unchecked="ReportHasTimeCheckBox_Unchecked"/>
+                                
+                                <TextBlock Grid.Row="3" Grid.Column="0" Text="گزارش تعداد کل رکوردهای گزارش را نمایش دهد: " VerticalAlignment="Center" Visibility="Collapsed"/>
+                                <CheckBox x:Name="ReportSumRecordsQuantityCheckBox" IsChecked="True" Grid.Row="3" Grid.Column="1" Checked="ReportSumRecordsQuantityCheckBox_Checked" Unchecked="ReportSumRecordsQuantityCheckBox_Unchecked" Visibility="Collapsed"/>
+                                
+                            </Grid>
+                        </Expander>
+
+                        <Button x:Name="ShowReportButton" Content="مشاهده گزارش" Height="23" Width="80" 
+                                VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="2.5" Click="ShowReportButton_Click" />
+                        
+                    </StackPanel>
+                </TabItem>
+            </TabControl.Items>
+        </TabControl>
+    </Grid>
+</Local:PopupWindow>

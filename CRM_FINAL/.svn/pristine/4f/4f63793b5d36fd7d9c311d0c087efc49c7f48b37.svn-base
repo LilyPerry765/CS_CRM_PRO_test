@@ -1,0 +1,20 @@
+﻿<Window x:Class="CRM.Application.Views.TestForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="TestForm" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Name="ChangeDepositButton" Click="Button_Click"  Width="100" Height="30" Content="ثبت خرابی"/>
+        
+        <Button Grid.Row="1" Name="InstalmentButton" Click="InstalmentButton_Click"  Width="100" Height="30" Content="Instalment"/>
+
+        <Button Grid.Row="2" Name="DownLoadButton" Click="DownLoadButton_Click"  Width="100" Height="30" Content="DownLoad File"/>
+        
+        <Button Grid.Row="3" Name="ImportButton" Click="ImportButton_Click"  Width="100" Height="30" Content="Import File"/>
+    </Grid>
+</Window>

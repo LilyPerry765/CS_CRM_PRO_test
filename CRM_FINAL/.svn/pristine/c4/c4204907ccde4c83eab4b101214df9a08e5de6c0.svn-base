@@ -1,0 +1,40 @@
+﻿<Local:ReportBase x:Class="CRM.Application.Reports.ReportUserControls.InputStatisticReportUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Local="clr-namespace:CRM.Application.Local"
+             xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="5"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="15"/>
+
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="0" Grid.Row="0" Content="شهر : " />
+        <ComboBox  Grid.Column="1" Grid.Row="0" x:Name="CityComboBox" DisplayMemberPath="Name" SelectedValuePath="ID"   SelectionChanged="CityComboBox_SelectionChanged" />
+
+        <Label Grid.Column="3" Grid.Row="0" Content="مرکز : " />
+        <ComboBox  Grid.Column="4" Grid.Row="0" x:Name="CenterComboBox"  DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="CenterComboBox_SelectionChanged" Height="26" VerticalAlignment="Bottom" />
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Text=" کافو:" />
+        <UserControls:CheckableComboBox Grid.Row="2" Grid.Column="1" x:Name="CabinetComboBox"  />
+
+        <TextBlock                      Grid.Row="2" Grid.Column="3" Text=" وروری کافو:" Width="100"/>
+        <TextBox Grid.Row="2" Grid.Column="4" x:Name="InputCabinetText" PreviewTextInput="NumberValidationTextBox" />
+    </Grid>
+</Local:ReportBase>

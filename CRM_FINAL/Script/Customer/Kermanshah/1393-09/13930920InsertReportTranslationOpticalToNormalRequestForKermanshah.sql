@@ -1,0 +1,12 @@
+
+--13930921 - 1155
+--INSERT INTO [78.39.252.109].CRM.DBO.ReportTemplate 
+--				  (
+--				  	ID,Title,Template,IconName,Category,UserControlName,[TimeStamp]
+--				  )			  
+--SELECT 
+--	ID,Title,Template,IconName,Category,UserControlName,[TimeStamp]
+--FROM 
+--	ReportTemplate
+--WHERE 
+--	ID = 252

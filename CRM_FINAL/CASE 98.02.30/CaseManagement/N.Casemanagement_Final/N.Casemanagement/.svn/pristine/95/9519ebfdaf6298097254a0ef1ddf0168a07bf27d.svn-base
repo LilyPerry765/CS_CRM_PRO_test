@@ -1,0 +1,163 @@
+﻿
+
+namespace CaseManagement.WorkFlow.Entities
+{
+    using Newtonsoft.Json;
+    using Serenity;
+    using Serenity.ComponentModel;
+    using Serenity.Data;
+    using Serenity.Data.Mapping;
+    using System;
+    using System.ComponentModel;
+    using System.IO;
+
+    [ConnectionKey("Default"), DisplayName("وضعیت"), InstanceName("وضعیت"), TwoLevelCached]
+    [ReadPermission(Case.PermissionKeys.Activity)]
+    [ModifyPermission(Case.PermissionKeys.Activity)]
+    [LookupScript("WorkFlow.WorkFlowStatus")]
+    public sealed class WorkFlowStatusRow : Row, IIdRow, INameRow
+    {
+        [DisplayName("Id"), Column("ID"), Identity]
+        public Int32? Id
+        {
+            get { return Fields.Id[this]; }
+            set { Fields.Id[this] = value; }
+        }
+
+        [DisplayName("Name"), Size(1000), DefaultValue(" ")]
+        public String Name
+        {
+            get { return Fields.Name[this]; }
+            set { Fields.Name[this] = value; }
+        }
+
+        [DisplayName("Created User Id"), Column("CreatedUserID"), NotNull]
+        public Int32? CreatedUserId
+        {
+            get { return Fields.CreatedUserId[this]; }
+            set { Fields.CreatedUserId[this] = value; }
+        }
+
+        [DisplayName("Created Date"), NotNull]
+        public DateTime? CreatedDate
+        {
+            get { return Fields.CreatedDate[this]; }
+            set { Fields.CreatedDate[this] = value; }
+        }
+
+        [DisplayName("Modified User Id"), Column("ModifiedUserID"), NotNull]
+        public Int32? ModifiedUserId
+        {
+            get { return Fields.ModifiedUserId[this]; }
+            set { Fields.ModifiedUserId[this] = value; }
+        }
+
+        [DisplayName("Modified Date"), NotNull]
+        public DateTime? ModifiedDate
+        {
+            get { return Fields.ModifiedDate[this]; }
+            set { Fields.ModifiedDate[this] = value; }
+        }
+
+        [DisplayName("Is Deleted"), NotNull]
+        public Boolean? IsDeleted
+        {
+            get { return Fields.IsDeleted[this]; }
+            set { Fields.IsDeleted[this] = value; }
+        }
+
+        [DisplayName("Deleted User Id"), Column("DeletedUserID")]
+        public Int32? DeletedUserId
+        {
+            get { return Fields.DeletedUserId[this]; }
+            set { Fields.DeletedUserId[this] = value; }
+        }
+
+        [DisplayName("Deleted Date")]
+        public DateTime? DeletedDate
+        {
+            get { return Fields.DeletedDate[this]; }
+            set { Fields.DeletedDate[this] = value; }
+        }
+
+        [LookupEditor("WorkFlow.WorkFlowStep")]
+        [DisplayName("مرحله"), Column("StepID"), ForeignKey("[dbo].[WorkFlowStep]", "ID"), LeftJoin("jStep"), TextualField("StepName")]
+        public Int32? StepId
+        {
+            get { return Fields.StepId[this]; }
+            set { Fields.StepId[this] = value; }
+        }
+
+        [LookupEditor("WorkFlow.WorkFlowStatusType")]
+        [DisplayName("نوع وضعیت"), Column("StatusTypeID"), ForeignKey("[dbo].[WorkFlowStatusType]", "ID"), LeftJoin("jStatusType"), TextualField("StatusTypeName")]
+        public Int32? StatusTypeId
+        {
+            get { return Fields.StatusTypeId[this]; }
+            set { Fields.StatusTypeId[this] = value; }
+        }
+
+        [DisplayName("مرحله"), Expression("jStep.[Name]")]
+        public String StepName
+        {
+            get { return Fields.StepName[this]; }
+            set { Fields.StepName[this] = value; }
+        }
+
+        [DisplayName("نوع وضعیت"), Expression("jStatusType.[Name]")]
+        public String StatusTypeName
+        {
+            get { return Fields.StatusTypeName[this]; }
+            set { Fields.StatusTypeName[this] = value; }
+        }
+
+        [DisplayName("عنوان"), Expression("jStep.[Name]+' - '+ jStatusType.[Name]")]
+        public String FullName
+        {
+            get { return Fields.FullName[this]; }
+            set { Fields.FullName[this] = value; }
+        }
+
+        IIdField IIdRow.IdField
+        {
+            get { return Fields.Id; }
+        }
+
+        StringField INameRow.NameField
+        {
+            get { return Fields.FullName; }
+        }
+
+        public static readonly RowFields Fields = new RowFields().Init();
+
+        public WorkFlowStatusRow()
+            : base(Fields)
+        {
+        }
+
+        public class RowFields : RowFieldsBase
+        {
+            public Int32Field Id;
+            public StringField Name;
+            public Int32Field CreatedUserId;
+            public DateTimeField CreatedDate;
+            public Int32Field ModifiedUserId;
+            public DateTimeField ModifiedDate;
+            public BooleanField IsDeleted;
+            public Int32Field DeletedUserId;
+            public DateTimeField DeletedDate;
+            public Int32Field StepId;
+            public Int32Field StatusTypeId;
+
+            public StringField StepName;
+            public StringField StatusTypeName;
+
+            public StringField FullName;
+
+            public RowFields()
+                : base("[dbo].[WorkFlowStatus]")
+            {
+                LocalTextPrefix = "WorkFlow.WorkFlowStatus";
+            }
+        }
+    }
+}

@@ -1,0 +1,149 @@
+﻿<Local:PopupWindow xmlns:Local="clr-namespace:CRM.Application.Local" 
+                   x:Class="CRM.Application.Views.RequestedChangeLocation" 
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                   Title="ثبت درخواست تغییر مکان" 
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                   xmlns:converter="clr-namespace:CRM.Converters" 
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+                   WindowStartupLocation="CenterScreen" 
+                   Loaded="Window_Loaded">
+    <ScrollViewer  Padding="0 0 10 0" FlowDirection="RightToLeft">
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+
+            <GroupBox Grid.Row="0" Header="مشخصات کاربر" Name="UserInfo">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Label Content="نام کاربری" Grid.Row="0" Grid.Column="0" />
+                    <TextBox IsEnabled="False" Text="{Binding UserName}" Grid.Row="0" Grid.Column="1" />
+                    <Label Content="مشخصات  کاربر" Grid.Row="0" Grid.Column="2" />
+                    <TextBox Text="{Binding FullName}" IsEnabled="False" Grid.Row="0" Grid.Column="3" />
+                </Grid>
+            </GroupBox>
+            
+          
+
+            <GroupBox Header="مشخصات مشترک" Grid.Row="1" Name="CustomerInfo">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Content="کدملی مشترک / شماره ثبت شرکت: " />
+                    <TextBox Grid.Row="0" Grid.Column="1" Name="NationalCodetextBox" Text="{Binding NationalCodeOrRecordNo}" />
+                    <Button Grid.Row="0" Grid.Column="2" Name="searchButton" Content="جستجو" Click="searchButton_Click" />
+                    <Label Grid.Row="0" Grid.Column="3" Content="نام مشترک: " />
+                    <TextBox Grid.Row="0" Grid.Column="4" Name="CustomerNametextBox" IsEnabled="False" />
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Header="تلفن های مشترک" Grid.Row="2" x:Name="TelephonInfo">
+                <DataGrid DockPanel.Dock="Bottom" x:Name="TelephoneDataGrid"
+                      BorderThickness="0 1 0 0"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="True"
+                      CanUserResizeColumns="True"
+                      CanUserResizeRows="False"
+                      CanUserDeleteRows="False"
+                      SelectionMode="Single"
+                      SelectionUnit="FullRow"
+                      ItemsSource="{Binding}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="تلفن"  Binding="{Binding Path=TelephoneNo, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn Header="آدرس نصب"  Binding="{Binding Path=Address, UpdateSourceTrigger=PropertyChanged}"/>
+                        <DataGridTextColumn Header="کدپستی نصب"  Binding="{Binding Path=PostalCode, UpdateSourceTrigger=PropertyChanged}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox> 
+            
+            <GroupBox Header="مشخصات درخواست" Grid.Row="3" Name="RequestInfo">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition />
+                        <RowDefinition Height="30" />
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="نوع درخواست" />
+                    <ComboBox Grid.Row="0" Grid.Column="1" Name="RequestTypecomboBox" SelectedValuePath="ID" SelectedValue="{Binding RequestTypeID}" DisplayMemberPath="Title" SelectionChanged="RequestTypecomboBox_SelectionChanged" Grid.ColumnSpan="3" />
+
+                    <Label Content="نام مرکز" Grid.Row="1" Grid.Column="0" />
+                    <ComboBox Grid.Row="1" Grid.Column="1" Name="CentercomboBox" SelectedValuePath="ID" SelectedValue="{Binding CenterID}" DisplayMemberPath="CenterName" Grid.ColumnSpan="3" />
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="تاریخ درخواست" />
+                    <cal:DatePicker Grid.Row="2" Grid.Column="1" Name="ReqDate" SelectedDate="{Binding RequestDate}" />
+
+                    <Label Grid.Row="2" Grid.Column="2" Content="شماره نامه درخواست" />
+                    <TextBox Grid.Row="2" Grid.Column="3" Name="RequestLetterNotextBox" Text="{Binding RequestLetterNo}" />
+
+                    <Label Grid.Row="2" Grid.Column="4" Content="تاریخ  نامه درخواست" />
+                    <cal:DatePicker Grid.Row="2" Grid.Column="5" Name="ReqLetterDate" SelectedDate="{Binding RequestLetterDate}" />
+                    
+                    <Label Grid.Row="4" Grid.Column="0" Content="نام درخواست کننده" />
+                    <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Name="RequesterNametextBox" IsEnabled="True" Text="{Binding RequesterName}" />
+                    
+                    <Button Tag="Footer" Content="ذخیره" HorizontalAlignment="Right" Name="SaveButton" Click="SaveButton_Click" />
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="مشخصات آدرس جدید"  Grid.Row="4" DockPanel.Dock="Bottom">
+                <Grid x:Name="AddressInfo">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Content="آدرس نصب" />
+                    <TextBox Grid.Row="0" Grid.Column="1"  Name="InstallAddresstextBox" />
+
+                    <Label Grid.Row="0" Grid.Column="2" Content="کدپستی" />
+                    <TextBox Grid.Row="0" Grid.Column="3" Name="PostalCodeInstalltextBox" />
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="آدرس مکاتبه" />
+                    <TextBox Grid.Row="1" Grid.Column="1"  Name="ContactAddresstextBox" />
+
+                    <Label Grid.Row="1" Grid.Column="2" Content="کدپستی" />
+                    <TextBox Grid.Row="1" Grid.Column="3" Name="PostalCodeContacttextBox" />
+                </Grid>
+            </GroupBox>
+
+        </Grid>
+    </ScrollViewer>
+</Local:PopupWindow>

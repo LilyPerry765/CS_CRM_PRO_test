@@ -1,0 +1,9 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CRM.ADSLPortal.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="CRM_ADSLPortal_WebReference_PhoneStatusService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://217.218.241.74:5000/Service.svc</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

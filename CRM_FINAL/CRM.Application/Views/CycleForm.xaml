@@ -1,0 +1,46 @@
+﻿<Local:PopupWindow x:Class="CRM.Application.Views.CycleForm"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib"
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls"
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   Loaded="PopupWindow_Loaded" Icon="/CRM.Application;component/Images/Cycle48x48.png" 
+                   Title="فرم ویرایش دوره ها" Width="500" Height="250" ResizeMode="NoResize">
+
+    <Grid FlowDirection="RightToLeft">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/> 
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="نام دوره : " Grid.Row="0" Grid.Column="0"/>
+        <TextBox x:Name="CycleNameTextBox" Grid.Row="0" Grid.Column="1" Text="{Binding CycleName}"/>
+
+        <Label Content="سال دوره : " Grid.Row="1" Grid.Column="0"/>
+        <TextBox x:Name="CycleYearTextBox" Grid.Row="1" Grid.Column="1" Text="{Binding CycleYear}"/>
+
+        <Label Content="تاریخ شروع دوره : " Grid.Row="2" Grid.Column="0"/>
+        <cal:DatePicker Grid.Column="1" Grid.Row="2" x:Name="FromDateDataPicker" SelectedDate="{Binding FromDate}" />
+        
+        <Label Content="تاریخ پایان دوره : " Grid.Row="3" Grid.Column="0"/>
+        <cal:DatePicker Grid.Column="1" Grid.Row="3" x:Name="ToDateDataPicker" SelectedDate="{Binding ToDate}" />        
+
+        <Label Content="تاریخ سر رسید : " Grid.Row="4" Grid.Column="0"/>
+        <cal:DatePicker Grid.Column="1" Grid.Row="4" x:Name="DueDateDataPicker" SelectedDate="{Binding DueDate}" />
+
+        <Button x:Name="SaveButton" Grid.Row="5" Grid.Column="0" Content="ذخیره" Click="SaveForm" Tag="Footer" Width="80" Height="23"/>
+        
+    </Grid>
+</Local:PopupWindow>

@@ -1,0 +1,72 @@
+﻿<Local:ReportBase x:Class="CRM.Application.Reports.ReportUserControls.PostInfoFillReportUserControl"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                 mc:Ignorable="d"  d:DesignWidth="800"
+                 xmlns:Local="clr-namespace:CRM.Application.Local"
+                 xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                 xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker">
+    <Grid>
+        <DockPanel FlowDirection="RightToLeft">
+
+            <GroupBox DockPanel.Dock="Top" BorderBrush="#384a66" BorderThickness="0">
+                <DockPanel>
+                    <Grid>
+                        <Grid FlowDirection="RightToLeft">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Column="0" Grid.Row="0" Content="شهر : " />
+                            <ComboBox  Grid.Column="1" Grid.Row="0" x:Name="CityComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="CityComboBox_SelectionChanged" Grid.ColumnSpan="2" />
+
+                            <Label Grid.Column="4" Grid.Row="0" Content="مرکز : " />
+                            <ComboBox  Grid.Column="5" Grid.Row="0" x:Name="CenterComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="CenterComboBox_SelectionChanged" />
+
+
+                            <Label                          Grid.Column="0" Grid.Row="1" Content="کافو : " />
+                            <UserControls:CheckableComboBox Grid.Column="1" Grid.Row="1" x:Name="CabinetComboBox" />
+
+                            <Label   Grid.Column="0" Grid.Row="3" Content="تعداد اتصالی پر کمتر از : " />
+                            <TextBox Grid.Column="1" Grid.Row="3" x:Name="PostContactLessThanTextBox"  PreviewTextInput="NumberValidationTextBox" />
+
+                            <Label   Grid.Column="3" Grid.Row="3" Content="بیشتر از : " />
+                            <TextBox Grid.Column="4" Grid.Row="3" x:Name="PostContactMoreThanTextBox"  PreviewTextInput="NumberValidationTextBox" />
+
+                            <Label   Grid.Column="0" Grid.Row="4" Content="تعداد پورت پر کمتر از : " />
+                            <TextBox Grid.Column="1" Grid.Row="4" x:Name="PortLessThanTextBox"  PreviewTextInput="NumberValidationTextBox" />
+
+                            <Label   Grid.Column="3" Grid.Row="4" Content="بیشتر از : " />
+                            <TextBox Grid.Column="4" Grid.Row="4" x:Name="PortMoreThanTextBox"  PreviewTextInput="NumberValidationTextBox" />
+
+                            <Label                          Grid.Column="0" Grid.Row="5" Content="نوع پی سی ام : " />
+                            <UserControls:CheckableComboBox Grid.Column="1" Grid.Row="5" x:Name="PCMTypeComboBox"/>
+
+                        </Grid>
+                    </Grid>
+                </DockPanel>
+            </GroupBox>
+        </DockPanel>
+    </Grid>
+    </Local:ReportBase>
+
+

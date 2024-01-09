@@ -1,0 +1,71 @@
+﻿<UserControl x:Class="CRM.Application.UserControls.ADSLChangeCustomerOwnerCharacteristicsUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+             mc:Ignorable="d" 
+             d:DesignWidth="820" d:DesignHeight="160">
+    <StackPanel FlowDirection="RightToLeft">
+        <GroupBox  Name="ADSLCustomerGroupBox"  >
+            <GroupBox.Header>
+                <Label Content=" مشخصات مالک جدید ADSL" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14"/>
+            </GroupBox.Header>
+            <Grid x:Name="ADSLCustomerInfo">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="10"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="180" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Name="CustomerNameRow" Width="100" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="وضعیت متقاضی : " />
+                <ComboBox Grid.Row="0" Grid.Column="1" Name="ADSLOwnerStatusComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="ADSLOwnerStatusComboBox_SelectionChanged" />
+
+                <Label Grid.Row="2" Grid.Column="0" Content="کدملی مشترک / شماره ثبت : " />
+                <TextBox Grid.Row="2" Grid.Column="1" Name="NationalCodeTextBox" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                <Button Grid.Row="2" Grid.Column="2" Name="searchButton" Content="جستجو" Click="searchButton_Click" Width="80" />
+
+                <Label Grid.Row="2" Grid.Column="3" Content="نام مشترک : " />
+                <TextBox Grid.Row="2" Grid.Column="4"  Name="CustomerNameTextBox" IsReadOnly="True" />
+
+                <Label Grid.Row="4" Grid.Column="0" Content="تاریخ پایان اجاره نامه : " Name="CustomerEndRentLabel" Visibility="Collapsed" />
+                <cal:DatePicker Grid.Row="4" Grid.Column="1" Name="CustomerEndRentDate" Visibility="Collapsed" />
+
+                <!--<Label Grid.Row="3" Grid.Column="0" Content="شماره تلفن همراه مالک ADSL : " />
+                <TextBox Grid.Row="3" Grid.Column="1" Name="MobileNoTextBox" Style="{StaticResource ResourceKey=NumericTextBox}" />-->
+
+                <!--<Label Grid.Row="3" Grid.Column="3" Content="شماره تلفن معرف : " />
+                <TextBox Grid.Row="3" Grid.Column="4" Name="ReagentTelephoneNoTextBox" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                <Label Grid.Row="4" Grid.Column="0" Content="گروه مشتری : " />
+                <ComboBox Grid.Row="4" Grid.Column="1" Name="CustomerGroupComboBox" DisplayMemberPath="Title" SelectedValuePath="ID" />
+
+                <Label Grid.Row="4" Grid.Column="3" Content="گروه شغلی : " />
+                <ComboBox Grid.Row="4" Grid.Column="4" Name="JobGroupComboBox" DisplayMemberPath="Title" SelectedValuePath="ID" />-->
+
+                <Label Grid.Row="5" Grid.ColumnSpan="5" Visibility="Collapsed" Content="* توجه : این شماره روی PCM قرار دارد ! " Style="{StaticResource ResourceKey=ErrorLabel}" Name="PCMErrorrLabel" Foreground="Red" Grid.RowSpan="2" />
+
+                <Label Grid.Row="5" Grid.ColumnSpan="5" Visibility="Collapsed" Content="* به دلیل عدم وجود پورت خالی هم اکنون امکان تخصیص ADSL وجود ندارد !" Style="{StaticResource ResourceKey=ErrorLabel}" Name="PortErrorLabel" Foreground="Red" Grid.RowSpan="2" />
+
+                <Label Grid.Row="5" Grid.ColumnSpan="5"  Name="MDFInfoLabel" Foreground="Orange" Grid.RowSpan="2" />
+
+                <!--<Label Grid.Row="6" Grid.Column="0" Content="انتخاب وضعیت بعدی : " Name="NextStatusLabel" Visibility="Collapsed" />
+                    <ListBox Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="5" x:Name="NextStatusListBox" SelectedValuePath="Tag" Visibility="Collapsed" >
+                        <ListBoxItem Tag="0">لیست انتظار</ListBoxItem>
+                        <ListBoxItem Tag="1">فروش</ListBoxItem>
+                    </ListBox>-->
+            </Grid>
+        </GroupBox>
+    </StackPanel>
+</UserControl>

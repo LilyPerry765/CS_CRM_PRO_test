@@ -1,0 +1,43 @@
+﻿--13940304 - 1057 
+--تعدادی ستون به جدول فضا و پاور اضافه شد تا به طور موقت فقط پاسخگوی درخواست استان گیلان باشد
+--البته این سبک پیاده سازی از قبل بوده است
+--و به محض کسب اطلاعات کافی از روال فضا و پاور استان گیلان ، باید بازنویسی و پیاده سازی شود
+--ALTER TABLE SpaceAndPower 
+--ADD FinancialScopeComment nvarchar(max),
+--	FinancialScopeDate smalldatetime,
+--	FinancialScopeUserID int,
+--	DesignManagerComment nvarchar(max),
+--	DesignManagerDate smalldatetime,
+--	DesignManagerUserID int,
+--	SwitchDesigningOfficeComment nvarchar(max),
+--	SwitchDesigningOfficeDate smalldatetime,
+--	SwitchDesigningOfficeUserID int,
+--	DesignManagerFinalCheckComment nvarchar(max),
+--	DesignManagerFinalCheckDate smalldatetime,
+--	DesignManagerFinalCheckUserID int,
+--	NetworkAssistantComment nvarchar(max),
+--	NetworkAssistantDate smalldatetime,
+--	NetworkAssistantUserID int,
+--	AdministrationOfTheTelecommunicationEquipmentComment nvarchar(max),
+--	AdministrationOfTheTelecommunicationEquipmentDate smalldatetime,
+--	AdministrationOfTheTelecommunicationEquipmentUserID int
+
+
+--exec sp_addextendedproperty 'MS_Description',N'توضیحات حوزه مالی','Schema',dbo,'table',SpaceAndPower,'column',FinancialScopeComment
+--exec sp_addextendedproperty 'MS_Description',N'تاریخ بررسی توسط حوزه مالی','Schema',dbo,'table',SpaceAndPower,'column',FinancialScopeDate
+--exec sp_addextendedproperty 'MS_Description',N'کاربر حوزه مالی','Schema',dbo,'table',SpaceAndPower,'column',FinancialScopeUserID
+--exec sp_addextendedproperty 'MS_Description',N'توضیحات مدیر طراحی','Schema',dbo,'table',SpaceAndPower,'column',DesignManagerComment
+--exec sp_addextendedproperty 'MS_Description',N'تاریخ بررسی توسط مدیر طراحی','Schema',dbo,'table',SpaceAndPower,'column',DesignManagerDate
+--exec sp_addextendedproperty 'MS_Description',N'کاربر مدیر طراحی','Schema',dbo,'table',SpaceAndPower,'column',DesignManagerUserID
+--exec sp_addextendedproperty 'MS_Description',N'توضیحات اداره طراحی سوئیچ','Schema',dbo,'table',SpaceAndPower,'column',SwitchDesigningOfficeComment
+--exec sp_addextendedproperty 'MS_Description',N'تاریخ بررسی توسط اداره طراحی سوئیچ','Schema',dbo,'table',SpaceAndPower,'column',SwitchDesigningOfficeDate
+--exec sp_addextendedproperty 'MS_Description',N'کاربر اداره طراحی سوئیچ','Schema',dbo,'table',SpaceAndPower,'column',SwitchDesigningOfficeUserID
+--exec sp_addextendedproperty 'MS_Description',N'توضیحات بررسی نهایی مدیر طراحی','Schema',dbo,'table',SpaceAndPower,'column',DesignManagerFinalCheckComment
+--exec sp_addextendedproperty 'MS_Description',N'تاریخ بررسی نهایی توسط مدیر طراحی','Schema',dbo,'table',SpaceAndPower,'column',DesignManagerFinalCheckDate
+--exec sp_addextendedproperty 'Ms_Description',N'کاربر بررسی نهایی مدیر طراحی','Schema',dbo,'table',SpaceAndPower,'column',DesignManagerFinalCheckUserID
+--exec sp_addextendedproperty 'MS_Description',N'توضیحات معاونت شبکه','Schema',dbo,'table',SpaceAndPower,'column',NetworkAssistantComment
+--exec sp_addextendedproperty 'MS_Description',N'تاریخ بررسی توسط معاونت شبکه','Schema',dbo,'table',SpaceAndPower,'column',NetworkAssistantDate
+--exec sp_addextendedproperty 'MS_Description',N'کاربر معاونت شبکه','Schema',dbo,'table',SpaceAndPower,'column',NetworkAssistantUserID
+--exec sp_addextendedproperty 'MS_Description',N'توضیحات اداره نظارت تجهیزات مخابراتی','Schema',dbo,'table',SpaceAndPower,'column',AdministrationOfTheTelecommunicationEquipmentComment
+--exec sp_addextendedproperty 'MS_Description',N'تاریخ بررسی توسط اداره نظارت تجهیزات مخابراتی ','Schema',dbo,'table',SpaceAndPower,'column',AdministrationOfTheTelecommunicationEquipmentDate
+--exec sp_addextendedproperty 'MS_Description',N'کاربر اداره نظارت تجهیزات مخابراتی','Schema',dbo,'table',SpaceAndPower,'column',AdministrationOfTheTelecommunicationEquipmentUserID

@@ -1,0 +1,15 @@
+﻿
+namespace CaseManagement.Common {
+    
+    @Serenity.Decorators.registerClass()
+    @Serenity.Decorators.responsive()
+    export class MessageLogDialog extends Serenity.EntityDialog<MessageLogRow, any> {
+        protected getFormKey() { return MessageLogForm.formKey; }
+        protected getIdProperty() { return MessageLogRow.idProperty; }
+        protected getLocalTextPrefix() { return MessageLogRow.localTextPrefix; }
+        protected getNameProperty() { return MessageLogRow.nameProperty; }
+        protected getService() { return MessageLogService.baseUrl; }
+
+        protected form = new MessageLogForm(this.idPrefix);
+    }
+}

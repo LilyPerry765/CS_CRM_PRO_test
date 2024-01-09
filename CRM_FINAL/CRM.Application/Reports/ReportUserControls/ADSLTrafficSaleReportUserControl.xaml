@@ -1,0 +1,46 @@
+﻿<Local:ReportBase x:Class="CRM.Application.Reports.ReportUserControls.ADSLTrafficSaleReportUserControl"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"          
+             xmlns:Local="clr-namespace:CRM.Application.Local" 
+             mc:Ignorable="d">
+    <StackPanel FlowDirection="RightToLeft">
+        <GroupBox BorderBrush="AliceBlue" Header="انتخاب شهر و مرکز" >
+            <UserControls:CityCenterUserControl Orientation="Horizontal"  x:Name="CityCenterComboBox"/>
+        </GroupBox>
+        <GroupBox BorderBrush="AliceBlue">
+            <Grid FlowDirection="RightToLeft">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="10"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Content="از تاریخ :" Grid.Row="3" Grid.Column="0"/>
+                <cal:DatePicker x:Name="fromDate" Grid.Row="3" Grid.Column="2"/>
+
+                <Label Content="تا تاریخ  :" Grid.Row="3" Grid.Column="4"/>
+                <cal:DatePicker x:Name="toDate" Grid.Column="6" Grid.Row="3"/>
+
+                <Label Content="حجم ترافیک:" Grid.Column="0" Grid.Row="1"/>
+                <UserControls:CheckableComboBox Grid.Row="1" Grid.Column="2" x:Name="TrafficComboBox"/>
+
+            </Grid>
+        </GroupBox>
+    </StackPanel>
+
+    </Local:ReportBase>

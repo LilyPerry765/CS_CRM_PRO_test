@@ -1,0 +1,228 @@
+﻿@model CaseManagement.Common.DashboardPageModel
+@{
+    ViewData["Title"] = "داشبورد";
+    ViewData["PageId"] = "Dashboard";
+}
+
+@section Head {
+    <link rel="stylesheet" href="~/Content/iCheck/flat/blue.css">
+    <link rel="stylesheet" href="~/Scripts/morris/morris.css">
+
+
+    <link rel="stylesheet" href="~/Scripts/fullcalendar/fullcalendar.css">
+    <link rel="stylesheet" href="~/Scripts/fullcalendar/fullcalendar.print.css" media="print">
+    <link rel="stylesheet" href="~/Scripts/daterangepicker/daterangepicker-bs3.css">
+    <link rel="stylesheet" href="~/Scripts/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+
+    <script src="~/Scripts/knockout-3.4.1.js"></script>
+    <script src="~/Scripts/sparkline/jquery.sparkline.min.js"></script>
+
+    <link rel="stylesheet" href="~/Scripts/jvectormap/jquery-jvectormap.css" media="all">
+    <script src="~/Scripts/jvectormap/jquery-jvectormap.js"></script>
+    <script src="~/Scripts/jvectormap/jquery-mousewheel.js"></script>
+    <script src="~/Scripts/jvectormap/src/jvectormap.js"></script>
+    <script src="~/Scripts/gauge/gauge.min.js"></script>
+    <script src="~/Scripts/RGraph/RGraph.bar.js"></script>
+    <script src="~/Scripts/RGraph/RGraph.common.annotate.js"></script>
+    <script src="~/Scripts/RGraph/RGraph.common.context.js"></script>
+    <script src="~/Scripts/RGraph/RGraph.common.core.js"></script>
+    <script src="~/Scripts/RGraph/RGraph.common.deprecated.js"></script>
+    <script src="~/Scripts/RGraph/RGraph.common.dynamic.js"></script>
+    <script src="~/Scripts/RGraph/RGraph.common.resizing.js"></script>
+    <script src="~/Scripts/RGraph/RGraph.common.tooltips.js"></script>
+    <script src="~/Scripts/RGraph/RGraph.hbar.js"></script>
+    <script src="~/Scripts/sevenSeg.js"></script>
+
+    <script src="~/Scripts/jvectormap/src/abstract-element.js"></script>
+    <script src="~/Scripts/jvectormap/src/abstract-canvas-element.js"></script>
+    <script src="~/Scripts/jvectormap/src/abstract-shape-element.js"></script>
+    <script src="~/Scripts/jvectormap/src/svg-element.js"></script>
+    <script src="~/Scripts/jvectormap/src/svg-group-element.js"></script>
+    <script src="~/Scripts/jvectormap/src/svg-canvas-element.js"></script>
+    <script src="~/Scripts/jvectormap/src/svg-shape-element.js"></script>
+    <script src="~/Scripts/jvectormap/src/svg-path-element.js"></script>
+    <script src="~/Scripts/jvectormap/src/svg-circle-element.js"></script>
+    <script src="~/Scripts/jvectormap/src/svg-image-element.js"></script>
+    <script src="~/Scripts/jvectormap/src/svg-text-element.js"></script>
+    <script src="~/Scripts/jvectormap/src/map-object.js"></script>
+    <script src="~/Scripts/jvectormap/src/region.js"></script>
+    <script src="~/Scripts/jvectormap/src/marker.js"></script>
+    <script src="~/Scripts/jvectormap/src/vector-canvas.js"></script>
+    <script src="~/Scripts/jvectormap/src/simple-scale.js"></script>
+    <script src="~/Scripts/jvectormap/src/ordinal-scale.js"></script>
+    <script src="~/Scripts/jvectormap/src/numeric-scale.js"></script>
+    <script src="~/Scripts/jvectormap/src/color-scale.js"></script>
+    <script src="~/Scripts/jvectormap/src/legend.js"></script>
+    <script src="~/Scripts/jvectormap/src/data-series.js"></script>
+    <script src="~/Scripts/jvectormap/src/map.js"></script>
+    <script src="~/Scripts/jvectormap/jquery-jvectormap-iran.js"></script>
+
+    <script src="~/Scripts/morris/morris.min.js"></script>
+    <script src="~/Scripts/knob/jquery.knob.js"></script>
+
+    
+    <script src="~/Scripts/fullcalendar/moment.js"></script>
+    <script src="~/Scripts/fullcalendar/moment-jalaali.js"></script>
+
+    <script src="~/Scripts/daterangepicker/daterangepicker.js"></script>
+    <script src="~/Scripts/datepicker/bootstrap-datepicker.js"></script>
+    <script src="~/Scripts/fullcalendar/fullcalendar.js"></script>
+    <script src="~/Scripts/fullcalendar/fa.js"></script>
+
+    <script src="~/Scripts/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+    <script src="~/Scripts/adminlte/pages/dashboard.js"></script>
+    <script src="~/Scripts/adminlte/demo.js"></script>
+    <script src="~/Scripts/flot/jquery.flot.min.js"></script>
+    <script src="~/Scripts/flot/jquery.flot.resize.min.js"></script>
+    <script src="~/Scripts/flot/jquery.flot.pie.min.js"></script>
+    <script src="~/Scripts/flot/jquery.flot.categories.min.js"></script>
+    <script src="~/Scripts/chartjs/Chart.min.js"></script>
+    <script src="~/Scripts/adminlte/demo.js"></script>
+
+}
+
+
+
+@section ContentHeader {
+    <!--<h1>@LocalText.Get("Navigation.Dashboard")<small>@Html.Raw(Texts.Site.Dashboard.ContentDescription)</small></h1>-->
+}
+
+<div class="row" style="text-align: center;">
+    <div class="col-lg-3 col-xs-6" id="Recovered_box">
+        <!-- small box -->
+        <div class="small-box bg-gray-light">
+            <div class="inner" style="color:black;">
+                <h4>مبلغ مصوب</h4>
+
+            </div>
+            <div dir="ltr" id="Recovered_SevenSegment" style="width: 50%;height:50%; margin: 0 auto;"></div>
+
+            <div><canvas id="gauge-Recovered"></canvas></div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-xs-6" id="Recoverable_box">
+        <!-- small box -->
+        <div class="small-box bg-gray-light">
+            <div class="inner" style="color:black;">
+                <h4>نشتی قابل وصول</h4>
+            </div>
+            <div dir="ltr" id="Recoverable_SevenSegment" style="width: 50%;height:50%; margin: 0 auto;"></div>
+            <div>
+                <canvas id="gauge-Recoverable"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-xs-6" id="Total_Leakage_box">
+        <!-- small box -->
+        <div class="small-box bg-gray-light ">
+            <div class="inner" style="color:black;">
+                <h4>نشتی کل</h4>
+            </div>
+
+            <div dir="ltr" id="TotalLeakage_SevenSegment" style="width: 50%;height:50%; margin: 0 auto;"></div>
+            <div>
+                <canvas id="gauge-TotalLeakage"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class=" col-lg-3 col-xs-6" id="Program_box">
+        <!-- small box -->
+        <div class="small-box bg-gray-light">
+            <div class="inner" style="color:black;">
+                <h4>برنامه هدف</h4>
+            </div>
+            <div dir="ltr" id="Program_SevenSegment" style="width:57%;height:60%;margin:0 auto;"></div>
+            <div>
+                <canvas id="Progress_bar"></canvas>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <section class="col-lg-6 connectedSortable">
+
+        <!-- Map box -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <i class="fa fa-map-marker"></i>
+                <h3 class="box-title">نقشه استانها </h3>
+            </div>
+            <div class="box-body">
+                <div id="map" style="height: 540px; width: 100%;"></div>  <!-- Original height: 250px -->
+                <div id="x"></div><div id="y"></div>
+                <div id="customTip" class="jvectormap-tip"></div>
+            </div><!-- /.box-body-->
+            <div class="box-footer with-border">
+                <div class="row">
+                    <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                        <div id="sparkline-1"></div>
+                        <div class="knob-label">Visitors</div>
+                    </div>
+                    <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
+                        <div id="sparkline-2"></div>
+                        <div class="knob-label">Online</div>
+                    </div>
+                    <div class="col-xs-4 text-center">
+                        <div id="sparkline-3"></div>
+                        <div class="knob-label">Exists</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section><!-- /.Left col -->
+    <!-- right col (We are only adding the ID to make the widgets sortable)-->
+    <section class="col-lg-6 connectedSortable">
+
+        <!-- Calendar -->
+        <div class="box box-success">
+            <div class="box-header with-border">
+                <i class="fa fa-calendar"></i>
+                <h3 class="box-title">تقویم</h3>
+            </div>
+            <div class="box-body no-padding">
+                <!-- THE CALENDAR -->
+                <div id="calendar"></div>
+            </div><!-- /.box-body -->
+            <div class="box-footer no-border">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="external-events">
+                            <div class="external-event bg-green">رویداد پیش فرض</div>
+                            <div class="checkbox">
+                                <label for="drop-remove">
+                                    پاک کردن بعد از اضافه کردن &nbsp;
+                                    <input type="checkbox" id="drop-remove">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <input id="new-event" type="text" class="form-control" placeholder="نام رویداد">
+                            <div class="input-group-btn">
+                                <button id="add-new-event" type="button" class="btn btn-primary btn-flat">اضافه کردن</button>
+                            </div><!-- /btn-group -->
+                        </div><!-- /input-group -->
+                        <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
+                            <ul class="fc-color-picker" id="color-chooser">
+                                <li><a class="text-blue" href="#"><i class="fa fa-square"></i></a></li>
+                                <li><a class="text-orange" href="#"><i class="fa fa-square"></i></a></li>
+                                <li><a class="text-green" href="#"><i class="fa fa-square"></i></a></li>
+                                <li><a class="text-red" href="#"><i class="fa fa-square"></i></a></li>
+                            </ul>
+                        </div>
+
+                    </div><!-- /.col -->
+                </div>
+            </div><!-- /.row -->
+        </div>
+
+    </section><!-- right col -->
+
+
+</div>

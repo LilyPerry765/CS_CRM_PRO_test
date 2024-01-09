@@ -1,0 +1,1155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="LogSchema"
+    targetNamespace="http://tempuri.org/LogSchema.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/LogSchema.xsd"
+    xmlns:mstns="http://tempuri.org/LogSchema.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="TelephoneVisitAddress">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TelephoneNo" type="xs:long"/>
+        <xs:element name="AddressID" type="xs:long"/>
+        <xs:element name="AddressContent" type="xs:string"/>
+        <xs:element name="PostalCode" type="xs:string"/>
+        <xs:element name ="VisitDate" type="xs:dateTime"/>
+        <xs:element name="VisitHour" type="xs:string"/>
+        <xs:element name="IsOutBound" type="xs:boolean"/>
+        <xs:element name="OutBoundMeter" type="xs:int" nillable="true"/>
+        <xs:element name="OutBoundEstablishDate" type="xs:dateTime" nillable="true"/>
+        <xs:element name="EightMeterMasts" type="xs:int" nillable="true"/>
+        <xs:element name="SixMeterMasts" type="xs:int" nillable="true"/>
+        <xs:element name="CrossPostID" type="xs:int" nillable="true"/>
+        <xs:element name="ThroughWidth" type="xs:int" nillable="true"/>
+        <xs:element name="AirCableMeter" type="xs:int" nillable="true"/>
+        <xs:element name="CableMeter" type="xs:long" nillable="true"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ChangeTelephoneRoundLog">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="IsRound" type="xs:boolean"/>
+        <xs:element name="Description" type="xs:string"/>
+        <xs:element name="CurrentRoundType" type="xs:byte" nillable="true"/>
+        <xs:element name="PreviousRoundType" type="xs:byte" nillable="true"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Dayeri">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TelephoneNo" type="xs:long" />
+
+        <xs:element name="NationalCodeOrRecordNo" type="xs:string"/>
+        <xs:element name="FirstNameOrTitle" type="xs:string"/>
+        <xs:element name="LastName" type="xs:string"/>
+
+        <xs:element name="Cabinet" type="xs:int"/>
+        <xs:element name="CabinetInput" type="xs:int"/>
+        <xs:element name="Post" type="xs:int"/>
+        <xs:element name="PostContact" type="xs:long"/>
+        <xs:element name="Bucht" type="xs:string"/>
+
+        <xs:element name="InstallPostalCode" type="xs:string"/>
+        <xs:element name="InstallAddress" type="xs:string"/>
+        <xs:element name="CorrespondencePostalCode" type="xs:string"/>
+        <xs:element name="CorrespondenceAddress" type="xs:string"/>
+
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Reinstall">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TelephoneNo" type="xs:long"/>
+        <xs:element name="SwitchPort" type="xs:int"/>
+        <xs:element name="CustomerAddressID" type="xs:long"/>
+        <xs:element name="CustomerID" type="xs:long"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="RefundDesposit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TelephoneNo" type="xs:long"/>
+        <xs:element name="SwitchPort" type="xs:int" nillable="true"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ChangeNo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="OldPostContactID" type="xs:long"/>
+        <xs:element name="OldCabinetInputID" type="xs:long"/>
+        <xs:element name="OldTelephoneNo" type="xs:long"/>
+        <xs:element name="OldSwitchPort" type="xs:int"/>
+        <xs:element name="NewTelephoneNo" type="xs:long"/>
+        <xs:element name="NewSwitchPort" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ChangeLocation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="OldPostContactID" type="xs:long"/>
+        <xs:element name="OldCabinetInputID" type="xs:long"/>
+        <xs:element name="OldCustomerAddressID" type="xs:long"/>
+        <xs:element name="NewCustomerAddressID" type="xs:long"/>
+        <xs:element name="OldBucht" type="xs:long"/>
+        <xs:element name="NewBucht" type="xs:long"/>
+
+        <xs:element name="OldTelephone" type="xs:long"/>
+        <xs:element name="OldCabinet" type="xs:int"/>
+        <xs:element name="OldCabinetInput" type="xs:int"/>
+        <xs:element name="OldPost" type="xs:int"/>
+        <xs:element name="OldPostContact" type="xs:long"/>
+        <xs:element name="OldConnectionNo" type="xs:string"/>
+        <xs:element name="SourceCenterName" type="xs:string"/>
+        <xs:element name="OldNationalCodeOrRecordNo" type="xs:string"/>
+        <xs:element name="OldFirstNameOrTitle" type="xs:string"/>
+        <xs:element name="OldLastName" type="xs:string"/>
+
+        <xs:element name="NewTelephone" type="xs:long"/>
+        <xs:element name="NewCabinet" type="xs:int"/>
+        <xs:element name="NewCabinetInput" type="xs:int"/>
+        <xs:element name="NewPost" type="xs:int"/>
+        <xs:element name="NewPostContact" type="xs:long"/>
+        <xs:element name="NewConnectionNo" type="xs:string"/>
+        <xs:element name="TargetCenterName" type="xs:string"/>
+
+        <xs:element name="TargetCenter" type="xs:long"/>
+        <xs:element name="SourceCenter" type="xs:long"/>
+        <xs:element name="RequestType" type="xs:int"/>
+        <xs:element name="ChangeLocationTypeID" type="xs:int"/>
+        <xs:element name="NewPostContactID" type="xs:long"/>
+        <xs:element name="NewCabinetInputID" type="xs:long"/>
+        <xs:element name="NewNationalCodeOrRecordNo" type="xs:string"/>
+        <xs:element name="NewFirstNameOrTitle" type="xs:string"/>
+        <xs:element name="NewLastName" type="xs:string"/>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ChangeName">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="OldCustomerID" type="xs:long"/>
+        <xs:element name="NewCustomerID" type="xs:long"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="DischargeTelephone">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TelephoneNo" type="xs:long"/>
+        <xs:element name="PortID" type="xs:int"/>
+        <xs:element name="BuchtID" type="xs:long"/>
+
+        <xs:element name="DischargLetterNo" type="xs:string"/>
+        <xs:element name="CustomerID" type="xs:long"/>
+        <xs:element name="InstallAddressID" type="xs:long"/>
+        <xs:element name="CorrespondenceAddressID" type="xs:long"/>
+        <xs:element name="PostContactID" type="xs:long"/>
+        <xs:element name="CabinetInputID" type="xs:long"/>
+        <xs:element name="CenterID" type="xs:int"/>
+
+
+        <xs:element name="NationalCodeOrRecordNo" type="xs:string"/>
+        <xs:element name="FirstNameOrTitle" type="xs:string"/>
+        <xs:element name="LastName" type="xs:string"/>
+
+        <xs:element name="Cabinet" type="xs:int"/>
+        <xs:element name="CabinetInput" type="xs:int"/>
+        <xs:element name="Post" type="xs:int"/>
+        <xs:element name="PostContact" type="xs:long"/>
+        <xs:element name="Bucht" type="xs:string"/>
+
+        <xs:element name="InstallPostalCode" type="xs:string"/>
+        <xs:element name="InstallAddress" type="xs:string"/>
+        <xs:element name="CorrespondencePostalCode" type="xs:string"/>
+        <xs:element name="CorrespondenceAddress" type="xs:string"/>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="CutAndEstablish">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TelephoneNo" type="xs:long"/>
+        <xs:element name="Status"      type="xs:byte" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Connect">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TelephoneNo" type="xs:long"/>
+        <xs:element name="Status" type="xs:byte" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="SpecialService">
+    <xs:complexType>
+      <xs:sequence minOccurs="0" maxOccurs="1000">
+        <xs:element name="InstallSpesiallService"   type="xs:int" />
+        <xs:element name="UnInstallSpesiallService" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="EstablishSpecialWire">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="CenterID"   type="xs:int" />
+        <xs:element name="CenterName" type="xs:string" />
+
+        <xs:element name="PostContactID"   type="xs:long" />
+        <xs:element name="ConnectionNo"    type="xs:string" />
+
+        <xs:element name="CabinetID"   type="xs:int" />
+        <xs:element name="CabinetNumber" type="xs:string" />
+
+        <xs:element name="CabinetInputID"   type="xs:long" />
+        <xs:element name="CabinetInputNumber" type="xs:string" />
+
+        <xs:element name="BuchtID"   type="xs:long" />
+        <xs:element name="BuchtNo" type="xs:string" />
+
+        <xs:element name="OtherBuchtID"   type="xs:long" />
+        <xs:element name="OtherBuchtNo" type="xs:string" />
+
+        <xs:element name="InstallAddressID"   type="xs:long" />
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="VacateSpecialWire">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="CenterID"   type="xs:int" />
+        <xs:element name="CenterName" type="xs:string" />
+
+        <xs:element name="PostContactID"   type="xs:long" />
+        <xs:element name="ConnectionNo"    type="xs:string" />
+
+        <xs:element name="CabinetID"   type="xs:int" />
+        <xs:element name="CabinetNumber" type="xs:string" />
+
+        <xs:element name="CabinetInputID"   type="xs:long" />
+        <xs:element name="CabinetInputNumber" type="xs:string" />
+
+        <xs:element name="BuchtID"   type="xs:long" />
+        <xs:element name="BuchtNo" type="xs:string" />
+
+        <xs:element name="OtherBuchtID"   type="xs:long" />
+        <xs:element name="OtherBuchtNo" type="xs:string" />
+
+        <xs:element name="OldInstallAddressID"   type="xs:long" />
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ChangeLocationSpecialWire">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="CenterID"   type="xs:int" />
+        <xs:element name="CenterName" type="xs:string" />
+
+        <xs:element name="OldPostContactID"   type="xs:long" />
+        <xs:element name="OldConnectionNo"    type="xs:string" />
+
+        <xs:element name="OldCabinetID"   type="xs:int" />
+        <xs:element name="OldCabinetNumber" type="xs:string" />
+
+        <xs:element name="OldCabinetInputID"   type="xs:long" />
+        <xs:element name="OldCabinetInputNumber" type="xs:string" />
+
+        <xs:element name="OldBuchtID"   type="xs:long" />
+        <xs:element name="OldBuchtNo" type="xs:string" />
+
+        <xs:element name="OldInstallAddressID"   type="xs:long" />
+
+
+        <xs:element name="NewPostContactID"   type="xs:long" />
+        <xs:element name="NewConnectionNo"    type="xs:string" />
+
+        <xs:element name="NewCabinetID"   type="xs:int" />
+        <xs:element name="NewCabinetNumber" type="xs:string" />
+
+        <xs:element name="NewCabinetInputID"   type="xs:long" />
+        <xs:element name="NewCabinetInputNumber" type="xs:string" />
+
+        <xs:element name="NewBuchtID"   type="xs:long" />
+        <xs:element name="NewBuchtNo" type="xs:string" />
+
+        <xs:element name="OtherBuchtID"   type="xs:long" />
+        <xs:element name="OtherBuchtNo" type="xs:string" />
+
+        <xs:element name="NewInstallAddressID"   type="xs:long" />
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="OpenAndCloseZero">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ClassTelephone" type="xs:byte" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ADSL">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CustomerOwnerID" type="xs:long" />
+        <xs:element name="TariffID" type="xs:int" />
+        <xs:element name="ServiceType" type="xs:byte" />
+        <xs:element name="ADSLPortID" type="xs:long" />
+        <xs:element name="ContractorID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ADSLChangeService">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="OldServiceType" type="xs:byte" />
+        <xs:element name="NewServiceType" type="xs:byte" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ADSLChangeTariff">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="OldTariffID" type="xs:int" />
+        <xs:element name="NewTariffID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ADSLCutTemporary">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CutType" type="xs:byte" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ActionLogRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="FormType" type="xs:string" />
+        <xs:element name="FormName" type="xs:string" />
+        <xs:element name="ObjectType" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+
+  <xs:element name="LoginLog">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="IPAddress" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="LogoutLog">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="IPAddress" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ADSLPAP">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="PAPInfoID" type="xs:int" />
+        <xs:element name="CenterID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ChangeAddress">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="OldContactAddress" type="xs:string"/>
+        <xs:element name="OldPostalCodeContact" type="xs:string"/>
+        <xs:element name="OldInstallAddress" type="xs:string"/>
+        <xs:element name="OldPostalCodeInstall" type="xs:string"/>
+        <xs:element name="NewContactAddress" type="xs:string"/>
+        <xs:element name="NewPostalCodeContact" type="xs:string"/>
+        <xs:element name="NewInstallAddress" type="xs:string"/>
+        <xs:element name="NewPostalCodeInstall" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="PCMCreate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CenterID" type="xs:int" />
+        <xs:element name="Center" type="xs:string" />
+        <xs:element name="Rock" type="xs:string" />
+        <xs:element name="Shelf" type="xs:string" />
+        <xs:element name="Card" type="xs:string" />
+        <xs:element name="Date" type="xs:time"/>
+        <xs:element name="Type" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="PCMInstall">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CenterID" type="xs:int" />
+        <xs:element name="Center" type="xs:string" />
+        <xs:element name="Rock" type="xs:string" />
+        <xs:element name="Shelf" type="xs:string" />
+        <xs:element name="Card" type="xs:string" />
+        <xs:element name="Cabinet" type="xs:string"/>
+        <xs:element name="Post" type="xs:string"/>
+        <xs:element name="PostContact" type="xs:string"/>
+        <xs:element name="Date" type="xs:time"/>
+        <xs:element name="Type" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="PCMTransfer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CenterID" type="xs:int" />
+        <xs:element name="Center" type="xs:string" />
+        <xs:element name="Rock" type="xs:string" />
+        <xs:element name="Shelf" type="xs:string" />
+        <xs:element name="Card" type="xs:string" />
+        <xs:element name="FromCabinet" type="xs:string"/>
+        <xs:element name="FromPost" type="xs:string"/>
+        <xs:element name="FromPostContact" type="xs:string"/>
+        <xs:element name="ToCabinet" type="xs:string"/>
+        <xs:element name="ToPost" type="xs:string"/>
+        <xs:element name="ToPostContact" type="xs:string"/>
+        <xs:element name="Date" type="xs:time"/>
+        <xs:element name="Type" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="PCMDrop">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CenterID" type="xs:int" />
+        <xs:element name="Center" type="xs:string" />
+        <xs:element name="Rock" type="xs:string" />
+        <xs:element name="Shelf" type="xs:string" />
+        <xs:element name="Card" type="xs:string" />
+        <xs:element name="Cabinet" type="xs:string"/>
+        <xs:element name="Post" type="xs:string"/>
+        <xs:element name="PostContact" type="xs:string"/>
+        <xs:element name="Date" type="xs:time"/>
+        <xs:element name="Type" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="PortMalfaction">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CenterID" type="xs:int" />
+        <xs:element name="Center" type="xs:string" />
+        <xs:element name="PortID" type="xs:int" />
+        <xs:element name="Rock" type="xs:string" />
+        <xs:element name="Shelf" type="xs:string" />
+        <xs:element name="Card" type="xs:string" />
+        <xs:element name="PCMBrand" type="xs:string"/>
+        <xs:element name="PCMType" type="xs:string"/>
+        <xs:element name="Port" type="xs:string" />
+        <xs:element name="TypeMalfaction" type="xs:string" />
+        <xs:element name="Description" type="xs:string" />
+        <xs:element name="Date" type="xs:time"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="PortCorrection">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CenterID" type="xs:int" />
+        <xs:element name="Center" type="xs:string" />
+        <xs:element name="PortID" type="xs:int" />
+        <xs:element name="Rock" type="xs:string" />
+        <xs:element name="Shelf" type="xs:string" />
+        <xs:element name="Card" type="xs:string" />
+        <xs:element name="PCMBrand" type="xs:string"/>
+        <xs:element name="PCMType" type="xs:string"/>
+        <xs:element name="Port" type="xs:string" />
+        <xs:element name="Date" type="xs:time"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="SequenceIDs">
+    <xs:complexType>
+      <xs:sequence minOccurs="0" maxOccurs="1000">
+        <xs:element name="Ids" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Title118">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Date" type="xs:dateTime" />
+        <xs:element name="Status" type="xs:byte"/>
+
+        <xs:element name="NameTitleAt118" type="xs:string" />
+        <xs:element name="LastNameAt118" type="xs:string" />
+
+        <xs:element name="TitleAt118" type="xs:string" />
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="UserConfig">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="DashboardAutoUpdate" type="xs:boolean" />
+        <xs:element name="DashboardUpdateTime" type="xs:double" />
+        <xs:element name="PupupNotification" type="xs:boolean" />
+        <xs:element name="PageSize" type="xs:int" />
+        <xs:element name="CloseSearchExpander" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="TransferTelephoneNoFeature">
+    <xs:complexType>
+      <xs:sequence >
+        <xs:sequence minOccurs="0" maxOccurs="1000">
+          <xs:element name="SpecialServiceIds" type="xs:int" />
+        </xs:sequence>
+        <xs:element name="ClassTelephone" type="xs:byte" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="PostContactMalfuction">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CenterID" type="xs:int" />
+        <xs:element name="PostContactID" type="xs:long" />
+        <xs:element name="CenterName" type="xs:string" />
+        <xs:element name="Description" type="xs:string" />
+        <xs:element name="Date" type="xs:time" />
+        <xs:element name="Status" type="xs:byte" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="CablePairedMalFuction">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CenterID" type="xs:int" />
+        <xs:element name="CabinetInputID" type="xs:long" />
+        <xs:element name="CenterName" type="xs:string" />
+        <xs:element name="Description" type="xs:string" />
+        <xs:element name="Date" type="xs:time" />
+        <xs:element name="Status" type="xs:byte" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="CablePairStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CenterID" type="xs:int" />
+        <xs:element name="CablePairID" type="xs:long" />
+        <xs:element name="LogDateTime" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:element name="PCMEdit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CenterID" type="xs:int" />
+        <xs:element name="Center" type="xs:string" />
+        <xs:element name="Rock" type="xs:string" />
+        <xs:element name="Shelf" type="xs:string" />
+        <xs:element name="Card" type="xs:string" />
+        <xs:element name="Date" type="xs:time"/>
+        <xs:element name="Type" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="PCMEditInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CenterID" type="xs:int" />
+        <xs:element name="Center" type="xs:string" />
+        <xs:element name="Rock" type="xs:string" />
+        <xs:element name="Shelf" type="xs:string" />
+        <xs:element name="Card" type="xs:string" />
+        <xs:element name="Date" type="xs:time"/>
+        <xs:element name="Type" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="PCMDelete">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CenterID" type="xs:int" />
+        <xs:element name="Center" type="xs:string" />
+        <xs:element name="Rock" type="xs:string" />
+        <xs:element name="Shelf" type="xs:string" />
+        <xs:element name="Card" type="xs:string" />
+        <xs:element name="Date" type="xs:time"/>
+        <xs:element name="Type" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="BandwidthInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="PreviousBandwidth" type="xs:int" />
+        <xs:element name="CurrentBandwidth" type="xs:int" />
+        <xs:element name="FileId" type="xs:long" />
+        <xs:element name="ClientId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:element name="E1LinkLog">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="CenterID"   type="xs:int" />
+
+        <xs:element name="PostContactID"   type="xs:long" />
+
+        <xs:element name="CabinetID"   type="xs:int" />
+
+        <xs:element name="CabinetInputID"   type="xs:long" />
+
+        <xs:element name="BuchtID"   type="xs:long" />
+
+        <xs:element name="E1NumberAccesID"   type="xs:long" />
+
+        <xs:element name="E1NumberSwitchID"   type="xs:long" />
+
+        <xs:element name="E1NumberInterfaceSwitchID"   type="xs:long" />
+
+        <xs:element name="OtherBuchtID"   type="xs:long" />
+
+        <xs:element name="LinkTypeID" type="xs:int" />
+
+        <xs:element name="CodeTypeID" type="xs:int" />
+
+        <xs:element name="TelephoneNo" type="xs:long"/>
+
+        <xs:element name="VirtualTelephoneNo" type="xs:long"/>
+
+        <xs:element name="CustomerID" type="xs:long" />
+
+        <xs:element name="InstalAddressID" type="xs:long"/>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="VacateLinkLog">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="CenterID"   type="xs:int" />
+
+        <xs:element name="PostContactID"   type="xs:long" />
+
+        <xs:element name="CabinetID"   type="xs:int" />
+
+        <xs:element name="CabinetInputID"   type="xs:long" />
+
+        <xs:element name="BuchtID"   type="xs:long" />
+
+        <xs:element name="E1NumberAccesID"   type="xs:long" />
+
+        <xs:element name="E1NumberSwitchID"   type="xs:long" />
+
+        <xs:element name="E1NumberInterfaceSwitchID"   type="xs:long" />
+
+        <xs:element name="OtherBuchtID"   type="xs:long" />
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:element name="TranslationOpticalToNormal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="OldTelephone" type="xs:long"/>
+        <xs:element name="OldPost" type="xs:int"/>
+        <xs:element name="OldPostContact" type="xs:int"/>
+        <xs:element name="OldCabinet" type="xs:int"/>
+        <xs:element name="OldCabinetInput" type="xs:long"/>
+        <xs:element name="OldBucht" type="xs:string"/>
+        <xs:element name="NewTelephone" type="xs:long"/>
+        <xs:element name="NewPost" type="xs:int"/>
+        <xs:element name="NewPostContact" type="xs:int"/>
+        <xs:element name="NewCabinet" type="xs:int"/>
+        <xs:element name="NewCabinetInput" type="xs:long"/>
+        <xs:element name="NewBucht" type="xs:string"/>
+        <xs:element name="OldPcmRockNumber" type="xs:int" nillable="true"/>
+        <xs:element name="OldPcmShelfNumber" type="xs:int" nillable="true"/>
+        <xs:element name="OldPcmCard" type="xs:int" nillable="true"/>
+        <xs:element name="OldPcmPortNumber" type="xs:int" nillable="true"/>
+        <xs:element name="OldPcmRockId" type="xs:int" nillable="true"/>
+        <xs:element name="OldPcmShelfId" type="xs:int" nillable="true"/>
+        <xs:element name="OldPcmId" type="xs:int" nillable="true"/>
+        <xs:element name="OldPcmPortId" type="xs:int" nillable="true"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ExchangeCabinetInputLog">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="OldTelephone" type="xs:long"/>
+        <xs:element name="OldPost" type="xs:int"/>
+        <xs:element name="OldPostContact" type="xs:int"/>
+        <xs:element name="OldCabinet" type="xs:int"/>
+        <xs:element name="OldCabinetInput" type="xs:long"/>
+        <xs:element name="OldBucht" type="xs:string"/>
+        <xs:element name="NewPost" type="xs:int"/>
+        <xs:element name="NewPostContact" type="xs:int"/>
+        <xs:element name="NewCabinet" type="xs:int"/>
+        <xs:element name="NewCabinetInput" type="xs:long"/>
+        <xs:element name="NewBucht" type="xs:string"/>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:element name="TranslationPost">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="OldCabinet" type="xs:int"/>
+        <xs:element name="OldPost" type="xs:int"/>
+        <xs:element name="OldPostContact" type="xs:int"/>
+        <xs:element name ="OldCabinetInput" type="xs:int"/>
+
+        <xs:element name="NewCabinet" type="xs:int"/>
+        <xs:element name="NewPost" type="xs:int"/>
+        <xs:element name="NewPostContact" type="xs:int"/>
+        <xs:element name="NewCabinetInput" type="xs:int"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="TranslationPostInput">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="OldCabinet" type="xs:int"/>
+        <xs:element name="OldCabinetInput" type="xs:long"/>
+        <xs:element name="OldPost" type="xs:int"/>
+        <xs:element name="OldPostContact" type="xs:int"/>
+        <xs:element name="OldConnectionNo" type="xs:string"/>
+
+        <xs:element name="NewCabinet" type="xs:int"/>
+        <xs:element name="NewCabinetInput" type="xs:long"/>
+        <xs:element name="NewPost" type="xs:int"/>
+        <xs:element name="NewPostContact" type="xs:int"/>
+        <xs:element name="NewConnectionNo" type="xs:string"/>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="TranslationCabinet">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="OldCabinet" type="xs:int"/>
+        <xs:element name="OldCabinetInput" type="xs:long"/>
+        <xs:element name="OldPost" type="xs:int"/>
+        <xs:element name="OldConnectionNo" type="xs:string"/>
+
+        <xs:element name="NewCabinet" type="xs:int"/>
+        <xs:element name="NewCabinetInput" type="xs:long"/>
+        <xs:element name="NewPost" type="xs:int"/>
+        <xs:element name="NewConnectionNo" type="xs:string"/>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ModifyProfile">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="Date" type="xs:date"/>
+
+        <xs:element name="OldCabinet" type="xs:int"/>
+        <xs:element name="OldCabinetID" type="xs:int"/>
+        <xs:element name="OldCabinetInput" type="xs:long"/>
+        <xs:element name="OldCabinetInputID" type="xs:long"/>
+        <xs:element name="OldPost" type="xs:int"/>
+        <xs:element name="OldPostID" type="xs:int"/>
+        <xs:element name="OldPostContactID" type="xs:long"/>
+        <xs:element name="OldPostContact" type="xs:int"/>
+        <xs:element name="OldConnectionNo" type="xs:string"/>
+        <xs:element name="OldBuchtID" type="xs:long"/>
+        <xs:element name="OldInstallContactAddress" type="xs:string"/>
+        <xs:element name="OldInstallPostalCodeInstall" type="xs:string"/>
+        <xs:element name="OldCorrespondenceContactAddress" type="xs:string"/>
+        <xs:element name="OldCorrespondencePostalCodeInstall" type="xs:string"/>
+        <xs:element name="OldInstallAddressID" type="xs:long"/>
+        <xs:element name="OldCorrespondenceAddressID" type="xs:long"/>
+        <xs:element name="OldCustomerName" type="xs:string"/>
+        <xs:element name="OldCustomerID" type="xs:long"/>
+        <xs:element name="OldTelephonNo" type="xs:long"/>
+
+        <xs:element name="NewCabinet" type="xs:int"/>
+        <xs:element name="NewCabinetID" type="xs:int"/>
+        <xs:element name="NewCabinetInput" type="xs:long"/>
+        <xs:element name="NewCabinetInputID" type="xs:long"/>
+        <xs:element name="NewPost" type="xs:int"/>
+        <xs:element name="NewPostID" type="xs:int"/>
+        <xs:element name="NewPostContactID" type="xs:long"/>
+        <xs:element name="NewPostContact" type="xs:int"/>
+        <xs:element name="NewConnectionNo" type="xs:string"/>
+        <xs:element name="NewBuchtID" type="xs:long"/>
+        <xs:element name="NewInstallContactAddress" type="xs:string"/>
+        <xs:element name="NewInstallPostalCodeInstall" type="xs:string"/>
+        <xs:element name="NewCorrespondenceContactAddress" type="xs:string"/>
+        <xs:element name="NewCorrespondencePostalCodeInstall" type="xs:string"/>
+        <xs:element name="NewInstallAddressID" type="xs:long"/>
+        <xs:element name="NewCorrespondenceAddressID" type="xs:long"/>
+        <xs:element name="NewCustomerName" type="xs:string"/>
+        <xs:element name="NewCustomerID" type="xs:long"/>
+        <xs:element name="NewTelephonNo" type="xs:long"/>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="PCMToNormal">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="Type" type="xs:string"/>
+
+        <xs:element name="OldCabinetID" type="xs:int"/>
+        <xs:element name="OldCabinetInputID" type="xs:long"/>
+        <xs:element name="OldPostID" type="xs:int"/>
+        <xs:element name="OldPostContactID" type="xs:long"/>
+        <xs:element name="OldBuchtID" type="xs:long"/>
+
+        <xs:element name="OldCabinet" type="xs:int"/>
+        <xs:element name="OldCabinetInput" type="xs:long"/>
+        <xs:element name="OldPost" type="xs:int"/>
+        <xs:element name="OldPostContact" type="xs:int"/>
+        <xs:element name="OldConnectionNo" type="xs:string"/>
+        <xs:element name="OldMUID" type="xs:string"/>
+
+        <xs:element name="NewCabinetID" type="xs:int"/>
+        <xs:element name="NewCabinetInputID" type="xs:long"/>
+        <xs:element name="NewPostID" type="xs:int"/>
+        <xs:element name="NewPostContactID" type="xs:long"/>
+        <xs:element name="NewBuchtID" type="xs:long"/>
+
+        <xs:element name="NewCabinet" type="xs:int"/>
+        <xs:element name="NewCabinetInput" type="xs:long"/>
+        <xs:element name="NewPost" type="xs:int"/>
+        <xs:element name="NewPostContact" type="xs:int"/>
+        <xs:element name="NewConnectionNo" type="xs:string"/>
+        <xs:element name="NewMUID" type="xs:string"/>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:element name="SwapTelephone">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Date" type="xs:date"/>
+        <xs:element name="FromCabinet" type="xs:int"/>
+        <xs:element name="FromCabinetID" type="xs:int"/>
+        <xs:element name="FromCabinetInput" type="xs:long"/>
+        <xs:element name="FromCabinetInputID" type="xs:long"/>
+        <xs:element name="FromPost" type="xs:int"/>
+        <xs:element name="FromPostID" type="xs:int"/>
+        <xs:element name="FromPostContactID" type="xs:long"/>
+        <xs:element name="FromPostContact" type="xs:int"/>
+        <xs:element name="FromConnectionNo" type="xs:string"/>
+        <xs:element name="FromBuchtID" type="xs:long"/>
+        <xs:element name="FromCustomerName" type="xs:string"/>
+        <xs:element name="FromCustomerID" type="xs:long"/>
+        <xs:element name="FromTelephonNo" type="xs:long"/>
+        <xs:element name="ToCabinet" type="xs:int"/>
+        <xs:element name="ToCabinetID" type="xs:int"/>
+        <xs:element name="ToCabinetInput" type="xs:long"/>
+        <xs:element name="ToCabinetInputID" type="xs:long"/>
+        <xs:element name="ToPost" type="xs:int"/>
+        <xs:element name="ToPostID" type="xs:int"/>
+        <xs:element name="ToPostContactID" type="xs:long"/>
+        <xs:element name="ToPostContact" type="xs:int"/>
+        <xs:element name="ToConnectionNo" type="xs:string"/>
+        <xs:element name="ToBuchtID" type="xs:long"/>
+        <xs:element name="ToCustomerName" type="xs:string"/>
+        <xs:element name="ToCustomerID" type="xs:long"/>
+        <xs:element name="ToTelephonNo" type="xs:long"/>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:element name="SwapPCM">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Date" type="xs:date"/>
+        <xs:element name="FromTelephonNo" type="xs:long"/>
+        <xs:element name="FromPCMBucht" type="xs:string"/>
+        <xs:element name="FromBucht" type="xs:string"/>
+        <xs:element name="FromMUID" type="xs:string"/>
+        <xs:element name="ToTelephonNo" type="xs:long"/>
+        <xs:element name="ToBucht" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="BuchtSwitching">
+    <xs:complexType>
+      <xs:sequence>
+
+        <xs:element name="OldCabinet" type="xs:int"/>
+        <xs:element name="OldCabinetInput" type="xs:long"/>
+        <xs:element name="OldPost" type="xs:int"/>
+        <xs:element name="OldPostContact" type="xs:int"/>
+        <xs:element name="OldBuchtNo" type="xs:string"/>
+
+        <xs:element name="NewCabinet" type="xs:int"/>
+        <xs:element name="NewCabinetInput" type="xs:long"/>
+        <xs:element name="NewPost" type="xs:int"/>
+        <xs:element name="NewPostContact" type="xs:int"/>
+        <xs:element name="NewBuchtNo" type="xs:string"/>
+
+        <xs:element name="OtherBuchtNo" type="xs:string"/>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:element name="EditTelephoneInstallation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TelephoneNo" type="xs:long" />
+
+        <xs:element name="NationalCodeOrRecordNo" type="xs:string"/>
+        <xs:element name="FirstNameOrTitle" type="xs:string"/>
+        <xs:element name="LastName" type="xs:string"/>
+
+        <xs:element name="Cabinet" type="xs:int"/>
+        <xs:element name="CabinetInput" type="xs:int"/>
+        <xs:element name="Post" type="xs:int"/>
+        <xs:element name="PostContact" type="xs:long"/>
+        <xs:element name="Bucht" type="xs:string"/>
+
+        <xs:element name="InstallPostalCode" type="xs:string"/>
+        <xs:element name="InstallAddress" type="xs:string"/>
+        <xs:element name="CorrespondencePostalCode" type="xs:string"/>
+        <xs:element name="CorrespondenceAddress" type="xs:string"/>
+
+        <xs:element name="TelephoneInstallationDate" type="xs:string"/>
+
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="DataGridColumns">
+    <xs:complexType>
+      <xs:sequence minOccurs="0" maxOccurs="1000">
+        <xs:element name="Columns" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="DataGridColumnsDisplayIndex">
+    <xs:sequence>
+      <xs:element name="DisplayIndex" type="xs:int" />
+      <xs:element name="Header" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="DataGridColumnsDisplayIndexs">
+    <xs:complexType>
+      <xs:sequence minOccurs="0" maxOccurs="1000">
+        <xs:element name="DGCDisplayIndex"  type="DataGridColumnsDisplayIndex" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+
+  <xs:element name="PCMInstalationTelephone">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Rock" type="xs:int"/>
+        <xs:element name="Shelf" type="xs:int"/>
+        <xs:element name="Card" type="xs:int"/>
+
+        <xs:element name="Cabinet" type="xs:int"/>
+        <xs:element name="CabinetInput" type="xs:int"/>
+        <xs:element name="Post" type="xs:int"/>
+        <xs:element name="PostContact" type="xs:int"/>
+
+        <xs:element name="Bucht" type="xs:string"/>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:element name="DeletePCMInstalation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Rock" type="xs:int"/>
+        <xs:element name="Shelf" type="xs:int"/>
+        <xs:element name="Card" type="xs:int"/>
+        <xs:element name="Bucht" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:complexType name="TableChanges">
+    <xs:sequence>
+      <xs:element name="field"    type="xs:string" />
+      <xs:element name="oldValue" type="xs:string" />
+      <xs:element name="newValue" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="LogSavedChanges">
+    <xs:complexType>
+      <xs:sequence minOccurs="0"    maxOccurs="1000">
+        <xs:element name="Changes"    type="TableChanges" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="SpaceAndPower">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="HasFibre" type="xs:boolean"/>
+        <xs:element name="Duration" type="xs:string"/>
+        <xs:element name="SpaceSize" type="xs:string"/>
+        <xs:element name="SpaceType" type="xs:byte"/>
+        <xs:element name="EquipmentType" type="xs:byte"/>
+        <xs:element name="EquipmentWeight" type="xs:string"/>
+        <xs:element name="SpaceUsage" type="xs:string"/>
+        <xs:element name="PowerType" type="xs:string"/>
+        <xs:element name="PowerRate" type="xs:string"/>
+        <xs:element name="SpaceAndPowerCustomerID" type="xs:long"/>
+        <xs:element name="CustomerName" type="xs:string"/>
+        <xs:element name="RigSpace" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType  name="ResourceLogInfo">
+    <xs:sequence>
+      <xs:element name="ID" type="xs:int"/>
+      <xs:element name="Name" type="xs:string"/>
+      <xs:element name="Description" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="RoleResourceLogInfo">
+    <xs:complexType>
+      <xs:sequence minOccurs="0" maxOccurs="1000">
+        <xs:element name="UserID" type="xs:int"/>
+        <xs:element name="RoleId" type="xs:int"/>
+        <xs:element name="RoleName" type="xs:string"/>
+        <xs:element name="OldResourceLogInfo" type="ResourceLogInfo"/>
+        <xs:element name="NewResourceLogInfo" type="ResourceLogInfo"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="ShahkarResult">
+    <xs:sequence>
+      <xs:element name="requestId" type="xs:string"/>
+      <xs:element name="response" type="xs:int"/>
+      <xs:element name="result" type="xs:string"/>
+      <xs:element name="comment" type="xs:string"/>
+      <xs:element name="id" type="xs:string"/>
+      <xs:element name="followNo" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="ShahkarAuthenticationInfo">
+    <xs:complexType>
+      <xs:sequence minOccurs="0" maxOccurs="1000">
+        <xs:element name="ResultDetail" type="ShahkarResult"/>
+        <xs:element name="IsAuthenticated" type="xs:boolean" nillable="true"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ShahkarInstallTelephoneInfo">
+    <xs:complexType>
+      <xs:sequence minOccurs="0" maxOccurs="1000">
+        <xs:element name="ResultDetail" type="ShahkarResult"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="ExchangePCMCardInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TelephoneNo" type="xs:long"/>
+        <xs:element name="FromMuID" type="xs:string"/>
+        <xs:element name="ToMUID" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
+

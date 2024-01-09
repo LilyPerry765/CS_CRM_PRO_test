@@ -1,0 +1,222 @@
+﻿<Local:UserControlBase 
+             x:Class="CRM.Application.UserControls.E1"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:Local="clr-namespace:CRM.Application.Local"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:sv="clr-namespace:CRM.Application.StaticValidation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" Loaded="UserControl_Loaded">
+    <DockPanel FlowDirection="RightToLeft">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <GroupBox Grid.Row="0" Name="CustomeGroupBox" Margin="0,0,0,10">
+                <GroupBox.Header>
+                    <Label Content="مشخصات متقاضی" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14"/>
+                </GroupBox.Header>
+
+                <Grid x:Name="CustomerInfo">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="180" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Name="CustomerNameRow" Width="100" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="کدملی مشترک / شماره ثبت : " />
+                    <TextBox Grid.Row="0" Grid.Column="1" Name="NationalCodeTextBox" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                    <Button Grid.Row="0" Grid.Column="2" Name="SearchCustomer" Content="جستجو" Click="SearchCustomer_Click" Margin="0,4" Height="Auto" />
+
+                    <Label Grid.Row="0" Grid.Column="3" Content="نام مشترک : " />
+                    <TextBox Grid.Row="0" Grid.Column="4" Name="CustomerNameTextBox" IsReadOnly="True" />
+
+                    <Button Grid.Row="0" Grid.Column="5" Content="ویرایش"  x:Name="EditSearchCustomer" Click="EditSearchCustomer_Click" />
+
+                    <Button Grid.Row="1" Grid.Column="0" Content="جزئیات تلفن های مشترک" x:Name="CustomerTelephoneInfo" Click="CustomerTelephoneInfo_Click" />
+
+
+
+                </Grid>
+
+            </GroupBox>
+
+            <GroupBox Grid.Row="1" Margin="0,0,0,10" x:Name="LineInfo">
+                <GroupBox.Header>
+                    <Label Content="مشخصات خط" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14"/>
+                </GroupBox.Header>
+                <Grid DockPanel.Dock="Top" x:Name="InstallInfo">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <Label     Grid.Row="0" Grid.Column="0" Content="نوع تلفن" />
+                    <ComboBox  Grid.Row="0" Grid.Column="1" Name="TelephoneTypeComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="TelephoneTypecomboBox_SelectionChanged">
+                        <ComboBox.SelectedValue>
+                            <Binding  Path="TelephoneType"  UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                                <Binding.ValidationRules>
+                                    <sv:StaticValidation ValidationType="NotNull"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </ComboBox.SelectedValue>
+                    </ComboBox>
+
+                    <Label     Grid.Row="0" Grid.Column="2" Content="گروه تلفن" />
+                    <ComboBox  Grid.Row="0" Grid.Column="3" Name="TelephoneTypeGroupComboBox" DisplayMemberPath="Name" SelectedValuePath="ID">
+                        <ComboBox.SelectedValue>
+                            <Binding  Path="TelephoneTypeGroup"  UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                                <Binding.ValidationRules>
+                                    <sv:StaticValidation ValidationType="NotNull"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </ComboBox.SelectedValue>
+                    </ComboBox>
+
+                    <Label     Grid.Row="1" Grid.Column="0" Content="نوع لينك" />
+                    <ComboBox  Grid.Row="1" Grid.Column="1" Name="LinkTypeComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding LinkTypeID, UpdateSourceTrigger=PropertyChanged}" />
+
+                    <Label     Grid.Row="1" Grid.Column="2" Content="نوع كد سرشماره درخواستي" />
+                    <ComboBox  Grid.Row="1" Grid.Column="3" Name="CodeTypeComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding CodeTypeID, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <Label     Grid.Row="2" Grid.Column="0" Content="نوع کانال" />
+                    <ComboBox  Grid.Row="2" Grid.Column="1" Name="ChanalTypeComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding ChanalType, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <Label     Grid.Row="2" Grid.Column="2" Content="تعداد لینک درخواستی" />
+                    <TextBox   Grid.Row="2" Grid.Column="3" Name="NumberOfLineTextBox" Text="{Binding NumberOfLine, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <Label     Grid.Row="3" Grid.Column="0" Content="شماره اتصال" />
+                    <TextBox   Grid.Row="3" Grid.Column="1" Name="ConnectionNoTypeComboBox" Text="{Binding ConnectionNo, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <Label     Grid.Row="3" Grid.Column="2" Content="كد اختصاص يافته شركت" />
+                    <TextBox   Grid.Row="3" Grid.Column="3" Name="CompanyCodeComboBox" Text="{Binding CompanyCode, UpdateSourceTrigger=PropertyChanged}"/>
+                    
+                    <Label     Grid.Row="4" Grid.Column="0" Content="نوع خط" />
+                    <ComboBox  Grid.Row="4" Grid.Column="1" Name="LineTypeComboBox" SelectedValuePath="ID" DisplayMemberPath="Name" SelectedValue="{Binding LineType, UpdateSourceTrigger=PropertyChanged}"/>
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Grid.Row="2" Margin="0,0,0,10" x:Name="AddressInfoGroupBox">
+                <GroupBox.Header>
+                    <Label Content="مشخصات آدرس" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14"/>
+                </GroupBox.Header>
+                <Grid x:Name="AddressInfo">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="کد پستی مبدا : "/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Name="InstallPostalCodeTextBox" />
+
+                    <Button Grid.Row="0" Grid.Column="2" Click="SearchInstallAddress_Click" Content="جستجو"/>
+
+                    <Label Grid.Row="0" Grid.Column="3" Content="آدرس نصب مبدا : "/>
+                    <TextBox Grid.Row="0" Grid.Column="4"  Name="InstallAddressTextBox" IsReadOnly="True"/>
+
+                    <Button Grid.Row="0" Grid.Column="5" x:Name="InstallAddressButton" Click="InstallAddressButton_Click" Content="ویرایش" />
+
+
+                    <Label   Grid.Row="1" Grid.Column="0" Content="کد پستی مقصد : "/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Name="TargetInstallPostalCodeTextBox" />
+
+                    <Button Grid.Row="1" Grid.Column="2" Click="TargetSearchInstallAddress_Click" Content="جستجو"/>
+
+                    <Label Grid.Row="1" Grid.Column="3" Content="آدرس نصب مقصد : "/>
+                    <TextBox Grid.Row="1" Grid.Column="4"  Name="TargetInstallAddressTextBox" IsReadOnly="True"/>
+
+                    <Button Grid.Row="1" Grid.Column="5" x:Name="TargetInstallAddressButton" Click="TargetInstallAddressButton_Click" Content="ویرایش" />
+                    
+
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="کدپستی : " />
+                    <TextBox Grid.Row="2" Grid.Column="1" Name="CorrespondencePostalCodeTextBox" />
+
+                    <Button Grid.Row="2" Grid.Column="2" Click="SearchCorrespondenceAddress_Click" Content="جستجو"/>
+
+                    <Label Grid.Row="2" Grid.Column="3" Content="آدرس مکاتبه : " />
+                    <TextBox Grid.Row="2" Grid.Column="4"  Name="CorrespondenceAddressTextBox" IsReadOnly="True"/>
+
+                    <Button Grid.Row="2" Grid.Column="5"  x:Name="CorrespondenceAddressButton" Click="CorrespondenceAddressButton_Click" Content="ویرایش"/>
+
+
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Grid.Row="3" Margin="0,0,0,10" x:Name="LinkNumberGroupBox" Visibility="Collapsed">
+                <GroupBox.Header>
+                    <Label Content="تعداد لینک" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14"/>
+                </GroupBox.Header>
+                <Grid x:Name="LinkNumberGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="تعداد لینک : "/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Name="LinkNumberTextBox" />
+
+
+                </Grid>
+            </GroupBox>
+
+            <CheckBox x:Name="ExtendCheckBox" Grid.Row="4"  Content="توسعه" VerticalAlignment="Center" HorizontalAlignment="Left" IsEnabled="False"
+                      Checked="ExtendCheckBox_Checked" Unchecked="ExtendCheckBox_Unchecked" FlowDirection="LeftToRight" FontSize="13.5" Visibility="Collapsed"/>
+            
+            <DataGrid x:Name="PreviousE1RequestsDataGrid" Grid.Row="5" Visibility="Collapsed"
+                      AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False"
+                      CanUserResizeColumns="True" CanUserResizeRows="False"
+                      SelectionMode="Single" SelectionUnit="FullRow" IsReadOnly="True" BorderThickness="0 1 0 0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="شهر" Binding="{Binding CityName}"/>
+                    <DataGridTextColumn Header="مرکز" Binding="{Binding CenterName}"/>
+                    <DataGridTextColumn Header="شناسه درخواست" Binding="{Binding RequestID}"/>
+                    <DataGridTextColumn Header="تاریخ درخواست" Binding="{Binding RequestDate}"/>
+                    <DataGridTextColumn Header="نوع تلفن" Binding="{Binding TelephoneTypeTitle}"/>
+                    <DataGridTextColumn Header="گروه تلفن" Binding="{Binding TelephoneGroupTitle}"/>
+                    <DataGridTextColumn Header="نوع لینک" Binding="{Binding LinkTypeName}"/>
+                    <DataGridTextColumn Header="شماره اتصال" Binding="{Binding ConnectionNo}"/>
+                    <DataGridTextColumn Header="نوع خط" Binding="{Binding LineType}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </DockPanel>
+</Local:UserControlBase>

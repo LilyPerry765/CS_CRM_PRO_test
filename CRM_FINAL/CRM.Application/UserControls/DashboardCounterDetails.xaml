@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="CRM.Application.UserControls.DashboardCounterDetails"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="466" 
+             Loaded="UserControl_Loaded">
+    <Grid FlowDirection="RightToLeft" >
+        <Border x:Name="ContainerBorder" Height="30" Width="466" MouseEnter="ContainerBorder_MouseEnter" MouseLeave="ContainerBorder_MouseLeave">
+            <WrapPanel>
+                <TextBlock x:Name="HeaderTextBox" Text="{Binding Header}" Width="250" FontSize="13" Foreground="Black" Margin="10 5 0 0"/>
+                <TextBlock x:Name="CountTextBox" Text="{Binding Count}" Width="40"  FontFamily="pack://application:,,,/CRM.Application;Component/Resources/Fonts/#Yekan" FontSize="15" Foreground="Black" Margin="10 5 20 0"/>
+                <TextBlock x:Name="DateTextBox" Text="{Binding LastItemDate}" Width="100"  FontFamily="pack://application:,,,/CRM.Application;Component/Resources/Fonts/#Yekan" FontSize="10" Foreground="Black"  Margin="30 5 0 0"/>
+            </WrapPanel>
+        </Border>
+    </Grid>
+</UserControl>

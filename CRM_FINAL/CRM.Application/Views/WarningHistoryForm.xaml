@@ -1,0 +1,67 @@
+﻿<Local:PopupWindow Title="اخطاریه تلفن"
+                   x:Class="CRM.Application.Views.WarningHistoryForm"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib"
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls"
+                   xmlns:sv="clr-namespace:CRM.Application.StaticValidation"
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   d:DesignWidth="780" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   Loaded="PopupWindow_Loaded">
+
+    <Grid FlowDirection="RightToLeft">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+            <RowDefinition Height="25" />
+
+        </Grid.RowDefinitions>
+        <Label Grid.Column="0" Grid.Row="0" Content="تلفن" />
+        <TextBox  Grid.Column="1" Grid.Row="0" x:Name="TelephoneTextBox"  Text="{Binding TelephonNo}" TextChanged="TelephoneTextBox_TextChanged"/>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="نام مشترک"/>
+        <TextBox x:Name="CustomerNameTextBox" Grid.Row="1" Grid.Column="1" IsEnabled="False"/>
+        
+        <Label Grid.Row="2" Grid.Column="0" Content="مرجع بازداشت کننده"/>
+        <TextBox x:Name="ArrestReferenceTextBox" Grid.Row="2" Grid.Column="1" Text="{Binding ArrestReference}"/>
+        
+        <Label Grid.Row="3" Grid.Column="0" Content="شماره نامه بازداشت کننده"/>
+        <TextBox x:Name="ArrestLetterNoTextBox" Grid.Row="3" Grid.Column="1" Text="{Binding ArrestLetterNo}"/>
+
+        <Label Grid.Row="4" Grid.Column="0" Content="تاریخ نامه دستور بازداشت"/>
+        <cal:DatePicker x:Name="ArrestLetterNoDatePicker" Grid.Row="4" Grid.Column="1" SelectedDate="{Binding ArrestLetterNoDate}"/>
+
+        <Label  Grid.Row="5" Grid.Column="0" Content="نوع" />
+        <ComboBox  Grid.Row="5" Grid.Column="1" x:Name="TypeComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding Type}" />
+
+        <Label Grid.Row="6" Grid.Column="0" Content="تاریخ" />
+        <cal:DatePicker  Grid.Row="6" Grid.Column="1" x:Name="DateDatePicker" SelectedDate="{Binding Date}" />
+
+        <Label  Grid.Row="7" Grid.Column="0" Content="زمان" />
+        <TextBox  Grid.Row="7" Grid.Column="1" x:Name="TimeTextBox" FontFamily="pack://application:,,,/CRM.Application;component/Resources/Fonts/#Yekan">
+            <TextBox.Text>
+                <Binding Path="Time" UpdateSourceTrigger="LostFocus" ValidatesOnDataErrors="True">
+                    <Binding.ValidationRules>
+                        <sv:StaticValidation ValidationType="Pattern" Pattern="\d{2}:\d{2}:\d{2}"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+        <Button Grid.Row="20" Grid.Column="0" Content="ذخیره" Name="SaveButton" Click="SaveForm" Tag="Footer" />
+    </Grid>
+
+
+</Local:PopupWindow>

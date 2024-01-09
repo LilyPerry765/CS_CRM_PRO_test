@@ -1,0 +1,39 @@
+﻿<Local:PopupWindow xmlns:Local="clr-namespace:CRM.Application.Local" 
+                   x:Class="CRM.Application.Views.BaseDocumentTypeForm" 
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+                   Title="ثبت مدارک پایه" 
+                   Loaded="Window_Loaded" Icon="/CRM.Application;component/Images/BaseFile48x48 (2).png">
+
+    <GroupBox Header="مشخصات مدرک" FlowDirection="RightToLeft">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Content="نوع:" />
+            <ListBox Grid.Row="0" Grid.Column="1" SelectedValue="{Binding Path=TypeID}" SelectedValuePath="Tag" >
+                <ListBoxItem Tag="1">مدرک</ListBoxItem>
+                <ListBoxItem Tag="2" Name="PermissionradioButton">مجوز</ListBoxItem>
+                <ListBoxItem Tag="3" Name="ContractradioButton">قرارداد</ListBoxItem>
+                <ListBoxItem Tag="4" Name="FromradioButton">فرم</ListBoxItem>
+            </ListBox>
+            <Label Grid.Row="1" Grid.Column="0" Content="نام مدرک:" />
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding DocumentName}" Name="DocumentNametextBox" />
+            <CheckBox Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" IsChecked="{Binding ExistOnce}" Content=" به ازای هر مشترک یکبار درج این مدرک کافی است" Name="ExistOncecheckBox" />
+            <CheckBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsChecked="{Binding IsRelatedToRoundContract}" Content="رند" Name="IsRelatedToRoundContract"  Visibility="{Binding IsSelected,ElementName=ContractradioButton,  Converter={StaticResource BooleanToVisibilityConverter}}" />
+            <CheckBox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" IsChecked="{Binding IsRelatedTo3PercentQuota}" Content="سهمیه" Name="IsRelatedTo3PercentQuota"  Visibility="{Binding IsSelected,ElementName=PermissionradioButton,  Converter={StaticResource BooleanToVisibilityConverter}}" />
+            <Button Grid.Row="5" Grid.Column="1" Content="ذخیره" Name="SaveButton" Tag="Footer" Click="Savebtn_Click" HorizontalAlignment="Right" Padding="10 2 10 2" />
+        </Grid>
+
+    </GroupBox>
+</Local:PopupWindow>

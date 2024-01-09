@@ -1,0 +1,38 @@
+﻿<Local:UserControlBase 
+             x:Class="CRM.Application.UserControls.MDFUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Local="clr-namespace:CRM.Application.Local"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" Loaded="UserControlBase_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label     Grid.Row="0" Grid.Column="0"      Content="ام دی اف:"        />
+        <ComboBox  Grid.Row="0" Grid.Column="1"     x:Name="MDFComboBox"   DisplayMemberPath="Name" SelectedValuePath="ID"              SelectionChanged="MDFComboBox_SelectionChanged"/>
+
+        <Label     Grid.Row="0" Grid.Column="2"     Content="ردیف:"       x:Name="ColumnLable"/>
+        <ComboBox  Grid.Row="0" Grid.Column="3"   x:Name="ConnectionColumnComboBox" DisplayMemberPath="Name" SelectedValuePath="ID"     SelectionChanged="ConnectionColumnComboBox_SelectionChanged"/>
+
+        <Label     Grid.Row="0" Grid.Column="4"   Content="طبقه:"       x:Name="RowLable"/>
+        <ComboBox  Grid.Row="0" Grid.Column="5"   x:Name="ConnectionRowComboBox"  SelectedValuePath="ID" DisplayMemberPath="Name"       SelectionChanged="ConnectionRowComboBox_SelectionChanged"/>
+
+        <Label     Grid.Row="0" Grid.Column="6"    Content="اتصالی:"     x:Name="ConnectionLable"/>
+        <ComboBox  Grid.Row="0" Grid.Column="7"   x:Name="ConnectionBuchtComboBox"  SelectedValuePath="LongID" DisplayMemberPath="Name"  SelectionChanged="ConnectionBuchtComboBox_SelectionChanged"/>
+
+    </Grid>
+</Local:UserControlBase>
+

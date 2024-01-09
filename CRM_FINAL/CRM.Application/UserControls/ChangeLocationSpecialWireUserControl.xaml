@@ -1,0 +1,63 @@
+﻿<Local:UserControlBase 
+             x:Class="CRM.Application.UserControls.ChangeLocationSpecialWireUserControl"
+             xmlns:Local="clr-namespace:CRM.Application.Local"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" Tag="تغییرمکان سیم خصوصی" Loaded="UserControlBase_Loaded">
+    <StackPanel FlowDirection="RightToLeft">
+        <GroupBox x:Name="TelephoneNumberGroupBox" Margin="10" Header="تلفن" >
+           
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="TelephoneNoLabel" Grid.Row="0" Grid.Column="0" Content="تلفن"/>
+                <TextBox x:Name="TelephoneNoTextBox" Grid.Row="0" Grid.Column="1"  />
+                <Button x:Name="TelephoneNoButton" Grid.Row="0" Grid.Column="2"  Click="TelephoneNoButton_Click" Content="جستجو" />
+                
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="PointsInfoGroupBox" Margin="10" Header="مشخصات نقاط" >    
+            
+        <DataGrid Grid.Row="0"   x:Name="PointsInfoDataGrid" 
+                          BorderThickness="0 1 0 0"  
+                          AutoGenerateColumns="False"                          
+                          CanUserResizeColumns="True"
+                          CanUserResizeRows="False"
+                          CanUserDeleteRows="False"
+                          SelectionMode="Single"
+                          SelectionUnit="FullRow"
+                          LoadingRow="PointsInfoDataGrid_LoadingRow" 
+                  RowEditEnding="PointsInfoDataGrid_RowEditEnding"
+                          ItemsSource="{Binding}">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="/CRM.Application;component/Images/element_16x16.png" Width="16" Height="16" HorizontalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                    <DataGridCheckBoxColumn  x:Name="IsSelectCheckBox" Header="انتخاب" Binding="{Binding IsSelect,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+                    <DataGridComboBoxColumn Width="*" x:Name="CentersComboBoxColumn"  Header="مرکز" SelectedValueBinding="{Binding CenterID,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"  SelectedValuePath="ID" DisplayMemberPath="CenterName"/>
+                    <DataGridTextColumn     Width="*" x:Name="PostalCodeComboBoxColumn"  Header="کد پستی" Binding="{Binding PostalCode,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                    <DataGridTextColumn     Width="2*" x:Name="AddressContentComboBoxColumn"  Header="آدرس" Binding="{Binding AddressContent,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" IsReadOnly="True"/>
+                    <DataGridTextColumn     Width="*" x:Name="NearestTelephoneNoDataGridTextColumn"  Header="تلفن همجوار" Binding="{Binding NearestTelephoneNo,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" />
+                    <DataGridTextColumn     Width="*" x:Name="NewPostalCodeComboBoxColumn"  Header="کدپستی جدید" Binding="{Binding NewPostCode,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+                    <DataGridTextColumn     Width="2*" x:Name="NewAddressContentComboBoxColumn"  Header="آدرس جدید" Binding="{Binding NewAddressContent,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" IsReadOnly="True"/>
+
+
+                </DataGrid.Columns>
+
+        </DataGrid>
+            
+        </GroupBox>
+        </StackPanel>
+</Local:UserControlBase> 

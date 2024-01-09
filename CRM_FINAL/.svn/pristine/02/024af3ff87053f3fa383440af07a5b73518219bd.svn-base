@@ -1,0 +1,163 @@
+﻿<Local:UserControlBase  
+             xmlns:Local="clr-namespace:CRM.Application.Local"
+             x:Class="CRM.Application.UserControls.E1InfoSummary"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" Loaded="UserControl_Loaded" Tag="مشخصات درخواست E1">
+    <Expander Grid.Row="1" FlowDirection="RightToLeft" Header="مشخصات E1" x:Name="E1InfoSummaryExpander">
+        <StackPanel>
+
+            <Grid x:Name="InstallInfo">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+
+                <Label     Grid.Row="0" Grid.Column="0" Content="نوع تلفن" />
+                <ComboBox  Grid.Row="0" Grid.Column="1" Name="TelephoneTypeComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding TelephoneType, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="TelephoneTypecomboBox_SelectionChanged" IsEnabled="false"/>
+
+                <Label     Grid.Row="0" Grid.Column="2" Content="گروه تلفن" />
+                <ComboBox  Grid.Row="0" Grid.Column="3" Name="TelephoneTypeGroupComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding TelephoneTypeGroup, UpdateSourceTrigger=PropertyChanged}" IsEnabled="false"/>
+
+                <Label     Grid.Row="1" Grid.Column="0" Content="نوع لينك" />
+                <ComboBox  Grid.Row="1" Grid.Column="1" Name="LinkTypeComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding LinkTypeID, UpdateSourceTrigger=PropertyChanged}" IsEnabled="false"/>
+
+                <Label     Grid.Row="1" Grid.Column="2" Content="كد سرشماره" />
+                <ComboBox  Grid.Row="1" Grid.Column="3" 
+                       Name="CodeTypeComboBox" 
+                       SelectedValuePath="ID"
+                       SelectedValue="{Binding CodeTypeID, UpdateSourceTrigger=PropertyChanged}" 
+                       IsEnabled="false">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border>
+                                <TextBlock Text="{Binding Name}" TextWrapping="Wrap" IsEnabled="False"/>
+                            </Border>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <Label     Grid.Row="2" Grid.Column="0" Content="نوع کانال" />
+                <ComboBox  Grid.Row="2" Grid.Column="1" Name="ChanalTypeComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding ChanalType, UpdateSourceTrigger=PropertyChanged}" IsEnabled="false"/>
+
+                <Label     Grid.Row="2" Grid.Column="2" Content="تعداد لینک" />
+                <TextBox   Grid.Row="2" Grid.Column="3" Name="NumberOfLineTextBox" Text="{Binding NumberOfLine, UpdateSourceTrigger=PropertyChanged}" IsEnabled="false"/>
+
+                <Label     Grid.Row="3" Grid.Column="0" Content="شماره اتصال" />
+                <TextBox   Grid.Row="3" Grid.Column="1" Name="ConnectionNoTypeComboBox" Text="{Binding ConnectionNo, UpdateSourceTrigger=PropertyChanged}" IsEnabled="false"/>
+
+                <Label     Grid.Row="3" Grid.Column="2" Content="كد شركت" />
+                <TextBox   Grid.Row="3" Grid.Column="3" Name="CompanyCodeComboBox" Text="{Binding CompanyCode, UpdateSourceTrigger=PropertyChanged}" IsEnabled="false"/>
+
+
+                <!--<Label   Grid.Row="5" Grid.Column="0"  x:Name="AddressLable"     Content="آدرس"    Height="30" Visibility="Collapsed"/>
+            <TextBox Grid.Row="5" Grid.Column="1"  x:Name="AddressTextBox"  Grid.ColumnSpan="4" IsReadOnly="True"  Height="30" Visibility="Collapsed"/>
+
+            <Label   Grid.Row="5" Grid.Column="2"  x:Name="PostalCodeInstallLable" Content="کد پستی"  Height="30" Visibility="Collapsed"/>
+            <TextBox Grid.Row="5" Grid.Column="3"  x:Name="PostalCodeTextBox"      IsReadOnly="True"   Height="30" Visibility="Collapsed"/>-->
+
+                <Label   Grid.Row="6" Grid.Column="0"  x:Name="AcsessDDFLable" Content="پورت دی دی اف اکسس"  Height="30" Visibility="Collapsed"/>
+                <TextBox Grid.Row="6" Grid.Column="1"  x:Name="AcsessDDFTextBox"      IsReadOnly="True"   Height="30" Visibility="Collapsed" Grid.ColumnSpan="3"/>
+
+                <Label Grid.Row="7" Grid.Column="0" Content="کد پستی مبدا : "/>
+                <TextBox Grid.Row="7" Grid.Column="1" Name="InstallPostalCodeTextBox" IsReadOnly="True"/>
+
+                <Label Grid.Row="7" Grid.Column="2" Content="آدرس مبدا : "/>
+                <TextBox Grid.Row="7" Grid.Column="3"  Name="InstallAddressTextBox" IsReadOnly="True"/>
+
+                <Label   Grid.Row="8" Grid.Column="0" Content="کد پستی مقصد : "/>
+                <TextBox Grid.Row="8" Grid.Column="1" Name="TargetInstallPostalCodeTextBox" IsReadOnly="True"/>
+
+                <Label Grid.Row="8" Grid.Column="2" Content="آدرس مقصد : "/>
+                <TextBox Grid.Row="8" Grid.Column="3"  Name="TargetInstallAddressTextBox" IsReadOnly="True"/>
+
+                <Label Grid.Row="9" Grid.Column="0" Content="کدپستی : " />
+                <TextBox Grid.Row="9" Grid.Column="1" Name="CorrespondencePostalCodeTextBox" IsReadOnly="True"/>
+
+                <Label Grid.Row="9" Grid.Column="2" Content="آدرس مکاتبه : " />
+                <TextBox Grid.Row="9" Grid.Column="3"  Name="CorrespondenceAddressTextBox" IsReadOnly="True"/>
+
+            </Grid>
+
+            <GroupBox Header="جزئیات ادارات">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="توضیحات مدیر اداره طراحی : "/>
+                    <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding DesignDirectorDescription}" IsReadOnly="True" TextWrapping="Wrap"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="توضیحات اداره طراحی انتقال : "/>
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding TransferDepartmentDescription}" IsReadOnly="True" TextWrapping="Wrap"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Content="توضیحات اداره طراحی نیرو : "/>
+                    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding PowerDescription}" IsReadOnly="True" TextWrapping="Wrap"/>
+
+                    <Label Grid.Row="3" Grid.Column="0" Content="توضیحات اداره نصب : "/>
+                    <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding InstallingDepartmentDescription}" IsReadOnly="True" TextWrapping="Wrap"/>
+
+                    <Label Grid.Row="4" Grid.Column="0" Content="توضیحات اداره نظارت : "/>
+                    <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding MonitoringDepartmentDescription}" IsReadOnly="True" TextWrapping="Wrap"/>
+                    
+                    <DataGrid x:Name="FileItemsDataGrid" IsEnabled="True" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="True"
+                              CanUserResizeColumns="True"
+                              CanUserResizeRows="False"
+                              CanUserDeleteRows="False"
+                              SelectionMode="Single"
+                              SelectionUnit="FullRow"
+                              ItemsSource="{Binding}"
+                              IsReadOnly="True">
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Image Source="/CRM.Application;component/Images/element_16x16.png" Width="16" Height="16" HorizontalAlignment="Center" Cursor="Hand"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Header="مشاهده"  IsReadOnly="True" >
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Image Source="/CRM.Application;component/Images/DocumentPicture16x16.png" MouseUp="Image_MouseUp"  Cursor="Hand"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn Header="اداره" IsReadOnly="True" Binding="{Binding FileType}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    
+                </Grid>
+            </GroupBox>
+
+        </StackPanel>
+    </Expander>
+</Local:UserControlBase>

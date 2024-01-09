@@ -1,0 +1,257 @@
+﻿<UserControl x:Class="CRM.Application.UserControls.Actions"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             FlowDirection="RightToLeft" 
+             Loaded="UserControl_Loaded"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="250">
+
+    <Grid>
+        <StackPanel x:Name="ActionStackPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="Visible" Tag="Footer">
+            <TextBlock Text="عملیات: " HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Tahoma"/>
+            <ComboBox x:Name="ActionComboBox" SelectedValuePath="ID" HorizontalAlignment="Stretch" Background="White" MinWidth="150" MinHeight="25" SelectionChanged="DoAction" IsEditable="False">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid VerticalAlignment="Center" Height="25">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding OriginalName, Converter={StaticResource ActionNameToImageSourceConverter}}" Grid.Column="0" VerticalAlignment="Center" Width="16" Height="16" />
+                            <TextBlock Text="{Binding Name}" Grid.Column="1" VerticalAlignment="Center" />
+                        </Grid>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+
+        <!--ذخیره-->
+        <StackPanel x:Name="SaveStackPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed">
+            <TextBlock Text="از ذخیره اطلاعات اطمینان دارید؟" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Tahoma" />
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="Save">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/check2.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="Reset">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/undo.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+        </StackPanel>
+
+        <!--حذف-->
+        <StackPanel x:Name="DeleteStackPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed">
+            <TextBlock Text="از حذف اطلاعات اطمینان دارید؟" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Tahoma" />
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="Delete">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/check2.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="Reset">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/undo.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+        </StackPanel>
+
+        <!--چاپ-->
+        <StackPanel x:Name="PrintStackPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed">
+            <TextBlock Text="از چاپ فرم اطمینان دارید؟" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Tahoma" />
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="Print">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/check2.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="Reset">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/undo.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+        </StackPanel>
+
+        <!--تایید-->
+        <StackPanel x:Name="ConfirmStackPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed">
+            <TextBlock Text="از تایید درخواست اطمینان دارید؟" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Tahoma" />
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="Confirm">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/check2.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="Reset">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/undo.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+        </StackPanel>
+
+        <!--رد-->
+        <StackPanel x:Name="DenyStackPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed">
+            <TextBlock Text="از رد درخواست اطمینان دارید؟" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Tahoma" />
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="Deny">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/check2.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="Reset">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/undo.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+        </StackPanel>
+
+        <!--ارجاع-->
+        <StackPanel x:Name="ForwardStackPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed">
+            <TextBlock Text="از ارجاع به مرحله بعد اطمینان دارید؟" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Tahoma" />
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="Forward">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/check2.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="Reset">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/undo.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+        </StackPanel>
+
+        <!--استرداد ودیعه-->
+        <StackPanel x:Name="RefundStackPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed">
+            <TextBlock Text="آیا از استرداد ودیعه اطمینان دارید؟" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Tahoma" />
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="Refund">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/check2.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="Reset">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/undo.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+        </StackPanel>
+        
+        <!--تایید نهایی-->
+        <StackPanel x:Name="ConfirmEndStackPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed">
+            <TextBlock Text="از تایید نهایی به مرحله بعد اطمینان دارید؟" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Tahoma" />
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="ConfirmEnd">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/check2.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="Reset">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/undo.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+        </StackPanel>
+        
+        <!--ابطال-->
+        <StackPanel x:Name="CancelationStackPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed">
+            <TextBlock Text="از ارجاع به مرحله بعد اطمینان دارید؟" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Tahoma" />
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="Cancel">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/check2.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="Reset">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/undo.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+        </StackPanel>
+        
+        <!--ذخیره در لیست انتظار-->
+        <StackPanel x:Name="SaveWatingListStackPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed">
+            <TextBlock Text="از ذخیره در لیست انتظار اطمینان دارید؟" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Tahoma" />
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="SaveWaitingList">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/check2.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="Reset">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/undo.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+        </StackPanel>
+
+        <!--خروج از لیست انتظار-->
+        <StackPanel x:Name="ExitWatingListStackPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed">
+            <TextBlock Text="از خروج در لیست انتظار اطمینان دارید؟" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Tahoma" />
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="ExitWaitingList">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/check2.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="Reset">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/undo.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+        </StackPanel>
+
+        <!--ذخیره در لیست سیاه-->
+        <StackPanel x:Name="SaveBlackListStackPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed">
+            <TextBlock Text="از ذخیره در لیست سیاه اطمینان دارید؟" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Tahoma" />
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="SaveBlackList">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/check2.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="Reset">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/undo.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+        </StackPanel>
+        
+        <!--خروج از لیست سیاه-->
+        <StackPanel x:Name="ExitBlackListStackPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed">
+            <TextBlock Text="از خروج در لیست سیاه اطمینان دارید؟" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Tahoma" />
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="ExitBlackList">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/check2.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="Reset">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/undo.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+        </StackPanel>
+
+        <!--بستن-->
+        <StackPanel x:Name="ExitStackPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed">
+            <TextBlock Text="از بستن فرم اطمینان دارید؟" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Tahoma" />
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="Exit">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/check2.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="Reset">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/undo.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+        </StackPanel>
+
+        <!--باز پرداخت-->
+        <StackPanel x:Name="KickedBackStackPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="Collapsed">
+            <TextBlock Text="از باز پرداخت اطمینان دارید؟" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Tahoma" />
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="KickedBack">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/check2.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Width="26" Height="26" HorizontalContentAlignment="Center" VerticalAlignment="Center" Click="Reset">
+                <MenuItem.Icon>
+                    <Image Source="/CRM.Application;component/Images/undo.png" Width="24" Height="24" />
+                </MenuItem.Icon>
+            </MenuItem>
+        </StackPanel>
+
+    </Grid>
+
+</UserControl>

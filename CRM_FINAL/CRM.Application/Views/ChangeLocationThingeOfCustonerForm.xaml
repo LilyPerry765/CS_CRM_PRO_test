@@ -1,0 +1,44 @@
+﻿<Local:RequestFormBase 
+                   xmlns:Local="clr-namespace:CRM.Application.Local" 
+                   x:Class="CRM.Application.Views.ChangeLocationThingeOfCustonerForm"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib" 
+                   Title="امور مشترکین" 
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+                   Loaded="Window_Loaded" 
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
+    <Grid FlowDirection="RightToLeft"> 
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <uc:CustomerInfoSummary x:Name="CustomerInfoSummaryUserControl" Grid.Row="2"  Grid.Column="0"/>
+        
+        <GroupBox Header="مشخصات تلفن" Grid.Row="1" Grid.Column="0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="تلفن قدیم" x:Name="OldTelLable" Grid.Row="0" Grid.Column="0"/>
+                <TextBox x:Name="OldTelTextBox" IsReadOnly="True" Grid.Row="0" Grid.Column="1"/>
+
+                <Label Content="تلفن جدید" x:Name="NewTelLable" Grid.Row="1" Grid.Column="0"/>
+                <TextBox x:Name="NewTelTextBox" IsReadOnly="True" Grid.Row="1" Grid.Column="1"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="ThingeOfCustonerUserControlGroupBox" Grid.Row="2"  Grid.Column="0" Visibility="Collapsed">
+        <!--<uc:ThingeOfCustonerUserControl x:Name="ThingeOfCustonerUserControl" Grid.Row="2"  Grid.Column="0" Visibility="Collapsed"/>-->
+        </GroupBox>
+        <uc:CustomerAddressUserControl  x:Name="OldCustomerAddressUserControl" Grid.Row="0"  Grid.Column="0"/>
+    </Grid>
+</Local:RequestFormBase>

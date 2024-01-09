@@ -1,0 +1,58 @@
+﻿<Local:PopupWindow  x:Class="CRM.Application.Views.ContractorForm"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                    xmlns:Local="clr-namespace:CRM.Application.Local"
+                    xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                    mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d:DesignWidth="780"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    Loaded="PopupWindow_Loaded" Icon="/CRM.Application;component/Images/Contractor_48x48.png" 
+                    Title="فرم ویرایش پیمانکار" Width="500" Height="360" ResizeMode="NoResize">
+    
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+        
+        <Label Content="نام شرکت : " Grid.Row="0" Grid.Column="0"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Title}" TabIndex="0"/>
+
+        <Label Content="نام مدیر : " Grid.Row="1" Grid.Column="0"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding HeaderName}" TabIndex="1"/>
+
+        <Label Content="آدرس : " Grid.Row="2" Grid.Column="0"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Address}" TabIndex="2" MaxLines="2" TextWrapping="Wrap" Height="50"/>
+
+        <Label Content="تلفن : " Grid.Row="3" Grid.Column="0"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Telephone}" TabIndex="3" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+        <Label Content="موبایل : " Grid.Row="4" Grid.Column="0"/>
+        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding Mobile}" TabIndex="4" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+        <Label Content="فکس : " Grid.Row="5" Grid.Column="0"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Fax}" TabIndex="7" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+        <Label Content="تاریخ شروع قرارداد : " Grid.Row="6" Grid.Column="0"/>
+        <cal:DatePicker Grid.Row="6" Grid.Column="1" SelectedDate="{Binding ContractStartDate}" TabIndex="8"/>
+
+        <Label Content="تاریخ پایان قرارداد : " Grid.Row="7" Grid.Column="0"/>
+        <cal:DatePicker Grid.Row="7" Grid.Column="1" SelectedDate="{Binding ContractEndDate}" TabIndex="9"/>
+
+        <Button Content="ذخیره" Grid.Row="9" Name="SaveButton" Click="SaveForm" Tag="Footer" TabIndex="10"/>
+    </Grid>
+</Local:PopupWindow>
+

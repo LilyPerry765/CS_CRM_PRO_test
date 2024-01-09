@@ -1,0 +1,45 @@
+﻿<Local:ReportBase x:Class="CRM.Application.Reports.ReportUserControls.ADSLSoldModemReportUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+             xmlns:Local="clr-namespace:CRM.Application.Local"
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+             mc:Ignorable="d">
+    <StackPanel>
+        <StackPanel FlowDirection="RightToLeft">
+            <GroupBox BorderBrush="AliceBlue" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="5"/>
+                        <RowDefinition Height="30"/>
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="15"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="نماینده فروش:" Grid.Row="0" Grid.Column="0"/>
+                    <UserControls:CheckableComboBox Grid.Row="0" Grid.Column="2" x:Name="SellerAgentComboBox"/>
+                    
+                    <Label Content="ازتاریخ:" Grid.Row="2" />
+                    <cal:DatePicker Name="FromDate" Grid.Row="2" Grid.Column="2"/>
+
+                    <Label Content="تا تاریخ:" Grid.Row="2" Grid.Column="4"/>
+                    <cal:DatePicker Grid.Column="6" Grid.Row="2" Name="Todate" />
+
+
+                </Grid>
+            </GroupBox>
+
+        </StackPanel>
+    </StackPanel>
+</Local:ReportBase>

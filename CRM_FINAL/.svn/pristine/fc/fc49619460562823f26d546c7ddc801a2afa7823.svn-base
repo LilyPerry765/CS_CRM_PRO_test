@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="CRM.Application.UserControls.AnouncementUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d">
+    <Grid FlowDirection="RightToLeft" x:Name="MainAnouncementGrid" >
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image x:Name="AnouncementImage" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Height="24" Width="24"/>
+
+        <TextBlock x:Name="AnouncementMessageTextBlock" Grid.Column="1" TextWrapping="Wrap" VerticalAlignment="Center" 
+                   FontFamily="pack://application:,,,/CRM.Application;component/Resources/Fonts/#Yekan"/>
+        
+    </Grid>
+</UserControl>

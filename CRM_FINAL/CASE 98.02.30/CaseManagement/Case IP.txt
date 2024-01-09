@@ -1,0 +1,22 @@
+Main Server:
+80.191.61.226 : IP Valid   - barname web(10.1.2.188 IP Local)  
+80.191.61.226(10.1.2.188)
+User: Administrator
+Pass:RA_PPCO@1396
+User : CaseAdmin
+Password : Hakimieh1387
+User : USER	
+Pass: Standard_Case@2017
+
+------------------------------------------------------------------------------
+10.1.3.82 : Server On Virtual Machine
+10.1.3.82
+User : Sangi
+Password: CaseAdmin@Pendarpajouh
+Sa Password : Case@1396@pendar
+DB Backup on server : 
+Drive D -> DB_Backup
+-------------------------------------------------------------------------------
+-------------------------------------------------------------------------------
+
+

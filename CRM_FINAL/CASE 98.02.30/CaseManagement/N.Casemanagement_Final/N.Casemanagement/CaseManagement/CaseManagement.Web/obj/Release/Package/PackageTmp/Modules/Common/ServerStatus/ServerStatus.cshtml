@@ -1,0 +1,319 @@
+﻿@{
+    ViewData["Title"] = "وضعیت سرور";
+}
+
+@section ContentHeader {
+    <h1></h1>
+}
+
+<script src="~/Scripts/chartjs/highcharts.js"></script>
+<script src="~/Scripts/chartjs/highcharts-more.js"></script>
+
+<div class="row">
+
+    <!-- right col (We are only adding the ID to make the widgets sortable)-->
+    <section class="col-lg-6 connectedSortable">
+
+        <!-- Calendar -->
+        <div class="box box-success">
+            <div class="box-header with-border">
+                <i class="fa fa-bars"></i>
+                <h3 class="box-title">میزان حافظه سیستم</h3>
+            </div>
+            <div class="box-body no-padding" style="height: 500px; width: 100%;">
+                <table class="detail-view-custom" style="width: 100%">
+
+                    <tr class="odd">
+                        <td style="height: 100px;text-align: left;vertical-align: middle;" colspan="2">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <span dir="ltr" id="ram_label_2" style="float: left; font-size: 22px; font-family: verdana; margin-right: 10px; color: #575d66;"></span>
+                                    <span style="font-size: 22px; font-family: verdana; color: #575d66;">&nbsp;  MB</span>
+                                    <span style="font-size: 22px;font-family: verdana;color:red">  Used </span>
+                                </div>
+                                <div class="col-md-12">
+                                    <span dir="ltr" id="ram_label_3" style="float: left; font-size: 22px; font-family: verdana; margin-right: 10px; color: #575d66;"></span>
+                                    <span style="font-size: 22px; font-family: verdana; color: #575d66;">&nbsp;MB</span>
+                                    <span style="font-size: 22px;font-family: verdana;color:green">  Free </span>
+                                </div>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div id="ram_use_con" style="width: 400px; height: 350px; margin: 0 auto"></div>
+                        </td>
+                    </tr>
+                    <tr class="header" style="height: 30px">
+                        <th colspan="2" id="ram_label_1" style="font-weight: bold; font-size: 12px; vertical-align: middle; color: #575d66"> </th>
+                    </tr>
+                </table>
+            </div>
+         </div>
+
+</section><!-- right col -->
+
+<section class="col-lg-6 connectedSortable">
+
+    <!-- Map box -->
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <i class="fa fa-dashboard"></i>
+            <h3 class="box-title">میزان بار بر روی هسته سیستم </h3>
+        </div>
+        <div class="box-body" style="height: 500px; width: 100%;">
+            <table class="detail-view-custom" style="width:100%" dir="ltr">
+
+                <!--<tr class="odd">
+                <td style="height: 100px;text-align:left;vertical-align: middle;" colspan="2">
+                    <span id="load_label_0" style="font-size: 12px;font-family: verdana;"></span><br>
+                    <span style="font-size: 12px;font-family: verdana;color: green">Load Average </span>
+                </td>
+            </tr>-->
+                <tr>
+                    <td colspan="2">
+                        <div id="load_avg_con" style="width: 400px; height: 350px; margin: 0 auto"></div>
+                    </td>
+                </tr>
+                <!-- <tr class="header" style="height: 30px">
+                 <th id="load_label_1" colspan="2" style="font-weight: bold;font-size: 12px;vertical-align: middle;color: #ffbf7f">CPU</th>
+             </tr>-->
+            </table>
+
+
+        </div><!-- /.box-body-->
+        <!--<div class="box-footer with-border">
+          
+        </div>-->
+    </div>
+
+</section><!-- /.Left col -->
+</div>
+<script type="text/javascript">
+    var TotalMemory = 100;
+    (function RamInfo() {
+        $.ajax({
+            async:false,
+            url: 'getRamUsage',
+            success: function (data) {
+                $('#ram_label_2').text(data.Used);
+                $('#ram_label_3').text(data.Free);
+                $('#ram_label_1').text("Total Memory : "+ data.TotalMemory +" MB");
+                TotalMemory = data.TotalMemory;
+                //console.log("succeed");
+            },
+            complete: function () {
+                // Schedule the next request when the current one's complete
+                setTimeout(RamInfo, 3000);
+            }
+        });
+    })();
+
+    
+    Highcharts.setOptions({
+        global: {
+            useUTC: false
+        }
+    });
+
+    var chart;
+    $("#load_avg_con").highcharts({
+        chart: {
+            type: "areaspline",
+            animation: Highcharts.svg,
+            marginRight: 10,
+            events: {
+                load: function () {
+                    // set up the updating of the chart each second
+                    var series = this.series[0];
+                    setInterval(function () {
+                        $.ajax({
+                            type: "GET",
+                            data: "",//"method=getLoadChartData",
+                            async: false,
+                            url: "getCPULoadAvg",
+                            success: function (data) {
+                                var x = (new Date()).getTime()
+                                series.addPoint([x, parseFloat(data)], true, true);
+                            },
+                            error: function (data) {
+                            },
+                            global: false,
+                            dataType: "json"
+                        });
+                    }, 2000);
+                }
+            }
+        },
+        title: {
+            text: "CPU Load Averrage"
+        },
+        xAxis: {
+            type: "datetime",
+            tickPixelInterval: 150
+        },
+        yAxis: {
+            title: {
+                text: "Load"
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: "#808080"
+            }]
+        },
+        tooltip: {
+            formatter: function () {
+                return "<b>" + this.series.name + "</b><br/>" +
+                Highcharts.dateFormat("%Y-%m-%d %H:%M:%S", this.x) + "<br/>" +
+                Highcharts.numberFormat(this.y, 2);
+            }
+        },
+        legend: {
+            enabled: false
+        },
+        exporting: {
+            enabled: false
+        },
+        series: [{
+            name: "CPU Load Average",
+            data: (function () {
+                // generate an array of random data
+                var data = [],
+                    time = (new Date()).getTime(),
+                    i;
+
+                for (i = -40; i <= 0; i++) {
+                    data.push({
+                        x: time + i * 1000,
+                        y: 0
+                    });
+                }
+                return data;
+            })()
+        }]
+    });
+
+
+
+    $(function () {
+
+        $("#ram_use_con").highcharts({
+
+            chart: {
+                type: "gauge",
+                plotBackgroundColor: null,
+                plotBackgroundImage: null,
+                plotBorderWidth: 0,
+                plotShadow: false
+            },
+
+            title: {
+                text: "Ram Usage"
+            },
+
+            pane: {
+                startAngle: -150,
+                endAngle: 150,
+                background: [{
+                    backgroundColor: {
+                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+                        stops: [
+		                    [0, "#FFF"],
+		                    [1, "#333"]
+                        ]
+                    },
+                    borderWidth: 0,
+                    outerRadius: "109%"
+                }, {
+                    backgroundColor: {
+                        linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+                        stops: [
+		                    [0, "#333"],
+		                    [1, "#FFF"]
+                        ]
+                    },
+                    borderWidth: 1,
+                    outerRadius: "107%"
+                }, {
+                    // default background
+                }, {
+                    backgroundColor: "#DDD",
+                    borderWidth: 0,
+                    outerRadius: "105%",
+                    innerRadius: "103%"
+                }]
+            },
+
+            // the value axis
+            yAxis: {
+                min: 0,
+                max: TotalMemory,
+
+                minorTickInterval: "auto",
+                minorTickWidth: 1,
+                minorTickLength: 10,
+                minorTickPosition: "inside",
+                minorTickColor: "#666",
+
+                tickPixelInterval: 30,
+                tickWidth: 2,
+                tickPosition: "inside",
+                tickLength: 10,
+                tickColor: "#666",
+                labels: {
+                    step: 2,
+                    rotation: "auto"
+                },
+                title: {
+                    text: "Mega Byte"
+                },
+                plotBands: [{
+                    from: 0,
+                    to: ((60 * TotalMemory) / 100),
+                    color: "#55BF3B" // green
+                }, {
+                    from: ((60 * TotalMemory) / 100),
+                    to: ((85 * TotalMemory) / 100),
+                    color: "#DDDF0D" // yellow
+                }, {
+                    from: ((85 * TotalMemory) / 100),
+                    to: TotalMemory,
+                    color: "#DF5353" // red
+                }]
+            },
+
+            series: [{
+                name: "Ram Usage",
+                data: [0],
+                tooltip: {
+                    valueSuffix: " MB"
+                }
+            }]
+
+        },
+		function (chart) {
+		    if (!chart.renderer.forExport) {
+		        setInterval(function () {
+		            var point = chart.series[0].points[0];
+		            $.ajax({
+		                type: "GET",
+		                data: "",//"method=getLoadChartData",
+		                async: false,
+		                url: "getRamUsed",
+		                success: function (data) {
+		                    point.update(parseInt(data));
+		                },
+		                error: function (data) {
+		                },
+		                global: false,
+		                dataType: "json"
+		            });
+		        }, 3000);
+		    }
+		});
+    });
+
+
+</script>

@@ -1,0 +1,105 @@
+﻿<Local:RequestFormBase 
+                   Title="برگردان مرکزی ام دی اف"
+                   x:Class="CRM.Application.Views.ExchangeCentralCableMDFForm"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib"
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls"
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   d:DesignWidth="780" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   Loaded="PopupWindow_Loaded">
+    <ScrollViewer FlowDirection="RightToLeft">
+        <StackPanel>
+            <GroupBox Grid.Row="0" Grid.Column="0" Header="درخواست" x:Name="ExchangeRequestInfoUserControl" >
+            </GroupBox>
+
+            <GroupBox Header="از کافو" FlowDirection="RightToLeft" Grid.Row="1" Grid.Column="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label    Grid.Row="0" Grid.Column="0" Content="کافو" />
+                    <ComboBox Grid.Row="0" Grid.Column="1" x:Name="OldCabinetComboBox"          DisplayMemberPath="Name" SelectedValuePath="ID"     SelectedValue="{Binding CabinetID, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="OldCabinetComboBox_SelectionChanged"/>
+
+                    <Label    Grid.Row="0" Grid.Column="3" Content="از ورودی" />
+                    <ComboBox Grid.Row="0" Grid.Column="4" x:Name="FromOldCabinetInputComboBox" DisplayMemberPath="Name" SelectedValuePath="LongID" SelectedValue="{Binding FromCabinetInputID, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <Label    Grid.Row="0" Grid.Column="6" Content="تا ورودی" />
+                    <ComboBox Grid.Row="0" Grid.Column="7" x:Name="ToOldCabinetInputComboBox"   DisplayMemberPath="Name" SelectedValuePath="LongID" SelectedValue="{Binding ToCabinetInputID, UpdateSourceTrigger=PropertyChanged}"/>
+                </Grid>
+            </GroupBox>
+            
+            <GroupBox Header="به کابل" FlowDirection="RightToLeft" Grid.Row="2" Grid.Column="0" x:Name="CableGroupBox">
+                <Grid>
+                
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label     Grid.Row="0" Grid.Column="0" Content="کابل" x:Name="CableLabel" />
+                    <ComboBox  Grid.Row="0" Grid.Column="1" x:Name="CableComboBox" SelectedValue="{Binding CableID, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="LongID" DisplayMemberPath="Name" SelectionChanged="CableComboBox_SelectionChanged"/>
+
+                    <Label     Grid.Row="0" Grid.Column="3" Content="از زوج:"   x:Name="FromCablePairLabel"/>
+                    <ComboBox  Grid.Row="0" Grid.Column="4"  x:Name="FromCablePairComboBox" DisplayMemberPath="Name" SelectedValuePath="LongID" SelectedValue="{Binding FromCablePairID, UpdateSourceTrigger=PropertyChanged}" />
+
+                    <Label     Grid.Row="0" Grid.Column="6" Content="تا زوج:"   x:Name="ToCablePairLabel"/>
+                    <ComboBox  Grid.Row="0" Grid.Column="7"  x:Name="ToCablePairComboBox" DisplayMemberPath="Name" SelectedValuePath="LongID" SelectedValue="{Binding ToCablePairID, UpdateSourceTrigger=PropertyChanged}" />
+
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Header="زمان انجام" FlowDirection="RightToLeft" Grid.Row="3" Grid.Column="0" x:Name="AccomplishmentGroupBox">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0"          x:Name="AccomplishmentDateLabel" Content="تاریخ خاتمه" Visibility="Collapsed" Height="30"/>
+                    <cal:DatePicker Grid.Row="0" Grid.Column="1" x:Name="AccomplishmentDate"      SelectedDate="{Binding AccomplishmentDate, UpdateSourceTrigger=Default, Mode=TwoWay}" Visibility="Collapsed" Height="30"/>
+                    <Label Grid.Row="0" Grid.Column="3"          x:Name="AccomplishmentTimeLabel" Content="زمان انجام" Visibility="Collapsed" Height="30"/>
+                    <TextBox Grid.Row="0" Grid.Column="4"        x:Name="AccomplishmentTime"      Text="{Binding AccomplishmentTime, UpdateSourceTrigger=Default, Mode=TwoWay}" Visibility="Collapsed" Height="30"/>
+                    <Label Grid.Row="1" Grid.Column="0"          x:Name="StatusComboBoxLabel"     Content="وضعیت" Height="30"/>
+                    <ComboBox Grid.Row="1" Grid.Column="1"       x:Name="StatusComboBox"          DisplayMemberPath="StatusResult" SelectedValuePath="StepStatusID" Height="30"/>
+
+
+                    <Button   Grid.Row="1" Grid.Column="4" Content="صدور فرم سیم بندی" x:Name="wiringButtom" Click="wiringButtom_Click"/>
+
+                </Grid>
+            </GroupBox>
+            
+        </StackPanel>
+    </ScrollViewer>
+</Local:RequestFormBase>

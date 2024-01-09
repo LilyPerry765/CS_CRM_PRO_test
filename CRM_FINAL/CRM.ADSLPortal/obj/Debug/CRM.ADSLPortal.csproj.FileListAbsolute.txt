@@ -1,0 +1,22 @@
+D:\Develop\CRM FINAL\CRM.ADSLPortal\bin\CRM.ADSLPortal.dll
+D:\Develop\CRM FINAL\CRM.ADSLPortal\bin\CRM.ADSLPortal.pdb
+D:\Develop\CRM FINAL\CRM.ADSLPortal\bin\AjaxControlToolkit.dll
+D:\Develop\CRM FINAL\CRM.ADSLPortal\bin\CRM.Data.dll
+D:\Develop\CRM FINAL\CRM.ADSLPortal\bin\Folder.Common.dll
+D:\Develop\CRM FINAL\CRM.ADSLPortal\bin\CRM.WebAPI.Models.dll
+D:\Develop\CRM FINAL\CRM.ADSLPortal\bin\CookComputing.XmlRpcV2.dll
+D:\Develop\CRM FINAL\CRM.ADSLPortal\bin\Logger.dll
+D:\Develop\CRM FINAL\CRM.ADSLPortal\bin\CRM.Data.pdb
+D:\Develop\CRM FINAL\CRM.ADSLPortal\bin\CRM.Data.dll.config
+D:\Develop\CRM FINAL\CRM.ADSLPortal\bin\Folder.Common.pdb
+D:\Develop\CRM FINAL\CRM.ADSLPortal\bin\Folder.Common.dll.config
+D:\Develop\CRM FINAL\CRM.ADSLPortal\bin\CRM.WebAPI.Models.pdb
+D:\Develop\CRM FINAL\CRM.ADSLPortal\obj\Debug\CRM.ADSLPortal.csprojResolveAssemblyReference.cache
+D:\Develop\CRM FINAL\CRM.ADSLPortal\obj\Debug\CRM.ADSLPortal.dll
+D:\Develop\CRM FINAL\CRM.ADSLPortal\obj\Debug\CRM.ADSLPortal.pdb
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.ADSLPortal\obj\Debug\CRM.ADSLPortal.csprojResolveAssemblyReference.cache
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.ADSLPortal\obj\Debug\CRM.ADSLPortal.dll
+E:\ML_tools-ACVA\ACVAN\Test_Codeban_Projects\project_csharp\CRM_FINAL\CRM.ADSLPortal\obj\Debug\CRM.ADSLPortal.pdb
+E:\Folder\CRM.ADSLPortal.dll.config
+E:\Folder\CRM.ADSLPortal.dll
+E:\Folder\CRM.ADSLPortal.pdb

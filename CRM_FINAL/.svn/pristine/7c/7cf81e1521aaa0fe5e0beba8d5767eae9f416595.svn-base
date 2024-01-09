@@ -1,0 +1,76 @@
+﻿<Local:PopupWindow
+    x:Class="CRM.Application.Views.AssignCabinetInputToBuchtForm"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Local="clr-namespace:CRM.Application.Local"
+        xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+    Loaded="PopupWindow_Loaded_1"
+        Title="انتساب به کابل">
+    <Grid FlowDirection="RightToLeft">
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" Header="مرکزی">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Label Grid.Row="0" Grid.Column="0" Content="از مرکزی"/>
+                <ComboBox Grid.Row="0" Grid.Column="1" x:Name="FromCabinetInputComboBox" DisplayMemberPath="Name" SelectedValuePath="LongID" IsEditable="True"/>
+
+                <Label Grid.Row="1" Grid.Column="0" Content="تا مرکزی"/>
+                <ComboBox Grid.Row="1" Grid.Column="1" x:Name="ToCabinetInputComboBox" DisplayMemberPath="Name" SelectedValuePath="LongID" IsEditable="True"/>
+
+            </Grid>
+
+        </GroupBox>
+
+        <GroupBox Grid.Row="1" Header="کابل" x:Name="CableGroupBox">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                  
+                    
+                </Grid.ColumnDefinitions>
+                <Label Content="کابل" Grid.Row="0" Grid.Column="0"/>
+                <ComboBox Grid.Row="0" Grid.Column="1" DisplayMemberPath="Name" SelectedValuePath="LongID" x:Name="CableComboBox" IsEditable="True" SelectionChanged="CableComboBox_SelectionChanged_1"/>
+
+                <Label Content="از زوج" Grid.Row="0" Grid.Column="2"/>
+                <ComboBox Grid.Row="0" Grid.Column="3" x:Name="FromCablePairComboBox" DisplayMemberPath="Name" SelectedValuePath="LongID" SelectionChanged="FromCablePairComboBox_SelectionChanged_1" IsEditable="True"/>
+
+                <Label Content="تا زوج" Grid.Row="0" Grid.Column="4"/>
+                <ComboBox Grid.Row="0" Grid.Column="5" x:Name="ToCablePairComboBox" DisplayMemberPath="Name" SelectedValuePath="LongID" SelectionChanged="ToCablePairComboBox_SelectionChanged_1" IsEditable="True"/>
+
+                <Label Content="از بوخت" Grid.Row="1" Grid.Column="0"/>
+                <TextBox x:Name="FromConnection" Grid.Row="1" Grid.Column="1"/>
+
+                <Label Content="تا بوخت" Grid.Row="1" Grid.Column="2"/>
+                <TextBox x:Name="ToConnection" Grid.Row="1" Grid.Column="3"/>
+            </Grid>
+
+
+
+
+        </GroupBox>
+        
+        <Button Grid.Row="23" Grid.Column="0" Content="ذخیره" Name="SaveButton" Click="SaveForm" Tag="Footer" />
+    </Grid>
+    </Local:PopupWindow>

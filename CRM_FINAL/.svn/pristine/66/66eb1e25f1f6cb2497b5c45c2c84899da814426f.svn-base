@@ -1,0 +1,60 @@
+﻿<Local:PopupWindow 
+                   x:Class="CRM.Application.Views.CabinetInputMalfunctionRegistrationForm"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib"
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls"
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   Loaded="PopupWindow_Loaded" Title="ثبت خرابی مرکزی">
+    
+    <Grid FlowDirection="RightToLeft">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="27"/>
+            <RowDefinition Height="27"/>
+            <RowDefinition Height="27"/>
+            <RowDefinition Height="27"/>
+            <RowDefinition Height="27"/>
+            <RowDefinition Height="27"/>
+            <RowDefinition Height="27"/>
+            <RowDefinition Height="27"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="نوع آیتم خراب : "/>
+        <ComboBox x:Name="MalfuctionTypeComboBox" Grid.Row="0" Grid.Column="1" 
+                  DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding MalfuctionType}" IsEnabled="False"/>
+        
+        <Label Grid.Row="1" Grid.Column="0" Content="تاریخ"/>
+        <cal:DatePicker Grid.Row="1" Grid.Column="1" SelectedDate="{Binding DateMalfunction,UpdateSourceTrigger=PropertyChanged}" />
+
+        <Label Grid.Row="2" Grid.Column="0" Content="ساعت"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding TimeMalfunction,UpdateSourceTrigger=PropertyChanged}" FontFamily="pack://application:,,,/CRM.Application;component/Resources/Fonts/#Yekan"/>
+
+        <Label Grid.Row="3" Grid.Column="0" Content="علت خرابی"/>
+        <ComboBox Grid.Row="3" Grid.Column="1" x:Name="TypeMalfunctionComboBox" 
+                  SelectedValue="{Binding TypeMalfunction,UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" SelectedValuePath="ID"/>
+
+        <Label Grid.Row="4" Grid.Column="0" Content="شماره مجوز"/>
+        <uc:LicenseUserControl Grid.Row="4" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="LicenseUserControl"/>
+
+        <Label Grid.Row="5" Grid.Column="0" Content="فاصله از MDF"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding DistanceFromMDF,UpdateSourceTrigger=PropertyChanged}" x:Name="DistanceFromMDFTextBox" />
+
+        <Label Grid.Row="6" Grid.Column="0" Content="فاصله از کافو"                                                   x:Name="DistanceFromCabinetLabel"/>
+        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding DistanceFromCabinet,UpdateSourceTrigger=PropertyChanged}" x:Name="DistanceFromCabinetTextBox"/>
+
+        <Label Grid.Row="7" Grid.Column="0" Content="توضیحات"/>
+        <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding Description,UpdateSourceTrigger=PropertyChanged}" />
+
+        <Button Grid.Row="8" Grid.Column="0" Content="ذخیره" Name="SaveButton" Click="SaveForm" Tag="Footer" Height="23" VerticalAlignment="Center" />
+
+    </Grid>
+</Local:PopupWindow>

@@ -1,0 +1,21 @@
+﻿--13931106 - 10:17
+--گزارش آمار پست های دارای پی سی ام  در بخش گزارش اطلاعات فنی پی سی ام بر روی سیستم خودم نهایی شد حالا باید بر روی سرور 14 هم بروزرسانی شود
+--UPDATE R14
+--SET TEMPLATE = RM.Template
+--FROM 
+--	ReportTemplate RM 
+--INNER JOIN 
+--	[192.168.0.14\PENDARSQL].CRM.DBO.REPORTTEMPLATE R14 ON R14.ID = RM.ID
+--WHERE 
+--	RM.ID = 26 AND R14.ID = 26
+
+--13931106 - 10:28
+--گزارش آمار پست های دارای پی سی ام در بخش گزارش اطلاعات فنی پی سی ام بر روی سرور 14 بروزرسانی و نهایی وتست شد حالا باید بر روی سرور کرمانشاه هم بروزرسانی شود
+--UPDATE RR
+--SET Template = R14.Template
+--FROM 
+--	ReportTemplate R14
+--INNER JOIN 
+--	[78.39.252.109].CRM.DBO.ReportTemplate RR on R14.id = rr.ID
+--where	
+--	rr.ID = 26 and R14.ID = 26

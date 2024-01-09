@@ -1,0 +1,156 @@
+﻿<UserControl x:Class="CRM.Application.UserControls.FontChooser"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+             xmlns:Converters="clr-namespace:CRM.Converters"
+             xmlns:local="clr-namespace:CRM.Application.Codes"
+             mc:Ignorable="d" 
+             d:DesignHeight="332" d:DesignWidth="600" FocusManager.FocusedElement="{Binding ElementName=lstFamily}">
+    <UserControl.CommandBindings>
+        <CommandBinding Command="{x:Static local:CustomCommands.FocusCommand}" CanExecute="FocusCommand_CanExecute" Executed="FocusCommand_Executed"/>
+    </UserControl.CommandBindings>
+    <UserControl.InputBindings>
+        <KeyBinding Command="{x:Static local:CustomCommands.FocusCommand}" Gesture="CTRL+SHIFT+F"/>
+    </UserControl.InputBindings>
+    <Grid FlowDirection="RightToLeft">
+        <Grid.Resources>
+            <DataTemplate x:Key="fontFamilyData">
+                <TextBlock Text="{Binding Source}"/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type FamilyTypeface}">
+                <WrapPanel>
+                    <TextBlock Text="{Binding Style}"/>
+                    <TextBlock Text="-"/>
+                    <TextBlock Text="{Binding Weight}"/>
+                    <TextBlock Text="-"/>
+                    <TextBlock Text="{Binding Stretch}"/>
+                </WrapPanel>
+            </DataTemplate>
+            <CollectionViewSource Source="{Binding Source={x:Static Fonts.SystemFontFamilies}}" x:Key="familyCollection">
+                <CollectionViewSource.SortDescriptions>
+                    <scm:SortDescription PropertyName="Source" Direction="Ascending"/>
+                </CollectionViewSource.SortDescriptions>
+            </CollectionViewSource>
+            <ControlTemplate x:Key="FontWeightToggleButton" TargetType="{x:Type ToggleButton}">
+                <Border x:Name="ParentBorder" BorderBrush="Transparent" BorderThickness="0.55 1" Width="25" CornerRadius="2.5" Margin="0 3 0 0">
+                    <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="Center"/>
+                </Border>
+                <ControlTemplate.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter TargetName="ParentBorder" Property="Background">
+                            <Setter.Value>
+                                <RadialGradientBrush GradientOrigin="0.5,1.5" Center=".5,.82" RadiusX="0.25" RadiusY="0.25"  Opacity="0.35">
+                                    <GradientStop Color="#FFEF7D" Offset="0.25"/>
+                                    <GradientStop Color="White" Offset="0.50"/>
+                                    <GradientStop Color="#FFDF71" Offset="0.85"/>
+                                </RadialGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                        <Setter TargetName="ParentBorder" Property="BorderBrush">
+                            <Setter.Value>
+                                <SolidColorBrush Color="#C28F36" Opacity="0.45"/>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                    <Trigger Property="IsChecked" Value="True">
+                        <Setter TargetName="ParentBorder" Property="BorderBrush" Value="#C28F36"/>
+                        <Setter TargetName="ParentBorder" Property="Background">
+                            <Setter.Value>
+                                <RadialGradientBrush GradientOrigin="0.5,1.5" Center="0.5,0.82" RadiusX="0.25" RadiusY="0.25">
+                                    <GradientStop Color="#FFEF7D" Offset="0.25"/>
+                                    <GradientStop Color="White" Offset="0.50"/>
+                                    <GradientStop Color="#FFDF71" Offset="0.85"/>
+                                </RadialGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                    </Trigger>
+                </ControlTemplate.Triggers>
+            </ControlTemplate>
+            <Converters:BooleanToFontWeightConverter x:Key="BooleanToFontWeightConverter"/>
+        </Grid.Resources>
+        <Grid DataContext="{StaticResource familyCollection}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <!--Families-->
+            <TextBlock Grid.Row="0" Grid.Column="0" Padding="5" Foreground="Black"
+                       FontFamily="pack://application:,,,/CRM.Application;component/Resources/Fonts/#Yekan" FontSize="13" FlowDirection="RightToLeft" Text="تعیین فونت:"/>
+            <TextBox x:Name="FontFamiliesFilterTextBox" Grid.Row="1" Grid.Column="0" BorderThickness="1" BorderBrush="DimGray" 
+                     Margin="0 5 5 0" TextChanged="FontFamiliesFilterTextBox_TextChanged">
+                <TextBox.ToolTip>
+                    <TextBlock Text="نام فونت مورد جستجو" FontFamily="pack://application:,,,/CRM.Application;component/Resources/Fonts/#Yekan"/>
+                </TextBox.ToolTip>
+            </TextBox>
+            <ListBox x:Name="lstFamily" Grid.Row="2" Grid.RowSpan="2" Grid.Column="0"
+                 ItemsSource="{Binding}" ItemTemplate="{StaticResource fontFamilyData}" Margin="5">
+                <ListBox.Resources>
+                    <SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}">LightBlue</SolidColorBrush>
+                </ListBox.Resources>
+                <ListBox.ToolTip>
+                    <TextBlock Text="فونت های نصب شده در این سیستم" FontFamily="pack://application:,,,/CRM.Application;component/Resources/Fonts/#Yekan"/>
+                </ListBox.ToolTip>
+            </ListBox>
+
+            <!--Family TypeFaces (Style, Weight,Stretch)-->
+            <TextBlock Grid.Row="0" Grid.Column="1" Padding="5" Foreground="Black" Text="حالت قلم:"
+                      FontFamily="pack://application:,,,/CRM.Application;component/Resources/Fonts/#Yekan" FontSize="13"/>
+            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+                <ToggleButton x:Name="HeaderBoldToggleButton" Template="{StaticResource FontWeightToggleButton}" 
+                              BorderBrush="Transparent" Background="Transparent" BorderThickness="0" Margin="10 0 5 0" Cursor="Hand">
+                    <ToggleButton.Content>
+                        <Bold FontSize="17">B</Bold>
+                    </ToggleButton.Content>
+                </ToggleButton>
+                <ToggleButton x:Name="HeaderItalicToggleButton" Template="{StaticResource FontWeightToggleButton}" 
+                              BorderBrush="Transparent" Background="Transparent" BorderThickness="0" Margin="5 0" Cursor="Hand">
+                    <ToggleButton.Content>
+                        <Italic FontSize="17">I</Italic>
+                    </ToggleButton.Content>
+                </ToggleButton>
+                <ToggleButton x:Name="HeaderUnderlineToggleButton" Template="{StaticResource FontWeightToggleButton}" 
+                              BorderBrush="Transparent" Background="Transparent" BorderThickness="0" Margin="5 0" Cursor="Hand">
+                    <ToggleButton.Content>
+                        <Underline FontSize="17">U</Underline>
+                    </ToggleButton.Content>
+                </ToggleButton>
+            </StackPanel>
+
+            <!--SampleText-->
+            <TextBlock Grid.Row="0" Grid.Column="2" Padding="5" Foreground="Black" FontSize="13" FontFamily="pack://application:,,,/CRM.Application;component/Resources/Fonts/#Yekan" Text="مشاهده نمونه:"/>
+            <Grid Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" Margin="5">
+                <Border BorderBrush="Gray" BorderThickness="1">
+                    <TextBlock x:Name="txtSampleText" FontSize="{Binding ElementName=fontSizeSlider,Path=Value}"
+                               FontFamily="{Binding Path=Source,Source={StaticResource familyCollection}}" 
+                               FontWeight="{Binding ElementName=HeaderBoldToggleButton,Path=IsChecked,Converter={StaticResource BooleanToFontWeightConverter}, ConverterParameter=Weight}"
+                               FontStyle="{Binding ElementName=HeaderItalicToggleButton,Path=IsChecked,Converter={StaticResource BooleanToFontWeightConverter},ConverterParameter=Style}"
+                               TextDecorations="{Binding ElementName=HeaderUnderlineToggleButton,Path=IsChecked,Converter={StaticResource BooleanToFontWeightConverter}, ConverterParameter=Decoration}"
+                               TextAlignment="Center" TextWrapping="Wrap" Background="White">
+                        <Run Text="این قسمت برای مشاهده نتیجه فونت انتخابی است."/>
+                        <LineBreak/>
+                        <Run Text="This section is for preview"/>
+                        <LineBreak/>
+                        <Run Text="1,2,3,4,5,6,7,8,9"/>
+                    </TextBlock>
+                </Border>
+                <Slider x:Name="fontSizeSlider" IsSnapToTickEnabled="True"
+                    Maximum="18" Value="10" FlowDirection="LeftToRight"
+                    Minimum="8" SmallChange="0.5" LargeChange="2" HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom" Width="192" Margin="0 0 0 5"
+                    TickPlacement="BottomRight" AutoToolTipPlacement="TopLeft"/>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</UserControl>
+

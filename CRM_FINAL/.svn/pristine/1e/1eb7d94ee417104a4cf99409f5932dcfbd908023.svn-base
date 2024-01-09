@@ -1,0 +1,51 @@
+﻿<Local:UserControlBase     
+             x:Class="CRM.Application.UserControls.TranslationCabinetInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:Local="clr-namespace:CRM.Application.Local"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" Loaded="UserControl_Loaded">
+
+    <StackPanel FlowDirection="RightToLeft">
+
+            <Grid IsEnabled="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+                <Label   Grid.Row="0" Grid.Column="0" Content="از کافو : " />
+                <TextBox Grid.Row="0" Grid.Column="1" Name="OldCabinetTextBox"           Text="{Binding OldCabinet}" />
+
+                <Label    Grid.Row="0"  Grid.Column="2" Content="از ورودی : " />
+                <TextBox  Grid.Row="0"  Grid.Column="3" Name="FromOldCabinetInputTextBox" Text="{Binding FromOldCabinetInput}"/>
+
+
+               <!--<Label    Grid.Row="0"  Grid.Column="2" Content="از بوخت : " />
+               <TextBox  Grid.Row="0"  Grid.Column="3" Name="FromOldBuchtTextBox" Text="{Binding FromOldCabinetInput}"/>-->
+
+            <Label    Grid.Row="0" Grid.Column="4" Content="تاورودی : " />
+                <TextBox  Grid.Row="0" Grid.Column="5" Name="ToOldCabinetInputTextBox"   Text="{Binding ToOldCabinetInput}"/>
+
+
+               <Label   Grid.Row="1" Grid.Column="0" Content="به کافو : " />
+               <TextBox Grid.Row="1" Grid.Column="1" Name="NewCabinetTextBox"            Text="{Binding NewCabinet}" />
+
+               <Label    Grid.Row="1"  Grid.Column="2" Content="از ورودی : " />
+               <TextBox  Grid.Row="1"  Grid.Column="3" Name="FromNewCabinetInputTextBox" Text="{Binding FromNewCabinetInput}"/>
+
+               <Label    Grid.Row="1" Grid.Column="4" Content="تاورودی : " />
+               <TextBox  Grid.Row="1" Grid.Column="5" Name="ToNewCabinetInputTextBox"    Text="{Binding ToNewCabinetInput}"/>
+
+        </Grid>
+    </StackPanel>
+</Local:UserControlBase>
+

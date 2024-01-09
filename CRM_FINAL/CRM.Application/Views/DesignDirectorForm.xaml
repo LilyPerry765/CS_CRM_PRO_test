@@ -1,0 +1,176 @@
+﻿<Local:RequestFormBase          
+                   x:Class="CRM.Application.Views.DesignDirectorForm"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                   xmlns:converter="clr-namespace:CRM.Converters" 
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+                   WindowStartupLocation="CenterScreen" 
+                   Loaded="RequestFormBase_Loaded" 
+                   Title="مدیر طراحی" >
+
+    <ScrollViewer  Padding="0 0 10 0" FlowDirection="RightToLeft">
+        <Grid>
+            <Grid.Resources>
+                <ResourceDictionary Source="/CRM.Application;Component/Resources/Styles/AutoComplete.Styles.xaml" />
+            </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <uc:CustomerInfoSummary Grid.Row="0" x:Name="CustomerInfoUC"/>
+
+            <uc:RequestInfoSummary Grid.Row="1" x:Name="RequestInfoUC"/>
+
+            <uc:E1InfoSummary Grid.Row =" 2" x:Name="E1InfoSummaryUC" Visibility="Collapsed"/>
+
+            <uc:V2SpaceAndPowerInfoSummary Grid.Row="2" x:Name="V2SpaceAndPowerInfoSummaryUC" Visibility="Collapsed"/>
+            
+            <GroupBox Grid.Row="3" Header="جزئیات طراحی">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <DataGrid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" DockPanel.Dock="Bottom" x:Name="ItemsDataGrid" Margin="5"
+                      BorderThickness="0 1 0 0"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="True"
+                      CanUserResizeColumns="True"
+                      CanUserResizeRows="False"
+                      CanUserDeleteRows="False"
+                      SelectionMode="Single"
+                      SelectionUnit="FullRow"
+                      ItemsSource="{Binding}"
+                      IsReadOnly="True">
+                        <!--<DataGrid.ContextMenu>
+                        <ContextMenu FontFamily="Tahoma">
+                            <MenuItem Header="افزودن" Click="AddItem">
+                                <MenuItem.Icon>
+                                    <Image Source="/CRM.Application;component/Images/add_16x16.png" Width="16" Height="16" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="ویرایش" Click="EditItem">
+                                <MenuItem.Icon>
+                                    <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="حذف" Click="DeleteItem">
+                                <MenuItem.Icon>
+                                    <Image Source="/CRM.Application;component/Images/delete2_16x16.png" Width="16" Height="16" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                        </ContextMenu>
+                    </DataGrid.ContextMenu>-->
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="/CRM.Application;component/Images/element_16x16.png" Width="16" Height="16" HorizontalAlignment="Center" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="مشاهده"  IsReadOnly="True" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="/CRM.Application;component/Images/DocumentPicture16x16.png" MouseUp="Image_MouseUp" Cursor="Hand"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="اداره" IsReadOnly="True" Binding="{Binding FileType}"/>
+
+                            <!--<DataGridTemplateColumn Header="حذف"  IsReadOnly="True" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="/CRM.Application;component/Images/delete2_16x16.png" MouseUp="DeleteImage_MouseUp"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>-->
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Label      Grid.Row="1" Grid.Column="0"  x:Name="DescriptionLabel"   Content="توضیحات" />
+                    <TextBox    Grid.Row="1" Grid.Column="1"  x:Name="DescriptionTextBox"  Grid.ColumnSpan="3" TextWrapping="Wrap"/>
+
+                    <Label      Grid.Row="2" Grid.Column="0"   x:Name="StatusLabel" Content="وضعیت"  />
+                    <ComboBox   Grid.Row="2" Grid.Column="1"   x:Name="StatusComboBox" DisplayMemberPath="StatusResult" SelectedValuePath="StepStatusID"   />
+
+                    <!--<Label       Grid.Row="0" Grid.Column="0"  Content="فایل طراحی : "  x:Name="DesignDirectorLabel"    />
+                    <StackPanel  Grid.Row="0" Grid.Column="1"  Orientation="Horizontal"  x:Name="DesignDirectorStackPanel">
+                        <ListBox  Grid.ColumnSpan="3" x:Name="DesignDirectorListBox">
+                            <ListBoxItem Tag="0" Selected="FileLisBoxItem_Selected">فایل</ListBoxItem>
+                            <ListBoxItem Tag="1" Selected="ScannerLisBox_Selected">اسکنر</ListBoxItem>
+                        </ListBox>
+                        <Image Source="/CRM.Application;component/Images/DocumentPicture16x16.png" MouseUp="Image_MouseUp" />
+                    </StackPanel>--><!--
+
+                    <Label       Grid.Row="1" Grid.Column="0"  Content="فایل طراحی و انتقال : " x:Name="TransferDepartmentTypeLabel" Visibility="Collapsed"/>
+                    <StackPanel  Grid.Row="1" Grid.Column="1"  Orientation="Horizontal"           x:Name="TransferDepartmentTypeStackPanel" Visibility="Collapsed">
+                        --><!--<ListBox  Grid.ColumnSpan="3" x:Name="TransferDepartmentTypeListBox">
+                            <ListBoxItem Tag="0" Selected="TransferDepartmentFileLisBoxItem_Selected">فایل</ListBoxItem>
+                            <ListBoxItem Tag="1" Selected="TransferDepartmentScannerLisBox_Selected">اسکنر</ListBoxItem>
+                        </ListBox>--><!--
+                        <Image Source="/CRM.Application;component/Images/DocumentPicture16x16.png" MouseUp="TransferDepartmentImage_MouseUp" />
+                    </StackPanel>
+
+
+                    <Label       Grid.Row="2" Grid.Column="0"  Content="فایل دستور مداری : " x:Name="CommandCircuitTypeLabel" Visibility="Collapsed"/>
+                    <StackPanel  Grid.Row="2" Grid.Column="1"  Orientation="Horizontal " x:Name="CommandCircuitTypeStackPanel" Visibility="Collapsed">
+                        --><!--<ListBox  Grid.ColumnSpan="3" x:Name="CommandCircuitTypeListBox">
+                            <ListBoxItem Tag="0" Selected="CommandCircuitFileLisBoxItem_Selected">فایل</ListBoxItem>
+                            <ListBoxItem Tag="1" Selected="CommandCircuitScannerLisBox_Selected">اسکنر</ListBoxItem>
+                        </ListBox>--><!--
+                        <Image Source="/CRM.Application;component/Images/DocumentPicture16x16.png" MouseUp="CommandCircuitImage_MouseUp" />
+                    </StackPanel>
+
+                    <Label       Grid.Row="3" Grid.Column="0"  Content="فایل نیرو : " x:Name="PowerLabel" Visibility="Collapsed"/>
+                    <StackPanel  Grid.Row="3" Grid.Column="1"  Orientation="Horizontal" x:Name="PowerStackPanel" Visibility="Collapsed">
+                        --><!--<ListBox  Grid.ColumnSpan="3" x:Name="PowerListBox">
+                            <ListBoxItem Tag="0" Selected="PowerFileLisBoxItem_Selected">فایل</ListBoxItem>
+                            <ListBoxItem Tag="1" Selected="PowerScannerLisBox_Selected">اسکنر</ListBoxItem>
+                        </ListBox>--><!--
+                        <Image Source="/CRM.Application;component/Images/DocumentPicture16x16.png" MouseUp="PowerImage_MouseUp" />
+                    </StackPanel>
+
+                    <Label       Grid.Row="5" Grid.Column="0"  Content="فایل طراحی کابل : " x:Name="CableDesignLabel"      Visibility="Collapsed"/>
+                    <StackPanel  Grid.Row="5" Grid.Column="1"  Orientation="Horizontal"       x:Name="CableDesignStackPanel" Visibility="Collapsed">
+                        --><!--<ListBox  Grid.ColumnSpan="3" x:Name="PowerListBox">
+                            <ListBoxItem Tag="0" Selected="PowerFileLisBoxItem_Selected">فایل</ListBoxItem>
+                            <ListBoxItem Tag="1" Selected="PowerScannerLisBox_Selected">اسکنر</ListBoxItem>
+                        </ListBox>--><!--
+                        <Image Source="/CRM.Application;component/Images/DocumentPicture16x16.png" MouseUp="CableDesignImage_MouseUp" />
+                    </StackPanel>
+
+                    <Label       Grid.Row="6" Grid.Column="0"  Content="فایل سوئیچ : "        x:Name="SwitchLabel"      Visibility="Collapsed"/>
+                    <StackPanel  Grid.Row="6" Grid.Column="1"  Orientation="Horizontal"         x:Name="SwitchStackPanel" Visibility="Collapsed">
+                        --><!--<ListBox  Grid.ColumnSpan="3" x:Name="PowerListBox">
+                            <ListBoxItem Tag="0" Selected="PowerFileLisBoxItem_Selected">فایل</ListBoxItem>
+                            <ListBoxItem Tag="1" Selected="PowerScannerLisBox_Selected">اسکنر</ListBoxItem>
+                        </ListBox>--><!--
+                        <Image Source="/CRM.Application;component/Images/DocumentPicture16x16.png" MouseUp="SwitchImage_MouseUp" />
+                    </StackPanel>-->
+
+                </Grid>
+
+
+            </GroupBox>
+
+
+        </Grid>
+    </ScrollViewer>
+</Local:RequestFormBase>

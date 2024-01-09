@@ -1,0 +1,29 @@
+﻿<Local:PopupWindow  x:Class="CRM.Application.Views.ADSLChangePortReasonForm"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                    xmlns:Local="clr-namespace:CRM.Application.Local"
+                    xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                    mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    Loaded="PopupWindow_Loaded" Icon="/CRM.Application;component/Images/Modem_48x48.png" 
+                    Title="فرم ویرایش علت تعویض پورت ADSL" Width="500" Height="200" ResizeMode="NoResize">
+
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <Label Content="علت تعویض پورت ADSL : " Grid.Row="0" Grid.Column="0"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding Description}" Height="60" TabIndex="1" TextWrapping="Wrap"/>
+
+        <Button Content="ذخیره" Grid.Row="1" Grid.Column="0" Name="SaveButton" Click="SaveForm" Tag="Footer" TabIndex="2"/>
+    </Grid>
+
+    </Local:PopupWindow>

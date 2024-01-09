@@ -1,0 +1,21 @@
+﻿--13931120 - 1330
+--الگوی گزارش آمار سرویس ویژه در بخش امور مشترکین بر روی سیستم خودم نهایی شد حالا باید بر روی سرور 14 هم بروزرسانی شود
+--UPDATE R14
+--SET TEMPLATE = RM.Template
+--FROM 
+--	ReportTemplate RM
+--INNER JOIN 
+--	[192.168.0.14\PENDARSQL].CRM.DBO.REPORTTEMPLATE R14 ON RM.ID = R14.ID 
+--WHERE 
+--	RM.ID = 158 AND R14.ID = 158
+
+--13931120 - 1343
+--سرور کرمانشاه
+--UPDATE RR
+--SET Template = R14.Template
+--FROM 
+--	ReportTemplate R14 
+--INNER JOIN 
+--	[78.39.252.109].CRM.DBO.REPORTTEMPLATE RR ON R14.ID = RR.ID
+--WHERE 
+--	RR.ID = 158 AND R14.ID = 158

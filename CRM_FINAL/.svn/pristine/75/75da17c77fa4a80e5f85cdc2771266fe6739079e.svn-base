@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\CRM.ServiceHost</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="App_Code/Security/AuthorizationPolicy.cs">
+      <publishTime>09/28/2015 14:05:32</publishTime>
+    </File>
+    <File Include="App_Code/Security/CustomPrincipal.cs">
+      <publishTime>09/28/2015 15:27:05</publishTime>
+    </File>
+    <File Include="bin/CookComputing.XmlRpcV2.dll">
+      <publishTime>09/05/2015 14:43:34</publishTime>
+    </File>
+    <File Include="bin/CRM.Data.dll">
+      <publishTime>09/29/2015 10:07:59</publishTime>
+    </File>
+    <File Include="bin/CRM.Service.dll">
+      <publishTime>09/29/2015 10:08:00</publishTime>
+    </File>
+    <File Include="bin/Folder.Common.dll">
+      <publishTime>09/16/2012 15:31:40</publishTime>
+    </File>
+    <File Include="CRMService.svc">
+      <publishTime>09/28/2015 15:00:43</publishTime>
+    </File>
+    <File Include="Document/Certificate Setup.zip">
+      <publishTime>09/28/2015 15:45:53</publishTime>
+    </File>
+    <File Include="Document/CertificateSetup.exe">
+      <publishTime>05/18/2015 13:02:32</publishTime>
+    </File>
+    <File Include="Document/Document.docx">
+      <publishTime>09/29/2015 08:41:00</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>09/28/2015 15:31:35</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

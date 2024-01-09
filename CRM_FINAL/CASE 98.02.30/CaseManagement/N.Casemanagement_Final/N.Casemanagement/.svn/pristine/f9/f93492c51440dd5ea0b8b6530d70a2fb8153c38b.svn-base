@@ -1,0 +1,19 @@
+﻿
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script>
+        $(function () {
+            window.open("http://80.191.61.226/output/index.htm");
+            //$("#includedContent").load("Document/index.htm");
+        });
+    </script> 
+    <title></title>
+</head>
+<body>
+    <div id="includedContent"></div>
+</body>
+</html>

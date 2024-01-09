@@ -1,0 +1,10 @@
+﻿--13931108 - 2025
+--رکورد گزارش درخواستهای خارج از مرز را در سرور 14 وارد کردم
+--INSERT INTO [192.168.0.14\PENDARSQL].CRM.DBO.ReportTemplate
+--(ID,Title,Template,IconName,Category,UserControlName)
+--SELECT 
+--	RM.ID,RM.Title,NULL,RM.IconName,RM.Category,RM.UserControlName
+--FROM 
+--	ReportTemplate RM
+--WHERE 
+--	RM.ID = 269

@@ -1,0 +1,138 @@
+﻿<Local:TabWindow  x:Class="CRM.Application.Views.ADSLEquimentList"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                  mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="800"
+                  xmlns:Local="clr-namespace:CRM.Application.Local"
+                  xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                  xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+                  Loaded="TabWindow_Loaded"
+                  xmlns:uc="clr-namespace:CRM.Application.UserControls">
+
+    <DockPanel FlowDirection="RightToLeft">
+        <Expander x:Name="SearchExpander"
+              DockPanel.Dock="Top"
+              ExpandDirection="Down"
+              IsExpanded="True"
+              Style="{StaticResource SearchExpander}">
+
+            <GroupBox DockPanel.Dock="Top" BorderBrush="#384a66" BorderThickness="0">
+                <DockPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="15" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <Label Grid.Row="0" Grid.Column="0" Content="مرکز : " />
+                        <uc:CheckableComboBox Grid.Row="0" Grid.Column="2" x:Name="CenterComboBox"/>
+
+                        <Label Grid.Row="0" Grid.Column="4" Content="نام تجهیزات : " />
+                        <TextBox Grid.Row="0" Grid.Column="6" x:Name="EquipmentTextBox"/>
+
+                        <Label Grid.Row="0" Grid.Column="8" Content="نوع تجهیزات : " />
+                        <uc:CheckableComboBox Grid.Row="0" Grid.Column="10" x:Name="EquipmentTypeCheckableComboBox"/>
+
+                        <!--<Label Grid.Row="1" Grid.Column="0" Content="شماره شلف : " />
+                        <uc:CheckableComboBox Grid.Row="1" Grid.Column="2" x:Name="ShelfComboBox"/>-->
+                        
+                        <Label Grid.Row="1" Grid.Column="0" Content="نوع پورت : " />
+                        <uc:CheckableComboBox Grid.Row="1" Grid.Column="2" x:Name="PortTypeComboBox"/>
+
+                        <!--<Label Grid.Row="1" Grid.Column="8" Content="نوع AAA : " />
+                        <uc:CheckableComboBox Grid.Row="1" Grid.Column="10" x:Name="AAATypeComboBox"/>-->
+
+                        <Label Grid.Row="1" Grid.Column="4" Content="شرکت سازنده : " />
+                        <uc:CheckableComboBox Grid.Row="1" Grid.Column="6" x:Name="ProductCheckableComboBox"/>
+
+                        <!--<Label Grid.Row="2" Grid.Column="4" Content="مکان نصب : " />
+                        <uc:CheckableComboBox Grid.Row="2" Grid.Column="6" x:Name="LocationInstallCheckableComboBox"/>                        
+
+                        <Label Grid.Row="2" Grid.Column="8" Content="سایت : " />
+                        <TextBox Grid.Row="2" Grid.Column="10" x:Name="SiteTextBox"/>-->
+
+                        <WrapPanel DockPanel.Dock="Bottom" Grid.ColumnSpan="10" Grid.Row="3" Grid.Column="10"  Margin="0 10 0 10" HorizontalAlignment="Right">
+                            <Button x:Name="SearchButton" Height="23" HorizontalAlignment="Left" Margin="0" Width="80" Content="جستجو" Click="Search" IsDefault="True" />
+                            <Button Height="23" HorizontalAlignment="Left" Name="ResetButton" Width="80" Click="ResetSearchForm" Content="بازنشانی" />                            
+                        </WrapPanel>
+                    </Grid>
+                </DockPanel>
+            </GroupBox>
+        </Expander>
+
+        <DataGrid DockPanel.Dock="Bottom" x:Name="ItemsDataGrid"
+                  BorderThickness="0 1 0 0"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="True"
+                  CanUserResizeColumns="True"
+                  CanUserResizeRows="False"
+                  CanUserDeleteRows="False"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  IsReadOnly="True"
+                  ItemsSource="{Binding}"
+                  MouseDoubleClick="EditItem">
+            <DataGrid.ContextMenu>
+                <ContextMenu FontFamily="Tahoma">
+                    <MenuItem Header="پورت ها" Click="PortsItem_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/accept_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="افزودن" Click="AddItem">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/add_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="ویرایش" Click="EditItem">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="حذف" Click="DeleteItem">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/delete2_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="/CRM.Application;component/Images/element_16x16.png" Width="16" Height="16" HorizontalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
+                <DataGridComboBoxColumn Header=" مرکز " Width="*" x:Name="CenterColumn" SelectedValueBinding="{Binding Path=CenterID, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" DisplayMemberPath="Name" />
+                <DataGridTextColumn Header=" نام تجهیزات "  Width="*" Binding="{Binding Path=Equipment, UpdateSourceTrigger=PropertyChanged}" />                
+                <DataGridComboBoxColumn Header=" نوع تجهیزات "  Width="*" x:Name="TypeCulomn" SelectedValueBinding="{Binding Path=EquipmentType, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" DisplayMemberPath="Name"/>
+                <!--<DataGridTextColumn Header=" رک - شلف "  Width="*" Binding="{Binding Path=RockShelf, UpdateSourceTrigger=PropertyChanged}" />-->
+                <DataGridComboBoxColumn Header=" نوع پورت " Width="*" x:Name="ADSLPortTypeColumn" SelectedValueBinding="{Binding Path=PortTypeID, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" DisplayMemberPath="Name" />
+                <!--<DataGridComboBoxColumn Header=" نوع AAAType " Width="*" x:Name="ADSLAAATypeColumn" SelectedValueBinding="{Binding Path=AAAType, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" DisplayMemberPath="Name" />-->
+                <DataGridComboBoxColumn Header=" شرکت سازنده "  Width="*" x:Name="ProductCulomn" SelectedValueBinding="{Binding Path=Product, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" DisplayMemberPath="Name"/>
+                <!--<DataGridComboBoxColumn Header=" مکان نصب "  Width="*" x:Name="LocationInstallCulomn" SelectedValueBinding="{Binding Path=LocationInstall, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" DisplayMemberPath="Name"/>
+                <DataGridTextColumn Header=" سایت " Width="*" x:Name="SiteCulomn" Binding="{Binding Path=Site, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridComboBoxColumn Header=" شرکت PAP " Width="*" x:Name="PAPInfoColumn" SelectedValueBinding="{Binding Path=PAPInfoID, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" DisplayMemberPath="Name" />-->
+                
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</Local:TabWindow >

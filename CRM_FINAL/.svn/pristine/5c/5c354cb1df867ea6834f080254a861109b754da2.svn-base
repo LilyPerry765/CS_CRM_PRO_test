@@ -1,0 +1,44 @@
+﻿<local:ReportBase x:Class="CRM.Application.Reports.ReportUserControls.PostContactsReportUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CRM.Application.Local"
+             xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+             mc:Ignorable="d">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="15"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="1" Grid.Column="0" Content="شهر :"/>
+        <ComboBox x:Name="CitiesComboBox" Grid.Row="1" Grid.Column="1" DisplayMemberPath="Name" SelectedValuePath="ID" LostFocus="CitiesComboBox_LostFocus"/>
+        
+        <Label Grid.Row="1" Grid.Column="3" Content="مرکز :"/>
+        <ComboBox x:Name="CentersComboBox" Grid.Row="1" Grid.Column="4" DisplayMemberPath="Name" SelectedValuePath="ID" LostFocus="CentersComboBox_LostFocus"/>
+        
+        <Label Grid.Row="3" Grid.Column="0" Content="کافو :"/>
+        <ComboBox x:Name="CabinetsComboBox" Grid.Row="3" Grid.Column="1" DisplayMemberPath="Name" SelectedValuePath="ID" LostFocus="CabinetsComboBox_LostFocus"/>
+
+        <Label Grid.Row="3" Grid.Column="3" Content="پست :"/>
+        <ComboBox x:Name="PostsComboBox" Grid.Row="3" Grid.Column="4" DisplayMemberPath="Name" SelectedValuePath="ID" LostFocus="PostsComboBox_LostFocus"/>
+
+        <Label Grid.Row="5" Grid.Column="0" Content="اتصالی :"/>
+        <ComboBox x:Name="PostContactsComboBox" Grid.Row="5" Grid.Column="1" DisplayMemberPath="Name" SelectedValuePath="LongID"/>
+
+    </Grid>
+</local:ReportBase>

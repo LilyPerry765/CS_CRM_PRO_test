@@ -1,0 +1,115 @@
+﻿<Local:PopupWindow x:Class="CRM.Application.Views.ADSLEquimentForm"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d:DesignWidth="780"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                   Icon="/CRM.Application;component/Images/Equipment_48x48.png"
+                   Loaded="PopupWindow_Loaded"
+        Title="تجهیزات ADSL" >
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <GroupBox Grid.Row="0" Grid.Column="0" Header="تجهیزات ADSL">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0" Grid.Row="0" Content="شهر : " />
+                <ComboBox  Grid.Column="1" Grid.Row="0" x:Name="CityComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="CityComboBox_SelectionChanged" />
+
+                <Label Content="مرکز : " VerticalAlignment="Center" Grid.Column="2"/>
+                <ComboBox DisplayMemberPath="CenterName" SelectedValuePath="ID" SelectedValue="{Binding Path=CenterID}" Grid.Column="3" x:Name="CenterComboBox" SelectionChanged="CenterComboBox_SelectionChanged" />
+
+                <Label Grid.Row="0" Grid.Column="4" Content="نام تجهیزات"/>
+                <TextBox Grid.Row="0" Grid.Column="5" x:Name="EquipmentTextBox" Text="{Binding Equipment}"/>
+
+                <Label Grid.Row="1" Grid.Column="0" Content="شماره رک :"/>
+                <ComboBox  Grid.Column="1" Grid.Row="1" x:Name="RockComboBox" DisplayMemberPath="No" SelectedValuePath="ID" SelectionChanged="RockComboBox_SelectionChanged" />
+
+                <Label Content="شماره شلف : " VerticalAlignment="Center" Grid.Row="1" Grid.Column="2"/>
+                <ComboBox DisplayMemberPath="No" SelectedValuePath="ID" SelectedValue="{Binding Path=ShelfID}" Grid.Row="1" Grid.Column="3" x:Name="ShelfComboBox"  />
+
+                <Label Grid.Row="1" Grid.Column="4" Content="نوع تجهیزات"/>
+                <ComboBox Grid.Row="1" Grid.Column="5" x:Name="TypeComboBox" SelectedValue="{Binding EquipmentType}" DisplayMemberPath="Name" SelectedValuePath="ID"/>
+
+                <Label Grid.Row="2" Grid.Column="0" Content="نوع پورت"/>
+                <ComboBox Grid.Row="2" Grid.Column="1" x:Name="ADSLPortTypeCombobox" SelectedValue="{Binding PortTypeID}" DisplayMemberPath="Name" SelectedValuePath="ID"/>
+                
+                <Label Grid.Row="2" Grid.Column="2" Content="نوع AAA"/>
+                <ComboBox Grid.Row="2" Grid.Column="3" x:Name="ADSLAAATypeCombobox" SelectedValue="{Binding AAAType}" DisplayMemberPath="Name" SelectedValuePath="ID"/>
+                
+                <Label Grid.Row="2" Grid.Column="4" Content="مکان نصب"/>
+                <ComboBox Grid.Row="2" Grid.Column="5" x:Name="LocationInstallComboBox" SelectedValue="{Binding LocationInstall}" DisplayMemberPath="Name" SelectedValuePath="ID"/>
+                
+                <Label Grid.Row="3" Grid.Column="0" Content="شرکت سازنده"/>
+                <ComboBox Grid.Row="3" Grid.Column="1" x:Name="ProductComboBox" SelectedValue="{Binding Product}" DisplayMemberPath="Name" SelectedValuePath="ID"/>
+                
+                <Label Grid.Row="3" Grid.Column="2" Content="سایت"/>                
+                <TextBox Grid.Row="3" Grid.Column="3" x:Name="SiteTextBox" Text="{Binding Site}"/>
+                
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="1" Grid.Column="0" Header="مشخصات پورتها" x:Name="PortInfoGroupBox">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Content="از پورت"/>
+                <TextBox Grid.Row="0" Grid.Column="1"  x:Name="FromPortTextBox"/>
+                <Label Grid.Row="0" Grid.Column="2" Content="تا پورت"/>
+                <TextBox Grid.Row="0" Grid.Column="3" x:Name="ToPortTextBox"/>
+                <Label Grid.Row="1" Grid.Column="0" Content="نحوه اتصال"/>
+                <ComboBox Grid.Row="1" Grid.Column="1" x:Name="TypeOfConnectedComboBox" SelectedValuePath="ID" DisplayMemberPath="Name"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="2" Grid.Column="0" Header="مشخصات اولین بوخت ورودی" x:Name="InputConnectionGroupBox" >
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <uc:ColumnRowConnection Grid.Row="0" Grid.Column="0" x:Name="FromInputConnection" DoConnectionChange="DoConnectionChange"/>
+                <uc:ColumnRowConnection Grid.Row="1" Grid.Column="0" x:Name="ToInputConnection" IsEnabled="False"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="3" Grid.Column="0" Header="مشخصات اولین بوخت خروجی" x:Name="OutputConnectionGroupBox">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <uc:ColumnRowConnection Grid.Row="0" Grid.Column="0" x:Name="FromOutputConnection" DoConnectionChange="DoOutPutConnectionChange"/>
+                <uc:ColumnRowConnection Grid.Row="1" Grid.Column="0" x:Name="ToOutputConnection" IsEnabled="False"/>
+            </Grid>
+        </GroupBox>
+
+        <Button Content="ذخیره" Grid.Row="5" Name="SaveButton" Click="SaveForm" Tag="Footer" TabIndex="4"/>
+    </Grid>
+</Local:PopupWindow>

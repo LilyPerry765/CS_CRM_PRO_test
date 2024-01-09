@@ -1,0 +1,52 @@
+﻿--13940423 
+--my PC
+--یک ستون جدید به جدول فضا و پاور اضافه شد
+--ALTER TABLE SpaceAndPower
+--add HasFibre bit not null default(0)
+--GO
+--exec sp_addextendedproperty N'MS_Description',N'آیا درخواست فضا و پاور دارای فیبر میباشد یا خیر','Schema',dbo,'table',SpaceAndPower,'column',HasFibre
+--GO
+--سرور 14
+--ALTER TABLE SpaceAndPower
+--add HasFibre bit not null default(0)
+--GO
+--exec sp_addextendedproperty N'MS_Description',N'آیا درخواست فضا و پاور دارای فیبر میباشد یا خیر','Schema',dbo,'table',SpaceAndPower,'column',HasFibre
+--GO
+--کرمانشاه
+--ALTER TABLE SpaceAndPower
+--add HasFibre bit not null default(0)
+--GO
+--exec sp_addextendedproperty N'MS_Description',N'آیا درخواست فضا و پاور دارای فیبر میباشد یا خیر','Schema',dbo,'table',SpaceAndPower,'column',HasFibre
+--GO
+--گیلان
+--ALTER TABLE SpaceAndPower
+--add HasFibre bit not null default(0)
+--GO
+--exec sp_addextendedproperty N'MS_Description',N'آیا درخواست فضا و پاور دارای فیبر میباشد یا خیر','Schema',dbo,'table',SpaceAndPower,'column',HasFibre
+--GO
+
+--13940423
+--حذف مقدار پیش فرض از ستون فیبر
+--MY PC , سرور 14
+--ALTER TABLE SpaceAndPower 
+--Alter column HasFibre bit not null
+--GO
+--ALTER TABLE SpaceAndPower
+--DROP CONSTRAINT DF__SpaceAndP__HasFi__70161ED6
+--GO
+--13940423
+--حذف مقدار پیش فرض از ستون فیبر
+--گیلان
+--ALTER TABLE SpaceAndPower 
+--Alter column HasFibre bit not null
+--GO
+--ALTER TABLE SpaceAndPower
+--DROP CONSTRAINT DF__SpaceAndP__HasFi__0DF15D79
+--GO
+--کرمانشاه
+--ALTER TABLE SpaceAndPower 
+--Alter column HasFibre bit not null
+--GO
+--ALTER TABLE SpaceAndPower
+--DROP CONSTRAINT DF__SpaceAndP__HasFi__76C31C65
+--GO

@@ -1,0 +1,48 @@
+﻿<Local:PopupWindow Title="انتساب پی سی ام"
+                   x:Class="CRM.Application.Views.PCMAssignment"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib"
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls"
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" ResizeMode="NoResize"
+                   Width="850" Height="350" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006">
+    <StackPanel FlowDirection="RightToLeft">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="27"/>
+                <RowDefinition Height="27"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="مشخصه پی سی ام : " Grid.Row="0" Grid.Column="0"/>
+            <ComboBox Grid.Row="0" Grid.Column="1" DisplayMemberPath="Name" SelectedValuePath="ID" x:Name="MUIDComboBox" SelectionChanged="MUIDComboBox_SelectionChanged"/>
+
+            <Label Content="نوع پی سی ام : " Grid.Row="0" Grid.Column="3"/>
+            <ComboBox Grid.Row="0" Grid.Column="4" DisplayMemberPath="Name" SelectedValuePath="ID" x:Name="pcmTypeComboBox" IsEnabled="False"/>
+
+            <Label Content="ورودی : " Grid.Row="1" Grid.Column="0"/>
+            <ComboBox Grid.Row="1" Grid.Column="1" DisplayMemberPath="Name" SelectedValuePath="LongID" x:Name="InputComboBox" SelectionChanged="InputComboBox_SelectionChanged"/>
+
+            <Label Grid.Column="3" Grid.Row="1"   Content="مشخصه بوخت : "  />
+            <TextBox Grid.Column="4" Grid.Row="1" x:Name="BuchtNoTextBox" IsEnabled="False" />
+
+            <Label Grid.Column="0" Grid.Row="2"   Content="آدرس محل نصب : "  />
+            <TextBox Grid.Column="1" Grid.Row="2" x:Name="AddressTextBox" TextWrapping="Wrap" AcceptsReturn="True"/>
+
+            <Label Grid.Column="3" Grid.Row="2"   Content="کد پستی محل نصب : "  Height="27" VerticalAlignment="Top"/>
+            <TextBox Grid.Column="4" Grid.Row="2" x:Name="PostCodeTextBox" Height="27" VerticalAlignment="Top"/>
+
+            <Button Grid.Row="20" Grid.Column="0" Content="ذخیره" Name="SaveButton" Click="SaveForm" Tag="Footer" />
+        </Grid>
+    </StackPanel>
+</Local:PopupWindow>

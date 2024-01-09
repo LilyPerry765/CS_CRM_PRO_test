@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "ریز فعالیت کاربران بر اساس استان";
+}
+
+@section Head {
+    <script src="~/Scripts/flot/jquery.flot.min.js"></script>
+    <script src="~/Scripts/flot/jquery.flot.resize.min.js"></script>
+    <script src="~/Scripts/flot/jquery.flot.pie.min.js"></script>
+    <script src="~/Scripts/flot/jquery.flot.categories.min.js"></script>
+    <script src="~/Scripts/adminlte/demo.js"></script>
+    <script src="~/Scripts/chartjs/Chart.min.js"></script>
+    <script src="~/Scripts/morris/morris.min.js"></script>
+    <script src="~/Scripts/raphael/raphael-min.js"></script>
+
+    <link rel="stylesheet" href="~/Scripts/morris/morris.css">
+
+}
+
+@section ContentHeader {
+    <h1>@ViewData["Title"]<small></small></h1>
+}
+
+<div class="row">
+    <section class="col-lg-12 connectedSortable">
+
+        @*<div class="box-header">
+                <h3 class="box-title">گزارش استان ها</h3>
+            </div>*@
+
+        <div id="ProvinceChart" style="height: 600px;"></div>
+
+    </section>
+
+</div>
+
+
+<script type="text/javascript">    
+    CaseManagement.StimulReport.UserProvinceActivityDetail.initializePage();
+</script>

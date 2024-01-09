@@ -1,0 +1,144 @@
+﻿<Local:UserControlBase 
+             xmlns:Local="clr-namespace:CRM.Application.Local"
+             x:Class="CRM.Application.UserControls.ChangeName"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" Tag="تغییر نام" mc:Ignorable="d" d:DesignWidth="820" Loaded="LoadData">
+    <DockPanel FlowDirection="RightToLeft">
+        <StackPanel Orientation="Vertical">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <GroupBox Grid.Row="0" Name="NewCustomeGroupBox" Margin="0,0,0,10">
+                    <GroupBox.Header>
+                        <Label Content="مشخصات خریدار" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14"/>
+                    </GroupBox.Header>
+                    <Grid x:Name="NewCustomerInfo">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="180" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="80" />
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="6" Grid.Column="0" Content="کد ملی  / شماره ثبت  : " />
+                        <TextBox Grid.Row="6" Grid.Column="1" Name="NationalCodeTextBox" Text="{Binding NationalCodeOrRecordNo}" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                        <Button Grid.Row="6" Grid.Column="2" Name="SearchCustomer" Content="جستجو" Click="SearchCustomer_Click" />
+
+                        <Label Grid.Row="6" Grid.Column="3" Content="نام مشترک : " />
+                        <TextBox Grid.Row="6" Grid.Column="4" Name="CustomerNameTextBox" IsEnabled="False" />
+                        <Button Grid.Row="0" Grid.Column="5" Content="ویرایش"  x:Name="EditSearchCustomer" Click="EditSearchCustomer_Click" />
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="1" Name="BillGroupBox" Margin="0,0,0,10">
+                    <GroupBox.Header>
+                        <Label Content="مشخصات آخرین قبض" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14"/>
+                    </GroupBox.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="180" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="180" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="6" Grid.Column="0" Content="شماره آخرین دوره  : " />
+                        <!--<TextBox Grid.Row="6" Grid.Column="1" Name="LastCycleNoTextBox" Style="{StaticResource ResourceKey=NumericTextBox}"/>-->
+                        <ComboBox   Grid.Row="6" Grid.Column="1" x:Name="LastCycleNoComnboBox"  DisplayMemberPath="Name" SelectedValuePath="ID" />
+
+
+                        <Label Grid.Row="6" Grid.Column="2" Content="تاریخ آخرین قبض : " />
+                        <cal:DatePicker Grid.Row="1" Grid.Column="3" Name="LastBillDate" />
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="2" DockPanel.Dock="Bottom" Name="CourtGroupBox" Margin="0,0,0,10">
+                    <GroupBox.Header>
+                        <Label Content="مشخصات دادگاه در صورت درخواست تغییر نام از طرف دادگاه" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14" />
+                    </GroupBox.Header>
+                    <StackPanel Orientation="Vertical">
+                        <CheckBox Name="CourtCheckBox" Content="دارای درخواست دادگاه" Height="30" />
+                        <Grid Name="ChangeNameInfoGrid">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30" />
+                                <RowDefinition Height="30" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="180" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Content="نام دادگاه : " IsEnabled="{Binding ElementName=CourtCheckBox,Path=IsChecked}"/>
+                            <TextBox Grid.Row="0" Grid.Column="1" Name="CourtNameTextBox" Text="{Binding CourtName}" IsEnabled="{Binding ElementName=CourtCheckBox,Path=IsChecked}" />
+                            
+                            <Label Grid.Row="0" Grid.Column="2" Content="نام نماینده : " IsEnabled="{Binding ElementName=CourtCheckBox,Path=IsChecked}"/>
+                            <TextBox Grid.Row="0" Grid.Column="3" Name="AgentNameTextBox" Text="{Binding AgentName}" IsEnabled="{Binding ElementName=CourtCheckBox,Path=IsChecked}" />
+
+                            <Label Grid.Row="1" Grid.Column="0" Content="شماره نامه دادگاه : " IsEnabled="{Binding ElementName=CourtCheckBox,Path=IsChecked}" />
+                            <TextBox Grid.Row="1" Grid.Column="1" Name="CourtVerdictNoTextBox"  Text="{Binding CourtVerdictNo}" IsEnabled="{Binding ElementName=CourtCheckBox,Path=IsChecked}" />
+
+                            <Label Grid.Row="1" Grid.Column="2" Content="تاریخ نامه دادگاه : " IsEnabled="{Binding ElementName=CourtCheckBox,Path=IsChecked}" />
+                            <cal:DatePicker Grid.Row="1" Grid.Column="3" Name="CourtVerdictDate" SelectedDate="{Binding CourtVerdictDate}" IsEnabled="{Binding ElementName=CourtCheckBox,Path=IsChecked}" />
+                        </Grid>
+                    </StackPanel>
+                </GroupBox>
+
+                <GroupBox Grid.Row="3" DockPanel.Dock="Bottom" Name="InquiryGroupBox" Margin="0,0,0,10" Visibility="Collapsed">
+                    <GroupBox.Header>
+                        <Label Content="نتیجه رد استعلام" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14" />
+                    </GroupBox.Header>
+
+                    <Grid Grid.Row="17">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="آخرین کنتور : " />
+                        <TextBox Grid.Row="0" Grid.Column="1" Name="CounterNoTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"  />
+                        <Label Grid.Row="0" Grid.Column="2" Content="بدهی : " />
+                        <TextBox Grid.Row="0" Grid.Column="3" Name="DebtTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+                        <Label Grid.Row="1" Grid.Column="0" Content="توضیحات : " />
+                        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Name="CommentTextBox" Height="60" Width="auto" MinLines="2" IsReadOnly="True" />
+                    </Grid>
+                </GroupBox>
+            </Grid>
+
+            <Grid Visibility="Collapsed">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <GroupBox Grid.Row="0">
+                    <GroupBox.Header>
+                        <Label Content="گزارش" FontWeight="Bold" Foreground="#355E92"/>
+                    </GroupBox.Header>
+                    <Button Content="گزارش" Name="ReportButton" Click="ReportButton_Click" Width="80" />
+                </GroupBox>
+            </Grid>
+        </StackPanel>
+    </DockPanel>
+</Local:UserControlBase>

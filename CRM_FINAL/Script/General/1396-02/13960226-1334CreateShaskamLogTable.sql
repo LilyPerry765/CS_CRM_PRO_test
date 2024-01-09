@@ -1,0 +1,14 @@
+﻿--13960226 - 1333
+--برای ثبت لاگ در زمان اتمام با موفقیت 
+--CREATE TABLE ShaskamLog
+--(
+--	ID bigint not null identity(1,1) primary key,
+--	ActionType tinyint ,
+--	ResponseDate smalldatetime,
+--	Details xml
+--)
+--go
+--exec sp_addextendedproperty N'MS_Description',N'جدول لاگ متدهایی که شسکام اجرا میکند','schema',dbo,'table',ShaskamLog,'column',ID
+--exec sp_addextendedproperty N'MS_Description',N'متد اجرا شده','schema',dbo,'table',ShaskamLog,'column',ActionType
+--exec sp_addextendedproperty N'MS_Description',N'زمان پاسخ','schema',dbo,'table',ShaskamLog,'column',ResponseDate
+--exec sp_addextendedproperty N'MS_Description',N'جزئیات','schema',dbo,'table',ShaskamLog,'column',Details

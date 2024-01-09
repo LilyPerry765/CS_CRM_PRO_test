@@ -1,0 +1,158 @@
+﻿<Local:TabWindow x:Class="CRM.Application.Views.ManagementRequestsInbox" 
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:Local="clr-namespace:CRM.Application.Local" 
+                 xmlns:uc="clr-namespace:CRM.Application.UserControls"
+                 xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                 mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="800" 
+                 Loaded="TabWindow_Loaded">
+
+    <DockPanel FlowDirection="RightToLeft" LastChildFill="True">
+        <Expander x:Name="SearchExpander" 
+                  DockPanel.Dock="Top"
+                  ExpandDirection="Down"
+                  IsExpanded="True"
+                  Style="{StaticResource SearchExpander}">
+            <GroupBox DockPanel.Dock="Top" BorderBrush="#384a66" BorderThickness="0">
+                <DockPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition  />
+                            <ColumnDefinition  />
+                            <ColumnDefinition  />
+                            <ColumnDefinition />
+                            <ColumnDefinition  />
+                            <ColumnDefinition  />
+                            
+                        </Grid.ColumnDefinitions>
+
+                        <Label                  Grid.Row="0" Grid.Column="0" Content="شهر : "/>
+                        <uc:CheckableComboBox   Grid.Row="0" Grid.Column="1"  x:Name="RequestCityComboBox" LostFocus="RequestCityComboBox_LostFocus"/>
+
+                        <Label                  Grid.Row="0" Grid.Column="2"  Content="مرکز : " />
+                        <uc:CheckableComboBox   Grid.Row="0" Grid.Column="3"  x:Name="RequestCenterComboBox" LostFocus="RequestCenterComboBox_LostFocus"/>
+
+                        <TextBlock              Grid.Row="0" Grid.Column="4" Text="شناسه : "/>
+                        <TextBox                Grid.Row="0" Grid.Column="5" x:Name="IDTextBox" Style="{StaticResource ResourceKey=NumericTextBox}" PreviewTextInput="NumberTextBox_PreviewTextInput"/>
+
+                        <Label                  Grid.Row="1" Grid.Column="0"  Content="از تاریخ:"/>
+                        <cal:DatePicker         Grid.Row="1" Grid.Column="1" x:Name="RequestFromDateTextBox"/>
+
+                        <Label                  Grid.Row="1" Grid.Column="2"  Content="درخواست : " />
+                        <ComboBox               Grid.Row="1" Grid.Column="3"  x:Name="RequestTypesComboBox" DisplayMemberPath="Name" SelectedValuePath="ID"/>
+
+                        <TextBlock              Grid.Row="1" Grid.Column="4" Text="شماره تلفن : "/>
+                        <TextBox                Grid.Row="1" Grid.Column="5" x:Name="TelephoneNoTextBox" Style="{StaticResource ResourceKey=NumericTextBox}" PreviewTextInput="NumberTextBox_PreviewTextInput" />
+
+                        <TextBlock              Grid.Row="2" Grid.Column="0" Text="ابطال شده : " VerticalAlignment="Center" />
+                        <CheckBox               Grid.Row="2" Grid.Column="1" x:Name="IsWaitingListCheckBox" IsThreeState="False" VerticalAlignment="Center"/>
+
+                        <TextBlock              Grid.Row="2" Grid.Column="2" Text="درلیست انتظار : " VerticalAlignment="Center" Margin="5"/>
+                        <CheckBox               Grid.Row="2" Grid.Column="3" x:Name="IsCancelationCheckBox" IsThreeState="False" VerticalAlignment="Center"/>
+
+                        <WrapPanel DockPanel.Dock="Bottom" Grid.Column="10" Grid.Row="5" Grid.ColumnSpan="10" Margin="0 10 0 10" HorizontalAlignment="Right">
+                            <Button x:Name="SearchButton" Height="23" HorizontalAlignment="Left" Margin="0" Width="80" Content="جستجو" Click="Search" IsDefault="True" />
+                            <Button Height="23" HorizontalAlignment="Left" Name="ResetButton" Width="80" Click="ResetSearchForm" Content="بازنشانی" />
+                        </WrapPanel>
+                    </Grid>
+                </DockPanel>
+            </GroupBox>
+        </Expander>
+
+        <Grid DockPanel.Dock="Bottom" Style="{StaticResource TabWindowFooter}">
+            <Border DockPanel.Dock="Bottom" Tag="Footer" FlowDirection="RightToLeft" BorderThickness="0 1 0 0" BorderBrush="#d5d5d5" Background="#e9f3fe" Margin="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="546*" />
+                        <ColumnDefinition Width="60*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <uc:Pager x:Name="Pager" DockPanel.Dock="Bottom" PageSize="10" PageChanged="Pager_PageChanged" HorizontalAlignment="Left" />
+                    <uc:Actions x:Name="ActionUserControl" Grid.Column="2" />
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Grid DockPanel.Dock="Bottom" Style="{StaticResource TabWindowFooter}">
+            <uc:StatusBar x:Name="FooterStatusBar" DockPanel.Dock="Bottom" />
+            <uc:StatusLine x:Name="FooterStatusLine" DockPanel.Dock="Bottom" />
+        </Grid>
+
+        <DataGrid x:Name="ItemsDataGrid"
+                          BorderThickness="0 1 0 0"  
+                          AutoGenerateColumns="False" 
+                          CanUserAddRows="True" 
+                          CanUserResizeColumns="True"
+                          CanUserResizeRows="False"
+                          CanUserDeleteRows="False"
+                          SelectionMode="Extended"
+                          SelectionUnit="FullRow"
+                          ClipboardCopyMode="ExcludeHeader"
+                          ItemsSource="{Binding}" 
+                          IsReadOnly="True"                         
+                          SelectionChanged="ItemsDataGrid_SelectionChanged">
+            <!--<DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <DataGrid x:Name="SubItemsDataGrid" HeadersVisibility="None" BorderThickness="0 1 0 0" AutoGenerateColumns="False" CanUserAddRows="False" CanUserResizeColumns="True" CanUserResizeRows="False" CanUserDeleteRows="False" SelectionMode="Single" SelectionUnit="FullRow" ItemsSource="{Binding Children}" Width="{Binding ElementName=ItemsDataGrid, Path=ActualWidth}" IsReadOnly="True">
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="/CRM.Application;component/Images/element_red_16x16.png" Width="16" Height="16" HorizontalAlignment="Center" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="شناسه" Width="50" Binding="{Binding Path=ID}" />
+                            <DataGridTextColumn Header="مرحله فعلی" Width="*" Binding="{Binding Path=StatusName}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>-->
+            <DataGrid.ContextMenu>
+                <ContextMenu FontFamily="Tahoma">
+                    <MenuItem Header="وضعیت روال" Click="RequestStatusClick">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding PreviousAction, Converter={StaticResource LastActionNameToImageSourceConverter}}" Width="16" Height="16" HorizontalAlignment="Center" Tag="{Binding ID}" MouseLeftButtonDown="ImageView_MouseLeftButtonDown" ToolTip="{Binding RequesRejectDescription}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="شناسه" 	   Width="100"    Binding="{Binding Path=ID}" IsReadOnly="False" />
+                <DataGridTextColumn Header="تلفن" 		   Width="*"    Binding="{Binding Path=TelephoneNo}" IsReadOnly="False"/>
+                <DataGridTextColumn Header="نوع" 		   Width="*"   Binding="{Binding Path=RequestTypeName}" />
+                <DataGridTextColumn Header="مرکز" 	   Width="*"     Binding="{Binding Path=CenterName}" />
+                <DataGridTextColumn Header="مشترک" 	   Width="*"     Binding="{Binding Path=CustomerName}" />
+                <DataGridTextColumn Header="درخواست کننده" 	   Width="*"     Binding="{Binding Path=RequesterName}" />
+                <!--<DataGridTextColumn Header="تاریخ درخواست" 	   Width="*"    Binding="{Binding Path=RequestDate, Converter={StaticResource PersianDateConverter}}" />
+                <DataGridTextColumn Header="شماره نامه" 		    Width="*"    Binding="{Binding Path=RequestLetterNo}" />
+                <DataGridTextColumn Header="تاریخ نامه" 		    Width="*"    Binding="{Binding Path=RequestLetterDate, Converter={StaticResource PersianDateConverter}}" />-->
+                <!--<DataGridComboBoxColumn Header="نحوه پرداخت"       Width="*"   SelectedValueBinding="{Binding Path=RequestPaymentTypeID}" SelectedValuePath="Value" DisplayMemberPath="Name" x:Name="PaymentTypeColumn" />-->
+                <DataGridTextColumn Header="تاریخ درج" 		    Width="*"    Binding="{Binding Path=InsertDate}" />
+                <DataGridTextColumn Header="کاربر درج کننده" 	    Width="*"   Binding="{Binding Path=CreatorUser}" />
+                <DataGridTextColumn Header="تاریخ آخرین ویرایش" 	Width="*"    Binding="{Binding Path=ModifyDate}" />
+                <DataGridTextColumn Header="کاربر ویرایش کننده"   Width="*"   Binding="{Binding Path=ModifyUser}" />
+                <!--<DataGridTextColumn Header="مرحله فعلی" 	    	Width="*"  Binding="{Binding Path=CurrentStep}" />-->
+                <DataGridTextColumn Header="وضعیت" 			    	Width="*"     Binding="{Binding Path=StatusName}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </DockPanel>
+</Local:TabWindow>
+

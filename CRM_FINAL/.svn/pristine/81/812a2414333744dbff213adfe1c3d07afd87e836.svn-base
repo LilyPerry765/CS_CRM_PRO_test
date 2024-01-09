@@ -1,0 +1,131 @@
+﻿<Local:PopupWindow Title=" فرم ویرایش سوئیچ" 
+                   x:Class="CRM.Application.Views.SwitchForm"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib" 
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+                   Icon="/CRM.Application;component/Images/Switch48x48.png"
+                   Loaded="PopupWindow_Loaded" MinHeight="550">
+
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <ScrollViewer  Grid.Column="0" Grid.Row="0">
+            <GroupBox Header="سوئیچ" Name="SwitchGroupBox">
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Grid.Row="0" Content="شهر : " />
+                    <ComboBox  Grid.Column="1" Grid.Row="0" x:Name="CityComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="CityComboBox_SelectionChanged" />
+
+                    <Label Content="مرکز : " VerticalAlignment="Center" Grid.Column="2"/>
+                    <ComboBox DisplayMemberPath="CenterName" SelectedValuePath="ID" SelectedValue="{Binding Path=CenterID}" Grid.Column="3" x:Name="CenterComboBox"  />
+
+                    <Label Content="نوع سوئیچ : " Grid.Row="1" Grid.Column="0" />
+                    <ComboBox DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding Path=SwitchTypeID}" x:Name="SwitchTypeComboBox" Grid.Row="1"  Grid.Column="1" SelectionChanged="SwitchTypeComboBox_SelectionChanged" />
+
+                    <Label Content="کد سوئیچ : " Grid.Row="1" Grid.Column="2"/>
+                    <TextBox Text="{Binding Path=SwitchCode}" Grid.Row="1" Grid.Column="3" x:Name="SwitchCodeTextBox" Margin="0,2,0,23" Grid.RowSpan="2" />
+
+                    <Label  Content="مشخصه اونو : " Grid.Row="2" Grid.Column="0" Visibility="Collapsed" />
+                    <TextBox IsReadOnly="True" Name="FeatureONUTextBox" Text="{Binding FeatureONU}" Grid.Row="2" Grid.Column="1" Visibility="Collapsed"/>
+
+                    <Label Content="ظرفیت : " Grid.Row="3" />
+                    <TextBox Text="{Binding Path=Capacity}" Grid.Row="3" Grid.Column="1" x:Name="CapacityTextBox"  />
+
+                    <Label Content="ظرفیت دیتا (درصد) : " Grid.Row="3" Grid.Column="2"/>
+                    <TextBox Text="{Binding Path=DataCapacity}" Grid.Row="3" Grid.Column="3" x:Name="DataCapacityTextBox"  />
+
+                    <Label Content="ظرفیت منصوبه : " Grid.Row="4" />
+                    <TextBox Text="{Binding Path=InstallCapacity}" Grid.Row="4" Grid.Column="1" x:Name="InstallCapacityTextBox"  />
+
+                    <Label Content="ظرفیت قابل بهره برداری : "  Grid.Row="4" Grid.Column="2"/>
+                    <TextBox  Text="{Binding Path=OperationalCapacity}" Grid.Row="4" Grid.Column="3"  x:Name="OperationalCapacityTextBox" />
+
+                    <Label Content="وضعیت : " Grid.Row="5" Grid.Column="2"/>
+                    <ComboBox DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding Path=Status}" Grid.Row="5" x:Name="StatusComboBox" Grid.Column="3" />
+
+                    <Label Content="عملیات قطع و وصل : " Grid.Column="0" Grid.Row="5"/>
+                    <ComboBox DisplayMemberPath="Name" SelectedValuePath="ID"  SelectedValue="{Binding Path=WorkUnitResponsible}"  Grid.Row="5" Grid.Column="1" x:Name="WorkUnitResponsibleComboBox"/>
+
+                    <Button x:Name="Save" Content="ذخیره"  Width="80" Height="25" Tag="Footer" Click="SaveButton"/>
+
+                </Grid>
+            </GroupBox>
+        </ScrollViewer>
+
+        <GroupBox Grid.Column="0" Grid.Row="1" Header="پیش شماره" Name="SwitchPrecode" >
+            <DataGrid  Name="SwitchPreCodeDataGrid" 
+                       ItemsSource="{Binding}" 
+                       BorderThickness="0 1 0 0"  
+                       AutoGenerateColumns="False" 
+                       CanUserAddRows="False" 
+                       CanUserResizeColumns="True"
+                       CanUserResizeRows="False"
+                       CanUserDeleteRows="False"
+                       SelectionMode="Single"
+                       SelectionUnit="FullRow"
+                       IsReadOnly="True">
+
+                <DataGrid.ContextMenu>
+                    <ContextMenu FontFamily="Tahoma">
+                        <MenuItem Header="افزودن" Click="AddItem">
+                            <MenuItem.Icon>
+                                <Image Source="/CRM.Application;component/Images/add_16x16.png" Width="16" Height="16" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="ویرایش" Click="EditItem">
+                            <MenuItem.Icon>
+                                <Image  Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="حذف" Click="DeleteItem" IsEnabled="False">
+                            <MenuItem.Icon>
+                                <Image Source="/CRM.Application;component/Images/delete2_16x16.png" Width="16" Height="16" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
+
+                <DataGrid.Columns>
+                    <DataGridComboBoxColumn Header=" مرکز " x:Name="CenterColumn" SelectedValueBinding="{Binding Path=CenterID, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" DisplayMemberPath="Name" />
+                    <DataGridComboBoxColumn Header=" نوع پیش شماره " x:Name="PreCodeTypeColumn" SelectedValueBinding="{Binding Path=PreCodeType, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" DisplayMemberPath="Name" />
+                    <DataGridTextColumn Header=" پیش شماره سوئیچ "  Binding="{Binding Path=SwitchPreNo, UpdateSourceTrigger=PropertyChanged}" />
+                    <DataGridComboBoxColumn Header=" نوع توسعه "  x:Name="DeploymentTypeColumn" SelectedValueBinding="{Binding Path=DeploymentType, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" DisplayMemberPath="Name" />
+                    <DataGridComboBoxColumn Header=" نوع دورشوال " x:Name="DorshoalNumberTypeColumn" SelectedValueBinding="{Binding Path=DorshoalNumberType, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" DisplayMemberPath="Name"/>
+                    <DataGridTextColumn Header=" ظرفیت "  Binding="{Binding Path=Capacity, UpdateSourceTrigger=PropertyChanged}" />
+                    <DataGridTextColumn Header=" ظرفیت عملیاتی " Binding="{Binding Path=OperationalCapacity, UpdateSourceTrigger=PropertyChanged}" />
+                    <DataGridTextColumn Header=" ظرفیت نصب "  Binding="{Binding Path=InstallCapacity, UpdateSourceTrigger=PropertyChanged}" />
+                    <DataGridTextColumn Header=" ظرفیت سرویس ویژه " Binding="{Binding Path=SpecialServiceCapacity, UpdateSourceTrigger=PropertyChanged}" />
+                    <DataGridTextColumn Header="از شماره"  Binding="{Binding Path=FromNumber, UpdateSourceTrigger=PropertyChanged}" />
+                    <DataGridTextColumn Header="تا شماره" Binding="{Binding Path=ToNumber, UpdateSourceTrigger=PropertyChanged}" />
+                    <DataGridComboBoxColumn Header=" وضعیت" x:Name="StatusColumn" SelectedValueBinding="{Binding Path=Status, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" DisplayMemberPath="Name" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+
+    </Grid>
+</Local:PopupWindow>
+

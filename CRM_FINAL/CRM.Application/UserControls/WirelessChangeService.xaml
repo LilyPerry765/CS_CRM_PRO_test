@@ -1,0 +1,257 @@
+﻿<UserControl x:Class="CRM.Application.UserControls.WirelessChangeService"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignWidth="820">
+
+    <DockPanel FlowDirection="RightToLeft">
+        <StackPanel Orientation="Vertical">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <GroupBox Grid.Row="0" Margin="0,0,0,10">
+                    <GroupBox.Header>
+                        <Label Content="مشخصات سرویس قبلی ADSL" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14"/>
+                    </GroupBox.Header>
+                    <Grid x:Name="OldServiceInfo" Height="auto">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="180" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="180" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="تعرفه ADSL : " />
+                        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" IsReadOnly="True" Text="{Binding Title}" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="پهنای باند : " />
+                        <TextBox Grid.Row="1" Grid.Column="1" IsReadOnly="True" Text="{Binding BandWidth}" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                        <Label Grid.Row="1" Grid.Column="2" Content="حجم : " />
+                        <TextBox Grid.Row="1" Grid.Column="3" IsReadOnly="True" Text="{Binding Traffic}" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="مدت استفاده : " />
+                        <TextBox Grid.Row="2" Grid.Column="1" IsReadOnly="True" Text="{Binding Duration}" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                        <Label Grid.Row="2" Grid.Column="2" Content="هزینه : " />
+                        <TextBox Grid.Row="2" Grid.Column="3" IsReadOnly="True" Text="{Binding PriceSum}" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                        <Label Grid.Row="3" Grid.Column="0" Content="شماره نامه مجوز : " Name="OldLicenceLetterNoLabel" Visibility="Collapsed" />
+                        <TextBox Grid.Row="3" Grid.Column="1" Name="OldLicenceLetterNoTextBox" Visibility="Collapsed" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Content="مدت روز استفاده شده از سرویس:" Grid.Row="4" Grid.Column="0"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Name="UsedDaysTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                        <Label Content="مدت روز باقیمانده از سرویس:" Grid.Row="4" Grid.Column="2"/>
+                        <TextBox Grid.Row="4" Grid.Column="3" Name="RemainedDaysTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                        <Label Content="حجم استفاده شده:" Grid.Row="5" Grid.Column="0"/>
+                        <TextBox Grid.Column="1" Grid.Row="5" Name="UsedContentTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                        <Label Content="حجم باقی مانده:" Grid.Row="5" Grid.Column="2"/>
+                        <TextBox Grid.Column="3" Grid.Row="5" Name="RemainedContentTextBox"  IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                        <Label Content="هزینه مقدار مصرف شده:" Grid.Column="0" Grid.Row="6"/>
+                        <TextBox Grid.Column="1" Grid.Row="6" Name="UsedCostTextBox"  IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                        <Label Content="هزینه عودت شده:" Grid.Column="2" Grid.Row="6"/>
+                        <TextBox Grid.Row="6" Grid.Column="3" Name="ReturnedCostTextbox"  IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                        <Label Content="مودم:" Grid.Column="0" Grid.Row="7"/>
+                        <CheckBox Grid.Column="1" Grid.Row="7" Name="HasModemChecktBox" VerticalAlignment="Center" IsEnabled="False" />
+
+                        <Label Content="نوع مودم:" Grid.Column="2" Grid.Row="7"/>
+                        <TextBox Grid.Column="3" Grid.Row="7" Name="ModemTypeTextBox"  IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                        <Label Content="درصد تخفیف مودم:" Grid.Column="0" Grid.Row="8"/>
+                        <TextBox Grid.Column="1" Grid.Row="8" Name="ModemDiscountPercentageTextBox" IsReadOnly="True" Text="{Binding ModemDiscount}" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                        <Label Content="هزینه باقی مانده مودم:" Grid.Column="2" Grid.Row="8"/>
+                        <TextBox Grid.Column="3" Grid.Row="8" Name="RemainedModemCostTextBox"  IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="1" Name="ADSLServiceGroupBox" Margin="0,0,0,10">
+                    <GroupBox.Header>
+                        <Label Content="مشخصات سرویس درخواستی ADSL" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14"/>
+                    </GroupBox.Header>
+                    <Grid x:Name="NewServiceInfo" Height="auto">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="180" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="180" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="نوع عملیات : " />
+                        <ComboBox Grid.Row="0" Grid.Column="1" Name="ActionTypeComboBox" SelectedValuePath="ID" DisplayMemberPath="Name" SelectionChanged="ActionTypeComboBox_SelectionChanged" />
+
+                        <GroupBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Name="ADSLServicePropertiesGroupBox" Margin="0,0,0,10">
+                            <GroupBox.Header>
+                                <Label Content="جستجو سرویس ADSL" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="12"/>
+                            </GroupBox.Header>
+                            <Grid x:Name="PropertiesInfo" Height="auto">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="30" />
+                                    <RowDefinition Height="30" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="180" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="180" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="0" Grid.Column="0" Content="نوع سرویس : " />
+                                <ComboBox Grid.Row="0" Grid.Column="1" Name="TypeComboBox" SelectedValuePath="ID" DisplayMemberPath="Name" SelectionChanged="TypeComboBox_SelectionChanged" />
+
+                                <Label Grid.Row="1" Grid.Column="0" Content="گروه سرویس : " />
+                                <ComboBox Grid.Row="1" Grid.Column="1" Name="GroupComboBox" SelectedValuePath="ID" DisplayMemberPath="Name" SelectionChanged="GroupComboBox_SelectionChanged" />
+
+                                <Label Grid.Row="1" Grid.Column="2" Content="پهنای باند : " />
+                                <ComboBox Grid.Row="1" Grid.Column="3" Name="BandWidthComboBox" SelectedValuePath="ID" DisplayMemberPath="Name" SelectionChanged="BandWidthComboBox_SelectionChanged" />
+
+                                <Label Grid.Row="2" Grid.Column="0"  Content="مدت استفاده : " />
+                                <ComboBox Grid.Row="2" Grid.Column="1"  Name="DurationComboBox" SelectedValuePath="ID" DisplayMemberPath="Name" SelectionChanged="DurationComboBox_SelectionChanged" />
+
+                                <Label Grid.Row="2" Grid.Column="2" Content="ترافیک : " />
+                                <ComboBox Grid.Row="2" Grid.Column="3" Name="TrafficComboBox" SelectedValuePath="ID" DisplayMemberPath="Name" SelectionChanged="TrafficComboBox_SelectionChanged" />
+
+                            </Grid>
+                        </GroupBox>
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="سرویس ADSL : " />
+                        <ComboBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Name="ServiceComboBox" SelectedValuePath="ID" DisplayMemberPath="Title" SelectionChanged="ServiceComboBox_SelectionChanged" />
+
+                        <Label Grid.Row="3" Grid.Column="0" Content="پهنای باند : " />
+                        <TextBox Grid.Row="3" Grid.Column="1" IsReadOnly="True" Text="{Binding BandWidth}" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="3" Grid.Column="2" Content="ترافیک : " />
+                        <TextBox Grid.Row="3" Grid.Column="3" IsReadOnly="True" Text="{Binding Traffic}" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="4" Grid.Column="0" Content="مدت زمان استفاده : " />
+                        <TextBox Grid.Row="4" Grid.Column="1" IsReadOnly="True" Text="{Binding Duration}" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="4" Grid.Column="2" Content="هزینه : " />
+                        <TextBox Grid.Row="4" Grid.Column="3" IsReadOnly="True" Text="{Binding Price}" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="5" Grid.Column="0" Content="مالیات : " />
+                        <TextBox Grid.Row="5" Grid.Column="1" IsReadOnly="True" Text="{Binding Tax}" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="5" Grid.Column="2" Content="هزینه کل سرویس : " Margin="0,2,0,-2" Grid.RowSpan="2" />
+                        <TextBox Grid.Row="5" Grid.Column="3" IsReadOnly="True" Text="{Binding PriceSum}" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Name="ErrorCreditLabel" Foreground="Red" />
+
+                        <Label Grid.Row="6" Grid.Column="0" Content="شماره نامه مجوز : " Name="NewLicenceLetterNoLabel" Visibility="Collapsed" />
+                        <TextBox Grid.Row="6" Grid.Column="1" Name="NewLicenceLetterNoTextBox" Visibility="Collapsed" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="2" Name="ADSLFacilitiesGroupBox" Margin="0,0,0,10">
+                    <GroupBox.Header>
+                        <Label Content="امکانات ADSL" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14"/>
+                    </GroupBox.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="180" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="180" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="درخواست مودم : " />
+                        <CheckBox Grid.Row="0" Grid.Column="1" Name="NeedModemCheckBox" VerticalAlignment="Center" Checked="NeedModemCheckBox_Checked" Unchecked="NeedModemCheckBox_Unchecked"/>
+
+                        <Label Grid.Row="1" Grid.Column="0" Name="ModemTypeLabel" Content="نوع مودم : " Visibility="Collapsed"/>
+                        <ComboBox Grid.Row="1" Grid.Column="1" Name="ModemTypeComboBox" SelectedValuePath="ID" DisplayMemberPath="Title" SelectionChanged="ModemTypeComboBox_SelectionChanged" Visibility="Collapsed"/>
+
+                        <Label Grid.Row="1" Grid.Column="2" Name="ModemCostLabel" Content="قیمت مودم : " Visibility="Collapsed"/>
+                        <TextBox Grid.Row="1" Grid.Column="3" IsReadOnly="True" Name="ModemCostTextBox" Style="{StaticResource ResourceKey=NumericTextBox}" Visibility="Collapsed" />
+
+                        <Label Grid.Row="2" Grid.Column="0" Name="ModemDiscountLabel" Content="تخفیف مودم : " Visibility="Collapsed"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" IsReadOnly="True" Name="ModemDiscountTextBox" Style="{StaticResource ResourceKey=NumericTextBox}" Visibility="Collapsed" />
+
+                        <Label Grid.Row="2" Grid.Column="2" Name="ModemCostDiscountLabel" Content="قیمت مودم با تخفیف : " Visibility="Collapsed"/>
+                        <TextBox Grid.Row="2" Grid.Column="3" IsReadOnly="True" Name="ModemCostDiscountTextBox" Style="{StaticResource ResourceKey=NumericTextBox}" Visibility="Collapsed" />
+
+                        <Label Grid.Row="3" Grid.Column="0" Name="ModemSerilaNoLabel" Content="شماره سریال مودم : " Visibility="Collapsed" />
+                        <ComboBox Grid.Row="3" Grid.Column="1" Name="ModemSerilaNoComboBox" SelectedValuePath="ID" DisplayMemberPath="Title" Style="{StaticResource ResourceKey=NumericComboBox}" SelectionChanged="ModemSerilaNoComboBox_SelectionChanged" Visibility="Collapsed"/>
+
+                        <Label Grid.Row="3" Grid.Column="2" Name="ModemMACAddressLabel" Content="آدرس فیزیکی مودم : " Visibility="Collapsed"/>
+                        <TextBox Grid.Row="3" Grid.Column="3" Name="ModemMACAddressTextBox" Visibility="Collapsed" Style="{StaticResource ResourceKey=NumericTextBox}" IsReadOnly="True"/>
+
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="4" Margin="0,0,0,10" Name="CommentsGroupBox" Visibility="Collapsed">
+                    <GroupBox.Header>
+                        <Label Content=" نظرات" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14"/>
+                    </GroupBox.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="180"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="امور مشترکین : " Name="CommentCustomersLabel" />
+                        <TextBox Grid.Row="0" Grid.Column="1" Name="CommentCustomersTextBox" Height="50" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="OMC : " Name="OMCCommentLabel" />
+                        <TextBox Grid.Row="1" Grid.Column="1" Name="OMCCommentTextBox" Height="50" />
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="ناظر امور مشترکین : " Name="FinalCommentLabel" />
+                        <TextBox Grid.Row="2" Grid.Column="1" Name="FinalCommentTextBox" Height="50" />
+
+                    </Grid>
+                </GroupBox>
+
+            </Grid>
+        </StackPanel>
+    </DockPanel>
+</UserControl>
+

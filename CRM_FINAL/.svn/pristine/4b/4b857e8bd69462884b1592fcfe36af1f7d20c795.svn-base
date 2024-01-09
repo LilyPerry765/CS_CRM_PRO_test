@@ -1,0 +1,124 @@
+﻿<Local:TabWindow x:Class="CRM.Application.Views.CablePairList"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="800"
+                 xmlns:Local="clr-namespace:CRM.Application.Local"
+                 xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                 xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+                 Loaded="TabWindow_Loaded">
+    <DockPanel FlowDirection="RightToLeft">
+        
+        <Expander x:Name="SearchExpander"
+              DockPanel.Dock="Top"
+              ExpandDirection="Down"
+              IsExpanded="True"
+              Style="{StaticResource SearchExpander}">
+
+            <GroupBox DockPanel.Dock="Top" BorderBrush="#384a66" BorderThickness="0">
+                <DockPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label  Grid.Row="0" Grid.Column="0" Content="شهر :" />
+                        <UserControls:CheckableComboBox x:Name="CityComboBox" Grid.Row="0" Grid.Column="1" LostFocus="CityCheckableComboBox_LostFocus_1"/>
+
+                        <Label  Grid.Row="0" Grid.Column="3" Content="مرکز :" />
+                        <UserControls:CheckableComboBox x:Name="CenterComboBox" Grid.Row="0" Grid.Column="4" LostFocus="CenterCheckableComboBox_LostFocus_1"/>
+
+                        <Label Grid.Row="0" Grid.Column="6" Content= "کابل:" />
+                        <UserControls:CheckableComboBox Grid.Row="0" Grid.Column="7" x:Name="CableNumberComboBox"/>
+
+
+                        <Label  Grid.Row="1" Grid.Column="0" Content="از زوج سیم:" />
+                        <TextBox    Grid.Row="1" Grid.Column="1" x:Name="FromCablePairNumberTextBox"/>
+
+                        <Label  Grid.Row="1" Grid.Column="3" Content="تا زوج سیم:" />
+                        <TextBox    Grid.Row="1" Grid.Column="4" x:Name="ToCablePairNumberTextBox"/>
+
+                        <Label Content="وضعیت:" Grid.Row="1" Grid.Column="6" />
+                        <UserControls:CheckableComboBox Grid.Row="1" Grid.Column="7" x:Name="StatusComboBox"/>
+
+
+                        <!-- Buttons -->
+                        <WrapPanel DockPanel.Dock="Bottom" Grid.ColumnSpan="8" Grid.Row="100" Margin="0 10 0 10" HorizontalAlignment="Right">
+                            <Button Height="23" HorizontalAlignment="Left" Name="ResetButton" Width="80" Click="ResetSearchForm" Content="بازنشانی" />
+                            <Button x:Name="SearchButton" Height="23" HorizontalAlignment="Left" Margin="0" Width="80" Content="جستجو" Click="Search" />
+                        </WrapPanel>
+                    </Grid>
+                </DockPanel>
+            </GroupBox>
+        </Expander>
+
+        <Grid DockPanel.Dock="Bottom" Style="{StaticResource TabWindowFooter}">
+            <Border DockPanel.Dock="Bottom" Tag="Footer" FlowDirection="RightToLeft" BorderThickness="0 1 0 0" BorderBrush="#d5d5d5" Background="#e9f3fe" Margin="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="546*" />
+                        <ColumnDefinition Width="60*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <UserControls:Pager x:Name="Pager" DockPanel.Dock="Bottom" PageSize="10" PageChanged="Pager_PageChanged" HorizontalAlignment="Left" />
+                </Grid>
+            </Border>
+        </Grid>
+
+        <DataGrid DockPanel.Dock="Bottom" x:Name="ItemsDataGrid"
+                      BorderThickness="0 1 0 0"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="True"
+                      CanUserResizeColumns="True"
+                      CanUserResizeRows="False"
+                      CanUserDeleteRows="False"
+                      SelectionMode="Single"
+                      SelectionUnit="FullRow"
+                      IsReadOnly="True"
+                      ItemsSource="{Binding}"
+                      RowEditEnding="ItemsDataGrid_RowEditEnding">
+            <DataGrid.ContextMenu>
+                <ContextMenu FontFamily="Tahoma">
+                    <MenuItem Header="انتساب بوخت" Click="AssignBucht">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="آزاد سازی بوخت" Click="LeaveItems">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/delete2_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="/CRM.Application;component/Images/element_16x16.png" Width="16" Height="16" HorizontalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="شهر" Binding="{Binding CityName}"/>
+                <DataGridTextColumn Header="مرکز" Binding="{Binding CenterName}"/>
+                <DataGridTextColumn  Header="کابل" x:Name="CableColumn" Binding="{Binding Path=CableNumber, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="شماره زوج سیم"  Binding="{Binding Path=CablePairNumber, UpdateSourceTrigger=PropertyChanged}" />
+                <DataGridTextColumn  Header="بوخت"  x:Name="ConnectionColumn"   Binding="{Binding Path=Connection, UpdateSourceTrigger=PropertyChanged}"/>
+                <!--<DataGridComboBoxColumn  Width="*" Header="وضعیت"  x:Name="StatusColumn"   SelectedValueBinding="{Binding Path=Status, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" DisplayMemberPath="Name" />-->
+                <!--<DataGridTextColumn Width="*" Header="تاریخ ثبت"  Binding="{Binding Path=InsertDate, UpdateSourceTrigger=PropertyChanged,  Converter={StaticResource PersianDateConverter}}" IsReadOnly="True" />-->
+            </DataGrid.Columns>
+        </DataGrid>
+        
+    </DockPanel>
+</Local:TabWindow>

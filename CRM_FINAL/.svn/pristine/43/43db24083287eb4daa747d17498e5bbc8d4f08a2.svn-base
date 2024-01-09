@@ -1,0 +1,21 @@
+﻿--13931209 - 2054
+--گزارش آمار پست های دارای پی سی ام بر روی سیستم خودم نهایی شد حالا باید بر روی سرور 14 هم بروزرسانی شود
+--ستون تلفن یه تلفن سرشماره تغییر پیدا کرد
+--UPDATE R14
+--SET TEMPLATE =RM.Template
+--FROM 
+--	reportTemplate rm
+--INNER JOIN 
+--	[192.168.0.14\PENDARSQL].CRM.DBO.reporttemplate r14 on rm.id = r14.id
+--where 
+--	rm.id = 26 and r14.id = 26
+
+--13931209 - 2058
+--UPDATE RR
+--SET Template = R14.Template
+--FROM 
+--	ReportTemplate R14 
+--INNER JOIN 
+--	[78.39.252.109].CRM.DBO.REPORTTEMPLATE RR ON R14.ID = RR.ID 
+--WHERE 
+--	R14.ID = 26 AND RR.ID = 26

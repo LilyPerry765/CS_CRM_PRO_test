@@ -1,0 +1,72 @@
+﻿<Local:PopupWindow Title="فرم ویرایش چرخه کاری"
+                   x:Class="CRM.Application.Views.WorkFlowRuleForm"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib"
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls"
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   d:DesignWidth="500" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   Loaded="PopupWindow_Loaded" Icon="/CRM.Application;component/Images/signpost_48x48.png">
+
+    <Grid FlowDirection="RightToLeft">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Column="0" Grid.Row="0" Content="شناسه" />
+        <TextBox Grid.Column="1" Grid.Row="0" x:Name="ID" Text="{Binding ID}" />
+        
+        <Label Grid.Column="0" Grid.Row="1" Content="وضعیت فعلی کارتابل" />
+        <ComboBox  Grid.Column="1" Grid.Row="1" x:Name="CurrentStatusComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding CurrentStatusID}" />
+        
+        <Label Grid.Column="0" Grid.Row="2" Content="وضعیت بعدی کارتابل" />
+        <ComboBox  Grid.Column="1" Grid.Row="2" x:Name="NextStatusComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding NextStatusID}" />
+        
+        <Label Grid.Column="0" Grid.Row="3" Content="ورژن ورک فلو" />
+        <ComboBox  Grid.Column="1" Grid.Row="3" x:Name="WorkFlowVersionComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding WorkFlowVersionID}" />
+        
+        <Label Grid.Column="0" Grid.Row="4" Content="نوع درخواست" />
+        <ComboBox  Grid.Column="1" Grid.Row="4" x:Name="RequestTypeComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding RequestTypeID}" />
+        
+        <Label Grid.Column="0" Grid.Row="5" Content="واحد فرستنده" />
+        <ComboBox  Grid.Column="1" Grid.Row="5" x:Name="SenderComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding SenderID}" />
+        
+        <Label Grid.Column="0" Grid.Row="6" Content="واحد گیرنده" />
+        <ComboBox  Grid.Column="1" Grid.Row="6" x:Name="RecieverComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding RecieverID}" />
+        
+        <Label Grid.Column="0" Grid.Row="7" Content="نوع اقدام" />
+        <TextBox Grid.Column="1" Grid.Row="7" x:Name="Action" Text="{Binding ActionID}" />
+        
+        <Label Grid.Column="0" Grid.Row="8" Content="فرم" />
+        <TextBox Grid.Column="1" Grid.Row="8" x:Name="Form" Text="{Binding FormID}" />
+        
+        <Label Grid.Column="0" Grid.Row="9" Content="اولویت" />
+        <TextBox Grid.Column="1" Grid.Row="9" x:Name="Priority" Text="{Binding Priority}" />
+
+        <Label Grid.Column="0" Grid.Row="10" Content="سرشاخه" />
+        <ComboBox  Grid.Column="1" Grid.Row="10" x:Name="WorkFlowRuleComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding ParentRowID}" />
+
+        <Button Grid.Row="20" Grid.Column="0" Content="ذخیره" Name="SaveButton" Click="SaveForm" Tag="Footer" />
+        
+    </Grid>
+
+</Local:PopupWindow>

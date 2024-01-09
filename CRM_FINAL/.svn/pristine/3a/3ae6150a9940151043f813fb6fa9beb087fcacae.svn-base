@@ -1,0 +1,58 @@
+﻿<Local:PopupWindow  xmlns:Local="clr-namespace:CRM.Application.Local" 
+                    x:Class="CRM.Application.Views.DocumentForRequestForm"                    
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+                    Title="ثبت مدارک مورد نیاز درخواست ها" 
+                    Loaded="PopupWindow_Loaded" Icon="/CRM.Application;component/Images/RequestDocument_48x48.png"
+                    Width="500">
+
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="نام مدرک : " />
+        <ComboBox Grid.Row="0" Grid.Column="1" Name="DocumentTypeIDcomboBox" SelectedValuePath="ID" DisplayMemberPath="DocumentName" SelectedValue="{Binding DocumentTypeID}" />
+
+        <Label Grid.Row="1" Grid.Column="0" Content="نوع درخواست : " />
+        <ComboBox  Grid.Row="1" Grid.Column="1" Name="RequestTypeIDcomboBox" SelectedValuePath="ID" DisplayMemberPath="Title" SelectedValue="{Binding RequestTypeID}" />        
+
+        <Label Content="مورد نیاز : " Grid.Row="2" Grid.Column="0"/>
+        <ListBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" SelectedValue="{Binding Path=NeedForCustomerType}" SelectedValuePath="Tag">
+            <ListBoxItem Tag="0">مشترک حقیقی</ListBoxItem>
+            <ListBoxItem Tag="1">مشترک حقوقی</ListBoxItem>
+            <ListBoxItem Tag="2">هر دو</ListBoxItem>
+        </ListBox>
+
+        <Label       Grid.Row="3" Content="گروه محاسباتی : " />        
+        <ComboBox  Grid.Row="3" Grid.Column="1" Name="ChargingTypecomboBox" SelectedValuePath="ID" DisplayMemberPath="Name" SelectedValue="{Binding ChargingType}" />
+                
+        <Label Content="نوع تلفن : " Grid.Column="0"  Grid.Row="4" />
+        <ComboBox Grid.Row="4" Grid.Column="1" Name="TelephoneTypecomboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding TelephoneType}" />
+
+        <Label Content="نوع مالکیت" Grid.Row="5"  />
+        <ComboBox Name="PosessionTypecomboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding TelephonePosessionType}" Grid.Row="5" Grid.Column="1" />
+        
+        <Label Content="اولویت واگذاری : " Grid.Row="6" Grid.Column="0" />
+        <ComboBox DisplayMemberPath="Name" SelectedValue="{Binding OrderType}" SelectedValuePath="ID" Name="OrderTypecomboBox" Grid.Row="6" Grid.Column="1" />
+
+        <Label Grid.Row="7" Grid.Column="0" Content="اجباری :"/>
+        <CheckBox Grid.Row="7" Grid.Column="1" IsThreeState="False" IsChecked="{Binding IsForcible}" x:Name="IsForcibleCheckBox" VerticalAlignment="Center"/>
+
+        <Button Grid.Row ="8" Grid.Column="0" Content="ذخیره" Name="SaveButton" Click="SaveForm" Tag="Footer"/>
+
+    </Grid>
+</Local:PopupWindow>

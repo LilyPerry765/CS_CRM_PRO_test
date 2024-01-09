@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="CRM.Application.UserControls.CenterCityUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="27" d:DesignWidth="300">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="27"/>
+        </Grid.RowDefinitions>
+        <Label Content="شهر:" Grid.Column="0" Width="100"/>
+        <UserControls:CheckableComboBox x:Name="CityComboBox" Grid.Column="1" Height="27"  LostFocus="CityComboBox_LostFocus_1"  />
+        <Label Content="مرکز:" Grid.Column="3" Width="100"/>
+        <UserControls:CheckableComboBox x:Name="CenterCheckableComboBox" Grid.Column="4"  />
+    </Grid>
+</UserControl>

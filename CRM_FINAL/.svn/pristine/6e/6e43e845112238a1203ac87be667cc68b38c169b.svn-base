@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="CRM.Application.UserControls.RequestPropertiesUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Local="clr-namespace:CRM.Application.Local"
+             xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="700">
+    
+        
+        <GroupBox  Header=" مشخصات درخواست ">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="5"/>
+            </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="15" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="از تاریخ درخواست : " VerticalAlignment="Center" />
+                <cal:DatePicker Grid.Row="0" Grid.Column="1" x:Name="FromDate"/>
+                
+                <TextBlock Grid.Row="0" Grid.Column="3" Text="تا تاریخ درخواست : " VerticalAlignment="Center" />
+                <cal:DatePicker Grid.Row="0" Grid.Column="4" x:Name="ToDate"/>
+
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="از شناسه درخواست : " VerticalAlignment="Center" />
+                <TextBox Grid.Row="2" Grid.Column="1"   Name="RequestIdFrom" />
+                <TextBlock Grid.Row="2" Grid.Column="3" Text="تا شناسه درخواست : " VerticalAlignment="Center" />
+                <TextBox Grid.Row="2" Grid.Column="4"   Name="RequestIdTo"/>
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Text="شماره تلفن : " VerticalAlignment="Center" />
+            <TextBox Grid.Row="4" Grid.Column="1"   Name="TelephoneNo"/>
+
+            <TextBlock Grid.Row="4" Grid.Column="3" Text="کد ملی مشترک : " VerticalAlignment="Center" />
+            <TextBox Grid.Row="4" Grid.Column="4"   Name="IdentityId"/>
+
+            <Label Content="شهر:" Grid.Row="6" Grid.Column="0" Width="120"/>
+            <UserControls:CheckableComboBox x:Name="CityComboBox" Grid.Column="1" Grid.Row="6" Height="27"  LostFocus="CityComboBox_LostFocus_1"  />
+            <Label Content="مرکز:" Grid.Row="6" Grid.Column="3" Width="120"/>
+            <UserControls:CheckableComboBox x:Name="CenterCheckableComboBox" Grid.Column="4" Grid.Row="6" />
+
+
+
+        </Grid>
+        </GroupBox>
+    
+        
+</UserControl>

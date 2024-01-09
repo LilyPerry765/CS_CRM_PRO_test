@@ -1,0 +1,43 @@
+﻿<Local:PopupWindow x:Class="CRM.Application.Views.TelecomminucationServiceForm"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns:CustomControls="clr-namespace:CRM.Application.Codes.CustomControls"
+                   Title="فرم ویرایش کالا و خدمات مخابرات" Loaded="PopupWindow_Loaded"
+                   Height="500" Width="500" ResizeMode="NoResize">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Label Grid.Row="0" Grid.Column="0" Content="عنوان : "/>
+        <TextBox x:Name="TitleTextBox" Grid.Row="0" Grid.Column="1" Text="{Binding Title}"/>
+        
+        <Label Grid.Row="1" Grid.Column="0" Content="قیمت واحد : "/>
+        <CustomControls:NumericTextBox x:Name="UnitPriceNumericTextBox" Grid.Row="1" Grid.Column="1" Text="{Binding UnitPrice}"/>
+
+        <Label Grid.Row="2" Grid.Column="0" Content="مالیات : "/>
+        <CustomControls:NumericTextBox x:Name="TaxNumericTextBox" Grid.Row="2" Grid.Column="1" Text="{Binding Tax}"/>
+
+        <Label Grid.Row="3" Grid.Column="0" Content="نوع درخواست : "/>
+        <ComboBox x:Name="RequestTypesComboBox" Grid.Row="3" Grid.Column="1" DisplayMemberPath="Title" SelectedValue="{Binding RequestTypeID}" SelectedValuePath="ID"/>
+        
+        <Label Grid.Row="4" Grid.Column="0" Content="واحد اندازه گیری : "/>
+        <ComboBox x:Name="UnitMeasuresComboBox" Grid.Row="4" Grid.Column="1" DisplayMemberPath="Name" SelectedValue="{Binding UnitMeasureID}" SelectedValuePath="ID"/>
+        
+        <Label Grid.Row="5" Grid.Column="0" Content="این کالا/خدمات ارائه پذیر هست  : "/>
+        <CheckBox x:Name="ActiveCheckBox" Content="بله" IsChecked="{Binding IsActive}" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center"/>
+        
+        <Button x:Name="SaveButton" Content="ذخیره" Tag="Footer" Click="SaveForm"/>
+        
+    </Grid>
+</Local:PopupWindow>

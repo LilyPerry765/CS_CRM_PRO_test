@@ -1,0 +1,31 @@
+﻿<Local:PopupWindow x:Class="CRM.Application.Views.AddSwitchPortOfFileForm"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                    xmlns:Local="clr-namespace:CRM.Application.Local"
+                    xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                    mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Title="ثبت پورت از فایل">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        
+        <Label Grid.Row="0" Grid.Column="0" Content="فایل پورت های ثابت"/>
+        <TextBox Grid.Row="0" Grid.Column="1" Name="PathfileFixTextBox" FlowDirection="LeftToRight" />
+        <Button    Grid.Row="0" Grid.Column="2" Content="انتخاب فایل ثابت" Name="SelectfileFix" Click="SelectfileFix_Click" Width="120" HorizontalAlignment="Right" />
+
+
+        <Label Grid.Row="1" Grid.Column="0" Content="فایل پورت های شناور"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Name="PathfileFloatTextBox" FlowDirection="LeftToRight"/>
+        <Button    Grid.Row="1" Grid.Column="2" Content="انتخاب فایل شناور" Name="SelectfileFloat" Click="SelectfileFloat_Click" Width="120" HorizontalAlignment="Right" />
+        <Button Grid.Row="5" Grid.Column="5" Content="ذخیره" Name="SaveButton" Click="SaveForm" Tag="Footer" />
+    </Grid>
+   
+</Local:PopupWindow>

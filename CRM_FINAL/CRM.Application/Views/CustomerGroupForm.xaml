@@ -1,0 +1,38 @@
+﻿<Local:PopupWindow Title="فرم ویرایش گروه مشترکین" 
+                   x:Class="CRM.Application.Views.CustomerGroupForm"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib" 
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d:DesignWidth="780"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+                   Loaded="PopupWindow_Loaded" Icon="/CRM.Application;component/Images/CustomerGroup_48x48.png" Width="500" Height="250">
+
+    <Grid FlowDirection="RightToLeft" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="0" Content="نوع مشترکین : " />
+        <ComboBox Grid.Column="1" Grid.Row="0" x:Name="CustomerTypeComboBox" DisplayMemberPath="Title" SelectedValuePath="ID" SelectedValue="{Binding CustomerTypeID}" />
+
+        <Label Grid.Column="0" Grid.Row="1" Content=" عنوان گروه مشترکین : "/>
+        <TextBox Grid.Column="1" Grid.Row="1" x:Name="TitleTextBox" Text="{Binding Title}" />
+
+        <Label Grid.Column="0" Grid.Row="2" Content=" توضیحات : "/>
+        <TextBox Grid.Column="1" Grid.Row="2" x:Name="DiscriptionTextBox" Text="{Binding Description}" Height="60" />
+
+        <Button Grid.Row ="4" Grid.Column="0" Content="ذخیره" Name="SaveButton" Click="SaveForm" Tag="Footer"/>
+    </Grid>
+</Local:PopupWindow>

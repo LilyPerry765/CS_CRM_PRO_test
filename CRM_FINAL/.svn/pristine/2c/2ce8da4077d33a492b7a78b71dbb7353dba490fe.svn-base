@@ -1,0 +1,24 @@
+﻿<Local:PopupWindow x:Class="CRM.Application.Views.TelephoneNoInputForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Local="clr-namespace:CRM.Application.Local"
+        Title="فرم ورود شماره تلفن" Height="200" Width="600">
+
+    <DockPanel FlowDirection="RightToLeft" >
+        <Grid FocusManager.FocusedElement="{Binding ElementName=TelephoneNoTextBox}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="25"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="شماره تلفن : " />
+            <TextBox Grid.Row="0" Grid.Column="1" Name="TelephoneNoTextBox" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+            <Button Grid.Row="1" Grid.Column="1" Tag="Footer" Content="نمایش درخواست" HorizontalAlignment="Right" Name="ShowRequestFormButton" Click="ShowRequestFormButton_Click" IsDefault="True" Margin="0,0,0,1" VerticalAlignment="Bottom" />
+        </Grid>
+    </DockPanel>
+</Local:PopupWindow>

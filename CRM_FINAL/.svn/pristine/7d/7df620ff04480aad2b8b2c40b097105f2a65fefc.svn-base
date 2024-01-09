@@ -1,0 +1,58 @@
+﻿<Local:ReportBase x:Class="CRM.Application.Reports.ReportUserControls.CenterCableReportUserControl"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Local="clr-namespace:CRM.Application.Local"
+             xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Loaded="ReportBase_Loaded">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="27"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="27"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="27"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="27"/>
+            <RowDefinition Height="5"/>
+            
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="15" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock x:Name="FromDateTextBlock" Grid.Row="0" Grid.Column="0" Text="از تاریخ ایجاد  : " VerticalAlignment="Center" />
+        <cal:DatePicker Grid.Row="0" Grid.Column="1" x:Name="FromDate"/>
+
+        <TextBlock x:Name="ToDateTextBlock" Grid.Row="0" Grid.Column="3" Text="تا تاریخ ایجاد  : " VerticalAlignment="Center" />
+        <cal:DatePicker Grid.Row="0" Grid.Column="4" x:Name="ToDate"/>
+
+        <UserControls:CenterCityUserControl x:Name="CityCenterUC" Grid.Column=" 0" Grid.Row="2" Grid.ColumnSpan=" 5" />
+        
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="شماره کابل : " VerticalAlignment="Center" />
+        <TextBox Grid.Row="4" Grid.Column="1"   Name="CableNo" PreviewTextInput="NumberValidationTextBox"/>
+
+        <TextBlock x:Name="StatusTextBlock" Grid.Row="4" Grid.Column="3" Text="وضعیت : " VerticalAlignment="Center" />
+        <ComboBox x:Name="StatusCombobox" Grid.Column="4" Grid.Row="4" DisplayMemberPath="Name" SelectedValuePath="ID" VerticalAlignment="Bottom"/>
+
+        <TextBlock x:Name="PhysicalTypeTextBlock" Grid.Row="6" Grid.Column="0" Text="نوع فیزیکی : " VerticalAlignment="Center" />
+        <UserControls:CheckableComboBox x:Name="PhysicalTypeCheckableCombobox" Grid.Column="1" Grid.Row="6"/>
+
+        <TextBlock x:Name="UsingTypeTextBlock" Grid.Row="6" Grid.Column="3" Text="نوع کارکرد : " VerticalAlignment="Center" />
+        <UserControls:CheckableComboBox x:Name="UsingTypeCheckableCombobox" Grid.Column="4" Grid.Row="6"/>
+
+
+
+
+
+
+    </Grid>
+</Local:ReportBase>

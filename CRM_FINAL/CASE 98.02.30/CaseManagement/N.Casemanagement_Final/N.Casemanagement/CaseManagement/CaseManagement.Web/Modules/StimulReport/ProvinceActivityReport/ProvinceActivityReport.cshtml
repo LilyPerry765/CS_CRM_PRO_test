@@ -1,0 +1,54 @@
+﻿
+<html>
+
+<body>
+
+    <label style="width:100px; font-weight:normal; font-variant:normal;">گروه فعالیت : </label>
+    <select id="ActivityGroup"  onchange="Activity()" style="width:200px; height:30px;">
+     
+    </select>
+
+    <br /><br />
+        <!-- Main content -->
+  
+            <!-- Table row -->
+            <div class="row">
+                <div class="col-xs-12 table-responsive">
+                    <table cellspacing="0" class="table table-striped " id="Province_Activity_Table" style="font-family: Tahoma;font-size:9px; ">
+                        <thead style="background-color: #0090D9; color: #eee; font-weight: 600; ">
+                         
+                        </thead>
+                        <tbody style="text-align: center; line-height: 1; -webkit-print-color-adjust: exact;" ></tbody>
+                    </table>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <!-- accepted payments column -->
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        
+        <!-- /.content -->
+    
+</body>
+</html>
+<script ="text/javascript">
+    CaseManagement.StimulReport.ProvinceActivityReport.ProvinceActivityGroupList();
+
+    function Activity() {
+        var select = document.getElementById("ActivityGroup");
+       
+        var selectedGroup = select.options[select.selectedIndex].value;
+        //alert(selectedString);
+        CaseManagement.StimulReport.ProvinceActivityReport.ProvinceActivityList(selectedGroup);
+      //  makehoverForCells();
+    }
+
+    $(function () {
+        $("[title]").tooltip();
+    });
+   
+
+</script>

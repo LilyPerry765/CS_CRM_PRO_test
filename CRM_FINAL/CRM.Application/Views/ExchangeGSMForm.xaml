@@ -1,0 +1,316 @@
+﻿<Local:RequestFormBase Title="برگردان GSM" 
+                   x:Class="CRM.Application.Views.ExchangeGSMForm"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib" 
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+                   xmlns:sv="clr-namespace:CRM.Application.StaticValidation"
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d:DesignWidth="780"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"  
+                   Loaded="PopupWindow_Loaded" >
+    <ScrollViewer FlowDirection="RightToLeft">
+        <StackPanel>
+            <GroupBox Grid.Row="0" Grid.Column="0" Header="درخواست" x:Name="ExchangeRequestInfoUserControl" >
+            </GroupBox>
+
+            <GroupBox Header="نوع برگردان" x:Name="TranslationTypeDetailGroupBox">
+                <StackPanel>
+                    <RadioButton Content="GSM به معمولی"  x:Name="GSMToNormalRadioButton" Margin="5" Checked="GSMToNormalRadioButton_Checked"/>
+                    <RadioButton Content="معمولی به GSM" x:Name="NormalToGSMRadioButton"  Margin="5" Checked="NormalToGSMRadioButton_Checked"/>
+                </StackPanel>
+            </GroupBox>
+
+            <GroupBox Grid.Row="2" Grid.Column="0" Header="جستجو تلفن" FlowDirection="RightToLeft"  x:Name="TelephoneSearchGroupBox" Visibility="Collapsed" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label    Grid.Row="0" Grid.Column="0" Content="از تلفن" />
+                    <TextBox  Grid.Row="0" Grid.Column="1" x:Name="FromTelephonTextBox"/>
+
+                    <Label    Grid.Row="0" Grid.Column="2" Content="تا تلفن" />
+                    <TextBox  Grid.Row="0" Grid.Column="3" x:Name="ToTelephonTextBox"/>
+
+                    <Button  Grid.Row="0" Grid.Column="4" x:Name="SearchButton" Content="جستجو" Click="SearchButton_Click"/>
+                </Grid>
+
+            </GroupBox>
+
+            <GroupBox Header="کافو"  x:Name="CabinetGroupBox" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label    Grid.Row="0" Grid.Column="0" Content="شماره کافو" x:Name="CabinetLabel" Visibility="Collapsed"/>
+                    <ComboBox Grid.Row="0" Grid.Column="1" x:Name="CabinetComboBox"  SelectedValuePath="ID"  SelectionChanged="CabinetComboBox_SelectionChanged" Visibility="Collapsed">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <DockPanel >
+                                    <TextBlock Text="{Binding Description}" Width="100" TextAlignment="Right" DockPanel.Dock="Right"/>
+                                    <TextBlock Text="{Binding Name}"        Width="100" TextAlignment="Left" DockPanel.Dock="Left"/>
+                                    <TextBlock/>
+                                </DockPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                        <ComboBox.SelectedValue>
+                            <Binding  Path="OldCabinetID"  UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True">
+                                <Binding.ValidationRules>
+                                    <sv:StaticValidation ValidationType="NotNull"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </ComboBox.SelectedValue>
+                    </ComboBox>
+
+                    <Label    Grid.Row="0" Grid.Column="3" Content="تعداد مرکزی" x:Name="CabinetInputCountLabel" Visibility="Collapsed"/>
+                    <TextBox Grid.Row="0" Grid.Column="4"  x:Name="CabinetInputCountTextBox" Visibility="Collapsed" IsEnabled="False">
+                        <TextBox.Text>
+                            <Binding RelativeSource="{RelativeSource Self}" Path="Text" UpdateSourceTrigger="LostFocus" ValidatesOnDataErrors="True">
+                                <Binding.ValidationRules>
+                                    <sv:StaticValidation ValidationType="Pattern" Pattern="^[0-9]+$"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Header="جزئیات برگردان" x:Name="SlightTranslationDetailGroupBox" Visibility="Collapsed">
+                <ScrollViewer  Padding="5 5 5 5" >
+                    <DataGrid   x:Name="SlightTranslationDataGrid" 
+                          BorderThickness="0 1 0 0"  
+                          AutoGenerateColumns="False"                          
+                          CanUserResizeColumns="True"
+                          CanUserResizeRows="False"
+                          CanUserDeleteRows="False"
+                          SelectionMode="Single"
+                          SelectionUnit="FullRow" 
+                          BeginningEdit="SlightTranslationDataGrid_BeginningEdit"     
+                          ItemsSource="{Binding}">
+                        <DataGrid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="حذف" Click="SlightTranslationDelete">
+                                    <MenuItem.Icon>
+                                        <Image Source="/CRM.Application;component/Images/delete2_16x16.png" Width="16" Height="16" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn>
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Image Source="/CRM.Application;component/Images/element_16x16.png" Width="16" Height="16" HorizontalAlignment="Center" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+
+                            <!--<DataGridTemplateColumn Width="*" Header="از پست">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock x:Name="FromPostTextBlock"   Text="{Binding Path=FromPostNumber, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <ComboBox x:Name="FromPostComboBox"  ItemsSource="{Binding _FromPost, RelativeSource={RelativeSource AncestorType=Window}}"   DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="FromPostComboBox_SelectionChanged"  Loaded="FromPostComboBox_Loaded"/>
+                                        --><!--SelectedValue="{Binding Path=FromPostID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"--><!--
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTextColumn Header="A/B" Binding="{Binding  FromAorBTypeName  }"/>
+
+
+                            <DataGridTemplateColumn Width="*" Header="از اتصالی">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock x:Name="FromPostConntactTextBlock"   Text="{Binding Path=FromPostConntactNumber, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <ComboBox x:Name="FromPostConntactComboBox"  ItemsSource="{Binding _FromPostConntact, RelativeSource={RelativeSource AncestorType=Window}}"   DisplayMemberPath="Name" SelectedValuePath="LongID" SelectionChanged="FromPostConntactComboBox_SelectionChanged"  Loaded="FromPostConntactComboBox_Loaded"/>
+                                        --><!--SelectedValue="{Binding Path=FromPostContactID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"--><!--
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="نوع اتصالی" Binding="{Binding  FromConnectiontype  }"/>-->
+
+                            <DataGridTextColumn Header="تلفن" Binding="{Binding FromTelephone}"/>
+
+
+
+
+                            <DataGridTemplateColumn Width="*" Header="کافو">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock x:Name="CabinetTextBlock"   Text="{Binding Path=CabinetNumber, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <!--<DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <ComboBox x:Name="CabinetColumnComboBox"  ItemsSource="{Binding _Cabinet, RelativeSource={RelativeSource AncestorType=Window}}"   DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="CabinetColumnComboBox_SelectionChanged"  Loaded="CabinetColumnComboBox_Loaded"/>
+                                        --><!--SelectedValue="{Binding Path=ToPostID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"--><!--
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>-->
+                            </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Width="*" Header="پست">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock x:Name="ToPostTextBlock"   Text="{Binding Path=PostNumber, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <ComboBox x:Name="ToPostComboBox"  ItemsSource="{Binding _ToPost, RelativeSource={RelativeSource AncestorType=Window}}"   DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="ToPostComboBox_SelectionChanged"  Loaded="ToPostComboBox_Loaded"/>
+                                        <!--SelectedValue="{Binding Path=ToPostID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"-->
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
+                            </DataGridTemplateColumn>
+
+                            <DataGridTextColumn Header="A/B" Binding="{Binding  AorBTypeName  }"/>
+
+                            <DataGridTemplateColumn Width="*" Header="اتصالی">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock x:Name="ToPostConntactTextBlock"   Text="{Binding Path=PostConntactNumber, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <ComboBox x:Name="ToPostConntactComboBox"  ItemsSource="{Binding _ToPostConntact, RelativeSource={RelativeSource AncestorType=Window}}"  SelectedValuePath="LongID" SelectionChanged="ToPostConntactComboBox_SelectionChanged"  Loaded="ToPostConntactComboBox_Loaded">
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock>
+                                                        <TextBlock.Text>
+                                                            <MultiBinding StringFormat="{}{0} {1}">
+                                                                <Binding Path="Name"/>
+                                                                <Binding Path="Description"/>
+                                                            </MultiBinding>
+                                                        </TextBlock.Text>
+                                                    </TextBlock>
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
+                                        <!--SelectedValue="{Binding Path=ToPostConntactID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"-->
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTextColumn Header="نوع اتصالی" Binding="{Binding  Connectiontype  }"/>
+
+
+                            <DataGridTemplateColumn Width="*" Header="مرکزی">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock x:Name="CabinetInputTextBlock"   Text="{Binding Path=CabinetInputNumber, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                                <DataGridTemplateColumn.CellEditingTemplate>
+                                    <DataTemplate>
+                                        <ComboBox x:Name="CabinetInputComboBox"  ItemsSource="{Binding _CabinetInput, RelativeSource={RelativeSource AncestorType=Window}}"   DisplayMemberPath="Name" SelectedValuePath="LongID" SelectionChanged="CabinetInputComboBox_SelectionChanged"  Loaded="CabinetInputComboBox_Loaded"/>
+                                        <!--SelectedValue="{Binding Path=ToPostID, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"-->
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellEditingTemplate>
+                            </DataGridTemplateColumn>
+
+                            <!--<DataGridComboBoxColumn  Width="*" Header="مرکزی"  x:Name="ToCabinetInputColumn"  SelectedValueBinding="{Binding Path=CabinetInputID,   UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Name" SelectedValuePath="LongID">
+                                <DataGridComboBoxColumn.EditingElementStyle>
+                                    <Style TargetType="{x:Type ComboBox}">
+                                        <EventSetter Event="SelectionChanged" Handler="ToCabinetInputColumn_SelectionChanged" />
+                                    </Style>
+                                </DataGridComboBoxColumn.EditingElementStyle>
+                            </DataGridComboBoxColumn>-->
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </ScrollViewer>
+            </GroupBox>
+
+            <GroupBox Header="جزئیات برگردان" x:Name="TelephoneDetailGroupBox" Visibility="Collapsed">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <ScrollViewer  Padding="5 5 5 5" Grid.Row="1" Grid.ColumnSpan="4" Height="400">
+                        <DataGrid Grid.Row="0"   x:Name="TelItemsDataGrid" 
+                          BorderThickness="0 1 0 0"  
+                          AutoGenerateColumns="False"                          
+                          CanUserResizeColumns="True"
+                          CanUserResizeRows="False"
+                          CanUserDeleteRows="False"
+                          CanUserAddRows="False"
+                          SelectionMode="Single"
+                          SelectionUnit="FullRow" 
+                          ItemsSource="{Binding}">
+                            <DataGrid.ColumnHeaderStyle>
+                                <Style TargetType="DataGridColumnHeader">
+                                    <Setter Property="ContentTemplate">
+                                        <Setter.Value>
+                                            <DataTemplate>
+                                                <CheckBox x:Name="HeaderCheckBox"  Content="{Binding}" Tag="{Binding }"  Checked="CheckBoxChanged" Unchecked="UnCheckBoxChanged" Style="{x:Null}"/>
+                                            </DataTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </DataGrid.ColumnHeaderStyle>
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image Source="/CRM.Application;component/Images/element_16x16.png" Width="16" Height="16" HorizontalAlignment="Center" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+
+                                <DataGridTextColumn Width="*" Header="مشترک" Binding="{Binding AfterCustomerName}"/>
+
+                                <DataGridTextColumn Width="*" Header="تلفن قدیم"  Binding="{Binding Path=OldTelephonNo, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" />
+
+                                <DataGridTextColumn Width="*" Header="تلفن جدید"  Binding="{Binding Path=NewTelephonNo, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+
+                                <DataGridTextColumn Width="*" Header="کلاس تلفن"  Binding="{Binding Path=TelephoneClass, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" />
+
+                                <DataGridTextColumn Width="*" Header="تاریخ برگردان"  Binding="{Binding Path=CompletionDate, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+
+                                <DataGridTextColumn Width="2*" Header="سرویس های ویژه"  Binding="{Binding Path=SpecialService, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" />
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </ScrollViewer>
+                </Grid>
+            </GroupBox>
+        </StackPanel>
+    </ScrollViewer>
+</Local:RequestFormBase>
+

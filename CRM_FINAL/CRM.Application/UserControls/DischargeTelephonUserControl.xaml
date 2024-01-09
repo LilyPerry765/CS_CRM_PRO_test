@@ -1,0 +1,79 @@
+﻿<Local:UserControlBase
+               xmlns:Local="clr-namespace:CRM.Application.Local"
+             x:Class="CRM.Application.UserControls.DischargeTelephonUserControl" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+             mc:Ignorable="d" d:DesignWidth="820"
+    Tag="تخلیه تلفن"
+             Loaded="UserControl_Loaded">
+    <DockPanel FlowDirection="RightToLeft">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <GroupBox Header="تلفن های مشترک" Grid.Row="0" x:Name="TelephonInfo">
+                <DataGrid DockPanel.Dock="Bottom" x:Name="TelephoneDataGrid"
+                      BorderThickness="0 1 0 0"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      CanUserResizeColumns="True"
+                      CanUserResizeRows="False"
+                      CanUserDeleteRows="False"
+                      SelectionMode="Single"
+                      SelectionUnit="FullRow"
+                      ItemsSource="{Binding}"
+                      IsEnabled="False"
+                      SelectedValuePath="TelephoneNo"
+                      SelectionChanged="TelephoneDataGrid_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="تلفن"  Binding="{Binding Path=TelephoneNo, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                        <!--<DataGridComboBoxColumn  Header="وضعیت تلفن"  x:Name="TelephoneNoStatusComboBox" SelectedValueBinding="{Binding Path=TelephoneNoStatus, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="ID" DisplayMemberPath="Name" IsReadOnly="True"/>-->
+                        <DataGridTextColumn Header="وضعیت تلفن" Binding="{Binding Path=TelephoneNoStatusName}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="آدرس نصب" Binding="{Binding Path=Address, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="کدپستی نصب"  Binding="{Binding Path=PostalCode, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+            
+            <GroupBox Header="تخلیه"  Grid.Row="1" DockPanel.Dock="Bottom" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Content="علت تخلیه" Grid.Row="0" Grid.Column="0" />
+                    <ComboBox Grid.Row="0" Grid.Column="1" x:Name="ReasonDisChargeComboBox" SelectedValue="{Binding CauseOfTakePossessionID}" DisplayMemberPath="Name" SelectedValuePath="ID"  />
+
+                    <Label Content="شماره نامه تخلیه" Grid.Column="2" />
+                    <TextBox Grid.Column="3" x:Name="DischargLeterNoTextBox"  Text="{Binding DischargLeterNo}"/>
+
+                    <Label Content="بدهی آبونمان"  Grid.Row="1"  Grid.Column="0" />
+                    <TextBox Grid.Row="1" Grid.Column="1" x:Name="AbonmanDeptTextBox" Text="{Binding AbonmanDept}"/>
+
+                    <Label Content="مبلغ بستانکاری" Grid.Row="1" Grid.Column="2" />
+                    <TextBox  Grid.Row="1" Grid.Column="3" x:Name="CreditTextBox" Text="{Binding Credit}"/>
+
+                    <Label Content="تاریخ سند"  Grid.Column="0" Grid.Row="2" />
+                    <cal:DatePicker  Grid.Row="2" Grid.Column="1" Name="DataDocumentDatePicker" SelectedDate="{Binding TakePossessionDate}" />
+
+                    <Label Content="توضیحات" Grid.Row="2" Grid.Column="2"   />
+                    <TextBox Grid.Row="2" Grid.Column="3" Name="DescriptionTextBox" Text="{Binding DescriptionDischarge}"/>
+
+                </Grid>
+            </GroupBox>
+        </Grid>
+    </DockPanel>
+</Local:UserControlBase>

@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetCdrDetailInCycle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="year" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="cycle" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCdrDetailInCycleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCdrDetailInCycleResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="errorMessage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="table">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCdrDetailIntimeRange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="phone" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCdrDetailIntimeRangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCdrDetailIntimeRangeResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="errorMessage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="table">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCallTypes">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCallTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCallTypesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCounter">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="phoneNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="requestDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCounterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCounterResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="localCounter" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="nonLocalCounter" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="errorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetKarkardInCycle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="phoneNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="yearNumber" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="cycleNumber" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetKarkardInCycleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetKarkardInCycleResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="local" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="nonLocal" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="international" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="bistalk" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IA" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="errorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetKarkardInCycleNew">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="phoneNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="yearNumber" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="cycleNumber" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetKarkardInCycleNewResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetKarkardInCycleNewResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="table">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="lastDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="errorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetKarkardInTimeRange">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="phoneNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetKarkardInTimeRangeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetKarkardInTimeRangeResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="local" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="nonLocal" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="international" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="bistalk" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="IA" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="errorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetKarkardInTimeRangeNew">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="phoneNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetKarkardInTimeRangeNewResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetKarkardInTimeRangeNewResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="table">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" name="lastDate" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="errorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCdrDetailOnCalledNumber">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CalledNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="startDate" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCdrDetailOnCalledNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCdrDetailOnCalledNumberResult" nillable="true" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="table">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangeCurrentCycleEndDate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="year" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="cycle" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangeCurrentCycleEndDateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ChangeCurrentCycleEndDateResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="errorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataTable" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+            <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetCdrDetailInCycleSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCdrDetailInCycle" />
+  </wsdl:message>
+  <wsdl:message name="GetCdrDetailInCycleSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCdrDetailInCycleResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCdrDetailIntimeRangeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCdrDetailIntimeRange" />
+  </wsdl:message>
+  <wsdl:message name="GetCdrDetailIntimeRangeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCdrDetailIntimeRangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCallTypesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCallTypes" />
+  </wsdl:message>
+  <wsdl:message name="GetCallTypesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCallTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCounterSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCounter" />
+  </wsdl:message>
+  <wsdl:message name="GetCounterSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCounterResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetKarkardInCycleSoapIn">
+    <wsdl:part name="parameters" element="tns:GetKarkardInCycle" />
+  </wsdl:message>
+  <wsdl:message name="GetKarkardInCycleSoapOut">
+    <wsdl:part name="parameters" element="tns:GetKarkardInCycleResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetKarkardInCycleNewSoapIn">
+    <wsdl:part name="parameters" element="tns:GetKarkardInCycleNew" />
+  </wsdl:message>
+  <wsdl:message name="GetKarkardInCycleNewSoapOut">
+    <wsdl:part name="parameters" element="tns:GetKarkardInCycleNewResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetKarkardInTimeRangeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetKarkardInTimeRange" />
+  </wsdl:message>
+  <wsdl:message name="GetKarkardInTimeRangeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetKarkardInTimeRangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetKarkardInTimeRangeNewSoapIn">
+    <wsdl:part name="parameters" element="tns:GetKarkardInTimeRangeNew" />
+  </wsdl:message>
+  <wsdl:message name="GetKarkardInTimeRangeNewSoapOut">
+    <wsdl:part name="parameters" element="tns:GetKarkardInTimeRangeNewResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCdrDetailOnCalledNumberSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCdrDetailOnCalledNumber" />
+  </wsdl:message>
+  <wsdl:message name="GetCdrDetailOnCalledNumberSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCdrDetailOnCalledNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChangeCurrentCycleEndDateSoapIn">
+    <wsdl:part name="parameters" element="tns:ChangeCurrentCycleEndDate" />
+  </wsdl:message>
+  <wsdl:message name="ChangeCurrentCycleEndDateSoapOut">
+    <wsdl:part name="parameters" element="tns:ChangeCurrentCycleEndDateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCallTypesHttpGetIn" />
+  <wsdl:message name="GetCallTypesHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:message name="GetCallTypesHttpPostIn" />
+  <wsdl:message name="GetCallTypesHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataTable" />
+  </wsdl:message>
+  <wsdl:portType name="HotBillingServiceSoap">
+    <wsdl:operation name="GetCdrDetailInCycle">
+      <wsdl:input message="tns:GetCdrDetailInCycleSoapIn" />
+      <wsdl:output message="tns:GetCdrDetailInCycleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCdrDetailIntimeRange">
+      <wsdl:input message="tns:GetCdrDetailIntimeRangeSoapIn" />
+      <wsdl:output message="tns:GetCdrDetailIntimeRangeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCallTypes">
+      <wsdl:input message="tns:GetCallTypesSoapIn" />
+      <wsdl:output message="tns:GetCallTypesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCounter">
+      <wsdl:input message="tns:GetCounterSoapIn" />
+      <wsdl:output message="tns:GetCounterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetKarkardInCycle">
+      <wsdl:input message="tns:GetKarkardInCycleSoapIn" />
+      <wsdl:output message="tns:GetKarkardInCycleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetKarkardInCycleNew">
+      <wsdl:input message="tns:GetKarkardInCycleNewSoapIn" />
+      <wsdl:output message="tns:GetKarkardInCycleNewSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetKarkardInTimeRange">
+      <wsdl:input message="tns:GetKarkardInTimeRangeSoapIn" />
+      <wsdl:output message="tns:GetKarkardInTimeRangeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetKarkardInTimeRangeNew">
+      <wsdl:input message="tns:GetKarkardInTimeRangeNewSoapIn" />
+      <wsdl:output message="tns:GetKarkardInTimeRangeNewSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCdrDetailOnCalledNumber">
+      <wsdl:input message="tns:GetCdrDetailOnCalledNumberSoapIn" />
+      <wsdl:output message="tns:GetCdrDetailOnCalledNumberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeCurrentCycleEndDate">
+      <wsdl:input message="tns:ChangeCurrentCycleEndDateSoapIn" />
+      <wsdl:output message="tns:ChangeCurrentCycleEndDateSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="HotBillingServiceHttpGet">
+    <wsdl:operation name="GetCallTypes">
+      <wsdl:input message="tns:GetCallTypesHttpGetIn" />
+      <wsdl:output message="tns:GetCallTypesHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="HotBillingServiceHttpPost">
+    <wsdl:operation name="GetCallTypes">
+      <wsdl:input message="tns:GetCallTypesHttpPostIn" />
+      <wsdl:output message="tns:GetCallTypesHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="HotBillingServiceSoap" type="tns:HotBillingServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCdrDetailInCycle">
+      <soap:operation soapAction="http://tempuri.org/GetCdrDetailInCycle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCdrDetailIntimeRange">
+      <soap:operation soapAction="http://tempuri.org/GetCdrDetailIntimeRange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCallTypes">
+      <soap:operation soapAction="http://tempuri.org/GetCallTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCounter">
+      <soap:operation soapAction="http://tempuri.org/GetCounter" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKarkardInCycle">
+      <soap:operation soapAction="http://tempuri.org/GetKarkardInCycle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKarkardInCycleNew">
+      <soap:operation soapAction="http://tempuri.org/GetKarkardInCycleNew" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKarkardInTimeRange">
+      <soap:operation soapAction="http://tempuri.org/GetKarkardInTimeRange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKarkardInTimeRangeNew">
+      <soap:operation soapAction="http://tempuri.org/GetKarkardInTimeRangeNew" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCdrDetailOnCalledNumber">
+      <soap:operation soapAction="http://tempuri.org/GetCdrDetailOnCalledNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeCurrentCycleEndDate">
+      <soap:operation soapAction="http://tempuri.org/ChangeCurrentCycleEndDate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="HotBillingServiceSoap12" type="tns:HotBillingServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCdrDetailInCycle">
+      <soap12:operation soapAction="http://tempuri.org/GetCdrDetailInCycle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCdrDetailIntimeRange">
+      <soap12:operation soapAction="http://tempuri.org/GetCdrDetailIntimeRange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCallTypes">
+      <soap12:operation soapAction="http://tempuri.org/GetCallTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCounter">
+      <soap12:operation soapAction="http://tempuri.org/GetCounter" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKarkardInCycle">
+      <soap12:operation soapAction="http://tempuri.org/GetKarkardInCycle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKarkardInCycleNew">
+      <soap12:operation soapAction="http://tempuri.org/GetKarkardInCycleNew" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKarkardInTimeRange">
+      <soap12:operation soapAction="http://tempuri.org/GetKarkardInTimeRange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKarkardInTimeRangeNew">
+      <soap12:operation soapAction="http://tempuri.org/GetKarkardInTimeRangeNew" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCdrDetailOnCalledNumber">
+      <soap12:operation soapAction="http://tempuri.org/GetCdrDetailOnCalledNumber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeCurrentCycleEndDate">
+      <soap12:operation soapAction="http://tempuri.org/ChangeCurrentCycleEndDate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="HotBillingServiceHttpGet" type="tns:HotBillingServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="GetCallTypes">
+      <http:operation location="/GetCallTypes" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="HotBillingServiceHttpPost" type="tns:HotBillingServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="GetCallTypes">
+      <http:operation location="/GetCallTypes" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HotBillingService">
+    <wsdl:port name="HotBillingServiceSoap" binding="tns:HotBillingServiceSoap">
+      <soap:address location="http://10.10.110.214/hotbillingservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="HotBillingServiceSoap12" binding="tns:HotBillingServiceSoap12">
+      <soap12:address location="http://10.10.110.214/hotbillingservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="HotBillingServiceHttpGet" binding="tns:HotBillingServiceHttpGet">
+      <http:address location="http://10.10.110.214/hotbillingservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="HotBillingServiceHttpPost" binding="tns:HotBillingServiceHttpPost">
+      <http:address location="http://10.10.110.214/hotbillingservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

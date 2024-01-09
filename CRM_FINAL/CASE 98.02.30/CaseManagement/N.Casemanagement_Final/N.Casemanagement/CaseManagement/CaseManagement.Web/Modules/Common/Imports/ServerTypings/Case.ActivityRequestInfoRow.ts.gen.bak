@@ -1,0 +1,68 @@
+﻿
+namespace CaseManagement.Case {
+    export interface ActivityRequestInfoRow {
+        Id?: number;
+        ProvinceId?: number;
+        ActivityId?: number;
+        CycleId?: number;
+        IncomeFlowId?: number;
+        Count?: number;
+        CycleCost?: number;
+        Factor?: number;
+        DelayedCost?: number;
+        YearCost?: number;
+        AccessibleCost?: number;
+        InaccessibleCost?: number;
+        TotalLeakage?: number;
+        RecoverableLeakage?: number;
+        Recovered?: number;
+        DelayedCostHistory?: number;
+        YearCostHistory?: number;
+        AccessibleCostHistory?: number;
+        InaccessibleCostHistory?: number;
+        RejectCount?: number;
+        EventDescription?: string;
+        MainReason?: string;
+        CycleName?: string;
+        Name?: string;
+        Expr1?: string;
+        CodeName?: string;
+    }
+
+    export namespace ActivityRequestInfoRow {
+        export const nameProperty = 'EventDescription';
+        export const localTextPrefix = 'Case.ActivityRequestInfo';
+
+        export namespace Fields {
+            export declare const Id;
+            export declare const ProvinceId;
+            export declare const ActivityId;
+            export declare const CycleId;
+            export declare const IncomeFlowId;
+            export declare const Count;
+            export declare const CycleCost;
+            export declare const Factor;
+            export declare const DelayedCost;
+            export declare const YearCost;
+            export declare const AccessibleCost;
+            export declare const InaccessibleCost;
+            export declare const TotalLeakage;
+            export declare const RecoverableLeakage;
+            export declare const Recovered;
+            export declare const DelayedCostHistory;
+            export declare const YearCostHistory;
+            export declare const AccessibleCostHistory;
+            export declare const InaccessibleCostHistory;
+            export declare const RejectCount;
+            export declare const EventDescription;
+            export declare const MainReason;
+            export declare const CycleName;
+            export declare const Name;
+            export declare const Expr1;
+            export declare const CodeName;
+        }
+
+        ['Id', 'ProvinceId', 'ActivityId', 'CycleId', 'IncomeFlowId', 'Count', 'CycleCost', 'Factor', 'DelayedCost', 'YearCost', 'AccessibleCost', 'InaccessibleCost', 'TotalLeakage', 'RecoverableLeakage', 'Recovered', 'DelayedCostHistory', 'YearCostHistory', 'AccessibleCostHistory', 'InaccessibleCostHistory', 'RejectCount', 'EventDescription', 'MainReason', 'CycleName', 'Name', 'Expr1', 'CodeName'].forEach(x => (<any>Fields)[x] = x);
+    }
+}
+

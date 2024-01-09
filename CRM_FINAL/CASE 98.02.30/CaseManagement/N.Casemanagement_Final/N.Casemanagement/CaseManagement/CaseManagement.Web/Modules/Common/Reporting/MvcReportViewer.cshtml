@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "";
+}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head  >
+    <title></title>
+   @using Stimulsoft.Report.Mvc; 
+</head>
+<body>
+    <table>
+        <tr>             
+            <td style="width: 100%;" valign="top">
+               @Html.Stimulsoft().StiMvcViewer("MvcMobileViewer1", new StiMvcViewerOptions()
+                {
+                    
+                    Appearance =
+                    {
+                        FullScreenMode = true,
+                      
+                        RightToLeft = true,
+                        ShowTooltips = true,
+                        ScrollbarsMode = true
+                    },
+                     Toolbar =
+                     {
+                          
+                          ShowAboutButton = false,
+                          ShowFullScreenButton = true,
+                     },
+                   // Localization = "~/Content/Localization/fa.xml",
+                    Actions =
+                    {
+                        GetReport = "GetReport",
+                        ViewerEvent = "ViewerEvent",
+
+                    },
+                })
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

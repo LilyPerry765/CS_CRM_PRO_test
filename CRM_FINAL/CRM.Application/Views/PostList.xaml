@@ -1,0 +1,221 @@
+﻿<Local:TabWindow x:Class="CRM.Application.Views.PostList"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:code="clr-namespace:CRM.Application.Codes"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="800"
+                 xmlns:Local="clr-namespace:CRM.Application.Local"
+                 xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                 xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+                 Loaded="TabWindow_Loaded">
+    <DockPanel FlowDirection="RightToLeft">
+        <Expander x:Name="SearchExpander"
+              DockPanel.Dock="Top"
+              ExpandDirection="Down"
+              IsExpanded="True"
+              Style="{StaticResource SearchExpander}">
+
+            <GroupBox DockPanel.Dock="Top" BorderBrush="#384a66" BorderThickness="0">
+                <DockPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="90" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="90" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+
+                        <Label  Grid.Row="0" Grid.Column="0" Content="شهر :" />
+                        <UserControls:CheckableComboBox x:Name="CityComboBox" Grid.Row="0" Grid.Column="1" LostFocus="CityCheckableComboBox_LostFocus_1"/>
+
+                        <Label  Grid.Row="0" Grid.Column="3" Content="مرکز :" />
+                        <UserControls:CheckableComboBox x:Name="CenterComboBox" Grid.Row="0" Grid.Column="4" LostFocus="CenterCheckableComboBox_LostFocus_1"/>
+
+                        <Label  Grid.Row="0" Grid.Column="6" Content="کافو:" />
+                        <UserControls:CheckableComboBox x:Name="CabinetComboBox"  Grid.Row="0" Grid.Column="7" LostFocus="CabinetComboBox_LostFocus_1" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="پست:" />
+                        <UserControls:CheckableComboBox x:Name="PostComboBox"   Grid.Row="1" Grid.Column="1" />
+
+                        <Label Grid.Row="1" Grid.Column="3" Content="نوع پست:"  />
+                        <UserControls:CheckableComboBox Grid.Row="1" Grid.Column="4" x:Name="PostTypeComboBox"/>
+
+
+                        <Label  Grid.Row="1" Grid.Column="6" Content="نوع A/B:" />
+                        <UserControls:CheckableComboBox    Grid.Row="1" Grid.Column="7" x:Name="AorBTypeCheckableComboBox"/>
+
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="وضعیت:" />
+                        <UserControls:CheckableComboBox Grid.Row="2" Grid.Column="1" x:Name="StatusComboBox"/>
+
+
+                        <Label  Grid.Row="2" Grid.Column="3" Content="ظرفیت پست:" />
+                        <TextBox    Grid.Row="2" Grid.Column="4" x:Name="CapacityTextBox" />
+
+                        <Label  Grid.Row="2" Grid.Column="6" Content="فاصله:" />
+                        <TextBox    Grid.Row="2" Grid.Column="7" x:Name="DistanceTextBox"/>
+                        
+                        <Label       Grid.Row="3" Grid.Column="0" Content="خارح از مرز :" />
+                        <CheckBox    Grid.Row="3" Grid.Column="1" x:Name="OutBoundMeterCheckBox" IsThreeState="True" IsChecked="{x:Null}" VerticalAlignment="Center"/>
+
+                        <Label  Grid.Row="3" Grid.Column="3" Content="متراژ خارج مرز:"  />
+                        <TextBox    Grid.Row="3" Grid.Column="4" x:Name="OutBorderMeterTextBox"   />
+
+                        <Label  Grid.Row="3" Grid.Column="6" Content="کد پست:" />
+                        <TextBox    Grid.Row="3" Grid.Column="7" x:Name="PostalCodeTextBox" />
+
+
+                        <Label  Grid.Row="4" Content="آدرس محل نصب:" Grid.Column="0"/>
+                        <TextBox    Grid.Row="4" Grid.Column="1" x:Name="AddressTextBox"/>
+
+
+                        <Label     Grid.Row="4" Grid.Column="3" Content="اتصالی فعال:" />
+                        <Grid Grid.Row="4" Grid.Column="4" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition  Width="*" />
+                                <ColumnDefinition  Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <ComboBox Grid.Column="0" x:Name="ActiveConditionComboBox" DisplayMemberPath="Name" SelectedValuePath="ID"/>
+                            <TextBox  Grid.Column="1" x:Name="ActivePostContactCountTextBox"/>
+                        </Grid>
+
+                        <Label     Grid.Row="4" Grid.Column="6" Content="اتصالی آزاد:" />
+                        <Grid Grid.Row="4" Grid.Column="7" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"  />
+                                <ColumnDefinition Width="3*"  />
+                            </Grid.ColumnDefinitions>
+                            <ComboBox Grid.Column="0" x:Name="FreeConditionComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" />
+                            <TextBox  Grid.Column="1" x:Name="FreePostContactCountTextBox"/>
+                        </Grid>
+
+
+                        <WrapPanel DockPanel.Dock="Bottom" Grid.Row="6" Margin="0,56,0,10" HorizontalAlignment="Right" Grid.Column="7">
+                            <Button x:Name="SearchButton" Height="23" HorizontalAlignment="Left" Margin="0" Width="80" Content="جستجو" Click="Search" />
+                            <Button Height="23" HorizontalAlignment="Left" Name="ResetButton" Width="80" Click="ResetSearchForm" Content="بازنشانی" />
+                            <Button Height="23" HorizontalAlignment="Left" Name="PrintButton" Width="80" Click="PrintButton_Click"  Content="چاپ" />
+                        </WrapPanel>
+                    </Grid>
+                </DockPanel>
+            </GroupBox>
+        </Expander>
+
+        <Grid DockPanel.Dock="Bottom" Style="{StaticResource TabWindowFooter}">
+            <Border DockPanel.Dock="Bottom" Tag="Footer" FlowDirection="RightToLeft" BorderThickness="0 1 0 0" BorderBrush="#d5d5d5" Background="#e9f3fe" Margin="0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="546*" />
+                        <ColumnDefinition Width="60*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <UserControls:Pager x:Name="Pager" DockPanel.Dock="Bottom" PageSize="10" PageChanged="Pager_PageChanged" HorizontalAlignment="Left" />
+                </Grid>
+            </Border>
+        </Grid>
+        
+        <Grid DockPanel.Dock="Bottom" Style="{StaticResource TabWindowFooter}">
+            <UserControls:StatusBar DockPanel.Dock="Bottom"/>
+        </Grid>
+
+        <DataGrid DockPanel.Dock="Bottom" x:Name="ItemsDataGrid"
+                  BorderThickness="0 1 0 0"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="True"
+                  CanUserResizeColumns="True"
+                  CanUserResizeRows="False"
+                  CanUserDeleteRows="False"
+                  SelectionMode="Single"
+                  SelectionUnit="FullRow"
+                  ItemsSource="{Binding}"
+                  IsReadOnly="True"
+                  MouseDoubleClick="EditItem"
+                  RowEditEnding="ItemsDataGrid_RowEditEnding">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="ContentTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <CheckBox x:Name="HeaderCheckBox"  Content="{Binding}" Tag="{Binding }"  Checked="CheckBoxChanged" Unchecked="UnCheckBoxChanged"/>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <DataGrid.ContextMenu>
+                <ContextMenu FontFamily="Tahoma">
+                    <MenuItem Header="افزودن" Click="AddItem" code:UIElementExtension.ResourceNameVisible="PostList.AddItem">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/add_16x16.png" Width="16" Height="16"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="ویرایش" Click="EditItem" code:UIElementExtension.ResourceNameVisible="PostList.EditItem">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/pencil_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="حذف" Click="DeleteItem" code:UIElementExtension.ResourceNameVisible="PostList.DeleteItem">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/delete2_16x16.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="ذخیره ستون" Click="SaveColumnItem_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/Save.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="تنظیمات چاپ" Click="ReportSettingItem_Click">
+                        <MenuItem.Icon>
+                            <Image Source="/CRM.Application;component/Images/Setting_24x24.png" Width="16" Height="16" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="/CRM.Application;component/Images/element_16x16.png" Width="16" Height="16" HorizontalAlignment="Center" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn  Header="مرکز" x:Name="CenterColumn" Binding="{Binding Path=Center}"/>
+                <DataGridTextColumn  Header="کافو" x:Name="CabinetColumn" Binding="{Binding Path=CabinetNumber}"/>
+                <DataGridTextColumn  Header="نوع پست:" x:Name="PostTypeColumn" Binding="{Binding Path=PostTypeName}"/>
+                <DataGridTextColumn  Header="همجوار" x:Name="AdjacentPostColumn" Binding="{Binding Path=AdjacentPost, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn  Header="شماره پست"  Binding="{Binding Path=Number}" />
+                <DataGridTextColumn  Header="ظرفیت پست"  Binding="{Binding Path=Capacity}" />
+                <DataGridTextColumn  Header="فاصله"  Binding="{Binding Path=Distance}" />
+                <DataGridTextColumn  Header="متراژ خارج مرز"  Binding="{Binding Path=OutBorderMeter}" />
+                <DataGridTextColumn  Header="کد پست"  Binding="{Binding Path=PostalCode}" />
+                <DataGridTextColumn  Header="آدرس محل نصب"  Binding="{Binding Path=Address}" />
+                <DataGridTextColumn  Header="وضعیت پست"  Binding="{Binding Path=Status}" x:Name="StatusColumn"/>
+                <DataGridTextColumn  Header="نوع A/B" x:Name="AorBTypeColumn" Binding="{Binding Path=ABType}"/>
+                <DataGridTextColumn  Header="از شماره اتصالی"  Binding="{Binding Path=FromPostContact}" />
+                <DataGridTextColumn  Header="تا شماره اتصالی"  Binding="{Binding Path=ToPostContact}" />
+                <DataGridTextColumn  Header="تعداد اتصالی فعال"  Binding="{Binding Path=ActivePostContactCount}" />
+                <DataGridTextColumn  Header="تعداد اتصالی آزاد"  Binding="{Binding Path=FreePostContactCount}" />
+                <DataGridCheckBoxColumn Header="فایل پیوست" Binding="{Binding  Path=DocumentFileID, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter=VisibilityNonNULL}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+</Local:TabWindow>
+

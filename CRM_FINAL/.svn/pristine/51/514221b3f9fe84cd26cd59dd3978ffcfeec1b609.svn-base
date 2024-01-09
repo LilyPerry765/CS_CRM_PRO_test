@@ -1,0 +1,40 @@
+﻿<Local:PopupWindow xmlns:Local="clr-namespace:CRM.Application.Local" 
+        x:Class="CRM.Application.Views.RequestTypeForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="انواع درخواستها" 
+        Height="300" Width="600"
+        xmlns:uc="clr-namespace:CRM.Application.UserControls" 
+        Loaded="Window_Loaded">
+    
+    <Grid>
+        <Grid.Resources>
+            <DataTemplate x:Key="chk">
+                <CheckBox Content="{Binding Value}"/>
+            </DataTemplate>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="191*" />
+            <ColumnDefinition Width="587*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80*" />
+            <RowDefinition Height="64*" />
+            <RowDefinition Height="60*" />
+            <RowDefinition Height="144*" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="12,30,0,0" Name="textBlock1" Text="عنوان درخواست" VerticalAlignment="Top" Grid.RowSpan="2" />
+        <TextBox  Grid.Column="1" Grid.Row="1" Height="36" HorizontalAlignment="Left" Margin="9,10,0,0" Name="requestTitleTextBox" VerticalAlignment="Top" Width="311" />
+
+        <TextBlock  Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="12,16,0,0" Name="textBlock2" Text="واحدهای درخواست کننده مجاز " VerticalAlignment="Top" Width="165" Grid.ColumnSpan="2" />
+        <!--<ComboBox  Grid.Column="1" Grid.Row="2"  ItemTemplate="{StaticResource chk}" Name="chk" Margin="77,10,226,8" />-->
+        <uc:CheckableComboBox   x:Name="workUnitCheckBox" Grid.Column="1" Margin="9,10,116,6" Grid.Row="2" />
+        
+        <!--<TextBox  Grid.Column="1" Grid.Row="1" Height="44" HorizontalAlignment="Left" Margin="77,10,0,0" Name="requestTitleTextBox" VerticalAlignment="Top" Width="195" />-->
+        
+        
+        <Button  Content="ذخیره" Height="23" HorizontalAlignment="Left" Margin="349,73,0,0" Name="saveButton" VerticalAlignment="Top" Width="75" Grid.Column="1" Grid.Row="3" Click="saveButton_Click" Tag="Footer" />
+        <CheckBox  Content="از نوع سرویس ویژه" Height="16" HorizontalAlignment="Left" Margin="326,30,0,0" Name="isSpecialService" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" />
+    </Grid>
+
+    </Local:PopupWindow>

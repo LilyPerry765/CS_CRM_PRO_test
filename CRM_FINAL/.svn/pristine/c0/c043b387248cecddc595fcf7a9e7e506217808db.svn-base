@@ -1,0 +1,91 @@
+﻿<Local:UserControlBase  
+             x:Class="CRM.Application.UserControls.TranslationPostInfo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:Local="clr-namespace:CRM.Application.Local"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" Loaded="UserControl_Loaded">
+
+    <StackPanel FlowDirection="RightToLeft">
+
+        <GroupBox Style="{x:Null}" Header="جزئیات برگردان">
+            <Grid IsEnabled="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Label   Grid.Row="0" Grid.Column="0" Content="کافو : " />
+                <TextBox Grid.Row="0" Grid.Column="1" Name="SourceCabinetTextBox"             Text="{Binding CabinetNumber}" IsReadOnly="True" />
+
+                <Label    Grid.Row="0"  Grid.Column="2" Content="از پست  : " />
+                <TextBox  Grid.Row="0"  Grid.Column="3" Name="FromSourceCabinetInputTextBox"  Text="{Binding FromPostNumber}" IsReadOnly="True"/>
+
+                <Label    Grid.Row="0" Grid.Column="4" Content="به پست : " />
+                <TextBox  Grid.Row="0" Grid.Column="5" Name="ToSourceCabinetInputTextBox"     Text="{Binding ToPostNumber}" IsReadOnly="True"/>
+
+               
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="4" Grid.Column="0" Header="جزئیات انتقال" FlowDirection="RightToLeft"  x:Name="ExchangeDetailGroupBox">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label  Grid.Row="0" Content="نوع انتقال" />
+                <ListBox Grid.Column="1" SelectedValuePath="Tag" Grid.ColumnSpan="3" SelectionChanged="ListBox_SelectionChanged" IsEnabled="False">
+                    <ListBoxItem Tag="ture" Name="AllTransferButton" IsSelected="True">انتقال کلی</ListBoxItem>
+                    <ListBoxItem Tag="false" Name="PartialTransferButtom">انتقال جزیی</ListBoxItem>
+                </ListBox>
+
+                <Grid Grid.Row="1" Grid.ColumnSpan="8" x:Name="PartialTransferGrid" Visibility="Hidden">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label    Grid.Row="0" Grid.Column="0" Content="شماره اتصالی قدیم" />
+                    <TextBox Grid.Row="0" Grid.Column="1" x:Name="FromOldConnectionNoTextBox" Text="{Binding OldConnectionNo}" IsReadOnly="True"/>
+
+                    <Label    Grid.Row="0" Grid.Column="3" Content="شماره اتصالی جدید" />
+                    <TextBox Grid.Row="0" Grid.Column="4" x:Name="ToOldConnectionNoTextBox" Text="{Binding NewConnectionNo}" IsReadOnly="True"/>
+                </Grid>
+            </Grid>
+
+        </GroupBox>
+
+    </StackPanel>
+</Local:UserControlBase>
+

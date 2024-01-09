@@ -1,0 +1,358 @@
+﻿<Local:RequestFormBase x:Class="CRM.Application.Views.ADSLMDF"
+                       xmlns:Local="clr-namespace:CRM.Application.Local" 
+                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                       xmlns:converter="clr-namespace:CRM.Converters" 
+                       xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                       WindowStartupLocation="CenterScreen" 
+                       Title="MDF در ADSL" Height="Auto" Width="800">
+
+    <ScrollViewer  Padding="0 0 10 0" FlowDirection="RightToLeft">
+        <DockPanel FlowDirection="RightToLeft">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="30"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <GroupBox Grid.Row="0" Header="مشخصات محل نصب">
+                    <Grid Name="ADSLTelephoneInfo">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="شماره تلفن : " />
+                        <TextBox Grid.Row="0" Grid.Column="1" Name="TelephoneNoTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                        <Label Grid.Row="0" Grid.Column="2" Content="تاریخ درخواست : " />
+                        <TextBox Grid.Row="0" Grid.Column="3" Name="RequestDateTextBox" IsReadOnly="True" FontFamily="pack://application:,,,/CRM.Application;Component/Resources/Fonts/#Yekan" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="نام مشترک : " />
+                        <TextBox Grid.Row="1" Grid.Column="1" Name="CustomerTextBox" IsReadOnly="True"  />
+
+                        <Label Grid.Row="1" Grid.Column="2" Content="وضعیت مشترک : " />
+                        <TextBox Grid.Row="1" Grid.Column="3" Name="CustomerStatusTextBox" IsReadOnly="True" />
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="نام مرکز : " />
+                        <TextBox Grid.Row="2" Grid.Column="1" Name="CenterTextBox" IsReadOnly="True" />
+
+                        <Label Grid.Row="2" Grid.Column="2" Content="کد پستی : " />
+                        <TextBox Grid.Row="2" Grid.Column="3" Name="PostalCodeTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                        <Label Grid.Row="3" Grid.Column="0" Content="آدرس : " />
+                        <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Name="AddressTextBox" IsReadOnly="True" />
+
+                        <!--<Label Grid.Row="4" Grid.Column="2" Content="تاریخ مورد نظر دایری : " />
+                        <TextBox Grid.Row="4" Grid.Column="3" Name="InstalDateTextBox" IsReadOnly="True" FontFamily="pack://application:,,,/CRM.Application;Component/Resources/Fonts/#Yekan" />-->
+
+                        <DataGrid DockPanel.Dock="Bottom" x:Name="BuchtsDataGrid" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="4"
+                                      BorderThickness="0 1 0 0"
+                                      AutoGenerateColumns="False"
+                                      CanUserAddRows="True"
+                                      CanUserResizeColumns="True"
+                                      CanUserResizeRows="False"
+                                      CanUserDeleteRows="False"
+                                      SelectionMode="Single"
+                                      SelectionUnit="FullRow"
+                                      ItemsSource="{Binding}"                                
+                                      IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image Source="/CRM.Application;component/Images/element_16x16.png" Width="16" Height="16" HorizontalAlignment="Center" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Header=" نوع " Width="5*" Binding="{Binding Path=BOOKHT_TYPE_NAME, UpdateSourceTrigger=PropertyChanged}" />
+                                <DataGridTextColumn Header=" ردیف " Width="5*" Binding="{Binding Path=RADIF, UpdateSourceTrigger=PropertyChanged}" />
+                                <DataGridTextColumn Header=" طبقه " Width="5*" Binding="{Binding Path=TABAGHE, UpdateSourceTrigger=PropertyChanged}" />
+                                <DataGridTextColumn Header=" اتصالی " Width="5*" Binding="{Binding Path=ETESALII, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <!--<Label Grid.Row="5" Grid.Column="2" Content="شماره پورت سوییچ : " />
+                        <TextBox Grid.Row="5" Grid.Column="3" Name="SwitchPortTextBox" IsReadOnly="True"/>-->
+
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="1" Header="مشخصات PCM" Name="PCMInfoGroupBox" Visibility="Collapsed">
+                    <Grid Name="PCMTechnicalInfo">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Content="مشخصه PCM : " />
+
+                        <Label Grid.Row="0" Grid.Column="1" Content="پورت : " />
+                        <TextBox Grid.Row="0" Grid.Column="2" Name="PortPCMTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"  />
+
+                        <Label Grid.Row="0" Grid.Column="3" Content="مدل : " />
+                        <TextBox Grid.Row="0" Grid.Column="4" Name="ModelPCMTextBox" IsReadOnly="True" />
+
+                        <Label Grid.Row="0" Grid.Column="5" Content="نوع : " />
+                        <TextBox Grid.Row="0" Grid.Column="6" Name="TypePCMTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="1" Grid.Column="1" Content="راک : " />
+                        <TextBox Grid.Row="1" Grid.Column="2" Name="RockPCMTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="1" Grid.Column="3" Content="شلف : " />
+                        <TextBox Grid.Row="1" Grid.Column="4" Name="ShelfPCMTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="1" Grid.Column="5" Content="کارت : " />
+                        <TextBox Grid.Row="1" Grid.Column="6" Name="CardPCMTextBox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="2" Header="پورت های موجود" Name="EquipmentGroupBox" Visibility="Collapsed">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Name="MDFDescriptionLabel" Foreground="Orange" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="شماره ردیف : " />
+                        <ComboBox Grid.Row="1" Grid.Column="1" Name="RowComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding Radif}" SelectionChanged="RowComboBox_SelectionChanged" />
+
+                        <Label Grid.Row="1" Grid.Column="2" Content="شماره طبقه : " />
+                        <ComboBox Grid.Row="1" Grid.Column="3" Name="ColumnComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding Tabaghe}" SelectionChanged="ColumnComboBox_SelectionChanged" />
+
+                        <!--<Label Grid.Row="0" Grid.Column="2" Content="کلیه بوخت ها : " />
+                        <CheckBox Grid.Row="0" Grid.Column="3" VerticalAlignment="Center" Name="AlBuchtCheckBox" Checked="AlBuchtCheckBox_Checked" Unchecked="AlBuchtCheckBox_Unchecked"/>-->
+
+                        <DataGrid x:Name="ADSLPortDataGrid" Grid.Row="3" Grid.ColumnSpan="4"
+                              Height="150"
+                              BorderThickness="0 1 0 0"
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="False"
+                              CanUserResizeColumns="True"
+                              CanUserResizeRows="False"
+                              CanUserDeleteRows="False"
+                              SelectionMode="Single"
+                              SelectionUnit="FullRow"
+                              ItemsSource="{Binding}"
+                              IsReadOnly="True"
+                              SelectionChanged="ADSLPortDataGrid_SelectionChanged">
+
+                            <DataGrid.Columns>
+
+                                <!--<DataGridTextColumn Header=" شناسه " Width="50" Binding="{Binding Path=ID, UpdateSourceTrigger=PropertyChanged}" />-->
+                                <DataGridTextColumn Header=" پورت " Width="*" Binding="{Binding Path=PortNo, UpdateSourceTrigger=PropertyChanged}" />
+                                <DataGridTextColumn Header=" وضعیت " Width="*" Binding="{Binding Path=Status, UpdateSourceTrigger=PropertyChanged}" />
+                                <DataGridTemplateColumn Header="تغییر وضعیت" Width="auto"  IsReadOnly="True" >
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Image Source="/CRM.Application;component/Images/pencil_16x16.png" MouseUp="Image_MouseUp" Width="16" Height="16" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <!--<DataGridTextColumn Header=" بوخت ورودی " Width="250" Binding="{Binding Path=InputBuchtConnection, UpdateSourceTrigger=PropertyChanged}" />
+                                <DataGridTextColumn Header=" بوخت خروجی " Width="250" Binding="{Binding Path=OutputBuchtConnection, UpdateSourceTrigger=PropertyChanged}"  />-->
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="3" Header="پورت انتخابی" Name="ADSLGroupBox" Visibility="Collapsed">
+                    <Grid Name="PortInfo">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <!--<RowDefinition Height="30" />-->
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.Row="0" Grid.Column="0" Source="/CRM.Application;component/Images/info_16x16.png" Width="16" Height="16" HorizontalAlignment="Left" />
+                        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Name="SavedValueLabel" Content="     نمایش پورت ذخیره شده" Style="{StaticResource ResourceKey=HyperLink}"  Height="40" VerticalAlignment="Top" HorizontalAlignment="Left" MouseLeftButtonDown="SavedValueLabel_MouseLeftButtonDown" Margin="0,0,10,0"/>
+
+                        <!--<Label Grid.Row="1" Grid.Column="0" Content="نام تجهیزات : " />
+                        <TextBox Grid.Row="1" Grid.Column="1" Name="WquipmentTextBox" Text="{Binding EquipmentName}" IsReadOnly="True" />-->
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="شماره پورت : " Name="PortNoLabel" />
+                        <TextBox Grid.Row="1" Grid.Column="1" Name="PortNoTextBox" Text="{Binding PortNo}" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                        <Image Grid.Row="1" Grid.Column="2" Source="/CRM.Application;component/Images/pencil_16x16.png" Tag="{Binding ID}" MouseUp="SingleImage_MouseUp" Width="16" Height="16" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="شماره پورت : " Visibility="Collapsed" Name="PortNoChangePlaceLabel" />
+                        <TextBox Grid.Row="1" Grid.Column="1" Name="PortNoChangePlacetextbox" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" Visibility="Collapsed"/>
+                        <!--<Label Grid.Row="2" Grid.Column="0" Content="بوخت ورودی : "/>
+                        <TextBox Grid.Row="2" Grid.Column="1"  Name="InputBuchtTextBox" Text="{Binding InputBuchtConnection}" IsReadOnly="True" />
+
+                        <Label Grid.Row="2" Grid.Column="2" Content="بوخت خروجی : "/>
+                        <TextBox Grid.Row="2" Grid.Column="3"  Name="OutputBuchtTextBox" Text="{Binding OutputBuchtConnection}" IsReadOnly="True" />-->
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="4" Header="مشخصات پورت" Name="ADSLDischargePortGroupBox" Visibility="Collapsed">
+                    <Grid Name="DischargePortInfoGrid">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="مشخصات MDF : " />
+                        <TextBox Grid.Row="0" Grid.Column="1" Name="MDFDescriptionTextBox" Text="{Binding MDFTitle}" Style="{StaticResource ResourceKey=NumericTextBox}" IsReadOnly="True"/>
+
+                        <Label Grid.Row="0" Grid.Column="2" Content="شماره پورت : " />
+                        <TextBox Grid.Row="0" Grid.Column="3" Name="DischargePortNoTextBox" Text="{Binding Port}" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="علت : "  Name="ReasonLabel"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Name="ReasonTextBox" IsReadOnly="True"/>
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="توضیحات : " Name="CommentLabel" />
+                        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Name="DischargeCommentTextBox" IsReadOnly="True"/>
+
+                        <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4" Name="PCMLabel"  Content="این شماره تلفن پیش از این بر روی PCM بوده است !" Visibility="Collapsed" Foreground="Red" Height="30"/>
+
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="5" Header="بوخت شرکت PAP" Name="ADSLPAPGroupBox" Visibility="Collapsed">
+                    <Grid Name="PAPBuchtInfo">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" Name="ExchangeRow" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="42" />
+                            <ColumnDefinition Width="108" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Content="شرکت PAP : " Grid.ColumnSpan="2" />
+                        <TextBox Grid.Column="2" Name="PAPInfoTextBox" IsReadOnly="True" />
+
+                        <Label Grid.Column="3" Name="PortLabel" Content="پورت : "/>
+                        <TextBox Grid.Column="4"  Name="PortTextBox" IsReadOnly="True" FlowDirection="LeftToRight" HorizontalAlignment="Left" FontFamily="pack://application:,,,/CRM.Application;Component/Resources/Fonts/#Yekan" />
+
+                        <Label Grid.Row="1" Name="OldPortLabel" Content="پورت قدیم : " Grid.ColumnSpan="2" />
+                        <TextBox Grid.Row="1" Grid.Column="2"  Name="OldPortTextBox" IsReadOnly="True" FlowDirection="LeftToRight" HorizontalAlignment="Left" FontFamily="pack://application:,,,/CRM.Application;Component/Resources/Fonts/#Yekan" />
+
+                        <Label Grid.Row="1" Grid.Column="3" Name="NewPortLabel" Content="پورت جدید : "/>
+                        <TextBox Grid.Row="1" Grid.Column="4"  Name="NewPortTextBox" IsReadOnly="True" FlowDirection="LeftToRight" HorizontalAlignment="Left" FontFamily="pack://application:,,,/CRM.Application;Component/Resources/Fonts/#Yekan" />
+
+                        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" Name="SelectionBuchtRow" Visibility="Collapsed" Height="30">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0" Name="SelectionRowLabel" Content="ردیف : " />
+                            <ComboBox Grid.Column="1" Name="SelectionRowComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding Row}" SelectionChanged="SelectionRowComboBox_SelectionChanged" />
+                            <!--<TextBox Grid.Column="1" Name="SelectionRowTextBox"  Style="{StaticResource ResourceKey=NumericTextBox}" PreviewTextInput="TextBox_PreviewTextInput" />-->
+
+                            <Label Grid.Column="2" Name="SelectionColumnLabel" Content="طبقه : " />
+                            <ComboBox Grid.Column="3" Name="SelectionColumnComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding Column}" SelectionChanged="SelectionColumnComboBox_SelectionChanged" />
+                            <!--<TextBox Grid.Column="3" Name="SelectionColumnTextBox" Style="{StaticResource ResourceKey=NumericTextBox}" PreviewTextInput="TextBox_PreviewTextInput" />-->
+                            
+                            <Label Grid.Column="4" Name="SelectionBuchtLabel" Content="اتصالی : " />
+                            <ComboBox Grid.Column="5" Name="SelectionBuchtComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding Bucht}" />
+                            <!--<TextBox Grid.Column="5" Name="SelectionBuchtTextBox"  Style="{StaticResource ResourceKey=NumericTextBox}" PreviewTextInput="TextBox_PreviewTextInput" />-->
+                        </Grid>
+
+                        <Label Grid.Row="3" Name="CabinetLabel" Content="شماره کافو : " Grid.ColumnSpan="2" Visibility="Collapsed"/>
+                        <TextBox Grid.Row="3" Grid.Column="2"  Name="CabinetTextBox" IsReadOnly="True" FlowDirection="LeftToRight" HorizontalAlignment="Left" FontFamily="pack://application:,,,/CRM.Application;Component/Resources/Fonts/#Yekan" Visibility="Collapsed"/>
+
+                        <Label Grid.Row="3" Grid.Column="3" Name="PostLabel" Content="شماره پست : " Visibility="Collapsed"/>
+                        <TextBox Grid.Row="3" Grid.Column="4"  Name="PostTextBox" IsReadOnly="True" FlowDirection="LeftToRight" HorizontalAlignment="Left" FontFamily="pack://application:,,,/CRM.Application;Component/Resources/Fonts/#Yekan" Visibility="Collapsed"/>
+
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="6" Header="نظرات">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="نظرات : "  />
+                        <ComboBox Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Name="CommentComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding MDFCommnet}" Visibility="Collapsed" Height="30" />
+                        <ListBox Grid.Row="0" Grid.Column="1" x:Name="CommentMDFListBox" SelectedValue="{Binding Path=MDFCommnet}" SelectedValuePath="Tag" Visibility="Collapsed" >
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <VirtualizingStackPanel Background="Transparent" Orientation="Vertical" />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBoxItem Tag="2">مشکلی وجود ندارد</ListBoxItem>
+                            <ListBoxItem Tag="0">رانژه شرکت دیگری می باشد</ListBoxItem>
+                            <ListBoxItem Tag="1">پورت خراب می باشد</ListBoxItem>
+                            <ListBoxItem Tag="3">PCM می باشد</ListBoxItem>
+                        </ListBox>
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="توضیحات تکمیلی : "  />
+                        <TextBox Grid.Row="2" Grid.Column="1"  Name="CommentTextBox" Height="30px" Visibility="Collapsed" />
+                    </Grid>
+                </GroupBox>
+
+            </Grid>
+        </DockPanel>
+    </ScrollViewer>
+
+</Local:RequestFormBase>
+
+    

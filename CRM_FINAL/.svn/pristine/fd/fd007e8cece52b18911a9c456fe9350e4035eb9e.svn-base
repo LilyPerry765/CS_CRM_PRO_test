@@ -1,0 +1,36 @@
+﻿<Local:PopupWindow  x:Class="CRM.Application.Views.SettingForm"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                    xmlns:Local="clr-namespace:CRM.Application.Local"
+                    xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                    mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d:DesignWidth="780"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    Loaded="PopupWindow_Loaded" Icon="/CRM.Application;component/Images/bankIcon48x48.png" Title="فرم ویرایش تنظیمات" Width="420" Height="220" ResizeMode="NoResize">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <Label Content="شناسه : " Grid.Row="0" Grid.Column="0"/>
+        <TextBox Grid.Row="0" Grid.Column="1" x:Name="IDTextbox" Text="{Binding ID}" IsReadOnly="True" TabIndex="1"/>
+
+        <Label Content="نام تنظیمات : " Grid.Row="1" Grid.Column="0"/>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="SettingNameTextBox" Text="{Binding Name}" TabIndex="2"/>
+
+        <Label Content="مقدار : " Grid.Row="2" Grid.Column="0"/>
+        <TextBox Grid.Row="2" Grid.Column="1" x:Name="SettingValueTextBox" Text="{Binding Value}" TabIndex="3" PreviewTextInput="SettingValueTextBox_PreviewTextInput" />
+
+        <Button Content="ذخیره" Grid.Row="5" Name="SaveButton" Click="SaveForm" Tag="Footer" TabIndex="4"/>
+        
+    </Grid>
+</Local:PopupWindow>

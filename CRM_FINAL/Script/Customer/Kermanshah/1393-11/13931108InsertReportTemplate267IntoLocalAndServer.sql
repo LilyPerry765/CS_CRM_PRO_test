@@ -1,0 +1,31 @@
+﻿--13931108 - 11:40
+--گزارش تاریخچه خرابی ها را بر روی سیستم خودم ساختم حالا باید این گزارش وارد سرور 14 هم بشود
+--INSERT INTO [192.168.0.14\PENDARSQL].CRM.dbo.ReportTemplate 
+--(ID,Title,Template,IconName,Category,UserControlName)
+--SELECT 
+--	RM.ID,RM.Title,RM.Template,RM.IconName,RM.Category,RM.UserControlName 
+--FROM
+--	ReportTemplate RM
+--WHERE 
+--	RM.ID = 267
+
+--13931108 - 12:51
+--update R14
+--SET TEMPLATE = RM.Template
+--FROM 
+--	ReportTemplate RM
+--INNER JOIN 
+--	[192.168.0.14\PENDARSQL].CRM.DBO.ReportTemplate R14 ON RM.ID = R14.ID
+--WHERE 
+--	RM.ID= 267 AND R14.ID = 267
+
+--13931108 - 12:56
+--گزارش تاریخچه خرابی های بر روی سرور کرمانشاه هم وارد شد	
+--INSERT INTO [78.39.252.109].CRM.DBO.ReportTemplate
+--(ID,Title,Template,IconName,Category,UserControlName)
+--SELECT 
+--	R14.ID,R14.Title,R14.Template,R14.IconName,R14.Category,R14.UserControlName 
+--FROM
+--	ReportTemplate R14
+--WHERE 
+--	R14.ID = 267

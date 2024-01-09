@@ -1,0 +1,116 @@
+﻿<UserControl 
+                x:Class="CRM.Application.UserControls.InstallInfoSummary" 
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                mc:Ignorable="d" d:DesignWidth="820"
+             
+             Loaded="LoadData">
+
+
+    <Expander Name="InstallInfoExpander" FlowDirection="RightToLeft" Header="مشخصات نصب" >
+        
+        <Grid x:Name="InstallInfo" IsEnabled="False">
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="30" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Content="فیش مرحله" />
+            <TextBox Grid.Row="0" Grid.Column="1" Name="FicheSaletextBox"  />
+
+            <Label Grid.Row="0" Grid.Column="2" Content="گروه محاسباتی" />
+            <ComboBox Grid.Row="0" Grid.Column="3" Name="ChargingTypecomboBox" DisplayMemberPath="Key" SelectedValuePath="Value" SelectedValue="{Binding ChargingType}" />
+
+        
+            <Label     Grid.Row="0" Grid.Column="4" Content="نوع تلفن" />
+            <ComboBox  Grid.Row="0" Grid.Column="5" Name="TelephoneTypeComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding TelephoneType, UpdateSourceTrigger=PropertyChanged}" SelectionChanged="TelephoneTypecomboBox_SelectionChanged" />
+
+            <Label     Grid.Row="0" Grid.Column="6" Content="گروه تلفن" />
+            <ComboBox  Grid.Row="0" Grid.Column="7" Name="TelephoneTypeGroupComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding TelephoneTypeGroup, UpdateSourceTrigger=PropertyChanged}"/>
+
+
+
+            <Label Grid.Row="1" Grid.Column="0" Content="نوع مالکیت" />
+            <ComboBox Grid.Row="1" Grid.Column="1" DisplayMemberPath="Key" SelectedValue="{Binding PosessionType}" SelectedValuePath="Value" Name="PosessionTypecomboBox" />
+
+            <Label Grid.Row="1" Grid.Column="2" Content="اولویت واگذاری" />
+            <ComboBox Grid.Row="1" Grid.Column="3" DisplayMemberPath="Key" SelectedValue="{Binding OrderType}" SelectedValuePath="Value" Name="OrderTypecomboBox" />
+
+            <CheckBox Grid.Row="1" Grid.Column="4" Content="شماره رند" Name="IsRoundNumbercheckBox"   />
+            <CheckBox Grid.Row="1" Grid.Column="5" Name="Use3PercentQuatacheckBox" Content="سهمیه سه درصد"   />
+
+
+            <Label Grid.Row="1" Grid.Column="6" Content="شماره ودیعه"  Name="DepositeNoLabel"/>
+            <TextBox Grid.Row="1" Grid.Column="7" Name="DepositeNoTextBox"  Text="{Binding DepositeNo}"  />
+
+
+            <Label Grid.Row="2" Grid.Column="0" Content="تلفن شارژ"  Name="TelephoneForChargeLabel" Visibility="Collapsed" Height="30"/>
+            <TextBox Grid.Row="2" Grid.Column="1"  Text="{Binding TelephoneForCharge}" Name="TelephoneForChargetextBox"   Visibility="Collapsed" Height="30"/>
+
+            <Label Grid.Row="2" Grid.Column="2" Content="تاریخ نصب"  Visibility="Collapsed" Name="TelInstallLabel" Height="30"/>
+            <cal:DatePicker Grid.Row="2" Grid.Column="3" Name="TelInstallDate" SelectedDate="{Binding Installdate}"   Visibility="Collapsed" Height="30"/>
+
+            <Label          Grid.Row="2" Grid.Column="4" Content="تاریخ جمع آوری"  Visibility="Collapsed" Name="TelUnInstallLabel" Height="30"/>
+            <cal:DatePicker Grid.Row="2" Grid.Column="5" Name="TelUnInstallDate" SelectedDate="{Binding Uninstalldate}"   Visibility="Collapsed" Height="30"/>
+
+            <Label     Grid.Row="3" Grid.Column="0" Content="انسداد صفر " Height="30" />
+            <ComboBox  Grid.Row="3" Grid.Column="1" x:Name="ZeroBlockComboBox" DisplayMemberPath="Name" SelectedValuePath="ID" SelectedValue="{Binding ClassTelephone}" Height="30"/>
+
+            <Label     Grid.Row="3" Grid.Column="2" Content="ADSL" Height="30" />
+            <CheckBox  Grid.Row="3" Grid.Column="3" x:Name="ADSLCheckBox" IsChecked="{Binding IsADSL}" IsThreeState="False" Height="30" VerticalAlignment="Center"/>
+
+            <Label     Grid.Row="3" Grid.Column="4" Content="GSM" Height="30" />
+            <CheckBox  Grid.Row="3" Grid.Column="5" x:Name="GSMCheckBox" IsChecked="{Binding IsGSM}" IsThreeState="False" Height="30" VerticalAlignment="Center"/>
+
+
+            <GroupBox Header="مشخصات آدرس"  Grid.Row="4" Grid.ColumnSpan="8" x:Name="AddressInfoGroupBox">
+                <Grid x:Name="AddressInfo">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Content="آدرس نصب : " />
+                    <TextBox Grid.Row="0" Grid.Column="1"  Name="InstallAddresstextBox" IsReadOnly="True" />
+
+                    <Label Grid.Row="0" Grid.Column="2" Content="کدپستی : " />
+                    <TextBox Grid.Row="0" Grid.Column="3" Name="PostalCodeInstalltextBox" IsReadOnly="True" />
+
+                    <Label Grid.Row="1" Grid.Column="0" Content="آدرس مکاتبه : " Grid.ColumnSpan="2" />
+                    <TextBox Grid.Row="1" Grid.Column="1" Name="CorrespondenceAddressTextBox" IsReadOnly="True" />
+
+                    <Label Grid.Row="1" Grid.Column="2" Content="کدپستی : " />
+                    <TextBox Grid.Row="1" Grid.Column="3" Name="CorrespondencePostalCodeTextBox" IsReadOnly="True" />
+
+                </Grid>
+                
+            </GroupBox>
+            
+        </Grid>
+
+    </Expander>
+    
+</UserControl>

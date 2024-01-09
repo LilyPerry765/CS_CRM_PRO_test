@@ -1,0 +1,108 @@
+﻿
+namespace CaseManagement.Case {
+    export interface ActivityRecordRow {
+        Id?: number;
+        CreatedUserId?: number;
+        CreatedDate?: string;
+        IsDeleted?: boolean;
+        DeletedUserId?: number;
+        DeletedDate?: string;
+        EndDate?: string;
+        ActivityId?: number;
+        ProvinceId?: number;
+        CycleId?: number;
+        ActivityCode?: number;
+        ActivityName?: string;
+        ActivityEnglishName?: string;
+        ActivityObjective?: string;
+        ActivityEnglishObjective?: string;
+        ActivityCreatedUserId?: number;
+        ActivityCreatedDate?: string;
+        ActivityModifiedUserId?: number;
+        ActivityModifiedDate?: string;
+        ActivityIsDeleted?: boolean;
+        ActivityDeletedUserId?: number;
+        ActivityDeletedDate?: string;
+        ActivityGroupId?: number;
+        ActivityRepeatTermId?: number;
+        ProvinceName?: string;
+        ProvinceEnglishName?: string;
+        ProvinceManagerName?: string;
+        ProvinceLetterNo?: string;
+        ProvincePmoLevelId?: number;
+        ProvinceInstallDate?: string;
+        ProvinceCreatedUserId?: number;
+        ProvinceCreatedDate?: string;
+        ProvinceModifiedUserId?: number;
+        ProvinceModifiedDate?: string;
+        ProvinceIsDeleted?: boolean;
+        ProvinceDeletedUserId?: number;
+        ProvinceDeletedDate?: string;
+        CycleYear?: number;
+        Cycle?: number;
+        CycleCreatedUserId?: number;
+        CycleCreatedDate?: string;
+        CycleModifiedUserId?: number;
+        CycleModifiedDate?: string;
+        CycleIsDeleted?: boolean;
+        CycleDeletedUserId?: number;
+        CycleDeletedDate?: string;
+    }
+
+    export namespace ActivityRecordRow {
+        export const idProperty = 'Id';
+        export const localTextPrefix = 'Case.ActivityRecord';
+
+        export namespace Fields {
+            export declare const Id;
+            export declare const CreatedUserId;
+            export declare const CreatedDate;
+            export declare const IsDeleted;
+            export declare const DeletedUserId;
+            export declare const DeletedDate;
+            export declare const EndDate;
+            export declare const ActivityId;
+            export declare const ProvinceId;
+            export declare const CycleId;
+            export declare const ActivityCode: string;
+            export declare const ActivityName: string;
+            export declare const ActivityEnglishName: string;
+            export declare const ActivityObjective: string;
+            export declare const ActivityEnglishObjective: string;
+            export declare const ActivityCreatedUserId: string;
+            export declare const ActivityCreatedDate: string;
+            export declare const ActivityModifiedUserId: string;
+            export declare const ActivityModifiedDate: string;
+            export declare const ActivityIsDeleted: string;
+            export declare const ActivityDeletedUserId: string;
+            export declare const ActivityDeletedDate: string;
+            export declare const ActivityGroupId: string;
+            export declare const ActivityRepeatTermId: string;
+            export declare const ProvinceName: string;
+            export declare const ProvinceEnglishName: string;
+            export declare const ProvinceManagerName: string;
+            export declare const ProvinceLetterNo: string;
+            export declare const ProvincePmoLevelId: string;
+            export declare const ProvinceInstallDate: string;
+            export declare const ProvinceCreatedUserId: string;
+            export declare const ProvinceCreatedDate: string;
+            export declare const ProvinceModifiedUserId: string;
+            export declare const ProvinceModifiedDate: string;
+            export declare const ProvinceIsDeleted: string;
+            export declare const ProvinceDeletedUserId: string;
+            export declare const ProvinceDeletedDate: string;
+            export declare const CycleYear: string;
+            export declare const Cycle: string;
+            export declare const CycleCreatedUserId: string;
+            export declare const CycleCreatedDate: string;
+            export declare const CycleModifiedUserId: string;
+            export declare const CycleModifiedDate: string;
+            export declare const CycleIsDeleted: string;
+            export declare const CycleDeletedUserId: string;
+            export declare const CycleDeletedDate: string;
+        }
+
+        ['Id', 'CreatedUserId', 'CreatedDate', 'IsDeleted', 'DeletedUserId', 'DeletedDate', 'EndDate', 'ActivityId', 'ProvinceId', 'CycleId', 'ActivityCode', 'ActivityName', 'ActivityEnglishName', 'ActivityObjective', 'ActivityEnglishObjective', 'ActivityCreatedUserId', 'ActivityCreatedDate', 'ActivityModifiedUserId', 'ActivityModifiedDate', 'ActivityIsDeleted', 'ActivityDeletedUserId', 'ActivityDeletedDate', 'ActivityGroupId', 'ActivityRepeatTermId', 'ProvinceName', 'ProvinceEnglishName', 'ProvinceManagerName', 'ProvinceLetterNo', 'ProvincePmoLevelId', 'ProvinceInstallDate', 'ProvinceCreatedUserId', 'ProvinceCreatedDate', 'ProvinceModifiedUserId', 'ProvinceModifiedDate', 'ProvinceIsDeleted', 'ProvinceDeletedUserId', 'ProvinceDeletedDate', 'CycleYear', 'Cycle', 'CycleCreatedUserId', 'CycleCreatedDate', 'CycleModifiedUserId', 'CycleModifiedDate', 'CycleIsDeleted', 'CycleDeletedUserId', 'CycleDeletedDate'].forEach(x => (<any>Fields)[x] = x);
+    }
+}
+

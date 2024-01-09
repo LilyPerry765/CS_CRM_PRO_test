@@ -1,0 +1,23 @@
+﻿--13931128 - 0936
+----گزارش سرویس ویژه بر روی سیستم خودم نهایی شد
+--شماره نامه و مرجع درخواست کننده به الگو اضافه شد
+--بر روی سرور 14 هم باید برزورسانی میشد
+--UPDATE R14
+--SET TEMPLATE = RM.Template
+--from 
+--	ReportTemplate rm
+--inner join 
+--	[192.168.0.14\pendarsql].crm.dbo.ReportTemplate R14 On RM.ID = R14.ID
+--where 
+--	rm.id = 19 and r14.id = 19
+
+--13931128 - 0942
+--گزارش سرویس ویژه بر روی سرور کرمانشاه هم بروزرسانی شد
+--UPDATE RR
+--SET Template = R14.Template
+--FROM 
+--	ReportTemplate R14 
+--INNER JOIN 
+--	[78.39.252.109].CRM.dbo.reportTemplate RR ON R14.ID = RR.ID
+--WHERE 
+--	RR.ID = 19 AND R14.ID = 19

@@ -1,0 +1,121 @@
+﻿<UserControl x:Class="CRM.Application.UserControls.ADSLChangeIP"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignWidth="820">
+
+    <DockPanel FlowDirection="RightToLeft">
+        <StackPanel Orientation="Vertical">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <GroupBox Grid.Row="0" Margin="0,0,0,10" Name="ADSLOldIPGroupBox">
+                    <GroupBox.Header>
+                        <Label Content="مشخصات IP قدیم" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14"/>
+                    </GroupBox.Header>
+                    <Grid x:Name="OldServiceInfo" Height="auto">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="180" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="180" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="نوع IP : " />
+                        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Name="OldIPTypeTextBox" IsReadOnly="True" />
+
+                        <Label Grid.Row="0" Grid.Column="2" Content="مدت زمان استفاده : " Name="OldIPTimeLabel"  />
+                        <TextBox Grid.Row="0" Grid.Column="3" Name="OldIPTimeTextBox" Style="{StaticResource ResourceKey=NumericTextBox}" />
+                        
+                        <Label Grid.Row="1" Grid.Column="0" Content="IP : " Name="OldSingleIPLabel" Visibility="Collapsed" />
+                        <TextBox Grid.Row="1" Grid.Column="1" Name="OLdSingleIPTextBox" IsReadOnly="True" Visibility="Collapsed" Style="{StaticResource ResourceKey=NumericTextBox}"/>                        
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="نوع IP گروهی : " Name="OldGroupIPTypeLabel" Visibility="Collapsed" />
+                        <TextBox Grid.Row="1" Grid.Column="1" Name="OldGroupIPTypeTextBox" Visibility="Collapsed" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="1" Grid.Column="2" Content="نوع IP گروهی : " Name="OldGroupIPLabel" Visibility="Collapsed" />
+                        <TextBox Grid.Row="1" Grid.Column="3" Name="OldGroupIPTextBox" IsReadOnly="True" Visibility="Collapsed" Style="{StaticResource ResourceKey=NumericTextBox}" />
+                        
+                    </Grid>
+                </GroupBox>
+
+                <GroupBox Grid.Row="1" Name="ADSLNewIPGroupBox" Margin="0,0,0,10">
+                    <GroupBox.Header>
+                        <Label Content="مشخصات IP درخواستی" FontWeight="Bold" Foreground="#355E92" FontFamily="/CRM.Application;Component/Resources/Fonts/#Nazanin" FontSize="14"/>
+                    </GroupBox.Header>
+                    <Grid x:Name="ADSLIPInfo" Height="auto">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="180" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="180" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!--<ListBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" x:Name="ChangeIPTypeListBox" SelectedValuePath="Tag" SelectionChanged="ChangeIPTypeListBox_SelectionChanged" Visibility="Collapsed" >
+                            <ListBoxItem Tag="2">تعویض</ListBoxItem>
+                            <ListBoxItem Tag="3">تخلیه</ListBoxItem>
+                        </ListBox>-->
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="نوع IP : " />
+                        <ComboBox Grid.Row="0" Grid.Column="1" Name="IPTypeComboBox" SelectedValuePath="ID" DisplayMemberPath="Name" SelectionChanged="IPTypeComboBox_SelectionChanged" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="IP : " Name="SingleIPLabel" Visibility="Collapsed" />
+                        <TextBox Grid.Row="1" Grid.Column="1" Name="SingleIPTextBox" IsReadOnly="True" Visibility="Collapsed" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="نوع IP گروهی : " Name="GroupIPTypeLabel" Visibility="Collapsed" />
+                        <ComboBox Grid.Row="1" Grid.Column="1" Name="GroupIPTypeComboBox" SelectedValuePath="ID" DisplayMemberPath="Name" SelectionChanged="GroupIPTypeComboBox_SelectionChanged" Visibility="Collapsed" />
+
+                        <Label Grid.Row="1" Grid.Column="2" Content="نوع IP گروهی : " Name="GroupIPLabel" Visibility="Collapsed" />
+                        <TextBox Grid.Row="1" Grid.Column="3" Name="GroupIPTextBox" IsReadOnly="True" Visibility="Collapsed" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Name="ErrorGroupIPLabel" Visibility="Collapsed" Style="{StaticResource ResourceKey=ErrorLabel}"/>
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="مدت زمان استفاده : " Name="IPTimeLabel" Visibility="Collapsed" />
+                        <ComboBox Grid.Row="2" Grid.Column="1" Name="IPTimeComboBox" SelectedValuePath="ID" DisplayMemberPath="Name" Visibility="Collapsed" Style="{StaticResource ResourceKey=NumericComboBox}" SelectionChanged="IPTimeComboBox_SelectionChanged" />
+
+                        <Label Grid.Row="2" Grid.Column="2" Content="هزینه IP : " Name="IPCostLabel" Visibility="Collapsed" />
+                        <TextBox Grid.Row="2" Grid.Column="3" Name="IPCostTextBox" IsReadOnly="True" Visibility="Collapsed" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="3" Grid.Column="0" Content="مالیات : " Name="IPTaxLabel" Visibility="Collapsed" />
+                        <TextBox Grid.Row="3" Grid.Column="1" Name="IPTaxTextBox" IsReadOnly="True" Visibility="Collapsed" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="3" Grid.Column="2" Content="هزینه کل IP : " Name="IPSumCostLabel" Visibility="Collapsed" />
+                        <TextBox Grid.Row="3" Grid.Column="3" Name="IPSumCostTextBox" IsReadOnly="True" Visibility="Collapsed" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="4" Grid.Column="0" Content="هزینه مقدار مصرف شده : " Name="IPUsingCostLabel" Visibility="Collapsed" />
+                        <TextBox Grid.Row="4" Grid.Column="1" Name="IPUsingCostTextBox" IsReadOnly="True" Visibility="Collapsed" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="4" Grid.Column="2" Content="هزینه عودت شده : " Name="IPRefundCostLabel" Visibility="Collapsed" />
+                        <TextBox Grid.Row="4" Grid.Column="3" Name="IPRefundCostTextBox" IsReadOnly="True" Visibility="Collapsed" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                        <Label Grid.Row="5" Grid.ColumnSpan="4" Name="ErrorLabel" Visibility="Collapsed" Foreground="Red" />
+
+                    </Grid>
+                </GroupBox>
+
+            </Grid>
+        </StackPanel>
+    </DockPanel>
+</UserControl>
+
+

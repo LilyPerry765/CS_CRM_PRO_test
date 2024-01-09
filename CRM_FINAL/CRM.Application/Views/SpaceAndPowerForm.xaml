@@ -1,0 +1,415 @@
+﻿<Local:RequestFormBase x:Class="CRM.Application.Views.SpaceAndPowerForm"
+                       xmlns:Local="clr-namespace:CRM.Application.Local" 
+                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                       xmlns:converter="clr-namespace:CRM.Converters" 
+                       xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker" 
+                       WindowStartupLocation="CenterScreen" 
+                       Title="فضا و پاور" Height="Auto" Width="800">
+    <Local:RequestFormBase.Resources>
+        <Storyboard x:Key="SuccessAttachmentStoryBoard">
+            <DoubleAnimation Storyboard.TargetName="SuccessFileAttachmentLabel" Storyboard.TargetProperty="Width" From="0" To="190" Duration="0:0:03" AutoReverse="True"
+                             AccelerationRatio="0.2" DecelerationRatio="0.8"/>
+        </Storyboard>
+        <Storyboard x:Key="SuccessUpdateStoryBoard">
+            <DoubleAnimation Storyboard.TargetName="SuccessFileUpdateLabel" Storyboard.TargetProperty="Width" From="0" To="190" Duration="0:0:03" AutoReverse="True"
+                             AccelerationRatio="0.2" DecelerationRatio="0.8"/>
+        </Storyboard>
+        <Storyboard x:Key="FialureUpdateStoryBoard">
+            <DoubleAnimation Storyboard.TargetName="FailureFileUpdateLabel" Storyboard.TargetProperty="Width" From="0" To="190" Duration="0:0:03" AutoReverse="True"
+                             AccelerationRatio="0.2" DecelerationRatio="0.8"/>
+        </Storyboard>
+        <Style x:Key="DefaultLableStyle" TargetType="{x:Type Label}" >
+            <Setter Property="FontFamily" Value="pack://application:,,,/CRM.Application;component/Resources/Fonts/#Yekan"/>
+        </Style>
+    </Local:RequestFormBase.Resources>
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <GroupBox Grid.Row="0" Header="مشخصات درخواست">
+            <Grid Name="RequestInfo">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="180" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="180" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="شماره درخواست : " />
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding ID}" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                <Label Grid.Row="0" Grid.Column="2" Content="تاریخ درخواست : " />
+                <TextBox Grid.Row="0" Grid.Column="3" Text="{Binding strRequestDate}" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                <Label Grid.Row="1" Grid.Column="0" Content="مرکز : " />
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding CenterName}" IsReadOnly="True" />
+
+                <Label Grid.Row="1" Grid.Column="2" Content="درخواست کننده : " />
+                <TextBox Grid.Row="1" Grid.Column="3" Text="{Binding RequesterName}" IsReadOnly="True" />
+
+                <Label Grid.Row="2" Grid.Column="0" Content="شماره نامه درخواست : "  />
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding RequestLetterNo}" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                <Label Grid.Row="2" Grid.Column="2" Content="وضعیت درخواست : " />
+                <TextBox Grid.Row="2" Grid.Column="3" Text="{Binding CurrentStep}" IsReadOnly="True" />
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="1" Header="مشخصات فضا و پاور">
+            <Grid Name="SpaceAnfPowerInfo">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="30" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="180" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="180" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="متقاضی : " />
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding SpaceAndPowerCustomer}" IsReadOnly="True"  />
+
+                <Label Grid.Row="1" Grid.Column="0" Content="نوع تجهیزات : " />
+                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding EquipmentType}" IsReadOnly="True" />
+
+                <Label Grid.Row="1" Grid.Column="2" Content="وزن تجهیزات : " />
+                <TextBox Grid.Row="1" Grid.Column="3" Text="{Binding EquipmentWeight}" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                <Label Grid.Row="2" Grid.Column="0" Content="نوع پاور مصرفی : " />
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding PowerType}" IsReadOnly="True" />
+
+                <Label Grid.Row="2" Grid.Column="2" Content="میزان پاور مصرفی : " />
+                <TextBox Grid.Row="2" Grid.Column="3" Text="{Binding PowerRate}" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                <Label Grid.Row="3" Grid.Column="0" Content="نوع فضا : " />
+                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding SpaceType}" IsReadOnly="True" />
+
+                <Label Grid.Row="3" Grid.Column="2" Content="متراژ فضا (مترمربع) : "  />
+                <TextBox Grid.Row="3" Grid.Column="3" Text="{Binding SpaceSize}" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}"/>
+
+                <Label Grid.Row="4" Grid.Column="0" Content="کاربری فضا : " />
+                <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding SpaceUsage}" IsReadOnly="True" />
+
+                <Label Grid.Row="4" Grid.Column="2" Content="میزان اتلاف حرارت تجهیزات : " />
+                <TextBox Grid.Row="4" Grid.Column="3" Text="{Binding HeatWasteRate}" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                <Label Grid.Row="5" Grid.Column="0" Content="مدت زمان (ماه) : "  />
+                <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Duration}" IsReadOnly="True" Style="{StaticResource ResourceKey=NumericTextBox}" />
+
+                <Label Grid.Row="5" Grid.Column="2" Content="فضای روی دکل : "/>
+                <TextBox Grid.Row="5" Grid.Column="3" IsReadOnly="True" Text="{Binding RigSpace}"/>
+
+                <Label Grid.Row="6" Grid.Column="0" Content="نوع آنتن : "/>
+                <TextBox x:Name="AntennaNameTextBox" Grid.Row="6" Grid.Column="1" IsReadOnly="True" Text="{Binding AntennaName}"/>
+
+                <Label Grid.Row="6" Grid.Column="2" Content="تعداد آنتن : "/>
+                <TextBox x:Name="AntennaCountTextBox" Grid.Row="6" Grid.Column="3" IsReadOnly="True" Text="{Binding AntennaCount}"/>
+
+                <Label Grid.Row="7" Grid.Column="0" Content="ارتفاع آنتن : "/>
+                <TextBox x:Name="AntennaHeightTextBox" Grid.Row="7" Grid.Column="1" IsReadOnly="True" Text="{Binding AntennaHeight}"/>
+
+                <Label Grid.Row="7" Grid.Column="2" Content="دارای فیبر میباشد : "/>
+                <CheckBox x:Name="HasFibreCheckBox" Grid.Row="7" Grid.Column="3" IsEnabled="False" IsChecked="{Binding HasFibre}" VerticalAlignment="Center" />
+                
+                <Label Grid.Row="8" Grid.Column="0" Content="توضیحات درخواست : " />
+                <TextBox Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding RequestDescription}" IsReadOnly="True" Height="50" />
+
+                <Label Grid.Row="9" Grid.Column="0" Content="مشاهده کامل : " />
+                <Image Grid.Row="9" Grid.Column="1" Source="/CRM.Application;component/Images/info_16x16.png" Width="16" Height="16" HorizontalAlignment="Left" MouseLeftButtonDown="ShowFullView" Cursor="Hand"/>
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox x:Name="FinancialScopeGroupBox" Grid.Row="2" Header="حوزه مالی" Visibility="Collapsed">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Content="توضیحات: " Grid.Row="0" Grid.Column="0"/>
+                <TextBox x:Name="FinancialScopeCommentTextBox" Grid.Row="0" Grid.Column="1" MinHeight="45" TextWrapping="Wrap"/>
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox x:Name="DesignManagerGroupBox" Grid.Row="2" Header="مدیر طراحی" Visibility="Collapsed">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Content="توضیحات: " Grid.Row="0" Grid.Column="0"/>
+                <TextBox x:Name="DesignManagerCommentTextBox" Grid.Row="0" Grid.Column="1" MinHeight="45" TextWrapping="Wrap"/>
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox x:Name="CableAndNetworkDesignOfficeGroupBox" Grid.Row="2" Header="اداره طراحی شبکه و کابل" Visibility="Collapsed">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0"  Content="تعیین فایل طراحی شبکه و کابل : " />
+                <StackPanel  Grid.Row="0" Grid.Column="1"  Orientation="Horizontal">
+                    <ListBox Tag="CableAndNetworkDesignOffice" SelectionChanged="FileSelectionMethodsListBox_SelectionChanged">
+                        <ListBoxItem Tag="BrowseFile">جستجوی فایل</ListBoxItem>
+                        <ListBoxItem Tag="ScannerFile">اسکنر</ListBoxItem>
+                    </ListBox>
+                    <Image Source="/CRM.Application;component/Images/DocumentPicture16x16.png" Margin="2.5" Cursor="Hand"  MouseUp="PreviewImage_MouseUp"/>
+                </StackPanel>
+
+                <Label Content="توضیحات: " Grid.Row="1" Grid.Column="0"/>
+                <TextBox x:Name="CableAndNetworkDesignOfficeCommentTextBox" Grid.Row="1" Grid.Column="1" MinHeight="45" TextWrapping="Wrap"/>
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox x:Name="EnteghalGroupBox" Grid.Row="2" Header="اداره طراحی انتقال" Visibility="Collapsed">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0"  Content="تعیین فایل طراحی انتقال : " />
+                <StackPanel  Grid.Row="0" Grid.Column="1"  Orientation="Horizontal">
+                    <ListBox Tag="Enteghal" SelectionChanged="FileSelectionMethodsListBox_SelectionChanged">
+                        <ListBoxItem Tag="BrowseFile">جستجوی فایل</ListBoxItem>
+                        <ListBoxItem Tag="ScannerFile">اسکنر</ListBoxItem>
+                    </ListBox>
+                    <Image Source="/CRM.Application;component/Images/DocumentPicture16x16.png" Margin="2.5" Cursor="Hand" MouseUp="PreviewImage_MouseUp"/>
+                </StackPanel>
+
+                <Label Grid.Row="1" Grid.Column="0"  Content="تعیین فایل دستور مداری : " />
+                <StackPanel  Grid.Row="1" Grid.Column="1"  Orientation="Horizontal">
+                    <ListBox Tag="Enteghal" SelectionChanged="CircuitCommandFileSelectionMethodsListBox_SelectionChanged">
+                        <ListBoxItem Tag="BrowseFile">جستجوی فایل</ListBoxItem>
+                        <ListBoxItem Tag="ScannerFile">اسکنر</ListBoxItem>
+                    </ListBox>
+                    <Image Source="/CRM.Application;component/Images/DocumentPicture16x16.png" Margin="2.5" Cursor="Hand" MouseUp="CircuitCommandFilePreviewImage_MouseUp"/>
+                </StackPanel>
+
+                <Label Content="توضیحات: " Grid.Row="2" Grid.Column="0"/>
+                <TextBox x:Name="EnteghalCommentTextBox" Grid.Row="2" Grid.Column="1" MinHeight="45" TextWrapping="Wrap"/>
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox x:Name="SwitchDesigningOfficeGroupBox" Grid.Row="2" Header="اداره طراحی سوئیچ" Visibility="Collapsed">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0"  Content="تعیین فایل طراحی سوئیچ : " />
+                <StackPanel  Grid.Row="0" Grid.Column="1"  Orientation="Horizontal">
+                    <ListBox Tag="SwitchDesigningOffice" SelectionChanged="FileSelectionMethodsListBox_SelectionChanged">
+                        <ListBoxItem Tag="BrowseFile">جستجوی فایل</ListBoxItem>
+                        <ListBoxItem Tag="ScannerFile">اسکنر</ListBoxItem>
+                    </ListBox>
+                    <Image Source="/CRM.Application;component/Images/DocumentPicture16x16.png" Margin="2.5" Cursor="Hand" MouseUp="PreviewImage_MouseUp"/>
+                </StackPanel>
+
+                <Label Content="توضیحات: " Grid.Row="1" Grid.Column="0"/>
+                <TextBox x:Name="SwitchDesigningOfficeCommentTextBox" Grid.Row="1" Grid.Column="1" MinHeight="45" TextWrapping="Wrap"/>
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox x:Name="NirooGroupBox" Grid.Row="2" Header="اداره طراحی نیرو" Visibility="Collapsed">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0"  Content="تعیین فایل طراحی نیرو : " />
+                <StackPanel  Grid.Row="0" Grid.Column="1"  Orientation="Horizontal">
+                    <ListBox Tag="Niroo" SelectionChanged="FileSelectionMethodsListBox_SelectionChanged">
+                        <ListBoxItem Tag="BrowseFile">جستجوی فایل</ListBoxItem>
+                        <ListBoxItem Tag="ScannerFile">اسکنر</ListBoxItem>
+                    </ListBox>
+                    <Image Source="/CRM.Application;component/Images/DocumentPicture16x16.png" Margin="2.5" Cursor="Hand" MouseUp="PreviewImage_MouseUp"/>
+                </StackPanel>
+
+                <Label Content="توضیحات: " Grid.Row="1" Grid.Column="0"/>
+                <TextBox x:Name="NirooCommentTextBox" Grid.Row="1" Grid.Column="1" MinHeight="45" TextWrapping="Wrap"/>
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox x:Name="SakhtemanGroupBox" Grid.Row="2" Header="اداره ساختمان" Visibility="Collapsed">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Content="توضیحات: " Grid.Row="0" Grid.Column="0"/>
+                <TextBox x:Name="SakhtemanCommentTextBox" Grid.Row="0" Grid.Column="1" MinHeight="45" TextWrapping="Wrap"/>
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox x:Name="DesignManagerFinalCheckGroupBox" Grid.Row="2" Header="مدیر طراحی - بررسی نهایی" Visibility="Collapsed">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Content="توضیحات: " Grid.Row="0" Grid.Column="0"/>
+                <TextBox x:Name="DesignManagerFinalCheckCommentTextBox" Grid.Row="0" Grid.Column="1" MinHeight="45" TextWrapping="Wrap"/>
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox x:Name="NetworkAssistantGroupBox" Grid.Row="2" Header="معاونت شبکه" Visibility="Collapsed">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Content="توضیحات: " Grid.Row="0" Grid.Column="0"/>
+                <TextBox x:Name="NetworkAssistantCommentTextBox" Grid.Row="0" Grid.Column="1" MinHeight="45" TextWrapping="Wrap"/>
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox x:Name="GhardadGroupBox" Grid.Row="2" Header="عقد قرارداد" Visibility="Collapsed">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Content="توضیحات: " Grid.Row="0" Grid.Column="0"/>
+                <TextBox x:Name="GhardadCommentTextBox" Grid.Row="0" Grid.Column="1" MinHeight="45" TextWrapping="Wrap"/>
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox x:Name="DeviceHallGroupBox" Grid.Row="2" Header="سالن دستگاه" Visibility="Collapsed">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Content="توضیحات: " Grid.Row="0" Grid.Column="0"/>
+                <TextBox x:Name="DeviceHallCommentTextBox" Grid.Row="0" Grid.Column="1" MinHeight="45" TextWrapping="Wrap"/>
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox x:Name="AdministrationOfTheTelecommunicationEquipmentGroupBox" Grid.Row="2" Header="اداره نظارت تجهیزات مخابراتی" Visibility="Collapsed">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Content="تاریخ بهره برداری: " Grid.Row="0" Grid.Column="0"/>
+                <cal:DatePicker x:Name="AdministrationOfTheTelecommunicationEquipmentOperationDatePicker" Grid.Row="0" Grid.Column="1" MaxWidth="100" HorizontalAlignment="Left"/>
+
+                <Label Content="توضیحات: " Grid.Row="1" Grid.Column="0"/>
+                <TextBox x:Name="AdministrationOfTheTelecommunicationEquipmentCommentTextBox" Grid.Row="1" Grid.Column="1" MinHeight="45" TextWrapping="Wrap"/>
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox x:Name="SooratHesabGroupBox" Grid.Row="2" Header="صدور صورت حساب" Visibility="Collapsed">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Content="توضیحات: " Grid.Row="0" Grid.Column="0"/>
+                <TextBox x:Name="SooratHesabCommentTextBox" Grid.Row="0" Grid.Column="1" MinHeight="45"  TextWrapping="Wrap"/>
+
+            </Grid>
+        </GroupBox>
+
+        <Label x:Name="SuccessFileAttachmentLabel" Content="فایل باموفقیت اضافه شد." Foreground="Black" FontSize="12" Style="{StaticResource DefaultLableStyle}"
+               Grid.Row="3" Grid.Column="2" HorizontalAlignment="Right" Background="#95b2de" Height="35" BorderThickness="1.5" BorderBrush="Gray" Margin="0 0 5 1" Width="0"/>
+
+        <Label x:Name="SuccessFileUpdateLabel" Content="فایل باموفقیت بروزرسانی شد." Foreground="Black" FontSize="12" Style="{StaticResource DefaultLableStyle}"
+               Grid.Row="3" Grid.Column="2" HorizontalAlignment="Right" Background="Green" Height="35" BorderThickness="1.5" BorderBrush="Gray" Margin="0 0 5 1" Width="0"/>
+
+        <Label x:Name="FailureFileUpdateLabel" Content="فایل بروزرسانی نشد." Foreground="Black" FontSize="12" Style="{StaticResource DefaultLableStyle}"
+               Grid.Row="3" Grid.Column="2" HorizontalAlignment="Right" Background="Red" Height="35" BorderThickness="1.5" BorderBrush="Gray" Margin="0 0 5 1" Width="0"/>
+
+    </Grid>
+</Local:RequestFormBase>

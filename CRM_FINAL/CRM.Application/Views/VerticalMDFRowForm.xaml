@@ -1,0 +1,44 @@
+﻿<Local:PopupWindow Title=" فرم ویرایش طبقه ام دی اف"
+                   x:Class="CRM.Application.Views.VerticalMDFRowForm"
+                   xmlns:UserControls="clr-namespace:CRM.Application.UserControls"
+                   xmlns:Local="clr-namespace:CRM.Application.Local"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:sys="clr-namespace:System.Configuration.Assemblies;assembly=mscorlib"
+                   xmlns:cal="http://schemas.microsoft.com/wpf/2008/datepicker"
+                   xmlns:uc="clr-namespace:CRM.Application.UserControls"
+                   mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   Width="400" Height="250" ResizeMode="NoResize" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   Loaded="PopupWindow_Loaded" Icon="/CRM.Application;component/Images/row48x48.png">
+
+    <Grid FlowDirection="RightToLeft">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Label Grid.Column="0" Grid.Row="0" x:Name="FromVerticalRowNoLabel" Content="شماره طبقه : " />
+        <TextBox Grid.Column="1" Grid.Row="0" x:Name="FromVerticalRowNoTextBox" Text="{Binding VerticalRowNo}" />
+
+        <Label Grid.Column="0" Grid.Row="2"     x:Name="FromBuchtLabel" Content="از بوخت : " />
+        <TextBox Grid.Column="1" Grid.Row="2"   x:Name="FromBuchtTextBox"  />
+
+        <Label Grid.Column="0" Grid.Row="3"     x:Name="ToBuchtLabel" Content="تا بوخت : " />
+        <TextBox Grid.Column="1" Grid.Row="3"   x:Name="ToBuchtTextBox"  />
+
+        <Label Grid.Column="0" Grid.Row="4"     x:Name="BuchtTypeComboBoxLabel" Content="نوع بوخت :  " />
+        <ComboBox Grid.Column="1" Grid.Row="4" Height="27"  x:Name="BuchtTypeComboBox" SelectedValue="{Binding BuchtTypeID}"  DisplayMemberPath="Name" SelectedValuePath="ID"/>
+
+        <Button Grid.Row="6" Grid.Column="0" Content="ذخیره" Name="SaveButton" Click="SaveForm" Tag="Footer" />
+
+    </Grid>
+
+</Local:PopupWindow>
