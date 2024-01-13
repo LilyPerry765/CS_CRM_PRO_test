@@ -1,3 +1,3 @@
 #!binbash
 
-dotnet build --configuration Release
+dotnet build 
